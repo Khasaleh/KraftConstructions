@@ -1,0 +1,16 @@
+type ContactUs
+{
+    id: Int
+    firstname : String
+    lastname : String
+    email : String
+    phoneNumber : Int
+    message : String
+
+
+}
+
+type Query{
+
+    getContactForm : [ContactUs]
+}
