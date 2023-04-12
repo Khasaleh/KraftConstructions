@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
-public interface ContactUsRepository extends JpaRepository<ContactUs, Long> {
+public interface ContactUsRepository extends JpaRepository<ContactUs, Integer> {
 }
