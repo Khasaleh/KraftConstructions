@@ -1,48 +1,36 @@
-package com.bezkoder.spring.jpa.h2.Entity;
+package com.bezkoder.spring.jpa.h2.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
-@Entity
-@Table(name = "contact_us")
-public class ContactUs {
+public class ContactUsDto {
 
-    @Id
+
+    @NotNull
     private Long id;
 
 
     @NotNull
-    @Column(name = "firstname")
     private String firstname;
 
+
     @NotNull
-    @Column(name = "lastname")
     private String lastname;
 
     @NotNull
     @Email
-    @Column(name = "email")
     private String email;
 
+
     @Pattern(regexp = "\\d{10,15}", message = "Phone number must be between 10 and 15 digits")
-    @Column(name = "phoneNumber")
     private Long phonenumber;
 
+
     @NotNull
-    @Column(name = "message")
     private String message;
 
-    // Getters and setters, constructors, etc.
-
-
-    public ContactUs(Long id, String firstname, String lastname, String email, Long phonenumber, String message) {
+    public ContactUsDto(Long id, String firstname, String lastname, String email, Long phonenumber, String message) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -51,7 +39,7 @@ public class ContactUs {
         this.message = message;
     }
 
-    public ContactUs() {
+    public ContactUsDto() {
     }
 
     public Long getId() {
