@@ -4,17 +4,17 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.*;
 
 @Entity
 @Table(name = "contact_us")
 public class ContactUs {
 
     @Id
+    @GeneratedValue
     private Long id;
 
 
@@ -31,9 +31,9 @@ public class ContactUs {
     @Column(name = "email")
     private String email;
 
-    @Pattern(regexp = "\\d{10,15}", message = "Phone number must be between 10 and 15 digits")
+
     @Column(name = "phoneNumber")
-    private Long phonenumber;
+    private String phonenumber;
 
     @NotNull
     @Column(name = "message")
@@ -42,7 +42,7 @@ public class ContactUs {
     // Getters and setters, constructors, etc.
 
 
-    public ContactUs(Long id, String firstname, String lastname, String email, Long phonenumber, String message) {
+    public ContactUs(Long id, String firstname, String lastname, String email, String phonenumber, String message) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -70,7 +70,7 @@ public class ContactUs {
         return email;
     }
 
-    public Long getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
@@ -94,7 +94,7 @@ public class ContactUs {
         this.email = email;
     }
 
-    public void setPhonenumber(Long phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 

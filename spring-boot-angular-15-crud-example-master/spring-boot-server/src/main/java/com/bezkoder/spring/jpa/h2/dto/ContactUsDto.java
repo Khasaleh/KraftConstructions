@@ -1,8 +1,9 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import org.hibernate.validator.constraints.Range;
+
+import javax.persistence.Column;
+import javax.validation.constraints.*;
 
 public class ContactUsDto {
 
@@ -23,14 +24,15 @@ public class ContactUsDto {
     private String email;
 
 
-    @Pattern(regexp = "\\d{10,15}", message = "Phone number must be between 10 and 15 digits")
-    private Long phonenumber;
+
+    @Size(min = 10, max = 15)
+    private String phonenumber;
 
 
     @NotNull
     private String message;
 
-    public ContactUsDto(Long id, String firstname, String lastname, String email, Long phonenumber, String message) {
+    public ContactUsDto(Long id, String firstname, String lastname, String email, String phonenumber, String message) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
@@ -58,7 +60,7 @@ public class ContactUsDto {
         return email;
     }
 
-    public Long getPhonenumber() {
+    public String getPhonenumber() {
         return phonenumber;
     }
 
@@ -82,7 +84,7 @@ public class ContactUsDto {
         this.email = email;
     }
 
-    public void setPhonenumber(Long phonenumber) {
+    public void setPhonenumber(String phonenumber) {
         this.phonenumber = phonenumber;
     }
 

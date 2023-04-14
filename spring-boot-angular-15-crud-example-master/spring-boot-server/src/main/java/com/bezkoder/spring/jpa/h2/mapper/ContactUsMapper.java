@@ -15,6 +15,7 @@ public class ContactUsMapper {
         contactUsDto.setFirstname(contactUs.getFirstname());
         contactUsDto.setLastname(contactUs.getLastname());
         contactUsDto.setEmail(contactUs.getEmail());
+        contactUsDto.setPhonenumber(contactUs.getPhonenumber());
         contactUsDto.setMessage(contactUs.getMessage());
         return contactUsDto;
     }
@@ -25,6 +26,7 @@ public class ContactUsMapper {
         contactUs.setFirstname(contactUsDto.getFirstname());
         contactUs.setLastname(contactUsDto.getLastname());
         contactUs.setEmail(contactUsDto.getEmail());
+        contactUs.setPhonenumber(contactUsDto.getPhonenumber());
         contactUs.setMessage(contactUsDto.getMessage());
         return contactUs;
     }
