@@ -32,6 +32,7 @@ public class ContactUs {
     private String email;
 
 
+    @NotNull
     @Column(name = "phoneNumber")
     private String phonenumber;
 

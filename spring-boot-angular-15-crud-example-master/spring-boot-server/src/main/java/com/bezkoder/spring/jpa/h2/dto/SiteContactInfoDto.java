@@ -1,25 +1,31 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
-import javax.persistence.Column;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-public class SiteContactInfoDTO {
+public class SiteContactInfoDto {
 
     private Long id;
+
 
     private String Address;
 
 
+    @Size(min = 10, max = 15)
     private String Company_Phones;
 
 
+    @Size(max = 15)
     private String Fax;
 
+    @Email
     private String Email;
 
-    public SiteContactInfoDTO() {
+    public SiteContactInfoDto() {
     }
 
-    public SiteContactInfoDTO(Long id, String address, String company_Phones, String fax, String email) {
+    public SiteContactInfoDto(Long id, String address, String company_Phones, String fax, String email) {
         this.id = id;
         Address = address;
         Company_Phones = company_Phones;

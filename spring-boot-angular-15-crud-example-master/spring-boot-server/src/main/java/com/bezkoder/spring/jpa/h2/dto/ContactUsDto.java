@@ -25,6 +25,7 @@ public class ContactUsDto {
 
 
 
+    @NotNull
     @Size(min = 10, max = 15)
     private String phonenumber;
 
