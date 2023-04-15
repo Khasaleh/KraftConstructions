@@ -2,7 +2,7 @@ package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.entity.Testimonial;
 import com.bezkoder.spring.jpa.h2.entity.TestimonialPage;
-import com.bezkoder.spring.jpa.h2.service.TestimonialService;
+import com.bezkoder.spring.jpa.h2.service.TestimonialServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,10 +15,10 @@ import java.util.List;
 @RequestMapping("/api/testimonials")
 public class TestimonialController {
 
-    private final TestimonialService testimonialService;
+    private final TestimonialServiceImpl testimonialService;
 
     @Autowired
-    public TestimonialController(TestimonialService testimonialService) {
+    public TestimonialController(TestimonialServiceImpl testimonialService) {
         this.testimonialService = testimonialService;
     }
 

@@ -11,13 +11,13 @@ public interface ReviewService {
     ReviewDto getReviewById(Long id);
     ReviewDto createReview(ReviewDto reviewDto);
     Review createReview(Review review);
-   // void deleteReview(Long id);
-
     void deleteReviewById(Long id);
     void approveReview(Long id);
+    void hideApprovedReview(Long id);
+    List<Review> getApprovedReviews();
 
-//    ReviewDto approveReview(Long id, ApprovalStatus approvalStatus);
-//
 
 }
 
+//  ReviewDto approveReview(Long id, ApprovalStatus approvalStatus);
+//  void deleteReview(Long id);

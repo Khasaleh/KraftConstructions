@@ -14,7 +14,7 @@ public class ReviewDto {
     private String YourName;
     @NotNull(message = "YourEmail field cannot be null")
     private String YourEmail;
-
+    @NotNull(message = "approvalStatus field cannot be null")
     private ApprovalStatus approvalStatus;
 
     public ApprovalStatus getApprovalStatus() {
@@ -25,9 +25,6 @@ public class ReviewDto {
         this.approvalStatus = approvalStatus;
     }
 
-//    public ReviewDto(Long id) {
-//        this.id = id;
-//    }
 
     public ReviewDto(Long id, String yourReview, String workExperience, String yourName, String yourEmail) {
         this.id = id;

@@ -27,7 +27,8 @@ public class ReviewServiceImpl implements ReviewService {
         List<Review> reviews = reviewRepository.findAll();
         return reviews.stream().map(reviewMapper::toDto).collect(Collectors.toList());
     }
-//
+
+    //
     @Override
     public ReviewDto getReviewById(Long id) {
         Optional<Review> review = reviewRepository.findById(id);
@@ -46,10 +47,6 @@ public class ReviewServiceImpl implements ReviewService {
         return reviewRepository.save(review);
     }
 
-//    @Override
-//    public void deleteReview(Long id) {
-//        reviewRepository.deleteById(id);
-//    }
 
     @Override
     public void deleteReviewById(Long id) {
@@ -66,7 +63,24 @@ public class ReviewServiceImpl implements ReviewService {
         }
     }
 
+    @Override
+    public void hideApprovedReview(Long id) {
+        Optional<Review> optionalReview = reviewRepository.findById(id);
+        if (optionalReview.isPresent()) {
+            Review review = optionalReview.get();
+            review.setApprovalStatus(ApprovalStatus.HIDDEN);
+            reviewRepository.save(review);
+        }
+    }
+
+    @Override
+    public List<Review> getApprovedReviews() {
+        return reviewRepository.findByApprovalStatus(ApprovalStatus.APPROVED);
+    }
 
 }
+
+
+
 
 

@@ -27,7 +27,6 @@ public class Testimonial {
     }
 
 
-
     // constructor, getters, and setters
 
     public Long getId() {

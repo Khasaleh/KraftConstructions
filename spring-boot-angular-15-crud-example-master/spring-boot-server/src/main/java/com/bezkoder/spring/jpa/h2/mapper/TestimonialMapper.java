@@ -14,10 +14,11 @@ public class TestimonialMapper {
         return response;
     }
 
-    public static Testimonial toEntity(Testimonial monial) {
+    public static Testimonial toEntity(TestimonialDto dto) {
         Testimonial entity = new Testimonial();
-        entity.setPage(monial.getPage());
-        entity.setImageUrl(monial.getImageUrl());
+        entity.setId(dto.getId());
+        entity.setPage(dto.getPage());
+        entity.setImageUrl(dto.getImageUrl());
         return entity;
     }
 }
