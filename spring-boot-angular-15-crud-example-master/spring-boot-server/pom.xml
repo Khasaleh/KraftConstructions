@@ -32,6 +32,14 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-validation -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-validation</artifactId>
+			<version>3.0.2</version>
+		</dependency>
+
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -51,19 +59,6 @@
 		</dependency>
 
 
-
-<!--		<dependency>-->
-<!--			<groupId>org.xerial</groupId>-->
-<!--			<artifactId>sqlite-jdbc</artifactId>-->
-<!--			<version>3.25.2</version>-->
-<!--		</dependency>-->
-
-		<!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-community-dialects -->
-<!--		<dependency>-->
-<!--			<groupId>org.hibernate</groupId>-->
-<!--			<artifactId>hibernate-community-dialects</artifactId>-->
-<!--			<version>6.2.0.Final</version>-->
-<!--		</dependency>-->
 
 
 		<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
@@ -92,6 +87,12 @@
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>2.0.1.Final</version>
 		</dependency>
 
 
