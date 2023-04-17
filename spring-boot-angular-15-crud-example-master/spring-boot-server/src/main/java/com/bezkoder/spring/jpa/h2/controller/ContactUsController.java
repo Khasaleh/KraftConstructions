@@ -1,8 +1,6 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.Entity.ContactUs;
 import com.bezkoder.spring.jpa.h2.dto.ContactUsDto;
-import com.bezkoder.spring.jpa.h2.mapper.ContactUsMapper;
 import com.bezkoder.spring.jpa.h2.service.ContactUsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,8 +32,8 @@ public class ContactUsController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteContactUs(@PathVariable Long id) {
+    public ResponseEntity<String> deleteContactUs(@PathVariable Long id) {
         contactUsService.deleteContactUs(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok("Contact us deleted successfully");
     }
 }
