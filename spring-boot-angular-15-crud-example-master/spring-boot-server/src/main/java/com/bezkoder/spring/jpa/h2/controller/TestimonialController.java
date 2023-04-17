@@ -4,6 +4,7 @@ import com.bezkoder.spring.jpa.h2.entity.Testimonial;
 import com.bezkoder.spring.jpa.h2.entity.TestimonialPage;
 import com.bezkoder.spring.jpa.h2.service.TestimonialServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -32,4 +33,10 @@ public class TestimonialController {
                                            @RequestParam("page") TestimonialPage page) throws IOException {
         return testimonialService.addTestimonialImage(image, page);
     }
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteTestimonialImage(@PathVariable Long id) {
+        testimonialService.deleteTestimonialImage(id);
+        return ResponseEntity.ok("Testimonial image deleted successfully");
+    }
+
 }

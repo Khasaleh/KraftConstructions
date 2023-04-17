@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-// ...
+
 @Service
 public class ReviewServiceImpl implements ReviewService {
 
@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
         return reviews.stream().map(reviewMapper::toDto).collect(Collectors.toList());
     }
 
-    //
+
     @Override
     public ReviewDto getReviewById(Long id) {
         Optional<Review> review = reviewRepository.findById(id);

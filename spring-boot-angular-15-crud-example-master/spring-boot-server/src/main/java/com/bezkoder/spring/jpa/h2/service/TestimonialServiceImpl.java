@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -57,6 +58,18 @@ public String saveImage(MultipartFile image) throws IOException {
     Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
     return filePath.toString();
 }
+    @Override
+    public void deleteTestimonialImage(Long id) {
+
+        Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Testimonial not found"));
+        try {
+            Files.deleteIfExists(Paths.get(testimonial.getImageUrl()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        testimonialRepository.deleteById(id);
+    }
+
 
 }
 
