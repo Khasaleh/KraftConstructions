@@ -1,10 +1,10 @@
 package com.bezkoder.spring.jpa.h2.repository;
 
-import com.bezkoder.spring.jpa.h2.Entity.ContactUs;
+import com.bezkoder.spring.jpa.h2.Entity.SiteContactInfo;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 @Repository
-public interface ContactUsRepository extends JpaRepository<ContactUs, Long> {
+public interface SiteContactInfoRepository extends JpaRepository<SiteContactInfo, Long> {
+
 }
