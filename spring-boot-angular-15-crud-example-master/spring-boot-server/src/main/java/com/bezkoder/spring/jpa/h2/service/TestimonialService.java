@@ -1,7 +1,7 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-import com.bezkoder.spring.jpa.h2.entity.Testimonial;
-import com.bezkoder.spring.jpa.h2.entity.TestimonialPage;
+import com.bezkoder.spring.jpa.h2.Entity.Testimonial;
+import com.bezkoder.spring.jpa.h2.Entity.TestimonialPage;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;

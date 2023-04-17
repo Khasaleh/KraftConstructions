@@ -1,6 +1,6 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
-import com.bezkoder.spring.jpa.h2.entity.TestimonialPage;
+import com.bezkoder.spring.jpa.h2.Entity.TestimonialPage;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

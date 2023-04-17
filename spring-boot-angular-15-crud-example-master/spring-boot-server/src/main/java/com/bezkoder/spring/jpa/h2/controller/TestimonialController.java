@@ -1,7 +1,7 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.entity.Testimonial;
-import com.bezkoder.spring.jpa.h2.entity.TestimonialPage;
+import com.bezkoder.spring.jpa.h2.Entity.Testimonial;
+import com.bezkoder.spring.jpa.h2.Entity.TestimonialPage;
 import com.bezkoder.spring.jpa.h2.service.TestimonialServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

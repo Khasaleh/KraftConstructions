@@ -1,8 +1,8 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.ReviewDto;
-import com.bezkoder.spring.jpa.h2.entity.ApprovalStatus;
-import com.bezkoder.spring.jpa.h2.entity.Review;
+import com.bezkoder.spring.jpa.h2.Entity.ApprovalStatus;
+import com.bezkoder.spring.jpa.h2.Entity.Review;
 import com.bezkoder.spring.jpa.h2.mapper.ReviewMapper;
 import com.bezkoder.spring.jpa.h2.repository.ReviewRepository;
 import com.bezkoder.spring.jpa.h2.service.ReviewService;
