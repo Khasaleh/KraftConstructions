@@ -11,4 +11,8 @@ public interface TestimonialService {
     List<Testimonial> getTestimonialsByPage(TestimonialPage page);
     Testimonial addTestimonialImage(MultipartFile image, TestimonialPage page);
     String saveImage(MultipartFile image) throws IOException;
+
+    void deleteTestimonialImage(Long id);
+
+
 }
