@@ -1,6 +1,6 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
-import com.bezkoder.spring.jpa.h2.entity.ApprovalStatus;
+import com.bezkoder.spring.jpa.h2.Entity.ApprovalStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
