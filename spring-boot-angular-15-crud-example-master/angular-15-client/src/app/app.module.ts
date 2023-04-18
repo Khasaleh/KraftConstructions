@@ -18,7 +18,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
