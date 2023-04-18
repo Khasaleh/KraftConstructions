@@ -1,21 +1,15 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-//import com.bezkoder.spring.jpa.h2.dto.ServicesDetailsRequestDTO;
+//import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsRequestDTO;
 
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.entity.Services;
 import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -43,6 +37,13 @@ public class UserServiceImpl {
         return services;
     }
 
+    public void disableAndEnableTheService(String serviceName, boolean isActive) {
+        Services services = servicesRepository.findByServiceName(serviceName)
+                .orElseThrow(() -> new RuntimeException("Service not found"));
+        services.setActive(isActive);
+        servicesRepository.save(services);
+    }
+
 //    public void addServiceDetails(String serviceName, String description, MultipartFile beforeImage, MultipartFile afterImage) throws IOException {
 //        Services serviceEntity = servicesRepository.findByServiceName(serviceName)
 //                .orElseThrow(() -> new RuntimeException("Service not found"));
@@ -57,23 +58,18 @@ public class UserServiceImpl {
 //
 //    }
 
-    private String saveImage(MultipartFile image) throws IOException {
-        String fileName = UUID.randomUUID().toString();
-        String fileExtension = FilenameUtils.getExtension(image.getOriginalFilename());
-        String filePath = "images/" + fileName + "." + fileExtension;
+//    private String saveImage(MultipartFile image) throws IOException {
+//        String fileName = UUID.randomUUID().toString();
+//        String fileExtension = FilenameUtils.getExtension(image.getOriginalFilename());
+//        String filePath = "images/" + fileName + "." + fileExtension;
+//
+//        File file = new File(filePath);
+//        FileUtils.writeByteArrayToFile(file, image.getBytes());
+//
+//        return filePath;
+//    }
 
-        File file = new File(filePath);
-        FileUtils.writeByteArrayToFile(file, image.getBytes());
 
-        return filePath;
-    }
-
-    public void disableAndEnableTheService(String serviceName, boolean isActive) {
-        Services services = servicesRepository.findByServiceName(serviceName)
-                .orElseThrow(() -> new RuntimeException("Service not found"));
-        services.setActive(isActive);
-        servicesRepository.save(services);
-    }
 
 
 
@@ -86,18 +82,18 @@ public class UserServiceImpl {
 //        return service;
 //    }
 
-//    public  List<ServicesDetailsRequestDTO> getServicesDetails(String serviceName) {
+//    public  List<ServiceDetailsRequestDTO> getServicesDetails(String serviceName) {
 //        List<Services> serviceEntities = servicesRepository.findAll();
-//        List<ServicesDetailsRequestDTO> services = serviceEntities.stream()
-//                .map(servicesEntity -> new ServicesDetailsRequestDTO(servicesEntity.getServiceName(), servicesEntity.getBeforeImageUrl(), servicesEntity.getAfterImageUrl(),servicesEntity.getDescription(),servicesEntity.getAddPortfolio()))
+//        List<ServiceDetailsRequestDTO> services = serviceEntities.stream()
+//                .map(servicesEntity -> new ServiceDetailsRequestDTO(servicesEntity.getServiceName(), servicesEntity.getBeforeImageUrl(), servicesEntity.getAfterImageUrl(),servicesEntity.getDescription(),servicesEntity.getAddPortfolio()))
 //                .collect(Collectors.toList());
 //        return services;
 //
 //    }
 
-//    public ServicesDetailsRequestDTO getServicesDetails(String serviceName) {
+//    public ServiceDetailsRequestDTO getServicesDetails(String serviceName) {
 //        services
-//        return new ServicesDetailsRequestDTO(serviceName, description, beforeImageUrl, afterImageUrl, addPortfolio);
+//        return new ServiceDetailsRequestDTO(serviceName, description, beforeImageUrl, afterImageUrl, addPortfolio);
 //    }
 
 

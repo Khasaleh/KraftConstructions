@@ -30,6 +30,13 @@ public class ServicesController {
         return ResponseEntity.ok(services);
     }
 
+    @PostMapping("/disableAndEnableTheService")
+    public ResponseEntity<?> disableAndEnableTheService(@RequestParam String serviceName,
+                                                        @RequestParam boolean isActive) {
+        userServiceImpl.disableAndEnableTheService(serviceName, isActive);
+        return ResponseEntity.ok().build();
+    }
+
 //    @GetMapping("/servicesList")
 //    public ResponseEntity<List<ServicesResponseDTO>> getServices() {
 //        List<Services> services = userServiceImpl.getServices();
@@ -46,12 +53,12 @@ public class ServicesController {
 //    }
 
 //    @GetMapping("/servicesDetails/{serviceName}")
-//    public ResponseEntity<ServicesDetailsResponseDTO> getServicesDetails(@PathVariable String serviceName) {
+//    public ResponseEntity<ServiceDetailsResponseDTO> getServicesDetails(@PathVariable String serviceName) {
 //        Services service = userServiceImpl.getServiceDetails(serviceName);
 //        if (service == null) {
 //            return ResponseEntity.notFound().build();
 //        }
-//        ServicesDetailsResponseDTO responseDTO = new ServicesDetailsResponseDTO();
+//        ServiceDetailsResponseDTO responseDTO = new ServiceDetailsResponseDTO();
 //        responseDTO.setServiceName(service.getServiceName());
 //        responseDTO.setDescription(service.getDescription());
 //        responseDTO.setBeforeImageUrl(service.getBeforeImageUrl());
@@ -69,26 +76,21 @@ public class ServicesController {
 //        return ResponseEntity.ok().build();
 //    }
 
-//    @PostMapping("/disableAndEnableTheService")
-//    public ResponseEntity<?> disableAndEnableTheService(@RequestParam String serviceName,
-//                                                        @RequestParam boolean isActive) {
-//        userServiceImpl.disableAndEnableTheService(serviceName, isActive);
-//        return ResponseEntity.ok().build();
-//    }
-//        @GetMapping("/getServiceDetails/{serviceName}")
-//        public ResponseEntity<List<ServicesDetailsRequestDTO>> getServicesDetails(@RequestParam String serviceName) {
-//            List<ServicesDetailsRequestDTO> serviceDetails = userServiceImpl.getServicesDetails(serviceName);
+
+//        @GetMapping("/getServiceDetails/{id}")
+//        public ResponseEntity<List<ServiceDetailsRequestDTO>> getServicesDetails(@RequestParam String serviceName) {
+//            List<ServiceDetailsRequestDTO> serviceDetails = userServiceImpl.getServicesDetails(serviceName);
 //            return ResponseEntity.ok(serviceDetails);
 //        }
 
 //    @GetMapping("/getServiceDetails")
-//    public ResponseEntity<ServicesDetailsRequestDTO> getServicesDetails(@RequestParam String serviceName) {
-//        ServicesDetailsRequestDTO serviceDetails = userServiceImpl.getServicesDetails(serviceName);
+//    public ResponseEntity<ServiceDetailsRequestDTO> getServicesDetails(@RequestParam String serviceName) {
+//        ServiceDetailsRequestDTO serviceDetails = userServiceImpl.getServicesDetails(serviceName);
 //        return ResponseEntity.ok(serviceDetails);
 //    }
 //    @GetMapping("/getServicesDetails")
-//    public ResponseEntity<List<ServicesDetailsRequestDTO>> getServicesDetails(@RequestParam String serviceName) {
-//    List<ServicesDetailsRequestDTO> serviceDetails = UserServiceImpl.getServicesDetails(serviceName);
+//    public ResponseEntity<List<ServiceDetailsRequestDTO>> getServicesDetails(@RequestParam String serviceName) {
+//    List<ServiceDetailsRequestDTO> serviceDetails = UserServiceImpl.getServicesDetails(serviceName);
 //    return ResponseEntity.ok(serviceDetails);
 //}
 }

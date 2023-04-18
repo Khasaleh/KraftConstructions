@@ -1,14 +1,15 @@
 package com.bezkoder.spring.jpa.h2.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "services")
 public class Services {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    @Column(name = "service_name")
     private String serviceName;
     @Column(name = "page_name")
     private String pageName;
