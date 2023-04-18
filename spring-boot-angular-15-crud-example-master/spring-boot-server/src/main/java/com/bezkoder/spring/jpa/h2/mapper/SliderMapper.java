@@ -16,7 +16,7 @@ package com.bezkoder.spring.jpa.h2.mapper;
 //    }
 
 import com.bezkoder.spring.jpa.h2.dto.SliderDto;
-import com.bezkoder.spring.jpa.h2.entity.Slider;
+import com.bezkoder.spring.jpa.h2.Entity.Slider;
 import org.springframework.stereotype.Component;
 
 @Component

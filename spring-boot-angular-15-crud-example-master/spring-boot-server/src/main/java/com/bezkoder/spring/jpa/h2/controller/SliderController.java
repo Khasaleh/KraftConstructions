@@ -1,7 +1,7 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.SliderDto;
-import com.bezkoder.spring.jpa.h2.entity.Slider;
+import com.bezkoder.spring.jpa.h2.Entity.Slider;
 import com.bezkoder.spring.jpa.h2.service.SliderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
