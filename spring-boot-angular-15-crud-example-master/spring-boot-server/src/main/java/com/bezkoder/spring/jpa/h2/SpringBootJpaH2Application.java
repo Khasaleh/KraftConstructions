@@ -18,9 +18,5 @@ public class SpringBootJpaH2Application {
 	public static void main(String[] args) {
 		SpringApplication.run(SpringBootJpaH2Application.class, args);
 	}
-
-
-
-
-
 }
+
