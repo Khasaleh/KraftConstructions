@@ -338,7 +338,7 @@
   .custom-kitchens1,
   .interior-remodeling3 {
     position: relative;
-    line-height: 25.5px;
+    /* line-height: 25.5px; */
     text-transform: capitalize;
     display: inline-block;
     width: 159px;

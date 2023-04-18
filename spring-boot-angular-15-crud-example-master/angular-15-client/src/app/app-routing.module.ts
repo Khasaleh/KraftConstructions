@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { IntmodComponent } from './components/intmod/intmod.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorials', pathMatch: 'full' }
+  { path: 'interior-remodelling', component: IntmodComponent }
 
 ]
 @NgModule({
