@@ -28,7 +28,7 @@ public class AboutUsController {
         return ResponseEntity.ok(aboutUsResponseDto);
     }
 
-    @GetMapping
+    @GetMapping("/about-us")
     public ResponseEntity<AboutUsResponseDTO> getAboutUs() {
         AboutUs aboutUs = aboutUsService.getAboutUs(ABOUT_US_ID);
         AboutUsResponseDTO aboutUsResponseDto = aboutUsMapper.toDto(aboutUs);
