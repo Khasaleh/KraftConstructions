@@ -1,2 +1,44 @@
-/* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
+body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --text-md-regular: Inter;
+    --font-kanit: Kanit;
+    --font-inherit: inherit;
+    --font-font-awesome-5-brands: "Font Awesome 5 Brands";
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
+  
+    /* font sizes */
+    --font-size-mini: 15px;
+    --font-size-xl: 20px;
+    --font-size-sm: 14px;
+    --text-md-regular-size: 16px;
+    --font-size-lg: 18px;
+    --font-size-xs: 12px;
+  
+    /* Colors */
+    --colors-white: #fff;
+    --color-black: #000;
+    --color-darkgray: #b3b3b3;
+    --kraft-d-green: #025a00;
+    --gray: #eee;
+    --kraft-light-green: #91c490;
+    --border-event: #ddd;
+    --colors-primary-black: #292929;
+    --primary-dark: #141619;
+  
+    /* Gaps */
+    --gap-2xl: 21px;
+    --gap-13xl: 32px;
+    --gap-14xl: 33px;
+  
+    /* border radiuses */
+    --br-8xs: 5px;
+  
+    /* Effects */
+    --shadows-shadow-10: 0px 4px 5px rgba(0, 0, 0, 0.05);
+  }
