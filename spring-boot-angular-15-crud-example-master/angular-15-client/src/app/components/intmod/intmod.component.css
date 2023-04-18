@@ -275,7 +275,7 @@
     height: 8%;
     width: 73.17%;
     top: 5.33%;
-    left: 10.16%;
+    left: 17.16%;
     line-height: 24px;
     font-weight: 500;
     display: inline-block;
@@ -339,6 +339,7 @@
   .interior-remodeling3 {
     position: relative;
     /* line-height: 25.5px; */
+    margin-top: 1px;
     text-transform: capitalize;
     display: inline-block;
     width: 159px;
