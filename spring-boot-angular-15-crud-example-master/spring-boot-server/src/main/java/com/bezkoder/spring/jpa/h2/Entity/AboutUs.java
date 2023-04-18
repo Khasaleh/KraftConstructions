@@ -1,8 +1,13 @@
-package com.bezkoder.spring.jpa.h2.entity;
+package com.bezkoder.spring.jpa.h2.Entity;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
-
-
+@Setter
+@Getter
+@NoArgsConstructor
 @Entity
 @Table(name = "about_us")
 public class AboutUs {
@@ -18,37 +23,4 @@ public class AboutUs {
     @Column(name = "description")
     private String description;
 
-
-
-    public AboutUs(String description) {
-        this.description = description;
-    }
-
-    public AboutUs() {
-
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

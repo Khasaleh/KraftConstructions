@@ -2,7 +2,7 @@ package com.bezkoder.spring.jpa.h2.mapper;
 
 import com.bezkoder.spring.jpa.h2.dto.AboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.AboutUsResponseDTO;
-import com.bezkoder.spring.jpa.h2.entity.AboutUs;
+import com.bezkoder.spring.jpa.h2.Entity.AboutUs;
 import org.springframework.stereotype.Component;
 
 @Component

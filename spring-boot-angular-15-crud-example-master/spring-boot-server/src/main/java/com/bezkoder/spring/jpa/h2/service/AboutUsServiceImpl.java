@@ -1,7 +1,7 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.dto.AboutUsRequestDTO;
-import com.bezkoder.spring.jpa.h2.entity.AboutUs;
+import com.bezkoder.spring.jpa.h2.Entity.AboutUs;
 import com.bezkoder.spring.jpa.h2.mapper.AboutUsMapper;
 import com.bezkoder.spring.jpa.h2.repository.AboutUsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
