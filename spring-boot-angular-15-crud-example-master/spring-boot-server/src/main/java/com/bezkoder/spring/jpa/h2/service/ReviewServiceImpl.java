@@ -28,7 +28,7 @@ public class ReviewServiceImpl implements ReviewService {
         return reviews.stream().map(reviewMapper::toDto).collect(Collectors.toList());
     }
 
-    //
+
     @Override
     public ReviewDto getReviewById(Long id) {
         Optional<Review> review = reviewRepository.findById(id);

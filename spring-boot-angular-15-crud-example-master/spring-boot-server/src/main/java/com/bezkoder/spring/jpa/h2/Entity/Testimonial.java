@@ -19,14 +19,13 @@ public class Testimonial {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     @Enumerated(EnumType.STRING)
     @Column(name = "page")
     private TestimonialPage page;
-
 
     @Column(name = "image_url")
     private String imageUrl;
 
 }
+
 

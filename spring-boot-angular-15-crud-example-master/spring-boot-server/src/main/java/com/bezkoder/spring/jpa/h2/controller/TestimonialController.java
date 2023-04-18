@@ -33,12 +33,10 @@ public class TestimonialController {
                                            @RequestParam("page") TestimonialPage page) throws IOException {
         return testimonialService.addTestimonialImage(image, page);
     }
-
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteTestimonialImage(@PathVariable Long id) {
         testimonialService.deleteTestimonialImage(id);
         return ResponseEntity.ok("Testimonial image deleted successfully");
     }
-
 
 }

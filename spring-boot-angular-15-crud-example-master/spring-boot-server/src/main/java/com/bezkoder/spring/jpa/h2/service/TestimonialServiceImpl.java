@@ -46,39 +46,30 @@ public class TestimonialServiceImpl implements TestimonialService {
         return testimonialRepository.save(testimonial);
     }
 
-    @Override
-    public String saveImage(MultipartFile image) throws IOException {
-        String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
-        Path uploadPath = Paths.get("uploads/testimonials");
-        if (!Files.exists(uploadPath)) {
-            Files.createDirectories(uploadPath);
-        }
-        InputStream inputStream = image.getInputStream();
-        Path filePath = uploadPath.resolve(fileName);
-        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        return filePath.toString();
-
+@Override
+public String saveImage(MultipartFile image) throws IOException {
+    String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+    Path uploadPath = Paths.get("uploads/testimonials");
+    if (!Files.exists(uploadPath)) {
+        Files.createDirectories(uploadPath);
     }
-
-
-
+    InputStream inputStream = image.getInputStream();
+    Path filePath = uploadPath.resolve(fileName);
+    Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+    return filePath.toString();
+}
     @Override
     public void deleteTestimonialImage(Long id) {
 
-            Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Testimonial not found"));
-            try {
-                Files.deleteIfExists(Paths.get(testimonial.getImageUrl()));
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            testimonialRepository.deleteById(id);
+        Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Testimonial not found"));
+        try {
+            Files.deleteIfExists(Paths.get(testimonial.getImageUrl()));
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-
+        testimonialRepository.deleteById(id);
     }
 
 
-
-
-
-
+}
 
