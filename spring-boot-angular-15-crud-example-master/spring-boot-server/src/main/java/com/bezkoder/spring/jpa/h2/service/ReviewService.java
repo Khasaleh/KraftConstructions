@@ -19,5 +19,3 @@ public interface ReviewService {
 
 }
 
-//  ReviewDto approveReview(Long id, ApprovalStatus approvalStatus);
-//  void deleteReview(Long id);
