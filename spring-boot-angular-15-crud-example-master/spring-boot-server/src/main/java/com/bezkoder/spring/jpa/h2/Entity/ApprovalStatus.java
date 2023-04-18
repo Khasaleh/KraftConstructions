@@ -1,4 +1,4 @@
-package com.bezkoder.spring.jpa.h2.entity;
+package com.bezkoder.spring.jpa.h2.Entity;
 
 public enum ApprovalStatus {
     HIDDEN,

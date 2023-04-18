@@ -1,7 +1,7 @@
 package com.bezkoder.spring.jpa.h2.mapper;
 
 import com.bezkoder.spring.jpa.h2.dto.ReviewDto;
-import com.bezkoder.spring.jpa.h2.entity.Review;
+import com.bezkoder.spring.jpa.h2.Entity.Review;
 import org.springframework.stereotype.Component;
 
 @Component

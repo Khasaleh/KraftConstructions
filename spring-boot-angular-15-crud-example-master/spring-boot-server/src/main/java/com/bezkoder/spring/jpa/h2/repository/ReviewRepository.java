@@ -1,8 +1,8 @@
 package com.bezkoder.spring.jpa.h2.repository;
 
 
-import com.bezkoder.spring.jpa.h2.entity.ApprovalStatus;
-import com.bezkoder.spring.jpa.h2.entity.Review;
+import com.bezkoder.spring.jpa.h2.Entity.ApprovalStatus;
+import com.bezkoder.spring.jpa.h2.Entity.Review;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
