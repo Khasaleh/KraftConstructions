@@ -70,6 +70,24 @@ public String saveImage(MultipartFile image) throws IOException {
         testimonialRepository.deleteById(id);
     }
 
+// Existing code omitted for brevity
+
+//    @Override
+//    public Slider addSlider(List<MultipartFile> images) throws IOException {
+//        // Save the images to a directory on the server
+//        List<String> imageUrls = new ArrayList<>();
+//        for (MultipartFile image : images) {
+//            String imageUrl = saveImage(image);
+//            imageUrls.add(imageUrl);
+//        }
+//
+//        // Create a new slider with the image URLs
+//        Slider slider = new Slider();
+//        slider.setImageUrls(imageUrls);
+//        sliderRepository.save(slider);
+//
+//        return slider;
+//    }
 
 }
 
