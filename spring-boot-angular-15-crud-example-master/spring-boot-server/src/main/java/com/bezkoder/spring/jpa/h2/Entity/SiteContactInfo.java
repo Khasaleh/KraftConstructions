@@ -40,6 +40,8 @@ public class SiteContactInfo extends SiteContactInfoDto {
     @Column(nullable = false)
     private String Email;
 
+
+
 }
 
 
