@@ -1,7 +1,8 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-import com.bezkoder.spring.jpa.h2.dto.SiteContactInfoDTO;
+import com.bezkoder.spring.jpa.h2.dto.SiteContactInfoDto;
 
 public interface SiteContactInfoService {
-    SiteContactInfoDTO getSiteContactInfo();
+    SiteContactInfoDto getSiteContactInfo();
+    SiteContactInfoDto updateSiteContactInfo(Long id, SiteContactInfoDto siteContactInfoDto);
 }
