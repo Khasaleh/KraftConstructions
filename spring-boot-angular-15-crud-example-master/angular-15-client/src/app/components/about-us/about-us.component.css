@@ -1,0 +1,347 @@
+.aboutus2-1-icon {
+    position: absolute;
+    top: 0;
+    left: 1px;
+    width: 1600px;
+    height: 168px;
+    object-fit: cover;
+  }
+  .aboutus2-1-parent,
+  .group-child {
+    position: absolute;
+    width: 1601px;
+    height: 168px;
+  }
+  .group-child {
+    top: 0;
+    left: 0;
+    background-color: rgba(2, 90, 0, 0.5);
+  }
+  .aboutus2-1-parent {
+    top: 164px;
+    left: -1px;
+  }
+  .about-us,
+  .home-about-us {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 25.5px;
+    text-transform: capitalize;
+    font-weight: 600;
+  }
+  .home-about-us {
+    font-weight: 500;
+    display: inline-block;
+    width: 243px;
+  }
+  .group-item {
+    position: absolute;
+    height: 29.55%;
+    width: 2.58%;
+    top: 71.35%;
+    right: 72.14%;
+    bottom: -0.9%;
+    left: 25.29%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .home-about-us-parent {
+    position: absolute;
+    top: 38px;
+    left: 3px;
+    width: 243px;
+    height: 38.62px;
+    font-size: var(--font-size-mini);
+    font-family: var(--text-md-regular);
+  }
+  .about-us-parent,
+  .top-bar-icon {
+    position: absolute;
+    top: 217px;
+    left: 212px;
+    width: 246px;
+    height: 76.62px;
+  }
+  .top-bar-icon {
+    height: 0.65%;
+    width: 73.69%;
+    top: 30.72%;
+    right: 10.72%;
+    bottom: 68.63%;
+    left: 15.59%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  
+  .about-us-group {
+    position: absolute;
+    height: 15.69%;
+    width: 60.13%;
+    top: 71.24%;
+    right: 13.44%;
+    bottom: 13.07%;
+    left: 26.44%;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--gap-14xl);
+    font-size: var(--font-size-xl);
+    color: var(--colors-primary-black);
+  }
+  
+  .group-inner,
+  .vector-icon {
+    position: absolute;
+    height: 86.49%;
+    width: 0%;
+    top: 13.51%;
+    right: 84.53%;
+    bottom: 0;
+    left: 15.47%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  
+  .kraftconstructioncokraftconst {
+    position: absolute;
+    top: 41.46%;
+    left: 0;
+    font-size: var(--font-size-xs);
+    line-height: 24px;
+    color: var(--color-darkseagreen);
+  }
+  
+  .component-9-inner,
+  .component-9-item {
+    position: absolute;
+    height: 20.92%;
+    width: 1.81%;
+    top: 14.38%;
+    right: 39.81%;
+    bottom: 64.71%;
+    left: 58.38%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .component-9-inner {
+    width: 0%;
+    right: 18.56%;
+    left: 81.44%;
+  }
+  
+  .vector-icon1 {
+    position: absolute;
+    height: 13.07%;
+    width: 1.25%;
+    top: 17.65%;
+    right: 19.19%;
+    bottom: 69.28%;
+    left: 79.56%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .component-9 {
+    position: absolute;
+    top: 0;
+    left: -3px;
+    width: 1600px;
+    height: 153px;
+    display: none;
+    font-size: var(--font-size-lg);
+  }
+  .about-uss-1-icon {
+    position: absolute;
+    top: 411px;
+    left: 222px;
+    width: 460px;
+    height: 556px;
+    object-fit: cover;
+  }
+  .our-mission-high {
+    margin: 0;
+  }
+  .our-mission-high-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    line-height: 51.5px;
+    font-weight: 500;
+  }
+  .kraft-construction-is-container {
+    position: absolute;
+    top: 154px;
+    left: 2px;
+    font-size: var(--font-size-mini);
+    line-height: 24px;
+    font-family: var(--text-md-regular);
+    display: inline-block;
+    width: 536px;
+    height: 309px;
+  }
+  .about-us2 {
+    position: absolute;
+    top: 124px;
+    left: 0;
+    font-size: var(--font-size-xl);
+    line-height: 24px;
+    color: var(--kraft-d-green);
+  }
+  .our-mission-high-quality-fai-parent {
+    position: absolute;
+    top: 490px;
+    left: 742px;
+    width: 538px;
+    height: 463px;
+    color: var(--color-black);
+  }
+  .shutterstock-149987300-1-icon {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    width: 1612px;
+    height: 579px;
+    object-fit: cover;
+  }
+  .rectangle-div {
+    position: absolute;
+    top: 0;
+    left: 12px;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 1600px;
+    height: 579px;
+  }
+  .home-inner,
+  .shutterstock-149987300-1-parent {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 1612px;
+    height: 579px;
+  }
+  .home-inner {
+    top: 1027px;
+    left: -12px;
+  }
+  .get-a-quote {
+    position: absolute;
+    top: 0;
+    left: 201px;
+    letter-spacing: 1px;
+  }
+   .bg,
+  .design-your-home {
+    position: absolute;
+    left: 0;
+  }
+  .design-your-home {
+    top: 62px;
+    font-size: var(--h2-semibold-size);
+    line-height: 64px;
+    font-weight: 600;
+    font-family: var(--h2-semibold);
+  }
+  .bg {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    
+  }
+  .learn-more,
+  .long-arrow-alt-right {
+    position: relative;
+    margin-top: 1px;
+    color: var(--colors-white);
+  }
+  .learn-more {
+   background-color: #025A00;
+    border: none;
+    color: white;
+     padding: 15px 32px;
+     margin-right: 200px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 0;
+    position: absolute;
+  }
+  
+  .button,
+  .content {
+    cursor: pointer;
+    border: 0;
+    padding: 0;
+    background-color: transparent;
+    position: relative;
+    bottom: 0;
+  }
+  .content {
+    height: 100%;
+    width: 100%;
+    top: 0;
+    right: 0;
+    left: 0;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .button {
+    height: 100.3%;
+    width: 100.48%;
+    top: 50.7%;
+    right: 13.8%;
+    
+  }
+  .get-a-quote-parent {
+    position: absolute;
+    top: 1177px;
+    left: 485px;
+    width: 617px;
+    height: 302.09px;
+    font-size: 35px;
+    font-family: var(--font-lato);
+  }
+  .about-us-container {
+    position: absolute;
+    top: 53px;
+    left: 254px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: var(--gap-14xl);
+  }
+  .container {
+    position: absolute;
+    top: 80px;
+    left: 100px;
+    width: 1280px;
+    height: 88px;
+  }
+  .divider {
+    align-self: stretch;
+    position: relative;
+    background-color: var(--colors-white);
+    height: 1px;
+    flex-shrink: 0;
+  }
+  
+  .home {
+    position: relative;
+    background-color: var(--colors-white);
+    width: 100%;
+    height: 2798px;
+    overflow: hidden;
+    text-align: left;
+    font-size: var(--font-size-26xl);
+    color: var(--colors-white);
+    font-family: var(--h2-semibold);
+  }

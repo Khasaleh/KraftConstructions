@@ -1,8 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/dist/css/bootstrap.css";
 
-
-
 body {
     margin: 0;
     line-height: normal;
@@ -43,12 +41,7 @@ body {
     --color-darkslateblue: #00215b;
     --colors-buttun-gray-10: #eff2f5;
     --color-whitesmoke-100: #ebecee;
-  
-    /* Gaps */
-    --gap-13xl: 32px;
-    --gap-14xl: 33px;
-  
-    /* border radiuses */
     --br-8xs: 5px;
+
   }
-  
+
