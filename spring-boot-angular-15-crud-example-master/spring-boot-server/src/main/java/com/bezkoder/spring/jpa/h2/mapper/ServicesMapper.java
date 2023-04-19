@@ -2,7 +2,7 @@ package com.bezkoder.spring.jpa.h2.mapper;
 
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
-import com.bezkoder.spring.jpa.h2.entity.Services;
+import com.bezkoder.spring.jpa.h2.Entity.Services;
 import org.springframework.stereotype.Component;
 
 

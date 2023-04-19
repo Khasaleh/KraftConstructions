@@ -1,37 +1,19 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@AllArgsConstructor
+@Getter
+@Setter
 public class ServicesRequestDTO {
+    private Long id;
     private String serviceName;
     private String pageName;
     private boolean isActive;
 
-    public ServicesRequestDTO(String serviceName, String pageName, boolean isActive) {
-        this.serviceName = serviceName;
-        this.pageName = pageName;
-        this.isActive = isActive;
-    }
 
-    public String getServiceName() {
-        return serviceName;
-    }
 
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getPageName() {
-        return pageName;
-    }
-
-    public void setPageName(String pageName) {
-        this.pageName = pageName;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
-    }
 }

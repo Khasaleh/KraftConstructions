@@ -1,8 +1,16 @@
-package com.bezkoder.spring.jpa.h2.entity;
+package com.bezkoder.spring.jpa.h2.Entity;
+
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name = "services")
 public class Services {
 
@@ -16,38 +24,14 @@ public class Services {
     @Column(name = "is_active")
     private boolean isActive;
 
-    public Services() {
-    }
+
 
     public Services(String serviceName, String pageName, boolean isActive) {
         this.serviceName = serviceName;
         this.pageName = pageName;
         this.isActive = isActive;
     }
-
-    public String getServiceName() {
-        return serviceName;
-    }
-
-    public void setServiceName(String serviceName) {
-        this.serviceName = serviceName;
-    }
-
-    public String getPageName() {
-        return pageName;
-    }
-
-    public void setPageName(String pageName) {
-        this.pageName = pageName;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean isActive) {
-        this.isActive = isActive;
-    }
-
-
 }
+
+
+
