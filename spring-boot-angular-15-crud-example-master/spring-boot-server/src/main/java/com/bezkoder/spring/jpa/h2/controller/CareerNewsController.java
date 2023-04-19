@@ -4,10 +4,7 @@ import com.bezkoder.spring.jpa.h2.dto.CareerNewsDto;
 import com.bezkoder.spring.jpa.h2.service.CareerNewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -24,4 +21,14 @@ public class CareerNewsController {
         CareerNewsDto addedNews = newsService.addNews(newsDTO);
         return ResponseEntity.ok(addedNews);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<CareerNewsDto> updateNews(@PathVariable Long id, @Valid @RequestBody CareerNewsDto newsDto) {
+        CareerNewsDto updateService =  newsService.updateNews(id, newsDto);
+        return ResponseEntity.ok(updateService);
+
+    }
+
+
+
 }

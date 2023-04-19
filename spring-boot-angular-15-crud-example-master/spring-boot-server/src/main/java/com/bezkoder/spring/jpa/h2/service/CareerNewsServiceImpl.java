@@ -7,6 +7,8 @@ import com.bezkoder.spring.jpa.h2.repository.CareerNewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CareerNewsServiceImpl implements CareerNewsService {
     @Autowired
@@ -16,7 +18,16 @@ public class CareerNewsServiceImpl implements CareerNewsService {
     private CareerNewsMapper newsMapper;
 
 
+    @Override
+    public CareersNews findById(Long id) {
+        Optional<CareersNews> optionalNews = newsRepository.findById(id);
+        return optionalNews.orElse(null);
+    }
 
+    @Override
+    public void save(CareersNews news) {
+        newsRepository.save(news);
+    }
 
 
     @Override
@@ -24,6 +35,18 @@ public class CareerNewsServiceImpl implements CareerNewsService {
         CareersNews news = CareerNewsMapper.mapToEntity(newsDTO);
         news = newsRepository.save(news);
         return CareerNewsMapper.mapToDTO(news);
+    }
+
+    @Override
+    public CareerNewsDto updateNews(Long id, CareerNewsDto newsDto) {
+        CareersNews news = findById(id);
+        if (news == null) {
+            throw new RuntimeException("News not found for id: " + id);
+        }
+        CareersNews updatedNews = newsMapper.mapToEntity(newsDto);
+        updatedNews.setId(news.getId());
+        save(updatedNews);
+        return CareerNewsMapper.mapToDTO(updatedNews);
     }
 
 }
