@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 
-
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {
   @Autowired
@@ -23,6 +22,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
 
     return UserDetailsImpl.build(user);
+  }
+
+  public User updateUser(User updatedUser) throws Exception {
+    User user = userRepository.findById(updatedUser.getId())
+            .orElseThrow(() -> new Exception("User Not Found with id: " + updatedUser.getId()));
+
+    user.setUsername(updatedUser.getUsername());
+    user.setEmail(updatedUser.getEmail());
+    user.setPassword(updatedUser.getPassword());
+    user.setRoles(updatedUser.getRoles());
+
+    return userRepository.save(user);
   }
 
 }

@@ -1,12 +1,9 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.dto.JwtResponse;
-import com.bezkoder.spring.jpa.h2.dto.LoginRequest;
-import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
-import com.bezkoder.spring.jpa.h2.dto.SignupRequest;
 import com.bezkoder.spring.jpa.h2.Entity.ERole;
 import com.bezkoder.spring.jpa.h2.Entity.Role;
 import com.bezkoder.spring.jpa.h2.Entity.User;
+import com.bezkoder.spring.jpa.h2.dto.*;
 import com.bezkoder.spring.jpa.h2.jwt.JwtUtils;
 import com.bezkoder.spring.jpa.h2.repository.RoleRepository;
 import com.bezkoder.spring.jpa.h2.repository.UserRepository;
@@ -55,16 +52,16 @@ public class AuthController {
 
     SecurityContextHolder.getContext().setAuthentication(authentication);
     String jwt = jwtUtils.generateJwtToken(authentication);
-    
+
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
     List<String> roles = userDetails.getAuthorities().stream()
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
 
     return ResponseEntity.ok(new JwtResponse(jwt,
-                         userDetails.getId(), 
-                         userDetails.getUsername(), 
-                         userDetails.getEmail(), 
+                         userDetails.getId(),
+                         userDetails.getUsername(),
+                         userDetails.getEmail(),
                          roles));
   }
 
@@ -123,4 +120,197 @@ public class AuthController {
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
+  @PostMapping("/users/{username}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
+
+    User user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+
+    // Update user properties
+    user.setUsername(updateUserRequest.getUsername());
+    user.setEmail(updateUserRequest.getEmail());
+    user.setPassword(encoder.encode(updateUserRequest.getPassword()));
+
+    Set<String> strRoles = updateUserRequest.getRole();
+    Set<Role> roles = new HashSet<>();
+
+    if (strRoles == null) {
+      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+      roles.add(userRole);
+    } else {
+      strRoles.forEach(role -> {
+        switch (role) {
+          case "admin":
+            Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(adminRole);
+
+            break;
+          case "authour":
+            Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOUR)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(modRole);
+
+            break;
+          default:
+            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+            roles.add(userRole);
+        }
+      });
+    }
+
+    user.setRoles(roles);
+    userRepository.save(user);
+
+    return ResponseEntity.ok(new MessageResponse("User Updated successfully!"));
+  }
+  @DeleteMapping("/users/{username}")
+  @PreAuthorize("hasRole('ADMIN')")
+  public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
+    User user = userRepository.findByUsername(username)
+            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+
+    userRepository.delete(user);
+
+    return ResponseEntity.ok("User " + username + " has been deleted successfully.");
+  }
+
+
+//  @PutMapping("/users/{username}")
+//  @PreAuthorize("hasRole('ADMIN')")
+//  public ResponseEntity<User> updateUser(@PathVariable("username") String username, @Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception {
+//    User user = userRepository.findByUsername(username)
+//            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+//
+//    // Update user properties
+//    user.setUsername(updateUserRequest.getUsername());
+//    user.setEmail(updateUserRequest.getEmail());
+//    user.setPassword(encoder.encode(updateUserRequest.getPassword()));
+//
+//    // Set user roles
+//    Set<String> strRoles = updateUserRequest.getRoles();
+//    Set<Role> roles = new HashSet<>();
+//    if (strRoles == null) {
+//      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//      roles.add(userRole);
+//    } else {
+//      strRoles.forEach(role -> {
+//        switch (role) {
+//          case "admin":
+//            Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//            roles.add(adminRole);
+//            break;
+//          case "authour":
+//            Role authorRole = roleRepository.findByName(ERole.ROLE_AUTHOUR)
+//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//            roles.add(authorRole);
+//            break;
+//          default:
+//            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//            roles.add(userRole);
+//        }
+//      });
+//    }
+//    user.setRoles(roles);
+//
+//    return ResponseEntity.ok(userRepository.save(user));
+//  }
+
+//  @PutMapping("/users/{username}")
+//  @PreAuthorize("hasRole('ADMIN')")
+//  public ResponseEntity<User> updateUser(@PathVariable("username") String username, @Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception {
+//    User user = userRepository.findByUsername(username)
+//            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+//
+//    Set<Role> roles = new HashSet<>();
+//
+//    if (updateUserRequest.getRoles() == null || updateUserRequest.getRoles().isEmpty()) {
+//      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//      roles.add(userRole);
+//    } else {
+//      for (String role : updateUserRequest.getRoles()) {
+//        switch (role) {
+//          case "admin":
+//            Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//            roles.add(adminRole);
+//            break;
+//          case "authour":
+//            Role authorRole = roleRepository.findByName(ERole.ROLE_AUTHOUR)
+//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//            roles.add(authorRole);
+//            break;
+//          default:
+//            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//                    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//            roles.add(userRole);
+//            break;
+//        }
+//      }
+//    }
+//
+//    user.setUsername(updateUserRequest.getUsername());
+//    user.setEmail(updateUserRequest.getEmail());
+//    user.setPassword(encoder.encode(updateUserRequest.getPassword()));
+//    user.setRoles(roles);
+//
+//    User updatedUser = userRepository.save(user);
+//
+//    // check assigned roles
+//    Set<Role> assignedRoles = updatedUser.getRoles();
+//    Set<String> roleNames = new HashSet<>();
+//    for (Role role : assignedRoles) {
+//      roleNames.add(role.getName().toString());
+//    }
+//    System.out.println("Assigned Roles: " + roleNames);
+//
+//    return ResponseEntity.ok(updatedUser);
+//  }
+
+
+
+//  @PutMapping("/users/{username}")
+//  @PreAuthorize("hasRole('ADMIN')")
+//  public ResponseEntity<User> updateUser(@PathVariable("username") String username, @Valid @RequestBody User updatedUser) throws Exception {
+//    User user = userRepository.findByUsername(username)
+//            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+//    Set<Role> strRoles = updatedUser.getRoles();
+//    Set<Role> roles = new HashSet<>();
+//
+//    if (strRoles == null) {
+//      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//      roles.add(userRole);
+//    } else {
+//      strRoles.forEach(role -> {
+//        if (role.equals("admin")) {
+//          Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+//                  .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//          roles.add(adminRole);
+//        } else if (role.equals("authour")) {
+//          Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOUR)
+//                  .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//          roles.add(modRole);
+//        } else {
+//          Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+//                  .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//          roles.add(userRole);
+//        }
+//      });
+//    }
+//
+//    user.setUsername(updatedUser.getUsername());
+//    user.setEmail(updatedUser.getEmail());
+//    user.setPassword(encoder.encode(updatedUser.getPassword()));
+//    user.setRoles(updatedUser.getRoles());
+//
+//    return ResponseEntity.ok(userRepository.save(user));
+//  }
 }
