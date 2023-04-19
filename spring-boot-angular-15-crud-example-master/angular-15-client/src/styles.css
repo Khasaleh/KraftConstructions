@@ -2,13 +2,16 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
+
 body {
     margin: 0;
     line-height: normal;
   }
   
+  /* global css file */
   :root {
     /* fonts */
+
 
     --text-md-regular: Inter;
     --font-kanit: Kanit;
@@ -24,22 +27,29 @@ body {
     --font-size-lg: 18px;
 
     --font-font-awesome-5-free: "Font Awesome 5 Free";
+    --paragraph-regular: Lato;
     --h2-semibold: Kanit;
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
     --text-md-regular: Inter;
-    --font-lato: Lato;
     --font-font-awesome-5-brands: "Font Awesome 5 Brands";
   
     /* font sizes */
-    --font-size-mid: 17px;
-    --font-size-3xl: 22px;
-    --font-size-lg: 18px;
-    --text-md-regular-size: 16px;
     --font-size-xl: 20px;
-    --h2-semibold-size: 55px;
-    --font-size-mini: 15px;
+    --font-size-sm: 14px;
+    --font-size-3xl: 22px;
+    --paragraph-regular-size: 17px;
+    --font-size-13xl: 32px;
     --font-size-26xl: 45px;
 
+
+
+    --text-md-regular-size: 16px;
+    --font-size-lg: 18px;
+
     --font-size-xs: 12px;
+    --font-size-5xl: 24px;
+    --font-size-61xl: 80px;
+    --h2-semibold-size: 55px;
   
     /* Colors */
     --colors-white: #fff;
@@ -68,7 +78,7 @@ body {
     --colors-primary-black: #292929;
     --color-gray-100: #16213e;
     --primary-dark: #141619;
-    --color-black: #000;
+    --kraft-light-green: #91c490;
     --kraft-d-green: #025a00;
     --color-darkseagreen: #91c490;
   
@@ -77,3 +87,6 @@ body {
     --gap-14xl: 33px;
 
   }
+
+
+
