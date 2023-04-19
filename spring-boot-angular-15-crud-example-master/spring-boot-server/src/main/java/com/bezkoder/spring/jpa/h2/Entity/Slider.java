@@ -6,7 +6,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+
 @Getter
 @Setter
 @AllArgsConstructor
@@ -19,10 +21,22 @@ public class Slider {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ElementCollection
-    private List<String> imageUrls;
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<SliderImage> images = new ArrayList<>();
 
+    public List<String> getImageUrls() {
+        List<String> imageUrls = new ArrayList<>();
+        for (SliderImage image : images) {
+            imageUrls.add(image.getImageUrl());
+        }
+        return imageUrls;
+    }
+
+    public void addImage(String imageUrl) {
+        images.add(new SliderImage(this, imageUrl));
+    }
 
 
 }
+
 
