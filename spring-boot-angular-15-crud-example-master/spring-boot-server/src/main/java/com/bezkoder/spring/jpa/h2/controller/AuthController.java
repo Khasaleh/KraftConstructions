@@ -177,4 +177,10 @@ public class AuthController {
 
     return ResponseEntity.ok("User " + username + " has been deleted successfully.");
   }
+  @GetMapping("/users")
+  @PreAuthorize("hasRole('AUTHOUR')")
+  public ResponseEntity<?> getAllUsers() {
+    List<User> users = userRepository.findAll();
+    return ResponseEntity.ok(users);
+  }
 }
