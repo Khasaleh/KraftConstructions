@@ -120,7 +120,7 @@ public class AuthController {
 
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
-  @PostMapping("/users/{username}")
+  @PostMapping("/users/update/{username}")
   @PreAuthorize("hasRole('AUTHOR')")
   public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
 
@@ -167,7 +167,7 @@ public class AuthController {
 
     return ResponseEntity.ok(new MessageResponse("User Updated successfully!"));
   }
-  @DeleteMapping("/users/{username}")
+  @DeleteMapping("/users/delete/{username}")
   @PreAuthorize("hasRole('AUTHOR')")
   public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
     User user = userRepository.findByUsername(username)
