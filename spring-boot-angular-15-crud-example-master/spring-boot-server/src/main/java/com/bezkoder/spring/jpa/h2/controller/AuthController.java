@@ -8,6 +8,7 @@ import com.bezkoder.spring.jpa.h2.jwt.JwtUtils;
 import com.bezkoder.spring.jpa.h2.repository.RoleRepository;
 import com.bezkoder.spring.jpa.h2.repository.UserRepository;
 import com.bezkoder.spring.jpa.h2.service.UserDetailsImpl;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -66,7 +67,7 @@ public class AuthController {
   }
 
   @PostMapping("/users/create")
-  @PreAuthorize("hasRole('AUTHOR')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
@@ -121,7 +122,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
   @PostMapping("/users/update/{username}")
-  @PreAuthorize("hasRole('AUTHOR')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
 
     User user = userRepository.findByUsername(username)
@@ -168,7 +169,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User Updated successfully!"));
   }
   @DeleteMapping("/users/delete/{username}")
-  @PreAuthorize("hasRole('AUTHOR')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
     User user = userRepository.findByUsername(username)
             .orElseThrow(() -> new Exception("User Not Found with username: " + username));
@@ -178,7 +179,7 @@ public class AuthController {
     return ResponseEntity.ok("User " + username + " has been deleted successfully.");
   }
   @GetMapping("/users")
-  @PreAuthorize("hasRole('AUTHOR')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> getAllUsers() {
     List<User> users = userRepository.findAll();
     return ResponseEntity.ok(users);
