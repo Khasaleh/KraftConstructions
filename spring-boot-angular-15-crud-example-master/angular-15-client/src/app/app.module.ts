@@ -11,8 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
-
-
+import { NewAddComponent } from './components/new-add/new-add.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +22,7 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     HeaderComponent,
     AboutUsComponent,
     TestimonialsComponent,
+    NewAddComponent
   ],
   imports: [
     BrowserModule,

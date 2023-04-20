@@ -5,6 +5,7 @@ import com.bezkoder.spring.jpa.h2.dto.SliderDto;
 import com.bezkoder.spring.jpa.h2.mapper.SliderMapper;
 import com.bezkoder.spring.jpa.h2.repository.SliderRepository;
 import org.apache.commons.io.FileUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -15,8 +16,9 @@ import java.util.UUID;
 
 @Service
 public class SliderServiceImpl implements SliderService {
-
+    @Autowired
     private final SliderRepository sliderRepository;
+    @Autowired
     private final SliderMapper sliderMapper;
 
     public SliderServiceImpl(SliderRepository sliderRepository, SliderMapper sliderMapper) {
@@ -58,6 +60,10 @@ public class SliderServiceImpl implements SliderService {
 
 
         return "/images/" + fileName;
+    }
+    @Override
+    public void deleteSlider(Long sliderId) {
+        sliderRepository.deleteById(sliderId);
     }
 }
 

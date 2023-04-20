@@ -19,11 +19,13 @@ import java.util.Objects;
 
 @Service
 public class TestimonialServiceImpl implements TestimonialService {
+
     private final TestimonialRepository testimonialRepository;
 
     public TestimonialServiceImpl(TestimonialRepository testimonialRepository) {
         this.testimonialRepository = testimonialRepository;
     }
+
 
     @Override
     public List<Testimonial> getTestimonialsByPage(TestimonialPage page) {
