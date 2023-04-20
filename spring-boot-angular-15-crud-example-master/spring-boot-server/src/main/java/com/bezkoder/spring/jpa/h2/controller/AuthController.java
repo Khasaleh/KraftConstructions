@@ -66,7 +66,7 @@ public class AuthController {
   }
 
   @PostMapping("/users/create")
-  @PreAuthorize("hasRole('ADMIN')")
+  @PreAuthorize("hasRole('AUTHOR')")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
@@ -101,8 +101,8 @@ public class AuthController {
           roles.add(adminRole);
 
           break;
-        case "authour":
-          Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOUR)
+        case "author":
+          Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(modRole);
 
@@ -121,7 +121,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
   @PostMapping("/users/{username}")
-  @PreAuthorize("hasRole('ADMIN')")
+  @PreAuthorize("hasRole('AUTHOR')")
   public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
 
     User user = userRepository.findByUsername(username)
@@ -148,8 +148,8 @@ public class AuthController {
             roles.add(adminRole);
 
             break;
-          case "authour":
-            Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOUR)
+          case "author":
+            Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
                     .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             roles.add(modRole);
 
@@ -168,7 +168,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User Updated successfully!"));
   }
   @DeleteMapping("/users/{username}")
-  @PreAuthorize("hasRole('ADMIN')")
+  @PreAuthorize("hasRole('AUTHOR')")
   public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
     User user = userRepository.findByUsername(username)
             .orElseThrow(() -> new Exception("User Not Found with username: " + username));
@@ -178,7 +178,7 @@ public class AuthController {
     return ResponseEntity.ok("User " + username + " has been deleted successfully.");
   }
   @GetMapping("/users")
-  @PreAuthorize("hasRole('AUTHOUR')")
+  @PreAuthorize("hasRole('AUTHOR')")
   public ResponseEntity<?> getAllUsers() {
     List<User> users = userRepository.findAll();
     return ResponseEntity.ok(users);
