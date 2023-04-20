@@ -35,9 +35,23 @@ public class SliderController {
         }
     }
 
-
     @GetMapping
     public List<SliderDto> getAllSliders() {
         return sliderService.getAllSliders();
+    }
+
+//    @DeleteMapping("/{id}")
+//    public ResponseEntity<Void> deleteSlider(@PathVariable("id") Long id) {
+//        // Delete the slider with the given id
+//        sliderService.deleteSlider(id);
+//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+//    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deleteSlider(@PathVariable("id") Long id) {
+
+        sliderService.deleteSlider(id);
+
+        return ResponseEntity.ok().body("Slider deleted successfully");
     }
 }

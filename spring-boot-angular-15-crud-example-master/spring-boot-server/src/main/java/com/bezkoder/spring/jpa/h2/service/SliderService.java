@@ -11,6 +11,9 @@ public interface SliderService {
 
     SliderDto addSlider(MultipartFile[] images) throws IOException;
     List<SliderDto> getAllSliders();
+    void deleteSlider(Long sliderId);
+
+
 }
 
 
