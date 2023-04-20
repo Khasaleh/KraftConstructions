@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { TutorialsListComponent } from './components/tutorials-list/tutorials-list.component';
-import { TutorialDetailsComponent } from './components/tutorial-details/tutorial-details.component';
-import { AddTutorialComponent } from './components/add-tutorial/add-tutorial.component';
-
+import { IntmodComponent } from './components/intmod/intmod.component';
+import { HomeComponent } from './components/home/home.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { NewAddComponent } from './components/new-add/new-add.component';
 const routes: Routes = [
-  { path: '', redirectTo: 'tutorials', pathMatch: 'full' },
-  { path: 'tutorials', component: TutorialsListComponent },
-  { path: 'tutorials/:id', component: TutorialDetailsComponent },
-  { path: 'add', component: AddTutorialComponent }
+  {path:'', component : HomeComponent},
+  {path: 'about-us', component: AboutUsComponent},
+  { path: 'interior-remodelling', component: IntmodComponent},
+  { path: 'home', component: HomeComponent },
+  {path: 'new-additions', component: NewAddComponent}
 ];
+
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

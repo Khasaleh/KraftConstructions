@@ -36,8 +36,6 @@ public class Review {
     @Enumerated(EnumType.STRING)
     private ApprovalStatus approvalStatus = ApprovalStatus.HIDDEN;
 
-
-
 }
 
 
