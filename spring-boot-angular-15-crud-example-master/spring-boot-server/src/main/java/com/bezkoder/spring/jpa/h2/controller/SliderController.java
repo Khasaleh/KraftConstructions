@@ -40,12 +40,6 @@ public class SliderController {
         return sliderService.getAllSliders();
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Void> deleteSlider(@PathVariable("id") Long id) {
-//        // Delete the slider with the given id
-//        sliderService.deleteSlider(id);
-//        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteSlider(@PathVariable("id") Long id) {
