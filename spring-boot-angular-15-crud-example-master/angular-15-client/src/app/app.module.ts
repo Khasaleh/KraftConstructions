@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NewAddComponent } from './components/new-add/new-add.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component'
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NewAddComponent } from './components/new-add/new-add.component';
     FooterComponent,
     HeaderComponent,
     AboutUsComponent,
-    NewAddComponent
+    NewAddComponent,
+    ContactUsComponent
   ],
   imports: [
     BrowserModule,
