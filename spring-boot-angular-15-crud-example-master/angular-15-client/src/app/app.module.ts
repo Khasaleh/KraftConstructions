@@ -12,6 +12,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { NewAddComponent } from './components/new-add/new-add.component';
+import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component'
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,6 +26,9 @@ import { NewAddComponent } from './components/new-add/new-add.component';
     AboutUsComponent,
     TestimonialsComponent,
     NewAddComponent
+    RequestEstimateComponent
+    ContactUsComponent
+
   ],
   imports: [
     BrowserModule,
