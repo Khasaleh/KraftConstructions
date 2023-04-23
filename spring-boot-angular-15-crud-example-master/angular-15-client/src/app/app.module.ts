@@ -11,6 +11,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NewAddComponent } from './components/new-add/new-add.component';
+import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component'
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     HeaderComponent,
     AboutUsComponent,
     NewAddComponent,
+    RequestEstimateComponent
     ContactUsComponent
   ],
   imports: [
