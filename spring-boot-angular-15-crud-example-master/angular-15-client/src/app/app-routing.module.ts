@@ -6,8 +6,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { NewAddComponent } from './components/new-add/new-add.component';
 import { CareersComponent } from './components/careers/careers.component';
-
-
+import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -16,7 +16,9 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'new-additions', component: NewAddComponent },
-  { path: 'careers', component: CareersComponent }
+  { path: 'careers', component: CareersComponent },
+  {path:'request-estimate', component: RequestEstimateComponent},
+  {path: 'contact-us', component: ContactUsComponent}
 ];
 
 
