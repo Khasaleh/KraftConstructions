@@ -13,7 +13,8 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { NewAddComponent } from './components/new-add/new-add.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component'
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { LoginComponent } from './components/login/login.component'
 
 @NgModule({
   declarations: [
@@ -25,9 +26,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     HeaderComponent,
     AboutUsComponent,
     TestimonialsComponent,
-    NewAddComponent
-    RequestEstimateComponent
-    ContactUsComponent
+    NewAddComponent,
+    RequestEstimateComponent,
+    ContactUsComponent,
+    LoginComponent
 
   ],
   imports: [
