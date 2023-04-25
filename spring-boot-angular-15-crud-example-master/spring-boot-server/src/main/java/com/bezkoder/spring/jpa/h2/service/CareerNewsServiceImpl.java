@@ -7,6 +7,8 @@ import com.bezkoder.spring.jpa.h2.repository.CareerNewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.Null;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -48,5 +50,27 @@ public class CareerNewsServiceImpl implements CareerNewsService {
         save(updatedNews);
         return CareerNewsMapper.mapToDTO(updatedNews);
     }
+
+    @Override
+    public List<CareerNewsDto> findAll() {
+        List<CareersNews> careerNewsList = newsRepository.findAll();
+        return CareerNewsMapper.toDTOList(careerNewsList);
+    }
+
+    @Override
+    public List<CareerNewsDto> findByStatus(Boolean status) {
+        List<CareersNews> careerNewsList = newsRepository.findByStatus(status);
+        return newsMapper.toDTOList(careerNewsList);
+    }
+
+//    @Override
+//    public CareerNewsDto getByStatus(Boolean status) {
+//        Optional<CareersNews> optionalCareerNews = newsRepository.findByStatus(status);
+//        if (optionalCareerNews.isPresent()) {
+//            CareersNews careerNews = optionalCareerNews.get();
+//            return newsMapper.mapToDTO(careerNews);
+//        }
+//        throw new IllegalArgumentException("No Status was Found");
+//    }
 
 }
