@@ -18,7 +18,7 @@ public interface CareerNewsService {
 
     List<CareerNewsDto> findByStatus(Boolean status);
 
-//    CareerNewsDto getByStatus(Boolean status);
+
 
 
 

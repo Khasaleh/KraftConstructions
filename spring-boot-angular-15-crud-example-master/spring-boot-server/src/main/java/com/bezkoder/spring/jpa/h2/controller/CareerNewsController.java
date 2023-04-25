@@ -35,14 +35,7 @@ public class CareerNewsController {
         return ResponseEntity.ok().body(careerNewsDTOList);
     }
 
-//    @GetMapping("/{status}")
-//    public ResponseEntity<CareerNewsDto> getByStatus(@PathVariable Boolean status) {
-//        CareerNewsDto careerNews = newsService.getByStatus(status);
-//        if (careerNews == null) {
-//            return ResponseEntity.notFound().build();
-//        }
-//        return ResponseEntity.ok(careerNews);
-//    }
+
 
 
     // Create a new News

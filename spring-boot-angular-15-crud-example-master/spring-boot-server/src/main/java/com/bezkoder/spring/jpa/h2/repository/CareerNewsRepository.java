@@ -11,7 +11,7 @@ public interface CareerNewsRepository extends JpaRepository<CareersNews, Long> {
 
     List<CareersNews> findByStatus(Boolean status);
 
-//    Optional<CareersNews> findByStatus(Boolean status);
+
 
 
 }
