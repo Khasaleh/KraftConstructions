@@ -34,7 +34,8 @@
 .about-us {
     font-family: var(--h2-semibold);
     font-size: var(--font-size-xl);
-    color: var(--colors-white)
+    color: var(--colors-white);
+    padding: 0px 15px;
 }
 
 .footer-line {

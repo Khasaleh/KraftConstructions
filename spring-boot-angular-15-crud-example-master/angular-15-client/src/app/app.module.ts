@@ -12,9 +12,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { NewAddComponent } from './components/new-add/new-add.component';
+import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component'
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,10 +25,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
     HeaderComponent,
     AboutUsComponent,
     TestimonialsComponent,
-    NewAddComponent
-    RequestEstimateComponent
+    NewAddComponent,
+    CareersComponent,
+    RequestEstimateComponent,
     ContactUsComponent
-
   ],
   imports: [
     BrowserModule,
