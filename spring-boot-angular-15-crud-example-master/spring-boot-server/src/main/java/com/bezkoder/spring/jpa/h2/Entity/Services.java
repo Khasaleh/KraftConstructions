@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
+
 @Entity
 @NoArgsConstructor
 @Getter
@@ -31,6 +32,8 @@ public class Services {
         this.pageName = pageName;
         this.isActive = isActive;
     }
+
+
 }
 
 
