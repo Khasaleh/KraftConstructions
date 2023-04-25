@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'interior-remodelling', component: IntmodComponent },
   { path: 'home', component: HomeComponent },
   { path: 'testimonials', component: TestimonialsComponent },
-  { path: 'new-additions', component: NewAddComponent }
+  { path: 'new-additions', component: NewAddComponent },
   {path:'request-estimate', component: RequestEstimateComponent},
   {path: 'contact-us', component: ContactUsComponent},
   {path:'login', component: LoginComponent},
