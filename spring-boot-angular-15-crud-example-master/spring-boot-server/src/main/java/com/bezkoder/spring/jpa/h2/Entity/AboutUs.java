@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -21,6 +23,7 @@ public class AboutUs {
 
 
     @Column(name = "description")
+    @Size(max = 65000)
     private String description;
 
 }
