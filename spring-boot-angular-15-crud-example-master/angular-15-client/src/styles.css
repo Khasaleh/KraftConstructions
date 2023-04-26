@@ -1,4 +1,6 @@
+
 /* You can add global styles to this file, and also import other style files */
+
 @import "~bootstrap/dist/css/bootstrap.css";
 
 body {
@@ -9,6 +11,22 @@ body {
   /* global css file */
   :root {
     /* fonts */
+
+
+    --text-md-regular: Inter;
+    --font-kanit: Kanit;
+    --font-inherit: inherit;
+    --font-font-awesome-5-brands: "Font Awesome 5 Brands";
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
+  
+    /* font sizes */
+    --font-size-mini: 15px;
+    --font-size-xl: 20px;
+    --font-size-sm: 14px;
+    --text-md-regular-size: 16px;
+    --font-size-lg: 18px;
+
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
     --paragraph-regular: Lato;
     --h2-semibold: Kanit;
     --font-font-awesome-5-free: "Font Awesome 5 Free";
@@ -22,8 +40,12 @@ body {
     --paragraph-regular-size: 17px;
     --font-size-13xl: 32px;
     --font-size-26xl: 45px;
+
+
+
     --text-md-regular-size: 16px;
     --font-size-lg: 18px;
+
     --font-size-xs: 12px;
     --font-size-5xl: 24px;
     --font-size-61xl: 80px;
@@ -31,17 +53,143 @@ body {
   
     /* Colors */
     --colors-white: #fff;
+
+    --color-black: #000;
+    --color-darkgray: #b3b3b3;
+    --kraft-d-green: #025a00;
+    --gray: #eee;
+    --kraft-light-green: #91c490;
+    --border-event: #ddd;
+    --colors-primary-black: #292929;
+    --primary-dark: #141619;
+  
+    /* Gaps */
+    --gap-2xl: 21px;
+    --gap-13xl: 32px;
+    --gap-14xl: 33px;
+  
+    /* border radiuses */
+    --br-8xs: 5px;
+  
+    /* Effects */
+    --shadows-shadow-10: 0px 4px 5px rgba(0, 0, 0, 0.05);
+
+    --color-darkslategray: #41444b;
     --colors-primary-black: #292929;
     --color-gray-100: #16213e;
     --primary-dark: #141619;
     --kraft-light-green: #91c490;
     --kraft-d-green: #025a00;
-    --color-darkslategray: #41444b;
-    --color-black: #000;
-    --color-darkslateblue: #00215b;
-    --colors-buttun-gray-10: #eff2f5;
-    --color-whitesmoke-100: #ebecee;
-    --br-8xs: 5px;
+    --color-darkseagreen: #91c490;
+  
+    /* Gaps */
+    --gap-13xl: 32px;
+    --gap-14xl: 33px;
 
   }
 
+  body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --font-kanit: Kanit;
+    --text-md-regular: Inter;
+    --font-font-awesome-5-brands: "Font Awesome 5 Brands";
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
+  
+    /* font sizes */
+    --font-size-xl: 20px;
+    --text-md-regular-size: 16px;
+    --text-sm-regular-size: 14px;
+    --font-size-lg: 18px;
+    --font-size-xs: 12px;
+  
+    /* Colors */
+    --colors-white: #fff;
+    --kraft-d-green: #025a00;
+    --gray-500: #667085;
+    --color-silver: #b8b8b8;
+    --gray-700: #344054;
+    --color-darkseagreen: #91c490;
+    --color-gray-100: #8b8b8b;
+    --colors-primary-black: #292929;
+    --primary-dark: #141619;
+    --color-black: #000;
+  
+    /* Gaps */
+    --gap-13xl: 32px;
+    --gap-base: 16px;
+    --gap-14xl: 33px;
+    --gap-7xs: 6px;
+    --gap-xs: 12px;
+    --gap-mini: 15px;
+    --gap-5xs: 8px;
+  
+    /* Paddings */
+    --padding-24xl: 43px;
+    --padding-48xl: 67px;
+    --padding-3xs: 10px;
+    --padding-sm: 14px;
+  
+    /* border radiuses */
+    --br-8xs: 5px;
+    --br-5xs: 8px;
+    --br-9xs: 4px;
+  
+    /* Effects */
+    --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  }
+
+  body {
+    margin: 0;
+    line-height: normal;
+  }
+  
+  :root {
+    /* fonts */
+    --text-md-regular: Inter;
+    --font-kanit: Kanit;
+    --font-font-awesome-5-brands: "Font Awesome 5 Brands";
+    --font-font-awesome-5-free: "Font Awesome 5 Free";
+  
+    /* font sizes */
+    --font-size-26xl: 45px;
+    --text-md-regular-size: 16px;
+    --text-xl-regular-size: 20px;
+    --font-size-lg: 18px;
+    --font-size-xs: 12px;
+    --font-size-sm: 14px;
+    --font-size-3xl: 22px;
+  
+    /* Colors */
+    --colors-white: #fff;
+    --kraft-d-green: #025a00;
+    --color-darkseagreen: #91c490;
+    --colors-primary-black: #292929;
+    --color-gray-100: #16213e;
+    --gray-900: #101828;
+    --primary-dark: #141619;
+    --color-black: #000;
+    --color-darkslategray: #41444b;
+    --color-slategray: #667085;
+    --color-lightgray: #d0d5dd;
+  
+    /* Gaps */
+    --gap-13xl: 32px;
+    --gap-14xl: 33px;
+    --gap-7xs: 6px;
+  
+    /* Paddings */
+    --padding-xs: 12px;
+    --padding-base: 16px;
+  
+    /* border radiuses */
+    --br-5xs: 8px;
+  
+    /* Effects */
+    --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+  }
+  
