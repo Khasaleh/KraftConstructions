@@ -121,7 +121,10 @@ p {
 }
 
 /* for 2nd section */
-
+#mobile-nav{
+    padding: 10px 0px;
+    background-color: whitesmoke;
+}
 .nav-bar-2 {
     padding: 10px 0px;
     background-color: whitesmoke;
@@ -187,4 +190,25 @@ a {
     .nav-bar-2 {
         display: none;
     }
+    .nav-links-2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        list-style: none;
+    }
+    .logo{
+        margin: auto;
+    }
+    .drop-down-wrape{
+        display: flex;
+        justify-content: flex-start;
+    }
 }
+
+@media (min-width: 59em) {
+
+    #mobile-nav {
+        display: none;
+    }
+}
+
