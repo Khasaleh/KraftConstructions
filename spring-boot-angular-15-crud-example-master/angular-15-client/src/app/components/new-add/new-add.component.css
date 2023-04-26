@@ -1,6 +1,6 @@
 .home-child {
     position: absolute;
-    top: 10px;
+    top: 394px;
     left: 944px;
     border-radius: var(--br-8xs);
     background-color: #ddffda;
@@ -212,9 +212,9 @@
   .new-additions {
     position: absolute;
     top: 7.48%;
-    left: 25.16%;
+    left: 15.16%;
     line-height: 24px;
-    font-weight: 500;
+    font-weight: 800;
   }
   .leed-home {
     position: relative;
@@ -321,17 +321,17 @@
     top: 0;
     font-size: 16px;
     font-weight: 600;
-    width: 207px;
+    width: 107px;
   }
   .second-story-addition {
     top: 46px;
-    width: 199px;
+    width: 180px;
     
   }
   .other-additions {
     top: 92px;
-    width: 142px;
-    left: 10%;
+    width: 120px;
+    left: 5%;
   }
   .simply-dummy-text4,
   .simply-dummy-text5,
@@ -547,6 +547,7 @@
     height: 250px;
     object-fit: cover;
   }
+  
   .after,
   .before {
     position: absolute;
