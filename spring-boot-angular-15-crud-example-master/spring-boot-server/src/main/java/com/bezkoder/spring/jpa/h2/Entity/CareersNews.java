@@ -32,7 +32,7 @@ public class CareersNews {
     @Column(name = "endDate")
     private LocalDateTime endDate;
 
-    @Column(name = "labelEnabled")
-    private boolean isLabelEnabled;
+    @Column(name = "status")
+    private boolean status;
 
 }
