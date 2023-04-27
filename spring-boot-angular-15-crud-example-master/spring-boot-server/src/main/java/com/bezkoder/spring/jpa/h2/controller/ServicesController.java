@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -19,7 +20,7 @@ public class ServicesController {
     public UserServiceImpl userServiceImpl;
 
     @PostMapping("/addservices")
-    public ResponseEntity<ServicesResponseDTO> addService(@RequestBody ServicesRequestDTO servicesRequestDTO) {
+    public ResponseEntity<ServicesResponseDTO> addService(@Valid @RequestBody ServicesRequestDTO servicesRequestDTO) {
         ServicesResponseDTO addservice = userServiceImpl.addService(servicesRequestDTO);
         return ResponseEntity.ok(addservice);
     }

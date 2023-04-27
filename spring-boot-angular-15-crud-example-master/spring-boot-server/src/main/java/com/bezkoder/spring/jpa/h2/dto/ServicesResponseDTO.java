@@ -15,7 +15,8 @@ public class ServicesResponseDTO {
     private String serviceName;
     private String pageName;
     private boolean isActive;
-    
+
+
 }
 
 

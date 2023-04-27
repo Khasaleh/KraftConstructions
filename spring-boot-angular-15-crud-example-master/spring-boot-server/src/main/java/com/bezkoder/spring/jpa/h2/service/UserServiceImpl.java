@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService {
         return services;
     }
 
+    public ServicesResponseDTO getServiceById(Long id) {
+        Services service = servicesRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Service"+ "id"+id));
+        return servicesMapper.toDto(service);
+    }
 
     public boolean disableAndEnableTheService(Long id, boolean isActive) {
         Optional<Services> optionalService = servicesRepository.findById(id);
