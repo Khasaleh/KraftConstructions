@@ -63,14 +63,5 @@ public class CareerNewsServiceImpl implements CareerNewsService {
         return newsMapper.toDTOList(careerNewsList);
     }
 
-//    @Override
-//    public CareerNewsDto getByStatus(Boolean status) {
-//        Optional<CareersNews> optionalCareerNews = newsRepository.findByStatus(status);
-//        if (optionalCareerNews.isPresent()) {
-//            CareersNews careerNews = optionalCareerNews.get();
-//            return newsMapper.mapToDTO(careerNews);
-//        }
-//        throw new IllegalArgumentException("No Status was Found");
-//    }
 
 }
