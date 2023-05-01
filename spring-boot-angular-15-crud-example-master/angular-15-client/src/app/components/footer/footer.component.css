@@ -16,7 +16,7 @@
 .about-us-wrape {
     display: flex;
     justify-content: center;
-    gap: var(--gap-13xl);
+    gap: 2%;
 }
 
 .footer-detail-wrape {
