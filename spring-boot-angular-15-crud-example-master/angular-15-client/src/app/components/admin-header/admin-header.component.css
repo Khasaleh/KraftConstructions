@@ -1,0 +1,24 @@
+.admin-header{
+    width: 100%;
+    height: 72px;
+    background-color: #FFFFFF;
+    border: 1px solid  #FFFFFF;
+    box-shadow: 0px 0px 10px 0px rgba(128,128,128,0.75);
+    display: flex;
+    justify-content: flex-end;
+    padding: 22px;
+}
+.header-wrape{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.admin-name{
+    margin: 0px;
+    padding: 0px;
+}
+
+.admin-img{
+    padding-left: 15px;
+}
+
