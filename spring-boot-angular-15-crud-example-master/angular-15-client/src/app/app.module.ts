@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,7 +15,8 @@ import { NewAddComponent } from './components/new-add/new-add.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
-import { LoginComponent } from './components/login/login.component'
+import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,15 @@ import { LoginComponent } from './components/login/login.component'
     RequestEstimateComponent,
     ContactUsComponent,
     LoginComponent,
-    CareersComponent
+    CareersComponent,
+    AddUserComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
