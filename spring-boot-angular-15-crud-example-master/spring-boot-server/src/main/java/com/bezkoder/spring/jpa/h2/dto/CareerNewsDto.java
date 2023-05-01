@@ -37,7 +37,7 @@ public class CareerNewsDto {
     private LocalDateTime endDate;
 
     @NotNull
-    private boolean isLabelEnabled;
+    private boolean status;
         // Getters and setters
 
 

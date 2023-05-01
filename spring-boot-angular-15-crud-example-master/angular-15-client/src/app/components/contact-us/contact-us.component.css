@@ -488,23 +488,7 @@
   bottom: 50.33%;
   background-color: var(--color-black);
 }
-.microsoftteams-image-28-2 {
-  height: 100%;
-  bottom: 0;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-  object-fit: cover;
-}
-.microsoftteams-image-28-2-wrapper {
-  position: absolute;
-  height: 60.13%;
-  width: 10.06%;
-  top: 49.02%;
-  right: 77.38%;
-  bottom: -9.15%;
-  left: 12.56%;
-}
+
 .angle-down,
 .angle-down1 {
   position: absolute;
@@ -538,61 +522,8 @@
   font-size: var(--text-xl-regular-size);
   color: var(--colors-primary-black);
 }
-.facebook-f,
-.linkedin-in,
-.twitter,
-.youtube {
-  position: absolute;
-  top: 0;
-  left: 0;
-  line-height: 15px;
-  text-transform: uppercase;
-}
-.facebook-f,
-.linkedin-in,
-.youtube {
-  left: 30.93%;
-}
-.linkedin-in,
-.youtube {
-  left: 58.25%;
-}
-.youtube {
-  left: 88.14%;
-}
-.twitter-parent {
-  position: absolute;
-  height: 9.8%;
-  width: 12.13%;
-  top: 20.92%;
-  right: 74.25%;
-  bottom: 69.28%;
-  left: 13.63%;
-  font-size: var(--text-xl-regular-size);
-  color: var(--color-darkseagreen);
-  font-family: var(--font-font-awesome-5-brands);
-}
-.group-child,
-.vector-icon {
-  position: absolute;
-  height: 86.49%;
-  width: 0%;
-  top: 13.51%;
-  right: 84.53%;
-  bottom: 0;
-  left: 15.47%;
-  max-width: 100%;
-  overflow: hidden;
-  max-height: 100%;
-}
-.vector-icon {
-  height: 54.05%;
-  width: 9.94%;
-  top: 32.43%;
-  right: 90.06%;
-  bottom: 13.51%;
-  left: 0;
-}
+
+
 .best-price-in,
 .request-estimate {
   position: absolute;
@@ -795,7 +726,7 @@
   position: relative;
   background-color: var(--colors-white);
   width: 100%;
-  height: 2317px;
+  height: 2300px;
   overflow: hidden;
   text-align: left;
   font-size: var(--font-size-lg);
