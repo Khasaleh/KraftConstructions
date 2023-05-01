@@ -12,9 +12,6 @@ import { LoginComponent } from './components/login/login.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component'
 import { AdminMainComponent } from './components/admin-main/admin-main.component'
 
-
-
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about-us', component: AboutUsComponent },
@@ -26,8 +23,6 @@ const routes: Routes = [
   {path: 'contact-us', component: ContactUsComponent},
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
-  // { path: 'admin-home', component: AdminHomeComponent },
-  // { path: 'admin-main', component: AdminMainComponent},
   {
     path: 'admin',
     component: AdminMainComponent,
