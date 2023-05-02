@@ -30,10 +30,9 @@ public class ServicesDetailsController {
 
     @PostMapping("/{serviceId}/details")
     @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
-    public ResponseEntity<ServiceDetailsDTO> createServiceDetails(@PathVariable Long serviceId, @Valid @RequestBody ServiceDetailsDTO serviceDetailsDTO) {
+    public ResponseEntity<ServiceDetailsDTO> addServiceDetails(@Valid @RequestBody ServiceDetailsDTO serviceDetailsDTO) {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        serviceDetailsDTO.setServices_id(serviceId);
-        ServiceDetailsDTO createdServiceDetailsDTO = servicesDetailsService.createServiceDetails1(serviceDetailsDTO, userDetails);
+        ServiceDetailsDTO createdServiceDetailsDTO = servicesDetailsService.addServiceDetails(serviceDetailsDTO, userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdServiceDetailsDTO);
     }
 
@@ -43,6 +42,8 @@ public class ServicesDetailsController {
         ServiceDetailsDTO serviceDetailsDTO = servicesDetailsService.getServiceDetailsById(detailId);
         return ResponseEntity.ok(serviceDetailsDTO);
     }
+
+
 
     @PutMapping("/{id}")
     public ResponseEntity<ServiceDetailsDTO> updateServicesDetails(@PathVariable Long id, @RequestBody ServiceDetailsDTO servicesDetailsDTO) {

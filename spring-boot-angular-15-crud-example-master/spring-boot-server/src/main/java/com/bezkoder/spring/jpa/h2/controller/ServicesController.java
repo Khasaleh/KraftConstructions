@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
+import com.bezkoder.spring.jpa.h2.dto.DetailsDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 import com.bezkoder.spring.jpa.h2.service.UserServiceImpl;
@@ -31,14 +32,19 @@ public class ServicesController {
         return ResponseEntity.ok(services);
     }
 
-        @PatchMapping("/{id}/enable")
+    @GetMapping
+    public List<DetailsDTO> getAllServicesDetailsWithName() {
+        return userServiceImpl.getAllServicesDetailsWithName();
+    }
+
+    @PatchMapping("/{id}/enable")
     public boolean enableService(@PathVariable Long id) {
-        return  userServiceImpl.disableAndEnableTheService(id, true);
+        return userServiceImpl.disableAndEnableTheService(id, true);
     }
 
     @PatchMapping("/{id}/disable")
     public boolean disableService(@PathVariable Long id) {
-        return  userServiceImpl.disableAndEnableTheService(id, false);
+        return userServiceImpl.disableAndEnableTheService(id, false);
     }
 
     @PutMapping("/update-service/{id}")

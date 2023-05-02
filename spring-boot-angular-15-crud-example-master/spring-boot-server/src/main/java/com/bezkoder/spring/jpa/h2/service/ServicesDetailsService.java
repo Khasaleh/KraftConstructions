@@ -9,5 +9,5 @@ public interface ServicesDetailsService {
 
     public ServiceDetailsDTO updateServicesDetails(Long id, ServiceDetailsDTO servicesDetailsDTO);
 
-    public ServiceDetailsDTO createServiceDetails1(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails);
+    public ServiceDetailsDTO addServiceDetails(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails);
 }

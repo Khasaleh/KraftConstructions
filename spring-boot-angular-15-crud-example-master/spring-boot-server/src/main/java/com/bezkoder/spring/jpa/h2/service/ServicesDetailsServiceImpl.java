@@ -34,7 +34,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
 
 
     @Override
-    public ServiceDetailsDTO createServiceDetails1(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails) {
+    public ServiceDetailsDTO addServiceDetails(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails) {
 
         int serviceid = 1;
         User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException());
@@ -51,6 +51,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         ServiceDetails serviceDetails = servicesDetailsRepository.findById(id).orElseThrow(() -> new RuntimeException("ServiceDetails" + "id" + id));
         return serviceDetailsMapper.toDto(serviceDetails);
     }
+
 
 
 
@@ -88,7 +89,6 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
 
         return servicesDetailsDTO;
     }
-
 
 
     @Override

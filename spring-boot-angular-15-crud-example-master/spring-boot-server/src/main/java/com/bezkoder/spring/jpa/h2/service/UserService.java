@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.service;
 
+import com.bezkoder.spring.jpa.h2.dto.DetailsDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 
@@ -10,5 +11,6 @@ public interface UserService {
     List<ServicesRequestDTO> getServices();
     ServicesResponseDTO addService(ServicesRequestDTO servicesRequestDTO);
     ServicesResponseDTO updateService(Long id, ServicesRequestDTO dto);
+    public List<DetailsDTO> getAllServicesDetailsWithName();
     void deleteService(Long id);
 }

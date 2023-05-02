@@ -1,14 +1,18 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 
+import com.bezkoder.spring.jpa.h2.Entity.ServiceDetails;
+import com.bezkoder.spring.jpa.h2.dto.DetailsDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
+import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -17,11 +21,13 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 
     @Autowired
-    private  ServicesRepository servicesRepository;
+    private ServicesRepository servicesRepository;
 
     @Autowired
-    private  ServicesMapper servicesMapper;
+    private ServicesMapper servicesMapper;
 
+    @Autowired
+    private ServicesDetailsRepository servicesDetailsRepository;
 
 
     public ServicesResponseDTO addService(ServicesRequestDTO servicesRequestDTO) {
@@ -33,14 +39,14 @@ public class UserServiceImpl implements UserService {
     public List<ServicesRequestDTO> getServices() {
         List<Services> serviceEntities = servicesRepository.findAll();
         List<ServicesRequestDTO> services = serviceEntities.stream()
-                .map(servicesEntity -> new ServicesRequestDTO(servicesEntity.getId(),servicesEntity.getServiceName(), servicesEntity.getPageName(), servicesEntity.isActive()))
+                .map(servicesEntity -> new ServicesRequestDTO(servicesEntity.getId(), servicesEntity.getServiceName(), servicesEntity.getPageName(), servicesEntity.isActive()))
                 .collect(Collectors.toList());
         return services;
     }
 
     public ServicesResponseDTO getServiceById(Long id) {
         Services service = servicesRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Service"+ "id"+id));
+                .orElseThrow(() -> new IllegalArgumentException("Service" + "id" + id));
         return servicesMapper.toDto(service);
     }
 
@@ -65,8 +71,7 @@ public class UserServiceImpl implements UserService {
             services.setActive(dto.isActive());
             services = servicesRepository.save(services);
             return servicesMapper.toDto(services);
-        }
-        else {
+        } else {
             throw new RuntimeException("Service Not Found");
         }
     }
@@ -78,6 +83,16 @@ public class UserServiceImpl implements UserService {
         } else {
             throw new IllegalArgumentException("Service with ID " + id + " not found");
         }
+    }
+
+    public List<DetailsDTO> getAllServicesDetailsWithName() {
+        List<ServiceDetails> serviceDetailsList = servicesDetailsRepository.findAll();
+        List<DetailsDTO> serviceDTOs = new ArrayList<>();
+        for (ServiceDetails serviceDetails : serviceDetailsList) {
+            DetailsDTO serviceDTO = new DetailsDTO(serviceDetails.getServices().getId(), serviceDetails.getServices().getServiceName(),serviceDetails.getAuthor(), serviceDetails.getDescription(),serviceDetails.getUpdateDate());
+            serviceDTOs.add(serviceDTO);
+        }
+        return serviceDTOs;
     }
 
 }
