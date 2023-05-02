@@ -3,9 +3,6 @@ package com.bezkoder.spring.jpa.h2.Entity;
 import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 @Getter
@@ -24,23 +21,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(max = 20)
+    @Column(name="username", nullable=false, length=20)
     private String username;
-    
-    @NotBlank
-    @Size(max = 50)
-    @Email
+
+    @Column(name="email", nullable=false, length=50)
     private String email;
 
-    @Size(max = 20)
+    @Column(name="lastname", nullable=true, length=20)
     private String firstname;
 
-    @Size(max = 20)
+    @Column(name="lastname", nullable=true, length=20)
     private String lastname;
 
-    @NotBlank
-    @Size(max = 120)
+    @Column(name="password", nullable=false, length=120)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
