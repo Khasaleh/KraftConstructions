@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'contact-us', component: ContactUsComponent},
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
-  {path:'add-user',component:AddUserComponent}
+  {path:'add-user',component:AddUserComponent},
   {
     path: 'admin',
     component: AdminMainComponent,

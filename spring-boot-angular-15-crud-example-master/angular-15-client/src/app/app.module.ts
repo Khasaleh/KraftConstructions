@@ -31,6 +31,7 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
 @NgModule({
   declarations: [
     AppComponent,
+    ContactUsComponent,
     IntmodComponent,
     AboutUsComponent,
     HomeComponent,
@@ -43,7 +44,7 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
     ContactUsComponent,
     LoginComponent,
     CareersComponent,
-    AddUserComponent
+    AddUserComponent,
     AdminHomeComponent,
     AdminHeaderComponent,
     AdminSidenavComponent,
