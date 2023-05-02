@@ -8,6 +8,7 @@ import { NewAddComponent } from './components/new-add/new-add.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component'
 import { AdminMainComponent } from './components/admin-main/admin-main.component'
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
@@ -23,6 +24,7 @@ const routes: Routes = [
 
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
+  {path:'add-user',component:AddUserComponent},
   {
     path: 'admin',
     component: AdminMainComponent,

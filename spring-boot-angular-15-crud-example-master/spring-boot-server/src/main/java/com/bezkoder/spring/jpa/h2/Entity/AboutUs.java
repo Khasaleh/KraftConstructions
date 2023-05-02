@@ -3,8 +3,10 @@ package com.bezkoder.spring.jpa.h2.Entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -21,6 +23,7 @@ public class AboutUs {
 
 
     @Column(name = "description")
+    @Length(max = 9999)
     private String description;
 
 }

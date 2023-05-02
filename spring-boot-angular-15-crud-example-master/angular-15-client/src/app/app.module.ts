@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,13 +15,18 @@ import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
+    ContactUsComponent,
     IntmodComponent,
     AboutUsComponent,
     HomeComponent,
@@ -36,15 +41,21 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
     CareersComponent,
     AdminSidenavComponent,
     AdminMainComponent,
-    AdminContactUsComponent
+    AdminContactUsComponent,
+    AddUserComponent,
+    AdminHomeComponent,
+    AdminHeaderComponent,
+    AdminSidenavComponent,
+    AdminMainComponent,
+
   ],
   imports: [
-    BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
-    
+    FormsModule,
+    BrowserAnimationsModule
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
