@@ -10,6 +10,9 @@ import { RequestEstimateComponent } from './components/request-estimate/request-
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component'
+import { AdminMainComponent } from './components/admin-main/admin-main.component'
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about-us', component: AboutUsComponent },
@@ -22,6 +25,15 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent}
+  {
+    path: 'admin',
+    component: AdminMainComponent,
+    children: [
+      {path: '', component: AdminHomeComponent},
+      { path: 'admin-home', component: AdminHomeComponent },
+    ],
+  },
+
 ];
 
 

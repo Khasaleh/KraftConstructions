@@ -3,6 +3,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { MatSidenavModule} from '@angular/material/sidenav';
+import { MatToolbarModule} from '@angular/material/toolbar';
+import { MatMenuModule} from '@angular/material/menu';
+import { MatIconModule} from '@angular/material/icon';
+import { MatDividerModule} from '@angular/material/divider';
+import { MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { IntmodComponent } from './components/intmod/intmod.component';
 import { HomeComponent } from './components/home/home.component';
@@ -16,6 +22,11 @@ import { RequestEstimateComponent } from './components/request-estimate/request-
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
 import { AddUserComponent } from './components/add-user/add-user.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
+import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
+import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminMainComponent } from './components/admin-main/admin-main.component'
 
 @NgModule({
   declarations: [
@@ -33,13 +44,19 @@ import { AddUserComponent } from './components/add-user/add-user.component';
     LoginComponent,
     CareersComponent,
     AddUserComponent
+    AdminHomeComponent,
+    AdminHeaderComponent,
+    AdminSidenavComponent,
+    AdminMainComponent,
+
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
-    
+    ReactiveFormsModule,
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

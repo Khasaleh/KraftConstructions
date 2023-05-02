@@ -512,7 +512,7 @@ a {
 .services-section {
     width: 100%;
     height: 30%;
-    background-color: var(--colors-buttun-gray-10);
+    background-color: var(--gray);
 }
 
 .services-parent {
