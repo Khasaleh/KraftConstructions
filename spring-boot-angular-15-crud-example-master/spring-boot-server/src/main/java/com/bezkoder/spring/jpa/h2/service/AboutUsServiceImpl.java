@@ -1,12 +1,13 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-import com.bezkoder.spring.jpa.h2.dto.AboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.Entity.AboutUs;
+import com.bezkoder.spring.jpa.h2.dto.AboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.mapper.AboutUsMapper;
 import com.bezkoder.spring.jpa.h2.repository.AboutUsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -40,4 +41,20 @@ public class AboutUsServiceImpl implements AboutUsService {
 
         }
     }
+    @Override
+    public void updateAboutUsVideoUrl(Long id, String videoUrl) {
+        AboutUs aboutUs = aboutUsRepository.findById(id).orElse(null);
+        if (aboutUs != null) {
+            aboutUs.setVideoUrl(videoUrl);
+            aboutUsRepository.save(aboutUs);
+        }
+    }
+
+    @Override
+    public String getAboutUsVideoUrl(Long id) {
+        AboutUs aboutUs = aboutUsRepository.findById(id)
+                .orElseThrow(() -> new NoSuchElementException("AboutUs not found for id: " + id));
+        return aboutUs.getVideoUrl();
+    }
+
 }

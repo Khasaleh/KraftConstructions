@@ -26,4 +26,8 @@ public class AboutUs {
     @Length(max = 9999)
     private String description;
 
+    @Column(name = "video_url")
+    private String videoUrl;
+
+
 }
