@@ -69,7 +69,7 @@ public class AuthController {
   }
 
   @PostMapping("/users/create")
-//  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
