@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormGroup, FormBuilder, FormControl, Form} from '@angular/forms'
+import { Component, OnInit } from '@angular/core';
+import {FormGroup, FormBuilder, ReactiveFormsModule, FormControl, Form} from '@angular/forms'
 import { AddUser } from 'src/app/model/add-user';
 import { AddUserService } from 'src/app/service/add-user.service';
 @Component({
@@ -7,14 +7,14 @@ import { AddUserService } from 'src/app/service/add-user.service';
   templateUrl: './add-user.component.html',
   styleUrls: ['./add-user.component.css']
 })
-export class AddUserComponent {
-  userDetail!: FormGroup;
-  userObj: AddUser = new AddUser();
-  userList : AddUser[] = [];
-  constructor(private formBuilder : FormBuilder, private adService : AddUserService) {}
-ngOnInit():void {
+export class AddUserComponent implements OnInit {
+  userDetail!: FormGroup ;
+  userObj:AddUser = new AddUser();
+  userList:AddUser[] = [];
+  constructor(private formBuilder : FormBuilder, private adService : AddUserService) { }
+ngOnInit(): void {
   this.getAllUsers();
-  this.userDetail = this.formBuilder.group({
+  this.userDetail = this.formBuilder.group ({
     username : [''],
     email : [''],
     firstname : [''],
