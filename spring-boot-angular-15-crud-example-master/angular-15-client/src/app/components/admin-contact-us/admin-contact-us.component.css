@@ -1,0 +1,10 @@
+.btn-primary {
+    align-items: right;
+}
+.form-label {
+    width:50%;
+}
+.form {
+    display: flex;
+    justify-content: center;
+}

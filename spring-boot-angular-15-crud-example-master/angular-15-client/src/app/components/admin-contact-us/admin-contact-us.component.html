@@ -1,0 +1,56 @@
+<div>
+    <app-admin-sidenav></app-admin-sidenav>
+<h2>
+    Contact Us
+</h2>
+</div>
+<div>
+    <form>
+        <div class="mb-3">
+          <label for="address" class="form-label">Address</label>
+          <input type="address" class="form-control" id="address" aria-describedby="emailHelp">
+        </div>
+        <div class="row">
+            <div class="col-3">
+                <label for="abc" class="form-label">Company Phones</label>
+              <input type="text" class="form-control" id = "abc" aria-label="First name">
+            </div>
+            <div class="col-3">
+                <label for="bca" class="form-label"> Fax </label>
+              <input type="text" id = "bca" class="form-control" aria-label="Last name">
+            </div>
+          </div>
+       <div>
+        <div class="mb-3">
+            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+            <div class="col-sm-3">
+              <input type="email" class="form-control" id="inputEmail3">
+            </div>
+          </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+       </div>
+    </form>
+    
+</div>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Country</th>
+        <th scope="col">Phone </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{firstname}}</td>
+        <td>{{email}}</td>
+        <td>USA</td>
+        <td>{{phone}}</td>
+      </tr>
+    
+    </tbody>
+  </table>
