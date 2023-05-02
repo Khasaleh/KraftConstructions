@@ -9,6 +9,7 @@
               Our friendly team would love to hear from you.
             </div>
           </div>
+          <form>
           <div class="form">
             <div class="form-fields">
               <div class="row">
@@ -39,7 +40,7 @@
                 <div class="input-field-base">
                   <div class="input-field-base">
                     <div class="label">Email</div>
-                    <input class="input" type="email" placeholder="you@company.name"/>
+                    <input class="input" type="email"placeholder="you@company.name"/>
                   </div>
                   <div class="hint-text">
                     This is a hint text to help user.
@@ -67,18 +68,19 @@
             
             <div class="input-field-base">
               <div class="label">Message</div>
-              <textarea class="textarea-input-field"></textarea>
+              <textarea class="textarea-input-field"> </textarea>
             </div>
             </div>
           
             <button class="actions">
-              <div class="button">
+              <div class="button" (click)="submitForm()">
                 <div class="button-base">
                   <div class="text">Send message</div>
                 </div>
               </div>
             </button>
           </div>
+          </form>
         </div>
       </div>
       <img class="image-icon" alt="" src="../assets/conusimg/image@2x.png" />
@@ -87,7 +89,7 @@
       <div class="emails-parent">
         <div class="emails">
           <div class="content2">
-            <div class="dustrogmailcom">www.kraftconstructionco.com</div>
+            <div class="dustrogmailcom" >www.kraftconstructionco.com</div>
             <div class="dustro-emails">kraft construction Emails</div>
           </div>
           <img class="icon" alt="" src="../assets/conusimg/icon.svg" />

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { MatSidenavModule} from '@angular/material/sidenav';
@@ -21,6 +21,7 @@ import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
@@ -30,6 +31,7 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
 @NgModule({
   declarations: [
     AppComponent,
+    ContactUsComponent,
     IntmodComponent,
     AboutUsComponent,
     HomeComponent,
@@ -42,17 +44,19 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
     ContactUsComponent,
     LoginComponent,
     CareersComponent,
+    AddUserComponent,
     AdminHomeComponent,
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminMainComponent,
 
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
   ],
   providers: [],
