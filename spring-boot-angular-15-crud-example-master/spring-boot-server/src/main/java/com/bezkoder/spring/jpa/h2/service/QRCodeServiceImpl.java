@@ -40,14 +40,6 @@ public class QRCodeServiceImpl implements QRCodeService {
         return qrCodeMapper.toQrCodeDTO(savedQRCode);
     }
 
-//    @Override
-//    public QRCodeDTO getQRCodeById(Long id) throws Exception {
-//        Optional<QRCode> qrCodeOptional = qrCodeRepository.findById(id);
-//        if (!qrCodeOptional.isPresent()) {
-//            throw new Exception("QR code not found");
-//        }
-//        return qrCodeMapper.toQrCodeDTO(qrCodeOptional.get());
-//    }
 
     public QRCode getQrCodeById(Long id) {
         Optional<QRCode> optionalQrCode = qrCodeRepository.findById(id);

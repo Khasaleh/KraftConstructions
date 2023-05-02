@@ -36,18 +36,7 @@ public class QRCodeController {
         }
     }
 
-//    @GetMapping("/{id}")
-//    public ResponseEntity<?> redirectToUrl(@PathVariable Long id) {
-//        try {
-//            QRCodeDTO qrCodeDTO = qrCodeService.getQRCodeById(id);
-//            String url = qrCodeDTO.getQrCodeText();
-//            return ResponseEntity.status(HttpStatus.FOUND)
-//                    .header(HttpHeaders.LOCATION, url)
-//                    .build();
-//        } catch (Exception e) {
-//            return new ResponseEntity<>("Failed to redirect to URL", HttpStatus.INTERNAL_SERVER_ERROR);
-//        }
-//    }
+
 
     @GetMapping("/{id}")
     public ResponseEntity<QRCodeDTO> getQrCodeById(@PathVariable Long id) {
