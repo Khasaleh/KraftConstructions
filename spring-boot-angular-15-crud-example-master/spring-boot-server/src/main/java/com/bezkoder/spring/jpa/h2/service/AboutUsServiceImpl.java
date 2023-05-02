@@ -33,7 +33,11 @@ public class AboutUsServiceImpl implements AboutUsService {
             aboutUs.setDescription(aboutUsRequestDto.getDescription());
             return aboutUsRepository.save(aboutUs);
         } else {
-            throw new RuntimeException("AboutUs Not Found");
+            AboutUs aboutUs = new AboutUs();
+            aboutUs.setTitle(aboutUsRequestDto.getTitle());
+            aboutUs.setDescription(aboutUsRequestDto.getDescription());
+            return aboutUsRepository.save(aboutUs);
+
         }
     }
 }

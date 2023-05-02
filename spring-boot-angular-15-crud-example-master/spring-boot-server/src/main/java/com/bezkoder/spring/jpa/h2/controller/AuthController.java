@@ -62,12 +62,14 @@ public class AuthController {
     return ResponseEntity.ok(new JwtResponse(jwt,
                          userDetails.getId(),
                          userDetails.getUsername(),
+                         userDetails.getFirstname(),
+                         userDetails.getLastname(),
                          userDetails.getEmail(),
                          roles));
   }
 
   @PostMapping("/users/create")
-  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
+//  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
@@ -83,7 +85,7 @@ public class AuthController {
 
     // Create new user's account
     User user = new User(signUpRequest.getUsername(),
-               signUpRequest.getEmail(),
+               signUpRequest.getEmail(), signUpRequest.getFirstname(), signUpRequest.getLastname(),
                encoder.encode(signUpRequest.getPassword()));
 
     Set<String> strRoles = signUpRequest.getRole();

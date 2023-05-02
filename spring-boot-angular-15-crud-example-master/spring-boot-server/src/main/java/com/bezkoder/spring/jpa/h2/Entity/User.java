@@ -1,7 +1,6 @@
 package com.bezkoder.spring.jpa.h2.Entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -11,6 +10,9 @@ import java.util.HashSet;
 import java.util.Set;
 @Getter
 @Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(	name = "users",
         uniqueConstraints = {
@@ -31,6 +33,12 @@ public class User {
     @Email
     private String email;
 
+    @Size(max = 20)
+    private String firstname;
+
+    @Size(max = 20)
+    private String lastname;
+
     @NotBlank
     @Size(max = 120)
     private String password;
@@ -42,12 +50,11 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
 
-    public User() {
-    }
-
-    public User(String username, String email, String password) {
+    public User(String username, String email,String firstname,String lastname, String password) {
         this.username = username;
         this.email = email;
+        this.firstname=firstname;
+        this.lastname=lastname;
         this.password = password;
     }
 }
