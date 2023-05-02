@@ -2,7 +2,7 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.QRCode;
 import com.bezkoder.spring.jpa.h2.dto.QRCodeDTO;
-import com.bezkoder.spring.jpa.h2.mapper.QRCodeMapper;
+import com.bezkoder.spring.jpa.h2.mapper.QrCodeMapperImpl;
 import com.bezkoder.spring.jpa.h2.repository.QRCodeRepository;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
@@ -18,23 +18,25 @@ import java.util.Optional;
 @Service
 public class QRCodeServiceImpl implements QRCodeService {
     @Autowired
-    private QRCodeMapper qrCodeMapper;
+    private QrCodeMapperImpl qrCodeMapper;
 
     @Autowired
     private QRCodeRepository qrCodeRepository;
 
     @Override
-    public QRCodeDTO createQRCode(String qrCodeText) throws Exception {
+    public QRCodeDTO createQRCode(QRCodeDTO qrCodeDTO) throws Exception {
         // Create QR code and save it to the file system
         String filePath = "path/to/folder/qr_code.png"; // Change this path to your desired path
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(qrCodeText, BarcodeFormat.QR_CODE, 350, 350);
+        BitMatrix bitMatrix = qrCodeWriter.encode(qrCodeDTO.getQrCodeText(), BarcodeFormat.QR_CODE, 350, 350);
         Path path = FileSystems.getDefault().getPath(filePath);
         MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 
         QRCode qrCode = new QRCode();
-        qrCode.setQrCodeText(qrCodeText);
-        qrCode.setFilePath(filePath);
+        qrCode.setQrCodeText(qrCodeDTO.getQrCodeText());
+        qrCodeDTO.setFilePath(filePath);
+        qrCode.setFilePath(qrCodeDTO.getFilePath());
+
         QRCode savedQRCode = qrCodeRepository.save(qrCode);
 
         return qrCodeMapper.toQrCodeDTO(savedQRCode);

@@ -8,9 +8,9 @@ import javax.persistence.Column;
 
 
 @Component
-public class QrCodeMapperImpl implements QRCodeMapper {
+public class QrCodeMapperImpl  {
 
-    @Override
+
     public QRCodeDTO toQrCodeDTO(QRCode qrCode) {
         QRCodeDTO qrCodeDTO = new QRCodeDTO();
         qrCodeDTO.setQrCodeText(qrCode.getQrCodeText());
@@ -18,7 +18,7 @@ public class QrCodeMapperImpl implements QRCodeMapper {
         return qrCodeDTO;
     }
 
-    @Override
+
     public QRCode toQrCode(QRCodeDTO qrCodeDTO) {
         QRCode qrCode = new QRCode();
         qrCode.setQrCodeText(qrCodeDTO.getQrCodeText());

@@ -5,7 +5,7 @@ import java.io.IOException;
 
 import com.bezkoder.spring.jpa.h2.Entity.QRCode;
 import com.bezkoder.spring.jpa.h2.dto.QRCodeDTO;
-import com.bezkoder.spring.jpa.h2.mapper.QRCodeMapper;
+import com.bezkoder.spring.jpa.h2.mapper.QrCodeMapperImpl;
 import com.bezkoder.spring.jpa.h2.service.QRCodeService;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,19 +24,17 @@ public class QRCodeController {
     private QRCodeService qrCodeService;
 
     @Autowired
-    QRCodeMapper qrCodeMapper;
+    QrCodeMapperImpl qrCodeMapper;
 
     @PostMapping
-    public ResponseEntity<?> createQRCode(@RequestBody String qrCodeText) {
+    public ResponseEntity<?> createQRCode(@RequestBody QRCodeDTO qrCodeDTO) {
         try {
-            QRCodeDTO qrCodeDTO = qrCodeService.createQRCode(qrCodeText);
+            QRCodeDTO qrCode = qrCodeService.createQRCode(qrCodeDTO);
             return new ResponseEntity<>(qrCodeDTO, HttpStatus.CREATED);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to create QR code", HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-
 
     @GetMapping("/{id}")
     public ResponseEntity<QRCodeDTO> getQrCodeById(@PathVariable Long id) {
