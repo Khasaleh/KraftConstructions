@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -7,9 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AboutUsResponseDTO {
-    private Long id;
-    private String title;
+@AllArgsConstructor
+public class HomePageAboutUsRequestDTO {
+
+    private String link;
+
     private String description;
+
 
 }

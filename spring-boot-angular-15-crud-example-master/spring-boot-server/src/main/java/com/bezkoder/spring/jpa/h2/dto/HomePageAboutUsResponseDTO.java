@@ -7,9 +7,11 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class AboutUsResponseDTO {
+public class HomePageAboutUsResponseDTO {
     private Long id;
-    private String title;
-    private String description;
+   // private String title;
+   private String link;
 
+    private String description;
+    private String videoUrl;
 }

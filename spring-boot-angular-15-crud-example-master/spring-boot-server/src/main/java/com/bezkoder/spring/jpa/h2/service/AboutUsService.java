@@ -9,9 +9,5 @@ public interface AboutUsService {
 
     AboutUs updateAboutUs(Long id, AboutUsRequestDTO aboutUsRequestDto);
 
-   void updateAboutUsVideoUrl(Long id, String videoUrl);
-
-
-    String getAboutUsVideoUrl(Long id);
 
 }
