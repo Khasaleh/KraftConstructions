@@ -5,9 +5,11 @@ import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsResponseDTO;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.service.HomePageAboutUsService;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -33,7 +35,7 @@ public class HomePageAboutUsController {
     private static final Long ABOUT_US_ID = 1L;
 
     @PostMapping("/homepageupdate-description")
-    //@PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<HomePageAboutUsResponseDTO> updateHomePageAboutUs(@RequestBody HomePageAboutUsRequestDTO homePageAboutUsRequestDTO) {
         HomePageAboutUs homePageAboutUs = homePageAboutUsService.updateHomePageAboutUs(ABOUT_US_ID, homePageAboutUsRequestDTO);
         HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePageAboutUs);
@@ -47,7 +49,7 @@ public class HomePageAboutUsController {
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
     @PostMapping("/upload-video")
-    // @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<Void> uploadVideo(@RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);

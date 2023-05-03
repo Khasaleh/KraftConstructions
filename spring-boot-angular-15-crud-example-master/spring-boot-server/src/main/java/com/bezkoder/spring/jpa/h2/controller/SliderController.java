@@ -2,8 +2,10 @@ package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.SliderDto;
 import com.bezkoder.spring.jpa.h2.service.SliderService;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -23,6 +25,7 @@ public class SliderController {
 
 
     @PostMapping("/add")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<SliderDto> addSlider(@Valid @RequestParam("images") MultipartFile[] images) {
         try {
 
@@ -42,6 +45,7 @@ public class SliderController {
 
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<String> deleteSlider(@PathVariable("id") Long id) {
 
         sliderService.deleteSlider(id);
