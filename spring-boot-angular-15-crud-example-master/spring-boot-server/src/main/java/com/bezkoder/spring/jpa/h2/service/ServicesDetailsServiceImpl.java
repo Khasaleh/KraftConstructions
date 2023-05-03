@@ -4,6 +4,7 @@ import com.bezkoder.spring.jpa.h2.Entity.ServiceDetails;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.Entity.User;
 import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
 import com.bezkoder.spring.jpa.h2.mapper.ServiceDetailsMapper;
 import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
@@ -12,6 +13,8 @@ import com.bezkoder.spring.jpa.h2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -36,9 +39,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
     @Override
     public ServiceDetailsDTO addServiceDetails(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails) {
 
-        int serviceid = 1;
         User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException());
-        Services service = servicesRepository.findById(serviceDetailsDTO.getServices_id()).orElseThrow(() -> new IllegalArgumentException("Service not found" + serviceid));
+        Services service = servicesRepository.findById(serviceDetailsDTO.getServiceId()).orElseThrow(() -> new IllegalArgumentException("Service not found"+ serviceDetailsDTO.getServiceId()));
         serviceDetailsDTO.setAuthor(user.getUsername());
         ServiceDetails serviceDetails = serviceDetailsMapper.toEntity(serviceDetailsDTO, service);
         serviceDetails = servicesDetailsRepository.save(serviceDetails);
@@ -47,11 +49,13 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
 
 
     @Override
-    public ServiceDetailsDTO getServiceDetailsById(Long id) {
-        ServiceDetails serviceDetails = servicesDetailsRepository.findById(id).orElseThrow(() -> new RuntimeException("ServiceDetails" + "id" + id));
-        return serviceDetailsMapper.toDto(serviceDetails);
+    public ServiceDetailsDTO getServiceDetailsByServiceId(Long serviceId) {
+        Optional<Services> optionalServices = servicesRepository.findById(serviceId);
+        if (optionalServices.isPresent()){
+            return serviceDetailsMapper.toDto(optionalServices.get().getServiceDetails());
+        }
+        return null;
     }
-
 
 
 
@@ -78,8 +82,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
     private ServiceDetailsDTO convertToDTO(ServiceDetails servicesDetails) {
         ServiceDetailsDTO servicesDetailsDTO = new ServiceDetailsDTO();
         servicesDetailsDTO.setId(servicesDetails.getId());
-        servicesDetailsDTO.setId(servicesDetails.getId());
-        servicesDetailsDTO.setServices_id(servicesDetails.getServices().getId());
+        servicesDetailsDTO.setServiceId(servicesDetails.getServices().getId());
         servicesDetailsDTO.setAddPortfolio(servicesDetails.isAddPortfolio());
         servicesDetailsDTO.setDescription(servicesDetails.getDescription());
         servicesDetailsDTO.setAfterImageUrl(servicesDetails.getAfterImageUrl());
@@ -91,8 +94,18 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
     }
 
 
+
+
     @Override
-    public void deleteServiceDetails(Long id) {
-        servicesDetailsRepository.deleteById(id);
+    public List<ServiceWithDetailDTO> getAllServicesDetailsWithName() {
+        List<Services> services= servicesRepository.findAll();
+        List<ServiceWithDetailDTO> serviceDTOs = new ArrayList<>();
+        for (Services service : services) {
+            ServiceWithDetailDTO serviceDTO = ServiceWithDetailDTO.builder().serviceName(service.getServiceName())
+                            .description(service.getServiceDetails().getDescription()).author(service.getServiceDetails().getAuthor())
+                            .updateDate(service.getServiceDetails().getUpdateDate()).build();
+            serviceDTOs.add(serviceDTO);
+        }
+        return serviceDTOs;
     }
 }

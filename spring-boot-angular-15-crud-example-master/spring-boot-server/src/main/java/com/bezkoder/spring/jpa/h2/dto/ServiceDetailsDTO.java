@@ -1,6 +1,5 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
-import com.bezkoder.spring.jpa.h2.Entity.ServiceDetails;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +14,7 @@ import java.time.LocalDateTime;
 public class ServiceDetailsDTO {
 
     private Long id;
-    private Long services_id;
+    private Long serviceId;
     private String beforeImageUrl;
     private String afterImageUrl;
     private String description;

@@ -6,8 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
-import java.util.List;
 
 
 @Entity
@@ -20,17 +18,15 @@ public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
-    @Column(name = "service_name")
+    @Column(name = "service_name",nullable = false)
     private String serviceName;
-    @NotBlank
-    @Column(name = "page_name")
+    @Column(name = "page_name",nullable = false)
     private String pageName;
 
     @Column(name = "is_active")
     private boolean isActive;
 
-    @OneToOne(mappedBy = "services", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "services", cascade = CascadeType.ALL,orphanRemoval = true)
     private ServiceDetails serviceDetails;
 
 

@@ -1,8 +1,6 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 
-import com.bezkoder.spring.jpa.h2.Entity.ServiceDetails;
-import com.bezkoder.spring.jpa.h2.dto.DetailsDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
@@ -12,13 +10,12 @@ import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
-public class UserServiceImpl implements UserService {
+public class ServicesServiceImpl implements ServicesService {
 
     @Autowired
     private ServicesRepository servicesRepository;
@@ -84,15 +81,4 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("Service with ID " + id + " not found");
         }
     }
-
-    public List<DetailsDTO> getAllServicesDetailsWithName() {
-        List<ServiceDetails> serviceDetailsList = servicesDetailsRepository.findAll();
-        List<DetailsDTO> serviceDTOs = new ArrayList<>();
-        for (ServiceDetails serviceDetails : serviceDetailsList) {
-            DetailsDTO serviceDTO = new DetailsDTO(serviceDetails.getServices().getId(), serviceDetails.getServices().getServiceName(),serviceDetails.getAuthor(), serviceDetails.getDescription(),serviceDetails.getUpdateDate());
-            serviceDTOs.add(serviceDTO);
-        }
-        return serviceDTOs;
-    }
-
 }

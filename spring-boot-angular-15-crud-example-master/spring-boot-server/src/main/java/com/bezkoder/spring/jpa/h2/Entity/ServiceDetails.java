@@ -5,7 +5,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 
 
@@ -20,18 +19,15 @@ public class ServiceDetails {
     private Long id;
 
     @OneToOne
-    @JoinColumn(name = "services_id")
+    @JoinColumn(name = "service_id")
     private Services services;
 
-    @NotBlank
-    @Column(name = "before_image_url")
+    @Column(name = "before_image_url",nullable = false)
     private String beforeImageUrl;
 
-    @NotBlank
-    @Column(name = "after_image_url")
+    @Column(name = "after_image_url",nullable = false)
     private String afterImageUrl;
 
-    @NotBlank
     @Column(name = "description")
     private String description;
 

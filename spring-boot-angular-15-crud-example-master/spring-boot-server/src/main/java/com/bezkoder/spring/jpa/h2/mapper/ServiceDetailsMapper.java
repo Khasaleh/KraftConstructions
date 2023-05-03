@@ -12,7 +12,7 @@ public class ServiceDetailsMapper {
     public static ServiceDetailsDTO toDto(ServiceDetails serviceDetails) {
         ServiceDetailsDTO dto = new ServiceDetailsDTO();
         dto.setId(serviceDetails.getId());
-        dto.setServices_id(serviceDetails.getServices().getId());
+        dto.setServiceId(serviceDetails.getServices().getId());
         dto.setAddPortfolio(serviceDetails.isAddPortfolio());
         dto.setDescription(serviceDetails.getDescription());
         dto.setAfterImageUrl(serviceDetails.getAfterImageUrl());
@@ -33,7 +33,6 @@ public class ServiceDetailsMapper {
         entity.setAfterImageUrl(dto.getAfterImageUrl());
         entity.setBeforeImageUrl(dto.getBeforeImageUrl());
         entity.setUpdateDate(dto.getUpdateDate());
-        services.setId(dto.getServices_id());
         entity.setServices(services);
         entity.setAuthor(dto.getAuthor());
         return entity;

@@ -7,10 +7,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ServicesDetailsRepository extends JpaRepository<ServiceDetails, Long> {
 
-    List<ServiceDetails> findByServices(Services services);
+    Optional<ServiceDetails> findByServices(Services services);
+
 
 }

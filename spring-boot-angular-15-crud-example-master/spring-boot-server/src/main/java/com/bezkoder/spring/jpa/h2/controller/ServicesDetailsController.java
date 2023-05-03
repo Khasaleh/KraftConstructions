@@ -1,10 +1,11 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
 import com.bezkoder.spring.jpa.h2.mapper.ServiceDetailsMapper;
 import com.bezkoder.spring.jpa.h2.service.ServicesDetailsServiceImpl;
 import com.bezkoder.spring.jpa.h2.service.UserDetailsImpl;
-import com.bezkoder.spring.jpa.h2.service.UserServiceImpl;
+import com.bezkoder.spring.jpa.h2.service.ServicesServiceImpl;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,13 +15,14 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/services")
 public class ServicesDetailsController {
 
     @Autowired
-    private UserServiceImpl userServiceImpl;
+    private ServicesServiceImpl servicesServiceImpl;
     @Autowired
     private ServicesDetailsServiceImpl servicesDetailsService;
 
@@ -28,7 +30,7 @@ public class ServicesDetailsController {
     private ServiceDetailsMapper serviceDetailsMapper;
 
 
-    @PostMapping("/{serviceId}/details")
+    @PostMapping("/addDetails")
     @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
     public ResponseEntity<ServiceDetailsDTO> addServiceDetails(@Valid @RequestBody ServiceDetailsDTO serviceDetailsDTO) {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -37,12 +39,15 @@ public class ServicesDetailsController {
     }
 
 
-    @GetMapping("/{detailId}")
-    public ResponseEntity<ServiceDetailsDTO> getServiceDetail(@PathVariable Long detailId) {
-        ServiceDetailsDTO serviceDetailsDTO = servicesDetailsService.getServiceDetailsById(detailId);
-        return ResponseEntity.ok(serviceDetailsDTO);
+    @GetMapping("/{serviceId}/details")
+    public ResponseEntity<ServiceDetailsDTO> getServiceDetailsByServiceId(@PathVariable Long serviceId) {
+        ServiceDetailsDTO serviceDetails = servicesDetailsService.getServiceDetailsByServiceId(serviceId);
+        if (serviceDetails == null) {
+            return ResponseEntity.notFound().build();
+        } else {
+            return ResponseEntity.ok(serviceDetails);
+        }
     }
-
 
 
     @PutMapping("/{id}")
@@ -55,9 +60,10 @@ public class ServicesDetailsController {
         }
     }
 
-    @DeleteMapping("/{detailId}")
-    public ResponseEntity<Void> deleteServiceDetail(@PathVariable Long detailId) {
-        servicesDetailsService.deleteServiceDetails(detailId);
-        return ResponseEntity.ok().build();
+    @GetMapping("/details")
+    public List<ServiceWithDetailDTO> getAllServicesDetailsWithName() {
+        return servicesDetailsService.getAllServicesDetailsWithName();
     }
+
+
 }
