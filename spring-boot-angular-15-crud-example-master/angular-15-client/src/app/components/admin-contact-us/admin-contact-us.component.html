@@ -1,56 +1,103 @@
-<div>
-    <app-admin-sidenav></app-admin-sidenav>
-<h2>
-    Contact Us
-</h2>
-</div>
-<div>
-    <form>
-        <div class="mb-3">
-          <label for="address" class="form-label">Address</label>
-          <input type="address" class="form-control" id="address" aria-describedby="emailHelp">
+<div class="desktop-3">
+  <div class="desktop-3-child"></div>
+  <div class="desktop-3-item"></div>
+  <div class="rectangle-div"></div>
+  <div class="contact-us">Contact us</div>
+  <div class="line-div"></div>
+  <div class="input-field">
+    <div class="input-field-base">
+      <div class="input-field-base">
+        <div class="label">Address</div>
+        <input class="input" type="text" />
+      </div>
+      <div class="hint-text">This is a hint text to help user.</div>
+    </div>
+  </div>
+  <div class="input-field1">
+    <div class="input-field-base">
+      <div class="input-field-base">
+        <div class="label">Company Phones</div>
+        <input class="input1" type="text" />
+      </div>
+      <div class="hint-text">This is a hint text to help user.</div>
+    </div>
+  </div>
+  <div class="input-field2">
+    <div class="input-field-base">
+      <div class="input-field-base">
+        <div class="label">Fax</div>
+        <input class="input1" type="text" />
+      </div>
+      <div class="hint-text">This is a hint text to help user.</div>
+    </div>
+  </div>
+  <div class="input-field3">
+    <div class="input-field-base">
+      <div class="input-field-base">
+        <div class="label">Email</div>
+        <input class="input1" type="text" />
+      </div>
+      <div class="hint-text3">This is a hint text to help user.</div>
+    </div>
+  </div>
+
+  <button class="rectangle-parent">
+    <div class="group-child"></div>
+    <div class="edit">Edit</div>
+  </button>
+  <!-- <div class="rectangle-group">
+        <div class="instance-child"></div>
+        <div class="image-parent">
+          <img class="image-icon" alt="" src="./public/image@2x.png" />
+
+          <div class="koray-okumus">Koray Okumus</div>
         </div>
-        <div class="row">
-            <div class="col-3">
-                <label for="abc" class="form-label">Company Phones</label>
-              <input type="text" class="form-control" id = "abc" aria-label="First name">
-            </div>
-            <div class="col-3">
-                <label for="bca" class="form-label"> Fax </label>
-              <input type="text" id = "bca" class="form-control" aria-label="Last name">
-            </div>
-          </div>
-       <div>
-        <div class="mb-3">
-            <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-3">
-              <input type="email" class="form-control" id="inputEmail3">
-            </div>
-          </div>
-        <button type="submit" class="btn btn-primary">Edit</button>
-       </div>
-    </form>
+      </div> -->
+     
+  <div class="rectangle-container">
+    <div class="group-item"></div>
+    <div class="simply-dummy-text">
+      {{message}}
+    </div>
+    <div class="group-div">
+      <div class="group-inner"></div>
+      <div class="email-parent">
+        <div class="email">Email</div>
+        <div class="oliverjohngmailcom">{{email}}</div>
+      </div>
+    </div>
+    <div class="check-button">
+      <div class="rectangle-parent1">
+        <div class="group-child1"></div>
+        <div class="name-parent">
+          <div class="name">Name</div>
+          <div class="oliver-john">{{firstname}}</div>
+        </div>
+      </div>
+    </div>
+    <div class="group-child2"></div>
+    <div class="rectangle-parent2">
+      <div class="group-child3"></div>
+      <div class="parent">
+        <div class="div">{{phone}}</div>
+        <div class="phone">Phone</div>
+      </div>
+      <div class="rectangle-parent3">
+        <div class="group-child4"></div>
+        <div class="country-parent">
+          <div class="country">Country</div>
+          <div class="usa">USA</div>
+        </div>
+      </div>
+    </div>
+    <div class="pm">25-12-2022 1:52 pm</div>
+    <button class="delete">Delete</button>
     
+  </div>
+  
 </div>
 
-<table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Name</th>
-        <th scope="col">Email</th>
-        <th scope="col">Country</th>
-        <th scope="col">Phone </th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>{{firstname}}</td>
-        <td>{{email}}</td>
-        <td>USA</td>
-        <td>{{phone}}</td>
-      </tr>
-    
-    </tbody>
-  </table>
+  <div class="component-6">
+    <app-admin-sidenav></app-admin-sidenav>
+  </div>
+  

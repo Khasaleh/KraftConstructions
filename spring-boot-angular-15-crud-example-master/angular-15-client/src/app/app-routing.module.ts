@@ -12,6 +12,7 @@ import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component'
 import { AdminMainComponent } from './components/admin-main/admin-main.component'
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -21,7 +22,7 @@ const routes: Routes = [
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'new-additions', component: NewAddComponent },
   {path:'request-estimate', component: RequestEstimateComponent},
-
+  {path:'contact-us', component: ContactUsComponent},
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent},
