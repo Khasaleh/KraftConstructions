@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
-@RequestMapping("/contact-us")
+@RequestMapping("/api/contact-us")
 public class ContactUsController {
 
     @Autowired

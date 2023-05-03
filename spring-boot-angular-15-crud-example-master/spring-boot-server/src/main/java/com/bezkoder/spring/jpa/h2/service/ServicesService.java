@@ -5,7 +5,7 @@ import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 
 import java.util.List;
 
-public interface UserService {
+public interface ServicesService {
     boolean disableAndEnableTheService(Long id, boolean isActive);
     List<ServicesRequestDTO> getServices();
     ServicesResponseDTO addService(ServicesRequestDTO servicesRequestDTO);
