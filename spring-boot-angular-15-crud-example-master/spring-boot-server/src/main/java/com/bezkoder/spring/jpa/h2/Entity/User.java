@@ -1,16 +1,15 @@
 package com.bezkoder.spring.jpa.h2.Entity;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 @Getter
 @Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(	name = "users",
         uniqueConstraints = {
@@ -22,17 +21,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotBlank
-    @Size(max = 20)
+    @Column(name="username", nullable=false, length=20)
     private String username;
 
-    @NotBlank
-    @Size(max = 50)
-    @Email
+    @Column(name="email", nullable=false, length=50)
     private String email;
 
-    @NotBlank
-    @Size(max = 120)
+    @Column(name="firstname", nullable=true, length=20)
+    private String firstname;
+
+    @Column(name="lastname", nullable=true, length=20)
+    private String lastname;
+
+    @Column(name="password", nullable=false, length=120)
     private String password;
 
     @ManyToMany(fetch = FetchType.LAZY)
@@ -42,13 +43,11 @@ public class User {
     private Set<Role> roles = new HashSet<>();
 
 
-    public User() {
-    }
-
-    public User(String username, String email, String password) {
+    public User(String username, String email,String firstname,String lastname, String password) {
         this.username = username;
         this.email = email;
+        this.firstname=firstname;
+        this.lastname=lastname;
         this.password = password;
     }
-
 }

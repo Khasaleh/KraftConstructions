@@ -7,12 +7,13 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
 import { NewAddComponent } from './components/new-add/new-add.component';
 import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
-import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
+import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component'
 import { AdminMainComponent } from './components/admin-main/admin-main.component'
 import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-us.component'
-
+import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
+import { ContactUsComponent } from './components/contact-us/contact-us.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -22,9 +23,10 @@ const routes: Routes = [
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'new-additions', component: NewAddComponent },
   {path:'request-estimate', component: RequestEstimateComponent},
-  {path: 'contact-us', component: ContactUsComponent},
+  {path:'contact-us', component: ContactUsComponent},
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
+  {path:'add-user',component:AddUserComponent},
   {
     path: 'admin',
     component: AdminMainComponent,
@@ -35,6 +37,12 @@ const routes: Routes = [
 
     ],
   },
+  {
+    path:'admin-contact-us', component : AdminContactUsComponent,
+    children: [
+      {path: 'admin-contact-us', component: AdminContactUsComponent}
+    ],
+  }
 
 ];
 
