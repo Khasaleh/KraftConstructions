@@ -1,0 +1,118 @@
+.new-container {
+    padding: 0px 2%;
+}
+
+.admin-about-us{
+    padding: 30px 0px;
+    /* min-height: 100%; */
+    width: 100%;
+    background-color: #E8ECF3;
+}
+.first{
+    padding-bottom: 10px;
+}
+.card-shade{
+    box-shadow: 2px 8px 4px 0px lightgray
+}
+.card-head {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 16px 0px 9px 22px;
+}
+.cardbtn {
+    width: 100%;
+    /* margin-left: 55px; */
+    display: flex;
+    justify-content: center;
+}
+.custom-button {
+    padding: 8px 20px;
+    background-color: #2d5833;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 248px;
+}
+
+/* Add hover and active states for the custom button */
+.custom-button:hover,
+.custom-button:focus,
+.custom-button:active {
+    background-color: #518350;
+}
+.input-file {
+    display: none;
+}
+.img-box{
+    width: 190px;
+    height: auto;
+    margin: 20px 0px 10px 100px;
+}
+.card-head2 {
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 12px;
+    /* font-family: sans-serif; */
+}
+.content-wrape{
+    display: flex;
+    align-items: center;
+}
+.img-content {
+    width: 100%;
+}
+.description {
+    width: 100%;
+}
+.img-dyn{
+    width: 100%;
+}
+
+.second{
+    padding-bottom: 500px;
+}
+#green-button{
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+#green-button2{
+    margin: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+}
+.img-width{
+    width: 100%;
+}
+.text{
+    font-weight: 500;
+    font-size: 14px;
+    color: #AEAEAE;
+}
+.img-content-wrape {
+    padding: 40px 10%;
+    position: absolute;
+    right: 4px;
+    width: 100%;
+    top: 50px;
+}
+#card-length {
+    height: 362px;
+}
+.para-content{
+    font-size: 15px;
+    font-weight: 400;
+}
+
+@media (max-width: 59em) {
+ .content-wrape{
+    display: flex;
+    flex-wrap: wrap;
+ }
+}

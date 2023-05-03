@@ -25,7 +25,8 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminMainComponent } from './components/admin-main/admin-main.component'
+import { AdminMainComponent } from './components/admin-main/admin-main.component';
+import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-us.component'
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminMainComponent,
+    AdminAboutUsComponent,
 
   ],
   imports: [
