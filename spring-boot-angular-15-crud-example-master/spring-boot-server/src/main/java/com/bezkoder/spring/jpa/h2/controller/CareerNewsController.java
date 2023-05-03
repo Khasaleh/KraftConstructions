@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/news")
+@RequestMapping("/api/news")
 public class CareerNewsController {
 
     @Autowired

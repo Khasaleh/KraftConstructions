@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/siteContactInfo")
+@RequestMapping("/api/siteContactInfo")
 public class SiteContactInfoController {
     @Autowired
     private SiteContactInfoService siteContactInfoService;
