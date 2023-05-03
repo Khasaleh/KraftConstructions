@@ -1,14 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
-import { MatSidenavModule} from '@angular/material/sidenav';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatMenuModule} from '@angular/material/menu';
-import { MatIconModule} from '@angular/material/icon';
-import { MatDividerModule} from '@angular/material/divider';
-import { MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { IntmodComponent } from './components/intmod/intmod.component';
 import { HomeComponent } from './components/home/home.component';
@@ -21,12 +15,13 @@ import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
+
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
 import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AdminMainComponent } from './components/admin-main/admin-main.component'
+import { AdminMainComponent } from './components/admin-main/admin-main.component';
+import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 
 @NgModule({
   declarations: [
@@ -44,11 +39,15 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
     ContactUsComponent,
     LoginComponent,
     CareersComponent,
+    AdminSidenavComponent,
+    AdminMainComponent,
+    AdminContactUsComponent,
     AddUserComponent,
     AdminHomeComponent,
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminMainComponent,
+
 
 
   ],
@@ -57,7 +56,9 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
+    FormsModule
+    
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

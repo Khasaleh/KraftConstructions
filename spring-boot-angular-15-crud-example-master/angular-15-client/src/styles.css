@@ -195,3 +195,46 @@ body {
   
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --fonts-peragraph-reguler: "Myriad Pro";
+  --text-sm-regular: Inter;
+  --font-font-awesome-5-free: "Font Awesome 5 Free";
+
+  /* font sizes */
+  --fonts-peragraph-reguler-size: 15px;
+  --font-size-base: 16px;
+  --fonts-place-holder-small-size: 14px;
+  --fonts-heading-h4-size: 18px;
+
+  /* Colors */
+  --colors-white: #fff;
+  --kraft-d-green: #025a00;
+  --color-seagreen: #518350;
+  --color-darkolivegreen: #3d6b3d;
+  --colors-buttun-gray-10: #eff2f5;
+  --color-red: #ff0000;
+  --color-black: #000;
+  --primary-dark: #141619;
+  --color-gray-100: #000a1b;
+  --border-event: #ddd;
+  --color-gainsboro-100: #dbdbdb;
+  --gray-500: #667085;
+  --color-lightgray: #d0d5dd;
+
+  /* Gaps */
+  --gap-7xs: 6px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-sm: 14px;
+
+  /* border radiuses */
+  --br-8xs: 5px;
+  --br-5xs: 8px;
+}
