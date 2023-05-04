@@ -15,7 +15,6 @@ import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
-
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
@@ -24,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-us.component';
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
-
+ import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
+import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
 
 @NgModule({
   declarations: [
@@ -51,9 +51,8 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
     AdminSidenavComponent,
     AdminMainComponent,
     AdminAboutUsComponent,
-
-
-
+     AdminTestimonialComponent,
+    AdminCareersComponent
   ],
   imports: [
     BrowserModule,
