@@ -37,10 +37,8 @@ const routes: Routes = [
     ],
   },
   {
-    path:'admin-contact-us', component : AdminContactUsComponent,
-    children: [
-      {path: 'admin-contact-us', component: AdminContactUsComponent}
-    ],
+    path:'admin-contact-us', component : AdminContactUsComponent
+   
   }
 
 ];
