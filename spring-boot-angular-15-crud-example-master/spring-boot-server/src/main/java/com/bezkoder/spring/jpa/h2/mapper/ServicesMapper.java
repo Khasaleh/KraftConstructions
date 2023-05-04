@@ -18,12 +18,20 @@ public class ServicesMapper {
         return entity;
     }
 
-    public ServicesResponseDTO toDto(Services entity) {
+    public static ServicesResponseDTO toDto(Services entity) {
         ServicesResponseDTO dto = new ServicesResponseDTO();
         dto.setServiceName(entity.getServiceName());
         dto.setPageName(entity.getPageName());
         dto.setActive(entity.isActive());
         return dto;
+    }
+
+    public static Services toService(ServicesResponseDTO dto) {
+        Services entity = new Services();
+        entity.setServiceName(dto.getServiceName());
+        entity.setPageName(dto.getPageName());
+        entity.setActive(dto.isActive());
+        return entity;
     }
 
 
