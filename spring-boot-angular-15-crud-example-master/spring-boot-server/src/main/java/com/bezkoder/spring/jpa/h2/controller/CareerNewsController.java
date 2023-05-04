@@ -4,8 +4,10 @@ import com.bezkoder.spring.jpa.h2.Entity.CareersNews;
 import com.bezkoder.spring.jpa.h2.dto.CareerNewsDto;
 import com.bezkoder.spring.jpa.h2.mapper.CareerNewsMapper;
 import com.bezkoder.spring.jpa.h2.service.CareerNewsService;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -29,6 +31,7 @@ public class CareerNewsController {
     }
 
     @GetMapping("/status/{status}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<List<CareerNewsDto>> getCareerNewsByStatus(@PathVariable Boolean status) {
         List<CareerNewsDto> careerNewsList = newsService.findByStatus(status);
         List<CareerNewsDto> careerNewsDTOList = newsMapper.toDTOListStatus(careerNewsList);
@@ -40,12 +43,14 @@ public class CareerNewsController {
 
     // Create a new News
     @PostMapping
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<CareerNewsDto> addNews(@Valid  @RequestBody CareerNewsDto newsDTO) {
         CareerNewsDto addedNews = newsService.addNews(newsDTO);
         return ResponseEntity.ok(addedNews);
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<CareerNewsDto> updateNews(@PathVariable Long id, @Valid @RequestBody CareerNewsDto newsDto) {
         CareerNewsDto updateService =  newsService.updateNews(id, newsDto);
         return ResponseEntity.ok(updateService);
