@@ -21,9 +21,8 @@ public class SiteContactInfoController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<SiteContactInfoDto> updateSiteContactInfo( @PathVariable("id") Long id,
-                                                                     @Valid @RequestBody SiteContactInfoDto siteContactInfoDto) {
-        SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo(id, siteContactInfoDto);
+    public ResponseEntity<SiteContactInfoDto> updateSiteContactInfo(@Valid @RequestBody SiteContactInfoDto siteContactInfoDto) {
+        SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo(siteContactInfoDto);
         return ResponseEntity.ok(updatedSiteContactInfoDto);
     }
 }
