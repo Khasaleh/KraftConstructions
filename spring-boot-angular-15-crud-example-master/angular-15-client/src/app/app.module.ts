@@ -25,6 +25,7 @@ import { AdminMainComponent } from './components/admin-main/admin-main.component
 import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-us.component';
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 
 
 @NgModule({
@@ -51,10 +52,9 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminMainComponent,
+    AdminTestimonialComponent,
     AdminAboutUsComponent,
     AdminDashboardComponent,
-
-
 
   ],
   imports: [
