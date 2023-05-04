@@ -13,6 +13,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,8 +48,8 @@ public class HomePageAboutUsController {
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
     @PostMapping("/upload-video")
-   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<Void> uploadVideo(@RequestParam("file") MultipartFile file) throws IOException {
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<Void> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);
         return ResponseEntity.ok().build();
