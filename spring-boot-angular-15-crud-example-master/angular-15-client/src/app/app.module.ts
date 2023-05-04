@@ -24,6 +24,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-us.component';
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
+import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 
 
 @NgModule({
@@ -50,10 +51,8 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminMainComponent,
+    AdminTestimonialComponent,
     AdminAboutUsComponent,
-
-
-
   ],
   imports: [
     BrowserModule,
