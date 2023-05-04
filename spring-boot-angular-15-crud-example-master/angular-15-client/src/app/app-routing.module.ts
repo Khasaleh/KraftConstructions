@@ -13,6 +13,7 @@ import { AdminHomeComponent } from './components/admin-home/admin-home.component
 import { AdminMainComponent } from './components/admin-main/admin-main.component'
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
+import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -26,12 +27,13 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent},
+  {path:'admin-testimonial', component: AdminTestimonialComponent},
   {
     path: 'admin',
     component: AdminMainComponent,
     children: [
       {path: '', component: AdminHomeComponent},
-      { path: 'admin-home', component: AdminHomeComponent },
+      { path: 'admin-home', component: AdminHomeComponent }
     ],
   },
   {

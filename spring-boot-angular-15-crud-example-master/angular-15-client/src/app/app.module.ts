@@ -22,6 +22,7 @@ import { AdminHeaderComponent } from './components/admin-header/admin-header.com
 import { AdminSidenavComponent } from './components/admin-sidenav/admin-sidenav.component';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
+import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 
 @NgModule({
   declarations: [
@@ -47,9 +48,7 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
     AdminHeaderComponent,
     AdminSidenavComponent,
     AdminMainComponent,
-
-
-
+    AdminTestimonialComponent
   ],
   imports: [
     BrowserModule,
