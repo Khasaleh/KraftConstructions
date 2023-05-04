@@ -18,12 +18,19 @@ public class Services {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "service_name")
+    @Column(name = "service_name",nullable = false)
     private String serviceName;
-    @Column(name = "page_name")
+    @Column(name = "page_name",nullable = false)
     private String pageName;
+
     @Column(name = "is_active")
     private boolean isActive;
+
+    @OneToOne(mappedBy = "services", cascade = CascadeType.ALL,orphanRemoval = true)
+    private ServiceDetails serviceDetails;
+
+
+
 
 
 
@@ -32,6 +39,7 @@ public class Services {
         this.pageName = pageName;
         this.isActive = isActive;
     }
+
 
 
 }

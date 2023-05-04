@@ -1,0 +1,63 @@
+<div class="admin-about-us ">
+    <section class="first">
+        <div class="new-container">
+            <div class="card  card-shade">
+                <div class="card-head">About us</div>
+                <div class="card-body">
+                    <div class="content-wrape">
+                        <div class="img-content">
+                            <div class="img-box">
+                                <img class="img-dyn" [src]="urllink" alt="">
+                            </div>
+                            <div class="file-upload cardbtn">
+                                <label for="file-input" class="custom-button">Upload Image</label>
+                                <input type="file" id="file-input" class="input-file" (change)="selectFiles($event)">
+                            </div>
+                        </div>
+                        <div class="description">
+                            <h3 class="card-head2">About us</h3>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="para-content">
+                                    Our Mission: High Quality,<br>
+                                    Fair Prices.<br>
+                                    <br>
+                                    Kraft Construction is a family-owned business that was founded in Cincinnati, Ohio
+                                    in 1971. Over the years we have evolved into a residential remodeling company
+                                    dedicated to helping homeowners create their dream spaces with our individualized
+                                    design approach and our dedicated employees working in your homes that have a
+                                    combined 106 years of experience.
+                                </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <section class="second">
+        <div class="new-container">
+            <div id="card-length" class="card card-shade has-bg-img">
+         
+                <img class="bg-img img-width" [src]="urllink1" alt="">
+                <div class="card-body  ">
+                <div class="img-content-wrape">
+                    <div id="green-button" class="file-upload cardbtn">
+                        <label for="file-input1" class="custom-button">Upload Image</label>
+                        <input type="file" id="file-input1" class="input-file" (change)="selectFiles2($event)">
+                    </div>
+                    <h4 class="text">Text on image</h4>
+                    <input class="form-control" type="text">
+                    <div id="green-button2" class="file-upload cardbtn">
+                        <label for="file-input1" class="custom-button">Appoinment</label>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
