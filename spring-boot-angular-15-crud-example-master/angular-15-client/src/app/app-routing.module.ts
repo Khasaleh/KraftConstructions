@@ -28,7 +28,7 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent},
-  {path:'admin-testimonial', component: AdminTestimonialComponent},
+
   {
     path: 'admin',
     component: AdminMainComponent,
@@ -36,13 +36,11 @@ const routes: Routes = [
       {path: '', component: AdminHomeComponent},
       { path: 'admin-home', component: AdminHomeComponent },
       { path: 'admin-aboutUS', component: AdminAboutUsComponent},
-
+     {  path:'admin-contact-us', component : AdminContactUsComponent},
+      {path:'admin-testimonial', component: AdminTestimonialComponent},
     ],
   },
-  {
-    path:'admin-contact-us', component : AdminContactUsComponent
-   
-  }
+
 
 ];
 
