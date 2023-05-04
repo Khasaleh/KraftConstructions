@@ -23,7 +23,7 @@ public class SiteContactInfoController {
     @PutMapping
     public ResponseEntity<SiteContactInfoDto> updateSiteContactInfo(
                                                                      @Valid @RequestBody SiteContactInfoDto siteContactInfoDto) {
-        SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo(siteContactInfoDto);
+        SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo( siteContactInfoDto);
         return ResponseEntity.ok(updatedSiteContactInfoDto);
     }
 }
