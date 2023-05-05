@@ -54,12 +54,12 @@ public class SliderServiceImpl implements SliderService {
     private String saveImage(MultipartFile image) throws IOException {
 
         String fileName = UUID.randomUUID().toString() + "_" + image.getOriginalFilename();
+        File file=new File("uploads/testimonials/slider/" + fileName);
+
+        FileUtils.writeByteArrayToFile(file, image.getBytes());
 
 
-        FileUtils.writeByteArrayToFile(new File("path/to/save/directory/" + fileName), image.getBytes());
-
-
-        return "/images/" + fileName;
+        return file.getPath();
     }
     @Override
     public void deleteSlider(Long sliderId) {
