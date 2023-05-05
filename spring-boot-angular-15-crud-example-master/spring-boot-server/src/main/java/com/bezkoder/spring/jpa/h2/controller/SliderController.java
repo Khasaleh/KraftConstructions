@@ -25,7 +25,7 @@ public class SliderController {
 
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<SliderDto> addSlider(@Valid @RequestParam("images") MultipartFile[] images) {
         try {
 
