@@ -11,9 +11,11 @@ import com.google.zxing.qrcode.QRCodeWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class QRCodeServiceImpl implements QRCodeService {
@@ -26,7 +28,11 @@ public class QRCodeServiceImpl implements QRCodeService {
     @Override
     public QRCodeDTO createQRCode(QRCodeDTO qrCodeDTO) throws Exception {
         // Create QR code and save it to the file system
-        String filePath = "path/to/folder/qr_code.png"; // Change this path to your desired path
+        String folderPath = "path/to/folder/";
+
+        String filename = UUID.randomUUID().toString() + ".png";
+        String filePath = folderPath + File.separator + filename;
+
         QRCodeWriter qrCodeWriter = new QRCodeWriter();
         BitMatrix bitMatrix = qrCodeWriter.encode(qrCodeDTO.getQrCodeText(), BarcodeFormat.QR_CODE, 350, 350);
         Path path = FileSystems.getDefault().getPath(filePath);
