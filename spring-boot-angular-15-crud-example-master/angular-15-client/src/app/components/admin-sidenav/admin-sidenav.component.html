@@ -15,9 +15,9 @@
         <a [routerLink]="['./admin-home']">Home</a>
         <a [routerLink]="['./admin-aboutUS']">About us</a>
         <a href="#">Add Careers News</a>
-        <a routerLink="/admin-careers">Careers</a>
-        <a routerLink="/admin-contact-us">Contact us</a>
-        <a href="#">Testmonials</a>
+        <a [routerLink]="['./admin-careers']">Careers</a>
+        <a [routerLink]="['./admin-contact-us']">Contact us</a>
+        <a [routerLink]="['./admin-testimonial']">Testmonials</a>
         <a href="#">Request Estimate</a>
       </div>
       <!-- button2 -->
@@ -55,7 +55,7 @@
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown4Open}">
         <a href="#">Add new user</a>
-        <a routerLink="/add-user" >All users</a>
+        <a [routerLink]="['./add-user']" >All users</a>
       </div>
       
       
