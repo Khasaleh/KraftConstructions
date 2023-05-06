@@ -3,7 +3,7 @@
         <a routerLink="#"><img class="img-logo" src="../../../../assets/logo.png"></a>
       </div>
      
-      <a class="dashboard" href="#">Dashboard</a>
+      <a class="dashboard" [routerLink]="['./dashboard']">Dashboard</a>
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdownOpen}"  (click)="toggleDropdown()">
         <div class="btn-wrape">
           <p class="">Pages</p>
@@ -13,7 +13,7 @@
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen}">
         <a [routerLink]="['./admin-home']">Home</a>
-        <a [routerLink]="['./admin-aboutUS']">About us</a>
+        <a [routerLink]="['./admin-aboutUs']">About us</a>
         <a href="#">Add Careers News</a>
         <a [routerLink]="['./admin-careers']">Careers</a>
         <a [routerLink]="['./admin-contact-us']">Contact us</a>

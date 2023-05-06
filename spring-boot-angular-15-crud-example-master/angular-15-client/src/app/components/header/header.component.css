@@ -60,11 +60,6 @@ p {
     font-size: 12px;
 }
 
-.nav-bar {
-    /* padding: 10px 10%; */
-    padding: 10px 0px;
-}
-
 .new-head {
     display: flex;
     justify-content: space-between;
@@ -78,8 +73,15 @@ p {
 
 .nav-links {
     list-style: none;
+    margin: 0px;
 }
-
+.icon-nav {
+    width: 20px;
+    height: 17px;
+}
+.cta-icon {
+    margin-bottom: 6px;
+}
 .nav-links li {
     display: inline-block;
     padding: 0px 20px;
@@ -97,6 +99,8 @@ p {
 .cta a {
     color: white;
     text-decoration: none;
+    font-size: 15px;
+    font-weight: 400;
 }
 
 .cta-links {
@@ -126,7 +130,7 @@ p {
     background-color: whitesmoke;
 }
 .nav-bar-2 {
-    padding: 10px 0px;
+    padding: 8px 0px;
     background-color: whitesmoke;
 }
 
@@ -151,6 +155,7 @@ a {
     font-weight: 500;
     font-size: 16px;
     color: black;
+    text-decoration: none;
 
 }
 
