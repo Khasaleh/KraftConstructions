@@ -9,8 +9,10 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AboutUsRequestDTO {
-    private String title;
+public class HomePageAboutUsRequestDTO {
+
+    private String link;
+
     private String description;
 
 
