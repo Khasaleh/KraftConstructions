@@ -16,10 +16,12 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
+import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
 import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
 import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
+
 
 
 const routes: Routes = [
@@ -34,11 +36,12 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent},
-  {path:'payment',component:PaymentTabComponent},
+ {path:'payment',component:PaymentTabComponent}
 
 
 
-  {
+
+
     path: 'admin',
     component: AdminMainComponent,
     children: [
@@ -49,6 +52,7 @@ const routes: Routes = [
       { path:'admin-contact-us', component : AdminContactUsComponent},
       { path:'admin-testimonial', component: AdminTestimonialComponent},
       { path: 'add-user', component: AddUserComponent },
+      {path: 'admin-careers',component:AdminCareersComponent}
       {path: 'admin-portfolio', component:AdminPortfolioComponent },
       {path:'admin-portshow', component:AdminPortshowComponent}
 
