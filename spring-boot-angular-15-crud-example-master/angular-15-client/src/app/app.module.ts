@@ -15,7 +15,6 @@ import { CareersComponent } from './components/careers/careers.component';
 import { RequestEstimateComponent } from './components/request-estimate/request-estimate.component';
 import { ContactUsComponent } from './components/contact-us/contact-us.component';
 import { LoginComponent } from './components/login/login.component';
-
 import { AddUserComponent } from './components/add-user/add-user.component';
 import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 import { AdminHeaderComponent } from './components/admin-header/admin-header.component';
@@ -26,8 +25,12 @@ import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-u
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
+import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
+import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
+import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
+
 
 
 @NgModule({
@@ -56,9 +59,14 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
     AdminMainComponent,
     AdminTestimonialComponent,
     AdminAboutUsComponent,
+    AdminCareersComponent,
     AdminDashboardComponent,
+    AdminDashboardComponent,
+    AdminPortfolioComponent,
+    AdminPortshowComponent,
     AdminServicesComponent,
-    PaymentTabComponent,
+    PaymentTabComponent
+
 
   ],
   imports: [
