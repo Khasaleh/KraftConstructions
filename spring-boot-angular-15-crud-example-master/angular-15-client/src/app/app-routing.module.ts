@@ -46,7 +46,9 @@ const routes: Routes = [
       { path: 'admin-aboutUs', component: AdminAboutUsComponent},
       { path:'admin-contact-us', component : AdminContactUsComponent},
       { path:'admin-testimonial', component: AdminTestimonialComponent},
-      { path: 'add-user', component: AddUserComponent }
+      { path: 'add-user', component: AddUserComponent },
+      { path: 'add-service', component: AdminServicesComponent }
+
 
     ],
   },
