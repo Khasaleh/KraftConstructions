@@ -32,12 +32,11 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent},
-  {path:'payment',component:PaymentTabComponent},
+
+ {path:'payment',component:PaymentTabComponent},
 
 
-
-  {
-    path: 'admin',
+    {path: 'admin',
     component: AdminMainComponent,
     children: [
       {path: '', component: AdminDashboardComponent},
@@ -47,13 +46,13 @@ const routes: Routes = [
       { path:'admin-contact-us', component : AdminContactUsComponent},
       { path:'admin-testimonial', component: AdminTestimonialComponent},
       { path: 'add-user', component: AddUserComponent },
-      { path: 'add-service', component: AdminServicesComponent }
-
+      { path: 'add-service', component: AdminServicesComponent },
+      {path: 'admin-careers',component:AdminCareersComponent},
+      {path: 'admin-portfolio', component:AdminPortfolioComponent },
+      {path:'admin-portshow', component:AdminPortshowComponent}
 
     ],
   },
-
-
 ];
 
 
