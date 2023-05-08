@@ -4,9 +4,11 @@ import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
 import com.bezkoder.spring.jpa.h2.dto.PortfolioDTO;
 import com.bezkoder.spring.jpa.h2.mapper.PortfolioMapper;
 import com.bezkoder.spring.jpa.h2.service.PortfolioService;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,12 +32,14 @@ public class PortfolioController {
     }
 
     @PostMapping("/addportfolio")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<PortfolioDTO> create(@RequestBody PortfolioDTO portfolioDTO) {
         PortfolioDTO createdPortfolioDTO = portfolioService.save(portfolioDTO);
         return new ResponseEntity<>(createdPortfolioDTO, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<PortfolioDTO> updatePortfolio(@PathVariable Long id, @RequestBody PortfolioDTO portfolioDto) {
         Portfolio updatedPortfolio = portfolioService.updatePortfolio(id, portfolioDto);
         PortfolioDTO updatedPortfolioDTO = portfolioMapper.toDTO(updatedPortfolio);
@@ -43,6 +47,7 @@ public class PortfolioController {
     }
 
     @DeleteMapping("/delete/{id}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<Void> delete(@PathVariable Long id) {
         portfolioService.delete(id);
         return ResponseEntity.ok().build();

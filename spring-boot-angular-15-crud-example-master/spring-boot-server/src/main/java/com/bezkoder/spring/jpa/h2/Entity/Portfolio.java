@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -22,6 +24,14 @@ public class Portfolio {
     private String heading;
     private String description;
     private String linkUrl;
+
+    @ManyToMany
+    @JoinTable(
+            name = "portfolio_service",
+            joinColumns = @JoinColumn(name = "portfolio_id"),
+            inverseJoinColumns = @JoinColumn(name = "service_id")
+    )
+    private List<Services> services=new ArrayList<>();
 
 
 }

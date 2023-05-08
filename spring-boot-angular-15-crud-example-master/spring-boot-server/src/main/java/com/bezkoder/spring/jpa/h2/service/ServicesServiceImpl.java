@@ -1,15 +1,19 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 
+import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
+import com.bezkoder.spring.jpa.h2.dto.PortfolioServiceRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
+import com.bezkoder.spring.jpa.h2.repository.PortfolioRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.sound.sampled.Port;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -25,6 +29,9 @@ public class ServicesServiceImpl implements ServicesService {
 
     @Autowired
     private ServicesDetailsRepository servicesDetailsRepository;
+
+    @Autowired
+    private PortfolioRepository portfolioRepository;
 
 
     public ServicesResponseDTO addService(ServicesRequestDTO servicesRequestDTO) {
@@ -81,4 +88,24 @@ public class ServicesServiceImpl implements ServicesService {
             throw new IllegalArgumentException("Service with ID " + id + " not found");
         }
     }
+
+    @Override
+    public String addPortfolioToService(Long id, PortfolioServiceRequestDTO portfolioServiceRequestDTO) {
+        Services service = servicesRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Service" + "id" + id));
+        if(service.getServiceDetails().isAddPortfolio()){
+            portfolioServiceRequestDTO.getPortfoliosId().stream().forEach(p -> {
+                Optional<Portfolio> portfolio= portfolioRepository.findById(p);
+                if(portfolio.isPresent()){
+                    service.getPortfolios().add(portfolio.get());
+                }
+            });
+            service.setPortfolioColumns(portfolioServiceRequestDTO.getPortfolioColumn());
+            servicesRepository.save(service);
+            return "Portfolio Added to the ServicePage Successfully";
+        }
+        return "Portfolio can't be added because this service doesn't allow to add portfolio";
+    }
+
+
 }
