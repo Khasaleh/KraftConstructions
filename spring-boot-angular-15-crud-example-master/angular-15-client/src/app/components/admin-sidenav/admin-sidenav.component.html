@@ -15,7 +15,7 @@
         <a [routerLink]="['./admin-home']">Home</a>
         <a [routerLink]="['./admin-aboutUs']">About us</a>
         <a href="#">Add Careers News</a>
-        <a href="#">Careers</a>
+        <a [routerLink]="['./admin-careers']">Careers</a>
         <a [routerLink]="['./admin-contact-us']">Contact us</a>
         <a [routerLink]="['./admin-testimonial']">Testmonials</a>
         <a [routerLink]="['./admin-request']">Request Estimate</a>
@@ -42,8 +42,8 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown3Open}">
-        <a href="#">Add portfolio</a>
-        <a href="#">View all portfolio</a>
+        <a [routerLink]="['./admin-portfolio']">Add portfolio</a>
+        <a [routerLink]="['./admin-portshow']">View all portfolio</a>
       </div>
       <!-- button4 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown4Open}"  (click)="toggleDropdown4()">
