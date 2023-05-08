@@ -18,6 +18,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
+import { AdminRequestComponent } from './components/admin-request/admin-request.component';
 
 
 const routes: Routes = [
@@ -46,7 +47,8 @@ const routes: Routes = [
       { path: 'admin-aboutUs', component: AdminAboutUsComponent},
       { path:'admin-contact-us', component : AdminContactUsComponent},
       { path:'admin-testimonial', component: AdminTestimonialComponent},
-      { path: 'add-user', component: AddUserComponent }
+      { path: 'add-user', component: AddUserComponent },
+      {path:'admin-request', component:AdminRequestComponent}
 
     ],
   },
