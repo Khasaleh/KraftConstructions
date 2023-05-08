@@ -61,8 +61,9 @@ public class ServicesDetailsController {
     }
 
     @GetMapping("/details")
-    public List<ServiceWithDetailDTO> getAllServicesDetailsWithName() {
-        return servicesDetailsService.getAllServicesDetailsWithName();
+    public ResponseEntity<List<ServiceWithDetailDTO>> getAllServicesDetailsWithName() {
+        List<ServiceWithDetailDTO> list = servicesDetailsService.getAllServicesDetailsWithName();
+        return ResponseEntity.ok(list);
     }
 
 

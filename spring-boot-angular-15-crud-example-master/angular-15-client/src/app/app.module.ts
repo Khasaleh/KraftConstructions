@@ -26,6 +26,9 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
+import { AdminServicesComponent } from './components/admin-services/admin-services.component';
+import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
+
 
 
 @NgModule({
@@ -56,6 +59,9 @@ import { AdminCareersComponent } from './components/admin-careers/admin-careers.
     AdminAboutUsComponent,
     AdminCareersComponent,
     AdminDashboardComponent
+    AdminServicesComponent,
+    PaymentTabComponent,
+
   ],
   imports: [
     BrowserModule,

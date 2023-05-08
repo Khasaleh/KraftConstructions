@@ -1,0 +1,32 @@
+.coming-soon {
+    background-color: #182C25;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    animation: appear 2s ease-in-out;
+  }
+  
+  .coming-soon h1 {
+    font-size: 5rem;
+    margin: 0;
+  }
+  
+  .coming-soon h1 span {
+    color: #ffcc00;
+  }
+  
+  @keyframes appear {
+    0% {
+      opacity: 0;
+      transform: translateX(-50%);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  
