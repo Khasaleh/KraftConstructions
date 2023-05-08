@@ -42,8 +42,8 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown3Open}">
-        <a href="#">Add portfolio</a>
-        <a href="#">View all portfolio</a>
+        <a [routerLink]="['./admin-portfolio']">Add portfolio</a>
+        <a [routerLink]="['./admin-portshow']">View all portfolio</a>
       </div>
       <!-- button4 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown4Open}"  (click)="toggleDropdown4()">
