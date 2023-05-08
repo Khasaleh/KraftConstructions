@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.Entity;
 
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -11,21 +12,22 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "about_us")
-public class AboutUs {
+@Table(name = "homepage_about_us")
+public class HomePageAboutUs {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "title")
-    private String title;
-
+    @Column(name = "link")
+    private String link;
 
     @Column(name = "description")
     @Length(max = 9999)
     private String description;
 
+    @Column(name = "video_url")
+    private String videoUrl;
 
 
 }

@@ -23,6 +23,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminMainComponent } from './components/admin-main/admin-main.component';
 import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-us.component';
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
 
@@ -53,8 +54,8 @@ import { AdminCareersComponent } from './components/admin-careers/admin-careers.
     AdminMainComponent,
     AdminTestimonialComponent,
     AdminAboutUsComponent,
-    AdminTestimonialComponent,
-    AdminCareersComponent
+    AdminCareersComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

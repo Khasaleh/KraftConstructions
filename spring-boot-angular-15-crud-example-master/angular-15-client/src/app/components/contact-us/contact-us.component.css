@@ -674,8 +674,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1619px;
-  height: 198px;
+  width: 1700px;
+  height: 230px;
   object-fit: cover;
 }
 .contact-us2,
@@ -707,7 +707,7 @@
 }
 .home-contact-us-parent {
   position: absolute;
-  top: 41px;
+  top: 81px;
   left: 1px;
   width: 243px;
   height: 26px;

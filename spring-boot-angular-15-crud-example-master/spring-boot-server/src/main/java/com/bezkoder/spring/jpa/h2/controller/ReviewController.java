@@ -1,13 +1,15 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.dto.ReviewDto;
 import com.bezkoder.spring.jpa.h2.Entity.ApprovalStatus;
 import com.bezkoder.spring.jpa.h2.Entity.Review;
+import com.bezkoder.spring.jpa.h2.dto.ReviewDto;
 import com.bezkoder.spring.jpa.h2.mapper.ReviewMapper;
 import com.bezkoder.spring.jpa.h2.repository.ReviewRepository;
 import com.bezkoder.spring.jpa.h2.service.ReviewService;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -52,6 +54,7 @@ public class ReviewController {
 
 
     @PutMapping("/approve/{id}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<ReviewDto> approveReview(@PathVariable Long id) {
         Optional<Review> optionalReview = reviewRepository.findById(id);
         if (optionalReview.isPresent()) {
@@ -65,6 +68,7 @@ public class ReviewController {
     }
 
     @PutMapping("/hide/{id}")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<ReviewDto> hideReview(@PathVariable Long id) {
         Optional<Review> optionalReview = reviewRepository.findById(id);
         if (optionalReview.isPresent()) {
