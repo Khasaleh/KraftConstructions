@@ -270,3 +270,34 @@ body {
   --br-8xs: 5px;
   --br-5xs: 8px;
 }
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --heading-6-reguler: "Myriad Pro";
+  --font-inter: Inter;
+
+  /* font sizes */
+  --heading-6-reguler-size: 15px;
+  --font-size-sm: 14px;
+  --fonts-heading-h4-size: 18px;
+
+  /* Colors */
+  --color-black: #000;
+  --primary-dark: #141619;
+  --colors-white: #fff;
+  --kraft-d-green: #025a00;
+  --colors-buttun-gray-10: #eff2f5;
+  --body-color: #676767;
+  --color-seagreen: #518350;
+  --color-darkolivegreen: #3d6b3d;
+
+  /* border radiuses */
+  --br-11xs: 2px;
+
+  /* Effects */
+  --shdow-5: 0px 4px 4px rgba(0, 0, 0, 0.2);
+}
