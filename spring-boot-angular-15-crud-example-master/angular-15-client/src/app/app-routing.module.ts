@@ -32,21 +32,18 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'new-additions', component: NewAddComponent },
-  {path:'request-estimate', component: RequestEstimateComponent},
-  {path:'contact-us', component: ContactUsComponent},
-  {path:'login', component: LoginComponent},
+  { path:'request-estimate', component: RequestEstimateComponent},
+  { path:'contact-us', component: ContactUsComponent},
+  { path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
-  {path:'add-user',component:AddUserComponent},
- {path:'payment',component:PaymentTabComponent}
+  { path:'add-user',component:AddUserComponent},
+  { path:'payment',component:PaymentTabComponent},
 
 
-
-
-
-    path: 'admin',
+   { path: 'admin',
     component: AdminMainComponent,
     children: [
-      {path: '', component: AdminDashboardComponent},
+      { path: '', component: AdminDashboardComponent},
       { path: 'admin-home', component: AdminHomeComponent },
       { path: 'dashboard', component: AdminDashboardComponent},
       { path: 'admin-aboutUs', component: AdminAboutUsComponent},
@@ -60,8 +57,7 @@ const routes: Routes = [
 
 
     ],
-  },
-
+  }
 
 ];
 
