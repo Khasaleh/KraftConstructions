@@ -86,6 +86,7 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 }
 
 #btn {
@@ -105,9 +106,8 @@
     width: 100%;
 }
 .s-head{
-    font-size:45px;
-    font-weight:400;
-    font-family:var(--h2-semibold);
+    font-size:40px;
+    font-weight:600;
     padding-top: 50px;
 }
 .th-head{
@@ -223,6 +223,7 @@
     box-sizing: border-box;
     padding: 1.7% 4%;
     margin: 0px 30%;
+    text-decoration: none;
 }
 
 .get-a-quote:hover {
@@ -236,7 +237,12 @@
 .form-img-2{
     margin-top: 10%;
 }
-
+.form-img-1 {
+    margin-left: -44px;
+}
+.form-group-pad{
+    padding-bottom: 20px;
+}
 /* media query */
 @media (max-width: 59em) {
 
