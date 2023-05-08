@@ -21,6 +21,7 @@ public class AboutUsController {
     @Autowired
     private AboutUsMapper aboutUsMapper;
 
+
     private static final Long ABOUT_US_ID = 1L;
 
     @PostMapping("/update-description")
@@ -37,6 +38,7 @@ public class AboutUsController {
         AboutUsResponseDTO aboutUsResponseDto = aboutUsMapper.toDto(aboutUs);
         return ResponseEntity.ok(aboutUsResponseDto);
     }
+
 }
 
 

@@ -1,6 +1,10 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
+<<<<<<< HEAD
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
+=======
+import com.bezkoder.spring.jpa.h2.Entity.HomePageAboutUs;
+>>>>>>> 9a3db2c4babd7a82f6857ad20d5dfb4517aaf88d
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsResponseDTO;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
@@ -36,15 +40,25 @@ public class HomePageAboutUsController {
     @PostMapping("/homepageupdate-description")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<HomePageAboutUsResponseDTO> updateHomePageAboutUs(@RequestBody HomePageAboutUsRequestDTO homePageAboutUsRequestDTO) {
+<<<<<<< HEAD
         HomePage homePage = homePageAboutUsService.updateHomePageAboutUs(ABOUT_US_ID, homePageAboutUsRequestDTO);
         HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePage);
+=======
+        HomePageAboutUs homePageAboutUs = homePageAboutUsService.updateHomePageAboutUs(ABOUT_US_ID, homePageAboutUsRequestDTO);
+        HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePageAboutUs);
+>>>>>>> 9a3db2c4babd7a82f6857ad20d5dfb4517aaf88d
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
 
     @GetMapping
     public ResponseEntity<HomePageAboutUsResponseDTO> getAboutUs() {
+<<<<<<< HEAD
         HomePage homePage = homePageAboutUsService.getHomePageAboutUs(ABOUT_US_ID);
         HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePage);
+=======
+        HomePageAboutUs homePageAboutUs = homePageAboutUsService.getHomePageAboutUs(ABOUT_US_ID);
+        HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePageAboutUs);
+>>>>>>> 9a3db2c4babd7a82f6857ad20d5dfb4517aaf88d
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
     @PostMapping("/upload-video")

@@ -238,3 +238,35 @@ body {
   --br-8xs: 5px;
   --br-5xs: 8px;
 }
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --text-sm-medium: Inter;
+  --font-kanit: Kanit;
+
+  /* font sizes */
+  --text-sm-medium-size: 14px;
+
+  /* Colors */
+  --kraft-light-green: #91c490;
+  --kraft-d-green: #025a00;
+  --white: #fff;
+  --gray-300: #d0d5dd;
+  --gray-700: #344054;
+  --light-gray-button: #e0e0e0;
+
+  /* Gaps */
+  --gap-7xs: 6px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-sm: 14px;
+
+  /* border radiuses */
+  --br-8xs: 5px;
+  --br-5xs: 8px;
+}

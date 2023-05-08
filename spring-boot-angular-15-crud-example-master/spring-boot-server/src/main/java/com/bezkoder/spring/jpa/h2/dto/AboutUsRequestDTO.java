@@ -13,4 +13,5 @@ public class AboutUsRequestDTO {
     private String title;
     private String description;
 
+
 }

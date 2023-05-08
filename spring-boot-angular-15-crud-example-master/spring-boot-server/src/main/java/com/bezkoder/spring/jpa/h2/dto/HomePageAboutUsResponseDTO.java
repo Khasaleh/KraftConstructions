@@ -14,4 +14,8 @@ public class HomePageAboutUsResponseDTO {
 
     private String description;
     private String videoUrl;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 9a3db2c4babd7a82f6857ad20d5dfb4517aaf88d
