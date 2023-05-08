@@ -26,6 +26,8 @@ import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-u
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
+import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
+import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
@@ -58,9 +60,12 @@ import { AdminRequestComponent } from './components/admin-request/admin-request.
     AdminTestimonialComponent,
     AdminAboutUsComponent,
     AdminDashboardComponent,
+    AdminPortfolioComponent,
+    AdminPortshowComponent,
     AdminServicesComponent,
     PaymentTabComponent,
     AdminRequestComponent,
+
 
   ],
   imports: [
