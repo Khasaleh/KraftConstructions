@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -102,8 +103,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         List<ServiceWithDetailDTO> serviceDTOs = new ArrayList<>();
         for (Services service : services) {
             ServiceWithDetailDTO serviceDTO = ServiceWithDetailDTO.builder().serviceName(service.getServiceName())
-                            .description(service.getServiceDetails().getDescription()).author(service.getServiceDetails().getAuthor())
-                            .updateDate(service.getServiceDetails().getUpdateDate()).build();
+                            .description(Objects.isNull(service.getServiceDetails()) ? "" : service.getServiceDetails().getDescription()).author(Objects.isNull(service.getServiceDetails()) ? "" : service.getServiceDetails().getAuthor())
+                            .updateDate(Objects.isNull(service.getServiceDetails()) ? null : service.getServiceDetails().getUpdateDate()).build();
             serviceDTOs.add(serviceDTO);
         }
         return serviceDTOs;

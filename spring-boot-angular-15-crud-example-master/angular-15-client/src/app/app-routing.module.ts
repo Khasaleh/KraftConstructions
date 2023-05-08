@@ -18,6 +18,9 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
 import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
+import { AdminServicesComponent } from './components/admin-services/admin-services.component';
+import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -31,6 +34,9 @@ const routes: Routes = [
   {path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
   {path:'add-user',component:AddUserComponent},
+  {path:'payment',component:PaymentTabComponent},
+
+
 
   {
     path: 'admin',
@@ -39,7 +45,7 @@ const routes: Routes = [
       {path: '', component: AdminDashboardComponent},
       { path: 'admin-home', component: AdminHomeComponent },
       { path: 'dashboard', component: AdminDashboardComponent},
-      { path: 'admin-aboutUS', component: AdminAboutUsComponent},
+      { path: 'admin-aboutUs', component: AdminAboutUsComponent},
       { path:'admin-contact-us', component : AdminContactUsComponent},
       { path:'admin-testimonial', component: AdminTestimonialComponent},
       { path: 'add-user', component: AddUserComponent },

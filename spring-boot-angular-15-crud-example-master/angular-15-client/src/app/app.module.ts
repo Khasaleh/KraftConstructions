@@ -28,6 +28,8 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
 import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
+import { AdminServicesComponent } from './components/admin-services/admin-services.component';
+import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 
 
 @NgModule({
@@ -59,6 +61,9 @@ import { AdminPortshowComponent } from './components/admin-portshow/admin-portsh
     AdminDashboardComponent,
     AdminPortfolioComponent,
     AdminPortshowComponent,
+    AdminServicesComponent,
+    PaymentTabComponent,
+
 
   ],
   imports: [
