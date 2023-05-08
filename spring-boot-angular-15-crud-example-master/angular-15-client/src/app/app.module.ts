@@ -26,6 +26,8 @@ import { AdminAboutUsComponent } from './components/admin-about-us/admin-about-u
 import { AdminContactUsComponent } from './components/admin-contact-us/admin-contact-us.component';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
+import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
+import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 
 
 @NgModule({
@@ -55,6 +57,8 @@ import { AdminTestimonialComponent } from './components/admin-testimonial/admin-
     AdminTestimonialComponent,
     AdminAboutUsComponent,
     AdminDashboardComponent,
+    AdminPortfolioComponent,
+    AdminPortshowComponent,
 
   ],
   imports: [
