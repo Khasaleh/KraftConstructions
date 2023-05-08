@@ -1,6 +1,6 @@
 package com.bezkoder.spring.jpa.h2.Entity;
 
-import com.bezkoder.spring.jpa.h2.dto.PortfolioDTO;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,9 +25,4 @@ public class Portfolio {
 
 
 }
-
-
-
-
-
 
