@@ -3,9 +3,6 @@
     width: 100%;
     padding: 0px 10%;
 }
-.footer-section {
-    padding: 90px 0px 0px 0px;
-}
 
 .footer-bacground {
     background-color: var(--kraft-d-green);
@@ -60,13 +57,17 @@
 
 .group {
     width: 13%;
-    margin: 15px 43%;
+    margin: 0px 43% 15px 43%;
 }
 
 
 
 /* media queries */
 @media (max-width: 59em) {
+    .footer-bacground{
+        height: 270px;
+    }
+
 
     .footer-res {
         display: flex;

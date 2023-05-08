@@ -1,3 +1,6 @@
+.testimonials-page{
+    padding: 0px 0px 90px 0px;
+}
 .new-container {
     width: 100%;
     padding: 0px 10%;
@@ -199,7 +202,7 @@
     font-size: var(--font-size-xl);
     background-color: var(--kraft-d-green);
     border-radius: var(--br-8xs);
-    padding: 6%;
+    padding: 30px 0px;
     margin-top: 8%;
     width: 80%
 }
@@ -221,7 +224,7 @@
     background-color: var(--kraft-d-green);
     border: 1px solid var(--colors-white);
     box-sizing: border-box;
-    padding: 1.7% 4%;
+    padding: 10px 20px;
     margin: 0px 30%;
     text-decoration: none;
 }
@@ -229,6 +232,10 @@
 .get-a-quote:hover {
     color: #fff;
     text-decoration: none;
+}
+.quote-wrape {
+    display: flex;
+    justify-content: center;
 }
 .form-img{
     padding-left: 5%;

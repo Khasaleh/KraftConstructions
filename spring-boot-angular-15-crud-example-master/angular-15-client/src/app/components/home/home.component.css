@@ -842,6 +842,9 @@ a {
     text-transform: capitalize;
     padding-top: 10px;
 }
+.contact-section {
+    padding: 0px 0px 90px 0px;
+}
 
 /* footer */
 .footer-section {
@@ -1046,6 +1049,9 @@ a {
 }
 
     @media (max-width: 52em) {
+        .footer-bacground{
+            height: 264px;
+        }
         .get-a-quote{
             width: 182px;
         }
