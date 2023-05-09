@@ -24,7 +24,6 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
 
 
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'about-us', component: AboutUsComponent },
@@ -40,20 +39,25 @@ const routes: Routes = [
   { path:'payment',component:PaymentTabComponent},
 
 
-   { path: 'admin',
+
+
+  {
+    path: 'admin',
     component: AdminMainComponent,
     children: [
-      { path: '', component: AdminDashboardComponent},
+      { path: '', component: AdminDashboardComponent },
+
       { path: 'admin-home', component: AdminHomeComponent },
-      { path: 'dashboard', component: AdminDashboardComponent},
-      { path: 'admin-aboutUs', component: AdminAboutUsComponent},
-      { path:'admin-contact-us', component : AdminContactUsComponent},
-      { path:'admin-testimonial', component: AdminTestimonialComponent},
+      { path: 'dashboard', component: AdminDashboardComponent },
+      { path: 'admin-aboutUs', component: AdminAboutUsComponent },
+      { path: 'admin-contact-us', component: AdminContactUsComponent },
+      { path: 'admin-testimonial', component: AdminTestimonialComponent },
       { path: 'add-user', component: AddUserComponent },
       {path:'admin-request', component:AdminRequestComponent},
       {path: 'admin-careers',component:AdminCareersComponent},
       {path: 'admin-portfolio', component:AdminPortfolioComponent },
-      {path:'admin-portshow', component:AdminPortshowComponent}
+      {path:'admin-portshow', component:AdminPortshowComponent},
+      { path: 'add-service', component: AdminServicesComponent },
 
 
     ],

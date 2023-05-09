@@ -11,8 +11,6 @@ body {
   /* global css file */
   :root {
     /* fonts */
-
-
     --text-md-regular: Inter;
     --font-kanit: Kanit;
     --font-inherit: inherit;
@@ -283,6 +281,58 @@ body {
   --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
 }
 
+
+:root {
+  /* fonts */
+  --text-sm-medium: Inter;
+  --fonts-peragraph-reguler: "Myriad Pro";
+
+  /* font sizes */
+  --text-sm-medium-size: 14px;
+  --fonts-peragraph-reguler-size: 15px;
+  --text-xs-medium-size: 12px;
+  --font-size-base: 16px;
+
+  /* Colors */
+  --white: #fff;
+  --gray-300: #d0d5dd;
+  --gray-800: #1d2939;
+  --gray-900: #101828;
+  --primary-dark: #141619;
+  --gray-700: #344054;
+  --gray-50: #f9fafb;
+  --gray-200: #eaecf0;
+  --color-black: #000;
+  --kraft-d-green: #025a00;
+  --color-seagreen: #518350;
+  --color-darkolivegreen: #3d6b3d;
+  --gray-500: #667085;
+
+  /* Gaps */
+  --gap-5xs: 8px;
+  --gap-xs: 12px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-base: 16px;
+  --padding-4xs: 9px;
+  --padding-5xs: 8px;
+  --padding-5xl: 24px;
+  --padding-xs: 12px;
+
+  /* border radiuses */
+  --br-5xs: 8px;
+  --br-xl: 20px;
+  --br-7xs: 6px;
+
+  /* Effects */
+  --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+body {
+  margin: 0;
+  line-height: normal;
+}
 
 :root {
   /* fonts */
