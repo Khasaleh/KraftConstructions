@@ -30,7 +30,9 @@ import { AdminPortfolioComponent } from './components/admin-portfolio/admin-port
 import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
-
+import { AdminRequestComponent } from './components/admin-request/admin-request.component';
+import {MatIconModule} from '@angular/material/icon';
+import { ShowusersComponent } from './components/showusers/showusers.component';
 
 
 @NgModule({
@@ -65,7 +67,11 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
     AdminPortfolioComponent,
     AdminPortshowComponent,
     AdminServicesComponent,
-    PaymentTabComponent
+    PaymentTabComponent,
+    AdminRequestComponent,
+    PaymentTabComponent,
+    ShowusersComponent
+
 
 
   ],
@@ -74,7 +80,8 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
     
  
   ],
