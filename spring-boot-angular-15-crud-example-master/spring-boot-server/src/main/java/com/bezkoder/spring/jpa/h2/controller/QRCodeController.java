@@ -19,6 +19,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.google.zxing.WriterException;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/api/qr-code")
 public class QRCodeController {
@@ -28,14 +30,18 @@ public class QRCodeController {
     @Autowired
     QrCodeMapperImpl qrCodeMapper;
 
-    @PostMapping
-//  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> createQRCode(@RequestBody QRCodeDTO qrCodeDTO) {
+
+
+    @PostMapping("/generate")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<QRCodeDTO> generateQrCode(@Valid @RequestBody QRCodeDTO qrCodeDTO) {
         try {
-            QRCodeDTO qrCode = qrCodeService.createQRCode(qrCodeDTO);
-            return new ResponseEntity<>(qrCodeDTO, HttpStatus.CREATED);
-        } catch (Exception e) {
-            return new ResponseEntity<>("Failed to create QR code", HttpStatus.INTERNAL_SERVER_ERROR);
+            QRCode qrCode = qrCodeService.saveQrCode(qrCodeDTO, "uploads/Qrcode");
+            QRCodeDTO savedQrCodeDTO = qrCodeMapper.toQrCodeDTO(qrCode);
+            return ResponseEntity.ok(savedQrCodeDTO);
+        } catch (IOException | WriterException e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
 
