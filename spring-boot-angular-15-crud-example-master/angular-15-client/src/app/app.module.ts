@@ -32,6 +32,7 @@ import { AdminServicesComponent } from './components/admin-services/admin-servic
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
 import {MatIconModule} from '@angular/material/icon';
+import { ShowusersComponent } from './components/showusers/showusers.component';
 
 
 @NgModule({
@@ -68,7 +69,8 @@ import {MatIconModule} from '@angular/material/icon';
     AdminServicesComponent,
     PaymentTabComponent,
     AdminRequestComponent,
-    PaymentTabComponent
+    PaymentTabComponent,
+    ShowusersComponent
 
 
 

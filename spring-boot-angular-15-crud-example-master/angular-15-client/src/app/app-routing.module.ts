@@ -22,6 +22,7 @@ import { AdminPortshowComponent } from './components/admin-portshow/admin-portsh
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
+import { ShowusersComponent } from './components/showusers/showusers.component';
 
 
 const routes: Routes = [
@@ -58,6 +59,7 @@ const routes: Routes = [
       {path: 'admin-portfolio', component:AdminPortfolioComponent },
       {path:'admin-portshow', component:AdminPortshowComponent},
       { path: 'add-service', component: AdminServicesComponent },
+      {path: 'showusers', component:ShowusersComponent}
 
 
     ],
