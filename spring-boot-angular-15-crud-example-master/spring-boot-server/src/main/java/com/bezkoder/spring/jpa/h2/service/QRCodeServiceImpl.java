@@ -14,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -28,8 +29,8 @@ public class QRCodeServiceImpl implements QRCodeService {
     @Override
     public QRCodeDTO createQRCode(QRCodeDTO qrCodeDTO) throws Exception {
         // Create QR code and save it to the file system
-        String folderPath = "uploads/Qrcode/";
-
+//        String folderPath = "uploads/Qrcode/";
+        Path folderPath = Paths.get("uploads/Qrcode/");
         String filename = UUID.randomUUID().toString() + ".png";
         String filePath = folderPath + File.separator + filename;
 

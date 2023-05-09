@@ -17,7 +17,7 @@ public class QRCodeDTO {
     @NotNull
     private String qrCodeText;
 
-    @NotNull
+
     private String filePath;
 
     // Getters and setters
