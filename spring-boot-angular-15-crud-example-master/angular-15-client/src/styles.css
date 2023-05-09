@@ -88,10 +88,7 @@ body {
 
   }
 
-  body {
-    margin: 0;
-    line-height: normal;
-  }
+ 
   
   :root {
     /* fonts */
@@ -143,10 +140,7 @@ body {
     --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
   }
 
-  body {
-    margin: 0;
-    line-height: normal;
-  }
+ 
   
   :root {
     /* fonts */
@@ -239,10 +233,7 @@ body {
   --br-5xs: 8px;
 }
 
-body {
-  margin: 0;
-  line-height: normal;
-}
+
 
 :root {
   /* fonts */
@@ -291,10 +282,7 @@ body {
   /* Effects */
   --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
 }
-body {
-  margin: 0;
-  line-height: normal;
-}
+
 
 :root {
   /* fonts */
@@ -344,13 +332,8 @@ body {
 }
 
 
-body {
-  margin: 0;
-  line-height: normal;
-}
 
 :root {
-  /* fonts */
 
   --text-sm-medium: Inter;
   --fonts-peragraph-reguler: "Myriad Pro";
@@ -391,7 +374,3 @@ body {
   /* Effects */
   --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
 }
-
-
-
-

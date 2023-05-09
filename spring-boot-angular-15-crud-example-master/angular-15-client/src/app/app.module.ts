@@ -31,7 +31,7 @@ import { AdminPortshowComponent } from './components/admin-portshow/admin-portsh
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
-
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -78,7 +78,8 @@ import { AdminRequestComponent } from './components/admin-request/admin-request.
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatIconModule
     
  
   ],
