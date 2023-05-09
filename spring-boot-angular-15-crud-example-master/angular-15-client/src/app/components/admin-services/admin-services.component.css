@@ -29,6 +29,7 @@
     cursor: pointer;
     text-align: center;
     width: 200px;
+    text-decoration: none;
 }
 
 /* Add hover and active states for the custom button */
@@ -130,6 +131,138 @@ padding: 18px 0px;
     margin: 10px 0px 0px 0px;
   }
   .form-group-pad{
-    margin-top: 20px;
+    margin-top: 30px;
     width: 86.5%;
   }
+  .input-check1{
+    width: 33px;
+    height: 23px;
+  }
+  .check-btn1 {
+    width: 30%;
+    height: 23px;
+    font-size: 20px;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.check-button1 {
+    display: flex;
+    align-items: center;
+    color: #141619;
+    cursor: pointer;
+}
+.grey-sec-wrape{
+    display: flex;
+    justify-content: space-between;
+    width: 75%;
+    align-items: center;
+}
+.sel-col {
+    width: 30%;
+}
+.col-head {
+    font-size: 14px;
+    font-weight: 500;
+    /* font-family: var( --text-md-regular); */
+}
+#grey-sec{
+    background-color: #EFF2F5;
+    margin: 15px 0px;
+    width: 86.5%;
+}
+.check-button-wrape {
+    display: flex;
+    gap: 10px;
+    width: 65%;
+}
+.check-button2 {
+    padding: 10px;
+    background-color: #E8E8E8;
+    color: #141619;
+    border: 1px solid #B3B3B3;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 10px;
+}
+.card-img{
+    width: 100%;
+    height: 190px;
+}
+.card-box{
+    width: 24%;
+    /* height: 385px; */
+    text-align: center;
+    background-color: #91C490;
+    border-radius: 2px;
+    color: #fff;
+}
+.card-heading{
+    font-size: 20px;
+    font-weight: 600;
+    padding-top: 5px;
+}
+.card-cont {
+    padding: 0px 15px;
+}
+
+.custom-button-card {
+    padding: 8px 20px;
+    background-color: #2d5833;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    /* width: 150px; */
+    border: none;
+    text-decoration: none;
+    margin-bottom: 20px;
+}
+.card-wrape{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+.custom-button-create{
+    padding: 8px 20px;
+    background-color: #2d5833;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    width: 250px;
+    border: none;
+    text-decoration: none;
+}
+.create-btn {
+    justify-content: center;
+    display: flex;
+    margin: 70px 0px 130px 0px;
+}
+
+@media (max-width: 59em) {
+.card-box{
+    width: 55%;
+}
+ .service-wrape{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .img-wrape{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .check-button-wrape{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .grey-sec-wrape{
+    display: flex;
+    flex-wrap: wrap;
+ }
+ .card-wrape{
+    display: flex;
+    flex-direction: column;
+ }
+
+}
