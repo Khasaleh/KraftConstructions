@@ -6,10 +6,19 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-services.component.css']
 })
 export class AdminServicesComponent {
+  cards = [  {    imgSrc: "../../../assets/Decks-and-Patioss 1.png",    heading: "Kitchen",    content: "simply dummy text of the printing and typesetting industry."  },  {    imgSrc: "../../../assets/Decks-and-Patioss 1.png",    heading: "Bathroom",    content: "simply dummy text of the printing and typesetting industry."  },  {    imgSrc: "../../../assets/Decks-and-Patioss 1.png",    heading: "Decks-Patios",    content: "simply dummy text of the printing and typesetting industry."  },  {    imgSrc: "../../../assets/Decks-and-Patioss 1.png",    heading: "Basements",    content: "simply dummy text of the printing and typesetting industry."  }];
+
   selectedOption: string = 'interior remodeling';
   selectedOption1: string = 'interior remodeling';
+  selectedOption2: string = 'interior remodeling';
+  selectedOption3: string = '4 columns';
+  selectedQuantity = 4;
 
-  options: string[] = ['interior remodeling', 'option2', 'option3'];
+
+quantityOptions = [1, 2, 3, 4];
+options: string[] = ['interior remodeling', 'option2', 'option3'];
+option1: string[] = ['1 column', '2 columns', '3 columns','4 columns'];
+
 
 urllink:string ="../../../assets/before1.png";
 selectFiles(event:any)
