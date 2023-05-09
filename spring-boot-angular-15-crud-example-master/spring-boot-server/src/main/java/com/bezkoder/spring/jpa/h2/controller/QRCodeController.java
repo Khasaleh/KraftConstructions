@@ -29,7 +29,7 @@ public class QRCodeController {
     QrCodeMapperImpl qrCodeMapper;
 
     @PostMapping
-  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+//  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<?> createQRCode(@RequestBody QRCodeDTO qrCodeDTO) {
         try {
             QRCodeDTO qrCode = qrCodeService.createQRCode(qrCodeDTO);
