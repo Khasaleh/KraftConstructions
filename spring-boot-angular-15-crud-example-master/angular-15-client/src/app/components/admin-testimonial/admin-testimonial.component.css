@@ -659,6 +659,7 @@
     font-family: var(--text-sm-medium);
     color: var(--color-black);
     text-align: left;
+    cursor: pointer;
   }
   .rectangle-parent14 {
     cursor: pointer;
@@ -802,4 +803,10 @@
     color: #1D2939;
     font-style: arial;
     display: flex;
+}
+#file-input {
+  display: none;
+}
+#input-file {
+  display: none;
 }

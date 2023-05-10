@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 @Component({
   selector: 'app-admin-testimonial',
   templateUrl: './admin-testimonial.component.html',
@@ -8,4 +7,16 @@ import { Component } from '@angular/core';
 })
 export class AdminTestimonialComponent {
 Show = false;
+urllink:string ="";
+selectFiles(event:any)
+{
+  if(event.target.files){
+    var reader = new FileReader()
+    reader.readAsDataURL(event.target.files[0])
+    reader.onload = (event:any) => {
+      this.urllink = event.target.result
+    }
+  }
 }
+}
+

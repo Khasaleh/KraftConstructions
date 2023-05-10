@@ -183,6 +183,8 @@
   text-align: left;
   display: inline-block;
   width: 105px;
+  cursor: pointer;
+  
 }
 .desktop-10-inner,
 .group-wrapper {
@@ -335,4 +337,7 @@
   font-size: var(--heading-6-reguler-size);
   color: var(--color-gray);
   font-family: var(--heading-6-reguler);
+}
+#file-input {
+  display: none;
 }
