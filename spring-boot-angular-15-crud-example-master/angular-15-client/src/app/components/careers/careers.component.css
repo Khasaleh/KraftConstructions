@@ -1,4 +1,6 @@
-
+.careers-page{
+    padding: 0px 0px 90px 0px;
+}
 .new-container {
     width: 100%;
     padding: 0px 10%;
@@ -98,6 +100,7 @@ justify-content: space-between;
     padding: 15px 10px;
     font-size: var(--font-size-xl);
     color: var(--colors-white);
+    text-decoration: none;
 }
 
 #btn {
@@ -150,14 +153,16 @@ justify-content: space-between;
     font-size: var(--font-size-xl);
     background-color: var(--kraft-d-green);
     border-radius: var(--br-8xs);
-    padding: 3% 6%;
+    padding: 24px 0px;
     margin-top: 8%;
+    display: flex;
+    justify-content: center;
 }
 .green-box-wrape{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 0px 5%;
+    width: 850px;
 }
 
 .let-begin-designing {
@@ -177,6 +182,7 @@ justify-content: space-between;
     border: 1px solid var(--colors-white);
     box-sizing: border-box;
     padding: 1.7% 4%;
+    text-decoration: none;
 }
 
 .get-a-quote:hover {
@@ -185,7 +191,16 @@ justify-content: space-between;
 }
 
 @media (max-width: 59em) {
+    .let-begin-designing {
+        margin-right: 1rem;
+    }
+    .get-a-quote{
+        width: 220px;
+    }
 
+    .green-box-wrape{
+        padding: 0px 20px
+    }
     .career-content-wrape{
         display: flex;
         flex-wrap: wrap;

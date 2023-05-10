@@ -3,13 +3,13 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 1600px;
-  height: 168px;
+  width: 1700px;
+  height: 198px;
   object-fit: cover;
 }
 .home-child {
-  width: 1595px;
-  height: 165px;
+  width: 1700px;
+  height: 198px;
 }
 .complete-this-form,
 .request-estimate {
@@ -17,7 +17,7 @@
   font-family: var(--font-kanit);
 }
 .request-estimate {
-  top: 35px;
+  top: 65px;
   left: 148px;
   font-size: 45px;
   line-height: 25.5px;
@@ -218,10 +218,10 @@
   position: absolute;
   height: 2.76%;
   width: 11.13%;
-  top: 66.72%;
+  top: 86.72%;
   right: 75.38%;
   bottom: 30.51%;
-  left: 13.5%;
+  left: 12.5%;
   border-radius: var(--br-8xs);
 }
 .what-is-your,
@@ -556,23 +556,6 @@
   height: 1px;
   flex-shrink: 0;
 }
-.footer-text {
-  flex: 1;
-  position: relative;
-  line-height: 24px;
-}
-.container1,
-.content1,
-.footer-links {
-  display: flex;
-  justify-content: flex-start;
-}
-.footer-links {
-  align-self: stretch;
-  flex-direction: row;
-  align-items: flex-start;
-  gap: var(--gap-base);
-}
 .container1,
 .content1 {
   gap: var(--gap-13xl);
@@ -602,18 +585,7 @@
   height: 99px;
   object-fit: cover;
 }
-.footer {
-  position: absolute;
-  top: 1866px;
-  left: -28px;
-  background-color: var(--kraft-d-green);
-  width: 1628px;
-  height: 291px;
-  display: none;
-  font-size: var(--font-size-xl);
-  color: var(--colors-white);
-  font-family: var(--font-kanit);
-}
+
 .home-request-estimate {
   position: absolute;
   top: 0;
@@ -723,7 +695,7 @@
   position: relative;
   background-color: var(--colors-white);
   width: 100%;
-  height: 2304px;
+  height: 1804px;
   overflow: hidden;
   text-align: left;
   font-size: var(--text-sm-regular-size);

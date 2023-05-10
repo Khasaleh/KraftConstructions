@@ -442,13 +442,13 @@
     position: absolute;
     top: 0;
     left: 1px;
-    width: 1600px;
+    width: 1700px;
     height: 168px;
     object-fit: cover;
   }
   .rectangle-icon {
     left: 0;
-    width: 1601px;
+    width: 1700px;
   }
   .interior-remodeling4 {
     position: absolute;
@@ -502,7 +502,7 @@
     height: 168px;
   }
   .home-inner {
-    top: 167px;
+    top: 187px;
     font-size: 45px;
     font-family: var(--font-kanit);
   }
@@ -641,7 +641,7 @@
     /* position: relative; */
     background-color: var(--colors-white);
     width: 100%;
-    height: 1795px;
+    height: 1630px;
     overflow: hidden;
     text-align: left;
     font-size: var(--font-size-mini);

@@ -3,20 +3,17 @@
     width: 100%;
     padding: 0px 10%;
 }
-.footer-section {
-    padding: 5% 0px 10% 0px;
-}
 
 .footer-bacground {
     background-color: var(--kraft-d-green);
     width: 100%;
-    height: 290px;
+    height: 220px;
 }
 
 .about-us-wrape {
     display: flex;
     justify-content: center;
-    gap: var(--gap-13xl);
+    gap: 2%;
 }
 
 .footer-detail-wrape {
@@ -60,15 +57,17 @@
 
 .group {
     width: 13%;
-    margin: 15px 43%;
-    padding: 10px 0px 0px 0px;
-
+    margin: 0px 43% 15px 43%;
 }
 
 
 
 /* media queries */
 @media (max-width: 59em) {
+    .footer-bacground{
+        height: 270px;
+    }
+
 
     .footer-res {
         display: flex;

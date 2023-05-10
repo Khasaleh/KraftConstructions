@@ -1,0 +1,7 @@
+.whole-wrape {
+    display: flex;
+    min-height: 100%;
+}
+.whole-content{
+    width: 100%;
+}

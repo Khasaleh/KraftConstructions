@@ -1,0 +1,412 @@
+/* .home-wrape{
+    display:flex;
+} */
+.whole-wrape {
+    display: flex;
+}
+
+.img-logo {
+    width: 100%;
+    height: auto;
+}
+
+.new-container {
+    padding: 0px 2%;
+}
+
+.admin-home {
+    padding: 30px 0px;
+    /* min-height: 100%; */
+    /* height: auto; */
+    width: 100%;
+    background-color: #E8ECF3;
+}
+
+.main-head {
+    font-size: 35px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.card-head {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
+    border-bottom: 1px solid #DDDDDD;
+    padding: 16px 0px 9px 22px;
+}
+
+.card-head2 {
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 12px;
+    /* font-family: sans-serif; */
+}
+
+
+/* Hide the default file input button */
+.input-file {
+    display: none;
+}
+
+/* Style the custom button */
+.custom-button {
+    padding: 8px 20px;
+    background-color: #2d5833;
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-bottom: 8%;
+}
+
+/* Add hover and active states for the custom button */
+.custom-button:hover,
+.custom-button:focus,
+.custom-button:active {
+    background-color: #518350;
+}
+
+.img-wrape {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    width: 100%;
+}
+
+.drop-input {
+    width: 40%;
+}
+
+.About-heading {
+    font-family: var(--h2-semibold);
+    color: var(--colors-primary-black);
+    font-size: 41px;
+    line-height: 64px;
+    text-transform: capitalize;
+    font-weight: 600;
+    padding: 1% 0px;
+}
+
+.card-body-wrape {
+    display: flex;
+    align-items: center;
+    gap: 74px;
+}
+
+.cardbtn {
+    width: 100%;
+}
+
+.dream-para {
+    font-size: 17px;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+
+/* service-section */
+.services {
+    padding: 17px 0px;
+}
+
+.card-head-services {
+    font-size: 15px;
+    font-weight: 500;
+    padding: 33px 0px 9px 0px;
+}
+
+#custom-kitchen {
+    width: 28%;
+
+}
+
+.check-btn {
+    padding-left: 10px;
+}
+
+.drop-input {
+    width: 90%;
+}
+
+.check-button {
+    padding: 10px;
+    background-color: #E8E8E8;
+    color: #141619;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.check-button-wrape {
+    display: flex;
+    gap: 10px;
+    width: 50%;
+}
+
+#grey-sec {
+    background-color: #EFF2F5;
+    margin: 15px 0px;
+}
+
+#grey-sec2 {
+    background-color: #EFF2F5;
+    padding: 40px 0px;
+}
+
+.col-head {
+    font-size: 14px;
+    font-weight: 500;
+    /* font-family: var( --text-md-regular); */
+}
+
+.grey-sec-wrape {
+    display: flex;
+    justify-content: space-between;
+    width: 70%;
+}
+
+.grey-sec-wrape2 {
+    display: flex;
+    width: 100%;
+}
+
+.sel-col {
+    width: 30%;
+}
+
+.services-parent {
+    text-align: center;
+    font-size: var(--font-size-5xl);
+    color: var(--kraft-d-green);
+    background-color: #EFF2F5;
+    padding: 30px 70px;
+    margin: 20px 0px;
+}
+
+.services-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.component {
+    width: 30%;
+
+}
+
+.kitchen-1-icon {
+    width: 100%;
+    height: 50%;
+}
+
+.custom-kitchens {
+    font-size: 24px;
+    padding: 3% 0px;
+
+}
+
+.simply-dummy-text {
+    height: 23.77%;
+    width: 96.57%;
+    font-size: var(--paragraph-regular-size);
+    line-height: 25px;
+    font-family: var(--paragraph-regular);
+    color: var(--color-darkslategray);
+}
+
+.rectangle-group {
+
+    font-size: var(--font-size-xl);
+    color: var(--colors-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.read-more {
+    font-size: 85%;
+    font-weight: 400;
+    font-family: var(--h2-semibold);
+    text-align: center;
+    width: 40%;
+    line-height: 40px;
+    border-radius: var(--br-8xs);
+    background-color: var(--kraft-d-green);
+    padding: 1.5% 3%;
+}
+
+
+.rectangle-group:hover {
+    color: #fff;
+    text-decoration: none;
+
+}
+
+.card-shade {
+    box-shadow: 2px 8px 4px 0px lightgray;
+}
+
+/* testmonial section */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #025A00;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #025A00;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider-head {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.slider-wrape {
+    padding: 30px 0px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.slider-width {
+    width: 18%;
+}
+
+/* our-project section */
+.our-project {
+    padding: 20px 0px;
+}
+
+#grid-card {
+    display: flex;
+    justify-content: center;
+}
+
+.grid-wrape {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 10%;
+}
+
+.card-pad {
+    padding: 10px;
+}
+
+.map-section {
+    padding-bottom: 500px;
+}
+
+@media (max-width: 59em) {
+    .card-body-wrape {
+        flex-direction: column;
+    }
+
+    .card-head {
+        text-align: center;
+    }
+
+    .card-head-services {
+        text-align: center;
+
+    }
+
+    .drop-input {
+        width: 100%;
+        margin: auto;
+    }
+
+    .check-button-wrape {
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+    }
+
+    #custom-kitchen {
+        width: 50%;
+    }
+
+    .check-button {
+        width: 100%;
+    }
+
+    .grey-sec-wrape {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .services-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .grid-wrape {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .component {
+        width: 90%;
+        margin-bottom: 15px;
+    }
+
+    .map-section {
+        padding-bottom: 50px;
+    }
+
+}

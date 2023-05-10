@@ -26,4 +26,6 @@ public class AboutUs {
     @Length(max = 9999)
     private String description;
 
+
+
 }

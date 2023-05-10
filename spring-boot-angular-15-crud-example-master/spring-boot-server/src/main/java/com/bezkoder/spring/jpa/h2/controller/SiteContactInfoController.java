@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/siteContactInfo")
+@RequestMapping("/api/siteContactInfo")
 public class SiteContactInfoController {
     @Autowired
     private SiteContactInfoService siteContactInfoService;
@@ -20,10 +20,10 @@ public class SiteContactInfoController {
         return ResponseEntity.ok(siteContactInfoDTO);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<SiteContactInfoDto> updateSiteContactInfo( @PathVariable("id") Long id,
+    @PutMapping
+    public ResponseEntity<SiteContactInfoDto> updateSiteContactInfo(
                                                                      @Valid @RequestBody SiteContactInfoDto siteContactInfoDto) {
-        SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo(id, siteContactInfoDto);
+        SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo( siteContactInfoDto);
         return ResponseEntity.ok(updatedSiteContactInfoDto);
     }
 }

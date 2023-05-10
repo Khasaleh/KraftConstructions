@@ -37,9 +37,9 @@ public class SiteContactInfoServiceImpl implements SiteContactInfoService {
     }
 
     @Override
-    public SiteContactInfoDto updateSiteContactInfo(Long id, SiteContactInfoDto siteContactInfoDto) {
+    public SiteContactInfoDto updateSiteContactInfo(SiteContactInfoDto siteContactInfoDto) {
         // Retrieve the existing entity from the repository
-        Optional<SiteContactInfo> siteContactInfoOptional = siteContactInfoRepository.findById(id);
+        Optional<SiteContactInfo> siteContactInfoOptional = siteContactInfoRepository.findById(siteContactInfoDto.getId());
 
         // Check if the entity exists
         if (siteContactInfoOptional.isPresent()) {
@@ -62,7 +62,8 @@ public class SiteContactInfoServiceImpl implements SiteContactInfoService {
             return updatedSiteContactInfoDto;
         } else {
             // Throw an exception or handle the case when the entity is not found
-            throw new EntityNotFoundException("SiteContactInfo not found with id: " + id);
+            SiteContactInfo newContactUsInfo = siteContactInfoMapper.toEntity(siteContactInfoDto);
+            return siteContactInfoRepository.save(newContactUsInfo);
         }
     }
 
