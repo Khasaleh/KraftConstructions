@@ -44,9 +44,15 @@ public class QRCodeServiceImpl implements QRCodeService {
         BitMatrix bitMatrix = new MultiFormatWriter().encode(qrCodeText, BarcodeFormat.QR_CODE, width, height);
         BufferedImage qrCodeImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
 
-        // Save QR code image to file
-        File file = new File(path + "/" + qrCode.getId() + ".png");
+
+
+        File dir = new File(path);
+        if (!dir.exists()) {
+            dir.mkdirs(); // create the directory and any parent directories if they don't exist
+        }
+        File file = new File(dir, qrCode.getId() + ".png");
         ImageIO.write(qrCodeImage, "png", file);
+
 
         qrCodeDTO.setFilePath(file.getPath());
         qrCode.setFilePath(qrCodeDTO.getFilePath());
