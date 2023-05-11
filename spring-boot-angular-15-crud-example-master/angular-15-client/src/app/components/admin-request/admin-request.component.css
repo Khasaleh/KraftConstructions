@@ -15,7 +15,7 @@
   background-color: var(--colors-white);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   width: 82% ;
-  height: 100% ;
+  height: 130% ;
 }
 
 .navbar-brand {
@@ -32,11 +32,48 @@
   margin-left: 20px;
   border-bottom: 1px solid #DDDDDD;
 }
-.col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label {
+.col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
+ , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt {
   margin-top: 20px;
   margin-left: 20px;
 }
 #exampleFormControlTextarea1 {
   margin-top: 10px;
   margin-left: 20px;
+}
+.table-cell {
+  background-color: var(--gray-50);
+  flex-shrink: 0;
+}
+.table-cell,
+.table-cell1 {
+  align-self: stretch;
+  /* border-bottom: 1px solid var(--gray-200); */
+  box-sizing: border-box;
+  height: 42px;
+  flex-direction: row;
+  /* padding: var(--padding-base) var(--padding-5xl); */
+  align-items: center;
+  gap: var(--gap-xs);
+}
+
+/* .table-cell1
+ {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 2px;
+} */
+.frame {
+  display: flex;
+} 
+.paginations {
+  display: flex;
+  justify-content: center;
+  top: 20%;
+}
+.page-link {
+  color: #1D2939;
+  font-style: arial;
+
 }
