@@ -25,7 +25,7 @@ public class SliderController {
 
 
     @PostMapping("/add")
-   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<SliderDto> addSlider(@Valid @RequestParam("images") MultipartFile[] images) {
         try {
 
@@ -52,4 +52,23 @@ public class SliderController {
 
         return ResponseEntity.ok().body("Slider deleted successfully");
     }
+    @PutMapping("/{id}/images")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<SliderDto> updateSliderImages(@PathVariable("id") Long id,
+                                                        @RequestParam("images") MultipartFile[] images) {
+        SliderDto updatedSlider;
+        try {
+            updatedSlider = sliderService.updateSliderImages(id, images);
+        } catch (IOException e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        if (updatedSlider == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        return ResponseEntity.ok().body(updatedSlider);
+    }
+
+
 }
