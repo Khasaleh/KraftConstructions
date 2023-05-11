@@ -70,6 +70,7 @@ public class HomePageAboutUsController {
         String videoUrl = homePageAboutUsService.getAboutUsVideoUrl(ABOUT_US_ID);
         return ResponseEntity.ok(videoUrl);
     }
+
 }
 
 

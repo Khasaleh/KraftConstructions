@@ -1,6 +1,5 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-import com.bezkoder.spring.jpa.h2.dto.PortfolioServiceRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 
@@ -12,5 +11,5 @@ public interface ServicesService {
     ServicesResponseDTO addService(ServicesRequestDTO servicesRequestDTO);
     ServicesResponseDTO updateService(Long id, ServicesRequestDTO dto);
     void deleteService(Long id);
-    String addPortfolioToService(Long id, PortfolioServiceRequestDTO portfolioServiceRequestDTO);
+
 }

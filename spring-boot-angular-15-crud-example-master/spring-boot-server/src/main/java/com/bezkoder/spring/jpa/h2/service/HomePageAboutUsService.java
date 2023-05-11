@@ -1,6 +1,7 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
+import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 
 public interface HomePageAboutUsService {
@@ -13,5 +14,6 @@ public interface HomePageAboutUsService {
 
 
     String getAboutUsVideoUrl(Long id);
+
 
 }

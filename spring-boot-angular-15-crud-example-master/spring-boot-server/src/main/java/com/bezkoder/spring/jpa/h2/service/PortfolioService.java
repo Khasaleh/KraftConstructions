@@ -9,10 +9,7 @@ import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
 public interface PortfolioService {
-    List<PortfolioDTO> findAll();
-
     PortfolioDTO findById(Long id);
-    Portfolio updatePortfolio(Long id, PortfolioDTO portfolioDto);
 
     PortfolioDTO save(PortfolioDTO portfolioDTO);
 

@@ -1,4 +1,5 @@
 package com.bezkoder.spring.jpa.h2.Entity;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -6,6 +7,7 @@ import lombok.Setter;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @AllArgsConstructor
@@ -28,6 +30,9 @@ public class HomePage {
 
     @Column(name = "about_us_video_url")
     private String aboutusVideoUrl;
+
+    @OneToMany(mappedBy = "homePage")
+    private List<Services> services;
 }
 
 

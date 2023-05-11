@@ -1,9 +1,13 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
+import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
+import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.PortfolioServiceRequestDTO;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.repository.HomePageAboutUsRepository;
+import com.bezkoder.spring.jpa.h2.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,6 +22,9 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
 
     @Autowired
     private HomePageAboutUsMapper homePageAboutUsMapper;
+
+    @Autowired
+    private PortfolioRepository portfolioRepository;
 
     @Override
     public HomePage getHomePageAboutUs(Long id) {
@@ -56,5 +63,4 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
                 .orElseThrow(() -> new NoSuchElementException("AboutUs not found for id: " + id));
         return homePage.getAboutusVideoUrl();
     }
-
 }

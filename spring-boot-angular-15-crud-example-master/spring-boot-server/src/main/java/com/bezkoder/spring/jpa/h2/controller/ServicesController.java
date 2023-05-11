@@ -1,6 +1,5 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.dto.PortfolioServiceRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 import com.bezkoder.spring.jpa.h2.service.ServicesServiceImpl;
@@ -10,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,6 +21,7 @@ public class ServicesController {
 
     @Autowired
     public ServicesServiceImpl servicesServiceImpl;
+
 
     @PostMapping("/addservices")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
@@ -62,13 +63,22 @@ public class ServicesController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/service/{id}/portfolios")
+
+    @PostMapping("/service/{id}/images")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<String> addPortfoliosToService(@PathVariable Long id, @RequestBody PortfolioServiceRequestDTO portfolioServiceRequestDTO){
-        return ResponseEntity.ok(servicesServiceImpl.addPortfolioToService(id, portfolioServiceRequestDTO));
+    public ResponseEntity<?> uploadProjectImagesToServices(@PathVariable Long id, @RequestParam("images") MultipartFile[] images) {
+        try {
+            servicesServiceImpl.uploadImages(id, images);
+            return ResponseEntity.ok("Images uploaded successfully.");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+
+
     }
 
-}
+    }
+
 
 
 

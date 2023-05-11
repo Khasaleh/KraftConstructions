@@ -37,8 +37,15 @@ public class Services {
     private ServiceDetails serviceDetails;
 
 
-    @ManyToMany(mappedBy = "services")
+    @OneToMany(mappedBy = "services")
     private List<Portfolio> portfolios=new ArrayList<>();
+
+
+
+
+    @ManyToOne
+    @JoinColumn(name = "home_page_id")
+    private HomePage homePage;
 
 
     public Services(String serviceName, String pageName, boolean isActive) {
@@ -46,7 +53,6 @@ public class Services {
         this.pageName = pageName;
         this.isActive = isActive;
     }
-
 
 
 }
