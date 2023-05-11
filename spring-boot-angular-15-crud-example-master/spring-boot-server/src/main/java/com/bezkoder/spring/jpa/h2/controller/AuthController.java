@@ -198,7 +198,7 @@ public class AuthController {
   public ResponseEntity<?> addImageToUser(@PathVariable("username") String username, @RequestBody MultipartFile imageurl) {
     try {
       User user = userDetails.addImageToUser(username, imageurl);
-      return ResponseEntity.ok(user);
+      return ResponseEntity.ok(new MessageResponse("Profile image uploaded successfully!"));
     } catch (Exception e) {
       return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while adding the image to the user.");
     }
