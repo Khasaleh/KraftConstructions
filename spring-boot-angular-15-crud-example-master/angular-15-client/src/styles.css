@@ -2,7 +2,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "~bootstrap/dist/css/bootstrap.css";
-
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 body {
     margin: 0;
     line-height: normal;
@@ -86,10 +86,7 @@ body {
 
   }
 
-  body {
-    margin: 0;
-    line-height: normal;
-  }
+ 
   
   :root {
     /* fonts */
@@ -141,10 +138,7 @@ body {
     --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
   }
 
-  body {
-    margin: 0;
-    line-height: normal;
-  }
+ 
   
   :root {
     /* fonts */
@@ -237,10 +231,7 @@ body {
   --br-5xs: 8px;
 }
 
-body {
-  margin: 0;
-  line-height: normal;
-}
+
 
 :root {
   /* fonts */
@@ -289,108 +280,7 @@ body {
   /* Effects */
   --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
 }
-body {
-  margin: 0;
-  line-height: normal;
-}
 
-:root {
-  /* fonts */
-  --text-sm-medium: Inter;
-  --fonts-peragraph-reguler: "Myriad Pro";
-
-  /* font sizes */
-  --text-sm-medium-size: 14px;
-  --fonts-peragraph-reguler-size: 15px;
-  --text-xs-medium-size: 12px;
-  --font-size-base: 16px;
-
-  /* Colors */
-  --white: #fff;
-  --gray-300: #d0d5dd;
-  --gray-800: #1d2939;
-  --gray-900: #101828;
-  --primary-dark: #141619;
-  --gray-700: #344054;
-  --gray-50: #f9fafb;
-  --gray-200: #eaecf0;
-  --color-black: #000;
-  --kraft-d-green: #025a00;
-  --color-seagreen: #518350;
-  --color-darkolivegreen: #3d6b3d;
-  --gray-500: #667085;
-
-  /* Gaps */
-  --gap-5xs: 8px;
-  --gap-xs: 12px;
-
-  /* Paddings */
-  --padding-3xs: 10px;
-  --padding-base: 16px;
-  --padding-4xs: 9px;
-  --padding-5xs: 8px;
-  --padding-5xl: 24px;
-  --padding-xs: 12px;
-
-  /* border radiuses */
-  --br-5xs: 8px;
-  --br-xl: 20px;
-  --br-7xs: 6px;
-
-  /* Effects */
-  --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
-}
-
-  /* --font-kanit: Kanit;
-
-
-  --fonts-peragraph-reguler: "Myriad Pro"; */
-
-  /* font sizes */
-  /* --text-sm-medium-size: 14px;
-  --fonts-peragraph-reguler-size: 15px;
-  --text-xs-medium-size: 12px;
-  --font-size-base: 16px; */
-
-  /* Colors */
-  /* --white: #fff;
-  --gray-300: #d0d5dd;
-  --gray-800: #1d2939;
-  --gray-900: #101828;
-  --primary-dark: #141619;
-  --gray-700: #344054;
-  --gray-50: #f9fafb;
-  --gray-200: #eaecf0;
-  --color-black: #000;
-  --kraft-d-green: #025a00;
-  --color-seagreen: #518350;
-  --color-darkolivegreen: #3d6b3d;
-  --gray-500: #667085; */
-
-  /* Gaps */
-  /* --gap-5xs: 8px;
-  --gap-xs: 12px; */
-
-  /* Paddings */
-  /* --padding-3xs: 10px;
-  --padding-base: 16px;
-  --padding-4xs: 9px;
-  --padding-5xs: 8px;
-  --padding-5xl: 24px;
-  --padding-xs: 12px; */
-
-  /* border radiuses */
-  /* --br-5xs: 8px;
-
-  --br-xl: 20px;
-  --br-7xs: 6px; */
-
-  /* Effects */
-  /* --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05); */
-body {
-  margin: 0;
-  line-height: normal;
-}
 
 :root {
   /* fonts */
@@ -446,28 +336,92 @@ body {
 
 :root {
   /* fonts */
-  --heading-6-reguler: "Myriad Pro";
-  --font-inter: Inter;
+  --text-sm-medium: Inter;
+  --fonts-peragraph-reguler: "Myriad Pro";
 
   /* font sizes */
-  --heading-6-reguler-size: 15px;
-  --font-size-sm: 14px;
-  --fonts-heading-h4-size: 18px;
+  --text-sm-medium-size: 14px;
+  --fonts-peragraph-reguler-size: 15px;
+  --text-xs-medium-size: 12px;
+  --font-size-base: 16px;
+
+  /* Colors */
+  --white: #fff;
+  --gray-300: #d0d5dd;
+  --gray-800: #1d2939;
+  --gray-900: #101828;
+  --primary-dark: #141619;
+  --gray-700: #344054;
+  --gray-50: #f9fafb;
+  --gray-200: #eaecf0;
+  --color-black: #000;
+  --kraft-d-green: #025a00;
+  --color-seagreen: #518350;
+  --color-darkolivegreen: #3d6b3d;
+  --gray-500: #667085;
+
+  /* Gaps */
+  --gap-5xs: 8px;
+  --gap-xs: 12px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-base: 16px;
+  --padding-4xs: 9px;
+  --padding-5xs: 8px;
+  --padding-5xl: 24px;
+  --padding-xs: 12px;
+
+  /* border radiuses */
+  --br-5xs: 8px;
+  --br-xl: 20px;
+  --br-7xs: 6px;
+
+  /* Effects */
+  --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
+}
+
+
+
+:root {
+
+  --text-sm-medium: Inter;
+  --fonts-peragraph-reguler: "Myriad Pro";
+  --font-font-awesome-5-free: "Font Awesome 5 Free";
+  --font-kanit: Kanit;
+
+  /* font sizes */
+  --text-sm-medium-size: 14px;
+  --fonts-peragraph-reguler-size: 15px;
+  --font-size-base: 16px;
 
   /* Colors */
   --color-black: #000;
-  --primary-dark: #141619;
+  --gray-700: #344054;
   --colors-white: #fff;
   --kraft-d-green: #025a00;
-  --colors-buttun-gray-10: #eff2f5;
-  --body-color: #676767;
   --color-seagreen: #518350;
   --color-darkolivegreen: #3d6b3d;
+  --gray-50: #f9fafb;
+  --gray-500: #667085;
+  --color-gainsboro: #e8e8e8;
+  --color-gray-100: #8b8b8b;
+  --primary-dark: #141619;
+
+  /* Gaps */
+  --gap-7xs: 6px;
+  --gap-5xs: 8px;
+
+  /* Paddings */
+  --padding-3xs: 10px;
+  --padding-sm: 14px;
 
   /* border radiuses */
-  --br-11xs: 2px;
+  --br-5xs: 8px;
+  --br-8xs: 5px;
+  --br-9xs: 4px;
 
   /* Effects */
-  --shdow-5: 0px 4px 4px rgba(0, 0, 0, 0.2);
+  --shadow-xs: 0px 1px 2px rgba(16, 24, 40, 0.05);
 }
 

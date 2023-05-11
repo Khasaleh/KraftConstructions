@@ -17,10 +17,10 @@ import { ContactUsComponent } from './components/contact-us/contact-us.component
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
-import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
-import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
+import { AdminRequestComponent } from './components/admin-request/admin-request.component';
+import { ShowusersComponent } from './components/showusers/showusers.component';
 
 
 const routes: Routes = [
@@ -30,31 +30,37 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'testimonials', component: TestimonialsComponent },
   { path: 'new-additions', component: NewAddComponent },
-  { path: 'request-estimate', component: RequestEstimateComponent },
-  { path: 'contact-us', component: ContactUsComponent },
-  { path: 'login', component: LoginComponent },
+  { path:'request-estimate', component: RequestEstimateComponent},
+  { path:'contact-us', component: ContactUsComponent},
+  { path:'login', component: LoginComponent},
   { path: 'careers', component: CareersComponent },
-  { path: 'add-user', component: AddUserComponent },
-  { path: 'payment', component: PaymentTabComponent },
+  { path:'add-user',component:AddUserComponent},
+  { path:'payment',component:PaymentTabComponent},
+
+
+
 
   {
     path: 'admin',
     component: AdminMainComponent,
     children: [
       { path: '', component: AdminDashboardComponent },
+
       { path: 'admin-home', component: AdminHomeComponent },
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'admin-aboutUs', component: AdminAboutUsComponent },
       { path: 'admin-contact-us', component: AdminContactUsComponent },
       { path: 'admin-testimonial', component: AdminTestimonialComponent },
       { path: 'add-user', component: AddUserComponent },
+      {path:'admin-request', component:AdminRequestComponent},
+      {path: 'admin-careers',component:AdminCareersComponent},
       { path: 'add-service', component: AdminServicesComponent },
-      { path: 'admin-careers', component: AdminCareersComponent },
-      { path: 'admin-portfolio', component: AdminPortfolioComponent },
-      { path: 'admin-portshow', component: AdminPortshowComponent }
+      {path: 'showusers', component:ShowusersComponent}
+
 
     ],
-  },
+  }
+
 ];
 
 

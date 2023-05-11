@@ -5,15 +5,23 @@ import com.bezkoder.spring.jpa.h2.dto.QRCodeDTO;
 import com.bezkoder.spring.jpa.h2.mapper.QrCodeMapperImpl;
 import com.bezkoder.spring.jpa.h2.repository.QRCodeRepository;
 import com.google.zxing.BarcodeFormat;
+import com.google.zxing.MultiFormatWriter;
+import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.QRCodeWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class QRCodeServiceImpl implements QRCodeService {
@@ -23,23 +31,34 @@ public class QRCodeServiceImpl implements QRCodeService {
     @Autowired
     private QRCodeRepository qrCodeRepository;
 
-    @Override
-    public QRCodeDTO createQRCode(QRCodeDTO qrCodeDTO) throws Exception {
-        // Create QR code and save it to the file system
-        String filePath = "path/to/folder/qr_code.png"; // Change this path to your desired path
-        QRCodeWriter qrCodeWriter = new QRCodeWriter();
-        BitMatrix bitMatrix = qrCodeWriter.encode(qrCodeDTO.getQrCodeText(), BarcodeFormat.QR_CODE, 350, 350);
-        Path path = FileSystems.getDefault().getPath(filePath);
-        MatrixToImageWriter.writeToPath(bitMatrix, "PNG", path);
 
-        QRCode qrCode = new QRCode();
-        qrCode.setQrCodeText(qrCodeDTO.getQrCodeText());
-        qrCodeDTO.setFilePath(filePath);
+
+    public QRCode saveQrCode(QRCodeDTO qrCodeDTO, String path) throws IOException, WriterException {
+        QRCode qrCode = qrCodeMapper.toQrCode(qrCodeDTO);
+        qrCodeRepository.save(qrCode);
+
+        // Generate QR code image
+        String qrCodeText = qrCodeDTO.getQrCodeText();
+        int width = 300;
+        int height = 300;
+        BitMatrix bitMatrix = new MultiFormatWriter().encode(qrCodeText, BarcodeFormat.QR_CODE, width, height);
+        BufferedImage qrCodeImage = MatrixToImageWriter.toBufferedImage(bitMatrix);
+
+
+
+        File dir = new File(path);
+        if (!dir.exists()) {
+            dir.mkdirs(); // create the directory and any parent directories if they don't exist
+        }
+        File file = new File(dir, qrCode.getId() + ".png");
+        ImageIO.write(qrCodeImage, "png", file);
+
+
+        qrCodeDTO.setFilePath(file.getPath());
         qrCode.setFilePath(qrCodeDTO.getFilePath());
 
-        QRCode savedQRCode = qrCodeRepository.save(qrCode);
 
-        return qrCodeMapper.toQrCodeDTO(savedQRCode);
+        return qrCode;
     }
 
 
