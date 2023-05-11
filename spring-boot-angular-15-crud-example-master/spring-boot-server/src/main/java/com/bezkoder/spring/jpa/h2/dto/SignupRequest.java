@@ -25,6 +25,8 @@ public class SignupRequest {
   @Email
   private String email;
 
+  private byte profileimage;
+
   private Set<String> role;
 
   @NotBlank
