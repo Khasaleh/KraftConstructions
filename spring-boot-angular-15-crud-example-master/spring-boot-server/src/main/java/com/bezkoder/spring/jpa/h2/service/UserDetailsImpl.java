@@ -25,11 +25,12 @@ public class UserDetailsImpl implements UserDetails {
 
   @JsonIgnore
   private String password;
-  private byte[] profileimage;
+
+  private String imageUrl;
 
   private Collection<? extends GrantedAuthority> authorities;
 
-  public UserDetailsImpl(Long id, String username, String firstname, String lastname, String email, String password, byte[] profileimage,
+  public UserDetailsImpl(Long id, String username,String firstname, String lastname, String email, String password, String imageUrl,
                          Collection<? extends GrantedAuthority> authorities) {
     this.id = id;
     this.username = username;
@@ -37,24 +38,24 @@ public class UserDetailsImpl implements UserDetails {
     this.firstname = firstname;
     this.lastname=lastname;
     this.password = password;
-    this.profileimage = profileimage;
+    this.imageUrl=imageUrl;
     this.authorities = authorities;
   }
 
   public static UserDetailsImpl build(User user) {
     List<GrantedAuthority> authorities = user.getRoles().stream()
-        .map(role -> new SimpleGrantedAuthority(role.getName().name()))
-        .collect(Collectors.toList());
+            .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+            .collect(Collectors.toList());
 
     return new UserDetailsImpl(
-        user.getId(), 
-        user.getUsername(),
-        user.getFirstname(),
-        user.getLastname(),
-        user.getEmail(),
-        user.getPassword(),
-        user.getProfileimage(),
-        authorities);
+            user.getId(),
+            user.getUsername(),
+            user.getFirstname(),
+            user.getLastname(),
+            user.getEmail(),
+            user.getPassword(),
+            user.getImageUrl(),
+            authorities);
   }
 
   @Override
@@ -87,9 +88,11 @@ public class UserDetailsImpl implements UserDetails {
   public String getLastname() {
     return lastname;
   }
-  public byte[] getProfileimage() {
-    return profileimage;
+
+  public String getImageUrl() {
+    return imageUrl;
   }
+
   @Override
   public boolean isAccountNonExpired() {
     return true;
