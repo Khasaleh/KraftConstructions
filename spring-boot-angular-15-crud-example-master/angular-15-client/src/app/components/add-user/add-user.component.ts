@@ -8,6 +8,18 @@ import { AddUserService } from 'src/app/service/add-user.service';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent implements OnInit {
+  urllink = '';
+
+selectFiles(event:any)
+{
+  if(event.target.files){
+    var reader = new FileReader()
+    reader.readAsDataURL(event.target.files[0])
+    reader.onload = (event:any) => {
+      this.urllink = event.target.result
+    }
+  }
+}
   userDetail!: FormGroup ;
   userObj:AddUser = new AddUser();
   userList:AddUser[] = [];

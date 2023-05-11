@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import {MatIconModule} from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -26,14 +27,12 @@ import { AdminContactUsComponent } from './components/admin-contact-us/admin-con
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 import { AdminTestimonialComponent } from './components/admin-testimonial/admin-testimonial.component';
 import { AdminCareersComponent } from './components/admin-careers/admin-careers.component';
-import { AdminPortfolioComponent } from './components/admin-portfolio/admin-portfolio.component';
-import { AdminPortshowComponent } from './components/admin-portshow/admin-portshow.component';
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { ShowusersComponent } from './components/showusers/showusers.component';
-
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -64,8 +63,6 @@ import { ShowusersComponent } from './components/showusers/showusers.component';
     AdminCareersComponent,
     AdminDashboardComponent,
     AdminDashboardComponent,
-    AdminPortfolioComponent,
-    AdminPortshowComponent,
     AdminServicesComponent,
     PaymentTabComponent,
     AdminRequestComponent,
@@ -81,7 +78,9 @@ import { ShowusersComponent } from './components/showusers/showusers.component';
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    MatIconModule
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule
     
  
   ],
