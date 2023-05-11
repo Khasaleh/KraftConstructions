@@ -70,5 +70,5 @@ public class SliderController {
         return ResponseEntity.ok().body(updatedSlider);
     }
 
-
 }
+
