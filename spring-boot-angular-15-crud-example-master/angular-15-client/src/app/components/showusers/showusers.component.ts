@@ -6,5 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./showusers.component.css']
 })
 export class ShowusersComponent {
-showTable = false;
 }
