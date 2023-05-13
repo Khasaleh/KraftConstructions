@@ -32,6 +32,7 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { ShowusersComponent } from './components/showusers/showusers.component';
+import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
 import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
@@ -67,7 +68,8 @@ import { MatButtonModule } from '@angular/material/button';
     PaymentTabComponent,
     AdminRequestComponent,
     PaymentTabComponent,
-    ShowusersComponent
+    ShowusersComponent,
+    AdminServicePageComponent
 
 
 
