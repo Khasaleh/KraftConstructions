@@ -335,12 +335,152 @@
   }
   
   .home {
-    background-color: var(--colors-white);
-    width: 100%;
-    height: 1450px;
+    background-color: var(--colors-white); 
+    /* width: 100%; */
+     height: 1450px;
     overflow: hidden;
     text-align: left;
     font-size: var(--font-size-26xl);
     color: var(--colors-white);
     font-family: var(--h2-semibold);
+  } 
+
+
+
+/* CSS for screens up to 768px (mobile phones) */
+@media screen and (max-width: 800px) {
+  .aboutus2-1-icon {
+    width: 100%;
+    
   }
+  .aboutus2-1-parent,
+  .group-child {
+    
+    width: 100%;
+   
+  }
+  
+  .home-about-us {
+    
+    
+    width: 100%;
+   
+  }
+ 
+  .group-item {
+
+    max-width: 100%;
+    
+  }
+  .home-about-us-parent {
+    width: 100%;
+  }
+  .about-us-parent,
+  .top-bar-icon {
+    width: 100%;
+  }
+  .about-us-group {
+    width: 100%;
+  }
+  .group-inner,
+  .vector-icon {
+    width: 100%;
+}
+.kraftconstructioncokraftconst {
+  width: 100%;
+}
+.component-9-inner,
+  .component-9-item {
+    width: 100%;
+  }
+  .vector-icon1 {
+    
+    width: 100%;
+   
+  }
+  .component-9 {
+    width: 100%;
+  }
+  .about-uss-1-icon {
+    width: 100%;
+  }
+  .our-mission-high {
+    width: 100%;
+  }
+  .our-mission-high-container {
+    width: 100%;
+  }
+  .kraft-construction-is-container {
+    width: 100%;
+  }
+  .about-us2 {
+    width: 100%;
+  }
+  .our-mission-high-quality-fai-parent {
+    width: 100%;
+  }
+  .shutterstock-149987300-1-icon {
+    width: 100%;
+  }
+  .rectangle-div {
+    width: 100%;
+  }
+  .home-inner,
+  .shutterstock-149987300-1-parent {
+    width: 100%;
+  }
+  .home-inner {
+    width: 100%;
+  }
+  .get-a-quote {
+    width: 100%;
+  }
+   .bg,
+  .design-your-home {
+    width: 100%;
+  }
+  .design-your-home {
+    width: 100%;
+  }
+  .bg {
+    width: 100%;
+    
+  }
+  .learn-more,
+  .long-arrow-alt-right {
+    width: 100%;
+  }
+  .learn-more {
+    width: 100%;
+  }
+  
+  .button,
+  .content {
+    width: 100%;
+  }
+  .content {
+    width: 100%;
+  }
+  .button {
+    width: 100%;
+    
+  }
+  .get-a-quote-parent {
+    width: 100%;
+  }
+  .about-us-container {
+    width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+  .divider {
+    width: 100%;
+  }
+  
+  .home {
+    position: static;
+    width: 100%;
+     
+  } 
+}
