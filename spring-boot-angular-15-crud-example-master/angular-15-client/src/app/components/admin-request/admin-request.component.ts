@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-request.component.css']
 })
 export class AdminRequestComponent {
-show=false;
+show = false;
+ahide=true;
+content() {
+  this.show = true;
+  this.ahide = false;
+
+}
 }

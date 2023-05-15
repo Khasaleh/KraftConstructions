@@ -9,13 +9,13 @@
   font-family: var(--fonts-peragraph-reguler);
 }
 .desktop-3-item {
-  position: absolute;
-  top: 135px;
-  left: 271px;
+  position: relative;
+  /* top: 135px; */
+  left: 21px;
   background-color: var(--colors-white);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-  width: 82% ;
-  height: 130% ;
+  width: 85rem ;
+  height: 50% ;
 }
 
 .navbar-brand {
@@ -33,7 +33,7 @@
   border-bottom: 1px solid #DDDDDD;
 }
 .col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
- , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt {
+ , #inputAddress , #inputCity , #inputState , #InputZip, #inputtxt {
   margin-top: 20px;
   margin-left: 20px;
 }
@@ -76,4 +76,23 @@
   color: #1D2939;
   font-style: arial;
 
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; /* or any other option that suits your layout */
+}
+
+/* Responsive properties */
+@media screen and (max-width: 768px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media only screen and (max-width: 375px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
 }
