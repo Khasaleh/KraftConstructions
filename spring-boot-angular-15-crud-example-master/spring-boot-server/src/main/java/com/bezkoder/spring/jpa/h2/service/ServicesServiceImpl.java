@@ -108,8 +108,8 @@ public class ServicesServiceImpl implements ServicesService {
                 String imageUrl = saveImage(image);
                 portfolio.setImageUrl(imageUrl);
                 portfolio.setServices(service);
-                portfolioRepository.save(portfolio);
-                service.getPortfolios().add(portfolio);
+                Portfolio savedPortfolio = portfolioRepository.save(portfolio);
+                service.getPortfolios().add(savedPortfolio);
             }
 
             servicesRepository.save(service);

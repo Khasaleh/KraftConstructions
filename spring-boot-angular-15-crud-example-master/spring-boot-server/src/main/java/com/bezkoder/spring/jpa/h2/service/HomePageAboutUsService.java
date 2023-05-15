@@ -1,8 +1,10 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
-import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
+
+import java.util.List;
 
 public interface HomePageAboutUsService {
 
@@ -15,5 +17,8 @@ public interface HomePageAboutUsService {
 
     String getAboutUsVideoUrl(Long id);
 
+    public String addServiceToHomePage(Long id, List<Long> serviceIds);
+
+    public List<ServiceHomePageResponseDto> getServicesByHomePageId(Long id);
 
 }

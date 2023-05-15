@@ -40,9 +40,6 @@ public class Services {
     @OneToMany(mappedBy = "services")
     private List<Portfolio> portfolios=new ArrayList<>();
 
-
-
-
     @ManyToOne
     @JoinColumn(name = "home_page_id")
     private HomePage homePage;

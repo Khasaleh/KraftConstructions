@@ -31,7 +31,7 @@ public class HomePage {
     @Column(name = "about_us_video_url")
     private String aboutusVideoUrl;
 
-    @OneToMany(mappedBy = "homePage")
+    @OneToMany(mappedBy = "homePage",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Services> services;
 }
 

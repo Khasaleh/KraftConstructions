@@ -42,7 +42,4 @@ public class ServiceDetails {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
-
-
-    // other fields, constructors, and getters/setters
 }
