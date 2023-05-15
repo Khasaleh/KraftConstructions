@@ -1,3 +1,4 @@
+<div class="flex-container">
 <div class="home">
   <div class="heading">
   <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -64,20 +65,20 @@
         <label for="exampleFormControlTextarea1" class="form-label">Breifly Describe your project?</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
-      <div class="inputtxt">How did you hear about Kraft Construction?<br></div>
-      <div class="dropdown">
-        <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          simply-dummy-text
-        </button>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="#">Action</a></li>
-          <li><a class="dropdown-item" href="#">Another action</a></li>
-          <li><a class="dropdown-item" href="#">Something else here</a></li>
-        </ul>
+     
+     <div class="row">
+      <div class="col-md-6">
+        <label for="inputtxt" class="form-label">How did you hear about Kraft Construction?</label>
+        <select id="inputtxt" class="form-select">
+          <option selected> simply-dummy-text</option>
+          <option>...</option>
+        </select>
+      </div>
       </div>
     </form>
-  
-    <table class="table">
+  <!-- <div class = "abc" *ngIf= "tab"> -->
+    <table class="table" *ngIf="ahide">
+      <!-- <ng-template #tab> -->
       <thead>   
            <tr>
               <th scope="col">Name</th>
@@ -99,7 +100,7 @@
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item (click)="show=true">View</button>
+                  <button mat-menu-item (click)="content()">View</button>
                   <button mat-menu-item>Delete</button>
                   
                 </mat-menu>
@@ -145,7 +146,9 @@
             </tr>
         
           </tbody>
+      <!-- </ng-template> -->
         </table>
+        <!-- </div> -->
         <div class = "paginations">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
@@ -168,7 +171,5 @@
 
   </div>
   
-      
-      
-      
+  </div>
  

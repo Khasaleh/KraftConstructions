@@ -30,7 +30,7 @@
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown2Open}">
         <a [routerLink]="['./add-service']">Add Service</a>
-        <a href="#">Pages</a>
+        <a [routerLink]="['./pages']">Pages</a>
       </div>
       <!-- button3 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown3Open}"  (click)="toggleDropdown3()">

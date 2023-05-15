@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AdminAboutUsComponent {
 urllink:string ="";
+
 selectFiles(event:any)
 {
   if(event.target.files){
@@ -17,7 +18,6 @@ selectFiles(event:any)
     }
   }
 }
-
 urllink1:string ="";
 selectFiles2(event:any)
 {
@@ -30,3 +30,4 @@ selectFiles2(event:any)
   }
 }
 }
+console.log("hello world");

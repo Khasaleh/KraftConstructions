@@ -1,6 +1,7 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.Slider;
+import com.bezkoder.spring.jpa.h2.Entity.SliderImage;
 import com.bezkoder.spring.jpa.h2.dto.SliderDto;
 import com.bezkoder.spring.jpa.h2.mapper.SliderMapper;
 import com.bezkoder.spring.jpa.h2.repository.SliderRepository;
@@ -12,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -54,21 +56,47 @@ public class SliderServiceImpl implements SliderService {
     private String saveImage(MultipartFile image) throws IOException {
 
         String fileName = UUID.randomUUID().toString() + "_" + image.getOriginalFilename();
-        File file=new File("uploads/testimonials/slider/" + fileName);
+        File file = new File("uploads/testimonials/slider/" + fileName);
 
         FileUtils.writeByteArrayToFile(file, image.getBytes());
 
 
         return file.getPath();
     }
+
     @Override
     public void deleteSlider(Long sliderId) {
         sliderRepository.deleteById(sliderId);
     }
+
+@Override
+public SliderDto updateSliderImages(Long id, MultipartFile[] images) throws IOException {
+    Optional<Slider> optionalSlider = sliderRepository.findById(id);
+    if (optionalSlider.isPresent()) {
+        Slider slider = optionalSlider.get();
+        // Delete old images from the directory
+        deleteSliderImagesFromDirectory(slider.getImages());
+        // Clear existing images
+        slider.getImages().clear();
+        // Save new images
+        for (MultipartFile image : images) {
+            String imageUrl = saveImage(image);
+            slider.addImage(imageUrl);
+        }
+        Slider savedSlider = sliderRepository.save(slider);
+        return sliderMapper.toDto(savedSlider);
+    } else {
+        return null;
+    }
 }
-
-
-
+    private void deleteSliderImagesFromDirectory(Iterable<SliderImage> images) {
+        for (SliderImage image : images) {
+            String imageUrl = image.getImageUrl();
+            File file = new File(imageUrl);
+            file.delete();
+        }
+    }
+}
 
 
 

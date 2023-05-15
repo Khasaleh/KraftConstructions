@@ -1,19 +1,29 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 .add-services {
     padding: 10px 0px;
     width: 100%;
     background-color: #E8ECF3;
 }
+
 .new-container {
     padding: 0px 3%;
 }
-.card-shade{
+
+.card-shade {
     box-shadow: 2px 8px 4px 0px lightgray;
     margin: 15px 0px;
 }
-.label{
+
+.label {
     font-size: 15px;
     font-weight: 500;
 }
+
+.label2 {
+    font-size: 15px;
+}
+
 .card-head {
     font-size: 18px;
     font-weight: 600;
@@ -21,6 +31,7 @@
     border-bottom: 1px solid #DDDDDD;
     padding: 16px 0px 9px 22px;
 }
+
 .custom-button {
     padding: 8px 20px;
     background-color: #2d5833;
@@ -30,7 +41,9 @@
     text-align: center;
     width: 200px;
     text-decoration: none;
+    margin: 7px 0px;
 }
+
 
 /* Add hover and active states for the custom button */
 .custom-button:hover,
@@ -38,35 +51,54 @@
 .custom-button:active {
     background-color: #518350;
 }
-.cardbtn{
+
+.cardbtn {
     text-decoration: none;
     border: none;
     background-color: #fff;
 }
+
+.cardbtn1 {
+    text-decoration: none;
+    border: none;
+    background-color: #fff;
+}
+
 .inputField {
-    width: 330px;
+    width: 100%;
     padding: 6px;
     border: 1px solid #D0D5DD;
     border-radius: 5px;
 }
-.drop-1{
-padding: 18px 0px;
+
+.drop-1 {
+    padding: 18px 0px;
 }
-.grey-box{
+
+.drop-2 {
+    padding: 18px 0px;
+    width: 27%;
+}
+
+.grey-box {
     background-color: #EFF2F5;
     width: 280px;
     border-radius: 4px;
     padding: 10px 10px 10px 20px;
-    
+
 }
+
 .check-button {
     color: #141619;
     cursor: pointer;
+    padding: 5px 0px;
 }
+
 .check-btn {
     padding-left: 8px;
 }
-.del-btn{
+
+.del-btn {
     margin-top: 10px;
     color: red;
     font-size: 14px;
@@ -76,38 +108,48 @@ padding: 18px 0px;
     padding: 5px;
     border: 1px solid #fff;
 }
-.label-box{
+
+.label-box {
     font-size: 15px;
     font-weight: 500;
     margin-bottom: 15px;
 }
-.service-wrape{
+
+.service-wrape {
     display: flex;
     justify-content: space-between;
     padding-bottom: 90px;
 }
-.img-box{
+
+.img-box {
     width: 100%;
     height: 80%;
     border: 1px solid #D0D5DD;
     border-radius: 5px;
     margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.content1{
+
+.content1 {
     width: 42%;
 }
-.img-dyn{
+
+.img-dyn {
     width: 90%;
     height: 80%;
-    margin: 20px;
     border-radius: 5px;
 }
+
 .input-file {
     display: none;
 }
+
 .input-file1 {
     display: none;
 }
+
 .upload-label {
     display: block;
     width: 40%;
@@ -115,8 +157,9 @@ padding: 18px 0px;
     position: absolute;
     top: 140px;
     cursor: pointer;
-  }
-  .upload-label1 {
+}
+
+.upload-label1 {
     display: block;
     width: 40%;
     height: 300px;
@@ -124,57 +167,67 @@ padding: 18px 0px;
     top: 140px;
     left: 45%;
     cursor: pointer;
-  }
-  .img-wrape{
+}
+
+.img-wrape {
     display: flex;
     gap: 25px;
     margin: 10px 0px 0px 0px;
-  }
-  .form-group-pad{
+}
+
+.form-group-pad {
     margin-top: 30px;
     width: 86.5%;
-  }
-  .input-check1{
+}
+
+.input-check1 {
     width: 33px;
     height: 23px;
-  }
-  .check-btn1 {
+}
+
+.check-btn1 {
     width: 30%;
     height: 23px;
     font-size: 20px;
     font-weight: 500;
     margin-left: 10px;
 }
+
 .check-button1 {
     display: flex;
     align-items: center;
     color: #141619;
     cursor: pointer;
 }
-.grey-sec-wrape{
+
+.grey-sec-wrape {
     display: flex;
     justify-content: space-between;
     width: 75%;
     align-items: center;
 }
+
 .sel-col {
     width: 30%;
 }
+
 .col-head {
     font-size: 14px;
     font-weight: 500;
     /* font-family: var( --text-md-regular); */
 }
-#grey-sec{
+
+#grey-sec {
     background-color: #EFF2F5;
     margin: 15px 0px;
-    width: 86.5%;
 }
+
 .check-button-wrape {
     display: flex;
     gap: 10px;
     width: 65%;
 }
+
 .check-button2 {
     padding: 10px;
     background-color: #E8E8E8;
@@ -185,23 +238,30 @@ padding: 18px 0px;
     text-align: center;
     margin-top: 10px;
 }
-.card-img{
+
+.card-img {
     width: 100%;
     height: 190px;
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+
 }
-.card-box{
+
+.card-box {
     width: 24%;
     /* height: 385px; */
     text-align: center;
-    background-color: #91C490;
     border-radius: 2px;
+    border: 1px solid #D0D5DD;
     color: #fff;
 }
-.card-heading{
+
+.card-heading {
     font-size: 20px;
     font-weight: 600;
     padding-top: 5px;
 }
+
 .card-cont {
     padding: 0px 15px;
 }
@@ -216,14 +276,16 @@ padding: 18px 0px;
     /* width: 150px; */
     border: none;
     text-decoration: none;
-    margin-bottom: 20px;
+    margin: 20px;
 }
-.card-wrape{
+
+.card-wrape {
     display: flex;
     gap: 10px;
     align-items: center;
 }
-.custom-button-create{
+
+.custom-button-create {
     padding: 8px 20px;
     background-color: #2d5833;
     color: #fff;
@@ -234,35 +296,128 @@ padding: 18px 0px;
     border: none;
     text-decoration: none;
 }
+
 .create-btn {
     justify-content: center;
     display: flex;
     margin: 70px 0px 130px 0px;
 }
 
-@media (max-width: 59em) {
-.card-box{
-    width: 55%;
+.drop-wrape {
+    display: flex;
+    gap: 20px;
 }
- .service-wrape{
-    display: flex;
-    flex-wrap: wrap;
- }
- .img-wrape{
-    display: flex;
-    flex-wrap: wrap;
- }
- .check-button-wrape{
-    display: flex;
-    flex-wrap: wrap;
- }
- .grey-sec-wrape{
-    display: flex;
-    flex-wrap: wrap;
- }
- .card-wrape{
-    display: flex;
-    flex-direction: column;
- }
 
+.cardbtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.input-file {
+    display: none;
+}
+
+@media (max-width: 59em) {
+    .card-box {
+        width: 80%;
+    }
+
+    .drop-2 {
+        width: 35%;
+    }
+
+    .grey-box {
+        margin-top: 15px;
+    }
+
+    .service-wrape {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+    }
+
+    .img-wrape {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .check-button-wrape {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .grey-sec-wrape {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .card-wrape {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group-pad {
+        margin-top: 45px;
+        width: 100%;
+    }
+    .upload-label {
+        width: 40%;
+        height: 8%;
+    }
+    .upload-label1 {
+        width: 40%;
+        height: 8%;
+        left: 52%;
+    }
+    .content1{
+        width: 47%;
+    }
+}
+
+@media (max-width: 47em) {
+    .card-box {
+        width: 100%;
+    }
+
+    .drop-2 {
+        width: 45%;
+    }
+
+    .check-btn1 {
+        width: 45%;
+        font-size: 15px;
+        margin-top: 10px;
+    }
+
+    .form-group-pad {
+        margin-top: 15px;
+        width: 100%;
+    }
+
+    .img-wrape {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .img-box {
+        width: 100%;
+    }
+
+    .upload-label {
+        width: 85%;
+        height: 5%;
+        top: 130px;
+    }
+
+    .upload-label1 {
+        width: 86%;
+        height: 6%;
+        top: 400px;
+        left: 10px;
+    }
+
+    .content1 {
+        width: 100%;
+    }
 }
