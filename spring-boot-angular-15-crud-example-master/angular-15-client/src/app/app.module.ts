@@ -82,7 +82,8 @@ import { MatButtonModule } from '@angular/material/button';
     FormsModule,
     MatMenuModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    BrowserAnimationsModule
     
  
   ],
