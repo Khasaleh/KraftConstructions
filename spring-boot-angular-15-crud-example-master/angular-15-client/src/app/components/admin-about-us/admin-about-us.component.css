@@ -124,4 +124,9 @@
     display: flex;
     flex-wrap: wrap;
  }
+ .content-wrap{
+    display: flex;
+    flex-wrap: wrap;
+ }
+
 }

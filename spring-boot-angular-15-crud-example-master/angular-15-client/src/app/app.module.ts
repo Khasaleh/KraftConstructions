@@ -34,6 +34,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { ShowusersComponent } from './components/showusers/showusers.component';
 import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
 import { MatButtonModule } from '@angular/material/button';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
 @NgModule({
   declarations: [
@@ -83,6 +84,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatMenuModule,
     MatIconModule,
     MatButtonModule,
+    CKEditorModule,
     BrowserAnimationsModule
     
  
