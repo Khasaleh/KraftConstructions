@@ -733,3 +733,17 @@
   color: var(--colors-white);
   font-family: var(--font-kanit);
 } 
+.footer {
+  position: absolute;
+  top: 1586px;
+  left: -24px;
+  background-color: var(--kraft-d-green);
+  width: 1628px;
+  height: 291px;
+  display: none;
+  font-size: var(--text-xl-regular-size);
+}
+.abc {
+  position: relative;
+  top : 70%
+}

@@ -1,9 +1,10 @@
 /* .home-wrape{
     display:flex;
 } */
-.whole-wrape{
+.whole-wrape {
     display: flex;
 }
+
 .img-logo {
     width: 100%;
     height: auto;
@@ -15,8 +16,6 @@
 
 .admin-home {
     padding: 30px 0px;
-    /* min-height: 100%; */
-    /* height: auto; */
     width: 100%;
     background-color: #E8ECF3;
 }
@@ -122,9 +121,11 @@
 .check-btn {
     padding-left: 10px;
 }
+
 .drop-input {
     width: 90%;
 }
+
 .check-button {
     padding: 10px;
     background-color: #E8E8E8;
@@ -140,28 +141,34 @@
     gap: 10px;
     width: 50%;
 }
-#grey-sec{
+
+#grey-sec {
     background-color: #EFF2F5;
     margin: 15px 0px;
 }
-#grey-sec2{
+
+#grey-sec2 {
     background-color: #EFF2F5;
     padding: 40px 0px;
 }
+
 .col-head {
     font-size: 14px;
     font-weight: 500;
-    font-family: var( --text-md-regular);
+    /* font-family: var( --text-md-regular); */
 }
-.grey-sec-wrape{
+
+.grey-sec-wrape {
     display: flex;
     justify-content: space-between;
     width: 70%;
 }
-.grey-sec-wrape2{
+
+.grey-sec-wrape2 {
     display: flex;
     width: 100%;
 }
+
 .sel-col {
     width: 30%;
 }
@@ -174,24 +181,29 @@
     padding: 30px 70px;
     margin: 20px 0px;
 }
+
 .services-wrap {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .component {
     width: 30%;
 
 }
+
 .kitchen-1-icon {
     width: 100%;
     height: 50%;
 }
+
 .custom-kitchens {
     font-size: 24px;
     padding: 3% 0px;
 
 }
+
 .simply-dummy-text {
     height: 23.77%;
     width: 96.57%;
@@ -210,6 +222,7 @@
     justify-content: center;
 
 }
+
 .read-more {
     font-size: 85%;
     font-weight: 400;
@@ -229,24 +242,25 @@
 
 }
 
-.card-shade{
+.card-shade {
     box-shadow: 2px 8px 4px 0px lightgray;
 }
+
 /* testmonial section */
 .switch {
     position: relative;
     display: inline-block;
     width: 60px;
     height: 34px;
-  }
-  
-  .switch input { 
+}
+
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
-  }
-  
-  .slider {
+}
+
+.slider {
     position: absolute;
     cursor: pointer;
     top: 0;
@@ -256,9 +270,9 @@
     background-color: #ccc;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  .slider:before {
+}
+
+.slider:before {
     position: absolute;
     content: "";
     height: 26px;
@@ -268,110 +282,129 @@
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
-  }
-  
-  input:checked + .slider {
+}
+
+input:checked+.slider {
     background-color: #025A00;
-  }
-  
-  input:focus + .slider {
+}
+
+input:focus+.slider {
     box-shadow: 0 0 1px #025A00;
-  }
-  
-  input:checked + .slider:before {
+}
+
+input:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
-  }
-  
-  /* Rounded sliders */
-  .slider.round {
+}
+
+/* Rounded sliders */
+.slider.round {
     border-radius: 34px;
-  }
-  
-  .slider.round:before {
+}
+
+.slider.round:before {
     border-radius: 50%;
-  }
-.slider-head{
+}
+
+.slider-head {
     font-size: 18px;
     font-weight: 600;
     font-family: sans-serif;
 }
-.slider-wrape{
+
+.slider-wrape {
     padding: 30px 0px;
     display: flex;
     align-items: center;
     gap: 15px;
 }
-.slider-width{
+
+.slider-width {
     width: 18%;
 }
+
 /* our-project section */
-.our-project{
+.our-project {
     padding: 20px 0px;
 }
-#grid-card{
+
+#grid-card {
     display: flex;
     justify-content: center;
 }
-.grid-wrape{
+
+.grid-wrape {
     display: grid;
     gap: 10px;
-    grid-template-columns: 1fr 1fr 1fr ;
+    grid-template-columns: 1fr 1fr 1fr;
     padding: 10%;
 }
-.card-pad{
+
+.card-pad {
     padding: 10px;
 }
-.map-section{
+
+.map-section {
     padding-bottom: 500px;
 }
 
 @media (max-width: 59em) {
-.card-body-wrape{
-    flex-direction: column;
-}
-.card-head{
-    text-align: center;
-}
-.card-head-services{
-    text-align: center;
+    .card-body-wrape {
+        flex-direction: column;
+    }
 
-}
-.drop-input{
-    width: 100%;
-    margin: auto;
-}
-    .check-button-wrape{
+    .card-head {
+        text-align: center;
+    }
+
+    .card-head-services {
+        text-align: center;
+
+    }
+
+    .drop-input {
+        width: 100%;
+        margin: auto;
+    }
+
+    .check-button-wrape {
         display: flex;
         flex-wrap: wrap;
         margin: auto;
     }
-    #custom-kitchen{
+
+    #custom-kitchen {
         width: 50%;
     }
-    .check-button{
+
+    .check-button {
         width: 100%;
     }
-    .grey-sec-wrape{
+
+    .grey-sec-wrape {
         display: flex;
         flex-wrap: wrap;
         width: 100%;
     }
-    .services-wrap{
+
+    .services-wrap {
         display: flex;
         flex-direction: column;
     }
-    .grid-wrape{
+
+    .grid-wrape {
         display: grid;
         grid-template-columns: 1fr 1fr;
-    }    
+    }
+
     .component {
         width: 90%;
         margin-bottom: 15px;
     }
-    .map-section{
+
+    .map-section {
         padding-bottom: 50px;
     }
-  
+
 }

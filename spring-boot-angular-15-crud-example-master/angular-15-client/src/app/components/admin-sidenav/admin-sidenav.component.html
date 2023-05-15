@@ -15,10 +15,10 @@
         <a [routerLink]="['./admin-home']">Home</a>
         <a [routerLink]="['./admin-aboutUs']">About us</a>
         <a href="#">Add Careers News</a>
-        <a href="#">Careers</a>
+        <a [routerLink]="['./admin-careers']">Careers</a>
         <a [routerLink]="['./admin-contact-us']">Contact us</a>
         <a [routerLink]="['./admin-testimonial']">Testmonials</a>
-        <a href="#">Request Estimate</a>
+        <a [routerLink]="['./admin-request']">Request Estimate</a>
       </div>
       <!-- button2 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown2Open}"  (click)="toggleDropdown2()">
@@ -29,8 +29,8 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown2Open}">
-        <a href="#">Add Service</a>
-        <a href="#">Pages</a>
+        <a [routerLink]="['./add-service']">Add Service</a>
+        <a [routerLink]="['./pages']">Pages</a>
       </div>
       <!-- button3 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown3Open}"  (click)="toggleDropdown3()">
@@ -42,8 +42,8 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown3Open}">
-        <a href="#">Add portfolio</a>
-        <a href="#">View all portfolio</a>
+        <a [routerLink]="['./admin-portfolio']">Add portfolio</a>
+        <a [routerLink]="['./admin-portshow']">View all portfolio</a>
       </div>
       <!-- button4 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown4Open}"  (click)="toggleDropdown4()">
@@ -54,8 +54,8 @@
         <i class="fa fa-caret-down"></i>
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown4Open}">
-        <a href="#">Add new user</a>
-        <a [routerLink]="['./add-user']" >All users</a>
+        <a [routerLink]="['./add-user']">Add new user</a>
+        <a [routerLink]="['./showusers']" >All users</a>
       </div>
       
       

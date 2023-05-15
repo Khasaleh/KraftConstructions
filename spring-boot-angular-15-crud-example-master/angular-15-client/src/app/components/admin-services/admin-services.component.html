@@ -1,0 +1,137 @@
+<div class="add-services">
+    <section class="section-1">
+        <div class="new-container">
+            <div class="card  card-shade">
+                <div class="card-head">Services</div>
+                <div class="card-body">
+                    <div class="service-wrape">
+                        <div class="service-form">
+                            <div class="form-group">
+                                <label class="label" for="formGroupExampleInput">Add Service</label>
+                                <input type="text" class="form-control mt-3 mb-3" id="formGroupExampleInput"
+                                    placeholder="Interior remodeling">
+                            </div>
+
+                            <div class="drop-1">
+                                <label class="label2" for="inputField">Select Service Page</label> <br>
+                                <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption">
+                                    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                                </select>
+                            </div>
+                            <button class="cardbtn1">
+                                <label for="file-input" class="custom-button">Add now</label>
+                            </button>
+                        </div>
+                        <div class="grey-box">
+                            <h3 class="label-box">Active Services</h3>
+                            <div class="check-button">
+                                <input type="checkbox" class="input-check">
+                                <label class="check-btn">Kitchen</label>
+                            </div>
+                            <div class="check-button">
+                                <input type="checkbox" class="input-check">
+                                <label class="check-btn">Custom Baths</label>
+                            </div>
+                            <div class="check-button">
+                                <input type="checkbox" class="input-check">
+                                <label class="check-btn">Basement Remodeling</label>
+                            </div>
+                            <div class="check-button">
+                                <input type="checkbox" class="input-check">
+                                <label class="check-btn">Decks and Patios</label>
+                            </div>
+                            <div class="check-button">
+                                <input type="checkbox" class="input-check">
+                                <label class="check-btn">New additions</label>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-2">
+        <div class="new-container">
+            <div class="card  card-shade">
+                <div class="card-body">
+                    <div class="drop-wrape">
+                        <div class="drop-2">
+                            <label class="label2 mb-3" for="inputField">Select Page</label> <br>
+                            <select class="inputField" [(ngModel)]="selectedOption1">
+                                <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                            </select>
+                        </div>
+                        <div class="drop-2">
+                            <label class="label2 mb-3" for="inputField">Select Service</label> <br>
+                            <select class="inputField" [(ngModel)]="selectedOption4">
+                                <option *ngFor="let option of optionSevice" [value]="option">{{ option }}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="img-wrape">
+                        <div class="content1">
+                            <div class="img-box">
+                                <img class="img-dyn" [src]="urllink" alt="">
+                                <input type="file" id="file-input" class="input-file" (change)="selectFiles($event)">
+                                <label for="file-input" id="file-input" class="upload-label"></label>
+                            </div>
+                            <div class="form-group">
+                                <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
+                                <input type="text" class="form-control mb-3" placeholder="Before image">
+                            </div>
+                        </div>
+                        <div class="content1">
+                            <div class="img-box">
+                                <img class="img-dyn" [src]="urllink1" alt="">
+                                <input type="file" id="file-input1" class="input-file1" (change)="selectFiles2($event)">
+                                <label for="file-input1" id="file-input1" class="upload-label1"></label>
+
+                            </div>
+                            <div class="form-group">
+                                <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
+                                <input type="text" class="form-control mb-3" placeholder="After image">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="form-group  form-group-pad">
+                        <label class="label2 mt-2 mb-3" for="exampleTextarea">Description</label>
+                        <textarea class="form-control form-control-lg  mb-3" id="exampleTextarea" rows="5"
+                            placeholder="Enter a description"></textarea>
+                    </div>
+                    <div class="check-button1">
+                        <input type="checkbox" class="input-check1">
+                        <label class="check-btn1">Add Projects</label>
+                    </div>
+                    <div id="grey-sec" class="card">
+                        <div class="card-body">
+                            <div class="drop-2">
+                                <label for="inputField" class="col-head mb-3">Select column</label> <br>
+                                <select class="inputField" [(ngModel)]="selectedQuantity">
+                                    <option *ngFor="let option of quantityOptions" [value]="option">{{ option }}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-wrape">
+                        <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
+                          <img class="card-img" [src]="card.imgSrc" alt="">
+                          <div class="file-upload cardbtn">
+                            <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
+                            <input type="file" id="file-input2{{card.id}}" class="input-file" (change)="selectImage($event, card)">
+                          </div>
+                        </div>
+                      </div>
+                    <div class="create-btn">
+                        <button class="custom-button-create">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </section>
+</div>
