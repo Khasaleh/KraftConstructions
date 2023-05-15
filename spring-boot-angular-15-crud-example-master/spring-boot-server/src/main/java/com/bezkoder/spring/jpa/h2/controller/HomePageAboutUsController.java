@@ -1,8 +1,11 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.Entity.HomePageAboutUs;
+import com.bezkoder.spring.jpa.h2.Entity.HomePage;
+import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsResponseDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageRequestDto;
+import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.service.HomePageAboutUsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -19,6 +22,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/homepageabout-us")
@@ -36,15 +40,15 @@ public class HomePageAboutUsController {
     @PostMapping("/homepageupdate-description")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<HomePageAboutUsResponseDTO> updateHomePageAboutUs(@RequestBody HomePageAboutUsRequestDTO homePageAboutUsRequestDTO) {
-        HomePageAboutUs homePageAboutUs = homePageAboutUsService.updateHomePageAboutUs(ABOUT_US_ID, homePageAboutUsRequestDTO);
-        HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePageAboutUs);
+        HomePage homePage = homePageAboutUsService.updateHomePageAboutUs(ABOUT_US_ID, homePageAboutUsRequestDTO);
+        HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePage);
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
 
     @GetMapping
     public ResponseEntity<HomePageAboutUsResponseDTO> getAboutUs() {
-        HomePageAboutUs homePageAboutUs = homePageAboutUsService.getHomePageAboutUs(ABOUT_US_ID);
-        HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePageAboutUs);
+        HomePage homePage = homePageAboutUsService.getHomePageAboutUs(ABOUT_US_ID);
+        HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePage);
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
     @PostMapping("/upload-video")
@@ -70,6 +74,19 @@ public class HomePageAboutUsController {
         String videoUrl = homePageAboutUsService.getAboutUsVideoUrl(ABOUT_US_ID);
         return ResponseEntity.ok(videoUrl);
     }
+
+    @PostMapping("/{id}/addservices")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<String> addServiceToHomePage(@PathVariable Long id, @RequestBody ServiceHomePageRequestDto serviceHomeRequestDto) {
+        String message = homePageAboutUsService.addServiceToHomePage(id, serviceHomeRequestDto.getServiceIds());
+        return ResponseEntity.ok(message);
+    }
+
+    @GetMapping("/{id}/services")
+    public List<ServiceHomePageResponseDto> getServicesByHomePageId(@PathVariable Long id) {
+        return homePageAboutUsService.getServicesByHomePageId(id);
+    }
+
 }
 
 
