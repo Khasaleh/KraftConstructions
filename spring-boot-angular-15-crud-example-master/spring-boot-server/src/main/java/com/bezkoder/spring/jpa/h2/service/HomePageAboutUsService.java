@@ -1,17 +1,24 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-import com.bezkoder.spring.jpa.h2.Entity.HomePageAboutUs;
+import com.bezkoder.spring.jpa.h2.Entity.HomePage;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
+
+import java.util.List;
 
 public interface HomePageAboutUsService {
 
-    HomePageAboutUs getHomePageAboutUs(Long id);
+    HomePage getHomePageAboutUs(Long id);
 
-     HomePageAboutUs updateHomePageAboutUs(Long id, HomePageAboutUsRequestDTO homePageAboutUsRequestDTO);
+     HomePage updateHomePageAboutUs(Long id, HomePageAboutUsRequestDTO homePageAboutUsRequestDTO);
 
     void updateAboutUsVideoUrl(Long id, String videoUrl);
 
 
     String getAboutUsVideoUrl(Long id);
+
+    public String addServiceToHomePage(Long id, List<Long> serviceIds);
+
+    public List<ServiceHomePageResponseDto> getServicesByHomePageId(Long id);
 
 }

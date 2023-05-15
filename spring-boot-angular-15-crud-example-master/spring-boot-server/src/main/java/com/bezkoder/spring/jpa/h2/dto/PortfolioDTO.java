@@ -1,17 +1,18 @@
 package com.bezkoder.spring.jpa.h2.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-public class HomePageAboutUsResponseDTO {
+public class PortfolioDTO {
     private Long id;
-   private String link;
+    private String imageUrl;
 
-    private String description;
-    private String videoUrl;
+
 
 }

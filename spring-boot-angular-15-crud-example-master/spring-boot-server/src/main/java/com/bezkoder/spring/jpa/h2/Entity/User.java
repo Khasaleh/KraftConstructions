@@ -36,6 +36,9 @@ public class User {
     @Column(name="password", nullable=false, length=120)
     private String password;
 
+    @Column(name="image_url", nullable = true)
+    private String imageUrl;
+
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(	name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id"),
