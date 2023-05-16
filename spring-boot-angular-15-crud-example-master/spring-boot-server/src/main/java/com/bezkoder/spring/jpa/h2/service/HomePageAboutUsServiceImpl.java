@@ -96,8 +96,8 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
             ServiceHomePageResponseDto serviceDTO = new ServiceHomePageResponseDto();
             serviceDTO.setId(service.getId());
             serviceDTO.setServiceName(service.getServiceName());
-            serviceDTO.setAfterImageUrl(service.getServiceDetails().getAfterImageUrl());
-            serviceDTO.setDescription(service.getServiceDetails().getDescription());
+            serviceDTO.setAfterImageUrl(Objects.isNull(service.getServiceDetails()) ? "" :service.getServiceDetails().getAfterImageUrl());
+            serviceDTO.setDescription(Objects.isNull(service.getServiceDetails()) ? "" :service.getServiceDetails().getDescription());
             serviceDTOs.add(serviceDTO);
         }
 
