@@ -4,14 +4,19 @@ import com.bezkoder.spring.jpa.h2.Entity.HomePage;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.repository.HomePageRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
@@ -39,13 +44,13 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
         Optional<HomePage> homePageAboutUsOptional = homePageRepository.findById(id);
         if (homePageAboutUsOptional.isPresent()) {
             HomePage homePage = homePageAboutUsOptional.get();
-            homePage.setAboutusLink(homePageAboutUsRequestDTO.getLink());
-            homePage.setAboutusDescription(homePageAboutUsRequestDTO.getDescription());
+            homePage.setAboutusLink(homePageAboutUsRequestDTO.getAboutusLink());
+            homePage.setAboutusDescription(homePageAboutUsRequestDTO.getAboutusDescription());
             return homePageRepository.save(homePage);
         } else {
             HomePage homePage = new HomePage();
-            homePage.setAboutusLink(homePageAboutUsRequestDTO.getLink());
-            homePage.setAboutusDescription(homePageAboutUsRequestDTO.getDescription());
+            homePage.setAboutusLink(homePageAboutUsRequestDTO.getAboutusLink());
+            homePage.setAboutusDescription(homePageAboutUsRequestDTO.getAboutusDescription());
             return homePageRepository.save(homePage);
 
         }
@@ -63,7 +68,7 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
     @Override
     public String getAboutUsVideoUrl(Long id) {
         HomePage homePage = homePageRepository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("AboutUs not found for id: " + id));
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"AboutUs not found for id: " + id,"incorrect id"));
         return homePage.getAboutusVideoUrl();
     }
 

@@ -36,6 +36,7 @@ import { AdminServicePageComponent } from './components/admin-service-page/admin
 import { MatButtonModule } from '@angular/material/button';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,6 +87,7 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
     MatButtonModule,
     CKEditorModule,
     BrowserAnimationsModule
+   
     
  
   ],
