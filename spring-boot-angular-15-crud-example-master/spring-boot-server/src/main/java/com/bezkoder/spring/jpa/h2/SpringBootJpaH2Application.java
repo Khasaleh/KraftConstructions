@@ -9,7 +9,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @SpringBootApplication
-@ComponentScan({"com.bezkoder.spring.jpa.h2.controller","com.bezkoder.spring.jpa.h2.service","com.bezkoder.spring.jpa.h2.mapper","com.bezkoder.spring.jpa.h2.jwt"})
+@ComponentScan({"com.bezkoder.spring.jpa.h2.controller","com.bezkoder.spring.jpa.h2.service","com.bezkoder.spring.jpa.h2.mapper","com.bezkoder.spring.jpa.h2.jwt","com.bezkoder.spring.jpa.h2.exception"})
 @EntityScan("com.bezkoder.spring.jpa.h2.Entity")
 @EnableJpaRepositories("com.bezkoder.spring.jpa.h2.repository")
 @Import(WebSecurityConfig.class)
