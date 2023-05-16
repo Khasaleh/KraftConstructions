@@ -10,16 +10,16 @@ public class HomePageAboutUsMapper {
 
     public HomePage fromDto(HomePageAboutUsRequestDTO dto) {
         HomePage entity = new HomePage();
-        entity.setAboutusLink(dto.getLink());
+        entity.setAboutusLink(dto.getAboutusLink());
         return entity;
     }
 
     public  HomePageAboutUsResponseDTO toDto(HomePage entity) {
         HomePageAboutUsResponseDTO dto = new HomePageAboutUsResponseDTO();
         dto.setId(entity.getId());
-        dto.setLink(entity.getAboutusLink());
-        dto.setDescription(entity.getAboutusDescription());
-        dto.setVideoUrl(entity.getAboutusVideoUrl());
+        dto.setAboutusLink(entity.getAboutusLink());
+        dto.setAboutusDescription(entity.getAboutusDescription());
+        dto.setAboutusVideoUrl(entity.getAboutusVideoUrl());
         return dto;
     }
 

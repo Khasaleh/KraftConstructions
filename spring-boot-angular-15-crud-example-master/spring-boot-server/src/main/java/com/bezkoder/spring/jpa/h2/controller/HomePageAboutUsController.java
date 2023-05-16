@@ -1,7 +1,6 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
-import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageRequestDto;
@@ -83,7 +82,7 @@ public class HomePageAboutUsController {
     }
 
     @GetMapping("/{id}/services")
-    public List<ServiceHomePageResponseDto> getServicesByHomePageId(@PathVariable Long id) {
+    public  List<ServiceHomePageResponseDto> getServicesByHomePageId(@PathVariable Long id) {
         return homePageAboutUsService.getServicesByHomePageId(id);
     }
 
