@@ -35,6 +35,7 @@ import { ShowusersComponent } from './components/showusers/showusers.component';
 import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
 import { MatButtonModule } from '@angular/material/button';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -84,6 +85,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatIconModule,
     MatButtonModule,
     BrowserAnimationsModule
+   
     
  
   ],
