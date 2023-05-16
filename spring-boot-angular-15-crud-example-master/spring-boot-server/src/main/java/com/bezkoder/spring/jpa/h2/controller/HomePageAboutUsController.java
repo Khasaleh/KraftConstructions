@@ -82,8 +82,8 @@ public class HomePageAboutUsController {
     }
 
     @GetMapping("/{id}/services")
-    public  List<ServiceHomePageResponseDto> getServicesByHomePageId(@PathVariable Long id) {
-        return homePageAboutUsService.getServicesByHomePageId(id);
+    public ResponseEntity<List<ServiceHomePageResponseDto>> getServicesByHomePageId(@PathVariable Long id) {
+        return ResponseEntity.ok(homePageAboutUsService.getServicesByHomePageId(id));
     }
 
 }
