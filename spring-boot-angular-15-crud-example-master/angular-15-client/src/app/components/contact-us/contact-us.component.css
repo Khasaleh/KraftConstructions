@@ -8,8 +8,13 @@ h3 {
     font-size: 24px;
     margin-top: 2rem;
     margin-left: 1rem;
- 
 }
+.head {
+  font-size: 44px;
+  margin-top: 1rem;
+  margin-left: 10rem;
+ }
+
 .card1 {
   margin-left: 10rem;
   margin-top: 3rem;
@@ -62,4 +67,9 @@ h3 {
   justify-content: center;
 
 }
+.head {
+  font-size: 24px;
+  margin-top: 0;
+  margin-left:0;
+ }
 }
