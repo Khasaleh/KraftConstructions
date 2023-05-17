@@ -118,7 +118,6 @@ h1 {
  
       display: inline-block;
       background-color: var(--kraft-d-green);
-      border-radius: var(--br-8xs);
       width: auto;
       height: auto;
   }

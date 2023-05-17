@@ -1,6 +1,10 @@
 
 .txt{
- margin: 10px 0 12px;
+ margin-top: 10px;
+ margin-left: 44px;
+}
+.lii {
+  margin-left: 24px;
 }
 #my-img {
     filter: brightness(40%); 
@@ -32,34 +36,28 @@ h2 {
   display: inline-block;
   background-color: var(--kraft-d-green);
   border-radius: 5px;
+  margin-left: 1em;
   
 
 
 }
 
-
-
+.card.align-items-center.justify-content-center {
+     
+  background-color: #025A00;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 1rem;
+}
 
    @media (max-width: 576px) {
       h2 {
          font-size: 24px;
          margin-left: 0;
       }
-   }
-
-
-     .get-quote {
-      margin-top: 5rem;
-      margin-bottom: 5rem;
-    } 
-
-
-    .card.align-items-center.justify-content-center {
-     
-      background-color: #025A00;
-      box-sizing: border-box;
-      padding: 20px;
-      
-    } 
+    }
+   
+ 
+  
 
 
