@@ -1,70 +1,66 @@
-.list-group-item {
-  background-color: lightgray;
-}
+
 .txt{
- margin: 10px 0 12px;
+  margin: 10px 0 12px;
+ }
+ #my-img {
+     filter: brightness(70%); 
+   
+ }
+ h2 {
+   font-size: 34px;
+   margin-left: 9rem;
+ }
+ .list-group-item {
+   background-color: var(--gray);
+   border: 1px solid var(--color-darkwhite);
+   
+ }
+ .list-group-item:not(:last-child) {
+   border-bottom: 1px solid white;
+ }
+ 
+   
+ 
+ 
+ .btn {
+   display: inline-block;
+   background-color: var(--kraft-d-green);
+   border-radius: 5px;
+   
+ 
+ 
+ }
+ .card-img {
+  background-image:  linear-gradient(rgba(2, 90, 0, 0.6), rgba(2, 90, 0, 0.6)),url("../../../assets/img/sunroom1 1.png");
+   background-position: center;
+  background-repeat: no-repeat;
+  background-size:cover;
+  height: 20vh; 
 }
-#my-img {
-  filter: brightness(40%);
-}
-h2 {
-  font-size: 44px;
-  margin-left: 6rem;
-}
-.list-group-item {
-  background-color: var(--gray);
-  border: 1px solid var(--color-darkwhite);
-}
-.get-quote {
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-} 
-
-/* .col-12.col-lg-5.offset-lg-2 {
-  width: 100%;
-  max-width: 100%;
-} */
-
-.card.align-items-center.justify-content-center {
-  width: 80rem;
-  max-width: 100%;
-  background-color: darkgreen;
-}
-
-.card-text {
-  font-size: 24px;
-  color: white;
-}
-
-   @media (max-width: 576px) {
-      h2 {
-         font-size: 24px;
-         margin-left: 0;
-      }
-   }
-
-
-    
-
-    @media (max-width: 767px) {
-      .get-quote {
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-      }
-      
-      /* .col-12.col-lg-5.offset-lg-2 {
-        width: 100%;
-        max-width: 100%;
-      } */
-
-      /* .card.align-items-center.justify-content-center {
-        width: 100%;
-        max-width: 100%;
-        background-color: darkgreen;
-      } */
-
-      .card-text {
-        font-size: 20px;
-      }
+ 
+ 
+ 
+    @media (max-width: 576px) {
+       h2 {
+          font-size: 24px;
+          margin-left: 0;
+       }
     }
-    
+ 
+ 
+      .get-quote {
+       margin-top: 5rem;
+       margin-bottom: 5rem;
+     } 
+ 
+ 
+     .card.align-items-center.justify-content-center {
+      
+       background-color: #025A00;
+       box-sizing: border-box;
+       padding: 20px;
+       
+     } 
+ 
+ 
+ 
