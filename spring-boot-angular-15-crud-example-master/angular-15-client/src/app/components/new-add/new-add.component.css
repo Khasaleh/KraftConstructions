@@ -1,4 +1,4 @@
-
+/* 
 .txt{
   margin: 10px 0 12px;
  }
@@ -61,6 +61,65 @@
        padding: 20px;
        
      } 
+  */
  
  
+.txt{
+  margin-top: 10px;
+  margin-left: 44px;
+ }
+ .lii {
+   margin-left: 24px;
+ }
+ #my-img {
+     filter: brightness(40%); 
+   
+ }
+ h2 {
+   font-size: 34px;
+   margin-left: 9rem;
+ }
+ .list-group-item {
+   background-color: var(--gray);
+   border: 1px solid var(--color-darkwhite);
+   
+ }
+ .list-group-item:not(:last-child) {
+   border-bottom: 1px solid white;
+ }
+ .card-img {
+   background-image:  linear-gradient(rgba(2, 90, 0, 0.6), rgba(2, 90, 0, 0.6)),url("../../../assets/images/aboutus2 1 (1).png");
+    background-position: center;
+   background-repeat: no-repeat;
+   background-size:cover;
+   height: 20vh; 
+ }
+   
  
+ 
+ .btn {
+   display: inline-block;
+   background-color: var(--kraft-d-green);
+   border-radius: 5px;
+   margin-left: 1em;
+   
+ 
+ 
+ }
+ 
+ .card.align-items-center.justify-content-center {
+      
+   background-color: #025A00;
+   box-sizing: border-box;
+   padding: 20px;
+   margin-bottom: 1rem;
+ }
+ 
+    @media (max-width: 576px) {
+       h2 {
+          font-size: 24px;
+          margin-left: 0;
+       }
+     }
+    
+  

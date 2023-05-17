@@ -42,3 +42,9 @@
         padding: 16px 0px 9px 22px;
 
       }
+      .btn {
+        display: inline-block;
+        background-color: var(--kraft-d-green); 
+        border:none;
+      
+      }
