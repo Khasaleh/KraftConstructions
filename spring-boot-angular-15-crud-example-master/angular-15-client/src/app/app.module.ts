@@ -39,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AdminAddCareersNewsComponent } from './components/admin-add-careers-news/admin-add-careers-news.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,7 +90,8 @@ import { AdminAddCareersNewsComponent } from './components/admin-add-careers-new
     MatButtonModule,
     CKEditorModule,
     BrowserAnimationsModule,
-    ColorPickerModule
+    ColorPickerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

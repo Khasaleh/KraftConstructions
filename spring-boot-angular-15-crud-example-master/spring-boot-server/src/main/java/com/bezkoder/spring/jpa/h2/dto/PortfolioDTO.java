@@ -5,15 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+@AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-public class HomePageAboutUsRequestDTO {
+public class PortfolioDTO {
+    private Long id;
+    private String imageUrl;
 
-    private String aboutusLink;
-
-    private String aboutusDescription;
 
 
 }

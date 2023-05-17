@@ -1,60 +1,66 @@
-<app-header></app-header> 
-<div class="flex-container">
-<div class="home">
-    <div class="aboutus2-1-parent">
-      <img class="aboutus2-1-icon" alt="" src="../assets/images/aboutus2 1.png" />
-      <div class="group-child"></div>
+<app-header></app-header>
+<div class="row">
+  
+  <div class="col"> 
+  
+        <div class="card text-bg-dark">
+           <img id="my-img" src="../../../assets/images/aboutus2 1 (1).png" class="card-img" alt="...">
+           <div class="card-img-overlay d-flex flex-column justify-content-center ">
+              <h2>About Us</h2>
+           </div>
+        </div>
+     </div>
     </div>
-    <div class="about-us-parent">
-      <div class="about-us">About us</div>
-    </div>
-    <img class="about-uss-1-icon" alt="" src="../assets/images/about-uss 1.png" />
-    <div class="our-mission-high-quality-fai-parent">
-      <div class="our-mission-high-container">
-        <p class="our-mission-high">Our Mission: High Quality,</p>
-        <p class="our-mission-high">Fair Prices.</p>
-      </div>
-      <div class="kraft-construction-is-container">
-        <p class="our-mission-high">
-          Kraft Construction is a family-owned business that was founded in
-          Cincinnati, Ohio in 1971. Over the years we have evolved into a
-          residential remodeling company dedicated to helping homeowners
-          create their dream spaces with our individualized design approach
-          and our dedicated employees working in your homes that have a
-          combined 106 years of experience.
-        </p>
-        <p class="our-mission-high">
-          We strive to make our customers happy with every project we do.
-          Whether it's adding an outdoor space for family and friends to
-          gather, a new addition for a growing family, or updating your
-          kitchen or bathroom. We will work with you from beginning to end to
-          have your dream home.
-        </p>
-      </div>
-      <div class="about-us2">About us</div>
-    </div>
-    <div class="home-inner">
-      <div class="shutterstock-149987300-1-parent">
-        <img
-          class="shutterstock-149987300-1-icon"
-          alt=""
-          src="../assets/images/shutterstock_149987300 1.png"
-        />
-        <div class="rectangle-div"></div>
-      </div>
-    </div>
-    <div class="get-a-quote-parent">
-      <div class="get-a-quote">Get a Quote</div>
-      <div class="design-your-home">Design your home today</div>
-      <button class="button">
-        <button class="content">
-          <div class="bg">
-          <div class="learn-more" routerLink="/request-estimate">Appointment</div>
-            </div>
-        </button>
-      </button>
-      </div>
-      </div>
-      </div>
-      <app-footer></app-footer> 
+<div class="container-sm container-md container-lg ">
+  <div class="row">
+    <div class="col">
+     
+      <img src="../../../assets/images/about-uss 1.png" alt="Card image cap">
+    
+  </div>
+    <div class="col">
 
+      <div class="about-text">
+        <h1>Our Mission: High Quality,<br>
+          Fair Prices.</h1>
+        <p class="aboutus2-1-icon"> About us</p>
+        <p>Kraft Construction is a family-owned business that was founded in <br>
+          Cincinnati, Ohio in 1971. Over the years we have evolved into a
+          residential <br>  remodeling company dedicated to helping homeowners
+          create their dream <br> spaces with our individualized design approach
+          and our dedicated <br> employees working in your homes that have a
+          combined 106 years of <br> experience.<br>
+          <br>
+          We strive to make our customers happy with every project we do.
+          Whether <br> it's adding an outdoor space for family and friends to
+          gather, a new <br> addition for a growing family, or updating your
+          kitchen or bathroom. We will <br> work with you from beginning to end to
+          have your dream home..
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-d-flex">
+<div class="row">
+  <div class="col">
+    <div class="carousel-inner d-flex">
+      <div class="carousel-item d-flex">
+        <img id="my-img" src="../../../assets/images/shutterstock_149987300 1.png" class="d-block w-100" alt="...">
+        <div class="abc text-center d -flex">
+          <!-- <div class="text-center"> -->
+          <p class=" get-a-quote "> Get a Quote</p>
+          <h2 class=" design-your-home "> Design Your Home Today</h2>
+          <button class="btn btn-success"  routerLink="/request-estimate">Appointment</button>
+</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<!-- </div> -->
+
+
+
+
+<app-footer></app-footer>

@@ -9,4 +9,5 @@ export class ContactUsComponent {
 submitForm() {
   console.log("abc");
 }
+
 }
