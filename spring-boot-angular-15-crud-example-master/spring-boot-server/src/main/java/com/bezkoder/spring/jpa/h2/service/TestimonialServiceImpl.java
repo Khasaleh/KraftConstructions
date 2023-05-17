@@ -64,7 +64,6 @@ public String saveImage(MultipartFile image) throws IOException {
     @Override
     public void deleteTestimonialImage(Long id) {
 
-//        Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Testimonial not found"));
         Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Entity not found for id: " +id,"Testimonial not found"));
         try {
             Files.deleteIfExists(Paths.get(testimonial.getImageUrl()));

@@ -30,13 +30,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   @Transactional
   public UserDetails loadUserByUsername(String username)  {
     User user = userRepository.findByUsername(username)
-//        .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," User Not Found with username: " + username,"Incorrect Username"));
     return UserDetailsImpl.build(user);
   }
   public User addImageToUser(String username, MultipartFile image)  {
     User user = userRepository.findByUsername(username)
-//            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," User Not Found with username: " + username,"Incorrect Username"));
 
     String imageUrl = null;
@@ -62,7 +60,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
   public User updateUser(User updatedUser)  {
     User user = userRepository.findById(updatedUser.getId())
-//            .orElseThrow(() -> new Exception("User Not Found with id: " + updatedUser.getId()));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," User Not Found with id: " + updatedUser.getId(),"Incorrect id"));
 
     user.setUsername(updatedUser.getUsername());

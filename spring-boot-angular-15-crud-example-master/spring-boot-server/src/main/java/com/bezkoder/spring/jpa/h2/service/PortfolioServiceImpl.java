@@ -18,7 +18,6 @@ public class PortfolioServiceImpl implements PortfolioService {
 
     @Override
     public PortfolioDTO findById(Long id) {
-//        Portfolio portfolioItem = portfolioRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Portfolio item with id " + id + " not found"));
         Portfolio portfolioItem = portfolioRepository.findById(id).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," Portfolio item not found for id: " +id,"Incorrect id"));
         return PortfolioMapper.toDTO(portfolioItem);
     }

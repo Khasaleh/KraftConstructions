@@ -33,7 +33,7 @@ public class SiteContactInfoServiceImpl implements SiteContactInfoService {
             return contactInfoOptional.get();
         } else {
             // Throw an exception or handle the case when the entity is not found
-//            throw new EntityNotFoundException("SiteContactInfo not found with id: " + contactInfoId);
+
             throw new GenericException(HttpStatus.NOT_FOUND,"SiteContactInfo not found with id: " + contactInfoId,"Incorrect id");
         }
     }

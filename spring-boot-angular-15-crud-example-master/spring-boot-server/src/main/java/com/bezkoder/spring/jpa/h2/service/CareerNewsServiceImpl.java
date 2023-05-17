@@ -44,7 +44,6 @@ public class CareerNewsServiceImpl implements CareerNewsService {
     public CareerNewsDto updateNews(Long id, CareerNewsDto newsDto) {
         CareersNews news = findById(id);
         if (news == null) {
-//            throw new RuntimeException("News not found for id: " + id);
             throw new GenericException(HttpStatus.NOT_FOUND,"News not found for id: " + id,"Incorrect id");
         }
         CareersNews updatedNews = newsMapper.mapToEntity(newsDto);

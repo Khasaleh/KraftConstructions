@@ -44,7 +44,6 @@ public class ContactUsServiceImpl implements ContactUsService {
         if (existingContactUsOptional.isPresent()) {
             contactUsRepository.deleteById(id);
         } else {
-//            throw new IllegalArgumentException("ContactUs with ID " + id + " not found");
             throw new GenericException(HttpStatus.NOT_FOUND,"ContactUs not found for id: " + id,"Incorrect id");
         }
     }

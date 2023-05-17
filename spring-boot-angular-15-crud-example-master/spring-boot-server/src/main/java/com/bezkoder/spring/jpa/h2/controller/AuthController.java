@@ -101,7 +101,6 @@ public class AuthController {
 
     if (strRoles == null) {
       Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-              //.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
               .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
       roles.add(userRole);
     } else {
@@ -109,21 +108,18 @@ public class AuthController {
         switch (role) {
           case "admin":
             Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                   // .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(adminRole);
 
             break;
           case "author":
             Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
-                   // .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(modRole);
 
             break;
           default:
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                  //  .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(userRole);
         }
@@ -140,7 +136,6 @@ public class AuthController {
   public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
 
     User user = userRepository.findByUsername(username)
-           // .orElseThrow(() -> new Exception("User Not Found with username: " + username));
      .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
 
     // Update user properties
@@ -153,7 +148,6 @@ public class AuthController {
 
     if (strRoles == null) {
       Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-//              .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
               .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
       roles.add(userRole);
     } else {
@@ -161,21 +155,18 @@ public class AuthController {
         switch (role) {
           case "admin":
             Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
-                  //  .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(adminRole);
 
             break;
           case "author":
             Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
-                   // .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(modRole);
 
             break;
           default:
             Role userRole = roleRepository.findByName(ERole.ROLE_USER)
-                //    .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(userRole);
         }
@@ -191,7 +182,6 @@ public class AuthController {
   @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
   public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
     User user = userRepository.findByUsername(username)
-          //  .orElseThrow(() -> new Exception("User Not Found with username: " + username));
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
     userRepository.delete(user);
 
