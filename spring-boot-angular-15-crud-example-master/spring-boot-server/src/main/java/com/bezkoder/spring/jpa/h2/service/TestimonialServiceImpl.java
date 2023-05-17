@@ -2,12 +2,13 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.Testimonial;
 import com.bezkoder.spring.jpa.h2.Entity.TestimonialPage;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.repository.TestimonialRepository;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.EntityNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
@@ -63,7 +64,8 @@ public String saveImage(MultipartFile image) throws IOException {
     @Override
     public void deleteTestimonialImage(Long id) {
 
-        Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Testimonial not found"));
+//        Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Testimonial not found"));
+        Testimonial testimonial = testimonialRepository.findById(id).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Entity not found for id: " +id,"Testimonial not found"));
         try {
             Files.deleteIfExists(Paths.get(testimonial.getImageUrl()));
         } catch (IOException e) {

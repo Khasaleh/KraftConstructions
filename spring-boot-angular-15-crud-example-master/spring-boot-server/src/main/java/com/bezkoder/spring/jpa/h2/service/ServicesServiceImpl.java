@@ -5,13 +5,14 @@ import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
 import com.bezkoder.spring.jpa.h2.repository.PortfolioRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
 import org.apache.commons.io.FileUtils;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -55,7 +56,8 @@ public class ServicesServiceImpl implements ServicesService {
 
     public ServicesResponseDTO getServiceById(Long id) {
         Services service = servicesRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Service" + "id" + id));
+//                .orElseThrow(() -> new IllegalArgumentException("Service" + "id" + id));
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," Service not found for id: " +id,"Incorrect id"));
         return servicesMapper.toDto(service);
     }
 
@@ -81,7 +83,8 @@ public class ServicesServiceImpl implements ServicesService {
             services = servicesRepository.save(services);
             return servicesMapper.toDto(services);
         } else {
-            throw new RuntimeException("Service Not Found");
+//            throw new RuntimeException("Service Not Found");
+            throw new GenericException(HttpStatus.NOT_FOUND," Service not found for id: " +id,"Incorrect id");
         }
     }
 
@@ -90,7 +93,8 @@ public class ServicesServiceImpl implements ServicesService {
         if (existingServices.isPresent()) {
             servicesRepository.deleteById(id);
         } else {
-            throw new IllegalArgumentException("Service with ID " + id + " not found");
+//            throw new IllegalArgumentException("Service with ID " + id + " not found");
+            throw new GenericException(HttpStatus.NOT_FOUND," Service not found for id: " +id,"Incorrect id");
         }
     }
 
@@ -99,7 +103,8 @@ public class ServicesServiceImpl implements ServicesService {
         Services service = servicesRepository.findById(id).orElse(null);
 
         if (service == null) {
-            throw new ObjectNotFoundException("Service not found", id.toString());
+          // throw new ObjectNotFoundException("Service not found", id.toString());
+            throw new GenericException(HttpStatus.NOT_FOUND," Service not found by id" +id,"Incorrect id");
         }
 
         if (service.getServiceDetails().isAddPortfolio()) {

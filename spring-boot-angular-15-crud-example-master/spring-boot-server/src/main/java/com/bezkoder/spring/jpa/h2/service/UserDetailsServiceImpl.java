@@ -1,11 +1,12 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.User;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
@@ -27,15 +28,17 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
   @Override
   @Transactional
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+  public UserDetails loadUserByUsername(String username)  {
     User user = userRepository.findByUsername(username)
-        .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
-
+//        .orElseThrow(() -> new UsernameNotFoundException("User Not Found with username: " + username));
+            .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," User Not Found with username: " + username,"Incorrect Username"));
     return UserDetailsImpl.build(user);
   }
-  public User addImageToUser(String username, MultipartFile image) throws Exception {
+  public User addImageToUser(String username, MultipartFile image)  {
     User user = userRepository.findByUsername(username)
-            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+//            .orElseThrow(() -> new Exception("User Not Found with username: " + username));
+            .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," User Not Found with username: " + username,"Incorrect Username"));
+
     String imageUrl = null;
     try {
       imageUrl = saveImage(image);
@@ -57,9 +60,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     return filePath.toString();
   }
 
-  public User updateUser(User updatedUser) throws Exception {
+  public User updateUser(User updatedUser)  {
     User user = userRepository.findById(updatedUser.getId())
-            .orElseThrow(() -> new Exception("User Not Found with id: " + updatedUser.getId()));
+//            .orElseThrow(() -> new Exception("User Not Found with id: " + updatedUser.getId()));
+            .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," User Not Found with id: " + updatedUser.getId(),"Incorrect id"));
 
     user.setUsername(updatedUser.getUsername());
     user.setEmail(updatedUser.getEmail());

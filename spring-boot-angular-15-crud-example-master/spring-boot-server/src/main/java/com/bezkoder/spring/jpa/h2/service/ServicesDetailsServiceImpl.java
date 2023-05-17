@@ -5,12 +5,14 @@ import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.Entity.User;
 import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.mapper.ServiceDetailsMapper;
 import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
 import com.bezkoder.spring.jpa.h2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -41,7 +43,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
     public ServiceDetailsDTO addServiceDetails(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails) {
 
         User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException());
-        Services service = servicesRepository.findById(serviceDetailsDTO.getServiceId()).orElseThrow(() -> new IllegalArgumentException("Service not found"+ serviceDetailsDTO.getServiceId()));
+      //  Services service = servicesRepository.findById(serviceDetailsDTO.getServiceId()).orElseThrow(() -> new IllegalArgumentException("Service not found"+ serviceDetailsDTO.getServiceId()));
+     Services service = servicesRepository.findById(serviceDetailsDTO.getServiceId()).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Service not found"+ serviceDetailsDTO.getServiceId(),"Incorrect id"));
         serviceDetailsDTO.setAuthor(user.getUsername());
         ServiceDetails serviceDetails = serviceDetailsMapper.toEntity(serviceDetailsDTO, service);
         serviceDetails = servicesDetailsRepository.save(serviceDetails);

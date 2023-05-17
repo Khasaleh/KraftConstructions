@@ -2,12 +2,13 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.CareersNews;
 import com.bezkoder.spring.jpa.h2.dto.CareerNewsDto;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.mapper.CareerNewsMapper;
 import com.bezkoder.spring.jpa.h2.repository.CareerNewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.validation.constraints.Null;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +44,8 @@ public class CareerNewsServiceImpl implements CareerNewsService {
     public CareerNewsDto updateNews(Long id, CareerNewsDto newsDto) {
         CareersNews news = findById(id);
         if (news == null) {
-            throw new RuntimeException("News not found for id: " + id);
+//            throw new RuntimeException("News not found for id: " + id);
+            throw new GenericException(HttpStatus.NOT_FOUND,"News not found for id: " + id,"Incorrect id");
         }
         CareersNews updatedNews = newsMapper.mapToEntity(newsDto);
         updatedNews.setId(news.getId());

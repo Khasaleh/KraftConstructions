@@ -2,12 +2,13 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.SiteContactInfo;
 import com.bezkoder.spring.jpa.h2.dto.SiteContactInfoDto;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.mapper.SiteContactInfoMapper;
 import com.bezkoder.spring.jpa.h2.repository.SiteContactInfoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.util.Optional;
 
 @Service
@@ -32,10 +33,11 @@ public class SiteContactInfoServiceImpl implements SiteContactInfoService {
             return contactInfoOptional.get();
         } else {
             // Throw an exception or handle the case when the entity is not found
-            throw new EntityNotFoundException("SiteContactInfo not found with id: " + contactInfoId);
+//            throw new EntityNotFoundException("SiteContactInfo not found with id: " + contactInfoId);
+            throw new GenericException(HttpStatus.NOT_FOUND,"SiteContactInfo not found with id: " + contactInfoId,"Incorrect id");
         }
     }
-
+//GenericException(HttpStatus.NOT_FOUND," Service not found for id: " +id,"Incorrect id");
     @Override
     public SiteContactInfoDto updateSiteContactInfo(SiteContactInfoDto siteContactInfoDto) {
         // Retrieve the existing entity from the repository
