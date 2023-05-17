@@ -317,7 +317,14 @@
 .input-file {
     display: none;
 }
-
+@media (max-width: 72.5em) {
+    .custom-button-card{
+        padding: 8px 6px;
+    }
+    .form-group-pad{
+        margin-top: 40px
+    }
+       }
 @media (max-width: 59em) {
     .card-box {
         width: 80%;

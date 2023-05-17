@@ -402,17 +402,20 @@ input:checked+.slider:before {
 .drop-1 {
     width: 100%;
 }
-.border1{
+
+.border1 {
     border-top: 1px solid #DDDDDD;
 }
-.form-test{
+
+.form-test {
     display: flex;
     flex-direction: column;
     background-color: #E8ECF3;
     padding: 35px;
     border-radius: 10px;
 }
-.add-btn{
+
+.add-btn {
     padding: 10px 20px;
     background-color: #025A00;
     color: #fff;
@@ -420,11 +423,13 @@ input:checked+.slider:before {
     border: none;
     font-size: 16px;
 }
-.btn-wrap{
+
+.btn-wrap {
     display: flex;
     justify-content: end;
     gap: 10px;
 }
+
 .our-clients-say {
     font-weight: 700;
     text-align: center;
@@ -433,35 +438,54 @@ input:checked+.slider:before {
     margin-bottom: 4%;
     width: 77%;
 }
+
 .clientSec-cont {
     width: 45%;
 }
-.img-client{
+
+.img-client {
     width: 250px;
 }
+
+@media (max-width: 72.5em) {
+    .read-more {
+        width: 58%;
+        padding: 0px;
+    }
+    .check-button-wrape {
+        width: 75%;
+    }
+}
+
 @media (max-width: 59em) {
     .card-body-wrape {
         flex-direction: column;
     }
+
     .our-clients-say {
         width: 100%;
         font-size: 30px;
     }
-    .card-content{
+
+    .card-content {
         width: 100%;
     }
-    .img-content{
+
+    .img-content {
         width: 100%;
     }
+
     .client-wrap {
         display: flex;
         justify-content: center;
         flex-direction: column;
         align-items: center;
     }
+
     .clientSec-cont {
         width: 80%;
     }
+
     .inputField {
         width: 50%;
     }
@@ -527,24 +551,30 @@ input:checked+.slider:before {
     }
 
 }
+
 @media (max-width: 47em) {
-    .services-parent{
+    .services-parent {
         padding: 0px;
     }
-    .clientSec-cont{
+
+    .clientSec-cont {
         width: 100%;
     }
-    .component{
+
+    .component {
         width: 100%;
     }
-    .card-head{
+
+    .card-head {
         padding: 16px 0px 9px 0px;
     }
-    .inputField{
+
+    .inputField {
         width: 100%;
     }
-    .check-button-wrape{
+
+    .check-button-wrape {
         width: 100%;
     }
-   
+
 }
