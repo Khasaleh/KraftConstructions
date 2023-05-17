@@ -22,6 +22,8 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
 import { ShowusersComponent } from './components/showusers/showusers.component';
 import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
+import { AdminAddCareersNewsComponent } from './components/admin-add-careers-news/admin-add-careers-news.component';
+
 
 
 
@@ -42,9 +44,8 @@ const routes: Routes = [
     path: 'admin',
     component: AdminMainComponent,
     children: [
-      
-      { path: '', component: AdminDashboardComponent , pathMatch: 'full' },
-      { path: 'admin-home', component: AdminHomeComponent},
+      { path: '', component: AdminDashboardComponent, pathMatch: 'full' },
+      { path: 'admin-home', component: AdminHomeComponent },
       { path: 'dashboard', component: AdminDashboardComponent },
       { path: 'admin-aboutUs', component: AdminAboutUsComponent },
       { path: 'admin-contact-us', component: AdminContactUsComponent },
@@ -52,11 +53,13 @@ const routes: Routes = [
       { path: 'add-user', component: AddUserComponent },
       { path: 'admin-request', component: AdminRequestComponent },
       { path: 'admin-careers', component: AdminCareersComponent },
-      {path:'admin-request', component:AdminRequestComponent},
-      {path: 'admin-careers',component:AdminCareersComponent},
+      { path: 'admin-request', component: AdminRequestComponent },
+      { path: 'admin-careers', component: AdminCareersComponent },
       { path: 'add-service', component: AdminServicesComponent },
       { path: 'showusers', component: ShowusersComponent },
-      { path: 'pages', component: AdminServicePageComponent }
+      { path: 'pages', component: AdminServicePageComponent },
+      { path: 'career-news', component: AdminAddCareersNewsComponent },
+
     ],
   }
 ];
