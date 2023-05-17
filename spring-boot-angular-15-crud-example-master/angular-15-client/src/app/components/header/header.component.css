@@ -17,6 +17,7 @@ h1 {
 
 .nav-bar {
     background-color: black;
+    padding: 5px;
 }
 
 .nav-bar a {
@@ -54,8 +55,11 @@ a {
     height: auto;
     border-radius: 10px;
 }
-
-p {
+ p{
+    margin: 0px;
+    padding: 0px;
+ }
+#email-style {
     color: #91C490;
     font-size: 12px;
 }
@@ -74,6 +78,7 @@ p {
 .nav-links {
     list-style: none;
     margin: 0px;
+    padding: 0px;
 }
 .icon-nav {
     width: 20px;
@@ -115,6 +120,7 @@ p {
 
 .black {
     color: black;
+    margin: 0px;
 }
 
 .logo {
@@ -208,6 +214,9 @@ a {
         display: flex;
         justify-content: flex-start;
     }
+    .cta {
+        width: 78%;
+    }
 }
 
 @media (min-width: 59em) {
@@ -215,5 +224,10 @@ a {
     #mobile-nav {
         display: none;
     }
+}
+@media (max-width: 72.5em) {
+.cta{
+    width: 78%;
+}
 }
 
