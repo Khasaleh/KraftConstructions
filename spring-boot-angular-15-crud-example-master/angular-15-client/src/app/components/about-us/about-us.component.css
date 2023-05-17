@@ -1,6 +1,6 @@
 .aboutus2-1-icon {
   margin-top: 50px ;
-  color: var(--kraft-light-green);
+  
 }
   .get-a-quote {
   
@@ -13,16 +13,22 @@
     font-size: var(--h2-semibold-size);
     font-weight: 600; 
      font-family: var(--h2-semibold);
+     margin-top: 1rem;
+  }
+  .rect {
+    margin-top: 10px;
   }
 
   .aboutus2-1-icon {
     margin-top: 1rem ;
     color: var(--kraft-light-green);
+    font-family: kanit;
+    font-style: bold;
   }
   .abc {
     position: absolute;
     right: 15%;
-    bottom: 1.25rem;
+    top: 12.25rem;
     left: 15%;
     padding-top: 1.25rem;
     padding-bottom: 15.25rem;
@@ -34,38 +40,87 @@ p {
 }
 .about-text {
   margin-top: 6rem;
+  font-family: Kanit;
  
 }
+h1 {
+  font-family: kanit;
+}
+.btn {
+  display: inline-block;
+  background-color: var(--kraft-d-green); 
+  width: 15%;
+  height: 20%;
+  border:none;
 
+}
+.card-img {
+    background-image:  linear-gradient(rgba(2, 90, 0, 0.6), rgba(2, 90, 0, 0.6)),url("../../../assets/images/aboutus2 1 (1).png");
+     background-position: center;
+    background-repeat: no-repeat;
+    background-size:cover;
+    height: 20vh; 
+}
 #my-img {
   filter: brightness(40%);
+
 }
-#img-up {
+  #img-up {
   background-color: var(--kraft-light-green);
 }
-h2 {
+.abtus {
   font-size: 44px;
   margin-left: 10rem;
 }
+.h2 {
+  
+    font-size: 24px;
+  
+}
 
    @media (max-width: 576px) {
-      h2 {
+      .abtus, h2 {
          font-size: 24px;
          margin-left: 0;
       }
+      #my-img {
+        width: auto;
+      }
+      .abc {
+        position: absolute;
+        right: auto;
+        top: auto;
+        left: auto;
+        padding-top: auto;
+        padding-bottom: auto;
+        color: #fff;
+        text-align: auto;
+    }
+    .design-your-home {
+   
+      font-size: 25;
+      font-weight: 600; 
+       font-family: var(--h2-semibold);
+    }
+    .get-a-quote {
+  
+      font-family: var(--font-lato); 
+       font-size: 25px; 
+    }
+    p {
+      line-height: auto;
+    }
+    .about-text {
+      margin-top: auto;
+     
+    }
+    .btn {
+ 
+      display: inline-block;
+      background-color: var(--kraft-d-green);
+      border-radius: var(--br-8xs);
+      width: auto;
+      height: auto;
+  }
    }
 
-@media screen and (max-width:768px) {
-  .abc {
-    position: static;
-    padding-top: 5rem;
-    padding-bottom: 5rem;
-    text-align: center;
-  }
-  .get-a-quote {
-    font-size: 25px;
-  }
-  .design-your-home {
-    font-size: 20px;
-  }
-}
