@@ -68,13 +68,13 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
     @Override
     public String getAboutUsVideoUrl(Long id) {
         HomePage homePage = homePageRepository.findById(id)
-                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"AboutUs not found for id: " + id,"incorrect id"));
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"AboutUs video not found for id: " + id,"Incorrect id"));
         return homePage.getAboutusVideoUrl();
     }
 
     public String addServiceToHomePage(Long id, List<Long> serviceIds) {
         HomePage homePage = homePageRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid home page id: " + id));
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," home page not found for id: " + id,"Incorrect id"));
         serviceIds.stream().forEach(sId -> {
             Services service = servicesRepository.findById(sId).orElse(null);
             if (Objects.nonNull(service)) {
@@ -90,7 +90,7 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
 
     public List<ServiceHomePageResponseDto> getServicesByHomePageId(Long id) {
         HomePage homePage = homePageRepository.findById(id)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid home page id: " + id));
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," home page not found for id: " + id,"Incorrect id"));
         List<ServiceHomePageResponseDto> serviceDTOs = new ArrayList<>();
         for (Services service : homePage.getServices()) {
             ServiceHomePageResponseDto serviceDTO = new ServiceHomePageResponseDto();
