@@ -61,8 +61,11 @@
    color: var(--colors-white);
    text-decoration: none;
    padding: 0px 3px;
-
+ }
+ .card-title {
+  font-size:14px ;
 }
+
  @media (max-width: 576px) {
    h2 {
       font-size: 24px;
