@@ -1,10 +1,13 @@
 
 .txt{
  margin-top: 10px;
- margin-left: 44px;
+ margin-left: 55px;
+ font-size: 13px;
+ 
 }
 .lii {
-  margin-left: 24px;
+  margin-left: 40px;
+  
 }
 #my-img {
     filter: brightness(40%); 
@@ -31,7 +34,6 @@ h2 {
 }
   
 
-
 .btn {
   display: inline-block;
   background-color: var(--kraft-d-green);
@@ -41,23 +43,213 @@ h2 {
 
 
 }
-
-.card.align-items-center.justify-content-center {
+ .card.align-items-center.justify-content-center {
      
   background-color: #025A00;
   box-sizing: border-box;
   padding: 20px;
   margin-bottom: 1rem;
+} 
+.card-title {
+  font-size:14px ;
 }
 
-   @media (max-width: 576px) {
-      h2 {
-         font-size: 24px;
-         margin-left: 0;
-      }
+/* .card.align-items-center.justify-content-center {
+     
+  background-color: #025A00;
+  box-sizing: border-box;
+  padding: 20px;
+  margin-bottom: 1rem;
+} 
+@media (max-width: 576px) {
+  h2 {
+     font-size: 24px;
+     margin-left: 0;
+  }
+  .card.align-items-center.justify-content-center {
+     
+    background-color: #025A00;
+    box-sizing: border-box;
+    margin-bottom: 0;
+  }
+  .get-quote {
+    width: 100%;
+    margin-left: 0;
+  }
+  .btn {
+    display: inline-block;
+    background-color: var(--kraft-d-green);
+    border-radius: 1px;
+    margin-left: 0;
+    
+  
+  
+  }
+} */
+@media (max-width: 576px) {
+  h2 {
+     font-size: 24px;
+     margin-left: 0;
+    
     }
-   
  
   
+}
 
 
+
+
+
+
+.card.align-items-center.justify-content-center {
+  
+  background-color: darkgreen;
+  width:61rem;
+  margin-left:4rem;
+}
+
+.card-text {
+  font-size: 14px;
+  color: white;
+}
+
+.card.sm-12 {
+  width: 23rem; 
+  margin-top: 2rem;
+  margin-left: 5.5rem;
+}
+.card.sm-11 {
+  width:13rem; 
+  background-color: var(--kraft-light-green);
+  margin-left: 3rem;
+  margin-top: 2rem;
+}
+.card.sm-6 {
+  background-color: var(--kraft-light-green);
+  box-sizing: border-box;
+  border: 1px solid #DDDD;
+  height: 360px;
+  width: 240px;
+  border-radius: 5px 5px 0px 0px;
+  margin-left: -4.2rem;
+
+}
+.card.sm-10 {
+  background-color: var(--kraft-light-green);
+  box-sizing: border-box;
+  border: 1px solid #DDDD;
+  height: 360px;
+  width: 240px;
+  border-radius: 5px 5px 0px 0px;
+  margin-left: -1.8rem;
+}
+.card.sm-9 {
+  background-color: var(--kraft-light-green);
+  box-sizing: border-box;
+      border: 1px solid #DDDD;
+      height: 360px;
+      width: 240px;
+      border-radius: 5px 5px 0px 0px;
+       margin-left:0.5em;
+}
+.card.sm-8 {
+    background-color: var(--kraft-light-green);box-sizing: border-box;
+    border: 1px solid #DDDD;
+    height: 360px;
+    width: 240px;
+    border-radius: 5px 5px 0px 0px;
+    margin-left: 45px;
+}
+.test-nav {
+  margin-left: 9rem;
+  width: 200px;
+ }
+ .test-nav a {
+   color: var(--colors-white);
+   text-decoration: none;
+   padding: 0px 3px;
+
+}
+
+@media (max-width: 767px) {
+  .get-quote {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .col-12.col-lg-5.offset-lg-2 {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .card.align-items-center.justify-content-center {
+    width: 100%;
+    max-width: 100%;
+    background-color: darkgreen;
+    padding: 5px;
+    margin-bottom: 0;
+    margin-left: 0;
+}
+  
+
+  .card-text {
+    font-size: 20px;
+  }
+  .card.sm-12 {
+    width: 100%; 
+    margin-top: 1em;
+    margin-left: 0;
+  }
+  .txt{
+    margin-top: 10px;
+    margin-left: 0;
+    
+   }
+   .lii {
+    margin-left: 0;
+   
+}
+.card.sm-11 {
+  width:100%; 
+  background-color: var(--kraft-light-green);
+  margin-left: 0;
+  margin-top:1em;
+}
+.card.sm-6 {
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  margin-left: 0px;
+}
+.card.sm-10 {
+  background-color: var(--kraft-light-green);
+  box-sizing: border-box;
+  border: 1px solid #DDDD;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  margin-left: 0px;
+}
+.card.sm-9 {
+  background-color: var(--kraft-light-green);
+  box-sizing: border-box;
+      border: 1px solid #DDDD;
+      height: 100%;
+      width: 100%;
+      border-radius: 5px 5px 0px 0px;
+      margin-left: 0px;
+}
+.card.sm-8 {
+  background-color: var(--kraft-light-green);
+  box-sizing: border-box;
+  border: 1px solid #DDDD;
+  height: 100%;
+  width: 100%;
+  border-radius: 5px 5px 0px 0px;
+  margin-left: 0;
+}
+.test-nav {
+  margin-left:0;
+  width: 100%;
+ }
+}

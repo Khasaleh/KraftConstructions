@@ -11,7 +11,29 @@
   justify-content: center;
   align-items: center;
 }
-.container {
+.container-fluid {
   width: 100%;
-  max-width: 500px;
+  max-width: 100%;
+}
+.col-lg-5.justify-content-center.align-items-center {
+  background-color: white;
+  margin-left: 30%;
+}
+
+@media (max-width:576px)
+{
+  h2 {
+    font-size: 14px;
+  }  
+  .form-label {
+    font-size: 14px;
+  }
+  .form-control {
+    padding: 0.375rem 0.5rem;
+    font-size: 14px;
+  }
+  .col-lg-5.justify-content-center.align-items-center {
+    background-color: white;
+    margin-left: 0;
+  }
 }
