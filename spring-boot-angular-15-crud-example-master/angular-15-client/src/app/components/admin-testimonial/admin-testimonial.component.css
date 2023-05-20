@@ -826,7 +826,7 @@
   .image-group {
     position: static;
     top: 0;
-    /* left: 0; */
+    left: 0;
     width: auto;
     height: auto;
   }
@@ -839,7 +839,7 @@
   .image-icon1 {
     position: absolute;
     top: 0;
-    /* left: 0; */
+    left: 0;
     width: auto;
     height: auto;
   
