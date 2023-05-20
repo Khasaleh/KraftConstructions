@@ -26,10 +26,15 @@
     /* padding: 16px 0px 9px 22px; */
 
   }
-  .btn-success {
+  .btn {
     padding: 10px 50px;
     margin-left: 60%;
-    margin-top: 10%
+    margin-top: 10%;
+    
+        display: inline-block;
+        background-color: var(--kraft-d-green);
+        border:none;
+      
   }
 .col-form-label {
     margin-left: 12px;
