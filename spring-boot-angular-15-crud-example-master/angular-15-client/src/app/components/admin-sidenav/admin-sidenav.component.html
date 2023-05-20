@@ -32,19 +32,7 @@
         <a [routerLink]="['./add-service']">Add Service</a>
         <a [routerLink]="['./pages']">Pages</a>
       </div>
-      <!-- button3 -->
-      <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown3Open}"  (click)="toggleDropdown3()">
-        <div class="btn-wrape">
-          <p class="">Portfolio</p>
-          <img class="drop-icon" src="../../../assets/icon-drop.png" alt="">
-        
-        </div>
-        <i class="fa fa-caret-down"></i>
-      </button>
-      <div class="dropdown-content" [ngClass]="{'show': isDropdown3Open}">
-        <a [routerLink]="['./admin-portfolio']">Add portfolio</a>
-        <a [routerLink]="['./admin-portshow']">View all portfolio</a>
-      </div>
+      
       <!-- button4 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown4Open}"  (click)="toggleDropdown4()">
         <div class="btn-wrape">
