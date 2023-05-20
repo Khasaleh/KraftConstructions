@@ -29,4 +29,8 @@
       transform: translateX(0);
     }
   }
-  
+  @media (max-width: 47em) {
+    .coming-soon h1 {
+      font-size: 3rem;
+    }
+  }
