@@ -11,9 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class HomePageAboutUsRequestDTO {
 
-    private String link;
+    private String aboutusLink;
 
-    private String description;
+    private String aboutusDescription;
 
 
 }

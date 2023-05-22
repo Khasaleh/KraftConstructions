@@ -1,3 +1,5 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
 /* .home-wrape{
     display:flex;
 } */
@@ -49,13 +51,13 @@
 
 /* Style the custom button */
 .custom-button {
-    padding: 8px 20px;
+    padding: 8px 29px;
     background-color: #2d5833;
     color: #fff;
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    margin-bottom: 8%;
+    /* margin-bottom: 8%; */
 }
 
 /* Add hover and active states for the custom button */
@@ -90,16 +92,38 @@
     display: flex;
     align-items: center;
     gap: 74px;
+    width: 100%;
 }
 
 .cardbtn {
     width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.img-content {
+    width: 37%;
+
+}
+
+.img-dyn {
+    width: 190px;
+    height: 234px;
+}
+
+.card-content {
+    width: 60%;
 }
 
 .dream-para {
     font-size: 17px;
     font-weight: 400;
     font-family: sans-serif;
+}
+
+.img-box.mb-3 {
+    display: flex;
+    justify-content: center;
 }
 
 /* service-section */
@@ -110,12 +134,11 @@
 .card-head-services {
     font-size: 15px;
     font-weight: 500;
-    padding: 33px 0px 9px 0px;
+    /* padding: 33px 0px 9px 0px; */
 }
 
 #custom-kitchen {
     width: 28%;
-
 }
 
 .check-btn {
@@ -133,7 +156,7 @@
     border-radius: 4px;
     cursor: pointer;
     text-align: center;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .check-button-wrape {
@@ -220,6 +243,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    text-decoration: none;
 
 }
 
@@ -318,6 +342,7 @@ input:checked+.slider:before {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin-left: 15px;
 }
 
 .slider-width {
@@ -349,9 +374,127 @@ input:checked+.slider:before {
     padding-bottom: 500px;
 }
 
+.save-btn {
+    border: none;
+    width: 150px;
+    background-color: #025A00;
+    text-decoration: none;
+    color: #fff;
+    border-radius: 4px;
+    padding: 8px 29px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.saveBtn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.inputField {
+    width: 30%;
+    padding: 6px;
+    border: 1px solid #D0D5DD;
+    border-radius: 5px;
+}
+
+.drop-1 {
+    width: 100%;
+}
+
+.border1 {
+    border-top: 1px solid #DDDDDD;
+}
+
+.form-test {
+    display: flex;
+    flex-direction: column;
+    background-color: #E8ECF3;
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.add-btn {
+    padding: 10px 20px;
+    background-color: #025A00;
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+.btn-wrap {
+    display: flex;
+    justify-content: end;
+    gap: 10px;
+}
+
+.our-clients-say {
+    font-weight: 700;
+    text-align: center;
+    font-size: var(--font-size-26xl);
+    color: #16213E;
+    margin-bottom: 4%;
+    width: 77%;
+}
+
+.clientSec-cont {
+    width: 45%;
+}
+
+.img-client {
+    width: 250px;
+}
+
+@media (max-width: 72.5em) {
+    .read-more {
+        width: 58%;
+        padding: 0px;
+    }
+    .check-button-wrape {
+        width: 75%;
+    }
+}
+
 @media (max-width: 59em) {
     .card-body-wrape {
         flex-direction: column;
+    }
+
+    .our-clients-say {
+        width: 100%;
+        font-size: 30px;
+    }
+
+    .card-content {
+        width: 100%;
+    }
+
+    .img-content {
+        width: 100%;
+    }
+
+    .client-wrap {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .clientSec-cont {
+        width: 80%;
+    }
+
+    .inputField {
+        width: 50%;
+    }
+
+    .drop-1 {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
     }
 
     .card-head {
@@ -405,6 +548,33 @@ input:checked+.slider:before {
 
     .map-section {
         padding-bottom: 50px;
+    }
+
+}
+
+@media (max-width: 47em) {
+    .services-parent {
+        padding: 0px;
+    }
+
+    .clientSec-cont {
+        width: 100%;
+    }
+
+    .component {
+        width: 100%;
+    }
+
+    .card-head {
+        padding: 16px 0px 9px 0px;
+    }
+
+    .inputField {
+        width: 100%;
+    }
+
+    .check-button-wrape {
+        width: 100%;
     }
 
 }

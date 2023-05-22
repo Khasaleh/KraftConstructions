@@ -810,6 +810,7 @@
 #input-file {
   display: none;
 }
+
 @media (max-width: 576px) { 
   .desktop-19 {
     width: 100%;
@@ -938,3 +939,4 @@
   
   }
 }
+

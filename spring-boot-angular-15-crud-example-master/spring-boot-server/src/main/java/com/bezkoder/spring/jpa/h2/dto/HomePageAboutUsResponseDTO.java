@@ -9,8 +9,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class HomePageAboutUsResponseDTO {
     private Long id;
-   private String link;
+   private String aboutusLink;
 
-    private String description;
-    private String videoUrl;
+    private String aboutusDescription;
+    private String aboutusVideoUrl;
+
 }

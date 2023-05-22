@@ -1,0 +1,181 @@
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.add-career-news {
+    padding: 30px 0px;
+    width: 100%;
+    background-color: #E8ECF3;
+}
+
+.new-container {
+    padding: 0px 6% 540px 2%;;
+}
+
+.card-shade {
+    box-shadow: 2px 8px 4px 0px lightgray;
+}
+
+.main-head {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0px;
+}
+
+.head-btn-wrap {
+    border-bottom: 1px solid #DDDDDD;
+    padding: 10px 20px;
+    ;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #025A00;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #025A00;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+.slider-head {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
+}
+
+.head2 {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.date-style {
+    color: #667085;
+    border: 1px solid #D0D5DD;
+    padding: 8px;
+    border-radius: 8px;
+    border-radius: 6px;
+    width: 90%;
+}
+
+.input-btn {
+    width: 40px;
+    height: 35px;
+    border: 1px solid lightgrey;
+    border-radius: 3px;
+    box-shadow: 2px 4px 4px 0px lightgray;
+}
+
+.add-news-btn {
+    background-color: #025a00;
+    color: #fff;
+    padding: 9px 10px;
+    width: 140px;
+    border: none;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 59em) {
+    .cont-wrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .add-btn {
+        /* display: flex; */
+        justify-content: start;
+    }
+}
+
+@media (max-width: 47em) {
+    .date-style {
+        width: 60%;
+    }
+
+    .datewrap {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .main-head {
+        font-size: 15px;
+    }
+
+    .switch {
+        width: 50px;
+        height: 26px;
+    }
+
+    .slider:before {
+        height: 20px;
+        width: 20px;
+    }
+
+    .slider {
+        height: 26px;
+        width: 50px;
+    }
+
+    .head-btn-wrap {
+        flex-direction: column;
+    }
+    .date-style{
+        width: 100%;
+    }
+    .add-news-btn{
+        width: 100%;
+    }
+    .input-btn{
+        width: 30px;
+        height: 30px;
+    }
+}

@@ -145,7 +145,7 @@ a {
 
 .nav-links-2 a {
     cursor: pointer;
-    padding: 0px 15px;
+    padding: 0px 13px;
     font-weight: 500;
     font-size: 16px;
     color: black;
@@ -191,6 +191,7 @@ a {
     background-repeat: no-repeat;
     background-size: cover;
     height: 87vh;
+    
 }
 
 .headline {
@@ -202,36 +203,12 @@ a {
 }
 .headline marquee {
     font-size: var(--font-size-sm);
-    color: #fff;
+    color: whitesmoke;
 }
-/* .headline p {
-    font-size: var(--font-size-sm);
-    color: var(--colors-white);
-  position: relative;
-  white-space: nowrap;
-  overflow: hidden;
-  animation: move-forwards 30s linear infinite;
-}
-
-@keyframes move-forwards {
-    0% {
-      transform: translateX(0%);
-    }
-    50% {
-      transform: translateX(-100%);
-    }
-    50.001% {
-      transform: translateX(100%);
-    }
-    100% {
-      transform: translateX(0%);
-    }
-  } */
 
 .slider {
-    padding: 110px 0px 0px 200px;
+    padding: 110px 0px 0px 80px;
 }
-
 .reliable {
     font-size: 50px;
     font-weight: 500;
@@ -243,6 +220,7 @@ a {
     font-weight: 600;
     line-height: 60px;
     margin-bottom: 39px;
+    font-family: sans-serif;
 }
 
 .span {
@@ -309,7 +287,7 @@ a {
 }
 
 .About-heading {
-    font-family: var(--h2-semibold);
+    font-family: sans-serif;
     color: var(--colors-primary-black);
     font-size:41px;
     line-height: 64px;
@@ -541,6 +519,7 @@ a {
     font-weight: 700;
     text-transform: capitalize;
     color: var(--color-black);
+    font-family: sans-serif;
 }
 
 .custom-kitchens {
@@ -599,8 +578,9 @@ a {
     font-weight: 700;
     text-align: center;
     font-size: var(--font-size-26xl);
-    color: var(--color-gray-100);
+    color: var(--color-black);
     margin-bottom: 4%;
+    font-family: sans-serif;
 }
 
 .img-icon {
@@ -740,10 +720,11 @@ a {
     width: 100%;
     text-align: center;
     font-size: var(--font-size-26xl);
-    color: var(--color-gray-100);
+    color: var(--color-black);
     line-height: 64px;
     font-weight: 700;
     margin-bottom: 1.5%;
+    font-family: sans-serif;
 }
 
 .project-img {
@@ -910,7 +891,38 @@ a {
 
 
 /* media queries */
+@media (max-width: 72.5em) {
+    .button{
+        width: 23%;
+    }
+    #btn{
+        width: 35%;
+    }
+    .rectangle-parent1{
+        padding: 15px 0px;
+    }
+    .green-box-wrape{
+        justify-content: center;
+        padding: 10px;
+    }
+    .let-begin-designing{
+        margin-right: 10px;
+    }
+    .get-a-quote{
+        padding: 12px 10px;
+        width: 115px;
+    }
+    .read-more{
+        padding: 0px;
+    }
+}
 @media (max-width: 59em) {
+    .banner-section{
+        padding-top: 7.4em;
+    }
+    .logo{
+        width: 160px;
+    }
 
     .nav-bar,
     .nav-bar-2 {
@@ -1077,4 +1089,95 @@ a {
             background-size: cover;
             height: 28vh;
         }
+}
+@media (max-width: 47em) {
+    .headline marquee{
+        font-size: 10px;
+    }
+    .slider{
+        padding: 110px 0px 0px 0px;
+    }
+    .construction-solution{
+        font-size: 36px;
+    }
+    .button{
+        width: 42%;
+        font-size: 16px;
+    }
+    .div3{
+        font-size: 50px;
+    }
+    .content5{
+        width: 55%;
+        padding: 30px 15px 0px 15px;
+        height: 155px;
+    }
+    #btn{
+        width: 42%;
+    }
+    .About-heading{
+        font-size: 32px;
+        line-height: 50px;
+    }
+    .let-begin-designing{
+        font-size: 14px;
+    }
+    .get-a-quote{
+        font-weight: 500;
+        font-size: 15px;
+        padding: 6px 4px;
+    }
+    .our-services-include{
+        font-size: 28px;
+        font-weight: 600;
+    }
+    .our-clients-say{
+        font-size: 28px;
+        font-weight: 600;
+    }
+    .our-special-projects{
+        font-size: 28px;
+        font-weight: 600;
+    }
+    .rating{
+        width: 15%;
+    }
+    .img-logo1 {
+        width: 100%;
+        height: 8em;
+    }
+    .img-logo-project{
+        
+    height: 250px;
+    }
+    .content p{
+        width: 100%;
+        font-size: 14px;
+    }
+    .client-Sec-Para{
+        width: 100%;
+    }
+    .simply-dummy-text{
+        font-size: 13px;
+    }
+    .client-Sec-Para{
+        font-size: 14;
+    }
+    .katy-grey{
+        width: 40%;
+        font-size: 16px;
+    }
+    .completed-projects{
+        font-size: 13px;
+    }
+    .address-heading{
+        font-size: 25px;
+    }
+    .contact-para{
+        font-size: 16px;
+    }
+    .contact-details{
+        font-size: 15px;
+    }
+
 }
