@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 import { CKEditorComponent, ChangeEvent } from '@ckeditor/ckeditor5-angular/ckeditor.component';
 import { FormControl, FormGroup } from '@angular/forms';
+import {HomeServiceService} from '../../service/home-service.service'
 
 
 @Component({
@@ -61,4 +62,21 @@ export class AdminHomeComponent {
   deleteForm(index: number) {
     this.forms.splice(index, 1);
   }
+//for Api integration
+
+constructor(private homeService: HomeServiceService) { }
+
+onSaveButtonClick() {
+  this.homeService.getHomepageData().subscribe(
+       response => {
+      // Handle the API response here
+      console.log(response);
+    },
+      error => {
+      // Handle any error that occurs during the API request
+      console.error(error);
+    }
+  );
+}
+
 }
