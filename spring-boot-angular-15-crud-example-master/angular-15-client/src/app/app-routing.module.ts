@@ -44,30 +44,31 @@ const routes: Routes = [
   { path: 'payment', component: PaymentTabComponent },
   {
     path: 'admin',
-    component: AdminMainComponent,canActivate:[AuthGuard],
+    component: AdminMainComponent, canActivate: [AuthGuard],
+    children:
+      [
+        { path: '', component: AdminDashboardComponent, pathMatch: 'full' },
+        { path: 'admin-home', component: AdminHomeComponent },
+        { path: 'dashboard', component: AdminDashboardComponent },
+        { path: 'admin-aboutUs', component: AdminAboutUsComponent },
+        { path: 'admin-contact-us', component: AdminContactUsComponent },
+        { path: 'admin-testimonial', component: AdminTestimonialComponent },
+        { path: 'add-user', component: AddUserComponent },
+        { path: 'admin-request', component: AdminRequestComponent },
+        { path: 'admin-careers', component: AdminCareersComponent },
+        { path: 'admin-request', component: AdminRequestComponent },
+        { path: 'admin-careers', component: AdminCareersComponent },
+        { path: 'add-service', component: AdminServicesComponent },
+        { path: 'showusers', component: ShowusersComponent },
+        { path: 'pages', component: AdminServicePageComponent },
+        { path: 'career-news', component: AdminAddCareersNewsComponent },
 
-      { path: '', component: AdminDashboardComponent, pathMatch: 'full' },
-      { path: 'admin-home', component: AdminHomeComponent },
-      { path: 'dashboard', component: AdminDashboardComponent },
-      { path: 'admin-aboutUs', component: AdminAboutUsComponent },
-      { path: 'admin-contact-us', component: AdminContactUsComponent },
-      { path: 'admin-testimonial', component: AdminTestimonialComponent },
-      { path: 'add-user', component: AddUserComponent },
-      { path: 'admin-request', component: AdminRequestComponent },
-      { path: 'admin-careers', component: AdminCareersComponent },
-      { path: 'admin-request', component: AdminRequestComponent },
-      { path: 'admin-careers', component: AdminCareersComponent },
-      { path: 'add-service', component: AdminServicesComponent },
-      { path: 'showusers', component: ShowusersComponent },
-      { path: 'pages', component: AdminServicePageComponent },
-      { path: 'career-news', component: AdminAddCareersNewsComponent },
-
-    ],
+      ],
   }
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  providers:[AuthGuard],
+  providers: [AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

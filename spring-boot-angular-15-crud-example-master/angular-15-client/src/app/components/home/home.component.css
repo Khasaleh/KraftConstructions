@@ -186,7 +186,7 @@ a {
 /* Banner Section*/
 
 .banner-section {
-    background-image: url("../../../assets/banner.png");
+    /* background-image: url("../../../assets/banner.png"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
