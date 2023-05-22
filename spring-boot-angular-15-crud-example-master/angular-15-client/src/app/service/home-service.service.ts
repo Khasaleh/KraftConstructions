@@ -8,7 +8,15 @@ import { Observable } from 'rxjs';
 export class HomeServiceService {
 
   constructor(private http: HttpClient) { }
+
   getHomepageData(): Observable<any> {
-    return this.http.get('http://99.72.32.144:8081/api/homepageabout-us/homepageupdate-description');
+    return new Observable((observer)=>{
+
+      const api = this.http.get('http://99.72.32.144:8081/api/homepageabout-us/homepageupdate-description');
+      
+      observer.next(api);
+      
+      }) 
+ 
   }
 }
