@@ -150,7 +150,7 @@ h2 {
       height: 360px;
       width: 240px;
       border-radius: 5px 5px 0px 0px;
-       margin-left:0.5em;
+      margin-left:0.5em;
 }
 .card.sm-8 {
     background-color: var(--kraft-light-green);box-sizing: border-box;
@@ -171,7 +171,7 @@ h2 {
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 576px) {
   .get-quote {
     margin-top: 2rem;
     margin-bottom: 2rem;
