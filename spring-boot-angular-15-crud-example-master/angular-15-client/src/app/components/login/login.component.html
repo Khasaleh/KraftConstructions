@@ -6,16 +6,18 @@
           <img class="w-10" src="../../../assets/logimg/MicrosoftTeams-image (28) 2.png" alt="" />
           <h2 class="text-center mb-4" style="color: var(--kraft-d-green);font-family: var(--font-kanit);font-size:22px;">Kraft Construction</h2>
         </div>
-        <form>
+        <form [formGroup]="loginform" (ngSubmit)="proceedlogin()">
           <div class="mb-3">
             <label for="username" class="form-label">User name</label>
-            <input type="text" class="form-control" id="username">
+            <input type="text" class="form-control" id="username" formControlName="username">
           </div>
           <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password">
+            <input type="password" class="form-control" id="password" formControlName="password">
           </div>
-          <button type="submit" class="btn btn-success d-block w-100 mb-3" style="font-family: var(--text-sm-medium);font-size: 16px;">Login now</button>
+          <div class="form-group">
+          <button type="submit" class="btn btn-success d-block w-100 mb-3"style="font-family: var(--text-sm-medium);font-size: 16px;">Login now</button>
+        </div>
         </form>
       </div>
     </div>

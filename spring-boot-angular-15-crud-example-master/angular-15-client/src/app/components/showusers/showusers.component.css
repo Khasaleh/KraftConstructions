@@ -9,13 +9,13 @@
         font-family: var(--fonts-peragraph-reguler);
       }
       .desktop-3-item {
-        position: absolute;
-        top: 167px;
-        left: 271px;
+        position: relative;
+        margin-top: 20px;
+        left: 21px;
         background-color: var(--colors-white);
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-        width: 70% ;
-        height: 70% ;
+        width: 80%;
+        height: 50% ;
       }
       .desktop-11-inner {
         position: absolute;
@@ -24,12 +24,12 @@
         background-color: #f4f4f4;
         border-bottom: 1px solid var(--body-color);
         box-sizing: border-box;
-        width: 1015px;
-      height: 54px; 
+        width: 80%;
+        height: 54px; 
       }
       .heading {
         background-color: white;
-        width: 82%;
+        width: 84%;
         height: 75px;
         left: 10px;
         margin-left: 20px;
@@ -48,3 +48,51 @@
         border:none;
       
       }
+      .flex-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between; /* or any other option that suits your layout */
+      }
+      @media only screen and (max-width: 576px) {
+        .home {
+            width: auto;
+            height: auto;
+          }
+          .desktop-3-item {
+            position: relative;
+            left: 0; 
+            height: auto ;
+            width: auto;
+          }
+          .desktop-11-inner {
+            position: static;
+            top: 0;
+            left: 0; 
+            width: auto;
+            height: auto; 
+          }
+          .heading {
+          
+            width: auto;
+            height: auto;
+            left: 1px;
+            margin-left: 0;
+            border-bottom: 1px solid #DDDDDD;
+          }
+          .navbar-brand {
+            font-size: 12px;
+            font-weight: 600;
+            font-family: sans-serif;
+            padding: 8px 0px 9px 22px;
+    
+          }
+          .btn.btn-primary {
+            width: auto;
+          }
+          .flex-container {
+            display: flex;
+            
+            justify-content: center; 
+          }
+   
+        }

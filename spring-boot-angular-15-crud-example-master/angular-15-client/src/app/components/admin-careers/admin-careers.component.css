@@ -15,7 +15,7 @@
   left: 21px;
   background-color: var(--colors-white);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-    width: 85rem ; 
+    width: 65rem ; 
   height: 60% ;
 }
 
@@ -53,18 +53,12 @@
   box-sizing: border-box;
   height: 42px;
   flex-direction: row;
-  /* padding: var(--padding-base) var(--padding-5xl); */
+  
   align-items: center;
   gap: var(--gap-xs);
 }
 
-/* .table-cell1
- {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: flex-start;
-  gap: 2px;
-} */
+
 .frame {
   display: flex;
 } 
@@ -94,10 +88,127 @@
     flex-direction: column;
     align-items: center;
   }
+  .home {
+    
+    width: 100%;
+    height: 100%;
+   
+  }
+  .desktop-3-item {
+    position: static;
+  
+    left: 0;
+    background-color: var(--colors-white);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+      width: 100% ; 
+    height: auto ;
+  }
+  .navbar-brand {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
+    padding: 8px 0px 22px;
+  
+  }
+  .heading {
+    width: auto;
+    height: auto;
+    left: 0;
+    margin-left: 0;
+    border-bottom: 1px solid #DDDDDD;
+  }
+  .col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
+ , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt #inputYears  {
+  margin-top: 0;
+  margin-left: 2px;
+}
+#exampleFormControlTextarea1 {
+  margin-top: 0;
+  margin-left: 0;
+}
+.table-cell,
+.table-cell1 {
+  height: auto;
+  
+ 
+}
+.paginations {
+ 
+  top: 0;
+}
+.col-md-2 {
+  margin-left: 0;
+  margin-top: 0;
+}
 }
 @media only screen and (max-width: 375px) {
   .flex-container {
     flex-direction: column;
     align-items: center;
   }
+}
+@media only screen and (max-width: 576px) {
+  .flex-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .home {
+    
+    width: 100%;
+    height: 100%;
+   
+  }
+  .desktop-3-item {
+    position: static;
+  
+    left: 0;
+    background-color: var(--colors-white);
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
+      width: 100% ; 
+    height: auto ;
+  }
+  .navbar-brand {
+    font-size: 18px;
+    font-weight: 600;
+    font-family: sans-serif;
+    padding: 8px 0px 22px;
+  
+  }
+  .heading {
+    width: auto;
+    height: auto;
+    left: 0;
+    margin-left: 0;
+    border-bottom: 1px solid #DDDDDD;
+  }
+  .col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
+ , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt #inputYears  {
+  margin-top: 0;
+  margin-left: 2px;
+}
+#exampleFormControlTextarea1 {
+  margin-top: 0;
+  margin-left: 0;
+}
+.table-cell,
+.table-cell1 {
+  height: auto;
+  
+ 
+}
+.paginations {
+ 
+  top: 0;
+}
+.col-md-2 {
+  margin-left: 0;
+  margin-top: 0;
+}
+.form-label {
+  font-size: 12px;
+}
+.form-control {
+  font-size: 14px;
+  padding: 5px;
+}
 }
