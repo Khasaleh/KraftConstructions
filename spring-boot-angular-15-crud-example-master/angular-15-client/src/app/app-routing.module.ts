@@ -22,7 +22,9 @@ import { PaymentTabComponent } from './components/payment-tab/payment-tab.compon
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
 import { ShowusersComponent } from './components/showusers/showusers.component';
 import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
+import { AuthGuard } from './service/auth.guard';
 import { AdminAddCareersNewsComponent } from './components/admin-add-careers-news/admin-add-careers-news.component';
+
 
 
 
@@ -42,8 +44,8 @@ const routes: Routes = [
   { path: 'payment', component: PaymentTabComponent },
   {
     path: 'admin',
-    component: AdminMainComponent,
-    children: [
+    component: AdminMainComponent,canActivate:[AuthGuard],
+
       { path: '', component: AdminDashboardComponent, pathMatch: 'full' },
       { path: 'admin-home', component: AdminHomeComponent },
       { path: 'dashboard', component: AdminDashboardComponent },
@@ -65,6 +67,7 @@ const routes: Routes = [
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers:[AuthGuard],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
