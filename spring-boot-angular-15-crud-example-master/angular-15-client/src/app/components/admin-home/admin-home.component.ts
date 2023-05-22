@@ -67,7 +67,7 @@ export class AdminHomeComponent {
 constructor(private homeService: HomeServiceService) { }
 
 onSaveButtonClick() {
-  this.homeService.getHomepageData().subscribe(
+  this.homeService.getHomepageData().toPromise().then(
        response => {
       // Handle the API response here
       console.log(response);
