@@ -1,12 +1,10 @@
 
 .txt{
  margin-top: 10px;
- margin-left: 55px;
- font-size: 13px;
- 
+ margin-left: 60px;
 }
 .lii {
-  margin-left: 40px;
+  margin-left: 45px;
   
 }
 #my-img {
@@ -49,43 +47,13 @@ h2 {
   box-sizing: border-box;
   padding: 20px;
   margin-bottom: 1rem;
-} 
+  width:63rem;
+  margin-left:5.5rem;
+  }
+
 .card-title {
   font-size:14px ;
 }
-
-/* .card.align-items-center.justify-content-center {
-     
-  background-color: #025A00;
-  box-sizing: border-box;
-  padding: 20px;
-  margin-bottom: 1rem;
-} 
-@media (max-width: 576px) {
-  h2 {
-     font-size: 24px;
-     margin-left: 0;
-  }
-  .card.align-items-center.justify-content-center {
-     
-    background-color: #025A00;
-    box-sizing: border-box;
-    margin-bottom: 0;
-  }
-  .get-quote {
-    width: 100%;
-    margin-left: 0;
-  }
-  .btn {
-    display: inline-block;
-    background-color: var(--kraft-d-green);
-    border-radius: 1px;
-    margin-left: 0;
-    
-  
-  
-  }
-} */
 @media (max-width: 576px) {
   h2 {
      font-size: 24px;
@@ -101,12 +69,7 @@ h2 {
 
 
 
-.card.align-items-center.justify-content-center {
-  
-  background-color: darkgreen;
-  width:61rem;
-  margin-left:4rem;
-}
+
 
 .card-text {
   font-size: 14px;
@@ -116,12 +79,17 @@ h2 {
 .card.sm-12 {
   width: 23rem; 
   margin-top: 2rem;
+  margin-left: 7.5rem;
+}
+.card.sm-13 {
+  width: 23rem; 
+  margin-top: 2rem;
   margin-left: 5.5rem;
 }
 .card.sm-11 {
   width:13rem; 
   background-color: var(--kraft-light-green);
-  margin-left: 3rem;
+  margin-left: 6.5rem;
   margin-top: 2rem;
 }
 .card.sm-6 {
@@ -131,7 +99,7 @@ h2 {
   height: 360px;
   width: 240px;
   border-radius: 5px 5px 0px 0px;
-  margin-left: -4.2rem;
+  margin-left: -7.5rem;
 
 }
 .card.sm-10 {
@@ -141,7 +109,7 @@ h2 {
   height: 360px;
   width: 240px;
   border-radius: 5px 5px 0px 0px;
-  margin-left: -1.8rem;
+  margin-left: -2.8rem;
 }
 .card.sm-9 {
   background-color: var(--kraft-light-green);
@@ -150,7 +118,7 @@ h2 {
       height: 360px;
       width: 240px;
       border-radius: 5px 5px 0px 0px;
-       margin-left:0.5em;
+       margin-left: 1.8rem;
 }
 .card.sm-8 {
     background-color: var(--kraft-light-green);box-sizing: border-box;
@@ -158,7 +126,7 @@ h2 {
     height: 360px;
     width: 240px;
     border-radius: 5px 5px 0px 0px;
-    margin-left: 45px;
+    margin-left: 6.5rem;
 }
 .test-nav {
   margin-left: 9rem;
@@ -171,7 +139,7 @@ h2 {
 
 }
 
-@media (max-width: 767px) {
+@media (max-width: 567px) {
   .get-quote {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -246,6 +214,11 @@ h2 {
   height: 100%;
   width: 100%;
   border-radius: 5px 5px 0px 0px;
+  margin-left: 0;
+}
+.card.sm-13 {
+  width: 100%; 
+  margin-top: 0;
   margin-left: 0;
 }
 .test-nav {
