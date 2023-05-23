@@ -55,7 +55,7 @@ public class HomePageAboutUsController {
     public ResponseEntity<String> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);
-        return ResponseEntity.ok("Video uploaded successfully").build();
+        return ResponseEntity.ok("Video uploaded successfully");
     }
 
     private String saveVideoToFileSystem(MultipartFile file) throws IOException {
