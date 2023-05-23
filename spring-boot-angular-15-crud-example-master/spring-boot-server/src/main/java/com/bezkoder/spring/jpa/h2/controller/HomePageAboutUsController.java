@@ -52,10 +52,10 @@ public class HomePageAboutUsController {
     }
     @PostMapping("/upload-video")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<Void> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<String> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Video uploaded successfully").build();
     }
 
     private String saveVideoToFileSystem(MultipartFile file) throws IOException {
