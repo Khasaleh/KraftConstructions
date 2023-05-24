@@ -21,6 +21,7 @@ import com.google.zxing.WriterException;
 
 import javax.validation.Valid;
 
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/qr-code")
 public class QRCodeController {
