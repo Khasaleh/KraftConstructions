@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IntmodComponent } from './components/intmod/intmod.component';
@@ -38,7 +38,7 @@ import { AdminServicePageComponent } from './components/admin-service-page/admin
 import { MatButtonModule } from '@angular/material/button';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AdminAddCareersNewsComponent } from './components/admin-add-careers-news/admin-add-careers-news.component';
-
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -93,7 +93,13 @@ import { AdminAddCareersNewsComponent } from './components/admin-add-careers-new
     ColorPickerModule,
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -8,15 +8,15 @@ import { Observable } from 'rxjs';
 export class HomeServiceService {
 
   constructor(private http: HttpClient) { }
-
-  getHomepageData(): Observable<any> {
-    return new Observable((observer)=>{
-
-      const api = this.http.get('http://99.72.32.144:8081/api/homepageabout-us/homepageupdate-description');
-      
-      observer.next(api);
-      
-      }) 
- 
+  saveVideo(video: FormData): Observable<any> {
+    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/upload-video',{
+      "video":`${video}`,
+  });
+  }
+  saveHomepageData(aboutUsDescription : string, aboutUsLink : string): Observable<any> {
+    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/homepageupdate-description',{
+      "aboutusLink":`${aboutUsLink}`,
+      "aboutusDescription":`${aboutUsDescription}`
+  });
   }
 }
