@@ -29,10 +29,13 @@ proceedlogin() {
      this.service.proceedlogin(this.loginform.value).subscribe(result=> {
       if(result!=null) {
         this.responsedata = result;
-        localStorage.setItem('token',this.responsedata.jwtToken);
+        localStorage.setItem('token',this.responsedata.token);
         console.log("Navigate to admin page");
         this.router.navigate(['/admin']);
+        // console.log("response",this.responsedata)
       }
+
+    
    })
  
 

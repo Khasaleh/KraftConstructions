@@ -1,43 +1,49 @@
 <div class="admin-home">
-    <section class="about-us">
-        <div class="new-container">
-            <h2 class="main-head">Home</h2>
-            <div class="card   card-shade">
-                <div class="card-head">About us</div>
-                <div class="card-body">
-                    <div class="card-body-wrape">
-                        <div class="card-content">
-                            <h3 class="card-head2">About us</h3>
-                            <header class="inverted">
-                            </header>
-                            <div class="content" role="main">
-                                <ckeditor [editor]="Editor"
-                                    data="<h1><b>LET'S BEGIN DESIGNING <br>YOUR DREAM HOME ... TODAY!</b></h1>
+    <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
+        <section class="about-us">
+            <div class="new-container">
+                <h2 class="main-head">Home</h2>
+                <div class="card   card-shade">
+                    <div class="card-head">About us</div>
+                    <div class="card-body">
+                        <div class="card-body-wrape">
+                            <div class="card-content">
+                                <h3 class="card-head2">About us</h3>
+                                <header class="inverted">
+                                </header>
+                                <div class="content" role="main">
+                                    <ckeditor [editor]="Editor" formControlName="textEditor"
+                                        data="<h1><b>LET'S BEGIN DESIGNING <br>YOUR DREAM HOME ... TODAY!</b></h1>
                                   <p>Kraft Construction is a family-owned business that was founded in Cincinnati, Ohio in 1971. Over the years we have evolved into a residential remodeling company dedicated to helping homeowners create their dream spaces with our individualized design approach and our dedicated employees working in your homes that have a combined 106 years of experience.</p>"
-                                    (ready)="onReady($event)" (change)="onChange($event)">
-                                </ckeditor>
+                                        (ready)="onReady($event)" (change)="onChange($event)">
+                                    </ckeditor>
+                                </div>
+                                <h3 class="card-head2 mt-2">Add link</h3>
+                                <input class="form-control" type="text" placeholder="add link" formControlName="addLink">
                             </div>
-                            <h3 class="card-head2 mt-2">Add link</h3>
-                            <input class="form-control" type="text" placeholder="add link">
+                   
+                            <div class="img-content">
+                                <div class="img-box mb-3">
+                                    <video *ngIf="fileURL" class="img-dyn" src="{{this.fileURL}}"></video>
+                                </div>
+                                <div  class="file-upload cardbtn">
+                                    <button  class="video-btn">
+                                    <label for="file-input" class="custom-button">Upload Image/Video</label>
+                                    <input type="file" id="file-input" class="input-file" (change)="
+                                    onFileSelected($event)" (change)="onVideoUploadBtnClick()"
+                                        accept="image/*,video/*">
+                                    </button>
+                                </div>
+                            </div>
                         </div>
-                        <div class="img-content">
-                            <div class="img-box mb-3">
-                                <img *ngIf="urllink" class="img-dyn" src="{{this.urllink}}">
-                            </div>
-                            <div class="file-upload cardbtn">
-                                <label for="file-input" class="custom-button">Upload Image/Video</label>
-                                <input type="file" id="file-input" class="input-file" (change)="selectFiles($event)"
-                                    accept="image/*,video/*">
-                            </div>
+                        <div class="saveBtn  mb-3 mt-5">
+                            <button class="save-btn" type="submit" >save</button>
                         </div>
-                    </div>
-                    <div class="saveBtn  mb-3 mt-5">
-                        <button class="save-btn"  (click)="onSaveButtonClick()">save</button>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </form>
     <section class="services">
         <div class="new-container">
             <div class="card  card-shade">

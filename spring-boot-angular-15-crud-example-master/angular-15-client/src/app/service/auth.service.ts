@@ -5,6 +5,9 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
+  storeAuthToken(authToken: string) {
+    throw new Error('Method not implemented.');
+  }
   apiUrl= "http://99.72.32.144:8081/api/auth/signin";
 
   constructor(private http:HttpClient) {
