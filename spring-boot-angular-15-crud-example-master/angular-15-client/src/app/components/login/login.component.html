@@ -1,22 +1,28 @@
 <div class="root">
-  <div class="container-fluid">
+  <div class="container">
     <div class="col-sm-12 col-lg-5 justify-content-center align-items-center" >
-      <div class="position-relative p-3 border rounded shadow-sm">
+      <div class="position-relative p-3 border rounded shadow-sm align-items-center">
         <div class="position-relative text-center">
           <img class="w-10" src="../../../assets/logimg/MicrosoftTeams-image (28) 2.png" alt="" />
           <h2 class="text-center mb-4" style="color: var(--kraft-d-green);font-family: var(--font-kanit);font-size:22px;">Kraft Construction</h2>
         </div>
         <form [formGroup]="loginform" (ngSubmit)="proceedlogin()">
-          <div class="mb-3">
+          <div class="col mb-3"style="margin-left:22px;">
             <label for="username" class="form-label">User name</label>
             <input type="text" class="form-control" id="username" formControlName="username">
           </div>
-          <div class="mb-3">
+          <div class="col mb-3"style="margin-left:22px;">
             <label for="password" class="form-label">Password</label>
-            <input type="password" class="form-control" id="password" formControlName="password">
+            <input #x type="password" class="form-control" id="password" formControlName="password" style="display: inline-block;">
+<span style="display: inline-block;"><mat-icon style="padding-top: 5px;padding-left: 1px; cursor: pointer;"matSuffix (click)="x.type=x.type=='password'?'text':'password'">visibility</mat-icon></span>
+
+              
+         
           </div>
-          <div class="form-group">
-          <button type="submit" class="btn btn-success d-block w-100 mb-3"style="font-family: var(--text-sm-medium);font-size: 16px;">Login now</button>
+          
+          <div class="form-group"style="margin-left:22px;">
+          <button type="submit" class="btn btn-success"style="font-family: var(--text-sm-medium);font-size: 16px;">Login now</button>
+        
         </div>
         </form>
       </div>

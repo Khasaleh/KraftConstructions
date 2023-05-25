@@ -3,6 +3,7 @@
   display: inline-block;
   background-color: var(--kraft-d-green);
   border-radius: 5px;
+  width: 90%;
 }
 .root {
   background-color: var(--kraft-light-green);
@@ -11,13 +12,21 @@
   justify-content: center;
   align-items: center;
 }
-.container-fluid {
-  width: 100%;
-  max-width: 100%;
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 50px;
 }
 .col-lg-5.justify-content-center.align-items-center {
   background-color: white;
   margin-left: 30%;
+}
+
+.form-control {
+  width: 90%;
+}
+.input-group {
+  width: 90%;
 }
 
 @media (max-width:576px)
@@ -36,4 +45,5 @@
     background-color: white;
     margin-left: 0;
   }
+
 }
