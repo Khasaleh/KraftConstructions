@@ -50,9 +50,8 @@ loginform=this.builder.group({
 ngOnInit():void {
 
 
-
-
 }
+
 
 proceedlogin() {
 
