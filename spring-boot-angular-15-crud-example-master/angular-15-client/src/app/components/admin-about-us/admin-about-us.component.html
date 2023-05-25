@@ -3,11 +3,11 @@
         <div class="new-container">
             <div class="card  card-shade">
                 <div class="card-head">About us</div>
-                <div class="card-body">
+                <form #addata ="ngForm" (ngSubmit)="submit(addata.value)" class="card-body ">
                     <div class="content-wrape">
                         <div class="img-content">
                             <div class="img-box mb-3">
-                                <img *ngIf="urllink" class="img-dyn" src="{{this.urllink}}">
+                                <img *ngIf="urllink"name ="upimage" class="img-dyn" ngModel src="{{this.urllink}}">
                             </div>
                             <div class="file-upload cardbtn">
                                 <label for="file-input" class="custom-button">Upload Image</label>
@@ -16,15 +16,19 @@
                         </div>
                         <div class="description">
                             <h3 class="card-head2">About us</h3>
-                           
-                                <div class="textarea">
-                                    <textarea class="form-control form-control-lg  mb-3" id="exampleTextarea" rows="5"
+
+                            <div class="textarea">
+                                <textarea class="form-control form-control-lg  mb-3" ngModel name="desc" id="exampleTextarea" rows="5"
                                     placeholder="Enter description"></textarea>
-                                </div>
-                            
+                            </div>
+
                         </div>
+                         <div class="saveBtn mb-3 mt-5">
+
+                <button class="save-btn" type="submit" >save</button>
+             </div>
                     </div>
-                </div>
+                </form>
             </div>
 
         </div>
@@ -34,23 +38,23 @@
             <div id="card-length" class="card card-shade ">
 
                 <!-- <img class="bg-img img-width" [src]="urllink1" alt=""> -->
-                <div class="card-body  ">
+                <form class="card-body  ">
                     <div class="content-wrap">
                         <div class="img-content">
                             <div class="img-box mb-3">
-                                <img *ngIf="urllink1" class="img-dyn" [src]="urllink1">
+                                <img *ngIf="urllink1" ngModel name ="dwnimage"class="img-dyn" [src]="urllink1">
                             </div>
                             <div id="green-button" class="file-upload cardbtn">
                                 <label for="file-input1" class="custom-button">Upload Image</label>
-                                <input type="file" id="file-input1" class="input-file" (change)="selectFiles2($event)">
+                                <input type="file" id="file-input1"  class="input-file" (change)="selectFiles2($event)">
                             </div>
                         </div>
                         <div class="form1">
-                            <input class="form-control" type="text" placeholder="Text on image">
+                            <input class="form-control" ngModel name ="textimg"type="text" placeholder="Text on image">
                         </div>
                     </div>
-                </div>
-            </div>
+                </form>
+        </div>
         </div>
     </section>
 

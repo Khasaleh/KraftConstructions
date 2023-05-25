@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { aboutusdata } from 'src/app/data-type';
+import { UpdabtusService } from 'src/app/service/updabtus.service';
 
 @Component({
   selector: 'app-admin-about-us',
@@ -6,6 +8,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./admin-about-us.component.css']
 })
 export class AdminAboutUsComponent {
+  constructor(private aboutusdata : UpdabtusService ) {}
 urllink:string ="";
 
 selectFiles(event:any)
@@ -29,5 +32,13 @@ selectFiles2(event:any)
     }
   }
 }
+submit(data: aboutusdata) {
+  console.warn(data);
+  this.aboutusdata.addata(data).subscribe((result)=> {
+    console.log(result);
+  })
+
+}
+
 }
 console.log("hello world");
