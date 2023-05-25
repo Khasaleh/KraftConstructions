@@ -22,7 +22,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
-
+@CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/homepageabout-us")
 public class HomePageAboutUsController {
@@ -52,10 +52,10 @@ public class HomePageAboutUsController {
     }
     @PostMapping("/upload-video")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<Void> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<String> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok("Video uploaded successfully");
     }
 
     private String saveVideoToFileSystem(MultipartFile file) throws IOException {
