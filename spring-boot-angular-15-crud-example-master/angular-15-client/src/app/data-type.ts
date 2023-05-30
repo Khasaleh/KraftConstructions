@@ -1,4 +1,4 @@
 export interface aboutusdata {
-    desc:string
-
+   title : string;
+   description : string;
 }

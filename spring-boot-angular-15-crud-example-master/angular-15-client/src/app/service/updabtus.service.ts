@@ -12,4 +12,7 @@ export class UpdabtusService {
     return this.http.post( this.apiUrl+'/about-us/update-description', data);
    
   }
+  showdata() {
+    return this.http.get(this.apiUrl+'/about-us/');
+  }
 }
