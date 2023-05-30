@@ -39,6 +39,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AdminAddCareersNewsComponent } from './components/admin-add-careers-news/admin-add-careers-news.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { MatCommonModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -91,7 +92,8 @@ import { AuthInterceptor } from './auth.interceptor';
     CKEditorModule,
     BrowserAnimationsModule,
     ColorPickerModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatCommonModule
   ],
   providers: [
     {
