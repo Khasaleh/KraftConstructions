@@ -57,8 +57,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     Path filePath = uploadPath.resolve(fileName);
     Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
 
-    String relativePath = uploadDir + "/" + fileName;
-    return relativePath;
+//    String relativePath = uploadDir + "/" + fileName;
+//    return relativePath;
+    return filePath.toString();
   }
 
   public User updateUser(User updatedUser)  {
