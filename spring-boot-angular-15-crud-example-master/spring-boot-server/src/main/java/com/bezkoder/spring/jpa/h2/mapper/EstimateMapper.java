@@ -12,6 +12,7 @@ public class EstimateMapper {
         dto.setFirstName(entity.getFirstName());
         dto.setLastName(entity.getLastName());
         dto.setEmail(entity.getEmail());
+        dto.setPhoneNumber(entity.getPhoneNumber());
         dto.setAddress(entity.getAddress());
         dto.setCity(entity.getCity());
         dto.setState(entity.getState());
