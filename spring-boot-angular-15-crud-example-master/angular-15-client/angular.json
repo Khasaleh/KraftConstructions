@@ -68,6 +68,7 @@
           "configurations": {
             "production": {
               "browserTarget": "angular-15-crud:build:production"
+            
             },
             "development": {
               "browserTarget": "angular-15-crud:build:development"
