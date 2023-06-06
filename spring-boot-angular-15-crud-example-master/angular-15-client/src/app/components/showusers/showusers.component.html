@@ -8,7 +8,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addUser" type="submit">Add User</button>
+        <button routerLink="/add-user" class="btn btn-success" data-bs-toggle="modal " type="submit">Add User</button>
 
       </div>
     </div>
@@ -19,7 +19,7 @@
 <table class="table">
 <thead>   
      <tr>
-        <th scope="col">Username</th>
+        <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
         <th scope="col">Role</th>
@@ -28,17 +28,73 @@
       
     </thead>
     <tbody>
-      <tr>
-        <th><img src = "" alt = ""> </th>
-        <td>Oliver</td>
-        <td>oliverjohngmailcom</td>
-        <td>Administrator</td>
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" data-bs-toggle="modal" data-bs-target="#editUser">Edit</button>
-        <button type="button" class="btn btn-secondary">Delete</button>
+      <tr *ngFor="let usr of userdata">
+        <th>{{usr.id}}</th>
+        <td>{{usr.username}}</td>
+        <td>{{usr.email}}</td>
+        <th>{{usr.roles[0].name}}</th>
+        <!-- <td *ngFor="let role of usr.roles">{{role.name}}
+        </td> -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmployee" (click)="editUser(usr)">Edit</button>
+        <button  type="button" class="btn btn-secondary" (click)="deleteUser(usr.username)">Delete</button>
+      
       </tr>
+    
     </tbody>
   </table>
+  <div class="modal fade" id="editEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title" id="exampleModalLabel">Edit User</h2>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+            <form [formGroup]="userDetail">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">UserName </label>
+                    <input type="text" name="username" formControlName="username" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email Address </label>
+                    <input type="email" name="email" formControlName="email" class="form-control" id="email" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name </label>
+                    <input type="text" name="firstname" formControlName="firstname" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Last Name </label>
+                    <input type="text" name="lastname" formControlName="lastname" class="form-control" id="name" aria-describedby="emailHelp">
+                  </div>
+                
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Password </label>
+                    <input type="text" formControlName="password" class="form-control" id="email" aria-describedby="emailHelp">
+                  </div>
+                  <div class="mb-3">
+                    <label for="role" class="form control">Role*</label>
+                    <div class="col-sm-8">
+                      <select class="form-select" formControlName="role" id="role">
+                        <option value="admin" [selected]="this.userDetail.value.role === 'ROLE_ADMIN'">Admin</option>
+                        <option value="user" [selected]="this.userDetail.value.role === 'ROLE_USER'">User</option>
+                      </select>
+                    </div>
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button (click)=" updateUser()" type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Update </button>
+                  </div>
+              </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
   </div>
   </div>
 </div>
+
+

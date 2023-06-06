@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient,HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AddUser } from '../model/add-user';
 import { Observable } from 'rxjs';
+import { User } from '../model/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -9,18 +10,24 @@ export class AddUserService {
   addUserURL: string;
   getUserURL : string;
   updateURL : string;
+  deleteURL: string;
   constructor(private http : HttpClient) { 
-  this.addUserURL = 'http://localhost:9091/user/addUser';
-  this.getUserURL= 'http://localhost:9091/user/getAll';
-  this.updateURL='http://localhost:9091/user/updateEmployee';
+  this.addUserURL = 'http://99.72.32.144:8081/api/auth/users/create';
+  this.getUserURL=  'http://99.72.32.144:8081/api/auth/users';
+  this.updateURL=   'http://99.72.32.144:8081/api/auth/users/update';
+  this.deleteURL=   'http://99.72.32.144:8081/api/auth/users/delete';
 }
-AddUser(usr: AddUser): Observable<AddUser> {
+AddUser(usr: AddUser):Observable<AddUser> {
   return this.http.post<AddUser>(this.addUserURL,usr);
 }
 getAllUsers():Observable<AddUser[]> {
 return this.http.get<AddUser[]>(this.getUserURL);
 }
-UpdateUser(usr: AddUser) : Observable<AddUser> {
-  return this.http.put<AddUser>(this.updateURL, usr);
-} 
+updateUser(user: AddUser, oldUsername: string): Observable<any> {
+  return this.http.put<any>(`${this.updateURL}/${oldUsername}`, user);
+}
+deleteUser(username: string): Observable<any> {
+  return this.http.delete<any>(`${this.deleteURL}/${username}`);
+}
+
 }

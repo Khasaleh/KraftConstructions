@@ -13,6 +13,6 @@ export class UpdabtusService {
    
   }
   showdata() {
-    return this.http.get(this.apiUrl+'/about-us/');
+    return this.http.get(this.apiUrl+'/about-us');
   }
 }

@@ -375,6 +375,254 @@
     .btn.btn-primary {
       width: auto;
     }
+    .rectangle-parent {
+   
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      display: inline-block;
+    }
+    .image-icon,
+    .instance-child {
+      position: absolute;
+      height: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+    }
+    .instance-child {
+      width: auto;
+      
+    }
+    .image-icon {
+      width: 0;
+      left: 0;
+      border-radius: auto;
+      max-width: auto;
+      max-height: auto;
 
+    }
+    .image-parent,
+    .koray-okumus {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    .image-parent {
+      height: auto;
+      width: auto;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+    .group-item,
+    .rectangle-group {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      display: inline-block;
+    }
+    .group-item {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+      display: inline-block;
+    }
+    .simply-dummy-text {
+      position: static;
+      top: 0;
+      left: 0;
+      font-family: var(--text-sm-regular);
+      width: auto;
+      height: auto;
+      display: inline-block;
+    }
+    .group-inner {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+    .email,
+    .oliverjohngmailcom {
+      position: static;
+      top: 0;
+      left: 0;
+      line-height: auto;
+      width: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .oliverjohngmailcom {
+      top: 0;
+      width: auto;
+    }
+    .email-parent,
+    .group-div {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+    .group-div {
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+    .group-child1,
+    .name {
+      position: static;
+      top: 0;
+    
+    }
+    .group-child1 {
+      left: 0;
+      background-color: var(--colors-buttun-gray-10);
+      width: auto;
+      height: auto;
+    }
+    .name {
+      left: 0;
+      line-height: auto;
+      width: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .name-parent,
+    .oliver-john {
+      position: static;
+      width: auto;
+    }
+    .oliver-john {
+      top: 0;
+      left: 0;
+      line-height: auto;
+      display: inline-block;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .name-parent {
+      top: 0;
+      left: 0;
+      height: auto;
+    }
+    .rectangle-parent1 {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+    .group-child2,
+    .group-child3 {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+
+    }
+    .group-child3 {
+      left: 0;
+      width: auto;
+      height: auto;
+  
+    }
+    .div {
+      top: 0;
+      left: 0;
+      
+      display: inline-block;
+      width: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .div,
+    .parent,
+    .phone {
+      position: static;
+    }
+    .phone {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .parent {
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+    }
+    .country,
+    .group-child4,
+    .usa {
+      position: static;
+      top: 0;
+      left: 0;
+    }
+    .group-child4 {
+  
+      width: auto;
+      height: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .country,
+    .usa {
+      line-height: auto;
+      width: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .usa {
+      top: 0;
+      left: 0;
+      width: auto;
+     
+    }
+    .country-parent {
+      position: static;
+      top: 0;
+      left: 0;
+      width: auto;
+      height: auto;
+     
+    }
+    .rectangle-parent2,
+    .rectangle-parent3 {
+      position: static;
+      top: 0;
+      left: 0;
+      width: 0;
+      height: auto;
+    }
+    .rectangle-parent2 {
+      top: 0;
+      left: 0;
+      width: auto;
+    }
+    
+    .pm {
+      position: static;
+      top: 0;
+      left: 0;
+      line-height: auto;
+      width: auto;
+      background-color: var(--colors-buttun-gray-10);
+    }
+    .delete {
+   
+      top: 0;
+      left: 0;
+      line-height: auto;
+      width: auto;
+      position: static;
+    }
 
   }
