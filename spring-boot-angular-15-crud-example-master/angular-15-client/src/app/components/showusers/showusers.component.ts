@@ -15,6 +15,7 @@ export class ShowusersComponent {
   userObj : AddUser = new AddUser();
   oldUser!: string;
   
+  
   constructor(private adduserdata : AddUserService, private formBuilder: FormBuilder, private router: Router) {}
 
   ngOnInit(): void {
@@ -52,15 +53,7 @@ deleteUser(username: string) {
 }
 
 
-// updateUser(user: AddUser) {
-//   this.adduserdata.updateUser(this.userObj,this.oldUser).subscribe(res=> {
-//     console.log(this.userObj.username,this.userObj.email,this.userObj.roles);
-//     console.log(res);
-//     this.getAllUsers();
-//   },err=> {
-//     console.log(err);
-//   });
-// }
+
 editUser(user: User) {
   this.oldUser = user.username;
   this.userDetail.patchValue({
