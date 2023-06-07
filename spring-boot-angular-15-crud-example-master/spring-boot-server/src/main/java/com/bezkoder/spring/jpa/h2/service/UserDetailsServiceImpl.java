@@ -55,7 +55,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     InputStream inputStream = image.getInputStream();
     Path filePath = uploadPath.resolve(fileName);
     Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-    return filePath.toString();
+    String relativePath = "/profileimages/" + uploadPath.relativize(filePath).toString();
+    return relativePath;
   }
 
   public User updateUser(User updatedUser)  {
