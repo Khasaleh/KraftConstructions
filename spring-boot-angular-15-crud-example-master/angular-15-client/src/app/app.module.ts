@@ -40,6 +40,12 @@ import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { AdminAddCareersNewsComponent } from './components/admin-add-careers-news/admin-add-careers-news.component';
 import { AuthInterceptor } from './auth.interceptor';
 import { MatCommonModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+
 
 @NgModule({
   declarations: [
@@ -93,7 +99,13 @@ import { MatCommonModule } from '@angular/material/core';
     BrowserAnimationsModule,
     ColorPickerModule,
     BrowserAnimationsModule,
-    MatCommonModule
+    MatCommonModule,
+    MatFormFieldModule,
+    MatRadioModule,
+    MatInputModule,
+    MatSelectModule,
+    MatListModule
+    
   ],
   providers: [
     {

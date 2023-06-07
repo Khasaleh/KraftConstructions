@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
 import { aboutusdata } from 'src/app/data-type';
 import { UpdabtusService } from 'src/app/service/updabtus.service';
-import { ImageService } from 'src/app/service/image.service';
 @Component({
   selector: 'app-admin-about-us',
   templateUrl: './admin-about-us.component.html',
-  styleUrls: ['./admin-about-us.component.css']
+  styleUrls: ['./admin-about-us.component.css', '../../../styles.css']
 })
 export class AdminAboutUsComponent {
-  constructor(private aboutusdata : UpdabtusService , private imageService : ImageService) {}
+  constructor(private aboutusdata : UpdabtusService ) {}
 urllink:string ="";
 
 // selectFiles(event:any)
@@ -39,9 +38,9 @@ submit(data: aboutusdata) {
   })
 
 }
-changeImage() {
-  this.imageService.changeImageSource('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqgTBePNCAcvbvn-HBe8bAqe2HL4dlbAVNnmcfR7hZEg&s');
-}
+// changeImage() {
+//   this.imageService.changeImageSource('');
+// }
 
 }
 console.log("hello world");
