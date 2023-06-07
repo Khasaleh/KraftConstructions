@@ -75,15 +75,14 @@ public class CareersApplicationServiceImpl implements CareersApplicationService 
 
     private String saveResumeFile(MultipartFile resume) throws IOException {
         String fileName = StringUtils.cleanPath(Objects.requireNonNull(resume.getOriginalFilename()));
-        String uploadDir = "uploads/resumes";
-        Path uploadPath = Paths.get("src/main/resources/static", uploadDir);
+        Path uploadPath = Paths.get("uploads/resumes");
         if (!Files.exists(uploadPath)) {
             Files.createDirectories(uploadPath);
         }
         InputStream inputStream = resume.getInputStream();
         Path filePath = uploadPath.resolve(fileName);
         Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-
-        return filePath.toString();
+        String relativePath = "/resumes/" + uploadPath.relativize(filePath).toString();
+        return relativePath;
     }
 }

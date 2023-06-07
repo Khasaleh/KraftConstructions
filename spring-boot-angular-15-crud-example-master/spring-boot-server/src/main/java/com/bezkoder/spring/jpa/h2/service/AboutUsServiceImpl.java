@@ -84,7 +84,7 @@ public class AboutUsServiceImpl implements AboutUsService {
         InputStream inputStream = image.getInputStream();
         Path filePath = uploadPath.resolve(fileName);
         Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-        String absolutePath = filePath.toAbsolutePath().toString();
-        return absolutePath;
+        String relativePath = "/aboutusimage/" + uploadPath.relativize(filePath).toString();
+        return relativePath;
     }
 }
