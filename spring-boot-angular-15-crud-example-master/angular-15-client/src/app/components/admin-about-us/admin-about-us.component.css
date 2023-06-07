@@ -118,7 +118,36 @@
 .form1 {
     width: 100%;
 }
+.saveBtn {
 
+    width: 100%;
+    
+    display: flex;
+    
+     justify-content: center;
+    
+    }
+    .save-btn {
+
+        border: none;
+        
+         width: 150px;
+        
+        background-color: #025A00;
+        
+       text-decoration: none;
+        
+        color: #fff;
+        
+         border-radius: 4px;
+        
+       padding: 8px 29px;
+        
+         cursor: pointer;
+        
+       text-align: center;
+        
+        }
 @media (max-width: 59em) {
  .content-wrape{
     display: flex;

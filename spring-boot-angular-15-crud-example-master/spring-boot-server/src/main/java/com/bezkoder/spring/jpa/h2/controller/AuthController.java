@@ -195,12 +195,8 @@ public class AuthController {
   }
   @PostMapping("/users/uploadprofile/{username}")
   @PreAuthorize("hasRole('ROLE_AUTHOR')")
-  public ResponseEntity<?> addImageToUser(@PathVariable("username") String username, @RequestBody MultipartFile imageurl) {
-    try {
-      User user = userDetails.addImageToUser(username, imageurl);
+  public ResponseEntity<?> addImageToUser(@PathVariable("username") String username, @RequestBody MultipartFile profileImage) {
+      User user = userDetails.addImageToUser(username, profileImage);
       return ResponseEntity.ok(new MessageResponse("Profile image uploaded successfully!"));
-    } catch (Exception e) {
-      return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Error occurred while adding the image to the user.");
-    }
   }
 }

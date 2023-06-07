@@ -1,63 +1,56 @@
 <app-header></app-header>
 <div class="row">
-  
-  <div class="col"> 
-  
-        <div class="card text-bg-dark">
-        
-           <img class="card-img">
-           
-           <div class="card-img-overlay d-flex flex-column justify-content-center ">
-              <div class="abtus">About Us</div>
-              <div class="test-nav">
-                <a href="">Home</a>
-                <a href=""><img src="../../../assets/Vector 9.png" alt=""></a>
-                <a href="about-us">About us</a>
-            </div>
-           </div>
+
+  <div class="col">
+
+    <div class="card text-bg-dark">
+
+      <img class="card-img">
+
+      <div class="card-img-overlay d-flex flex-column justify-content-center ">
+        <div class="abtus">About Us</div>
+        <div class="test-nav">
+          <a href="">Home</a>
+          <a href=""><img src="../../../assets/Vector 9.png" alt=""></a>
+          <a href="about-us">About us</a>
         </div>
-     </div>
+      </div>
     </div>
+  </div>
+</div>
 <div class="container-sm container-md container-lg ">
   <div class="row">
     <div class="col">
-      <img class = "image "src="../../../assets/images/about-uss 1.png" alt="Card image cap">
-      
-  </div>
+      <!-- <img class="image" [src]="userdata.imageUrl" alt src="../../../assets/images/about-uss 1.png"> -->
+      <!-- <img src="../../../assets/images/about-uss 1.png" alt="Card image cap"> -->
+    </div>
     <div class="col">
 
       <div class="about-text">
         <h1>Our Mission: High Quality,<br>
           Fair Prices.</h1>
         <p class="aboutus2-1-icon"> About us</p>
-        <p>Kraft Construction is a family-owned business that was founded in <br>
-          Cincinnati, Ohio in 1971. Over the years we have evolved into a
-          residential <br>  remodeling company dedicated to helping homeowners
-          create their dream <br> spaces with our individualized design approach
-          and our dedicated <br> employees working in your homes that have a
-          combined 106 years of <br> experience.<br>
-          <br>
-          We strive to make our customers happy with every project we do.
-          Whether <br> it's adding an outdoor space for family and friends to
-          gather, a new <br> addition for a growing family, or updating your
-          kitchen or bathroom. We will <br> work with you from beginning to end to
-          have your dream home..
+        <div class="a">
+          {{userdata.description || desc + abc}}
+        </div>
       </div>
     </div>
   </div>
 </div>
 <div class="container-d-flex">
-<div class="row">
-  <div class="col">
-    <div class="carousel-inner d-flex">
-      <div class="carousel-item d-flex">
-        <img id="my-img" src="../../../assets/images/shutterstock_149987300 1.png" class="d-block w-100" alt="...">
-        <div class="abc text-center d -flex">
-          <!-- <div class="text-center"> -->
-          <p class=" get-a-quote "> Get a Quote</p>
-          <h2 class=" design-your-home "> Design Your Home Today</h2>
-          <button class="btn btn-success"  routerLink="/request-estimate">Appointment</button>
-</div>
+  <div class="row">
+    <div class="col">
+      <div class="carousel-inner d-flex">
+        <div class="carousel-item d-flex">
+          <img id="my-img" src="../../../assets/images/shutterstock_149987300 1.png" class="d-block w-100" alt="...">
+          <div class="abc text-center d -flex">
+            <!-- <div class="text-center"> -->
+            <p class=" get-a-quote ">Get a Quote</p>
+            <h2 class="design-your-home">{{ userdata.title || ' Design Your Home Today' }} </h2>
+
+
+            <button class="btn btn-success" routerLink="/contact-us">Appointment</button>
+          </div>
         </div>
       </div>
     </div>
@@ -65,39 +58,39 @@
 
 </div>
 <div class="row">
-<div class="col">
-<div class="card2 sm-2" style="max-width: 240px;margin-left: 19rem; margin-top: 2rem;margin-bottom: 4rem;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="../../../assets/phone-icon.PNG" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-7 ">
-      <div class="card-body ">
-        <h4 class="card-title"style="margin-left:0.1rem;">Company Phones</h4>
-        <p class="card-text "style="margin-left:0.1rem;">513.522.2414.</p>
-        <p class="card-text "style="margin-left:0.1rem;">Fax:<span>513.522.2411</span></p>
+  <div class="col">
+    <div class="card2 sm-2" style="max-width: 240px;margin-left: 19rem; margin-top: 2rem;margin-bottom: 4rem;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../../../assets/phone-icon.PNG" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-7 ">
+          <div class="card-body ">
+            <h4 class="card-title" style="margin-left:0.1rem;">Company Phones</h4>
+            <p class="card-text " style="margin-left:0.1rem;">513.522.2414.</p>
+            <p class="card-text " style="margin-left:0.1rem;">Fax:<span>513.522.2411</span></p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-<div class="col">
-<div class="card2 mb-3" style="max-width: 240px;margin-top: 2rem; margin-bottom: 4rem;">
-  <div class="row g-0">
-    <div class="col-md-4">
-      <img src="../../../assets/msg-icon.PNG" class="img-fluid rounded-start" alt="...">
-    </div>
-    <div class="col-md-2 ">
-      <div class="card-body ">
-        <h4 class="card-title"style="margin-left:0.5rem;">KRAFT<span>CONSTRUCTIONS</span></h4>
-        <p class="card-text "style="margin-left:0.5rem;">EMAILS</p>
-        <p class="card-text "style="margin-left:0.5rem;">www.Kraftconstructionsco.com</p>
+  <div class="col">
+    <div class="card2 mb-3" style="max-width: 240px;margin-top: 2rem; margin-bottom: 4rem;">
+      <div class="row g-0">
+        <div class="col-md-4">
+          <img src="../../../assets/msg-icon.PNG" class="img-fluid rounded-start" alt="...">
+        </div>
+        <div class="col-md-2 ">
+          <div class="card-body ">
+            <h4 class="card-title" style="margin-left:0.5rem;">KRAFT<span>CONSTRUCTIONS</span></h4>
+            <p class="card-text " style="margin-left:0.5rem;">EMAILS</p>
+            <p class="card-text " style="margin-left:0.5rem;">www.Kraftconstructionsco.com</p>
+          </div>
+        </div>
       </div>
     </div>
+    <!-- </div> -->
   </div>
-</div>
-<!-- </div> -->
-</div>
 </div>
 
 
