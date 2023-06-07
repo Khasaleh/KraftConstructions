@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -24,10 +23,11 @@ public class CareerNewsController {
 
     @Autowired
     private CareerNewsMapper newsMapper;
+    private static final Long CAREER_NEWS = 1L;
 
     @GetMapping
-    public ResponseEntity<List<CareerNewsDto>> findAll() {
-        List<CareerNewsDto> careerNewsList = newsService.findAll();
+    public ResponseEntity <CareersNews> getByid() {
+        CareersNews careerNewsList = newsService.findById(CAREER_NEWS);
         return ResponseEntity.ok(careerNewsList);
     }
 
@@ -39,25 +39,12 @@ public class CareerNewsController {
         return ResponseEntity.ok().body(careerNewsDTOList);
     }
 
-
-
-
     // Create a new News
     @PostMapping
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<CareerNewsDto> addNews(@Valid  @RequestBody CareerNewsDto newsDTO) {
-        CareerNewsDto addedNews = newsService.addNews(newsDTO);
+        CareerNewsDto addedNews = newsService.addNews(CAREER_NEWS,newsDTO);
         return ResponseEntity.ok(addedNews);
     }
-
-    @PutMapping("/{id}")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<CareerNewsDto> updateNews(@PathVariable Long id, @Valid @RequestBody CareerNewsDto newsDto) {
-        CareerNewsDto updateService =  newsService.updateNews(id, newsDto);
-        return ResponseEntity.ok(updateService);
-
-    }
-
-
 
 }
