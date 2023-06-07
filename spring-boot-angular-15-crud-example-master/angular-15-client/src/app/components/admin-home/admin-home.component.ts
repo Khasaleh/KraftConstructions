@@ -5,7 +5,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { HomeServiceService } from '../../service/home-service.service'
 import { HttpClient } from '@angular/common/http';
 
-
+interface Image {
+  url: string;
+}
 @Component({
   selector: 'app-admin-home',
   templateUrl: './admin-home.component.html',
@@ -23,40 +25,20 @@ export class AdminHomeComponent {
   }
   public onChange({ editor }: ChangeEvent) {
   }
-  // urllink: any;
-  // videoWidth: any;
-  // videoHeight: any;
-  fileURL:string ="";
-  selectedFile: any;
-  // fileURL: any;
-  // selectFiles(event: any) {
-  //   const file = event.target.files[0];
-
-  //   if (file) {
-  //     const reader = new FileReader();
-
-  //     if (file.type.includes('image')) {
-  //       reader.readAsDataURL(file);
-  //     } else if (file.type.includes('video')) {
-  //       reader.readAsArrayBuffer(file);
-  //     }
-
-  //     reader.onload = (event: any) => {
-  //       if (file.type.includes('image')) {
-  //         this.urllink = event.target.result;
-  //       } else if (file.type.includes('video')) {
-  //         const arrayBuffer = event.target.result;
-  //         const blob = new Blob([new Uint8Array(arrayBuffer)], { type: 'video/mp4' });
-  //         this.urllink = URL.createObjectURL(blob);
-  //       }
-  //     };
-  //   }
-  // }
+  
+  videoLink : any;
+  fileURL!: File;
+  
 
   onFileSelected(event: any) {
-    this.selectedFile = event.target.files[0];
-    this.fileURL = URL.createObjectURL(this.selectedFile);
+    this.fileURL = event.target.files[0];
+    this.videoLink = URL.createObjectURL(this.fileURL);
+
+    this.onVideoUploadBtnClick();
+  console.log(this.fileURL)
+
   }
+  
   
   myForm = new FormGroup({
     name: new FormControl(''),
@@ -75,26 +57,9 @@ export class AdminHomeComponent {
 
   aboutUsForm!: FormGroup;
   constructor(private formBuilder: FormBuilder, private homeService: HomeServiceService) { }
-  // onVideoUploadBtnClick() {
-  //   const video = this.urllink;
-  //   this.homeService.saveVideo(video).subscribe(
-  //        response => {
-  //       // Handle the API response here
-  //       console.log(response);
-  //     },
-  //       error => {
-  //       // Handle any error that occurs during the API request
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  onVideoUploadBtnClick() {
-    // if (!this.urllink) {
-    //   // No file selected, show an error message or perform the desired action
-    //   return;
-    // }
   
-    // const file = event.target.files[0];
+  onVideoUploadBtnClick() {
+ 
     const formData = new FormData();
     formData.append('file', this.fileURL);
   
@@ -123,7 +88,7 @@ export class AdminHomeComponent {
 
     if (this.aboutUsForm.valid) {
       const textEditor = this.aboutUsForm.get('textEditor')?.value;
-      const addLink = this.aboutUsForm.get('textEditor')?.value;
+      const addLink = this.aboutUsForm.get('addLink')?.value;
       this.homeService.saveHomepageData(textEditor,addLink).subscribe(
         response => {
                 // Handle the API response here
@@ -138,27 +103,55 @@ export class AdminHomeComponent {
     }
     
   }
+  isCardBodyVisible: boolean = false;
+  toggleCardBody() {
+    this.isCardBodyVisible = !this.isCardBodyVisible;
+  }
 
-  // onVideoUploadBtnClick() {
-  //   const video =
-  //   this.homeService.saveVideo(a,b).subscribe(
-  //        response => {
-  //       // Handle the API response here
-  //       console.log(response);
-  //     },
-  //       error => {
-  //       // Handle any error that occurs during the API request
-  //       console.error(error);
-  //     }
-  //   );
-  // }
-  //  constructor(private http: HttpClient){
+  // images: Image[] = [];
+  images: File[] = [];
+  
+  activeIndex = 0;
 
-  //  }
-  //  ngOnInit(): void {
-  // this.homeAboutUs();
-  //  }
-  // homeAboutUs(){
-  //   this.http.get('http://99.72.32.144:8081/api/homepageabout-us').subscribe();
+  // onFileSelected1(event: any) {
+  //   const files = event.target.files;
+  //   for (let i = 0; i < files.length; i++) {
+  //     const file = files[i];
+  //     const reader = new FileReader();
+  //     reader.onload = (e) => {
+  //       const imageUrl = reader.result as string;
+  //       this.images.push({ url: imageUrl });
+  //     };
+  //     reader.readAsDataURL(file);
+  //   }
   // }
+  onFileSelected1(event: any) {
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      this.images.push(file);
+    }
+  }
+  
+  uploadImages1() {
+    const formData = new FormData();
+    for (let i = 0; i < this.images.length; i++) {
+      formData.append('images', this.images[i]);
+    }
+  
+    // Perform upload logic here, e.g., send formData to server
+    console.log(formData);
+  }
+
+  uploadImages() {
+    // Perform upload logic here, e.g., send images to server
+    console.log(this.images);
+  }
+  getPreviewURL(image: File): string {
+    return URL.createObjectURL(image);
+  }
+  setActiveIndex(index: number) {
+    this.activeIndex = index;
+  }
+  
 }
