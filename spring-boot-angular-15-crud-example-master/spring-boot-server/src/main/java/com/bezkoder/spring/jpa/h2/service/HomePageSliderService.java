@@ -1,13 +1,12 @@
 package com.bezkoder.spring.jpa.h2.service;
 
+import com.bezkoder.spring.jpa.h2.dto.HomePageSliderRequestDto;
 import com.bezkoder.spring.jpa.h2.dto.HomePageSliderResponseDto;
 
-import java.util.List;
+import java.io.IOException;
 
 public interface HomePageSliderService {
-    List<HomePageSliderResponseDto> getAllSliderImages();
+    HomePageSliderResponseDto saveOrUpdateSliderImage(HomePageSliderRequestDto sliderImageDTO) throws IOException;
 
-    HomePageSliderResponseDto createOrUpdateSliderImage(HomePageSliderResponseDto dto);
-
-    void deleteSliderImage(Long id);
+    public HomePageSliderResponseDto getSliderImageById(Long id);
 }
