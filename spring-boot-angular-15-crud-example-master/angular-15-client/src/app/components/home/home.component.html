@@ -45,7 +45,7 @@
       <!-- about section content -->
       <div class="dream-home">
         <div class="content">
-          <h2 class="About-heading">
+          <!-- <h2 class="About-heading">
             LET'S BEGIN DESIGNING <br>
             YOUR DREAM HOME ... TODAY!
           </h2>
@@ -56,7 +56,11 @@
             homeowners create their dream spaces with our individualized design approach and our dedicated
             employees working in your homes that have a combined 106 years of experience.
 
-          </p>
+          </p> -->
+          <!-- <div *ngFor="let item of apiData | keyvalue">{{ item.aboutusDescription }}</div> -->
+          <div class="apidata" [innerHTML]="apiData.aboutusDescription"></div>
+          <!-- <div [innerHTML]="apiData.aboutusLink"></div> -->
+
           <a id="btn" class="button" routerLink="./about-us">
             <div class="learn-more">Learn more</div>
             <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png"

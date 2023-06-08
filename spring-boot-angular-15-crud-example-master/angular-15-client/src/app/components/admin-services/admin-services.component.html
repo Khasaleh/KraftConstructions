@@ -1,4 +1,5 @@
 <div class="add-services">
+    <form [formGroup]="interiorRemodForm" (ngSubmit)="onSubmit()">
     <section class="section-1">
         <div class="new-container">
             <div class="card  card-shade">
@@ -9,22 +10,24 @@
                             <div class="form-group">
                                 <label class="label" for="formGroupExampleInput">Add Service</label>
                                 <input type="text" class="form-control mt-3 mb-3" id="formGroupExampleInput"
-                                    placeholder="Interior remodeling">
+                                    placeholder="Interior remodeling" formControlName="addServiceName">
                             </div>
 
                             <div class="drop-1">
                                 <label class="label2" for="inputField">Select Service Page</label> <br>
-                                <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption">
+                                <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption" formControlName="selectServicePage">
                                     <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                                 </select>
                             </div>
-                            <button class="cardbtn1">
+                            <!-- <button class="cardbtn1"  type="submit" >
                                 <label for="file-input" class="custom-button">Add now</label>
-                            </button>
+                            </button> -->
+                            <button class="custom-button" type="submit" >Add now</button>
                         </div>
-                        <div class="grey-box">
+                        <!-- <div class="grey-box">
                             <h3 class="label-box">Active Services</h3>
                             <div class="check-button">
+                                
                                 <input type="checkbox" class="input-check">
                                 <label class="check-btn">Kitchen</label>
                             </div>
@@ -45,12 +48,21 @@
                                 <label class="check-btn">New additions</label>
                             </div>
 
-                        </div>
+                        </div> -->
+                        <div class="grey-box">
+                            <h3 class="label-box">Active Services</h3>
+                            <div *ngFor="let service of services" class="check-button">
+                              <input type="checkbox" [checked]="service.active"(change)="toggleCheckbox(service)">
+                              <label class="check-btn">{{ service.serviceName }}</label>
+                            </div>
+                          </div>
+                          
                     </div>
                 </div>
             </div>
         </div>
     </section>
+</form>
     <section class="section-2">
         <div class="new-container">
             <div class="card  card-shade">
