@@ -8,20 +8,23 @@ import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.service.HomePageAboutUsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
-import org.apache.commons.io.FilenameUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.List;
+import java.util.Objects;
+
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/homepageabout-us")
@@ -59,13 +62,16 @@ public class HomePageAboutUsController {
     }
 
     private String saveVideoToFileSystem(MultipartFile file) throws IOException {
-        String fileName = "myvideo.mp4";
-        String fileExtension = FilenameUtils.getExtension(fileName);
-        String storedFileName =   "video.mp4" + "." + fileExtension;
-        Path path = Paths.get("uploads/videos/" + storedFileName);
-        Files.createDirectories(path.getParent());
-        Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-        return path.toAbsolutePath().toString();
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
+        Path uploadPath = Paths.get("uploads/videos");
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+        InputStream inputStream = file.getInputStream();
+        Path filePath = uploadPath.resolve(fileName);
+        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        String relativePath = "/videos/" + uploadPath.relativize(filePath).toString();
+        return relativePath;
     }
 
     @GetMapping("/video-url")
