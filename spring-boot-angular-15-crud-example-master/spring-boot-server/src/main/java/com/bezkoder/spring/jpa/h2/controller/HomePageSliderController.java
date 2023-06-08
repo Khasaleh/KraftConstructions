@@ -11,6 +11,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -45,5 +46,13 @@ public class HomePageSliderController {
         }
 
         return ResponseEntity.ok(responseDTO);
+    }
+    @GetMapping
+    public ResponseEntity<List<HomePageSliderResponseDto>> getAllSliderImages() {
+        List<HomePageSliderResponseDto> sliderImages = homePageSliderService.getAllSliderImages();
+        if (sliderImages.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(sliderImages);
     }
 }
