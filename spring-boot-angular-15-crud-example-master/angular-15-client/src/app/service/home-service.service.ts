@@ -8,10 +8,11 @@ import { Observable } from 'rxjs';
 export class HomeServiceService {
 
   constructor(private http: HttpClient) { }
+  getHomePageData(): Observable<any> {
+    return this.http.get('http://99.72.32.144:8081/api/homepageabout-us');
+  } 
   saveVideo(video: FormData): Observable<any> {
-    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/upload-video',{
-      "video":`${video}`,
-  });
+    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/upload-video',video);
   }
   saveHomepageData(aboutUsDescription : string, aboutUsLink : string): Observable<any> {
     return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/homepageupdate-description',{
@@ -19,4 +20,6 @@ export class HomeServiceService {
       "aboutusDescription":`${aboutUsDescription}`
   });
   }
+ 
+ 
 }

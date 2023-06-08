@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {InteriorRemodelingService} from '../../service/interior-remodeling.service'
 
 @Component({
   selector: 'app-admin-services',
@@ -65,4 +67,80 @@ selectImage(event: any, card: any) {
     };
   }
 }
+isActive: boolean = false;
+interiorRemodForm!: FormGroup;
+services: any[] = [];
+// apiData: any;
+  constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
+ngOnInit(): void {
+
+  this.getServices();
+
+  this.interiorRemodForm = this.formBuilder.group({
+
+    addServiceName: ['', Validators.required],
+    selectServicePage: ['', Validators.required],
+    isActive: [this.isActive]
+  
+  });
+
+}
+getServices(){
+  this.interiorRemodelingService.getServiceData().subscribe(
+    (response) => {
+      this.services = response;
+      console.log("ResponseData",response);
+    },
+    (error) => {
+      
+      console.error(error);
+    }
+    )
+}
+onSubmit() {
+ 
+  if (this.interiorRemodForm.valid) {
+    const addServiceName = this.interiorRemodForm.get('addServiceName')?.value;
+    const selectServicePage = this.interiorRemodForm.get('selectServicePage')?.value;
+    const isActive = this.interiorRemodForm.get('isActive')?.value;
+
+    this.interiorRemodelingService.saveInteriorRemodelingpageData(addServiceName,selectServicePage,isActive).subscribe(
+      response => {
+              // Handle the API response here
+              console.log("data submit successfully");
+              console.log("response",response)
+              this.getServices()
+            },
+              error => {
+              // Handle any error that occurs during the API request
+              console.error(error);
+            }
+    )
+  }
+  
+}
+toggleCheckbox(service: any) {
+  service.active = !service.active;
+  
+  if (service.active) {
+    this.interiorRemodelingService.enableService(service.id).subscribe(
+      response => {
+        console.log("Service enabled:", service.serviceName,response);
+      },
+      error => {
+        console.error("Error enabling service:", error);
+      }
+    );
+  } else {
+    this.interiorRemodelingService.disableService(service.id).subscribe(
+      response => {
+        console.log("Service disabled:", service.serviceName,response);
+      },
+      error => {
+        console.error("Error disabling service:", error);
+      }
+    );
+  }
+}
+
 }
