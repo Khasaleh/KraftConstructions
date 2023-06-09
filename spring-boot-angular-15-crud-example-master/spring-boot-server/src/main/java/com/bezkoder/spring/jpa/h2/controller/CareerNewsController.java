@@ -2,6 +2,7 @@ package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.Entity.CareersNews;
 import com.bezkoder.spring.jpa.h2.dto.CareerNewsDto;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.mapper.CareerNewsMapper;
 import com.bezkoder.spring.jpa.h2.service.CareerNewsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -45,6 +46,16 @@ public class CareerNewsController {
     public ResponseEntity<CareerNewsDto> addNews(@Valid  @RequestBody CareerNewsDto newsDTO) {
         CareerNewsDto addedNews = newsService.addNews(CAREER_NEWS,newsDTO);
         return ResponseEntity.ok(addedNews);
+    }
+    @PutMapping("/update-status")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<?> updateLinkStatus() {
+        boolean updatedLinkStatus = newsService.updateStatus(CAREER_NEWS);
+        if (updatedLinkStatus) {
+            return ResponseEntity.ok(new MessageResponse("Link status updated to true"));
+        } else {
+            return ResponseEntity.ok(new MessageResponse("Link status updated to false"));
+        }
     }
 
 }

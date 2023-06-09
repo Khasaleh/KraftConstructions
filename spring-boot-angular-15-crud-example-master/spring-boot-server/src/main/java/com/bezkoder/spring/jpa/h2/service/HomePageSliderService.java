@@ -8,7 +8,9 @@ import java.util.List;
 
 public interface HomePageSliderService {
     HomePageSliderResponseDto saveOrUpdateSliderImage(HomePageSliderRequestDto sliderImageDTO) throws IOException;
+    HomePageSliderResponseDto uploadMultipleImages(HomePageSliderRequestDto requestDTO) throws IOException;
 
     public HomePageSliderResponseDto getSliderImageById(Long id);
     List<HomePageSliderResponseDto> getAllSliderImages();
+    void deleteSliderImageById(Long id);
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 @Setter
 @Getter
 @NoArgsConstructor
@@ -13,4 +15,5 @@ import org.springframework.web.multipart.MultipartFile;
 public class HomePageSliderRequestDto {
     private Long id;
     private MultipartFile image;
+    private List<MultipartFile> images;
 }
