@@ -48,18 +48,15 @@ public class UserDetailsServiceImpl implements UserDetailsService {
   }
   public String saveImage(MultipartFile image) throws IOException {
     String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
-    String uploadDir = "uploads/profileimages";
-    Path uploadPath = Paths.get("src/main/resources/static", uploadDir);
+    Path uploadPath = Paths.get("uploads/profileimages");
     if (!Files.exists(uploadPath)) {
       Files.createDirectories(uploadPath);
     }
     InputStream inputStream = image.getInputStream();
     Path filePath = uploadPath.resolve(fileName);
     Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
-
-//    String relativePath = uploadDir + "/" + fileName;
-//    return relativePath;
-    return filePath.toString();
+    String relativePath = "/profileimages/" + uploadPath.relativize(filePath).toString();
+    return relativePath;
   }
 
   public User updateUser(User updatedUser)  {

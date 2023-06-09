@@ -14,10 +14,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class CareerNewsDto {
 
-
-
-
-    @NotNull
     private Long id;
 
 
