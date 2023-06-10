@@ -1,7 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms'
 import { ReqUser } from 'src/app/model/requsr';
 import { ReqUserService } from 'src/app/service/Reqest.service';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { DialogeComponent } from '../dialoge/dialoge.component' // Create a separate component for the dialog content
+import { ComponentRestrictions } from 'ngx-google-places-autocomplete/objects/options/componentRestrictions';
+
 @Component({
   selector: 'app-request-estimate',
   templateUrl: './request-estimate.component.html',
@@ -10,47 +14,85 @@ import { ReqUserService } from 'src/app/service/Reqest.service';
 export class RequestEstimateComponent {
 userDetail!:FormGroup;
 userObj: ReqUser = new ReqUser();
+requestedServices = ['General Contracting', 'New Additions', 'Kitchen Remodeling', 'Design Services', 'Home Remodelling', 'Basement Remodelling', 'Outdoor Living Spaces', 'Other Services'];
+states: string[] = [
+  'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
+  'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland',
+  'Massachusetts', 'Michigan', 'Minnesota', 'Mississippi', 'Missouri', 'Montana', 'Nebraska', 'Nevada', 'New Hampshire', 'New Jersey',
+  'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
+  'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
+];
+budgets: string[] = ['$25,000 to $50,000','$50,000 to $100,000','$100,000 to $150,000','$150,000 to $200,000'];
+aboutUss: string[]= ['Social Platform', 'Friends and Family','other'];
+selectedServices: string[] = [];
+formattedAddress: string ='';
+ 
 
-constructor(private formBuilder : FormBuilder,private requser: ReqUserService) {}
+constructor(private formBuilder : FormBuilder,private requser: ReqUserService,private dialog: MatDialog) {}
 ngOnInit(): void {
 this.userDetail = this.formBuilder.group ({
   firstName : [''],
-  phoneNumber:[''],
   lastName : [''],
   email : [''],
+  phoneNumber: [''],
   address : [''],
   city : [''],
   state: [''],
   zip:[''],
-  requestedServices:[''],
+  requestedServices: [[]],
   budget: [''],
   projectDescription: [''],
   aboutUs: ['']
 
   
 });
-}
-submit() {
-   
-  this.userObj.firstName = this.userDetail.value?.firstName;
-  this.userObj.lastName = this.userDetail.value?.lastName;
-  this.userObj.email = this.userDetail.value?.email;
-  this.userObj.address = this.userDetail.value?.address;
-  this.userObj.city = this.userDetail.value?.city;
-  this.userObj.state = this.userDetail.value?.state;
-  this.userObj.zip = this.userDetail.value?.zip;
-  this.userObj.requestedServices = [this.userDetail.value?.requestedServices];
-  this.userObj.budget = this.userDetail.value.budget;
-  this.userObj.projectDescription = this.userDetail.value?.projectDescription;
-  this.userObj.aboutUs = this.userDetail.value?.aboutUs;
-  console.log(this.userObj);
-  this.requser.ReqUser(this.userObj).subscribe(res=>{
-    console.log(res);
-  
-    
 
-   }, err=> {
-    console.log(err)
-   })
 }
+
+
+handleAddressChange(address: any) {
+  this.userDetail.controls['address'].setValue(address.formatted_address);
 }
+
+
+
+submit() {
+  this.userObj = this.userDetail.value; 
+  console.log(this.userObj); 
+  this.openDialog();
+  this.requser.ReqUser(this.userObj).subscribe(res => {
+    
+    console.log(res);
+
+    // Call the method to open the dialog
+  })
+  
+}
+toggleService(service: string) {
+  const requestedServices = this.userDetail.controls['requestedServices'].value as string[];
+  if (requestedServices.includes(service)) {
+    this.userDetail.controls['requestedServices'].setValue(requestedServices.filter(item => item !== service));
+  } else {
+    this.userDetail.controls['requestedServices'].setValue([...requestedServices, service]);
+  }
+}
+openDialog(): void {
+  const dialogRef = this.dialog.open(DialogeComponent, {
+    data: {
+      message: 'Submitted Successfully',
+      showYesNoButtons: false,
+      customButton: { label: 'Ok', action: 'custom-action' }
+    }
+
+  });
+  dialogRef.afterClosed().subscribe(result => {
+  
+    console.log(result);
+  });
+
+ 
+}
+
+}
+
+

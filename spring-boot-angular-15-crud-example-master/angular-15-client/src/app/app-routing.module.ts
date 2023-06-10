@@ -42,7 +42,6 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'add-user', component: AddUserComponent },
   { path: 'payment', component: PaymentTabComponent },
-  { path: 'update/:username', component: AddUserComponent },
   {
     path: 'admin',
   
@@ -55,8 +54,7 @@ const routes: Routes = [
         { path: 'admin-aboutUs', component: AdminAboutUsComponent },
         { path: 'admin-contact-us', component: AdminContactUsComponent },
         { path: 'admin-testimonial', component: AdminTestimonialComponent },
-        { path: 'add-user', component: AddUserComponent },
-        
+        { path: 'add-user', component: AddUserComponent },   
         { path: 'admin-request', component: AdminRequestComponent },
         { path: 'admin-careers', component: AdminCareersComponent },
         { path: 'admin-request', component: AdminRequestComponent },
