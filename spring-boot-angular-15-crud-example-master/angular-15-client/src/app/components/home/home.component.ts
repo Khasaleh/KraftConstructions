@@ -19,6 +19,8 @@ export class HomeComponent implements OnInit {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
   }
   apiData: any;
+  sliderData: any;
+
   constructor(private homeService:HomeServiceService){}
   ngOnInit(): void {
     setInterval(() => this.showSlide(), 5000);
@@ -28,5 +30,11 @@ export class HomeComponent implements OnInit {
       console.log("ResponseData",data);
     },
     )
+    this.homeService.getsliderdata().subscribe(
+      data => {
+        this.sliderData = data;
+        console.log("ResponseData",data);
+      },
+      )
   }
 }
