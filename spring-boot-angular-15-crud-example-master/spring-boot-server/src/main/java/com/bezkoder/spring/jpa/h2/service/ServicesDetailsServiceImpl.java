@@ -63,6 +63,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         serviceDetails.setServices(service);
         serviceDetails.setBeforeImageUrl(beforeImageFileName);
         serviceDetails.setAfterImageUrl(afterImageFileName);
+        serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getBeforeImageTitle());
+        serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getAfterImageTitle());
         serviceDetails.setDescription(serviceDetailsRequestDTO.getDescription());
         serviceDetails.setAddPortfolio(serviceDetailsRequestDTO.isAddPortfolio());
         serviceDetails.setAuthor(user.getUsername());
@@ -100,6 +102,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
             }
 
             servicesDetails.setUpdateDate(LocalDateTime.now());
+            servicesDetails.setBeforeImageTitle(servicesDetailsRequestDTO.getBeforeImageTitle());
+            servicesDetails.setAfterImageTitle(servicesDetailsRequestDTO.getAfterImageTitle());
             servicesDetails.setDescription(servicesDetailsRequestDTO.getDescription());
             servicesDetails.setAddPortfolio(servicesDetailsRequestDTO.isAddPortfolio());
             servicesDetails.setAuthor(servicesDetailsRequestDTO.getAuthor());
@@ -118,6 +122,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         servicesDetailsDTO.setServiceId(servicesDetails.getServices().getId());
         servicesDetailsDTO.setAddPortfolio(servicesDetails.isAddPortfolio());
         servicesDetailsDTO.setDescription(servicesDetails.getDescription());
+        servicesDetailsDTO.setBeforeImageTitle(servicesDetails.getBeforeImageTitle());
+        servicesDetailsDTO.setAfterImageTitle(servicesDetails.getAfterImageTitle());
         servicesDetailsDTO.setAfterImageUrl(servicesDetails.getAfterImageUrl());
         servicesDetailsDTO.setBeforeImageUrl(servicesDetails.getBeforeImageUrl());
         servicesDetailsDTO.setUpdateDate(servicesDetails.getUpdateDate());

@@ -15,6 +15,8 @@ public class ServiceDetailsMapper {
         dto.setServiceId(serviceDetails.getServices().getId());
         dto.setAddPortfolio(serviceDetails.isAddPortfolio());
         dto.setDescription(serviceDetails.getDescription());
+        dto.setBeforeImageTitle(serviceDetails.getBeforeImageTitle());
+        dto.setAfterImageTitle(serviceDetails.getAfterImageTitle());
         dto.setAfterImageUrl(serviceDetails.getAfterImageUrl());
         dto.setBeforeImageUrl(serviceDetails.getBeforeImageUrl());
         dto.setUpdateDate(serviceDetails.getUpdateDate());

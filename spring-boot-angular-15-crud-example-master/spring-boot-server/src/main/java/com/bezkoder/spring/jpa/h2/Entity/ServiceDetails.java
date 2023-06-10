@@ -28,6 +28,12 @@ public class ServiceDetails {
     @Column(name = "after_image_url",nullable = false)
     private String afterImageUrl;
 
+    @Column(name = "before_image_title",nullable = false)
+    private String beforeImageTitle;
+
+    @Column(name = "after_image_title",nullable = false)
+    private String afterImageTitle;
+
     @Column(name = "description")
     private String description;
 

@@ -16,6 +16,8 @@ public class ServiceDetailsResponseDTO {
     private Long serviceId;
     private String beforeImageUrl;
     private String afterImageUrl;
+    private String beforeImageTitle;
+    private String afterImageTitle;
     private String description;
     private boolean addPortfolio;
     private String author;

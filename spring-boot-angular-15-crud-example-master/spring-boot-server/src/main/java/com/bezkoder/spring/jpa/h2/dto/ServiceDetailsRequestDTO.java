@@ -16,6 +16,8 @@ public class ServiceDetailsRequestDTO {
     private Long serviceId;
     private MultipartFile beforeImage;
     private MultipartFile afterImage;
+    private String beforeImageTitle;
+    private String afterImageTitle;
     private String description;
     private boolean addPortfolio;
     private String author;
