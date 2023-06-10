@@ -77,6 +77,16 @@ public class CareerNewsServiceImpl implements CareerNewsService {
         List<CareersNews> careerNewsList = newsRepository.findByStatus(status);
         return newsMapper.toDTOList(careerNewsList);
     }
-
+    @Override
+    public Boolean updateStatus(Long id) {
+        CareersNews news = findById(id);
+        if (news == null) {
+            throw new GenericException(HttpStatus.NOT_FOUND, "News not found for id: " + id, "Incorrect id");
+        }
+        boolean updatedStatus = !news.isStatus();
+        news.setStatus(updatedStatus);
+        newsRepository.save(news);
+        return updatedStatus;
+    }
 
 }

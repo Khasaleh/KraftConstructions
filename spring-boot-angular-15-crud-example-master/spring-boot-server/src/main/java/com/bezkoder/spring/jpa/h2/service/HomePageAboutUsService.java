@@ -1,6 +1,8 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
+import com.bezkoder.spring.jpa.h2.dto.BannerRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.BannerResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
 
@@ -20,5 +22,7 @@ public interface HomePageAboutUsService {
     public String addServiceToHomePage(Long id, List<Long> serviceIds);
 
     public List<ServiceHomePageResponseDto> getServicesByHomePageId(Long id);
-
+    HomePage updateBanner(Long id, BannerRequestDTO bannerRequestDTO);
+    BannerResponseDTO getBanner(Long id);
+    boolean updateLinkStatus(Long id);
 }

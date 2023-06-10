@@ -1,10 +1,7 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
-import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
-import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsResponseDTO;
-import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageRequestDto;
-import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
+import com.bezkoder.spring.jpa.h2.dto.*;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.service.HomePageAboutUsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -91,7 +88,27 @@ public class HomePageAboutUsController {
     public ResponseEntity<List<ServiceHomePageResponseDto>> getServicesByHomePageId(@PathVariable Long id) {
         return ResponseEntity.ok(homePageAboutUsService.getServicesByHomePageId(id));
     }
-
+    @PostMapping("/update-banner")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<?> updateBanner(@RequestBody BannerRequestDTO bannerRequestDTO) {
+        HomePage homePage = homePageAboutUsService.updateBanner(ABOUT_US_ID, bannerRequestDTO);
+        return ResponseEntity.ok(new MessageResponse("Banner Updated Successfully"));
+    }
+    @GetMapping("/banner")
+    public ResponseEntity<BannerResponseDTO> getBanner() {
+        BannerResponseDTO bannerResponseDTO = homePageAboutUsService.getBanner(ABOUT_US_ID);
+        return ResponseEntity.ok(bannerResponseDTO);
+    }
+    @PutMapping("/banner-link-status")
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    public ResponseEntity<String> updateLinkStatus() {
+        boolean updatedLinkStatus = homePageAboutUsService.updateLinkStatus(ABOUT_US_ID);
+        if (updatedLinkStatus) {
+            return ResponseEntity.ok("Link status updated to true");
+        } else {
+            return ResponseEntity.ok("Link status updated to false");
+        }
+    }
 }
 
 
