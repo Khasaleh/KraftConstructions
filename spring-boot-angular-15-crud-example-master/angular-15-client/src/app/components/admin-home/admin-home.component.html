@@ -90,7 +90,9 @@
 
                             <div class="img-content">
                                 <div class="img-box mb-3">
-                                    <video *ngIf="fileURL" class="img-dyn" src="{{this.videoLink}}"></video>
+                                    <!-- <video *ngIf="fileURL" class="img-dyn" src="{{this.videoLink}}"></video> -->
+                                    <video *ngIf="fileURL" class="img-dyn" [src]="videoLink" controls></video>
+
                                 </div>
                                 <div class="file-upload cardbtn">
                                     <button class="video-btn">

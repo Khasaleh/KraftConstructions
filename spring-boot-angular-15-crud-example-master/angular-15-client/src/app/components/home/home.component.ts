@@ -20,7 +20,7 @@ export class HomeComponent implements OnInit {
   }
   apiData: any;
   sliderData: any;
-
+  globalUrl = 'http://99.72.32.144:8083'
   constructor(private homeService:HomeServiceService){}
   ngOnInit(): void {
     setInterval(() => this.showSlide(), 5000);

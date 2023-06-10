@@ -297,7 +297,11 @@ a {
 }
 
 .content {
-    width: 60%;
+    width: 55%;
+}
+
+.img-dyn {
+    width: 85%;
 }
 
 .content p {
