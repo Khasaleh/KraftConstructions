@@ -11,8 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ServiceDetailsDTO {
-
+public class ServiceDetailsResponseDTO {
     private Long id;
     private Long serviceId;
     private String beforeImageUrl;
@@ -21,7 +20,4 @@ public class ServiceDetailsDTO {
     private boolean addPortfolio;
     private String author;
     private LocalDateTime updateDate;
-
-
-
 }

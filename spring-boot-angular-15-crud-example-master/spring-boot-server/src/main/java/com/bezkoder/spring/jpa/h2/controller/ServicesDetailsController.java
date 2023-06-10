@@ -1,6 +1,7 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
 import com.bezkoder.spring.jpa.h2.mapper.ServiceDetailsMapper;
 import com.bezkoder.spring.jpa.h2.service.ServicesDetailsServiceImpl;
@@ -15,6 +16,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
@@ -24,6 +26,7 @@ public class ServicesDetailsController {
 
     @Autowired
     private ServicesServiceImpl servicesServiceImpl;
+
     @Autowired
     private ServicesDetailsServiceImpl servicesDetailsService;
 
@@ -33,16 +36,16 @@ public class ServicesDetailsController {
 
     @PostMapping("/addDetails")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<ServiceDetailsDTO> addServiceDetails(@Valid @RequestBody ServiceDetailsDTO serviceDetailsDTO) {
+    public ResponseEntity<ServiceDetailsResponseDTO> addServiceDetails(@Valid ServiceDetailsRequestDTO serviceDetailsRequestDTO) throws IOException {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        ServiceDetailsDTO createdServiceDetailsDTO = servicesDetailsService.addServiceDetails(serviceDetailsDTO, userDetails);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdServiceDetailsDTO);
+        ServiceDetailsResponseDTO createdServiceDetailsResponseDTO = servicesDetailsService.addServiceDetails(serviceDetailsRequestDTO, userDetails);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdServiceDetailsResponseDTO);
     }
 
 
     @GetMapping("/{serviceId}/details")
-    public ResponseEntity<ServiceDetailsDTO> getServiceDetailsByServiceId(@PathVariable Long serviceId) {
-        ServiceDetailsDTO serviceDetails = servicesDetailsService.getServiceDetailsByServiceId(serviceId);
+    public ResponseEntity<ServiceDetailsResponseDTO> getServiceDetailsByServiceId(@PathVariable Long serviceId) {
+        ServiceDetailsResponseDTO serviceDetails = servicesDetailsService.getServiceDetailsByServiceId(serviceId);
         if (serviceDetails == null) {
             return ResponseEntity.notFound().build();
         } else {
@@ -53,10 +56,10 @@ public class ServicesDetailsController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<ServiceDetailsDTO> updateServicesDetails(@PathVariable Long id, @RequestBody ServiceDetailsDTO servicesDetailsDTO) {
-        ServiceDetailsDTO updatedServicesDetailsDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsDTO);
-        if (updatedServicesDetailsDTO != null) {
-            return ResponseEntity.ok(updatedServicesDetailsDTO);
+    public ResponseEntity<ServiceDetailsResponseDTO> updateServicesDetails(@PathVariable Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO) throws IOException {
+        ServiceDetailsResponseDTO updatedServicesDetailsResponseDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsRequestDTO);
+        if (updatedServicesDetailsResponseDTO != null) {
+            return ResponseEntity.ok(updatedServicesDetailsResponseDTO);
         } else {
             return ResponseEntity.notFound().build();
         }
@@ -67,6 +70,4 @@ public class ServicesDetailsController {
         List<ServiceWithDetailDTO> list = servicesDetailsService.getAllServicesDetailsWithName();
         return ResponseEntity.ok(list);
     }
-
-
 }

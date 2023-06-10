@@ -3,7 +3,8 @@ package com.bezkoder.spring.jpa.h2.service;
 import com.bezkoder.spring.jpa.h2.Entity.ServiceDetails;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
 import com.bezkoder.spring.jpa.h2.Entity.User;
-import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
 import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.mapper.ServiceDetailsMapper;
@@ -14,15 +15,26 @@ import com.bezkoder.spring.jpa.h2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-
 @Service
 public class ServicesDetailsServiceImpl implements ServicesDetailsService {
+
+    private static final String UPLOAD_DIRECTORY = "uploads/services";
+
     @Autowired
     private ServicesRepository servicesRepository;
 
@@ -38,41 +50,59 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
     @Autowired
     private ServicesMapper servicesMapper;
 
-
     @Override
-    public ServiceDetailsDTO addServiceDetails(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails) {
-
+    public ServiceDetailsResponseDTO addServiceDetails(ServiceDetailsRequestDTO serviceDetailsRequestDTO, UserDetailsImpl userDetails) throws IOException {
         User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException());
-     Services service = servicesRepository.findById(serviceDetailsDTO.getServiceId()).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Service not found"+ serviceDetailsDTO.getServiceId(),"Incorrect id"));
-        serviceDetailsDTO.setAuthor(user.getUsername());
-        ServiceDetails serviceDetails = serviceDetailsMapper.toEntity(serviceDetailsDTO, service);
+        Services service = servicesRepository.findById(serviceDetailsRequestDTO.getServiceId())
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Service not found" + serviceDetailsRequestDTO.getServiceId(), "Incorrect id"));
+
+        String beforeImageFileName = saveFile(serviceDetailsRequestDTO.getBeforeImage());
+        String afterImageFileName = saveFile(serviceDetailsRequestDTO.getAfterImage());
+
+        ServiceDetails serviceDetails = new ServiceDetails();
+        serviceDetails.setServices(service);
+        serviceDetails.setBeforeImageUrl(beforeImageFileName);
+        serviceDetails.setAfterImageUrl(afterImageFileName);
+        serviceDetails.setDescription(serviceDetailsRequestDTO.getDescription());
+        serviceDetails.setAddPortfolio(serviceDetailsRequestDTO.isAddPortfolio());
+        serviceDetails.setAuthor(user.getUsername());
+        serviceDetails.setUpdateDate(LocalDateTime.now());
+
         serviceDetails = servicesDetailsRepository.save(serviceDetails);
         return serviceDetailsMapper.toDto(serviceDetails);
     }
 
-
     @Override
-    public ServiceDetailsDTO getServiceDetailsByServiceId(Long serviceId) {
+    public ServiceDetailsResponseDTO getServiceDetailsByServiceId(Long serviceId) {
         Optional<Services> optionalServices = servicesRepository.findById(serviceId);
-        if (optionalServices.isPresent()){
+        if (optionalServices.isPresent()) {
             return serviceDetailsMapper.toDto(optionalServices.get().getServiceDetails());
         }
         return null;
     }
 
-
-
     @Override
-    public ServiceDetailsDTO updateServicesDetails(Long id, ServiceDetailsDTO servicesDetailsDTO) {
+    public ServiceDetailsResponseDTO updateServicesDetails(Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO) throws IOException {
         Optional<ServiceDetails> servicesDetailsOptional = servicesDetailsRepository.findById(id);
         if (servicesDetailsOptional.isPresent()) {
             ServiceDetails servicesDetails = servicesDetailsOptional.get();
-            servicesDetails.setUpdateDate(servicesDetailsDTO.getUpdateDate());
-            servicesDetails.setBeforeImageUrl(servicesDetailsDTO.getBeforeImageUrl());
-            servicesDetails.setAuthor(servicesDetailsDTO.getAuthor());
-            servicesDetails.setDescription(servicesDetailsDTO.getDescription());
-            servicesDetails.setAfterImageUrl(servicesDetailsDTO.getAfterImageUrl());
-            servicesDetails.setAddPortfolio(servicesDetailsDTO.isAddPortfolio());
+
+            if (servicesDetailsRequestDTO.getBeforeImage() != null) {
+                deleteFile(servicesDetails.getBeforeImageUrl());
+                String beforeImageFileName = saveFile(servicesDetailsRequestDTO.getBeforeImage());
+                servicesDetails.setBeforeImageUrl(beforeImageFileName);
+            }
+
+            if (servicesDetailsRequestDTO.getAfterImage() != null) {
+                deleteFile(servicesDetails.getAfterImageUrl());
+                String afterImageFileName = saveFile(servicesDetailsRequestDTO.getAfterImage());
+                servicesDetails.setAfterImageUrl(afterImageFileName);
+            }
+
+            servicesDetails.setUpdateDate(LocalDateTime.now());
+            servicesDetails.setDescription(servicesDetailsRequestDTO.getDescription());
+            servicesDetails.setAddPortfolio(servicesDetailsRequestDTO.isAddPortfolio());
+            servicesDetails.setAuthor(servicesDetailsRequestDTO.getAuthor());
 
             Services services = servicesDetails.getServices();
             servicesRepository.save(services);
@@ -82,8 +112,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         }
     }
 
-    private ServiceDetailsDTO convertToDTO(ServiceDetails servicesDetails) {
-        ServiceDetailsDTO servicesDetailsDTO = new ServiceDetailsDTO();
+    private ServiceDetailsResponseDTO convertToDTO(ServiceDetails servicesDetails) {
+        ServiceDetailsResponseDTO servicesDetailsDTO = new ServiceDetailsResponseDTO();
         servicesDetailsDTO.setId(servicesDetails.getId());
         servicesDetailsDTO.setServiceId(servicesDetails.getServices().getId());
         servicesDetailsDTO.setAddPortfolio(servicesDetails.isAddPortfolio());
@@ -96,19 +126,44 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         return servicesDetailsDTO;
     }
 
-
-
-
     @Override
     public List<ServiceWithDetailDTO> getAllServicesDetailsWithName() {
-        List<Services> services= servicesRepository.findAll();
+        List<Services> services = servicesRepository.findAll();
         List<ServiceWithDetailDTO> serviceDTOs = new ArrayList<>();
         for (Services service : services) {
-            ServiceWithDetailDTO serviceDTO = ServiceWithDetailDTO.builder().serviceName(service.getServiceName())
-                            .description(Objects.isNull(service.getServiceDetails()) ? "" : service.getServiceDetails().getDescription()).author(Objects.isNull(service.getServiceDetails()) ? "" : service.getServiceDetails().getAuthor())
-                            .updateDate(Objects.isNull(service.getServiceDetails()) ? null : service.getServiceDetails().getUpdateDate()).build();
+            ServiceWithDetailDTO serviceDTO = ServiceWithDetailDTO.builder()
+                    .serviceName(service.getServiceName())
+                    .description(Objects.isNull(service.getServiceDetails()) ? "" : service.getServiceDetails().getDescription())
+                    .author(Objects.isNull(service.getServiceDetails()) ? "" : service.getServiceDetails().getAuthor())
+                    .updateDate(Objects.isNull(service.getServiceDetails()) ? null : service.getServiceDetails().getUpdateDate())
+                    .build();
             serviceDTOs.add(serviceDTO);
         }
         return serviceDTOs;
+    }
+
+    private String saveFile(MultipartFile image) throws IOException {
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+        Path uploadPath = Paths.get(UPLOAD_DIRECTORY);
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+        InputStream inputStream = image.getInputStream();
+        Path filePath = uploadPath.resolve(fileName);
+        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        String relativePath = "/services/" + uploadPath.relativize(filePath).toString();
+        return relativePath;
+    }
+
+    private void deleteFile(String imageUrl) {
+        if (imageUrl != null) {
+            String filePath = UPLOAD_DIRECTORY + imageUrl.substring(imageUrl.lastIndexOf('/'));
+            Path deletePath = Paths.get(filePath);
+            try {
+                Files.deleteIfExists(deletePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }
