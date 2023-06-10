@@ -32,7 +32,7 @@ import { AdminCareersComponent } from './components/admin-careers/admin-careers.
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
-import { MatMenuModule } from '@angular/material/menu';
+import { MatMenuContent, MatMenuModule } from '@angular/material/menu';
 import { ShowusersComponent } from './components/showusers/showusers.component';
 import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -45,6 +45,11 @@ import { MatInputModule } from '@angular/material/input';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import {  MatDialogModule } from '@angular/material/dialog';
+import { DialogeComponent } from './components/dialoge/dialoge.component';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+
+
 
 
 @NgModule({
@@ -83,6 +88,9 @@ import { MatListModule } from '@angular/material/list';
     ShowusersComponent,
     AdminServicePageComponent,
     AdminAddCareersNewsComponent,
+    DialogeComponent
+    
+   
 
   ],
   imports: [
@@ -104,7 +112,11 @@ import { MatListModule } from '@angular/material/list';
     MatRadioModule,
     MatInputModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatDialogModule,
+    GooglePlaceModule
+
+    
     
   ],
   providers: [

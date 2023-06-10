@@ -1,22 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AddUserService } from 'src/app/service/add-user.service';
 import { AddUser } from 'src/app/model/add-user';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import {User} from 'src/app/model/user'
 import { Router } from '@angular/router';
+import { DialogeComponent } from '../dialoge/dialoge.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-showusers',
   templateUrl: './showusers.component.html',
   styleUrls: ['./showusers.component.css']
 })
-export class ShowusersComponent {
+export class ShowusersComponent implements OnInit {
   userdata!:any[];
   userDetail!:FormGroup;
   userObj : AddUser = new AddUser();
   oldUser!: string;
   
   
-  constructor(private adduserdata : AddUserService, private formBuilder: FormBuilder, private router: Router) {}
+  constructor(private adduserdata : AddUserService, private formBuilder: FormBuilder, private router: Router, private dialog : MatDialog) {}
 
   ngOnInit(): void {
     this.getAllUsers();
@@ -40,16 +42,21 @@ export class ShowusersComponent {
   });
 }
 deleteUser(username: string) {
-  this.adduserdata.deleteUser(username).subscribe(
-    () => {
-      this.userdata = this.userdata.filter(u => u.username !== username);
-      this.getAllUsers();
-    },
-    err => {
-      console.log(err);
-    
+  const dialogRef = this.dialog.open(DialogeComponent, {
+    data: {
+      message: `Do You want to delete ${username}?`,
+      showYesNoButtons: true
     }
-  );
+  });
+
+  dialogRef.afterClosed().subscribe(result => {
+    if (result === true) {
+      this.adduserdata.deleteUser(username)
+        .subscribe(res => {
+          this.getAllUsers();
+        });
+    }
+  });
 }
 
 
@@ -76,10 +83,16 @@ editUser(user: User) {
 
   };
     console.log(updatedUser);
-
-  
-    this.adduserdata.updateUser(updatedUser,this.oldUser).subscribe((result)=>{
-      console.log(result);
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `Do you want to Update ${this.userDetail.value.username}?`,
+        showYesNoButtons: true
+      }
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+    this.adduserdata.updateUser(updatedUser,this.oldUser).subscribe(res=>{
+      console.log(res);
    
       this.getAllUsers();
     },err=>{
@@ -89,8 +102,6 @@ editUser(user: User) {
 
   }
 
- 
-  
+})
+  }
 }
-  
-
