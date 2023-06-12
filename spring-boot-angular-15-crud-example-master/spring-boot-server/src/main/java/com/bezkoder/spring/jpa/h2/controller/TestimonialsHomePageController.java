@@ -5,8 +5,10 @@ import com.bezkoder.spring.jpa.h2.dto.TestimonialHomePageRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.TestimonialHomePageResponseDTO;
 import com.bezkoder.spring.jpa.h2.mapper.TestimonialsHomePageMapper;
 import com.bezkoder.spring.jpa.h2.service.TestimonialsHomePageService;
+import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,6 +36,7 @@ public class TestimonialsHomePageController {
     }
 
     @PostMapping
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
     public ResponseEntity<List<TestimonialHomePageResponseDTO>> addTestimonials(@RequestBody List<TestimonialHomePageRequestDTO> testimonials) {
         List<TestimonialsHomePage> testimonialEntities = testimonialMapper.toEntities(testimonials);
         List<TestimonialsHomePage> savedTestimonials = testimonialService.addTestimonials(testimonialEntities);
@@ -42,6 +45,7 @@ public class TestimonialsHomePageController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
     public ResponseEntity<TestimonialHomePageResponseDTO> updateTestimonial(
             @PathVariable Long id, @RequestBody TestimonialHomePageRequestDTO testimonial) {
         TestimonialsHomePage testimonialEntity = testimonialMapper.toEntity(testimonial);
@@ -51,15 +55,17 @@ public class TestimonialsHomePageController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
     public ResponseEntity<Void> deleteTestimonialById(@PathVariable Long id) {
         testimonialService.deleteTestimonialById(id);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete-all")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
     public ResponseEntity<Void> deleteAllTestimonials() {
         testimonialService.deleteAllTestimonials();
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().build();
     }
 
 }
