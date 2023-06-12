@@ -49,9 +49,6 @@ import {  MatDialogModule } from '@angular/material/dialog';
 import { DialogeComponent } from './components/dialoge/dialoge.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
