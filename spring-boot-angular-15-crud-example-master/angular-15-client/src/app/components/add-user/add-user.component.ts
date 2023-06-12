@@ -36,8 +36,8 @@ ngOnInit(): void {
     firstname : [''],
     lastname : [''],
     password : [''],
-    role: ['']
-  
+    role: [''],
+    imageUrl:['']
     
   });
 }
@@ -50,6 +50,7 @@ ngOnInit(): void {
     this.userObj.lastname = this.userDetail.value?.lastname;
     this.userObj.password = this.userDetail.value?.password;
     this.userObj.role = [this.userDetail.value?.role];
+    this.userObj.imageUrl= this.userDetail.value?.imageUrl;
     console.log(this.userObj.role)
      this.adService.AddUser(this.userObj).subscribe(res=>{
       console.log(res);

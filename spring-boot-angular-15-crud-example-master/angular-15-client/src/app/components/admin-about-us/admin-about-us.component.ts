@@ -1,46 +1,63 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { aboutusdata } from 'src/app/data-type';
 import { UpdabtusService } from 'src/app/service/updabtus.service';
+import {FormGroup,FormBuilder} from '@angular/forms';
 @Component({
   selector: 'app-admin-about-us',
   templateUrl: './admin-about-us.component.html',
   styleUrls: ['./admin-about-us.component.css', '../../../styles.css']
 })
-export class AdminAboutUsComponent {
-  constructor(private aboutusdata : UpdabtusService ) {}
+export class AdminAboutUsComponent{
+  constructor(private aboutusdata : UpdabtusService, private fb:FormBuilder ) {}
 urllink:string ="";
-
-selectFiles(event:any)
-{
-  if(event.target.files){
-    var reader = new FileReader()
-    reader.readAsDataURL(event.target.files[0])
-    reader.onload = (event:any) => {
-      this.urllink = event.target.result
-    }
-  }
-}
 urllink1:string ="";
-selectFiles2(event:any)
-{
-  if(event.target.files){
-    var reader1 = new FileReader()
-    reader1.readAsDataURL(event.target.files[0])
-    reader1.onload = (event:any) => {
-      this.urllink1 = event.target.result
-    }
-  }
+selectedFile: any;
+selectedFile1: any;
+addata!: FormGroup;
+ngOnInit(): void {
+    this.addata = this.fb.group ({
+      description:[''],
+      title: [''],
+      imageUrl:['']
+    });
 }
 submit(data: aboutusdata) {
-  console.warn(data);
+  console.log(data);
   this.aboutusdata.addata(data).subscribe((result)=> {
     console.log(result);
   })
 
 }
-// changeImage() {
-//   this.imageService.changeImageSource('');
-// }
 
+
+onFileSelected(event: any) {
+  this.selectedFile = event.target?.files[0];
+  this.urllink = URL.createObjectURL(this.selectedFile);
+  
+    // reader.readAsDataURL(this.selectedFile);
+  }
+  onFileSelected1(event: any) {
+    this.selectedFile1 = event.target?.files[0];
+    this.urllink1 = URL.createObjectURL(this.selectedFile1);
+    console.log(this.selectedFile1);
+    
+      // reader.readAsDataURL(this.selectedFile);
+    } 
+    onClick() {
+     
+      const formData = new FormData();
+      formData.append('file', this.selectedFile);
+    console.log(this.selectedFile);
+      this.aboutusdata.saveImage(formData).subscribe(
+        response => {
+          // Handle the API response here
+          console.log(response);
+        },
+        error => {
+          // Handle any error that occurs during the API request
+          console.error(error);
+        }
+      );
+    }
 }
-console.log("hello world");
+

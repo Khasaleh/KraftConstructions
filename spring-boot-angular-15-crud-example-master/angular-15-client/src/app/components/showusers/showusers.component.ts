@@ -12,11 +12,11 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./showusers.component.css']
 })
 export class ShowusersComponent implements OnInit {
+  globalUrl = 'http://99.72.32.144:8083';
   userdata!:any[];
   userDetail!:FormGroup;
   userObj : AddUser = new AddUser();
   oldUser!: string;
-  
   
   constructor(private adduserdata : AddUserService, private formBuilder: FormBuilder, private router: Router, private dialog : MatDialog) {}
 
@@ -29,7 +29,8 @@ export class ShowusersComponent implements OnInit {
       firstname : [''],
       lastname : [''],
       password : [''],
-      role: ['']
+      role: [''],
+      imageUrl:['']
     });
   
     
@@ -79,7 +80,8 @@ editUser(user: User) {
     firstname : this.userDetail.value.firstname,
     lastname : this.userDetail.value.lastname,
     password : this.userDetail.value.password,
-    role: this.userDetail.value.role
+    role: this.userDetail.value.role,
+    imageUrl:this.userDetail.value.imageUrl
 
   };
     console.log(updatedUser);
