@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
@@ -11,17 +12,14 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @Getter
 @Setter
-public class ServiceDetailsDTO {
-
-    private Long id;
+public class ServiceDetailsRequestDTO {
     private Long serviceId;
-    private String beforeImageUrl;
-    private String afterImageUrl;
+    private MultipartFile beforeImage;
+    private MultipartFile afterImage;
+    private String beforeImageTitle;
+    private String afterImageTitle;
     private String description;
     private boolean addPortfolio;
     private String author;
     private LocalDateTime updateDate;
-
-
-
 }

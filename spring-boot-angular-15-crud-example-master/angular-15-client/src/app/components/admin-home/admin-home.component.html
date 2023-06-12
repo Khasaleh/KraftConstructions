@@ -1,8 +1,73 @@
 <div class="admin-home">
-    <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
-        <section class="about-us">
+   
+        <section class="home-banner">
             <div class="new-container">
                 <h2 class="main-head">Home</h2>
+                <div class="card   card-shade">
+                    <div class="card-body">
+                        <div class="slideshow">
+                            <!-- <div class="slideshow-container">
+                                <div *ngFor="let image of images; let i = index" class="slide"
+                                    [ngClass]="{ 'active': i === activeIndex }">
+                                    <img [src]="image.url" alt="Slide {{i}}">
+                                </div>
+                            </div> -->
+                            <div class="slideshow-container">
+                                <div *ngFor="let image of images; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                                  <img [src]="getPreviewURL(image)" alt="Slide {{i}}">
+                                </div>
+                              </div>
+
+                            <div class="slide-dots">
+                                <span *ngFor="let image of images; let i = index" class="dot"
+                                    [ngClass]="{ 'active': i === activeIndex }" (click)="setActiveIndex(i)"></span>
+                            </div>
+                            <div class="d-flex gap-3 mt-4">
+                            <button class="video-btn">
+                                <label class="img-upld" for="file-inputt">+</label>
+                                <input type="file" id="file-inputt" class="input-file"
+                                    (change)="onFileSelected1($event)" accept="image/*" multiple>
+                            </button>
+                            <!-- Display thumbnail images -->
+                            <!-- <div class="slideshow-thumbnails d-flex gap-3 ">
+                                <div *ngFor="let image of images; let i = index" class="thumbnail-item"
+                                    [class.active]="activeIndex === i">
+                                    <img class="thumbnail-image" [src]="images" alt="Thumbnail Image"
+                                        (click)="setActiveIndex(i)">
+                                </div>
+                            </div> -->
+                            <div class="slideshow-thumbnails d-flex gap-3">
+                                <div *ngFor="let image of images; let i = index" class="thumbnail-item" [class.active]="activeIndex === i">
+                                  <img class="thumbnail-image" [src]="getPreviewURL(image)" alt="Thumbnail Image" (click)="setActiveIndex(i)">
+                                </div>
+                              </div>
+                        </div>
+                        </div>
+                        <div>
+                            <h3 class="card-head2 mt-2">Add Description</h3>
+                            <input class="form-control" type="text" placeholder="add description"
+                                formControlName="addLink">
+                            <div class="slider-wrape  ">
+                                <label class="switch  ">
+                                    <input type="checkbox" (click)="toggleCardBody()">
+                                    <span class="slider round"></span>
+                                </label>
+                                <h4 class="slider-head">Add Link</h4>
+                            </div>
+                            <input class="form-control" type="text" placeholder="add link"
+                                formControlName="addLink">
+                        </div>
+                        <div class="saveBtn  mb-3 mt-5">
+                            <button class="save-btn">save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+         <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
+        <section class="about-us">
+            <div class="new-container">
+                <!-- <h2 class="main-head">Home</h2> -->
                 <div class="card   card-shade">
                     <div class="card-head">About us</div>
                     <div class="card-body">
@@ -19,25 +84,27 @@
                                     </ckeditor>
                                 </div>
                                 <h3 class="card-head2 mt-2">Add link</h3>
-                                <input class="form-control" type="text" placeholder="add link" formControlName="addLink">
+                                <input class="form-control" type="text" placeholder="add link"
+                                    formControlName="addLink">
                             </div>
-                   
+
                             <div class="img-content">
                                 <div class="img-box mb-3">
-                                    <video *ngIf="fileURL" class="img-dyn" src="{{this.fileURL}}"></video>
+                                    <!-- <video *ngIf="fileURL" class="img-dyn" src="{{this.videoLink}}"></video> -->
+                                    <video *ngIf="fileURL" class="img-dyn" [src]="videoLink" controls></video>
+
                                 </div>
-                                <div  class="file-upload cardbtn">
-                                    <button  class="video-btn">
-                                    <label for="file-input" class="custom-button">Upload Image/Video</label>
-                                    <input type="file" id="file-input" class="input-file" (change)="
-                                    onFileSelected($event)" (change)="onVideoUploadBtnClick()"
-                                        accept="image/*,video/*">
+                                <div class="file-upload cardbtn">
+                                    <button class="video-btn">
+                                        <label for="file-input" class="custom-button">Upload Video</label>
+                                        <input type="file" id="file-input" class="input-file" (change)="
+                                    onFileSelected($event)" accept="image/*,video/*">
                                     </button>
                                 </div>
                             </div>
                         </div>
                         <div class="saveBtn  mb-3 mt-5">
-                            <button class="save-btn" type="submit" >save</button>
+                            <button class="save-btn" type="submit">save</button>
                         </div>
                     </div>
                 </div>
@@ -130,9 +197,19 @@
         <div class="new-container">
 
             <div class="card card-shade">
-                <div class="card-head">Testimonials</div>
+                <div class="test-bord">
+                    <div class="card-head">Testimonials</div>
+                    <div class="slider-wrape  ">
+                        <label class="switch  ">
+                            <input type="checkbox" (click)="toggleCardBody()">
+                            <span class="slider round"></span>
+                        </label>
+                        <h4 class="slider-head">Show</h4>
+                    </div>
+                </div>
 
-                <div class="card-body">
+
+                <div class="card-body" *ngIf="isCardBodyVisible">
                     <h2 class="our-clients-say">Our Clients Say</h2>
                     <div class="client-wrap  d-flex  gap-3 mb-4">
                         <div class="img-clientSec">
@@ -175,20 +252,9 @@
                             </ng-container>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="border1">
-                    <div class="slider-wrape  ">
-                        <label class="switch  ">
-                            <input type="checkbox">
-                            <span class="slider round"></span>
-                        </label>
-                        <h4 class="slider-head">Show</h4>
+                    <div class="saveBtn  mb-5 mt-3">
+                        <button class="save-btn">save</button>
                     </div>
-                </div>
-                <div class="saveBtn  mb-5 mt-3">
-                    <button class="save-btn">save</button>
                 </div>
             </div>
         </div>

@@ -59,9 +59,8 @@ public class SliderServiceImpl implements SliderService {
         File file = new File("uploads/testimonials/slider/" + fileName);
 
         FileUtils.writeByteArrayToFile(file, image.getBytes());
-
-
-        return file.getPath();
+        String relativePath = "/testimonals/slider/" + fileName;
+        return relativePath;
     }
 
     @Override

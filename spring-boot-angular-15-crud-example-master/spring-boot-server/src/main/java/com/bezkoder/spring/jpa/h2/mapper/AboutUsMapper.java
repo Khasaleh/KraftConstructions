@@ -19,7 +19,7 @@ public class AboutUsMapper {
         dto.setId(entity.getId());
         dto.setTitle(entity.getTitle());
         dto.setDescription(entity.getDescription());
-
+        dto.setImageUrl(entity.getImageUrl());
         return dto;
     }
 

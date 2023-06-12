@@ -2,9 +2,12 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.HomePage;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
+import com.bezkoder.spring.jpa.h2.dto.BannerRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.BannerResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.HomePageAboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceHomePageResponseDto;
 import com.bezkoder.spring.jpa.h2.exception.GenericException;
+import com.bezkoder.spring.jpa.h2.mapper.BannerMapper;
 import com.bezkoder.spring.jpa.h2.mapper.HomePageAboutUsMapper;
 import com.bezkoder.spring.jpa.h2.repository.HomePageRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
@@ -32,6 +35,8 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
 
     @Autowired
     private ServicesDetailsRepository servicesDetailsRepository;
+    @Autowired
+    private BannerMapper bannerMapper;
 
     @Override
     public HomePage getHomePageAboutUs(Long id) {
@@ -103,5 +108,44 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
 
         return serviceDTOs;
     }
+    @Override
+    public HomePage updateBanner(Long id, BannerRequestDTO bannerRequestDTO) {
+        Optional<HomePage> homePageOptional = homePageRepository.findById(id);
+        if (homePageOptional.isPresent()) {
+            HomePage homePage = homePageOptional.get();
+            bannerMapper.mapToEntity(bannerRequestDTO, homePage);
+            return homePageRepository.save(homePage);
+        } else {
+            HomePage homePage = new HomePage();
+            bannerMapper.mapToEntity(bannerRequestDTO, homePage);
+            return homePageRepository.save(homePage);
+        }
+    }
+    @Override
+    public BannerResponseDTO getBanner(Long id) {
+        HomePage homePage = homePageRepository.findById(id)
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Banner not found for id: " + id, "Incorrect id"));
+        return bannerMapper.mapToResponseDTO(homePage);
+    }
+    public void updateLinkStatus(Long id, boolean linkStatus) {
+        HomePage homePage = homePageRepository.findById(id)
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "HomePage not found for id: " + id, "Incorrect id"));
 
+        boolean updatedLinkStatus = !homePage.isLinkStatus(); // Toggle the linkStatus value
+
+        homePage.setLinkStatus(updatedLinkStatus);
+        homePageRepository.save(homePage);
+    }
+    @Override
+    public boolean updateLinkStatus(Long id) {
+        HomePage homePage = homePageRepository.findById(id)
+                .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "HomePage not found for id: " + id, "Incorrect id"));
+
+        boolean updatedLinkStatus = !homePage.isLinkStatus(); // Toggle the linkStatus value
+
+        homePage.setLinkStatus(updatedLinkStatus);
+        homePageRepository.save(homePage);
+
+        return updatedLinkStatus;
+    }
 }

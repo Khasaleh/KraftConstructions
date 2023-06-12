@@ -8,7 +8,7 @@ import java.util.List;
 public interface CareerNewsService {
 
 
-    CareerNewsDto addNews(CareerNewsDto newsDTO);
+    CareerNewsDto addNews(Long id, CareerNewsDto newsDTO);
     CareerNewsDto updateNews(Long id, CareerNewsDto newsDto);
     CareersNews findById(Long id);
 
@@ -18,7 +18,7 @@ public interface CareerNewsService {
 
     List<CareerNewsDto> findByStatus(Boolean status);
 
-
+    Boolean updateStatus(Long id);
 
 
 

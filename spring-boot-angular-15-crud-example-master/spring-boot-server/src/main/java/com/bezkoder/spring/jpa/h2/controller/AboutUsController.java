@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.Valid;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -39,6 +42,13 @@ public class AboutUsController {
         AboutUsResponseDTO aboutUsResponseDto = aboutUsMapper.toDto(aboutUs);
         return ResponseEntity.ok(aboutUsResponseDto);
     }
+    @PostMapping("/upload-image")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    public ResponseEntity<String> uploadImage(@Valid MultipartFile image){
+        aboutUsService.uploadAboutUsImage(ABOUT_US_ID,image);
+        return ResponseEntity.ok("Image Updated Successfully");
+    }
+
 
 }
 

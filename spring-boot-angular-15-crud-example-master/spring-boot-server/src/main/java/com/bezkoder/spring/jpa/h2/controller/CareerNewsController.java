@@ -2,6 +2,7 @@ package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.Entity.CareersNews;
 import com.bezkoder.spring.jpa.h2.dto.CareerNewsDto;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.mapper.CareerNewsMapper;
 import com.bezkoder.spring.jpa.h2.service.CareerNewsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -12,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -24,10 +24,11 @@ public class CareerNewsController {
 
     @Autowired
     private CareerNewsMapper newsMapper;
+    private static final Long CAREER_NEWS = 1L;
 
     @GetMapping
-    public ResponseEntity<List<CareerNewsDto>> findAll() {
-        List<CareerNewsDto> careerNewsList = newsService.findAll();
+    public ResponseEntity <CareersNews> getByid() {
+        CareersNews careerNewsList = newsService.findById(CAREER_NEWS);
         return ResponseEntity.ok(careerNewsList);
     }
 
@@ -39,25 +40,22 @@ public class CareerNewsController {
         return ResponseEntity.ok().body(careerNewsDTOList);
     }
 
-
-
-
     // Create a new News
     @PostMapping
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<CareerNewsDto> addNews(@Valid  @RequestBody CareerNewsDto newsDTO) {
-        CareerNewsDto addedNews = newsService.addNews(newsDTO);
+        CareerNewsDto addedNews = newsService.addNews(CAREER_NEWS,newsDTO);
         return ResponseEntity.ok(addedNews);
     }
-
-    @PutMapping("/{id}")
+    @PutMapping("/update-status")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<CareerNewsDto> updateNews(@PathVariable Long id, @Valid @RequestBody CareerNewsDto newsDto) {
-        CareerNewsDto updateService =  newsService.updateNews(id, newsDto);
-        return ResponseEntity.ok(updateService);
-
+    public ResponseEntity<?> updateLinkStatus() {
+        boolean updatedLinkStatus = newsService.updateStatus(CAREER_NEWS);
+        if (updatedLinkStatus) {
+            return ResponseEntity.ok(new MessageResponse("Link status updated to true"));
+        } else {
+            return ResponseEntity.ok(new MessageResponse("Link status updated to false"));
+        }
     }
-
-
 
 }

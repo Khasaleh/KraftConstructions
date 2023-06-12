@@ -33,6 +33,10 @@ public class HomePage {
 
     @OneToMany(mappedBy = "homePage",cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Services> services;
+
+    private String bannerDescription;
+    private String bannerLink;
+    private boolean linkStatus;
 }
 
 

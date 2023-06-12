@@ -26,6 +26,6 @@ public class AboutUs {
     @Length(max = 9999)
     private String description;
 
-
-
+    @Column(name = "image_url")
+    private String imageUrl;
 }

@@ -1,18 +1,19 @@
 package com.bezkoder.spring.jpa.h2.service;
 
-import com.bezkoder.spring.jpa.h2.Entity.ServiceDetails;
-import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsRequestDTO;
+import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
 
+import java.io.IOException;
 import java.util.List;
 
 public interface ServicesDetailsService {
 
-    public ServiceDetailsDTO getServiceDetailsByServiceId(Long serviceId);
+    public ServiceDetailsResponseDTO getServiceDetailsByServiceId(Long serviceId);
 
 
-    public ServiceDetailsDTO updateServicesDetails(Long id, ServiceDetailsDTO servicesDetailsDTO);
+    public ServiceDetailsResponseDTO updateServicesDetails(Long id, ServiceDetailsRequestDTO serviceDetailsRequestDTO) throws IOException;
 
-    public ServiceDetailsDTO addServiceDetails(ServiceDetailsDTO serviceDetailsDTO, UserDetailsImpl userDetails);
+    public ServiceDetailsResponseDTO addServiceDetails(ServiceDetailsRequestDTO serviceDetailsRequestDTO, UserDetailsImpl userDetails) throws IOException;
     public List<ServiceWithDetailDTO> getAllServicesDetailsWithName();
 }

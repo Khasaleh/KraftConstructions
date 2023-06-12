@@ -34,8 +34,22 @@ public class CareerNewsServiceImpl implements CareerNewsService {
 
 
     @Override
-    public CareerNewsDto addNews(CareerNewsDto newsDTO) {
-        CareersNews news = CareerNewsMapper.mapToEntity(newsDTO);
+    public CareerNewsDto addNews(Long id, CareerNewsDto newsDTO) {
+        CareersNews news;
+        Optional<CareersNews> optionalNews = newsRepository.findById(id);
+
+        if (optionalNews.isPresent()) {
+            news = optionalNews.get();
+            news.setDescription(newsDTO.getDescription());
+            news.setBackgroundColor(newsDTO.getBackgroundColor());
+            news.setTextColor(newsDTO.getTextColor());
+            news.setStartDate(newsDTO.getStartDate());
+            news.setEndDate(newsDTO.getEndDate());
+            news.setStatus(newsDTO.isStatus());
+        } else {
+            news = CareerNewsMapper.mapToEntity(newsDTO);
+        }
+
         news = newsRepository.save(news);
         return CareerNewsMapper.mapToDTO(news);
     }
@@ -44,7 +58,7 @@ public class CareerNewsServiceImpl implements CareerNewsService {
     public CareerNewsDto updateNews(Long id, CareerNewsDto newsDto) {
         CareersNews news = findById(id);
         if (news == null) {
-            throw new GenericException(HttpStatus.NOT_FOUND,"News not found for id: " + id,"Incorrect id");
+            throw new GenericException(HttpStatus.NOT_FOUND, "News not found for id: " + id, "Incorrect id");
         }
         CareersNews updatedNews = newsMapper.mapToEntity(newsDto);
         updatedNews.setId(news.getId());
@@ -63,6 +77,16 @@ public class CareerNewsServiceImpl implements CareerNewsService {
         List<CareersNews> careerNewsList = newsRepository.findByStatus(status);
         return newsMapper.toDTOList(careerNewsList);
     }
-
+    @Override
+    public Boolean updateStatus(Long id) {
+        CareersNews news = findById(id);
+        if (news == null) {
+            throw new GenericException(HttpStatus.NOT_FOUND, "News not found for id: " + id, "Incorrect id");
+        }
+        boolean updatedStatus = !news.isStatus();
+        news.setStatus(updatedStatus);
+        newsRepository.save(news);
+        return updatedStatus;
+    }
 
 }
