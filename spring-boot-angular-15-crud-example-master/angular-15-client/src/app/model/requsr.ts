@@ -1,13 +1,15 @@
 export class ReqUser {
-firstName : string= ''
+  id!: number 
+  firstName : string= ''
   lastName : string=''
   email : string=''
+  phoneNumber:string=''
   address : string=''
-  city!: any[]
-  state!: any[]
+  city!: string;
+  state!: string;
   zip: string=''
-  requestedServices!:any['']
-  budget: string ='';
+  requestedServices!: [];
+  budget: string ="";
   projectDescription:string=''
   aboutUs:any['']
 }

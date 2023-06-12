@@ -11,67 +11,73 @@
   </div>
   <div class="desktop-3-item" >
   
-    <form class="row g-3" *ngIf="show">
+    <form [formGroup]="userDetail" class="row g-3" *ngIf="show">
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">First Name</label>
-        <input type="name" class="form-control" id="inputEmail4">
+        <input type="name" name="firstName" formControlName="firstName" class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
         <label for="inputPassword4" class="form-label">Last Name</label>
-        <input type="name" class="form-control" id="inputPassword4">
+        <input type="name" name="lastName" formControlName="lastName" class="form-control" id="inputPassword4">
       </div>
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" class="form-control" id="inputEmail4">
+        <input type="email" name="email" formControlName="email" class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">Phone Number</label>
-        <input type="text" class="form-control" id="inputEmail4">
+        <input type="text" name="phoneNumber" formControlName="phoneNumber" class="form-control" id="inputEmail4">
       </div>
       <div class="col-10">
         <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input type="text" name="address" formControlName="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
       </div>
+
       <div class="col-md-3">
         <label for="inputCity" class="form-label">City</label>
-        <input type="text" class="form-control" id="inputCity">
+        <input type="text"  name="city" formControlName="city" class="form-control" id="inputCity">
       </div>
-      <div class="col-md-3">
+      <div class="col-md-4">
         <label for="inputState" class="form-label">State</label>
         <select id="inputState" class="form-select">
-          <option selected>New York City</option>
-          <option>...</option>
+          <option>{{ userDetail.value.state}}</option>
         </select>
       </div>
       <div class="col-md-3">
         <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" class="form-control" id="inputZip">
+        <input type="text" name="zip" formControlName="zip" class="form-control" id="inputZip">
       </div>
       <div class="form-check">
-        <div class = "chcktxt"> What Remodelling Services are you looking for ? </div>
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>
-        <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-          Home Remodeling
+        <div class="chcktxt">What Services are you looking for?</div>
+        <div *ngFor="let service of userDetail.value.requestedServices">
+        <input class="form-check-input" formControlName="requestedServices" type="checkbox" id="requestedServices">
+        <label class="form-check-label" for="requestedServices" aria-selected="true">
+          {{ service }}
         </label>
       </div>
+    </div>
       <div class="form-check">
-        <div class = radtxt>What is your budget for this project?</div>
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
-        <label class="form-check-label" for="flexRadioDefault1" aria-selected="true">
-          $50,000 to $100,00
+        <div class="radtxt">What is your budget for this project?</div>
+       
+        <input class="form-check-input" type="radio" name="budget" id="flexRadioDefault1" checked>
+        <label class="form-check-label" for="budget" aria-selected="true">
+          {{ userDetail.value.budget}}
         </label>
       </div>
+  
+      
       <div class="col-md-6">
         <label for="exampleFormControlTextarea1" class="form-label">Breifly Describe your project?</label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <textarea class="form-control" formControlName="projectDescription"id="exampleFormControlTextarea1" rows="3"></textarea>
+        
       </div>
      
      <div class="row">
       <div class="col-md-6">
         <label for="inputtxt" class="form-label">How did you hear about Kraft Construction?</label>
         <select id="inputtxt" class="form-select">
-          <option selected> simply-dummy-text</option>
-          <option>...</option>
+          <option>{{userDetail.value.aboutUs}}</option>
+         
         </select>
       </div>
       </div>
@@ -90,59 +96,24 @@
           </thead>
           <tbody>
           
-            <tr class = table-cell>
-              <td>Oliver John</td>
-              <td>Ny,United States</td>
-              <td>01-213565</td>
-              <td>$50,000 to $100,000</td>
+            <tr *ngFor="let usr of userdata" class = table-cell>
+              <td>{{usr.firstName}}</td>
+              <td>{{usr.city}}</td>
+              <td>{{usr.phoneNumber}}</td>
+              <td>{{usr.budget}}</td>
             <td> 
               <button mat-icon-button [matMenuTriggerFor]="menu">
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #menu="matMenu">
-                  <button mat-menu-item (click)="content()">View</button>
-                  <button mat-menu-item>Delete</button>
+                  <!-- <button mat-menu-item (click)="content()">View</button> -->
+                  <button (click)="viewUser(usr.id)" mat-menu-item (click)="content()">View</button>
+                  <button (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
                   
                 </mat-menu>
                 
                 
           </td>
-            </tr>
-            <tr class = table-cell1>
-              <td>Oliver John</td>
-              <td>Ny,United States</td>
-              <td>01-213565</td>
-              <td>$50,000 to $100,000</td>
-            <td> <div class="table-cell1">
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>View</button>
-                  <button mat-menu-item>Delete</button>
-                  
-                </mat-menu>
-                
-                
-          </div></td>
-            </tr>
-            <tr class = table-cell>
-              <td>Oliver John</td>
-              <td>Ny,United States</td>
-              <td>01-213565</td>
-              <td>$50,000 to $100,000</td>
-            <td> <div class="table-cell">
-              <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-                  <button mat-menu-item>View</button>
-                  <button mat-menu-item>Delete</button>
-                  
-                </mat-menu>
-                
-                
-          </div></td>
             </tr>
         
           </tbody>

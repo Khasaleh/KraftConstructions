@@ -33,114 +33,52 @@
         <input type="email" formControlName = "email" class="form-control" id="inputEmail4">
       </div>
       <div class="col-md-5">
-        <label for="inputEmail4" class="form-label">Phone Number</label>
-        <input type="text" class="form-control" id="inputEmail4">
+        <label for="phoneNumber"  class="form-label">Phone Number</label>
+        <input type="text" formControlName = "phoneNumber" class="form-control" id="phoneNumber">
       </div>
       <div class="col-10">
         <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" formControlName = "address"  class="form-control" id="inputAddress" placeholder="1234 Main St">
+        <input ngx-google-places-autocomplete formControlName="address" class="form-control" id="inputAddress" placeholder="1234 Main St" (onAddressChange)="handleAddressChange($event)">
       </div>
+      
       <div class="col-md-4">
         <label for="inputCity" class="form-label">City</label>
         <input type="text" formControlName = "city"  class="form-control" id="inputCity">
       </div>
       <div class="col-md-4">
         <label for="inputState" class="form-label">State</label>
-        <select id="inputState" formControlName = "state"  class="form-select">
-          <option >New York City</option>
-          <option>...</option>
+        <select id="inputState" formControlName="state" class="form-select">
+          <option *ngFor="let state of states" [value]="state">{{ state }}</option>
         </select>
       </div>
+      
+      
       <div class="col-md-4">
         <label for="inputZip" class="form-label">Zip</label>
         <input type="text" formControlName = "zip" class="form-control" id="inputZip">
       </div>
       <div class="row">
-        <div class = "chcktxt"> What Remodelling Services are you looking for ? </div>
-        <div class="col-md-5"  >
-      <div class="form-check">
-        <input class="form-check-input" formControlName = "requestedServices" type="checkbox" value="" id="flexCheckDefault" >
-        <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-         General Contracting
-          
-        </label>
+        <div class="chcktxt">What Remodelling Services are you looking for?</div>
+        <div class="col-md-5">
+          <div class="form-check">
+            <div *ngFor="let service of requestedServices">
+              <input class="form-check-input" [value]="service" type="checkbox" [id]="service" (change)="toggleService(service)">
+              <label class="form-check-label" [for]="service">{{ service }}</label>
+            </div>
+          </div>
         </div>
-        <div class="form-check">
-        <input class="form-check-input" formControlName = "requestedServices" type="checkbox" value="" id="flexCheckDefault" >
-        <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-          New Additions
-          
-        </label>
       </div>
-      <div class="form-check">
-        <input class="form-check-input" formControlName = "requestedServices" type="checkbox" value="" id="flexCheckDefault" >
-        <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-          Kitchen Remodeling
-          
-        </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" formControlName = "requestedServices" type="checkbox" value="" id="flexCheckDefault" >
-        <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-          Design Services
-          
-        </label>
-      </div>
-</div>
-<div class="col">
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" formControlName = "requestedServices" value="" id="flexCheckDefault" >
-    <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-      Basement Remodeling
       
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" type="checkbox" formControlName = "requestedServices" value="" id="flexCheckDefault" >
-    <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-      Home Remodeling
-      
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" formControlName = "requestedServices" type="checkbox" value="" id="flexCheckDefault" >
-    <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-      Outdoor Living Spaces
-      
-    </label>
-  </div>
-  <div class="form-check">
-    <input class="form-check-input" formControlName = "requestedServices" type="checkbox" value="" id="flexCheckDefault" >
-    <label class="form-check-label" for="flexCheckDefault" aria-selected="true">
-      
-    Bathroom Remodeling
-      
-    </label>
-  </div>
-</div>
-      </div>
       <div class="row">
         <div class="col-md-5">
       <div class = radtxt>What is your budget for this project?</div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="budget" value="25000-50000">
-        <label class="form-check-label" for="budgetOption1"> $25,000 to $50,000 </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="budget" value="50000-100000">
-        <label class="form-check-label" for="budgetOption2"> $50,000 to $100,000 </label>
-      </div>
-      <!-- Add more radio buttons as needed -->
-      <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="budget" value="100000-150000">
-        <label class="form-check-label" for="budgetOption3"> $100,000 to $150,000 </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" formControlName="budget" value="150000-200000">
-        <label class="form-check-label" for="budgetOption3"> $150,000 to $200,000 </label>
+        <div *ngFor="let service of budgets">
+        <input class="form-check-input" formControlName="budget" [value]="service" type="radio" >
+        <label class="form-check-label" [for]="service"> {{service}} </label>
       </div>
       
-      
+      </div>
       </div>
       </div>
       <div class="col-md-6">
@@ -150,10 +88,13 @@
      
      <div class="row g-3">
       <div class="col-md-8">
-        <label for="inputtxt" class="form-label">How did you hear about Kraft Construction?</label>
-        <input _ngcontent-kwu-c13="" formControlName="aboutUs"type="text" id="inputCity" class="form-control">
+        <label for="inputState" class="form-label">How did you hear about Kraft Construction?</label>
+        <select id="inputState" formControlName="aboutUs" class="form-select">
+          <option *ngFor="let aboutUs of aboutUss" [value]="aboutUs">{{ aboutUs }}</option>
+      </select>
       </div>
       </div>
+   
       <div class="col-12">
         <button type="submit" class="btn btn-success">Submit</button>
       </div>
@@ -171,6 +112,7 @@
             </div>
           </div>
         </div>
+        
       <app-footer></app-footer>
 
         
