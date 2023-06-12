@@ -5,5 +5,6 @@ export class User {
     lastname:string='';
     password:string='';
     roles: any []=[{}];
+    imageUrl="";
     
     }

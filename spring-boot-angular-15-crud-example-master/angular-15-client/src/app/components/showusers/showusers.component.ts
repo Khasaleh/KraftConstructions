@@ -17,7 +17,9 @@ export class ShowusersComponent implements OnInit {
   userDetail!:FormGroup;
   userObj : AddUser = new AddUser();
   oldUser!: string;
-  
+  data:any;
+  imageLink: any;
+  fileURL!: File;
   constructor(private adduserdata : AddUserService, private formBuilder: FormBuilder, private router: Router, private dialog : MatDialog) {}
 
   ngOnInit(): void {
@@ -54,12 +56,38 @@ deleteUser(username: string) {
     if (result === true) {
       this.adduserdata.deleteUser(username)
         .subscribe(res => {
-          this.getAllUsers();
+          // this.getAllUsers();
         });
     }
+   
   });
+  this.getAllUsers();
 }
+onFileSelected(event: any) {
+  this.fileURL = event.target.files[0];
+  this.imageLink = URL.createObjectURL(this.fileURL);
+  // this.onClick();
+  console.log(this.fileURL);
+  console.log(this.imageLink);
+  
 
+  }
+  onClick() {
+ 
+    const formData = new FormData();
+    formData.append('profileImage', this.fileURL);
+  
+    this.adduserdata.saveImage(formData,this.userObj.username).subscribe(
+      response => {
+        // Handle the API response here
+        console.log(response);
+      },
+      error => {
+        // Handle any error that occurs during the API request
+        console.error(error);
+      }
+    );
+  }
 
 
 editUser(user: User) {
@@ -70,7 +98,8 @@ editUser(user: User) {
     firstname: user.firstname,
     lastname: user.lastname,
     password: '',
-    role: user.roles && user.roles.length > 0 ? user.roles[0].name : null
+    role: user.roles && user.roles.length > 0 ? user.roles[0].name : null,
+    imageUrl: user.imageUrl
   });
 }
   updateUser() {
@@ -105,5 +134,27 @@ editUser(user: User) {
   }
 
 })
+  }
+  addUser() {
+    
+    
+    this.userObj.username = this.userDetail.value?.username;
+    this.userObj.email = this.userDetail.value?.email;
+    this.userObj.firstname = this.userDetail.value?.firstname;
+    this.userObj.lastname = this.userDetail.value?.lastname;
+    this.userObj.password = this.userDetail.value?.password;
+    this.userObj.role = [this.userDetail.value?.role];
+    this.userObj.imageUrl= this.userDetail.value?.imageUrl;
+    console.log(this.userObj.role)
+     this.adduserdata.AddUser(this.userObj).subscribe(res=>{
+      this.onClick();
+      console.log(res);
+      
+    
+      
+
+     }, err=> {
+      console.log(err)
+     })
   }
 }
