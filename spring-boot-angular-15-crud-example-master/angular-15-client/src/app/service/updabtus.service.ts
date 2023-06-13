@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { aboutusdata } from '../data-type';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,4 +16,8 @@ export class UpdabtusService {
   showdata() {
     return this.http.get(this.apiUrl+'/about-us');
   }
+  saveImage(image: FormData): Observable<any> {
+    return this.http.post('http://99.72.32.144:8081/api/about-us/upload-image', image);
+  }
+  
 }

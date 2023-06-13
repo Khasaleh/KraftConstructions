@@ -5,8 +5,8 @@ import com.bezkoder.spring.jpa.h2.dto.ServiceDetailsResponseDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServiceWithDetailDTO;
 import com.bezkoder.spring.jpa.h2.mapper.ServiceDetailsMapper;
 import com.bezkoder.spring.jpa.h2.service.ServicesDetailsServiceImpl;
-import com.bezkoder.spring.jpa.h2.service.UserDetailsImpl;
 import com.bezkoder.spring.jpa.h2.service.ServicesServiceImpl;
+import com.bezkoder.spring.jpa.h2.service.UserDetailsImpl;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -15,7 +15,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.io.IOException;
 import java.util.List;
 
@@ -36,7 +35,7 @@ public class ServicesDetailsController {
 
     @PostMapping("/addDetails")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<ServiceDetailsResponseDTO> addServiceDetails(@Valid ServiceDetailsRequestDTO serviceDetailsRequestDTO) throws IOException {
+    public ResponseEntity<ServiceDetailsResponseDTO> addServiceDetails(ServiceDetailsRequestDTO serviceDetailsRequestDTO) throws IOException {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ServiceDetailsResponseDTO createdServiceDetailsResponseDTO = servicesDetailsService.addServiceDetails(serviceDetailsRequestDTO, userDetails);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdServiceDetailsResponseDTO);
@@ -57,7 +56,8 @@ public class ServicesDetailsController {
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<ServiceDetailsResponseDTO> updateServicesDetails(@PathVariable Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO) throws IOException {
-        ServiceDetailsResponseDTO updatedServicesDetailsResponseDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsRequestDTO);
+        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ServiceDetailsResponseDTO updatedServicesDetailsResponseDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsRequestDTO, userDetails);
         if (updatedServicesDetailsResponseDTO != null) {
             return ResponseEntity.ok(updatedServicesDetailsResponseDTO);
         } else {

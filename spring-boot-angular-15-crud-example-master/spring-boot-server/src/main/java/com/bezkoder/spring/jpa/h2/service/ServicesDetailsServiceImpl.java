@@ -52,7 +52,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
 
     @Override
     public ServiceDetailsResponseDTO addServiceDetails(ServiceDetailsRequestDTO serviceDetailsRequestDTO, UserDetailsImpl userDetails) throws IOException {
-        User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new RuntimeException());
+        User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new GenericException(HttpStatus.NO_CONTENT,"User Not Found","Author can't be determined"));
         Services service = servicesRepository.findById(serviceDetailsRequestDTO.getServiceId())
                 .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Service not found" + serviceDetailsRequestDTO.getServiceId(), "Incorrect id"));
 
@@ -64,7 +64,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         serviceDetails.setBeforeImageUrl(beforeImageFileName);
         serviceDetails.setAfterImageUrl(afterImageFileName);
         serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getBeforeImageTitle());
-        serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getAfterImageTitle());
+        serviceDetails.setAfterImageTitle(serviceDetailsRequestDTO.getAfterImageTitle());
         serviceDetails.setDescription(serviceDetailsRequestDTO.getDescription());
         serviceDetails.setAddPortfolio(serviceDetailsRequestDTO.isAddPortfolio());
         serviceDetails.setAuthor(user.getUsername());
@@ -84,7 +84,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
     }
 
     @Override
-    public ServiceDetailsResponseDTO updateServicesDetails(Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO) throws IOException {
+    public ServiceDetailsResponseDTO updateServicesDetails(Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO,UserDetailsImpl userDetails) throws IOException {
+        User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new GenericException(HttpStatus.NO_CONTENT,"User Not Found","Author can't be determined"));
         Optional<ServiceDetails> servicesDetailsOptional = servicesDetailsRepository.findById(id);
         if (servicesDetailsOptional.isPresent()) {
             ServiceDetails servicesDetails = servicesDetailsOptional.get();
@@ -106,7 +107,8 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
             servicesDetails.setAfterImageTitle(servicesDetailsRequestDTO.getAfterImageTitle());
             servicesDetails.setDescription(servicesDetailsRequestDTO.getDescription());
             servicesDetails.setAddPortfolio(servicesDetailsRequestDTO.isAddPortfolio());
-            servicesDetails.setAuthor(servicesDetailsRequestDTO.getAuthor());
+            servicesDetails.setAuthor(user.getUsername());
+            servicesDetails.setUpdateDate(LocalDateTime.now());
 
             Services services = servicesDetails.getServices();
             servicesRepository.save(services);

@@ -12,7 +12,7 @@ public interface ServicesDetailsService {
     public ServiceDetailsResponseDTO getServiceDetailsByServiceId(Long serviceId);
 
 
-    public ServiceDetailsResponseDTO updateServicesDetails(Long id, ServiceDetailsRequestDTO serviceDetailsRequestDTO) throws IOException;
+    public ServiceDetailsResponseDTO updateServicesDetails(Long id, ServiceDetailsRequestDTO serviceDetailsRequestDTO, UserDetailsImpl userDetails) throws IOException;
 
     public ServiceDetailsResponseDTO addServiceDetails(ServiceDetailsRequestDTO serviceDetailsRequestDTO, UserDetailsImpl userDetails) throws IOException;
     public List<ServiceWithDetailDTO> getAllServicesDetailsWithName();
