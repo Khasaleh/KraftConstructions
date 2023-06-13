@@ -14,11 +14,13 @@ export class AdminAddCareersNewsComponent {
   isCardBodyVisible: boolean = false;
   toggleCardBody() {
     this.isCardBodyVisible = !this.isCardBodyVisible;
+    this.buttonToggle();
   }
   careerNewsForm!: FormGroup;
   status: boolean = false;
+  sliderData: any;
   // backgroundColorControl!: FormControl;
-  constructor(private formBuilder: FormBuilder, private careerNewsService: AddCareerNewsService){}
+  constructor(private formBuilder: FormBuilder, private careerNewsService: AddCareerNewsService) { }
   ngOnInit(): void {
     // this.backgroundColorControl = new FormControl('');
     this.careerNewsForm = this.formBuilder.group({
@@ -30,16 +32,46 @@ export class AdminAddCareersNewsComponent {
       // textColor: ['', Validators.required],
       startDate: ['', Validators.required],
       endDate: ['', Validators.required],
-      status :[this.status]
+      status: [this.status]
     });
+    this.careerNewsService.getsliderdata().subscribe(
+      previousValue => {
+        this.careerNewsForm.controls['status'].setValue(previousValue.status);
+        this.selectedColor = previousValue.backgroundColor;
+        this.careerNewsForm.controls['currentNews'].setValue(previousValue.description);
+        this.textColor = previousValue.textColor;
+        this.isCardBodyVisible = previousValue.status;
+        this.careerNewsForm.controls['startDate'].setValue(previousValue.startDate);
+        this.careerNewsForm.controls['endDate'].setValue(previousValue.endDate);
+      
+
+        console.log(previousValue, "pervious value");
+
+      },
+      error => {
+        console.error(error, "pervious value error");
+      },
+    )
 
   }
+  buttonToggle() {
+    this.careerNewsService.toggleButton().subscribe(
+      response => {
+
+        console.log("response for toggle", response)
+      },
+      error => {
+        // Handle any error that occurs during the API request
+        console.error(error);
+      }
+    )
+  }
   onSubmit() {
-  console.log(this.selectedColor,"backgroud color");
-  console.log(this.textColor,"text color");
-  console.log(this.careerNewsForm,"form");
-  
-  
+    console.log(this.selectedColor, "backgroud color");
+    console.log(this.textColor, "text color");
+    console.log(this.careerNewsForm, "form");
+
+
     if (this.careerNewsForm.valid) {
       const currentNews = this.careerNewsForm.get('currentNews')?.value;
       const backgroundColor = this.selectedColor;
@@ -50,18 +82,18 @@ export class AdminAddCareersNewsComponent {
       const startDate = this.careerNewsForm.get('startDate')?.value;
       const endDate = this.careerNewsForm.get('endDate')?.value;
       const status = this.careerNewsForm.get('status')?.value;
-      this.careerNewsService.careerNewsData(currentNews,backgroundColor,textColor,startDate,endDate,status).subscribe(
+      this.careerNewsService.careerNewsData(currentNews, backgroundColor, textColor, startDate, endDate, status).subscribe(
         response => {
-                // Handle the API response here
-                console.log("data submit successfully");
-                console.log("response",response)
-              },
-                error => {
-                // Handle any error that occurs during the API request
-                console.error(error);
-              }
+          // Handle the API response here
+          console.log("data submit successfully");
+          console.log("response", response)
+        },
+        error => {
+          // Handle any error that occurs during the API request
+          console.error(error);
+        }
       )
     }
-    
+
   }
 }

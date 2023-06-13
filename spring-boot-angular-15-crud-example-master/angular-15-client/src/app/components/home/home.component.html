@@ -4,7 +4,7 @@
   <section class="banner-section slide"  [style.background-image]="'url(' + slides[currentSlide] + ')'">
     <!-- <section class="banner-section slide" [ngStyle]="{'background-image': 'url(' + globalUrl + slides[currentSlide] + ')'}"> -->
 
-    <div class="headline" [style.background]="sliderData.backgroundColor"   [style.color]="sliderData.textColor">
+    <div *ngIf="sliderData?.status" class="headline" [style.background]="sliderData.backgroundColor"   [style.color]="sliderData.textColor">
       <marquee>{{ sliderData?.description }}</marquee>
     </div>
     <div class="new-container">

@@ -93,6 +93,7 @@ export class AdminHomeComponent {
       bannerDescription: ['', Validators.required],
       linkStatus: [this.linkStatus]
     });
+    
 
   }
   onSubmit1() {
