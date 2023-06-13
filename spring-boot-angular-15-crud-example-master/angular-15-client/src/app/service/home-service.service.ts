@@ -11,6 +11,9 @@ export class HomeServiceService {
   getsliderdata(): Observable<any> {
     return this.http.get('http://99.72.32.144:8081/api/news/')
   }
+  getHomePageBanner(): Observable<any> {
+    return this.http.get('http://99.72.32.144:8081/api/homepage-banner');
+  }
   getHomePageData(): Observable<any> {
     return this.http.get('http://99.72.32.144:8081/api/homepageabout-us');
   }
@@ -23,6 +26,16 @@ export class HomeServiceService {
       "aboutusDescription": `${aboutUsDescription}`
     });
   }
+  saveBannnerImage(images: FormData): Observable<any>{
+    return this.http.post('http://99.72.32.144:8081/api/homepage-banner',images)
+  }
+  saveBannerData(bannerLink: string,bannerDescription:string, linkStatus:boolean): Observable<any>{
+    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/banner',{
+      "bannerLink": `${bannerLink}`,
+      "aboutusDescription": `${bannerDescription}`,
+      "linkStatus": `${linkStatus}`
 
+    })
+  }
 
 }

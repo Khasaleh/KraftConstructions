@@ -1,5 +1,5 @@
 <div class="admin-home">
-   
+    <form [formGroup]="bannerForm" (ngSubmit)="onSubmit1()">
         <section class="home-banner">
             <div class="new-container">
                 <h2 class="main-head">Home</h2>
@@ -13,9 +13,12 @@
                                 </div>
                             </div> -->
                             <div class="slideshow-container">
-                                <div *ngFor="let image of images; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
-                                  <img [src]="getPreviewURL(image)" alt="Slide {{i}}">
-                                </div>
+                                <!-- <div *ngFor="let image of images; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                                  <img [src]="(imageLink)" alt="Slide {{i}}">
+                                </div> -->
+                                <div *ngFor="let imageLink of imageLink; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                                    <img [src]="imageLink" alt="Slide {{i}}">
+                                  </div>
                               </div>
 
                             <div class="slide-dots">
@@ -37,8 +40,8 @@
                                 </div>
                             </div> -->
                             <div class="slideshow-thumbnails d-flex gap-3">
-                                <div *ngFor="let image of images; let i = index" class="thumbnail-item" [class.active]="activeIndex === i">
-                                  <img class="thumbnail-image" [src]="getPreviewURL(image)" alt="Thumbnail Image" (click)="setActiveIndex(i)">
+                                <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item" [class.active]="activeIndex === i">
+                                  <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image" (click)="setActiveIndex(i)">
                                 </div>
                               </div>
                         </div>
@@ -46,24 +49,26 @@
                         <div>
                             <h3 class="card-head2 mt-2">Add Description</h3>
                             <input class="form-control" type="text" placeholder="add description"
-                                formControlName="addLink">
+                                formControlName="bannerDescription">
                             <div class="slider-wrape  ">
                                 <label class="switch  ">
-                                    <input type="checkbox" (click)="toggleCardBody()">
+                                    <input type="checkbox" (click)="toggleLink()"
+                                    formControlName="linkStatus">
                                     <span class="slider round"></span>
                                 </label>
                                 <h4 class="slider-head">Add Link</h4>
                             </div>
                             <input class="form-control" type="text" placeholder="add link"
-                                formControlName="addLink">
+                                formControlName="bannerLink">
                         </div>
                         <div class="saveBtn  mb-3 mt-5">
-                            <button class="save-btn">save</button>
+                            <button type="submit"  class="save-btn">save</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
+    </form>
          <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
         <section class="about-us">
             <div class="new-container">

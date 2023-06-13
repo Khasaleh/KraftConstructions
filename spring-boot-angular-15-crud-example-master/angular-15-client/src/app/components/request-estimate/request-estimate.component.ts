@@ -60,10 +60,11 @@ submit() {
   this.userObj = this.userDetail.value; 
   console.log(this.userObj); 
   this.openDialog();
+  this.userDetail.reset();
   this.requser.ReqUser(this.userObj).subscribe(res => {
     
     console.log(res);
-
+    
     // Call the method to open the dialog
   })
   
