@@ -11,6 +11,9 @@ export class AddCareerNewsService {
   // }
 
   constructor(private http: HttpClient) { }
+  getsliderdata(): Observable<any> {
+    return this.http.get('http://99.72.32.144:8081/api/news/')
+  }
   careerNewsData(description: string ,backgroundColor: string, textColor: string, startDate: string, endDate: string, status: boolean): Observable<any>{
   return this.http.post('http://99.72.32.144:8081/api/news',{
     "description":`${description}`,
@@ -20,5 +23,8 @@ export class AddCareerNewsService {
     "endDate":`${endDate}`,
     "status":`${status}`,
   })
+  }
+  toggleButton(): Observable<any>{
+    return this.http.put('http://99.72.32.144:8081/api/news/update-status',{})
   }
 }

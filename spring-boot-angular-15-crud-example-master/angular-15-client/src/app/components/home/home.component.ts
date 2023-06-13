@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   globalUrl = 'http://99.72.32.144:8083'
   constructor(private homeService:HomeServiceService){}
   ngOnInit(): void {
-    setInterval(() => this.showSlide(), 10000);
+    setInterval(() => this.showSlide(), 5000);
     this.homeService.getHomePageBanner().subscribe(
       response => {
         this.slides = response.map((p: { id: any,imageUrl: any; })=>this.globalUrl+p.imageUrl); // Assuming the API response is an array of strings
