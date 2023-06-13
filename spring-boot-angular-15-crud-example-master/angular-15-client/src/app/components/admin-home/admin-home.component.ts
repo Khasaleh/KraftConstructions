@@ -6,7 +6,7 @@ import { HomeServiceService } from '../../service/home-service.service'
 import { HttpClient } from '@angular/common/http';
 
 interface Image {
-  url: string;
+  image: string;
 }
 @Component({
   selector: 'app-admin-home',
