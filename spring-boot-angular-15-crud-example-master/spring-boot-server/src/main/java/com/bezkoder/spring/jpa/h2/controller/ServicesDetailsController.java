@@ -57,7 +57,8 @@ public class ServicesDetailsController {
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<ServiceDetailsResponseDTO> updateServicesDetails(@PathVariable Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO) throws IOException {
-        ServiceDetailsResponseDTO updatedServicesDetailsResponseDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsRequestDTO);
+        UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ServiceDetailsResponseDTO updatedServicesDetailsResponseDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsRequestDTO, userDetails);
         if (updatedServicesDetailsResponseDTO != null) {
             return ResponseEntity.ok(updatedServicesDetailsResponseDTO);
         } else {
