@@ -64,7 +64,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         serviceDetails.setBeforeImageUrl(beforeImageFileName);
         serviceDetails.setAfterImageUrl(afterImageFileName);
         serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getBeforeImageTitle());
-        serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getAfterImageTitle());
+        serviceDetails.setAfterImageTitle(serviceDetailsRequestDTO.getAfterImageTitle());
         serviceDetails.setDescription(serviceDetailsRequestDTO.getDescription());
         serviceDetails.setAddPortfolio(serviceDetailsRequestDTO.isAddPortfolio());
         serviceDetails.setAuthor(user.getUsername());
