@@ -1,12 +1,13 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.TestimonialsHomePage;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.repository.TestimonialsHomePageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 @Service
 public class TestimonialsHomePageServiceImpl implements TestimonialsHomePageService{
     @Autowired
@@ -19,7 +20,7 @@ public class TestimonialsHomePageServiceImpl implements TestimonialsHomePageServ
     @Override
     public TestimonialsHomePage getTestimonialById(Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Testimonial not found with id: " + id));
+                .orElseThrow(() -> new GenericException(HttpStatus.NO_CONTENT,"NOT FOUND","Testimonial not found with id: " + id));
     }
     @Override
     public List<TestimonialsHomePage> addTestimonials(List<TestimonialsHomePage> testimonials) {
@@ -29,7 +30,7 @@ public class TestimonialsHomePageServiceImpl implements TestimonialsHomePageServ
     @Override
     public TestimonialsHomePage updateTestimonial(Long id, TestimonialsHomePage testimonial) {
         TestimonialsHomePage existingTestimonial = repository.findById(id)
-                .orElseThrow(() -> new NoSuchElementException("Testimonial not found with id: " + id));
+                .orElseThrow(() -> new GenericException(HttpStatus.NO_CONTENT,"NOT FOUND","Testimonial not found with id: " + id));
 
         existingTestimonial.setHeading(testimonial.getHeading());
         existingTestimonial.setDescription(testimonial.getDescription());
