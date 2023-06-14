@@ -22,7 +22,7 @@ import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Objects;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
 @RequestMapping("/api/homepageabout-us")
 public class HomePageAboutUsController {
@@ -37,7 +37,7 @@ public class HomePageAboutUsController {
     private static final Long ABOUT_US_ID = 1L;
 
     @PostMapping("/homepageupdate-description")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<HomePageAboutUsResponseDTO> updateHomePageAboutUs(@RequestBody HomePageAboutUsRequestDTO homePageAboutUsRequestDTO) {
         HomePage homePage = homePageAboutUsService.updateHomePageAboutUs(ABOUT_US_ID, homePageAboutUsRequestDTO);
         HomePageAboutUsResponseDTO homePageAboutUsResponseDTO = homePageAboutUsMapper.toDto(homePage);
@@ -51,7 +51,7 @@ public class HomePageAboutUsController {
         return ResponseEntity.ok(homePageAboutUsResponseDTO);
     }
     @PostMapping("/upload-video")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<String> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);
@@ -78,7 +78,7 @@ public class HomePageAboutUsController {
     }
 
     @PostMapping("/{id}/addservices")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<String> addServiceToHomePage(@PathVariable Long id, @RequestBody ServiceHomePageRequestDto serviceHomeRequestDto) {
         String message = homePageAboutUsService.addServiceToHomePage(id, serviceHomeRequestDto.getServiceIds());
         return ResponseEntity.ok(message);
@@ -89,7 +89,7 @@ public class HomePageAboutUsController {
         return ResponseEntity.ok(homePageAboutUsService.getServicesByHomePageId(id));
     }
     @PostMapping("/update-banner")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<?> updateBanner(@RequestBody BannerRequestDTO bannerRequestDTO) {
         HomePage homePage = homePageAboutUsService.updateBanner(ABOUT_US_ID, bannerRequestDTO);
         return ResponseEntity.ok(new MessageResponse("Banner Updated Successfully"));
@@ -100,7 +100,7 @@ public class HomePageAboutUsController {
         return ResponseEntity.ok(bannerResponseDTO);
     }
     @PutMapping("/banner-link-status")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<String> updateLinkStatus() {
         boolean updatedLinkStatus = homePageAboutUsService.updateLinkStatus(ABOUT_US_ID);
         if (updatedLinkStatus) {

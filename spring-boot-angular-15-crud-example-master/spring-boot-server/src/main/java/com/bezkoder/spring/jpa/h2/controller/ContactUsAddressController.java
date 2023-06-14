@@ -11,7 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
 @RequestMapping("/api/contact-address")
 public class ContactUsAddressController {
@@ -22,7 +22,7 @@ public class ContactUsAddressController {
     private ContactUsAddressMapper contactUsAddressMapper;
     private static final Long CONTACT_ADDRESS_ID = 1L;
     @PostMapping("/update-address")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<ContactUsAddressResponse> updateAboutUs(@RequestBody ContactUsAddressRequest contactUsAddressRequest) {
         ContactUsAddress contactUsAddress = contactUsAddressService.updateAddress(CONTACT_ADDRESS_ID, contactUsAddressRequest);
         ContactUsAddressResponse contactUsAddressResponse = contactUsAddressMapper.toDto(contactUsAddress);
