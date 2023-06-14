@@ -14,6 +14,7 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContactUsDto {
+    private long id;
     @NotNull
     private String firstname;
     @NotNull
