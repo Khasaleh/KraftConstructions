@@ -26,7 +26,7 @@ public class SliderController {
 
 
     @PostMapping("/add")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<SliderDto> addSlider(@Valid @RequestParam("images") MultipartFile[] images) {
         try {
 
@@ -46,7 +46,7 @@ public class SliderController {
 
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<String> deleteSlider(@PathVariable("id") Long id) {
 
         sliderService.deleteSlider(id);
@@ -54,7 +54,7 @@ public class SliderController {
         return ResponseEntity.ok().body("Slider deleted successfully");
     }
     @PutMapping("/{id}/images")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<SliderDto> updateSliderImages(@PathVariable("id") Long id,
                                                         @RequestParam("images") MultipartFile[] images) {
         SliderDto updatedSlider;

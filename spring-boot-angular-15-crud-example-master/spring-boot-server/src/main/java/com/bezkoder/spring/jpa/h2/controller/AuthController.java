@@ -77,7 +77,7 @@ public class AuthController {
   }
 
   @PostMapping("/users/create")
-//  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
+//  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
   public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
@@ -100,7 +100,7 @@ public class AuthController {
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
-      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+      Role userRole = roleRepository.findByName(ERole.ROLE_PHOTOGRAPHER)
               .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
       roles.add(userRole);
     } else {
@@ -110,16 +110,9 @@ public class AuthController {
             Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(adminRole);
-
-            break;
-          case "author":
-            Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
-            .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
-            roles.add(modRole);
-
             break;
           default:
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+            Role userRole = roleRepository.findByName(ERole.ROLE_PHOTOGRAPHER)
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(userRole);
         }
@@ -132,7 +125,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
   }
   @PostMapping("/users/update/{username}")
-  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
   public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
 
     User user = userRepository.findByUsername(username)
@@ -147,7 +140,7 @@ public class AuthController {
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
-      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+      Role userRole = roleRepository.findByName(ERole.ROLE_PHOTOGRAPHER)
               .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
       roles.add(userRole);
     } else {
@@ -159,14 +152,8 @@ public class AuthController {
             roles.add(adminRole);
 
             break;
-          case "author":
-            Role modRole = roleRepository.findByName(ERole.ROLE_AUTHOR)
-            .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
-            roles.add(modRole);
-
-            break;
           default:
-            Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+            Role userRole = roleRepository.findByName(ERole.ROLE_PHOTOGRAPHER)
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"Error: Role is not found.","Incorrect Role"));
             roles.add(userRole);
         }
@@ -179,7 +166,7 @@ public class AuthController {
     return ResponseEntity.ok(new MessageResponse("User Updated successfully!"));
   }
   @DeleteMapping("/users/delete/{username}")
-  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
   public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
     User user = userRepository.findByUsername(username)
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
@@ -188,13 +175,13 @@ public class AuthController {
     return ResponseEntity.ok("User " + username + " has been deleted successfully.");
   }
   @GetMapping("/users")
-  @PreAuthorize("hasRole('" + Roles.ROLE_AUTHOR + "')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
   public ResponseEntity<?> getAllUsers() {
     List<User> users = userRepository.findAll();
     return ResponseEntity.ok(users);
   }
   @PostMapping("/users/uploadprofile/{username}")
-  @PreAuthorize("hasRole('ROLE_AUTHOR')")
+  @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
   public ResponseEntity<?> addImageToUser(@PathVariable("username") String username, @RequestBody MultipartFile profileImage) {
       User user = userDetails.addImageToUser(username, profileImage);
       return ResponseEntity.ok(new MessageResponse("Profile image uploaded successfully!"));

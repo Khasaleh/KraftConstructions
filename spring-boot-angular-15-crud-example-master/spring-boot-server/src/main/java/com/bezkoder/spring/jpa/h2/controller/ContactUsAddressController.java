@@ -22,7 +22,7 @@ public class ContactUsAddressController {
     private ContactUsAddressMapper contactUsAddressMapper;
     private static final Long CONTACT_ADDRESS_ID = 1L;
     @PostMapping("/update-address")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<ContactUsAddressResponse> updateAboutUs(@RequestBody ContactUsAddressRequest contactUsAddressRequest) {
         ContactUsAddress contactUsAddress = contactUsAddressService.updateAddress(CONTACT_ADDRESS_ID, contactUsAddressRequest);
         ContactUsAddressResponse contactUsAddressResponse = contactUsAddressMapper.toDto(contactUsAddress);

@@ -34,7 +34,7 @@ public class ServicesDetailsController {
 
 
     @PostMapping("/addDetails")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<ServiceDetailsResponseDTO> addServiceDetails(ServiceDetailsRequestDTO serviceDetailsRequestDTO) throws IOException {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ServiceDetailsResponseDTO createdServiceDetailsResponseDTO = servicesDetailsService.addServiceDetails(serviceDetailsRequestDTO, userDetails);
@@ -54,7 +54,7 @@ public class ServicesDetailsController {
 
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<ServiceDetailsResponseDTO> updateServicesDetails(@PathVariable Long id, ServiceDetailsRequestDTO servicesDetailsRequestDTO) throws IOException {
         UserDetailsImpl userDetails = (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         ServiceDetailsResponseDTO updatedServicesDetailsResponseDTO = servicesDetailsService.updateServicesDetails(id, servicesDetailsRequestDTO, userDetails);

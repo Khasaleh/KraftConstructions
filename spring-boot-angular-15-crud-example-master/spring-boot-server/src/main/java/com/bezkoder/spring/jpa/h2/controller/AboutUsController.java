@@ -29,7 +29,7 @@ public class AboutUsController {
     private static final Long ABOUT_US_ID = 1L;
 
     @PostMapping("/update-description")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<AboutUsResponseDTO> updateAboutUs(@RequestBody AboutUsRequestDTO aboutUsRequestDto) {
         AboutUs aboutUs = aboutUsService.updateAboutUs(ABOUT_US_ID, aboutUsRequestDto);
         AboutUsResponseDTO aboutUsResponseDto = aboutUsMapper.toDto(aboutUs);
@@ -43,7 +43,7 @@ public class AboutUsController {
         return ResponseEntity.ok(aboutUsResponseDto);
     }
     @PostMapping("/upload-image")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<String> uploadImage(@Valid MultipartFile image){
         aboutUsService.uploadAboutUsImage(ABOUT_US_ID,image);
         return ResponseEntity.ok("Image Updated Successfully");
