@@ -8,27 +8,33 @@
     </nav> 
   </div>
   <div class="desktop-3-item">
+    <form [formGroup]="userDetails" (ngSubmit)="edit(userDetails.value)">
     <div class="col-10">
       <label for="inputAddress" class="form-label"style="margin-top:1rem;margin-left:1rem;">Address</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"style=
+      <input type="text"  formControlName="address" class="form-control" id="inputAddress"style=
       "margin-left:1rem;">
     </div>
     <div class="saveBtn mb-3 mt-5">
 
-      <button class="save-btn" type="submit" >Edit</button>
+      <button  class="save-btn" type="submit" >Edit</button>
    </div>
+   </form>
     </div>
-    <div class="desktop-3-item" style="margin-top: 10px;">
+ </div>
+ <div class="home1">
+    <form [formGroup]="userDetail">
+    
+    <div *ngFor="let data of userdata" class="desktop-4-item">
       <div class="rectangle-container">
         <div class="group-item"></div>
         <div class="simply-dummy-text">
-          {{message}}
+          {{data.message}}
         </div>
         <div class="group-div">
           <div class="group-inner"></div>
           <div class="email-parent">
             <div class="email">Email </div>
-            <div class="oliverjohngmailcom">{{email}}</div>
+            <div class="oliverjohngmailcom">{{data.email}}</div>
           </div>
         </div>
         <div class="check-button">
@@ -36,7 +42,7 @@
             <div class="group-child1"></div>
             <div class="name-parent">
               <div class="name">Name</div>
-              <div class="oliver-john">{{firstname}}</div>
+              <div class="oliver-john">{{data.firstname}}</div>
             </div>
           </div>
         </div>
@@ -44,7 +50,7 @@
         <div class="rectangle-parent2">
           <div class="group-child3"></div>
           <div class="parent">
-            <div class="div">{{phone}}</div>
+            <div class="div">{{data.phonenumber}}</div>
             <div class="phone">Phone</div>
           </div>
           <div class="rectangle-parent3">
@@ -55,13 +61,17 @@
             </div>
           </div>
         </div>
-        <div class="pm">25-12-2022 <span> pm </span></div>
-        <button class="delete">Delete</button>
+        <div class="pm">{{userDetail.value.date}}<span> </span></div>
+        <button (click)="deleteUser(data.id)" class="delete">Delete</button>
     
       </div>
     
     </div>
-      </div>
+
+    </form>
+    </div>
+      
+      
   
    
  

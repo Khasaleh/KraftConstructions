@@ -54,6 +54,8 @@ deleteUser(username: string) {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
+      const userList= this.adduserdata.getAllUsers();
+      
       this.adduserdata.deleteUser(username)
         .subscribe(res => {
           // this.getAllUsers();

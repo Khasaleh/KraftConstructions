@@ -9,28 +9,33 @@ import {FormGroup,FormBuilder} from '@angular/forms';
   styleUrls: ['./admin-about-us.component.css', '../../../styles.css']
 })
 export class AdminAboutUsComponent{
-  constructor(private aboutusdata : UpdabtusService, private fb:FormBuilder ) {}
+  constructor(private aboutus : UpdabtusService, private fb:FormBuilder ) {}
 addata!: FormGroup;
 imageLink: any;
 fileURL!: File;
-data:any;
+data!:any;
 globalUrl="http://99.72.32.144:8083";
 ngOnInit(): void {
+
     this.addata = this.fb.group ({
       description:[''],
       title: [''],
       imageUrl:['']
       
     });
-
+    // this.aboutus.showdata().subscribe( previousValue => {
+    //   this.addata.controls['description'].setValue(previousValue.description);
+    // });
   }
 
 submit(data: aboutusdata) {
   console.log(data);
-  this.aboutusdata.addata(data).subscribe((result)=> {
+  this.aboutus.addata(data).subscribe((result)=> {
     
     console.log(result);
-  })
+   
+  });
+
 
 }
 
@@ -56,7 +61,7 @@ onFileSelected(event: any) {
     const formData = new FormData();
     formData.append('image', this.fileURL);
   
-    this.aboutusdata.saveImage(formData).subscribe(
+    this.aboutus.saveImage(formData).subscribe(
       response => {
         // Handle the API response here
         console.log(response);
