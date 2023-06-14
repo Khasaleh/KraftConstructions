@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/careers-applications")
+@CrossOrigin(origins = "*", maxAge = 4300)
 public class CareersApplicationController {
     @Autowired
     private CareersApplicationService applicationService;
