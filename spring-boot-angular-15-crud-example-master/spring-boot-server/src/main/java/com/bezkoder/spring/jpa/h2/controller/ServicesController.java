@@ -25,7 +25,7 @@ public class ServicesController {
 
 
     @PostMapping("/addservices")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<ServicesResponseDTO> addService(@Valid @RequestBody ServicesRequestDTO servicesRequestDTO) {
         ServicesResponseDTO addservice = servicesServiceImpl.addService(servicesRequestDTO);
         return ResponseEntity.ok(addservice);
@@ -39,26 +39,26 @@ public class ServicesController {
 
 
     @PatchMapping("/{id}/enable")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public boolean enableService(@PathVariable Long id) {
         return servicesServiceImpl.disableAndEnableTheService(id, true);
     }
 
     @PatchMapping("/{id}/disable")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public boolean disableService(@PathVariable Long id) {
         return servicesServiceImpl.disableAndEnableTheService(id, false);
     }
 
     @PutMapping("/update-service/{id}")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<ServicesResponseDTO> updateService(@PathVariable Long id, @RequestBody ServicesRequestDTO dto) {
         ServicesResponseDTO result = servicesServiceImpl.updateService(id, dto);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete-service/{id}")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<Void> deleteService(@PathVariable Long id) {
         servicesServiceImpl.deleteService(id);
         return new ResponseEntity<>(HttpStatus.OK);
@@ -66,7 +66,7 @@ public class ServicesController {
 
 
     @PostMapping("/service/{id}/images")
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<?> uploadProjectImagesToServices(@PathVariable Long id, @RequestParam("images") MultipartFile[] images) {
         try {
             servicesServiceImpl.uploadImages(id, images);

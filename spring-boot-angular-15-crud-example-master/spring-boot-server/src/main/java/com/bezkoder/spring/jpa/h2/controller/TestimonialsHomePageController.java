@@ -36,7 +36,7 @@ public class TestimonialsHomePageController {
     }
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<List<TestimonialHomePageResponseDTO>> addTestimonials(@RequestBody List<TestimonialHomePageRequestDTO> testimonials) {
         List<TestimonialsHomePage> testimonialEntities = testimonialMapper.toEntities(testimonials);
         List<TestimonialsHomePage> savedTestimonials = testimonialService.addTestimonials(testimonialEntities);
@@ -45,7 +45,7 @@ public class TestimonialsHomePageController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<TestimonialHomePageResponseDTO> updateTestimonial(
             @PathVariable Long id, @RequestBody TestimonialHomePageRequestDTO testimonial) {
         TestimonialsHomePage testimonialEntity = testimonialMapper.toEntity(testimonial);
@@ -55,14 +55,14 @@ public class TestimonialsHomePageController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<Void> deleteTestimonialById(@PathVariable Long id) {
         testimonialService.deleteTestimonialById(id);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete-all")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<Void> deleteAllTestimonials() {
         testimonialService.deleteAllTestimonials();
         return ResponseEntity.ok().build();
