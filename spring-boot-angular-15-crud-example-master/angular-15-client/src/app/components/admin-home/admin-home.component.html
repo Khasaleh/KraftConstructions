@@ -6,16 +6,7 @@
                 <div class="card   card-shade">
                     <div class="card-body">
                         <div class="slideshow">
-                            <!-- <div class="slideshow-container">
-                                <div *ngFor="let image of images; let i = index" class="slide"
-                                    [ngClass]="{ 'active': i === activeIndex }">
-                                    <img [src]="image.url" alt="Slide {{i}}">
-                                </div>
-                            </div> -->
                             <div class="slideshow-container">
-                                <!-- <div *ngFor="let image of images; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
-                                  <img [src]="(imageLink)" alt="Slide {{i}}">
-                                </div> -->
                                 <div *ngFor="let imageLink of imageLink; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
                                     <img [src]="imageLink" alt="Slide {{i}}">
                                   </div>
@@ -31,14 +22,6 @@
                                 <input type="file" id="file-inputt" class="input-file"
                                     (change)="onFileSelected1($event)" accept="image/*" multiple>
                             </button>
-                            <!-- Display thumbnail images -->
-                            <!-- <div class="slideshow-thumbnails d-flex gap-3 ">
-                                <div *ngFor="let image of images; let i = index" class="thumbnail-item"
-                                    [class.active]="activeIndex === i">
-                                    <img class="thumbnail-image" [src]="images" alt="Thumbnail Image"
-                                        (click)="setActiveIndex(i)">
-                                </div>
-                            </div> -->
                             <div class="slideshow-thumbnails d-flex gap-3">
                                 <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item" [class.active]="activeIndex === i">
                                   <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image" (click)="setActiveIndex(i)">
@@ -72,7 +55,6 @@
          <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
         <section class="about-us">
             <div class="new-container">
-                <!-- <h2 class="main-head">Home</h2> -->
                 <div class="card   card-shade">
                     <div class="card-head">About us</div>
                     <div class="card-body">
@@ -121,8 +103,6 @@
             <div class="card  card-shade">
                 <div class="card-head">Services</div>
                 <div class="card-body">
-                    <!-- <h3 class="card-head-services">Select Services</h3> -->
-                    <!-- <div id="custom-kitchen" class="drop-input"> -->
                     <div class="drop-1 mb-3 mt-3">
                         <label class="card-head-services" for="inputField">Select Service</label> <br>
                         <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption">
@@ -244,7 +224,6 @@
                                     <input type="text" class="form-control mb-3" formControlName="name">
 
                                     <label class="mb-2">Description</label>
-                                    <!-- <input type="email" class="form-control form-control-lg  mb-3" formControlName="email"> -->
                                     <textarea class="form-control form-control-lg  mb-3" formControlName="email"
                                         placeholder="Enter a description..."></textarea>
                                     <label class="mb-2">Name</label>
