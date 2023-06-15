@@ -50,7 +50,6 @@
         <div class="logo">
           <a routerLink="/home"><img class="img-logo" src="../../../assets/logo.png"></a>
         </div>
-
         <div>
           <div class="nav-links-2">
             <a routerLink="/about-us"> About Us </a>
@@ -62,7 +61,6 @@
                 <a href="#">Bathroom</a>
                 <a href="#">Kitchen</a>
                 <a href="#">Basement</a>
-
               </div>
             </div>
             <a routerLink="/new-additions">New Additions</a>
@@ -74,10 +72,9 @@
                 <a href="#">Room additions</a>
               </div>
             </div>
-            <a routerLink="/careers">Careers</a>
+            <a *ngIf="sliderData?.status" routerLink="/careers">Careers</a>
             <a routerLink="/testimonials">Testimonials</a>
             <a routerLink="/payment">Payments</a>
-            <!-- <a routerLink="/contact-us">Contact us</a> -->
             <a routerLink="/request-estimate">Request Estimate</a>
           </div>
         </div>

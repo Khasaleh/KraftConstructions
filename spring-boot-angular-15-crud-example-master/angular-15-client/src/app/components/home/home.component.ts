@@ -17,9 +17,9 @@ export class HomeComponent implements OnInit {
 
   showSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-    console.log(this.currentSlide,"current slide");
-    console.log(this.slides);
-    console.log(this.slides[this.currentSlide]);
+    // console.log(this.currentSlide,"current slide");
+    // console.log(this.slides);
+    // console.log(this.slides[this.currentSlide]);
   
   }
   
