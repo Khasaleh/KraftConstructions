@@ -1,6 +1,8 @@
 package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.AboutUs;
+import com.bezkoder.spring.jpa.h2.dto.AboutUsFooterRequestDto;
+import com.bezkoder.spring.jpa.h2.dto.AboutUsFooterResponseDto;
 import com.bezkoder.spring.jpa.h2.dto.AboutUsRequestDTO;
 import com.bezkoder.spring.jpa.h2.mapper.AboutUsMapper;
 import com.bezkoder.spring.jpa.h2.repository.AboutUsRepository;
@@ -38,17 +40,31 @@ public class AboutUsServiceImpl implements AboutUsService {
         Optional<AboutUs> aboutUsOptional = aboutUsRepository.findById(id);
         if (aboutUsOptional.isPresent()) {
             AboutUs aboutUs = aboutUsOptional.get();
-            aboutUs.setTitle(aboutUsRequestDto.getTitle());
             aboutUs.setDescription(aboutUsRequestDto.getDescription());
             return aboutUsRepository.save(aboutUs);
         } else {
             AboutUs aboutUs = new AboutUs();
-            aboutUs.setTitle(aboutUsRequestDto.getTitle());
             aboutUs.setDescription(aboutUsRequestDto.getDescription());
             return aboutUsRepository.save(aboutUs);
 
         }
     }
+    public AboutUsFooterResponseDto createOrUpdateFooterImageAndTitle(Long id, AboutUsFooterRequestDto requestDto) throws IOException {
+        AboutUs aboutUs = aboutUsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("AboutUs entity with ID " + id + " not found"));
+
+        aboutUs.setTitle(requestDto.getTitle());
+
+        MultipartFile footerImage = requestDto.getFooterImage();
+        if (footerImage != null) {
+            String imageUrl = saveImage(footerImage);
+            aboutUs.setFooterImage(imageUrl);
+        }
+
+        AboutUs savedAboutUs = aboutUsRepository.save(aboutUs);
+        return aboutUsMapper.footerDto(savedAboutUs);
+    }
+
     @Override
     public void uploadAboutUsImage(Long id, MultipartFile image){
         Optional<AboutUs> aboutUsOptional = aboutUsRepository.findById(id);
