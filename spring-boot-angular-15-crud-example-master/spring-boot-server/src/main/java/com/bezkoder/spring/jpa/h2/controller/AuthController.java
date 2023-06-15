@@ -126,7 +126,7 @@ public class AuthController {
   }
   @PostMapping("/users/update/{username}")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-  public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
+  public ResponseEntity<?> updateUser(@PathVariable("username") String username, @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
 
     User user = userRepository.findByUsername(username)
      .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
