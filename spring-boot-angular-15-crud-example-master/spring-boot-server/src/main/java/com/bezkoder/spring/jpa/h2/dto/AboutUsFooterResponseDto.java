@@ -9,6 +9,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AboutUsRequestDTO {
-    private String description;
+public class AboutUsFooterResponseDto {
+    private String title;
+    private String footerImageUrl;
 }

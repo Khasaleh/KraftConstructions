@@ -9,7 +9,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AboutUsResponseDTO {
     private Long id;
-    private String title;
     private String description;
     private String imageUrl;
 
