@@ -36,7 +36,8 @@ export class LoginComponent {
     userdata: any;
 
     responsedata: any;
-
+    successMessage: string | null = null;
+    errorMessage: string | null = null;
 
 
 
@@ -64,8 +65,8 @@ export class LoginComponent {
 
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
-
-                    console.log("Navigate to admin page");
+                    
+                  
 
                     this.router.navigate(['/admin']);
                    
@@ -80,6 +81,8 @@ export class LoginComponent {
 
 
 
+            },err=> {
+          
             })
 
 

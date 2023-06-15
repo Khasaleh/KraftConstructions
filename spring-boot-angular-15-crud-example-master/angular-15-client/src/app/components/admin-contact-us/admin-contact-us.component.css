@@ -9,10 +9,11 @@
   font-family: var(--fonts-peragraph-reguler);
 }
 .home1 {
+  
   background-color: #e8ecf3;
   width: 100%;
   height: 865px;
-  margin-top: -230px;
+  margin-top: -210px;
   overflow: hidden;
   text-align: left;
   font-size: var(--fonts-peragraph-reguler-size);
@@ -26,6 +27,7 @@
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   width: 60%;
   height: 40%;
+ 
 }
 .desktop-4-item {
   position: relative;
@@ -33,7 +35,9 @@
   background-color: var(--colors-white);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
   width: 60%;
-  height: 30% ;
+  height: 30%;
+ 
+  
 }
 .desktop-11-inner {
   position: absolute;
@@ -361,12 +365,12 @@
 
 @media only screen and (max-width: 576px) {
   .home {
-      width: auto;
-      height: auto;
+      width: 100%;
+     
     }
     .home1 {
       width: auto;
-      height: auto;
+       
     }
     .desktop-3-item {
       position: relative;

@@ -14,6 +14,7 @@ export class AdminRequestComponent implements OnInit {
   userdata!:any[];
   userDetail!:FormGroup;
   userIdtoView!:number;
+  successMessage: string | null = null;
   constructor(private requser:ReqUserService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
    
@@ -63,6 +64,10 @@ deleteUser(id: number) {
     if (result === true) {
       this.requser.deleteUser(id)
         .subscribe(res => {
+          this.successMessage = 'Data Deleted successfully.';
+          setTimeout(() => {
+            this.successMessage = '';
+          }, 3000);
           this.getAll();
         });
     }

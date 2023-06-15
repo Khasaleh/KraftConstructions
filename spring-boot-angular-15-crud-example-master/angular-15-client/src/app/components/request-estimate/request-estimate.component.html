@@ -98,6 +98,13 @@
       <div class="col-12">
         <button type="submit" class="btn btn-success">Submit</button>
       </div>
+      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{ errorMessage }}
+      </div>
     </form>
     </div>
       </div>

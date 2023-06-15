@@ -54,6 +54,13 @@
                 <button class="save-btn" type="submit">save</button>
               </div>
             </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+              {{ successMessage }}
+            </div>
+            
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+              {{ errorMessage }}
+            </div>
           </div>
         </div>
       </section>
