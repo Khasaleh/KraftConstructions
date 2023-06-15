@@ -111,7 +111,9 @@
                   <button (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
                   
                 </mat-menu>
-                
+                <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                  {{ successMessage }}
+                </div>
                 
           </td>
             </tr>

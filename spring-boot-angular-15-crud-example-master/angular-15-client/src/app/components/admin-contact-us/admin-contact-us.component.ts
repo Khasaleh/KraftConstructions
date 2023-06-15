@@ -16,6 +16,7 @@ export class AdminContactUsComponent {
   userDetail!:FormGroup;
   userDetails!:FormGroup;
   data!:any;
+  successMessage: string | null = null;
   constructor(private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
  
@@ -33,7 +34,7 @@ export class AdminContactUsComponent {
     this.userDetails = this.formbuilder.group ({ 
      address:['']
     })
-    //  this.userDetails.controls['address'].setValue()
+   
 
 
     let currentDate = new Date();
@@ -71,9 +72,16 @@ export class AdminContactUsComponent {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      if (result === true) {
+      
+      if (result === true) 
+     
+      {
         this.conus.deleteUser(id)
           .subscribe(res => {
+            this.successMessage = 'Deleted successfully.';
+            setTimeout(() => {
+              this.successMessage = '';
+            }, 3000);
             this.getAll();
           });
       }
@@ -82,6 +90,10 @@ export class AdminContactUsComponent {
   edit(data:Address) {
     
   this.conus.updateContact(data).subscribe(res=> {
+    this.successMessage = 'Address Edited successfully.';
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000);
     console.log(res);
     
   })

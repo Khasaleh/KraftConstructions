@@ -13,8 +13,11 @@ export class AdminAboutUsComponent{
 addata!: FormGroup;
 imageLink: any;
 fileURL!: File;
+userdata!:any;
 data!:any;
 globalUrl="http://99.72.32.144:8083";
+successMessage: string | null = null;
+errorMessage: string | null = null;
 ngOnInit(): void {
 
     this.addata = this.fb.group ({
@@ -23,17 +26,31 @@ ngOnInit(): void {
       imageUrl:['']
       
     });
-    // this.aboutus.showdata().subscribe( previousValue => {
-    //   this.addata.controls['description'].setValue(previousValue.description);
-    // });
+    // this.aboutus.showdata().subscribe(
+    //   previousValue => {
+    //     this.addata.controls['description'].setValue(previousValue.description);
+    // }) 
+
   }
 
 submit(data: aboutusdata) {
   console.log(data);
   this.aboutus.addata(data).subscribe((result)=> {
+    this.onClick();
+    this.successMessage='Data Saved Successfully'
+
+setTimeout(() => {
+  this.successMessage = '';
+}, 3000);
+
     
     console.log(result);
    
+  },err=> {
+    this.errorMessage='Unable to save data'
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000);
   });
 
 
@@ -43,7 +60,7 @@ submit(data: aboutusdata) {
 onFileSelected(event: any) {
   this.fileURL = event.target.files[0];
   this.imageLink = URL.createObjectURL(this.fileURL);
-  this.onClick();
+ 
   console.log(this.fileURL);
   console.log(this.imageLink,'image');
   
@@ -63,11 +80,11 @@ onFileSelected(event: any) {
   
     this.aboutus.saveImage(formData).subscribe(
       response => {
-        // Handle the API response here
+   
         console.log(response);
       },
       error => {
-        // Handle any error that occurs during the API request
+  
         console.error(error);
       }
     );

@@ -43,7 +43,15 @@
       </tr>
     
     </tbody>
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
   </table>
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -96,6 +104,13 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button (click)="addUser()" type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Add User </button>
+                  </div>
+                  <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                    {{ successMessage }}
+                  </div>
+                  
+                  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                    {{ errorMessage }}
                   </div>
               </form>
 
