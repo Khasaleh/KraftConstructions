@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
-// import { ImageService } from 'src/app/service/image.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { UpdabtusService } from 'src/app/service/updabtus.service';
 
 @Component({
@@ -12,6 +11,7 @@ import { UpdabtusService } from 'src/app/service/updabtus.service';
 
 export class AboutUsComponent {
  globalUrl = 'http://99.72.32.144:8083'
+
   constructor(private aboutusdata : UpdabtusService, private builder: FormBuilder) {
     
   }
@@ -24,12 +24,15 @@ export class AboutUsComponent {
  
   
   ngOnInit(): void {
+  
+
     this.aboutusdata.showdata().subscribe((result)=>{
       console.log(result);
       this.data=result;
     });
-   
-    
+
+
+
   }
   
   

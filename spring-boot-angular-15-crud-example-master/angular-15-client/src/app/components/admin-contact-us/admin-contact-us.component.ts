@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { FormService } from '../../service/form-service.service';
+import { ContactUsService } from 'src/app/service/contact.us.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { Address } from 'src/app/model/address';
+import { DialogeComponent } from '../dialoge/dialoge.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-admin-contact-us',
   templateUrl: './admin-contact-us.component.html',
@@ -8,19 +12,80 @@ import { FormService } from '../../service/form-service.service';
 ]
 })
 export class AdminContactUsComponent {
-  firstname = "junaid";
-  lastname!:string;
-  email = "abc@gmail.com";
-  phone="+139992222";
-  message= "Simply dummy text of the printing and typesetting industry.LoremIpsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type.";
+  userdata!:any[];
+  userDetail!:FormGroup;
+  userDetails!:FormGroup;
+  data!:any;
+  constructor(private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
+  ngOnInit():void {
+ 
+
+    this.getAll();
+    this.userDetail = this.formbuilder.group ({ 
+      id:[''],
+      firstname : [''],
+      lastname : [''],
+      email : [''],
+      phonenumber: [''],
+      message:[''],
+      date:['']
+    })
+    this.userDetails = this.formbuilder.group ({ 
+     address:['']
+    })
+    //  this.userDetails.controls['address'].setValue()
+
+
+    let currentDate = new Date();
+    let day = currentDate.getDate();
+    let month = currentDate.getMonth() + 1;
+    let year = currentDate.getFullYear();
+    let formattedDate = day + "-" + month + "-" + year;
+
+    this.userDetail.patchValue({
+      date: formattedDate
+    });
+    this.conus.getContactAll().subscribe(
+      previousValue => {
+        this.userDetails.controls['address'].setValue(previousValue.address);
+
+  })
+}
   
-  constructor(private formService : FormService) {}
-    
-  ngOnInit() {}
         
-    submitForm() {
-      console.log(this.firstname);
-      // this.formService.submitForm().subscribe(response=>console.log(response));
-    // alert("Hello");
+  getAll() {
+    this.conus.getAll().subscribe((res) => {
+      console.log(res);
+      this.userdata = res;
+  
+    });
   }
+  
+
+  deleteUser(id: number) {
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `Do You want to delete ${id}?`,
+        showYesNoButtons: true
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {
+      if (result === true) {
+        this.conus.deleteUser(id)
+          .subscribe(res => {
+            this.getAll();
+          });
+      }
+    });
+  }
+  edit(data:Address) {
+    
+  this.conus.updateContact(data).subscribe(res=> {
+    console.log(res);
+    
+  })
+}
+
+
 }
