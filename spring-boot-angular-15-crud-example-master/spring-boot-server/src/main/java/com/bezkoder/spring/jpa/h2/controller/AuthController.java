@@ -174,7 +174,7 @@ public class AuthController {
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
     userRepository.delete(user);
 
-    return ResponseEntity.ok("User " + username + " has been deleted successfully.");
+    return ResponseEntity.ok(new MessageResponse("User " + username + " has been deleted successfully."));
   }
   @GetMapping("/users")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
