@@ -297,11 +297,12 @@ a {
 }
 
 .content {
-    width: 55%;
+    width: 50%;
 }
 
 .img-dyn {
     width: 85%;
+    height: 235px;
 }
 
 .content p {
@@ -600,8 +601,8 @@ a {
 }
 
 #eyes-img {
-    height: 30.18%;
-    width: 40.65%;
+    height: 15%;
+    width: 50%;
     margin: 26%;
 }
 
@@ -893,7 +894,44 @@ a {
 
 }
 
-
+.slide-container {
+    position: relative;
+    width: 55%;
+    height: 300px; /* Set the desired height */
+    /* overflow: hidden; */
+  }
+  
+  .slide {
+    /* display: flex; */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .slide-item {
+    width: 80%;
+  }
+  
+  .dot-indicators {
+    display: flex;
+    margin-top: 50px;
+  }
+  
+  .dot-indicators span {
+    width: 15px;
+    height: 15px;
+    background-color: #aaa;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot-indicators span.active {
+    background-color: #333;
+  }
+  
+  .heading {
+    font-size: 19;
+    font-weight: 600;
+}
 /* media queries */
 @media (max-width: 72.5em) {
     .button{

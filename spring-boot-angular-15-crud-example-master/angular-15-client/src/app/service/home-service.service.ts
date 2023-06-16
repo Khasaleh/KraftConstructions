@@ -8,6 +8,9 @@ import { Observable } from 'rxjs';
 export class HomeServiceService {
 
   constructor(private http: HttpClient) { }
+  getTestimonialsData(): Observable<any>{
+    return this.http.get('http://99.72.32.144:8081/api/testimonial-homepage')
+  }
   getsliderdata(): Observable<any> {
     return this.http.get('http://99.72.32.144:8081/api/news/')
   }
@@ -30,12 +33,20 @@ export class HomeServiceService {
     return this.http.post('http://99.72.32.144:8081/api/homepage-banner',images)
   }
   saveBannerData(bannerLink: string,bannerDescription:string, linkStatus:boolean): Observable<any>{
-    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/banner',{
+    return this.http.post('http://99.72.32.144:8081/api/homepageabout-us/update-banner',{
       "bannerLink": `${bannerLink}`,
-      "aboutusDescription": `${bannerDescription}`,
-      "linkStatus": `${linkStatus}`
-
+      "bannerDescription": `${bannerDescription}`,
+      "linkStatus": linkStatus
     })
   }
+  saveTestimonialData(testimonials: any[]): Observable<any> {
+  const payload = testimonials.map(testimonial => ({
+    heading: testimonial.heading,
+    description: testimonial.description,
+    name: testimonial.name
+  }));
+
+  return this.http.post('http://99.72.32.144:8081/api/testimonial-homepage', payload);
+}
 
 }

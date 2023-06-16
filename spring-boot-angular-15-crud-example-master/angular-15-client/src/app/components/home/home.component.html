@@ -2,8 +2,6 @@
 <main>
   <!-- Banner Section -->
   <section class="banner-section slide"  [style.background-image]="'url(' + slides[currentSlide] + ')'">
-    <!-- <section class="banner-section slide" [ngStyle]="{'background-image': 'url(' + globalUrl + slides[currentSlide] + ')'}"> -->
-
     <div *ngIf="sliderData?.status" class="headline" [style.background]="sliderData.backgroundColor"   [style.color]="sliderData.textColor">
       <marquee>{{ sliderData?.description }}</marquee>
     </div>
@@ -16,7 +14,6 @@
           <div class="learn-more">Learn more</div>
           <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png" alt="">
           </div>
-
         </a>
       </div>
     </div>
@@ -36,8 +33,6 @@
 
       </div>
     </div>
-
-
   </section>
   <!-- About Section -->
   <section class="About-section">
@@ -45,31 +40,13 @@
       <!-- about section content -->
       <div class="dream-home">
         <div class="content">
-          <!-- <h2 class="About-heading">
-            LET'S BEGIN DESIGNING <br>
-            YOUR DREAM HOME ... TODAY!
-          </h2>
-          <h3>About us</h3>
-          <p>
-            Kraft Construction is a family-owned business that was founded in Cincinnati, Ohio in 1971.
-            Over the years we have evolved into a residential remodeling company dedicated to helping
-            homeowners create their dream spaces with our individualized design approach and our dedicated
-            employees working in your homes that have a combined 106 years of experience.
-
-          </p> -->
-          <!-- <div *ngFor="let item of apiData | keyvalue">{{ item.aboutusDescription }}</div> -->
           <div class="apidata" [innerHTML]="apiData.aboutusDescription"></div>
-          <!-- <div [innerHTML]="apiData.aboutusLink"></div> -->
-
           <a id="btn" class="button" routerLink="./about-us">
             <div class="learn-more">Learn more</div>
             <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png"
                 alt="">
             </div>
           </a>
-
-
-
         </div>
         <!-- about section image -->
         <div class="images-icon">
@@ -90,7 +67,6 @@
     </div>
   </section>
   <!-- Services Section -->
-
   <section class="services-section">
     <div class="new-container">
       <!-- Our services section -->
@@ -141,24 +117,22 @@
       <h2 class="our-clients-say">Our Clients Say</h2>
       <div class="component-13">
         <div class="img-icon"><img class="img-logo" alt="" src="../../../assets/client3.png" /></div>
-        <div class="client-content">
+       
+        <div class="slide-container">
           <div class="bg6"><img id="eyes-img" class="img-logo" src="../../../assets/eyes.png" alt=""></div>
-          <p class="client-Sec-Para">
-            <strong class="strong-text">Suspendisse tortor enim, varius et porttitor sit amet,</strong>
-            Suspendisse tortor enim, varius et porttitor sit amet, posuere vitae
-            massa. Proin ac quam eu erat semper sagittis in vitae elit. Nam
-            neque erat, semper vel ultrices in, finibus eu magna. Pellentesque
-            habitant morbi tristique
-          </p>
-          <h3 class="katy-grey">Katy Grey</h3>
-          <p class="ceo-grey-industries">CEO Grey Industries</p>
-          <div class="rating">
-            <input type="radio" id="option1" name="rating" value="1">
-            <label for="option1"></label>
-            <input type="radio" id="option2" name="rating" value="2">
-            <label for="option2"></label>
-            <input type="radio" id="option3" name="rating" value="3">
-            <label for="option3"></label>
+            <ng-container *ngFor="let object of objects; let i = index">
+              <div *ngIf="i === activeSlideIndex" class="slide-item  client-Sec-Para">
+                <!-- Render your object data here -->
+                <div class="heading mb-3">{{ object.heading }}</div>
+                <div class="description mb-3">{{ object.description }}</div>
+                <div class="katy-grey">{{ object.name }}</div>
+              </div>
+            </ng-container>
+          <div class="dot-indicators">
+            <span *ngFor="let object of objects; let i = index"
+                  [class.active]="i === activeSlideIndex"
+                  (click)="setActiveSlide(i)">
+            </span>
           </div>
         </div>
       </div>
