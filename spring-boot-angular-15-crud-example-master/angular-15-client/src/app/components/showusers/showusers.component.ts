@@ -20,6 +20,8 @@ export class ShowusersComponent implements OnInit {
   data:any;
   imageLink: any;
   fileURL!: File;
+  successMessage: string | null = null;
+errorMessage: string | null = null;
   constructor(private adduserdata : AddUserService, private formBuilder: FormBuilder, private router: Router, private dialog : MatDialog) {}
 
   ngOnInit(): void {
@@ -54,10 +56,16 @@ deleteUser(username: string) {
 
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
+      const userList= this.adduserdata.getAllUsers();
+      
       this.adduserdata.deleteUser(username)
         .subscribe(res => {
+          this.successMessage="User Deleted Successfully!"
           // this.getAllUsers();
-        });
+        }, err=>{
+          this.errorMessage="User can't be deleted!"
+        }
+        );
     }
    
   });
@@ -123,11 +131,19 @@ editUser(user: User) {
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
     this.adduserdata.updateUser(updatedUser,this.oldUser).subscribe(res=>{
+      this.successMessage="User Updated Successfully";
+      setTimeout(() => {
+        this.successMessage = '';
+      }, 3000);
       console.log(res);
    
       this.getAllUsers();
     },err=>{
       console.log(err);
+      this.errorMessage="User cannot be Updated";
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
     });
   
 
@@ -148,12 +164,20 @@ editUser(user: User) {
     console.log(this.userObj.role)
      this.adduserdata.AddUser(this.userObj).subscribe(res=>{
       this.onClick();
+      this.successMessage="User Added Successfully"
+      setTimeout(() => {
+        this.successMessage = '';
+      }, 3000);
       console.log(res);
       
     
       
 
      }, err=> {
+      this.errorMessage="User cannot be added!"
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
       console.log(err)
      })
   }

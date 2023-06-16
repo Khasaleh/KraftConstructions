@@ -43,7 +43,15 @@
       </tr>
     
     </tbody>
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
+    
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
   </table>
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -81,7 +89,7 @@
                     <div class="col-sm-8">
                       <select class="form-select" formControlName="role" id="role">
                         <option value="admin">Admin</option>
-                        <option value="user">User</option>
+                        <option value="photographer">Photographer</option>
                       </select>
                     </div>
                   </div>
@@ -96,6 +104,13 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button (click)="addUser()" type="button" class="btn btn-outline-success" data-bs-dismiss="modal">Add User </button>
+                  </div>
+                  <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                    {{ successMessage }}
+                  </div>
+                  
+                  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                    {{ errorMessage }}
                   </div>
               </form>
 
@@ -140,7 +155,7 @@
                     <div class="col-sm-8">
                       <select class="form-select" formControlName="role" id="role">
                         <option value="admin" [selected]="this.userDetail.value.role === 'ROLE_ADMIN'">Admin</option>
-                        <option value="user" [selected]="this.userDetail.value.role === 'ROLE_USER'">User</option>
+                        <option value="photographer" [selected]="this.userDetail.value.role === 'ROLE_PHOTOGRAPHER'">Photographer</option>
                       </select>
                     </div>
                   </div>

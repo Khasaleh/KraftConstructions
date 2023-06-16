@@ -13,6 +13,8 @@ export class AddUserComponent {
   imageLink: any;
 fileURL!: File;
 
+errorMessage: string | null = null;
+
 onFileSelected(event: any) {
   this.fileURL = event.target.files[0];
   this.imageLink = URL.createObjectURL(this.fileURL);
@@ -60,6 +62,10 @@ ngOnInit(): void {
       
 
      }, err=> {
+      this.errorMessage = "User was not added.";
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
       console.log(err)
      })
   }

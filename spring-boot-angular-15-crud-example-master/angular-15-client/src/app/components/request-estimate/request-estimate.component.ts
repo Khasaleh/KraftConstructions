@@ -26,7 +26,8 @@ budgets: string[] = ['$25,000 to $50,000','$50,000 to $100,000','$100,000 to $15
 aboutUss: string[]= ['Social Platform', 'Friends and Family','other'];
 selectedServices: string[] = [];
 formattedAddress: string ='';
- 
+successMessage: string | null = null;
+errorMessage: string | null = null;
 
 constructor(private formBuilder : FormBuilder,private requser: ReqUserService,private dialog: MatDialog) {}
 ngOnInit(): void {
@@ -59,13 +60,22 @@ handleAddressChange(address: any) {
 submit() {
   this.userObj = this.userDetail.value; 
   console.log(this.userObj); 
-  this.openDialog();
+  // this.openDialog();
+  
   this.userDetail.reset();
   this.requser.ReqUser(this.userObj).subscribe(res => {
-    
+    this.successMessage = 'Data saved successfully.';
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000);
+    // this.openDialog();
     console.log(res);
-    
-    // Call the method to open the dialog
+  }, err => {
+    this.errorMessage = 'An error occurred while saving the data.';
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000);
+    console.log(err);
   })
   
 }

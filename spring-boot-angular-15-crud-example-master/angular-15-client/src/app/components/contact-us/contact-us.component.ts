@@ -1,13 +1,88 @@
 import { Component } from '@angular/core';
-
+import {FormGroup, FormBuilder} from '@angular/forms'
+import { MatDialog } from '@angular/material/dialog';
+import { ContactUs } from 'src/app/model/conus';
+import { ContactUsService } from 'src/app/service/contact.us.service';
+import { DialogeComponent } from '../dialoge/dialoge.component';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
   styleUrls: ['./contact-us.component.css']
 })
 export class ContactUsComponent {
-submitForm() {
-  console.log("abc");
+  userDetail!:FormGroup;
+  userObj: ContactUs = new ContactUs();
+  data!:any;
+  selectedCountryCode!:string[];
+  countryCodes = [ {name: 'United States', code: '+1' }, { name: 'Canada', code: '+1' }, { name: 'Mexico', code: '+52' },{ name: 'United Kingdom', code: '+44' },
+  { name: 'Australia', code: '+61' },
+  { name: 'France', code: '+33' },
+  { name: 'Spain', code: '+34' },
+  { name: 'Italy', code: '+39' },
+  { name: 'Germany', code: '+49' },
+  { name: 'Russia', code: '+7' },
+  { name: 'China', code: '+86' },
+  { name: 'India', code: '+91' },
+  { name: 'Brazil', code: '+55' },
+  { name: 'South Africa', code: '+27' },
+  { name: 'Egypt', code: '+20' }
+] 
+successMessage: string | null = null;
+errorMessage: string | null = null;
+
+  constructor(private formBuilder : FormBuilder, private conus:ContactUsService, private dialog:MatDialog) {}
+ngOnInit(): void {
+this.userDetail = this.formBuilder.group ({
+  firstname : [''],
+  lastname : [''],
+  email : [''],
+  phonenumber: [''],
+  message:['']
+
+  
+});
+this.conus.getContactAll().subscribe(result=> {
+console.log(result);
+this.data=result;
+})
+
+}
+
+submit() {
+  this.userObj = this.userDetail.value;
+  console.log(this.userObj);
+
+  this.conus.saveData(this.userObj).subscribe(res => {
+    this.successMessage = 'Data saved successfully.';
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 3000);
+    // this.openDialog();
+    console.log(res);
+  }, err => {
+    this.errorMessage = 'An error occurred while saving the data.';
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000);
+    console.log(err);
+  });
+}
+
+openDialog(): void {
+  const dialogRef = this.dialog.open(DialogeComponent, {
+    data: {
+      message: 'Submitted Successfully',
+      showYesNoButtons: false,
+      customButton: { label: 'Ok', action: 'custom-action' }
+    }
+
+  });
+  dialogRef.afterClosed().subscribe(result => {
+  
+    console.log(result);
+  });
+
+ 
 }
 
 }

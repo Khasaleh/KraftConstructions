@@ -4,7 +4,7 @@
         <div class="new-container">
           <div class="card  card-shade">
             <div class="card-head">About us</div>
-  
+          
             <div class="content-wrape">
               <div class="img-content">
                 <div class="img-box mb-3">
@@ -21,7 +21,7 @@
   
                 <div class="textarea">
                   <textarea class="form-control form-control-lg  mb-3" formControlName="description" id="exampleTextarea" rows="5" placeholder="Enter description">
-                    
+                   
                   </textarea>
                 </div>
   
@@ -53,6 +53,13 @@
               <div class="saveBtn mb-3 mt-5">
                 <button class="save-btn" type="submit">save</button>
               </div>
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+              {{ successMessage }}
+            </div>
+            
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+              {{ errorMessage }}
             </div>
           </div>
         </div>

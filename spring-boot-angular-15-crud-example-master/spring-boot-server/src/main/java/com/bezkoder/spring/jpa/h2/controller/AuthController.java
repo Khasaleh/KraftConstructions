@@ -126,13 +126,15 @@ public class AuthController {
   }
   @PostMapping("/users/update/{username}")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-  public ResponseEntity<?> updateUser(@PathVariable("username") String username,@Valid @RequestBody UpdateUserRequest updateUserRequest) throws Exception{
+  public ResponseEntity<?> updateUser(@PathVariable("username") String username, @RequestBody UpdateUserRequest updateUserRequest){
 
     User user = userRepository.findByUsername(username)
      .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
 
     // Update user properties
     user.setUsername(updateUserRequest.getUsername());
+    user.setFirstname(updateUserRequest.getFirstname());
+    user.setLastname(updateUserRequest.getLastname());
     user.setEmail(updateUserRequest.getEmail());
     user.setPassword(encoder.encode(updateUserRequest.getPassword()));
 
@@ -172,7 +174,7 @@ public class AuthController {
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
     userRepository.delete(user);
 
-    return ResponseEntity.ok("User " + username + " has been deleted successfully.");
+    return ResponseEntity.ok(new MessageResponse("User " + username + " has been deleted successfully."));
   }
   @GetMapping("/users")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
