@@ -7,27 +7,30 @@
                     <div class="card-body">
                         <div class="slideshow">
                             <div class="slideshow-container">
-                                <div *ngFor="let imageLink of imageLink; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                                <div *ngFor="let imageLink of imageLink; let i = index" class="slide"
+                                    [ngClass]="{ 'active': i === activeIndex }">
                                     <img [src]="imageLink" alt="Slide {{i}}">
-                                  </div>
-                              </div>
+                                </div>
+                            </div>
 
                             <div class="slide-dots">
                                 <span *ngFor="let image of images; let i = index" class="dot"
                                     [ngClass]="{ 'active': i === activeIndex }" (click)="setActiveIndex(i)"></span>
                             </div>
                             <div class="d-flex gap-3 mt-4">
-                            <button class="video-btn">
-                                <label class="img-upld" for="file-inputt">+</label>
-                                <input type="file" id="file-inputt" class="input-file"
-                                    (change)="onFileSelected1($event)" accept="image/*" multiple>
-                            </button>
-                            <div class="slideshow-thumbnails d-flex gap-3">
-                                <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item" [class.active]="activeIndex === i">
-                                  <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image" (click)="setActiveIndex(i)">
+                                <button class="video-btn">
+                                    <label class="img-upld" for="file-inputt">+</label>
+                                    <input type="file" id="file-inputt" class="input-file"
+                                        (change)="onFileSelected1($event)" accept="image/*" multiple>
+                                </button>
+                                <div class="slideshow-thumbnails d-flex gap-3">
+                                    <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item"
+                                        [class.active]="activeIndex === i">
+                                        <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image"
+                                            (click)="setActiveIndex(i)">
+                                    </div>
                                 </div>
-                              </div>
-                        </div>
+                            </div>
                         </div>
                         <div>
                             <h3 class="card-head2 mt-2">Add Description</h3>
@@ -35,24 +38,22 @@
                                 formControlName="bannerDescription">
                             <div class="slider-wrape  ">
                                 <label class="switch  ">
-                                    <input type="checkbox" (click)="toggleLink()"
-                                    formControlName="linkStatus">
+                                    <input type="checkbox" (click)="toggleLink()" formControlName="linkStatus">
                                     <span class="slider round"></span>
                                 </label>
                                 <h4 class="slider-head">Add Link</h4>
                             </div>
-                            <input class="form-control" type="text" placeholder="add link"
-                                formControlName="bannerLink">
+                            <input class="form-control" type="text" placeholder="add link" formControlName="bannerLink">
                         </div>
                         <div class="saveBtn  mb-3 mt-5">
-                            <button type="submit"  class="save-btn">save</button>
+                            <button type="submit" class="save-btn">save</button>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
     </form>
-         <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="aboutUsForm" (ngSubmit)="onSubmit()">
         <section class="about-us">
             <div class="new-container">
                 <div class="card   card-shade">
@@ -180,7 +181,6 @@
     </section>
     <section class="testimonials">
         <div class="new-container">
-
             <div class="card card-shade">
                 <div class="test-bord">
                     <div class="card-head">Testimonials</div>
@@ -192,8 +192,6 @@
                         <h4 class="slider-head">Show</h4>
                     </div>
                 </div>
-
-
                 <div class="card-body" *ngIf="isCardBodyVisible">
                     <h2 class="our-clients-say">Our Clients Say</h2>
                     <div class="client-wrap  d-flex  gap-3 mb-4">
@@ -201,43 +199,27 @@
                             <img class="img-client" src="../../../assets/clientImg.png" alt="">
                         </div>
                         <div class="clientSec-cont">
-                            <form class="form-test" [formGroup]="myForm">
-                                <label class="mb-2">Heading</label>
-                                <input type="text" class="form-control mb-3" formControlName="name">
-
-                                <label class="mb-2">Description</label>
-                                <!-- <input type="email" class="form-control form-control-lg  mb-3" formControlName="email"> -->
-                                <textarea class="form-control form-control-lg  mb-3" formControlName="email"
-                                    placeholder="Enter a description"></textarea>
-                                <label class="mb-2">Name</label>
-                                <input type="text" class="form-control" formControlName="name">
-                                <div class="btn-wrap mt-3"><button class="add-btn"
-                                        (click)="addForm()">Duplicate</button></div>
-                            </form>
-
-
-
-                            <ng-container *ngFor="let form of forms; let i = index">
-                                <form class="form-test" [formGroup]="myForm">
-
+                            <ng-container *ngFor="let form of testimonialData; let i = index">
+                                <div class="form-test mb-3">
                                     <label class="mb-2">Heading</label>
-                                    <input type="text" class="form-control mb-3" formControlName="name">
+                                    <input type="text" class="form-control mb-3" [(ngModel)]="form.heading">
 
                                     <label class="mb-2">Description</label>
-                                    <textarea class="form-control form-control-lg  mb-3" formControlName="email"
+                                    <textarea class="form-control form-control-lg  mb-3" [(ngModel)]="form.description"
                                         placeholder="Enter a description..."></textarea>
                                     <label class="mb-2">Name</label>
-                                    <input type="text" class="form-control" formControlName="name">
+                                    <input type="text" class="form-control" [(ngModel)]="form.name">
                                     <div class="btn-wrap mt-3">
                                         <button class="add-btn" (click)="deleteForm(i)">Delete</button>
                                         <button class="add-btn" (click)="addForm()">Duplicate</button>
                                     </div>
-                                </form>
+                                </div>
                             </ng-container>
                         </div>
+
                     </div>
                     <div class="saveBtn  mb-5 mt-3">
-                        <button class="save-btn">save</button>
+                        <button (click)="onSubmit2()" class="save-btn">save</button>
                     </div>
                 </div>
             </div>

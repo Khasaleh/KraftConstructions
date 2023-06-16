@@ -4,6 +4,7 @@ import { CKEditorComponent, ChangeEvent } from '@ckeditor/ckeditor5-angular/cked
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeServiceService } from '../../service/home-service.service'
 import { HttpClient } from '@angular/common/http';
+import { error } from 'jquery';
 
 interface Image {
   image: string;
@@ -39,16 +40,21 @@ export class AdminHomeComponent {
   });
   forms: FormGroup[] = [];
   addForm() {
-    const newForm = new FormGroup({ ...this.myForm.controls });
-    this.forms.push(newForm);
+    // const newForm = new FormGroup({ ...this.myForm.controls });
+    // this.forms.push(newForm);
+    this.testimonialData.push({heading:'', description:'', name:''});
   }
   deleteForm(index: number) {
-    this.forms.splice(index, 1);
+    this.testimonialData.splice(index, 1);
   }
   aboutUsForm!: FormGroup;
   bannerForm!: FormGroup;
+  testimonialForm!: FormGroup;
+  testimonialForm2!: FormGroup;
   linkStatus: boolean = false;
-
+  testimonialData: [{heading:string, description:string, name:string}] = [{heading:'', description:'', name:''}];
+  test = '';
+  
   constructor(private formBuilder: FormBuilder, private homeService: HomeServiceService,
   ) { }
   onVideoUploadBtnClick() {
@@ -63,8 +69,10 @@ export class AdminHomeComponent {
       }
     );
   }
+
   apiData: any;
   ngOnInit(): void {
+    
     this.aboutUsForm = this.formBuilder.group({
 
       textEditor: ['', Validators.required],
@@ -83,7 +91,69 @@ export class AdminHomeComponent {
         console.log("ResponseData1", data);
       },
     )
+    this.testimonialForm = this.formBuilder.group({
+      heading: ['', Validators.required],
+      description: ['', Validators.required],
+      name: ['', Validators.required],
+    })
+    this.testimonialForm2 = this.formBuilder.group({
+      heading2: ['', Validators.required],
+      description2: ['', Validators.required],
+      name2: ['', Validators.required],
+    })
+    this.homeService.getTestimonialsData().subscribe(
+      response => {
+        console.log(response,"response for test get data");
+      },
+      error => {
+        console.log(error,"error for test data");
+      }
+    )
   }
+ 
+  onSubmit2() {
+    console.log("data for test", this.testimonialData);
+    console.log(this.test);
+    const testData = this.testimonialData;
+      this.homeService.saveTestimonialData(testData).subscribe(
+        response => {
+          console.log("Response for testimonial section", response);
+          // Handle the response here
+        },
+        error => {
+          console.error(error);
+          // Handle the error here0
+        }
+      );
+    }
+
+  
+  onFormSubmit() {
+    if (this.testimonialForm2.valid) {
+      const heading2 = this.testimonialForm2.get('heading2')?.value;
+      const description2 = this.testimonialForm2.get('description2')?.value;
+      const name2 = this.testimonialForm2.get('name2')?.value;
+
+      const testimonial = {
+        heading: heading2,
+        description: description2,
+        name: name2
+      };
+
+      this.homeService.saveTestimonialData([testimonial]).subscribe(
+        response => {
+          console.log("Response for testimonial section", response);
+          // Handle the response here
+        },
+        error => {
+          console.error(error);
+          // Handle the error here
+        }
+      );
+    }
+
+  }
+
   onSubmit1() {
 
     if (this.bannerForm.valid) {
