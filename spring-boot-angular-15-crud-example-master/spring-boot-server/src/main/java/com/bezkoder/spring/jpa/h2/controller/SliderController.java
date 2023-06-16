@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.dto.SliderDto;
 import com.bezkoder.spring.jpa.h2.service.SliderService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -47,15 +48,15 @@ public class SliderController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<String> deleteSlider(@PathVariable("id") Long id) {
+    public ResponseEntity<?> deleteSlider(@PathVariable("id") Long id) {
 
         sliderService.deleteSlider(id);
 
-        return ResponseEntity.ok().body("Slider deleted successfully");
+        return ResponseEntity.ok().body(new MessageResponse("Slider deleted successfully"));
     }
     @PutMapping("/{id}/images")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<SliderDto> updateSliderImages(@PathVariable("id") Long id,
+    public ResponseEntity<?> updateSliderImages(@PathVariable("id") Long id,
                                                         @RequestParam("images") MultipartFile[] images) {
         SliderDto updatedSlider;
         try {
@@ -68,7 +69,7 @@ public class SliderController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
 
-        return ResponseEntity.ok().body(updatedSlider);
+        return ResponseEntity.ok().body(new MessageResponse("Slider Updated Successfully"));
     }
 
 }

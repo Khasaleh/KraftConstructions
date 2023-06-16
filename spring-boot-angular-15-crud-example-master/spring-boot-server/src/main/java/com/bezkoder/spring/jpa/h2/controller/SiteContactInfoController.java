@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.dto.SiteContactInfoDto;
 import com.bezkoder.spring.jpa.h2.service.SiteContactInfoService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -25,9 +26,9 @@ public class SiteContactInfoController {
 
     @PutMapping
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<SiteContactInfoDto> updateSiteContactInfo(
+    public ResponseEntity<?> updateSiteContactInfo(
                                                                      @Valid @RequestBody SiteContactInfoDto siteContactInfoDto) {
         SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo( siteContactInfoDto);
-        return ResponseEntity.ok(updatedSiteContactInfoDto);
+        return ResponseEntity.ok(new MessageResponse("Site ContactInfo Updated Successfully"));
     }
 }

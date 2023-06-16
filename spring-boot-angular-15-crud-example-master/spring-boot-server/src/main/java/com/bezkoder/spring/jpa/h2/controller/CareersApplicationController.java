@@ -2,6 +2,7 @@ package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.CareersApplicationRequestDto;
 import com.bezkoder.spring.jpa.h2.dto.CareersApplicationResponseDto;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.service.CareersApplicationService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,8 +44,8 @@ public class CareersApplicationController {
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<String> deleteApplication(@PathVariable Long id) {
+    public ResponseEntity<?> deleteApplication(@PathVariable Long id) {
         applicationService.deleteApplicationById(id);
-        return ResponseEntity.ok("Application with ID " + id + " has been deleted successfully.");
+        return ResponseEntity.ok(new MessageResponse("Application with ID " + id + " has been deleted successfully."));
     }
 }
