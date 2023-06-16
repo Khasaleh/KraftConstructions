@@ -117,7 +117,7 @@ editUser(user: User) {
     firstname : this.userDetail.value.firstname,
     lastname : this.userDetail.value.lastname,
     password : this.userDetail.value.password,
-    role: this.userDetail.value.role,
+    role: [this.userDetail.value.role],
     imageUrl:this.userDetail.value.imageUrl
 
   };
@@ -160,7 +160,7 @@ editUser(user: User) {
     this.userObj.lastname = this.userDetail.value?.lastname;
     this.userObj.password = this.userDetail.value?.password;
     this.userObj.role = [this.userDetail.value?.role];
-    this.userObj.imageUrl= this.userDetail.value?.imageUrl;
+    // this.userObj.imageUrl= this.userDetail.value?.imageUrl;
     console.log(this.userObj.role)
      this.adduserdata.AddUser(this.userObj).subscribe(res=>{
       this.onClick();

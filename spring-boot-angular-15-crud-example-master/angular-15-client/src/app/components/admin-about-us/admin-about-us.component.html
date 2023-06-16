@@ -1,10 +1,10 @@
 <div class="admin-about-us">
-    <form [formGroup]="addata" (ngSubmit)="submit(addata.value)" class="card-body ">
+    <div class="card-body ">
       <section class="first">
         <div class="new-container">
           <div class="card  card-shade">
             <div class="card-head">About us</div>
-          
+            <form [formGroup]="addata" (ngSubmit)="submit(addata.value)">
             <div class="content-wrape">
               <div class="img-content">
                 <div class="img-box mb-3">
@@ -27,24 +27,26 @@
   
               </div>
               <div class="saveBtn mb-3 mt-5">
-                <button  class="save-btn" type="submit"> save</button>
+                <button  class="save-btn"> save</button>
               </div>
             </div>
+            </form>
           </div>
         </div>
       </section>
       <section class="second">
         <div class="new-container">
           <div id="card-length" class="card card-shade ">
-  
+            <form [formGroup]="userDetail" (ngSubmit)="submit1()">
             <div class="content-wrap">
               <div class="img-content">
                 <div class="img-box mb-3">
-                  <!-- <img *ngIf="urllink1" class="img-dyn" [src]="urllink1"> -->
+                  <img *ngIf="fileURL1" class="img-dyn" [src]="imageLink1" controls>
                 </div>
                 <div id="green-button" class="file-upload cardbtn">
                   <label for="file-input1" class="custom-button">Upload Image</label>
-                  <!-- <input type="file" id="file-input1" class="input-file" (change)="onFileSelected1($event)"> -->
+                  <input type="file" formControlName="footerImage" id="file-input1" class="input-file" (change)="onFileSelected1($event)" accept="footerImage/*">
+
                 </div>
               </div>
               <div class="form1">
@@ -61,8 +63,9 @@
             <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
               {{ errorMessage }}
             </div>
+            </form>
           </div>
         </div>
       </section>
-    </form>
+   
   </div>

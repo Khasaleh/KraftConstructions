@@ -67,12 +67,17 @@ export class AdminContactUsComponent {
     const dialogRef = this.dialog.open(DialogeComponent, {
       data: {
         message: `Do You want to delete ${id}?`,
-        showYesNoButtons: true
+        showYesNoButtons: true,
+        id:id
       }
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      
+      // this.getAll();
+      // this.successMessage = 'Deleted successfully.';
+      // setTimeout(() => {
+      //   this.successMessage = '';
+      // }, 1000);
       if (result === true) 
      
       {
@@ -82,8 +87,9 @@ export class AdminContactUsComponent {
             setTimeout(() => {
               this.successMessage = '';
             }, 3000);
-            this.getAll();
+           
           });
+          this.getAll();
       }
     });
   }
