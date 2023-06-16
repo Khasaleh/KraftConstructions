@@ -25,7 +25,7 @@ getAllUsers():Observable<AddUser[]> {
 return this.http.get<AddUser[]>(this.getUserURL);
 }
 updateUser(user: AddUser, oldUsername: string): Observable<any> {
-  return this.http.put<any>(`${this.updateURL}/${oldUsername}`, user);
+  return this.http.post<any>(`${this.updateURL}/${oldUsername}`, user);
 }
 deleteUser(username: string): Observable<any> {
   return this.http.delete<any>(`${this.deleteURL}/${username}`);
