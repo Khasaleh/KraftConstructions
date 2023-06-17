@@ -30,7 +30,7 @@ public class AboutUsController {
 
     @PostMapping("/update-description")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<?> updateAboutUs(@RequestBody AboutUsRequestDTO aboutUsRequestDto) {
+    public ResponseEntity<MessageResponse> updateAboutUs(@RequestBody AboutUsRequestDTO aboutUsRequestDto) {
         AboutUs aboutUs = aboutUsService.updateAboutUs(ABOUT_US_ID, aboutUsRequestDto);
         AboutUsResponseDTO aboutUsResponseDto = aboutUsMapper.toDto(aboutUs);
         return ResponseEntity.ok(new MessageResponse("AboutUs Updated Successfully"));
@@ -44,13 +44,13 @@ public class AboutUsController {
     }
     @PostMapping("/upload-image")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<?> uploadImage(@Valid MultipartFile image){
+    public ResponseEntity<MessageResponse> uploadImage(@Valid MultipartFile image){
         aboutUsService.uploadAboutUsImage(ABOUT_US_ID,image);
         return ResponseEntity.ok(new MessageResponse("Image Updated Successfully"));
     }
     @PostMapping("/update-footer")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<?> createOrUpdateFooterImageAndTitle(AboutUsFooterRequestDto requestDto) throws IOException {
+    public ResponseEntity<MessageResponse> createOrUpdateFooterImageAndTitle(AboutUsFooterRequestDto requestDto) throws IOException {
         aboutUsService.createOrUpdateFooterImageAndTitle(ABOUT_US_ID,requestDto);
         return ResponseEntity.ok(new MessageResponse("Footer Updated Successfully"));
     }

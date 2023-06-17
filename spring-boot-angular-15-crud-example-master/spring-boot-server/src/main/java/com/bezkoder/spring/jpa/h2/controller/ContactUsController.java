@@ -1,6 +1,7 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.ContactUsDto;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.service.ContactUsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,8 +38,8 @@ public class ContactUsController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<String> deleteContactUs(@PathVariable Long id) {
+    public ResponseEntity<MessageResponse> deleteContactUs(@PathVariable Long id) {
         contactUsService.deleteContactUs(id);
-        return ResponseEntity.ok("Contact us deleted successfully");
+        return ResponseEntity.ok(new MessageResponse("Contact us deleted successfully"));
     }
 }

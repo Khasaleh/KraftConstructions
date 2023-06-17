@@ -44,7 +44,7 @@ public class CareersApplicationController {
     }
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> deleteApplication(@PathVariable Long id) {
+    public ResponseEntity<MessageResponse> deleteApplication(@PathVariable Long id) {
         applicationService.deleteApplicationById(id);
         return ResponseEntity.ok(new MessageResponse("Application with ID " + id + " has been deleted successfully."));
     }

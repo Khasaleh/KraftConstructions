@@ -38,7 +38,7 @@ public class TestimonialController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteTestimonialImage(@PathVariable Long id) {
+    public ResponseEntity<MessageResponse> deleteTestimonialImage(@PathVariable Long id) {
         testimonialService.deleteTestimonialImage(id);
         return ResponseEntity.ok(new MessageResponse("Testimonial image deleted successfully"));
     }

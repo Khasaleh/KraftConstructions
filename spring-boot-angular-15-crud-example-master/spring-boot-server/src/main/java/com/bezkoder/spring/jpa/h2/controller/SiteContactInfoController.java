@@ -26,7 +26,7 @@ public class SiteContactInfoController {
 
     @PutMapping
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> updateSiteContactInfo(
+    public ResponseEntity<MessageResponse> updateSiteContactInfo(
                                                                      @Valid @RequestBody SiteContactInfoDto siteContactInfoDto) {
         SiteContactInfoDto updatedSiteContactInfoDto = siteContactInfoService.updateSiteContactInfo( siteContactInfoDto);
         return ResponseEntity.ok(new MessageResponse("Site ContactInfo Updated Successfully"));

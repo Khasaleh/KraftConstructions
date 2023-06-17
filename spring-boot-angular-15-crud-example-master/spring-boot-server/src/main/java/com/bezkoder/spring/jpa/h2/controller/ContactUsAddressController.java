@@ -24,7 +24,7 @@ public class ContactUsAddressController {
     private static final Long CONTACT_ADDRESS_ID = 1L;
     @PostMapping("/update-address")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<?> updateAboutUs(@RequestBody ContactUsAddressRequest contactUsAddressRequest) {
+    public ResponseEntity<MessageResponse> updateAboutUs(@RequestBody ContactUsAddressRequest contactUsAddressRequest) {
         ContactUsAddress contactUsAddress = contactUsAddressService.updateAddress(CONTACT_ADDRESS_ID, contactUsAddressRequest);
         ContactUsAddressResponse contactUsAddressResponse = contactUsAddressMapper.toDto(contactUsAddress);
         return ResponseEntity.ok(new MessageResponse("Address updated Sucessfully"));

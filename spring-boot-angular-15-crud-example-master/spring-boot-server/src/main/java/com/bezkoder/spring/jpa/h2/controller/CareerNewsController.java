@@ -49,7 +49,7 @@ public class CareerNewsController {
     }
     @PutMapping("/update-status")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> updateLinkStatus() {
+    public ResponseEntity<MessageResponse> updateLinkStatus() {
         boolean updatedLinkStatus = newsService.updateStatus(CAREER_NEWS);
         if (updatedLinkStatus) {
             return ResponseEntity.ok(new MessageResponse("Link status updated to true"));

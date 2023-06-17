@@ -42,14 +42,14 @@ public class RequestEstimateController {
     }
 
     @PostMapping("/saverequest")
-    public ResponseEntity<?> saveEstimateRequest(@RequestBody EstimateRequestDto estimateRequestDto) {
+    public ResponseEntity<MessageResponse> saveEstimateRequest(@RequestBody EstimateRequestDto estimateRequestDto) {
         EstimateRequest estimateRequest = requestEstimateService.saveRequest(estimateRequestDto);
         return ResponseEntity.ok(new MessageResponse("Submitted Successfully"));
     }
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> deleteEstimateRequestById(@PathVariable("id") Long id) {
+    public ResponseEntity<MessageResponse> deleteEstimateRequestById(@PathVariable("id") Long id) {
         requestEstimateService.deleteRequestById(id);
         return ResponseEntity.ok(new MessageResponse("Request Deleted Successfully"));
     }

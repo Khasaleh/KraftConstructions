@@ -26,7 +26,7 @@ public class HomePageSliderController {
 
     @PostMapping
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<?> uploadSliderImage(HomePageSliderRequestDto homePageSliderRequestDto) throws IOException {
+    public ResponseEntity<MessageResponse> uploadSliderImage(HomePageSliderRequestDto homePageSliderRequestDto) throws IOException {
         HomePageSliderResponseDto responseDto = homePageSliderService.uploadMultipleImages(homePageSliderRequestDto);
         return ResponseEntity.ok(new MessageResponse("Images Uploaded Successfully"));
     }
