@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormBuilder} from '@angular/forms'
 import { ReqUser } from 'src/app/model/requsr';
 import { ReqUserService } from 'src/app/service/Reqest.service';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogeComponent } from '../dialoge/dialoge.component' // Create a separate component for the dialog content
-import { ComponentRestrictions } from 'ngx-google-places-autocomplete/objects/options/componentRestrictions';
+
 
 @Component({
   selector: 'app-request-estimate',

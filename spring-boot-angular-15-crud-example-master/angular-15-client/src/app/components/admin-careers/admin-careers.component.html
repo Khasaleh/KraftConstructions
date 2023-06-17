@@ -10,77 +10,76 @@
     </nav>
     </div>
     <div class="desktop-3-item" >
-    
-      <form class="row g-3" *ngIf="show">
+      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+      <form [formGroup]="userDetail" class="row g-3" *ngIf="show">
         <div class="col-md-4">
           <label for="inputEmail4" class="form-label">First Name</label>
-          <input type="name" class="form-control" id="inputEmail4">
+          <input formControlName="firstName" type="name" class="form-control" id="inputEmail4">
         </div>
         <div class="col-md-4">
           <label for="inputPassword4" class="form-label">Last Name</label>
-          <input type="name" class="form-control" id="inputPassword4">
+          <input type="name" formControlName="lastName" class="form-control" id="inputPassword4">
         </div>
         <div class="col-md-4">
           <label for="inputEmail4" class="form-label">Email</label>
-          <input type="email" class="form-control" id="inputEmail4">
+          <input type="email"formControlName="email" class="form-control" id="inputEmail4">
         </div>
         <div class="col-md-4">
           <label for="inputEmail4" class="form-label">Phone Number</label>
-          <input type="text" class="form-control" id="inputEmail4">
+          <input type="text" formControlName="phoneNumber" class="form-control" id="inputEmail4">
         </div>
         <div class="col-10">
           <label for="inputAddress" class="form-label">Address</label>
-          <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+          <input type="text" formControlName="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
         </div>
         <div class="col-md-3">
           <label for="inputCity" class="form-label">City</label>
-          <input type="text" class="form-control" id="inputCity">
+          <input type="text"  formControlName="city" class="form-control" id="inputCity">
         </div>
         <div class="col-md-3">
           <label for="inputState" class="form-label">State</label>
           <select id="inputState" class="form-select">
-            <option selected>New York City</option>
-            <option>...</option>
+            <option>{{ userDetail.value.state}}</option>
+           
           </select>
         </div>
         <div class="col-md-3">
           <label for="inputZip" class="form-label">Zip</label>
-          <input type="text" class="form-control" id="inputZip">
+          <input type="text" formControlName="zip" class="form-control" id="inputZip">
         </div>
         
         <div class="col-md-6">
-          <label for="exampleFormControlTextarea1" class="form-label">Breifly Describe your project?</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          <label for="exampleFormControlTextarea1" class="form-label">Work Experience</label>
+          <textarea formControlName="workExperience" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
         </div>
-        <div class="col-10">
-            <label for="inputState" class="form-label">How did you hear about us?</label>
+        <div class="col-md-4">
+            <label for="inputState" class="form-label">Part/Full Time</label>
             <select id="inputState" class="form-select">
-              <option selected>simply-dummy-text</option>
-              <option>...</option>
+            <option>{{ userDetail.value.jobType}}</option>
+             
             </select>
           </div>
         <div class="col-md-3">
-            <label for="inputState" class="form-label">Position applying for?</label>
+            <label for="inputState" class="form-label">Do you have any work restrictions?</label>
             <select id="inputState" class="form-select">
-              <option disabled>Select</option>
-              <option>Administrator</option>
+              <option>{{ userDetail.value.workRestrictions}}</option>
             </select>
           </div>
           <div class="col-md-3">
-            <label for="inputState" class="form-label">Highest level of education Completed?</label>
+            <label for="inputState" class="form-label">Do you have any hour restrictions?</label>
             <select id="inputState" class="form-select">
-              <option selected>Masters</option>
-              <option>...</option>
+              <option>{{ userDetail.value.hoursRestrictions}}</option>
             </select>
           </div>
           <div class="col-md-3">
-            <label for="inputState" class="form-label">Do you have a driving license?</label>
+            <label for="inputState" class="form-label">Do you have any skills that relates to this job?</label>
             <select id="inputState" class="form-select">
-              <option selected>Yes</option>
-              <option>No</option>
+              <option>{{userDetail.value.skills}}</option>
             </select>
           </div>
-          <div class="row g-3">
+          <!-- <div class="row g-3">
           <div class="col-md-2">
             <label for="inputYears" class="form-label">Years of Experience?</label>
             <input type="text" class="form-control" id="inputYears">
@@ -98,8 +97,59 @@
           <div class="col-md-6">
             <label for="exampleFormControlTextarea1" class="form-label">Work Experience</label>
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div> -->
+          <h2 class="head2">Refferences</h2>
+
+          <div class="grid-container2">
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="Name">Name</label>
+                  <input [value]="userDetail.value.references[0]?.name" class="form-control" id="Name">
+                 
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="Relationship">Relationship</label>
+                  <input [value]="userDetail.value.references[0]?.relationship"class="form-control" id="Relationship">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="PhoneNumber">Phone</label>
+                  <input [value]="userDetail.value.references[0]?.phoneNumber" class="form-control" id="PhoneNumber">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="Name1">Name</label>
+                  <input [value]="userDetail.value.references[1]?.name" class="form-control" id="Name1">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="Relationship1">Relationship</label>
+                  <input [value]="userDetail.value.references[1]?.relationship" class="form-control" id="Relationship1">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="phoneNumber1">Phone</label>
+                  <input [value]="userDetail.value.references[1]?.phoneNumber" class="form-control" id="phoneNumber1">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="Name2">Name</label>
+                  <input [value]="userDetail.value.references[2]?.name" class="form-control" id="Name2">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2"class="form-label" for="Relationship2">Relationship</label>
+                  <input [value]="userDetail.value.references[2]?.relationship" class="form-control" id="Relationship2">
+              </div>
+              <div class="form-group">
+                  <label class= "mb-2" class="form-label" for="phoneNumber2">Phone</label>
+                  <input [value]="userDetail.value.references[2]?.phoneNumber" class="form-control" id="phoneNumber2">
+              </div>
           </div>
-          
+          <div class="form-group text-form-area">
+              <label class= "mb-2" class="form-label" for="otherNotes">Other Notes</label>
+              <textarea formControlName="otherNotes" class="form-control form-control-lg" id="otherNotes" rows="5"></textarea>
+          </div>
+          <!-- <div class="file">
+              <h3 class="mini-head" class="form-label" >Resume Upload </h3>
+              <div >
+                <img [src]="globalUrl+data?.resumeUrl" formControlName="resumeUrl" alt="Uploaded Image" accept="resumeUrl/*">
+              </div>
+          </div> -->
+        
       </form>
   
       <table class="table" *ngIf="ahide">
@@ -109,72 +159,37 @@
                 <th scope="col">Name</th>
                 <th scope="col">County/State</th>
                 <th scope="col">Phone Number</th>
-                <th scope="col">Budget</th>
+                <th scope="col">Email</th>
               </tr>
               
             </thead>
             <tbody>
             
-              <tr class = table-cell>
-                <td>Oliver John</td>
-                <td>Ny,United States</td>
-                <td>01-213565</td>
-                <td>$50,000 to $100,000</td>
+              <tr *ngFor="let usr of userdata" class = table-cell>
+                <td>{{usr.firstName}}</td>
+                <td>{{usr.state}}</td>
+                <td>{{usr.phoneNumber}}</td>
+                <td>{{usr.email}}</td>
               <td> 
                 <button mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="content()">View Complete Info</button>
-                     <button mat-menu-item>Download CV</button>
-                     <button mat-menu-item>Delete</button>
+                    <button (click)="viewUser(usr.id)" mat-menu-item (click)="content()">View Complete Info</button>
+                     <button (click)="downloadResume(usr.id)" mat-menu-item>Download CV</button>
+                     <button  (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
                     
                   </mat-menu>
-                  
+             
                   
             </td>
               </tr>
-              <tr class = table-cell1>
-                <td>Oliver John</td>
-                <td>Ny,United States</td>
-                <td>01-213565</td>
-                <td>$50,000 to $100,000</td>
-              <td> <div class="table-cell1">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item>View Complete Info</button>
-                    <button mat-menu-item>Download CV</button>
-                    <button mat-menu-item>Delete</button>
-                    
-                  </mat-menu>
-                  
-                  
-            </div></td>
-              </tr>
-              <tr class = table-cell>
-                <td>Oliver John</td>
-                <td>Ny,United States</td>
-                <td>01-213565</td>
-                <td>$50,000 to $100,000</td>
-              <td> <div class="table-cell">
-                <button mat-icon-button [matMenuTriggerFor]="menu">
-                    <mat-icon>more_vert</mat-icon>
-                  </button>
-                  <mat-menu #menu="matMenu">
-                    <button mat-menu-item>View Complete Info</button>
-                    <button mat-menu-item>Download CV</button>
-                    <button mat-menu-item>Delete</button>
-                    
-                  </mat-menu>
-                  
-                  
-            </div></td>
-              </tr>
+            
+            
+        
           
             </tbody>
-   
+            
           </table>
        
         

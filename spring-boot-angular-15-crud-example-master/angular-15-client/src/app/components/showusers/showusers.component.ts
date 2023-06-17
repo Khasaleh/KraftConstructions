@@ -61,22 +61,26 @@ deleteUser(username: string) {
       this.adduserdata.deleteUser(username)
         .subscribe(res => {
           this.successMessage="User Deleted Successfully!"
-          // this.getAllUsers();
+          setTimeout(() => {
+            this.successMessage = '';
+          }, 1000);
+          this.getAllUsers();
+        
         }, err=>{
           this.errorMessage="User can't be deleted!"
         }
         );
+        
     }
    
   });
-  this.getAllUsers();
+ 
+ 
 }
 onFileSelected(event: any) {
   this.fileURL = event.target.files[0];
   this.imageLink = URL.createObjectURL(this.fileURL);
-  // this.onClick();
-  console.log(this.fileURL);
-  console.log(this.imageLink);
+  
   
 
   }
@@ -134,7 +138,7 @@ editUser(user: User) {
       this.successMessage="User Updated Successfully";
       setTimeout(() => {
         this.successMessage = '';
-      }, 3000);
+      }, 1000);
       console.log(res);
    
       this.getAllUsers();
@@ -143,7 +147,7 @@ editUser(user: User) {
       this.errorMessage="User cannot be Updated";
       setTimeout(() => {
         this.errorMessage = '';
-      }, 3000);
+      }, 1000);
     });
   
 
@@ -167,9 +171,9 @@ editUser(user: User) {
       this.successMessage="User Added Successfully"
       setTimeout(() => {
         this.successMessage = '';
-      }, 3000);
+      }, 1000);
       console.log(res);
-      
+      this.getAllUsers();
     
       
 
@@ -177,8 +181,10 @@ editUser(user: User) {
       this.errorMessage="User cannot be added!"
       setTimeout(() => {
         this.errorMessage = '';
-      }, 3000);
+      }, 1000);
       console.log(err)
+      
      })
+     
   }
 }

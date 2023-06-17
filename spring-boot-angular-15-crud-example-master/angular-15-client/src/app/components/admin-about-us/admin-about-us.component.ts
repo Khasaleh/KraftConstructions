@@ -56,7 +56,7 @@ submit(data: aboutusdata) {
 
 setTimeout(() => {
   this.successMessage = '';
-}, 3000);
+}, 1000);
 
     
     console.log(result);
@@ -65,7 +65,7 @@ setTimeout(() => {
     this.errorMessage='Unable to save data'
     setTimeout(() => {
       this.errorMessage = '';
-    }, 3000);
+    }, 1000);
   });
 
 
@@ -73,7 +73,16 @@ setTimeout(() => {
 submit1() {
 
     this.onClick1();
-  
+
+    this.successMessage='Data Saved Successfully'
+
+    setTimeout(() => {
+      this.successMessage = '';
+    }, 1000);
+    
+
+       
+   
 
 
 }

@@ -16,6 +16,13 @@
 </div>
 
 <div class="desktop-3-item">
+  <div class="alert alert-success" role="alert" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+  
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
  <div class="table-responsive">
 <table class="table">
 <thead>   
@@ -43,13 +50,7 @@
       </tr>
     
     </tbody>
-    <div class="alert alert-success" role="alert" *ngIf="successMessage">
-      {{ successMessage }}
-    </div>
-    
-    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
+  
   </table>
 
   <!-- Modal -->

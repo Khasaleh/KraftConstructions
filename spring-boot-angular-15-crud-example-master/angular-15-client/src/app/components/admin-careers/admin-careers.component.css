@@ -15,8 +15,13 @@
   left: 21px;
   background-color: var(--colors-white);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
-    width: 65rem ; 
-  height: 60% ;
+  width: 65rem ; 
+  height: auto ;
+}
+.grid-container2{
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 .navbar-brand {
@@ -33,8 +38,16 @@
   margin-left: 20px;
   border-bottom: 1px solid #DDDDDD;
 }
+.head2{
+  padding: 10px 0px;
+  font-size:var(--font-size-13xl);
+  font-family:var(--h2-semibold);
+  font-weight: 500;
+  margin-left: 35%;
+  margin-top: 5%;
+}
 .col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
- , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt #inputYears  {
+ , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt #inputYears {
   margin-top: 20px;
   margin-left: 20px;
 }

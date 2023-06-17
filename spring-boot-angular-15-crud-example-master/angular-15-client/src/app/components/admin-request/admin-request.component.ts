@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder,FormGroup,FormControl } from '@angular/forms';
+import { FormBuilder,FormGroup } from '@angular/forms';
 import { ReqUser } from 'src/app/model/requsr';
 import { ReqUserService } from 'src/app/service/Reqest.service';
 import { MatDialog } from '@angular/material/dialog';
@@ -67,7 +67,7 @@ deleteUser(id: number) {
           this.successMessage = 'Data Deleted successfully.';
           setTimeout(() => {
             this.successMessage = '';
-          }, 3000);
+          }, 1000);
           this.getAll();
         });
     }

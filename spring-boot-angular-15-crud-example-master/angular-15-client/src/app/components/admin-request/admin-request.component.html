@@ -10,7 +10,9 @@
   </nav>
   </div>
   <div class="desktop-3-item" >
-  
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
     <form [formGroup]="userDetail" class="row g-3" *ngIf="show">
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">First Name</label>
@@ -111,9 +113,7 @@
                   <button (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
                   
                 </mat-menu>
-                <div class="alert alert-success" role="alert" *ngIf="successMessage">
-                  {{ successMessage }}
-                </div>
+              
                 
           </td>
             </tr>
