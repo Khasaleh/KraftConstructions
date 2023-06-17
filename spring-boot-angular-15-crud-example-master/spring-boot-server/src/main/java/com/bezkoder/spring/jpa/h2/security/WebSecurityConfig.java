@@ -67,26 +67,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
-//    @Bean
-//    public CorsConfigurationSource corsConfigurationSource() {
-//        final CorsConfiguration config = new CorsConfiguration();
-//        config.setAllowedOrigins(Arrays.asList("{http://localhost:4200, http://99.72.32.144:4200}"));
-//        config.setAllowedMethods(Arrays.asList(HttpMethod.GET.name(), HttpMethod.POST.name()));
-//        config.setAllowedHeaders(Arrays.asList("X-Requested-With", "Origin", "Content-Type", "Accept", "Authorization"));
-//        config.setExposedHeaders(Arrays.asList("Content-Disposition"));
-//        config.setMaxAge(4300L);
-//
-//        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-//        source.registerCorsConfiguration("/**", config);
-//        return source;
-//    }
-//
-//    @Bean
-//    public CorsFilter corsFilter() {
-//        CorsFilter corsFilter = new CorsFilter(corsConfigurationSource());
-//        return corsFilter;
-//    }
-
     @Bean
     @Override
     public AuthenticationManager authenticationManagerBean() throws Exception {
