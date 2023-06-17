@@ -8,9 +8,10 @@
     <div class="new-container">
       <div class="slider">
         <h1 class="construction-solution">
-          Remodeling for<br>your home
+          <!-- Remodeling for<br>your home -->
+          {{ bannerDescription?.bannerDescription }}
         </h1>
-        <a class="button" routerLink="/interior-remodelling">
+        <a class="button" routerLink= {{bannerDescription.bannerLink}}>
           <div class="learn-more">Learn more</div>
           <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png" alt="">
           </div>
