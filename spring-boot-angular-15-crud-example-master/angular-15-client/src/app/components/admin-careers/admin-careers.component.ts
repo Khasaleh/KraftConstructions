@@ -46,14 +46,7 @@ export class AdminCareersComponent {
   
     
   });
-  // const resume = [this.globalUrl+this.data?.resumeUrl];
-  // console.log(this.globalUrl+this.data?.resumeUrl);
- 
-  // const link = document.createElement('a');
-  // link.href = resume[0];
-  // link.download = 'file.pdf';
-  // document.body.appendChild(link);
-  // link.click();
+
   }
   content() {
     this.show = true;
@@ -78,14 +71,7 @@ export class AdminCareersComponent {
         }
       });
 
-    // const resume = [this.globalUrl+this.data?.resumeUrl];
-    // console.log(this.globalUrl+this.data?.resumeUrl);
   
-    // const link = document.createElement('a');
-    // link.href = resume[0];
-    // link.download = 'file.pdf';
-    // document.body.appendChild(link);
-    // link.click();
     
   }
   
