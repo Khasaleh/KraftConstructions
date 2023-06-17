@@ -72,15 +72,12 @@ export class AdminHomeComponent {
 
   apiData: any;
   ngOnInit(): void {
-    
     this.aboutUsForm = this.formBuilder.group({
-
       textEditor: ['', Validators.required],
       addLink: ['', Validators.required],
     });
 
     this.bannerForm = this.formBuilder.group({
-
       bannerLink: ['', Validators.required],
       bannerDescription: ['', Validators.required],
       linkStatus: [this.linkStatus]
@@ -91,16 +88,24 @@ export class AdminHomeComponent {
         console.log("ResponseData1", data);
       },
     )
-    this.testimonialForm = this.formBuilder.group({
-      heading: ['', Validators.required],
-      description: ['', Validators.required],
-      name: ['', Validators.required],
-    })
-    this.testimonialForm2 = this.formBuilder.group({
-      heading2: ['', Validators.required],
-      description2: ['', Validators.required],
-      name2: ['', Validators.required],
-    })
+    this.homeService.getHomeBannerDescription().subscribe(
+      previousResponse => {
+        this.bannerForm.controls['bannerLink'].setValue(previousResponse.bannerLink);
+        this.bannerForm.controls['bannerDescription'].setValue(previousResponse.bannerDescription);
+        this.bannerForm.controls['linkStatus'].setValue(previousResponse.linkStatus);
+        console.log(previousResponse, "response for banner data");
+      },
+    )
+    // this.testimonialForm = this.formBuilder.group({
+    //   heading: ['', Validators.required],
+    //   description: ['', Validators.required],
+    //   name: ['', Validators.required],
+    // })
+    // this.testimonialForm2 = this.formBuilder.group({
+    //   heading2: ['', Validators.required],
+    //   description2: ['', Validators.required],
+    //   name2: ['', Validators.required],
+    // })
     this.homeService.getTestimonialsData().subscribe(
       response => {
         console.log(response,"response for test get data");
@@ -128,31 +133,31 @@ export class AdminHomeComponent {
     }
 
   
-  onFormSubmit() {
-    if (this.testimonialForm2.valid) {
-      const heading2 = this.testimonialForm2.get('heading2')?.value;
-      const description2 = this.testimonialForm2.get('description2')?.value;
-      const name2 = this.testimonialForm2.get('name2')?.value;
+  // onFormSubmit() {
+  //   if (this.testimonialForm2.valid) {
+  //     const heading2 = this.testimonialForm2.get('heading2')?.value;
+  //     const description2 = this.testimonialForm2.get('description2')?.value;
+  //     const name2 = this.testimonialForm2.get('name2')?.value;
 
-      const testimonial = {
-        heading: heading2,
-        description: description2,
-        name: name2
-      };
+  //     const testimonial = {
+  //       heading: heading2,
+  //       description: description2,
+  //       name: name2
+  //     };
 
-      this.homeService.saveTestimonialData([testimonial]).subscribe(
-        response => {
-          console.log("Response for testimonial section", response);
-          // Handle the response here
-        },
-        error => {
-          console.error(error);
-          // Handle the error here
-        }
-      );
-    }
+  //     this.homeService.saveTestimonialData([testimonial]).subscribe(
+  //       response => {
+  //         console.log("Response for testimonial section", response);
+  //         // Handle the response here
+  //       },
+  //       error => {
+  //         console.error(error);
+  //         // Handle the error here
+  //       }
+  //     );
+  //   }
 
-  }
+  // }
 
   onSubmit1() {
 
@@ -188,13 +193,28 @@ export class AdminHomeComponent {
       )
     }
   }
+  buttonLinkStatus(){
+    this.homeService.bannerLinkStatus().subscribe(
+      response =>{
+        console.log(response);
+      },
+      error =>{
+        console.log(error);
+        
+      }
+    )
+  }
   isCardBodyVisible: boolean = false;
   toggleCardBody() {
     this.isCardBodyVisible = !this.isCardBodyVisible;
+    
   }
   isLinkVisible: boolean = false;
   toggleLink() {
+    console.log("hello world");
+    
     this.isLinkVisible = !this.isLinkVisible;
+    this.buttonLinkStatus();
   }
   images: File[] = [];
   imageLink: any[] = [];

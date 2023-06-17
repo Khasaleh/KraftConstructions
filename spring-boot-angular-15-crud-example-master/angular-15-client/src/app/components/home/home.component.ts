@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit {
   apiData: any;
   sliderData: any;
   bannerData: any;
+  bannerDescription: any;
   objects: any[] = [];
   activeSlideIndex: number = 0;
   globalUrl = 'http://99.72.32.144:8083'
@@ -50,6 +51,15 @@ export class HomeComponent implements OnInit {
       },
       error => {
         console.log(error, "error for test data");
+      }
+    )
+    this.homeService.getHomeBannerDescription().subscribe(
+      response => {
+        this.bannerDescription = response
+        console.log(this.bannerDescription, "response for banner data");
+      },
+      error => {
+        console.log(error, "error for banner data");
       }
     )
 
