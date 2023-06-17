@@ -5,7 +5,11 @@ import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from 'src/app/service/auth.service';
-
+interface UserData {
+    username:string;
+    password:string;
+    role:string|null;
+}
 
 
 
@@ -20,9 +24,15 @@ import { AuthService } from 'src/app/service/auth.service';
 
 })
 
+   
+  
+  
+
+  
+
 export class LoginComponent {
 
-
+hidePassword = true;
     constructor(private builder: FormBuilder, private service: AuthService, private router: Router) {
 
 
@@ -32,12 +42,11 @@ export class LoginComponent {
 
 
 
-
-    userdata: any;
+  
+    userdata: UserData= {username:'', password:'',role:null};
 
     responsedata: any;
-    successMessage: string | null = null;
-    errorMessage: string | null = null;
+  
 
 
 
@@ -53,6 +62,8 @@ export class LoginComponent {
 
 
     }
+ 
+      
 
     
     proceedlogin() {
@@ -65,8 +76,8 @@ export class LoginComponent {
 
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
-                    
-                  
+                    this.userdata.role = this.responsedata.role;
+                  console.log(this.userdata.role);
 
                     this.router.navigate(['/admin']);
                    
@@ -81,7 +92,7 @@ export class LoginComponent {
 
 
 
-            },err=> {
+            
           
             })
 
