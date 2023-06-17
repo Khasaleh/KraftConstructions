@@ -78,7 +78,7 @@ public class AuthController {
 
   @PostMapping("/users/create")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-  public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
+  public ResponseEntity<MessageResponse> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
     if (userRepository.existsByUsername(signUpRequest.getUsername())) {
       return ResponseEntity
               .badRequest()
@@ -126,7 +126,7 @@ public class AuthController {
   }
   @PostMapping("/users/update/{username}")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-  public ResponseEntity<?> updateUser(@PathVariable("username") String username, @RequestBody UpdateUserRequest updateUserRequest){
+  public ResponseEntity<MessageResponse> updateUser(@PathVariable("username") String username, @RequestBody UpdateUserRequest updateUserRequest){
 
     User user = userRepository.findByUsername(username)
      .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
@@ -169,7 +169,7 @@ public class AuthController {
   }
   @DeleteMapping("/users/delete/{username}")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-  public ResponseEntity<?> deleteUser(@PathVariable("username") String username) throws Exception {
+  public ResponseEntity<MessageResponse> deleteUser(@PathVariable("username") String username) throws Exception {
     User user = userRepository.findByUsername(username)
             .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND,"User Not Found with username: " + username,"Incorrect username"));
     userRepository.delete(user);
@@ -184,7 +184,7 @@ public class AuthController {
   }
   @PostMapping("/users/uploadprofile/{username}")
   @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-  public ResponseEntity<?> addImageToUser(@PathVariable("username") String username, @RequestBody MultipartFile profileImage) {
+  public ResponseEntity<MessageResponse> addImageToUser(@PathVariable("username") String username, @RequestBody MultipartFile profileImage) {
       User user = userDetails.addImageToUser(username, profileImage);
       return ResponseEntity.ok(new MessageResponse("Profile image uploaded successfully!"));
   }

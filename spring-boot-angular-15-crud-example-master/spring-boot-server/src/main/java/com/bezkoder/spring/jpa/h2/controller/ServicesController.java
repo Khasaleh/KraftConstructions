@@ -1,5 +1,6 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 import com.bezkoder.spring.jpa.h2.service.ServicesServiceImpl;
@@ -70,7 +71,7 @@ public class ServicesController {
     public ResponseEntity<?> uploadProjectImagesToServices(@PathVariable Long id, @RequestParam("images") MultipartFile[] images) {
         try {
             servicesServiceImpl.uploadImages(id, images);
-            return ResponseEntity.ok("Images uploaded successfully.");
+            return ResponseEntity.ok(new MessageResponse("Images uploaded successfully."));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }

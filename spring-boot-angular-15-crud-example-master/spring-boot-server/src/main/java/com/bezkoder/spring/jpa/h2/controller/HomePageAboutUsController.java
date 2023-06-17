@@ -52,10 +52,10 @@ public class HomePageAboutUsController {
     }
     @PostMapping("/upload-video")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<String> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
+    public ResponseEntity<MessageResponse> uploadVideo(@Valid @RequestParam("file") MultipartFile file) throws IOException {
         String videoUrl = saveVideoToFileSystem(file);
         homePageAboutUsService.updateAboutUsVideoUrl(ABOUT_US_ID, videoUrl);
-        return ResponseEntity.ok("Video uploaded successfully");
+        return ResponseEntity.ok(new MessageResponse("Video uploaded successfully"));
     }
 
     private String saveVideoToFileSystem(MultipartFile file) throws IOException {
@@ -79,9 +79,9 @@ public class HomePageAboutUsController {
 
     @PostMapping("/{id}/addservices")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<String> addServiceToHomePage(@PathVariable Long id, @RequestBody ServiceHomePageRequestDto serviceHomeRequestDto) {
+    public ResponseEntity<MessageResponse> addServiceToHomePage(@PathVariable Long id, @RequestBody ServiceHomePageRequestDto serviceHomeRequestDto) {
         String message = homePageAboutUsService.addServiceToHomePage(id, serviceHomeRequestDto.getServiceIds());
-        return ResponseEntity.ok(message);
+        return ResponseEntity.ok(new MessageResponse(message));
     }
 
     @GetMapping("/{id}/services")
@@ -90,7 +90,7 @@ public class HomePageAboutUsController {
     }
     @PostMapping("/update-banner")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<?> updateBanner(@RequestBody BannerRequestDTO bannerRequestDTO) {
+    public ResponseEntity<MessageResponse> updateBanner(@RequestBody BannerRequestDTO bannerRequestDTO) {
         HomePage homePage = homePageAboutUsService.updateBanner(ABOUT_US_ID, bannerRequestDTO);
         return ResponseEntity.ok(new MessageResponse("Banner Updated Successfully"));
     }
@@ -101,12 +101,12 @@ public class HomePageAboutUsController {
     }
     @PutMapping("/banner-link-status")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<String> updateLinkStatus() {
+    public ResponseEntity<MessageResponse> updateLinkStatus() {
         boolean updatedLinkStatus = homePageAboutUsService.updateLinkStatus(ABOUT_US_ID);
         if (updatedLinkStatus) {
-            return ResponseEntity.ok("Link status updated to true");
+            return ResponseEntity.ok(new MessageResponse("Link status updated to true"));
         } else {
-            return ResponseEntity.ok("Link status updated to false");
+            return ResponseEntity.ok(new MessageResponse("Link status updated to false"));
         }
     }
 }

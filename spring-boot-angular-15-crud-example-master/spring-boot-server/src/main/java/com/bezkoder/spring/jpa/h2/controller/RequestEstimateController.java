@@ -3,6 +3,7 @@ package com.bezkoder.spring.jpa.h2.controller;
 import com.bezkoder.spring.jpa.h2.Entity.EstimateRequest;
 import com.bezkoder.spring.jpa.h2.dto.EstimateRequestDto;
 import com.bezkoder.spring.jpa.h2.dto.EstimateResponseDto;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.mapper.EstimateMapper;
 import com.bezkoder.spring.jpa.h2.service.RequestEstimateService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
@@ -41,15 +42,15 @@ public class RequestEstimateController {
     }
 
     @PostMapping("/saverequest")
-    public ResponseEntity<?> saveEstimateRequest(@RequestBody EstimateRequestDto estimateRequestDto) {
+    public ResponseEntity<MessageResponse> saveEstimateRequest(@RequestBody EstimateRequestDto estimateRequestDto) {
         EstimateRequest estimateRequest = requestEstimateService.saveRequest(estimateRequestDto);
-        return ResponseEntity.ok("Submitted Successfully");
+        return ResponseEntity.ok(new MessageResponse("Submitted Successfully"));
     }
 
     @DeleteMapping("/delete/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> deleteEstimateRequestById(@PathVariable("id") Long id) {
+    public ResponseEntity<MessageResponse> deleteEstimateRequestById(@PathVariable("id") Long id) {
         requestEstimateService.deleteRequestById(id);
-        return ResponseEntity.ok("Request Deleted Successfully");
+        return ResponseEntity.ok(new MessageResponse("Request Deleted Successfully"));
     }
 }

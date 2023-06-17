@@ -2,6 +2,7 @@ package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.Entity.Testimonial;
 import com.bezkoder.spring.jpa.h2.Entity.TestimonialPage;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.service.TestimonialServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -37,9 +38,9 @@ public class TestimonialController {
 
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteTestimonialImage(@PathVariable Long id) {
+    public ResponseEntity<MessageResponse> deleteTestimonialImage(@PathVariable Long id) {
         testimonialService.deleteTestimonialImage(id);
-        return ResponseEntity.ok("Testimonial image deleted successfully");
+        return ResponseEntity.ok(new MessageResponse("Testimonial image deleted successfully"));
     }
 
 
