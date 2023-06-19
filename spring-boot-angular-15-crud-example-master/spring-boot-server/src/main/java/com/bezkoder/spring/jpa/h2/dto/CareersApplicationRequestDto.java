@@ -25,6 +25,7 @@ public class CareersApplicationRequestDto {
     private String jobType;
     private String workRestrictions;
     private String hoursRestrictions;
+    private String skills;
     private List<Reference> references;
     private String otherNotes;
     private MultipartFile resume;
