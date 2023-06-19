@@ -76,8 +76,8 @@ hidePassword = true;
 
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
-                    this.userdata.role = this.responsedata.role;
-                  console.log(this.userdata.role);
+                    // this.userdata.role = this.responsedata.role;
+                    // console.log(this.userdata.role);
 
                     this.router.navigate(['/admin']);
                    

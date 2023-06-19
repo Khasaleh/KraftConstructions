@@ -56,14 +56,14 @@ submit() {
     this.successMessage = 'Data saved successfully.';
     setTimeout(() => {
       this.successMessage = '';
-    }, 3000);
+    }, 1000);
     // this.openDialog();
     console.log(res);
   }, err => {
     this.errorMessage = 'An error occurred while saving the data.';
     setTimeout(() => {
       this.errorMessage = '';
-    }, 3000);
+    }, 1000);
     console.log(err);
   });
 }

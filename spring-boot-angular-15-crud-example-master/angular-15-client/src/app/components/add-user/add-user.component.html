@@ -1,6 +1,12 @@
 <div class="home">
 
   <div class="desktop-3-item">
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
+    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+      {{ successMessage }}
+    </div>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
         <a class="navbar-brand">Add New User</a>
@@ -66,9 +72,7 @@
         </div>
     </form>
    
-    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
+   
 
   </div>
   

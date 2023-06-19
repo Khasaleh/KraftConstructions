@@ -17,6 +17,7 @@ export class AdminContactUsComponent {
   userDetails!:FormGroup;
   data!:any;
   successMessage: string | null = null;
+  errorMessage:string | null= null;
   constructor(private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
  
@@ -73,11 +74,7 @@ export class AdminContactUsComponent {
     });
   
     dialogRef.afterClosed().subscribe(result => {
-      // this.getAll();
-      // this.successMessage = 'Deleted successfully.';
-      // setTimeout(() => {
-      //   this.successMessage = '';
-      // }, 1000);
+   
       if (result === true) 
      
       {
@@ -86,10 +83,10 @@ export class AdminContactUsComponent {
             this.successMessage = 'Deleted successfully.';
             setTimeout(() => {
               this.successMessage = '';
-            }, 3000);
-           
+            }, 1000);
+            this.getAll();
           });
-          this.getAll();
+          
       }
     });
   }
@@ -99,8 +96,9 @@ export class AdminContactUsComponent {
     this.successMessage = 'Address Edited successfully.';
     setTimeout(() => {
       this.successMessage = '';
-    }, 3000);
+    }, 1000);
     console.log(res);
+    this.getAll();
     
   })
 }

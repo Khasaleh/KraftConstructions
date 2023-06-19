@@ -16,6 +16,13 @@
 </div>
 
 <div class="desktop-3-item">
+  <div class="alert alert-success" role="alert" *ngIf="successMessage">
+    {{ successMessage }}
+  </div>
+  
+  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+    {{ errorMessage }}
+  </div>
  <div class="table-responsive">
 <table class="table">
 <thead>   
@@ -31,25 +38,28 @@
     <tbody>
       <tr *ngFor="let usr of userdata">
         <td><img class="abc" src = {{globalUrl+usr?.imageUrl}}></td>
-        <!-- <td>{{usr.id}}</td> -->
+       
         <td>{{usr.username}}</td>
         <td>{{usr.email}}</td>
         <th>{{usr.roles[0].name}}</th>
-        <!-- <td *ngFor="let role of usr.roles">{{role.name}}
-        </td> -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editEmployee" (click)="editUser(usr)">Edit</button>
-        <button  type="button" class="btn btn-secondary" (click)="deleteUser(usr.username)">Delete</button>
+       
+       
+        <button data-bs-toggle="modal" data-bs-target="#editEmployee" mat-raised-button color="primary" class="edit-button" (click)="editUser(usr)">
+          <mat-icon>edit</mat-icon> Edit
+        </button>
+        <button mat-raised-button color="warn" class="delete-button" (click)="deleteUser(usr.username)">
+          <mat-icon>delete</mat-icon>
+          Delete
+        </button>
+        
+        
+        
+        
       
       </tr>
     
     </tbody>
-    <div class="alert alert-success" role="alert" *ngIf="successMessage">
-      {{ successMessage }}
-    </div>
-    
-    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
+  
   </table>
 
   <!-- Modal -->
