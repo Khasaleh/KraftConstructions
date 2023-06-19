@@ -12,23 +12,11 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "slider_images")
-public class SliderImage {
-
+@Table(name = "testimonial_slider_images")
+public class TestimonialSliderImage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "slider_id")
-    private Slider slider;
-
     private String imageUrl;
-
-    public SliderImage(Slider slider, String imageUrl) {
-        this.slider = slider;
-        this.imageUrl = imageUrl;
-    }
-
-
 }
