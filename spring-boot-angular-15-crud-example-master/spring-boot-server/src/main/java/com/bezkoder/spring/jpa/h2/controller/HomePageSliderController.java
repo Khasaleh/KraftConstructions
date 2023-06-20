@@ -52,8 +52,8 @@ public class HomePageSliderController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<Void> deleteSliderImage(@PathVariable("id") Long id) {
+    public ResponseEntity<MessageResponse> deleteSliderImage(@PathVariable("id") Long id) {
         homePageSliderService.deleteSliderImageById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new MessageResponse("Image Deleted Successfully!"));
     }
 }
