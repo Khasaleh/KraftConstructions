@@ -20,6 +20,9 @@ public class Review {
     @Column(name = "your_review")
     private String YourReview;
 
+    @Column(name = "description")
+    private String description;
+
 
     @Column(name = "work_experience")
     private String WorkExperience;
