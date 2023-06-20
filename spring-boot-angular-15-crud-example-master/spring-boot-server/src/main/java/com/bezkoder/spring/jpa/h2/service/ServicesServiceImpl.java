@@ -56,7 +56,7 @@ public class ServicesServiceImpl implements ServicesService {
 
     @Override
     public List<ServicesRequestDTO> getServicesByPage(String pageName) {
-        Optional<Services> serviceEntities = servicesRepository.findServiceByPage(pageName);
+        List<Services> serviceEntities = servicesRepository.findServiceByPage(pageName);
         List<ServicesRequestDTO> services = serviceEntities.stream()
                 .map(servicesEntity -> new ServicesRequestDTO(servicesEntity.getId(), servicesEntity.getServiceName(), servicesEntity.getPageName(), servicesEntity.isActive()))
                 .collect(Collectors.toList());

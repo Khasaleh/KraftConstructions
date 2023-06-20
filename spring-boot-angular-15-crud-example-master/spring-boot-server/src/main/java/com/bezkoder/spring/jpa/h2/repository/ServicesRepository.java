@@ -16,6 +16,6 @@ public interface ServicesRepository extends JpaRepository<Services, Long> {
 
 
     @Query("SELECT i FROM Services i WHERE i.pageName = ?1")
-    Optional<Services> findServiceByPage(String pageName);
+    List<Services> findServiceByPage(String pageName);
 }
 
