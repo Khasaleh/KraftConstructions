@@ -8,6 +8,8 @@ import java.util.List;
 public interface ServicesService {
     boolean disableAndEnableTheService(Long id, boolean isActive);
     List<ServicesRequestDTO> getServices();
+
+    List<ServicesRequestDTO> getServicesByPage(String pageName);
     ServicesResponseDTO addService(ServicesRequestDTO servicesRequestDTO);
     ServicesResponseDTO updateService(Long id, ServicesRequestDTO dto);
     void deleteService(Long id);
