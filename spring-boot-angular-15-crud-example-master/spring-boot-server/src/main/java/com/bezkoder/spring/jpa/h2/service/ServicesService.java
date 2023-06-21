@@ -2,6 +2,7 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 

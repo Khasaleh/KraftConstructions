@@ -10,18 +10,21 @@ import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
 import com.bezkoder.spring.jpa.h2.repository.PortfolioRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
-import java.nio.file.InvalidPathException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -105,11 +108,17 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
 
-    public String uploadImages(Long id, MultipartFile[] images) {
+    public String uploadImages(Long id, MultipartFile[] images) throws IOException {
         Services service = servicesRepository.findById(id).orElse(null);
 
         if (service == null) {
-            throw new GenericException(HttpStatus.NOT_FOUND," Service not found by id" +id,"Incorrect id");
+            throw new GenericException(HttpStatus.NOT_FOUND, "Service not found by id " + id, "Incorrect id");
+        }
+
+        // Retrieve existing portfolios for the service
+        List<Portfolio> existingPortfolios = portfolioRepository.findByServices(service);
+        for (Portfolio portfolio : existingPortfolios) {
+            portfolioRepository.delete(portfolio); // Remove existing portfolios from the database
         }
 
         if (service.getServiceDetails().isAddPortfolio()) {
@@ -125,23 +134,74 @@ public class ServicesServiceImpl implements ServicesService {
             servicesRepository.save(service);
             return "Added Project Images Successfully";
         }
-        return "Portfolio check is false so Project Image can't be added";
+
+        return "Portfolio check is false, so Project Images can't be added";
     }
 
-    private String saveImage(MultipartFile image) {
 
-        String fileName = UUID.randomUUID().toString() + "_" + image.getOriginalFilename();
-        try {
-            File file = new File("uploads/projectImage/" + fileName);
 
-            FileUtils.writeByteArrayToFile(file, image.getBytes());
-            return file.getPath();
+    public String saveImage(MultipartFile image) throws IOException {
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+        Path uploadPath = Paths.get("uploads/projectImage");
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
+        }
+        InputStream inputStream = image.getInputStream();
+        Path filePath = uploadPath.resolve(fileName);
+        String relativePath = "/projectImage/" + uploadPath.relativize(filePath).toString();
+        return relativePath;
+    }
 
-        } catch (IOException e) {
-            throw new InvalidPathException("Could not store image " + fileName + ". Please try again!", e.getMessage());
+    public List<String> getImagesForService(Long id) {
+        Services service = servicesRepository.findById(id).orElse(null);
+
+        if (service == null) {
+            throw new GenericException(HttpStatus.NOT_FOUND, "Service not found by id " + id, "Incorrect id");
+        }
+
+        List<String> imageUrls = new ArrayList<>();
+        for (Portfolio portfolio : service.getPortfolios()) {
+            imageUrls.add(portfolio.getImageUrl());
+        }
+
+        return imageUrls;
+    }
+
+    public String updateImageById(Long portfolioId, MultipartFile image) throws IOException {
+        Portfolio portfolio = portfolioRepository.findById(portfolioId).orElse(null);
+
+        if (portfolio == null) {
+            throw new GenericException(HttpStatus.NOT_FOUND, "Portfolio not found by id " + portfolioId, "Incorrect id");
+        }
+
+        // Remove existing image
+        String existingImageUrl = portfolio.getImageUrl();
+        deleteImage(existingImageUrl);
+
+        // Save and update the new image
+        String newImageUrl = saveImage(image);
+        portfolio.setImageUrl(newImageUrl);
+        portfolioRepository.save(portfolio);
+
+        return "Updated Image Successfully";
+    }
+
+    private void deleteImage(String imageUrl) {
+        if (imageUrl != null) {
+            String filePath = "uploads/projectImage" + imageUrl.substring(imageUrl.lastIndexOf('/'));
+            Path deletePath = Paths.get(filePath);
+            try {
+                Files.deleteIfExists(deletePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-}
+    }
+
+
+
+
 
 

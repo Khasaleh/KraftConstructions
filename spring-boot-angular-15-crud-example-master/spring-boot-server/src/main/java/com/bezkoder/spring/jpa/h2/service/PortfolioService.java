@@ -4,6 +4,7 @@ import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
 import com.bezkoder.spring.jpa.h2.dto.PortfolioDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
@@ -14,5 +15,7 @@ public interface PortfolioService {
     PortfolioDTO save(PortfolioDTO portfolioDTO);
 
     void delete(Long id);
+
+
 }
 

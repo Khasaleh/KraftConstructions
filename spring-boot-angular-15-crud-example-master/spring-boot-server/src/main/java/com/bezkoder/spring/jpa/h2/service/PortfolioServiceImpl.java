@@ -8,6 +8,16 @@ import com.bezkoder.spring.jpa.h2.repository.PortfolioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 public class PortfolioServiceImpl implements PortfolioService {
@@ -15,10 +25,9 @@ public class PortfolioServiceImpl implements PortfolioService {
     private PortfolioRepository portfolioRepository;
 
 
-
     @Override
     public PortfolioDTO findById(Long id) {
-        Portfolio portfolioItem = portfolioRepository.findById(id).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND," Portfolio item not found for id: " +id,"Incorrect id"));
+        Portfolio portfolioItem = portfolioRepository.findById(id).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, " Portfolio item not found for id: " + id, "Incorrect id"));
         return PortfolioMapper.toDTO(portfolioItem);
     }
 
@@ -34,5 +43,6 @@ public class PortfolioServiceImpl implements PortfolioService {
     public void delete(Long id) {
         portfolioRepository.deleteById(id);
     }
+
 }
 

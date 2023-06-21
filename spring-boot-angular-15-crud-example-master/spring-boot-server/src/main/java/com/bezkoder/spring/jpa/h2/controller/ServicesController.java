@@ -3,6 +3,8 @@ package com.bezkoder.spring.jpa.h2.controller;
 import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
+import com.bezkoder.spring.jpa.h2.service.PortfolioService;
 import com.bezkoder.spring.jpa.h2.service.ServicesServiceImpl;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 4300)
@@ -23,6 +26,9 @@ public class ServicesController {
 
     @Autowired
     public ServicesServiceImpl servicesServiceImpl;
+
+    @Autowired
+    public PortfolioService portfolioService;
 
 
     @PostMapping("/addservices")
@@ -85,6 +91,12 @@ public class ServicesController {
 
 
     }
+
+    @GetMapping("/{id}/images")
+    public List<String> getImagesByServiceId(@PathVariable Long id) {
+        return servicesServiceImpl.getImagesForService(id);
+    }
+
 
     }
 
