@@ -90,6 +90,7 @@ public class ServicesController {
             return ResponseEntity.ok(imageUrls);
     }
     @PutMapping("/{portfolioId}/images")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<MessageResponse> updateImageByPortfolioId(@PathVariable Long portfolioId, @RequestParam("image") MultipartFile image) {
         servicesServiceImpl.updateImageByPortfolioId(portfolioId, image);
         return ResponseEntity.ok(new MessageResponse("Image updated successfully"));
