@@ -39,7 +39,6 @@ public class ServicesController {
     }
 
     @GetMapping("/pageServices/{pageName}")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<List<ServicesRequestDTO>> getServicesByPage(@PathVariable String pageName) {
         List<ServicesRequestDTO> services = servicesServiceImpl.getServicesByPage(pageName);
         return ResponseEntity.ok(services);
