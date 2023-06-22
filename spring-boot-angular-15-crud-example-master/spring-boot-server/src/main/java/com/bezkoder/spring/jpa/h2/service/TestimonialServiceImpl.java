@@ -14,6 +14,7 @@ import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Objects;
 
@@ -57,6 +58,7 @@ public String saveImage(MultipartFile image) throws IOException {
     }
     InputStream inputStream = image.getInputStream();
     Path filePath = uploadPath.resolve(fileName);
+    Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
     String relativePath = "/testimonials/" + uploadPath.relativize(filePath).toString();
     return relativePath;
 }

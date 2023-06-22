@@ -11,22 +11,22 @@ import com.bezkoder.spring.jpa.h2.mapper.ServicesMapper;
 import com.bezkoder.spring.jpa.h2.repository.PortfolioRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesDetailsRepository;
 import com.bezkoder.spring.jpa.h2.repository.ServicesRepository;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
-import java.nio.file.InvalidPathException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -110,7 +110,7 @@ public class ServicesServiceImpl implements ServicesService {
     }
 
 
-    public String uploadImages(Long id, MultipartFile[] images) {
+    public String uploadImages(Long id, MultipartFile[] images) throws IOException {
         Services service = servicesRepository.findById(id).orElse(null);
 
         if (service == null) {
@@ -150,7 +150,7 @@ public class ServicesServiceImpl implements ServicesService {
 
         return portfolioResponses;
     }
-    public void updateImageByPortfolioId(Long portfolioId, MultipartFile image) {
+    public void updateImageByPortfolioId(Long portfolioId, MultipartFile image) throws IOException {
         Portfolio portfolio = portfolioRepository.findById(portfolioId).orElse(null);
 
         if (portfolio == null) {
@@ -162,22 +162,21 @@ public class ServicesServiceImpl implements ServicesService {
         portfolioRepository.save(portfolio);
     }
 
-    private String saveImage(MultipartFile image) {
-
-        String fileName = UUID.randomUUID().toString() + "_" + image.getOriginalFilename();
-        try {
-            File file = new File("uploads/projectImage/" + fileName);
-
-            FileUtils.writeByteArrayToFile(file, image.getBytes());
-            return file.getPath();
-
-        } catch (IOException e) {
-            throw new InvalidPathException("Could not store image " + fileName + ". Please try again!", e.getMessage());
+    private String saveImage(MultipartFile image) throws IOException {
+        String fileName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+        Path uploadPath = Paths.get("uploads/projectimage");
+        if (!Files.exists(uploadPath)) {
+            Files.createDirectories(uploadPath);
         }
+        InputStream inputStream = image.getInputStream();
+        Path filePath = uploadPath.resolve(fileName);
+        Files.copy(inputStream, filePath, StandardCopyOption.REPLACE_EXISTING);
+        String relativePath = "/projectimage/" + uploadPath.relativize(filePath).toString();
+        return relativePath;
     }
     private void deleteImage(String imageUrl) {
         if (imageUrl != null) {
-            String filePath = "uploads/projectImage" + imageUrl.substring(imageUrl.lastIndexOf('/'));
+            String filePath = "uploads/projectimage" + imageUrl.substring(imageUrl.lastIndexOf('/'));
             Path deletePath = Paths.get(filePath);
             try {
                 Files.deleteIfExists(deletePath);
