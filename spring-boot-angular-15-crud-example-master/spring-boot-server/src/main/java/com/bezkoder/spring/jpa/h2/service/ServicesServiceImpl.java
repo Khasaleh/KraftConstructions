@@ -161,31 +161,6 @@ public class ServicesServiceImpl implements ServicesService {
         portfolio.setImageUrl(newImageUrl);
         portfolioRepository.save(portfolio);
     }
-    public String updateImage(Long serviceId, int imageIndex, MultipartFile image) {
-        Services service = servicesRepository.findById(serviceId).orElse(null);
-
-        if (service == null) {
-            throw new GenericException(HttpStatus.NOT_FOUND, "Service not found by id " + serviceId, "Incorrect id");
-        }
-
-        List<Portfolio> portfolios = service.getPortfolios();
-
-        if (imageIndex < 0 || imageIndex >= portfolios.size()) {
-            throw new GenericException(HttpStatus.BAD_REQUEST, "Invalid image index: " + imageIndex, "Invalid image index");
-        }
-
-        Portfolio portfolioToUpdate = portfolios.get(imageIndex);
-        String previousImageUrl = portfolioToUpdate.getImageUrl();
-        if (previousImageUrl != null && !previousImageUrl.isEmpty()) {
-            deleteImage(previousImageUrl);
-        }
-
-        String imageUrl = saveImage(image);
-        portfolioToUpdate.setImageUrl(imageUrl);
-        portfolioRepository.save(portfolioToUpdate);
-
-        return "Updated image at index " + imageIndex + " successfully";
-    }
 
     private String saveImage(MultipartFile image) {
 

@@ -90,15 +90,10 @@ public class ServicesController {
             List<PortfolioResponse> imageUrls = servicesServiceImpl.getImagesByServiceId(serviceId);
             return ResponseEntity.ok(imageUrls);
     }
-    @PutMapping("/{portfolioId}/image")
+    @PutMapping("/{portfolioId}/images")
     public ResponseEntity<MessageResponse> updateImageByPortfolioId(@PathVariable Long portfolioId, @RequestParam("image") MultipartFile image) {
         servicesServiceImpl.updateImageByPortfolioId(portfolioId, image);
         return ResponseEntity.ok(new MessageResponse("Image updated successfully"));
-    }
-    @PostMapping("/{serviceId}/images/{imageIndex}")
-    public ResponseEntity<String> updateImage(@PathVariable Long serviceId, @PathVariable int imageIndex, @RequestParam("image") MultipartFile image) {
-            String result = servicesServiceImpl.updateImage(serviceId, imageIndex, image);
-            return ResponseEntity.ok(result);
     }
 }
 
