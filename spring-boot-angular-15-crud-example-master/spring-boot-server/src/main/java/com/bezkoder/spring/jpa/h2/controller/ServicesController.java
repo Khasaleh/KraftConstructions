@@ -1,8 +1,10 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
+import com.bezkoder.spring.jpa.h2.dto.PortfolioResponse;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
+import com.bezkoder.spring.jpa.h2.exception.GenericException;
 import com.bezkoder.spring.jpa.h2.service.ServicesServiceImpl;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,11 +83,19 @@ public class ServicesController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
-
-
     }
-
+    @GetMapping("/{serviceId}/images")
+    public ResponseEntity<List<PortfolioResponse>> getImagesByServiceId(@PathVariable Long serviceId) throws GenericException{
+            List<PortfolioResponse> imageUrls = servicesServiceImpl.getImagesByServiceId(serviceId);
+            return ResponseEntity.ok(imageUrls);
     }
+    @PutMapping("/{portfolioId}/images")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
+    public ResponseEntity<MessageResponse> updateImageByPortfolioId(@PathVariable Long portfolioId, @RequestParam("image") MultipartFile image) {
+        servicesServiceImpl.updateImageByPortfolioId(portfolioId, image);
+        return ResponseEntity.ok(new MessageResponse("Image updated successfully"));
+    }
+}
 
 
 

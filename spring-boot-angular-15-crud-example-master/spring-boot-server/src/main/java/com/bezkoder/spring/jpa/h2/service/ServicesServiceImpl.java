@@ -3,6 +3,7 @@ package com.bezkoder.spring.jpa.h2.service;
 
 import com.bezkoder.spring.jpa.h2.Entity.Portfolio;
 import com.bezkoder.spring.jpa.h2.Entity.Services;
+import com.bezkoder.spring.jpa.h2.dto.PortfolioResponse;
 import com.bezkoder.spring.jpa.h2.dto.ServicesRequestDTO;
 import com.bezkoder.spring.jpa.h2.dto.ServicesResponseDTO;
 import com.bezkoder.spring.jpa.h2.exception.GenericException;
@@ -18,7 +19,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.InvalidPathException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -128,6 +133,35 @@ public class ServicesServiceImpl implements ServicesService {
         return "Portfolio check is false so Project Image can't be added";
     }
 
+    public List<PortfolioResponse> getImagesByServiceId(Long serviceId) {
+        Services service = servicesRepository.findById(serviceId).orElse(null);
+
+        if (service == null) {
+            throw new GenericException(HttpStatus.NOT_FOUND, "Service not found by id " + serviceId, "Incorrect id");
+        }
+
+        List<Portfolio> portfolios = service.getPortfolios();
+        List<PortfolioResponse> portfolioResponses = new ArrayList<>();
+
+        for (Portfolio portfolio : portfolios) {
+            PortfolioResponse response = new PortfolioResponse(portfolio.getId(), portfolio.getImageUrl());
+            portfolioResponses.add(response);
+        }
+
+        return portfolioResponses;
+    }
+    public void updateImageByPortfolioId(Long portfolioId, MultipartFile image) {
+        Portfolio portfolio = portfolioRepository.findById(portfolioId).orElse(null);
+
+        if (portfolio == null) {
+            throw new GenericException(HttpStatus.NOT_FOUND, "Portfolio not found by id " + portfolioId, "Incorrect id");
+        }
+        deleteImage(portfolio.getImageUrl());
+        String newImageUrl = saveImage(image);
+        portfolio.setImageUrl(newImageUrl);
+        portfolioRepository.save(portfolio);
+    }
+
     private String saveImage(MultipartFile image) {
 
         String fileName = UUID.randomUUID().toString() + "_" + image.getOriginalFilename();
@@ -139,6 +173,17 @@ public class ServicesServiceImpl implements ServicesService {
 
         } catch (IOException e) {
             throw new InvalidPathException("Could not store image " + fileName + ". Please try again!", e.getMessage());
+        }
+    }
+    private void deleteImage(String imageUrl) {
+        if (imageUrl != null) {
+            String filePath = "uploads/projectImage" + imageUrl.substring(imageUrl.lastIndexOf('/'));
+            Path deletePath = Paths.get(filePath);
+            try {
+                Files.deleteIfExists(deletePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
     }
 
