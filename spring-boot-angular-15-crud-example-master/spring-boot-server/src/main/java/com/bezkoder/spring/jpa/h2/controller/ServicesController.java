@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 4300)
@@ -91,7 +92,7 @@ public class ServicesController {
     }
     @PutMapping("/{portfolioId}/images")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<MessageResponse> updateImageByPortfolioId(@PathVariable Long portfolioId, @RequestParam("image") MultipartFile image) {
+    public ResponseEntity<MessageResponse> updateImageByPortfolioId(@PathVariable Long portfolioId, @RequestParam("image") MultipartFile image) throws IOException {
         servicesServiceImpl.updateImageByPortfolioId(portfolioId, image);
         return ResponseEntity.ok(new MessageResponse("Image updated successfully"));
     }
