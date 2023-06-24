@@ -23,6 +23,8 @@ urllink:string ="";
 abc=true;
 userdata!:any[];
 successMessage: string | null = null;
+successMessage2: string | null = null;
+successMessage1: string | null = null;
 errorMessage: string | null = null;
 approvedata!:any[];
 addata!:FormGroup;
@@ -40,7 +42,8 @@ ngOnInit():void {
   this.getAll();
   this.getApprovedTest();
   this.addata = this.fb.group ({
-   
+   id:[''],
+   imageUrl:[''],
     page:[''],
     date:[''],
     time:['']
@@ -79,10 +82,12 @@ this.addata.patchValue({
 
 this.testimonialService.getImage().subscribe((res) => {
   this.imageData = res;
+
   console.log(this.imageData);
   if (this.imageData.length > 0) {
     this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
     this.imageLink = URL.createObjectURL(this.recentlyUploadedImage);
+  
   }
 });
 
@@ -281,15 +286,22 @@ approveTest(user:Testimonial,id:number) {
     if (result === true) {
       this.testimonialService.approveTest(user,id)
         .subscribe(res => {
-          this.successMessage = 'Data Approved Successfully.';
+          this.successMessage2 = 'Data Approved Successfully.';
           setTimeout(() => {
-            this.successMessage = '';
+            this.successMessage2 = '';
           }, 1000);
-          this.getAll();
+         } ,err=> {
+            this.errorMessage='Unable to save data'
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 1000);
+            
+          });
+        }
+        this.getAll(); 
         });
     }
-  });
-}
+  
 
 deleteTest(id:number) {
   const dialogRef = this.dialog.open(DialogeComponent, {
@@ -326,9 +338,9 @@ hideTest(user:Testimonial,id:number)
     if (result === true) {
       this.testimonialService.hideTest(user,id)
         .subscribe(res => {
-          this.successMessage = 'Data Hidden Successfully.';
+          this.successMessage1 = 'Data Hidden Successfully.';
           setTimeout(() => {
-            this.successMessage = '';
+            this.successMessage1 = '';
           }, 1000);
           this.getAll();
         });
