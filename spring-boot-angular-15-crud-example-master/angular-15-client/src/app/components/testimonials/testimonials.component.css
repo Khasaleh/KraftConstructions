@@ -98,6 +98,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none;
+    cursor: pointer;
 }
 
 #btn {
@@ -195,7 +196,7 @@
 }
 
 .rating-2 {
-    margin: 10px 170px;
+    margin: 10px 190px;
     display: flex;
     justify-content: space-between;
     width: 12%;
@@ -226,7 +227,7 @@
     border-radius: var(--br-8xs);
     padding: 30px 0px;
     margin-top: 8%;
-    width: 80%
+    /* width: 80% */
 }
 
 .let-begin-designing {
@@ -262,7 +263,7 @@
 }
 
 .form-img {
-    padding-left: 5%;
+    padding-left: 15%;
     width: 100%;
 }
 
@@ -271,7 +272,7 @@
 }
 
 .form-img-1 {
-    margin-left: -44px;
+    width: 100%;
 }
 
 .form-group-pad {

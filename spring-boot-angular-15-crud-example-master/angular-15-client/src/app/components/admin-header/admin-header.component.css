@@ -19,9 +19,12 @@
     padding: 0px;
 }
 
-.admin-img{
+.admin-img {
     padding-left: 15px;
-}
+    height: 60px;
+    border-radius: 50%;
+  }
+  
 .card-shade{
     box-shadow: 2px 8px 4px 0px lightgray;
 }

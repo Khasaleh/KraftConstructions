@@ -33,6 +33,7 @@ ngOnInit(): void {
     this.aboutus.showdata().subscribe(
       previousValue => {
         this.addata.controls['description'].setValue(previousValue?.description);
+        this.addata.controls['imageUrl'].setValue(previousValue.imageUrl);
     
     }) 
     this.userDetail = this.fb.group ({
@@ -42,6 +43,7 @@ ngOnInit(): void {
     this.aboutus.getFootImage().subscribe( 
       previousValue1 => {
         this.userDetail.controls['title'].setValue(previousValue1?.title);
+        this.userDetail.controls['footerImage'].setValue(previousValue1?.footerImage);
  
       }
     )
@@ -74,11 +76,7 @@ submit1() {
 
     this.onClick1();
 
-    this.successMessage='Data Saved Successfully'
-
-    setTimeout(() => {
-      this.successMessage = '';
-    }, 1000);
+ 
     
 
        
@@ -112,6 +110,7 @@ onFileSelected(event: any) {
   
     this.aboutus.saveImage(formData).subscribe(
       response => {
+    
    
         console.log(response);
       },
@@ -128,14 +127,21 @@ onFileSelected(event: any) {
     formData.append('title',this.userDetail.value.title)
     this.aboutus.saveFootImage(formData).subscribe(
       response => {
-   
-        console.log(response);
-      },
-      error => {
-  
-        console.error(error);
-      }
-    );
+        this.successMessage='Data Saved Successfully'
+
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 1000);
+        
+            
+            
+           
+          },err=> {
+            this.errorMessage='Unable to save data'
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 1000);
+          });
   }
 
   
