@@ -5,11 +5,11 @@ import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from 'src/app/service/auth.service';
-interface UserData {
-    username:string;
-    password:string;
-    role:string|null;
-}
+// interface UserData {
+//     username:string;
+//     password:string;
+//     role:string|null;
+// }
 
 
 
@@ -43,7 +43,7 @@ hidePassword = true;
 
 
   
-    userdata: UserData= {username:'', password:'',role:null};
+    // userdata: UserData= {username:'', password:'',role:null};
 
     responsedata: any;
   
@@ -76,18 +76,18 @@ hidePassword = true;
 
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
-                    // this.userdata.role = this.responsedata.role;
-                    // console.log(this.userdata.role);
-
+                    localStorage.setItem('user',JSON.stringify(result))
+                  
+                    
                     this.router.navigate(['/admin']);
                    
-
-                    // console.log("response",this.responsedata)
+                    console.log(localStorage.getItem('user'));
+                    
 
                 }
                 
                
-
+               
 
 
 

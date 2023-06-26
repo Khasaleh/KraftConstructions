@@ -31,38 +31,53 @@
                 <label for="star1"></label>
             </div>
             </div>
+            <form>
             <div class="rating-form-content">
             
                 <div class="form-wrape">
-                    <form>
+                    <form [formGroup]="userDetail">
                         <div class="form-group  form-group-pad">
                             <label for="formGroupExampleInput">Your Review</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput"
+                            <input formControlName="yourReview" type="text" class="form-control" id="formGroupExampleInput"
                                 placeholder="Summarize your review">
                         </div>
                         <div class="form-group  form-group-pad">
-                            <label for="exampleTextarea">Example Textarea</label>
-                            <textarea class="form-control form-control-lg" id="exampleTextarea" rows="5"></textarea>
+                            <label for="exampleTextarea">Descriptiption</label>
+                            <textarea formControlName="description" class="form-control form-control-lg" id="exampleTextarea" rows="5"></textarea>
                         </div>
                         <div class="form-group  form-group-pad">
                             <label for="formGroupExampleInput2">Working Experience</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2"
-                                placeholder="Tell us your name">
+                            <input formControlName="workExperience" type="text" class="form-control" id="formGroupExampleInput2"
+                               >
                         </div>
                         <div class="form-group  form-group-pad">
-                            <label for="formGroupExampleInput2">Your Email</label>
-                            <input type="text" class="form-control" id="formGroupExampleInput2"
+                            <label for="email">Your Email</label>
+                            <input formControlName="yourEmail" type="email" class="form-control" id="email"
                                 placeholder="Write your email">
                         </div>
-                    </form>
-                    <a id="btn" class="button" href=";">
-                        <div class="learn-more">Submit your review</div>
+                        <div class="form-group  form-group-pad">
+                            <label for="name">Your Name</label>
+                            <input formControlName="yourName" type="name" class="form-control" id="name"
+                                placeholder="Write your email">
+                        </div>
+                   
+                    <a id="btn" class="button">
+                        <div (click)="submit()" class="learn-more">Submit your review</div>
                     </a>
+                </form>
+                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                        {{ successMessage }}
+                      </div>
+                      
+                      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                        {{ errorMessage }}
+                      </div>
                     <h2 class="s-head">What other says about us</h2>
-                    <div class="review-part">
+                
+                    <div *ngFor="let data of userdata" class="review-part">
                         <div class="review-sec-head">
-                            <h3 class="th-head">Awsome job from start to finish</h3>
-                            <div class="review-head-wrape">
+                            <h3 class="th-head">{{data.yourReview}}</h3>
+                            <div  class="review-head-wrape">
                                 <div class="test-rating">
                                     <img class="star-img" src="../../../assets/star.png" alt="">
                                     <img class="star-img" src="../../../assets/star.png" alt="">
@@ -70,113 +85,59 @@
                                     <img class="star-img" src="../../../assets/star.png" alt="">
                                     <img class="star-img" src="../../../assets/Star5.png" alt="">
                                 </div>
-                                <div class="date"> March-20-2022</div>
+                                <div class="date"> {{this.userDetail.value.date1}}</div>
                             </div>
                         </div>
                         <p class="test-para">
-                            simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, <br>
-                            <strong class="str">Paul-Judy Metzler</strong>
+                            {{data.description}}
                         </p>
-            
-                        <div class="testimonials-line"></div>
-                    </div>
-                    <div class="review-part">
-                        <div class="review-sec-head">
-                            <h3 class="th-head">Awsome job from start to finish</h3>
-                            <div class="review-head-wrape">
-                                <div class="test-rating">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/Star5.png" alt="">
-                                </div>
-                                <div class="date"> March-20-2022</div>
-                            </div>
-                        </div>
-                        <p class="test-para">
-                            simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, <br>
-                            <strong class="str">Paul-Judy Metzler</strong>
-                        </p>
-            
-                        <div class="testimonials-line"></div>
-                    </div>
-                    <div class="review-part">
-                        <div class="review-sec-head">
-                            <h3 class="th-head">Awsome job from start to finish</h3>
-                            <div class="review-head-wrape">
-                                <div class="test-rating">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/Star5.png" alt="">
-                                </div>
-                                <div class="date"> March-20-2022</div>
-                            </div>
-                        </div>
-                        <p class="test-para">
-                            simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, <br>
-                            <strong class="str">Paul-Judy Metzler</strong>
-                        </p>
-            
-                        <div class="testimonials-line"></div>
-                    </div>
-                    <div class="review-part">
-                        <div class="review-sec-head">
-                            <h3 class="th-head">Awsome job from start to finish</h3>
-                            <div class="review-head-wrape">
-                                <div class="test-rating">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/Star5.png" alt="">
-                                </div>
-                                <div class="date"> March-20-2022</div>
-                            </div>
-                        </div>
-                        <p class="test-para">
-                            simply dummy text of the printing and typesetting industry.
-                            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book.
-                            It has survived not only five centuries, <br>
-                            <strong class="str">Paul-Judy Metzler</strong>
-                        </p>
-            
-                        <div class="testimonials-line"></div>
-                    </div>
+
+                    </div> 
                 </div>
                 <div class="form-img">
-                    <img class="form-img-1" src="../../../assets/FormContents.png" alt="">
-                    <img class="form-img-2" src="../../../assets/test-img2.png" alt="">
-                    <div class="rating-2">
+                    <ng-container *ngIf="imagedata && imagedata.length > 0">
+                        <img class="form-img-1" [src]="globalUrl + (imagedata[imagedata.length - 1]?.imageUrl || '')" alt="Uploaded Image" accept="image/*">
+                      </ng-container>
+                      
+                      
+                    
+                    <div id="carouselExample" class="carousel slide"style="margin-top:20px;">
+                        
+                        <div class="carousel-inner">
+                           <div class="carousel-item active" *ngFor="let abc of sliderdata">
+                            <img src={{globalUrl+abc?.imageUrl}} class="d-block w-100" alt="...">
+                          </div>
+                     
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
+                      
+                    <!-- <div class="rating-2">
                         <input type="radio" id="option1" name="rating-2" value="1">
                         <label for="option1"></label>
                         <input type="radio" id="option2" name="rating-2" value="2">
                         <label for="option2"></label>
                         <input type="radio" id="option3" name="rating-2" value="3">
                         <label for="option3"></label>
-                      </div>
+                      </div> -->
                       <div class="rectangle-parent1">
                         <p class="let-begin-designing">
                           Looking for a affordable and reliable construction
                           company for your project?
                         </p>
-                        <div class="quote-wrape"><a href="#" class="get-a-quote">Get a Quote</a></div>
+                        <div class="quote-wrape"><a routerLink="/request-estimate" class="get-a-quote">Get a Quote</a></div>
                       </div>
                 </div>
                 
             </div>
+            </form>
         </div>
     </section>
    

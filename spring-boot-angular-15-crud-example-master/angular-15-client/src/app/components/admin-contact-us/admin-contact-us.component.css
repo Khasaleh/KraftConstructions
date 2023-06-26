@@ -344,7 +344,7 @@
         left: 14.42px;
         line-height: 20px;
         display: inline-block;
-        width: 125.69px;
+        /* width: 125.69px; */
       }
       .delete {
         cursor: pointer;

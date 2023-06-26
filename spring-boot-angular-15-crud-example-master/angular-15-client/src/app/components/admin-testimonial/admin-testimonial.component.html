@@ -1,251 +1,149 @@
 
-    <div class="desktop-19">
-      <div class="desktop-19-child"></div>
-      <div class="desktop-19-item"></div>
-      <div class="rectangle-parent">
-         <div class="group-child"></div>
-        <div class="testimonials-parent">
-          <div class="testimonials">Testimonials</div>
-          <div class="group-item"></div>
-        </div>
-        <div class="rectangle-group">
-          <div class="instance-child"></div>
-          <div class="rectangle-container">
-            <div class="group-inner"></div>
-            <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
-          </div>
-          <div class="text-of-the">
-            Text of the printing and typesetting industry. Lorem Ipsum has been
-          </div>
-          <div class="simply-dummy-text">
-            Simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book. It has survived not only five
-            centuries,
-          </div>
-          <div class="instance-item"></div>
-          <div class="tes-06">tes-06</div>
-          <div class="pm">15-02-2023 10:22pm</div>
-          <button class="group-div">
-            <button class="rectangle-button"></button>
-            <div class="approve">Approve</div>
-          </button>
-          <button class="group-button">
-            <div class="rectangle-div"></div>
-            <div class="delete">Delete</div>
-          </button>
-        </div>
-        <div class="rectangle-parent1">
-          <div class="instance-child"></div>
-          <div class="rectangle-container">
-            <div class="group-inner"></div>
-            <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
-          </div>
-          <div class="text-of-the">
-            Text of the printing and typesetting industry. Lorem Ipsum has been
-          </div>
-          <div class="simply-dummy-text">
-            Simply dummy text of the printing and typesetting industry. Lorem
-            Ipsum has been the industry's standard dummy text ever since the
-            1500s, when an unknown printer took a galley of type and scrambled
-            it to make a type specimen book. It has survived not only five
-            centuries,
-          </div>
-          <div class="instance-item"></div>
-          <div class="tes-06">tes-06</div>
-          <div class="pm">15-02-2023 10:22pm</div>
-          <button class="group-div">
-            <button class="group-child2"></button>
-            <div class="approve">Approve</div>
-          </button>
-          <button class="rectangle-parent4">
-            <button class="rectangle-div"></button>
-            <div class="delete1">Delete</div>
-          </button>
-        </div>
-         <div class="pagination-button-group"> 
-            <nav aria-label="Page navigation example">
-                <ul class="pagination">
-                  <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-                  <li class="page-item"><a class="page-link" href="#">1</a></li>
-                  <li class="page-item"><a class="page-link" href="#">2</a></li>
-                  <li class="page-item"><a class="page-link" href="#">3</a></li>
-                  <li class="page-item"><a class="page-link" href="#">4</a></li>
-                  <li class="page-item"><a class="page-link" href="#">5</a></li>
-                  <li class="page-item"><a class="page-link" href="#">6</a></li>
-                  <li class="page-item"><a class="page-link" href="#">7</a></li>
-                  <li class="page-item"><a class="page-link" href="#">8</a></li>
-                  <li class="page-item"><a class="page-link" href="#">9</a></li>
-                  <li class="page-item"><a class="page-link" href="#">10</a></li>
-                  <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                </ul>
-              </nav>
-         </div> 
-        <div class="component-18">
-          <div class="rectangle-parent5">
-            <div class="group-child4"></div>
-            <div class="checkbox">
-                <input class="checkbox1" type="checkbox" />
-            <div class="text">Hide</div>
+  <div class="home">
+    <div class = "heading">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Testimonials Image</a>
+      
+       </div>
+      </nav> 
+    </div>
+    <div class="desktop-3-item">
+      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+        {{ successMessage }}
+      </div>
+        <img class="form-img-1" [src]="imageLink" controls>
+       
+        <label for="file-input" class="custom-button">Upload Image</label>
+        <input type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
+        <button (click)="onClick1()" type="submit" class="btn btn-success btn3">Save</button>
+        <label (click)="deleteImage(recentlyUploadedImage?.id)" class="custom-button1">Delete Image</label>
+
+        <div class="group-child21" *ngIf="Show">
+          <div class="card">
+            <div class="card-header cardheader3">
+
+              
+                  <img class="user-icon1" alt="" [src]="imageLink1" />
+                  <div class="a d-flex gap-3">
+                    <div  *ngFor="let imageLink of imageLink1; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                    <img class="user-icon1" [src]="imageLink" alt="Slide {{i}}">
+                    <div class="slider-text"> Slider {{i+1}}</div>
+                  </div>
+                  </div>
+           
               </div>
-            <div class="checkbox2">
-                <input class="checkbox1" type="checkbox" />
-                <div class="text">Delete</div>
-                  
+       
+            <div class="card-body">
+            
+              <label (click)="deleteSlider(recentlyUploadedImage1?.id)" class=" abcd">Delete Image</label>
+             
+              <label for="file-input1" class=" abc">Upload Image</label>
+              <input multiple type="file" id="file-input1" class="input-file1" (change)="onFileSelected($event)" accept="image/*">
+              <button (click)="content1()" type="submit" class="btn btn-success btn2">Cancel</button>
+              <button (click)="submit1()"type="submit" class="btn btn-success btn-large1">Save</button>
             </div>
-            <div class="text-of-the2">
-              Text of the printing and typesetting industry. Lorem Ipsum has
-              been
-            </div>
-            <div class="simply-dummy-text2">
-              Simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard dummy text ever since the
-              1500s, when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book. It has survived not only five
-              centuries,
-            </div>
-            <div class="group-child5"></div>
-            <div class="pm2">15-02-2023 10:22pm</div>
-            <div class="line-div"></div>
           </div>
-          <div class="tes-01">tes-01</div>
-          <div class="rectangle-parent6">
-            <div class="group-inner"></div>
-            <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
-          </div>
-          <div class="katy-grey">Katy Grey</div>
-          <div class="ceo-grey-industries">CEO Grey Industries</div>
         </div>
-        <div class="component-19">
-          <div class="rectangle-parent5">
-            <div class="group-child4"></div>
-            <div class="checkbox">
-              <input class="checkbox1" type="checkbox" />
-            <div class="text">Hide</div>
-            </div>
-            <div class="checkbox2">
-                <input class="checkbox1" type="checkbox" />
-                <div class="text">Delete</div>
-            </div>
-            <div class="text-of-the2">
-              Text of the printing and typesetting industry. Lorem Ipsum has
-              been
-            </div>
-            <div class="simply-dummy-text2">
-              Simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard dummy text ever since the
-              1500s, when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book. It has survived not only five
-              centuries,
-            </div>
-            <div class="group-child5"></div>
-            <div class="pm2">15-02-2023 10:22pm</div>
-            <div class="line-div"></div>
-          </div>
-          <div class="tes-01">tes-01</div>
-          <div class="rectangle-parent6">
-            <div class="group-inner"></div>
-            <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
-          </div>
-          <div class="katy-grey">Katy Grey</div>
-          <div class="ceo-grey-industries">CEO Grey Industries</div>
-        </div>
-        <div class="component-20">
-          <div class="rectangle-parent5">
-            <div class="group-child4"></div>
-            <div class="checkbox">
-                <input class="checkbox1" type="checkbox" />
-                <div class="text">Hide</div>
-            </div>
-            <div class="checkbox2">
-                <input class="checkbox1" type="checkbox" />
-                <div class="text">Delete </div>
-            </div>
-            <div class="text-of-the2">
-              Text of the printing and typesetting industry. Lorem Ipsum has
-              been
-            </div>
-            <div class="simply-dummy-text2">
-              Simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard dummy text ever since the
-              1500s, when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book. It has survived not only five
-              centuries,
-            </div>
-            <div class="group-child5"></div>
-            <div class="pm2">15-02-2023 10:22pm</div>
-            <div class="line-div"></div>
-          </div>
-          <div class="tes-01">tes-01</div>
-          <div class="rectangle-parent6">
-            <div class="group-inner"></div>
-            <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
-          </div>
-          <div class="katy-grey">Katy Grey</div>
-          <div class="ceo-grey-industries">CEO Grey Industries</div>
-        </div>
-        <div class="component-21">
-          <div class="rectangle-parent5">
-            <div class="group-child4"></div>
-            <div class="checkbox">
-                <input class="checkbox1" type="checkbox" />
-                <div class="text">Hide</div>
-            </div>
-            <div class="checkbox2">
-                <input class="checkbox1" type="checkbox" />
-                <div class="text">Delete</div>
-            </div>
-            <div class="text-of-the2">
-              Text of the printing and typesetting industry. Lorem Ipsum has
-              been
-            </div>
-            <div class="simply-dummy-text2">
-              Simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard dummy text ever since the
-              1500s, when an unknown printer took a galley of type and scrambled
-              it to make a type specimen book. It has survived not only five
-              centuries,
-            </div>
-            <div class="group-child5"></div>
-            <div class="pm2">15-02-2023 10:22pm</div>
-            <div class="line-div"></div>
-          </div>
-          <div class="tes-01">tes-01</div>
-          <div class="rectangle-parent6">
-            <div class="group-inner"></div>
-            <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
-          </div>
-          <div class="katy-grey">Katy Grey</div>
-          <div class="ceo-grey-industries">CEO Grey Industries</div>
-        </div>
-      </div>
-      <div class="testimonials-image">Testimonials image</div>
-      <div class="image-group">
-        <img class="image-icon1" alt="" src="../../../assets/admin-testimg/Image (1).png" />
-
-        <img class="image-icon2" alt="" src="../../../assets/admin-testimg/Image (4).png" />
-
-        <img class="image-icon3" alt="" src="../../../assets/admin-testimg/Image (2).png" />
-
-        <img class="image-icon4" alt="" src="../../../assets/admin-testimg/Image (3).png" />
-
-        <img class="image-icon5" alt="" src="../../../assets/admin-testimg/Image.png" />
-      </div>
-      <div class="rectangle-parent14">
-        <div class="group-child19"></div>
-        <label for="file-input" class="upload-image">Upload Image</label>
-        <input type="file" id="file-input" class="upload-image" (change)="selectFiles($event)">
-      </div>
-      
-      
-      <button class="rectangle-parent15">
-        <div class="group-child20"></div>
-        <div class="add-slider"data-bs-toggle="modal" data-bs-target="#abc" (click)="Show = true">Add Slider</div>
-      </button>
-      <button class="delete-image">Delete image</button>
-
-
-  </div>
+        
   
+    
+          <button (click)="content()" class="group-child20" *ngIf="abc"></button>
+          <div (click)="content()"class="add-slider" *ngIf="abc" >Add Slider</div>
+         
+         
+          
+          
+    
+      </div>
+     </div>
+     
+
+     <div class="home1">
+        <div class = "heading">
+          <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand">Testimonials</a>
+              
+           </div>
+          </nav> 
+        </div>
+        <div class="desktop-4-item">
+          <div class="alert alert-success" role="alert" *ngIf="successMessage2">
+            {{ successMessage2 }}
+          </div>
+          
+         
+          <div class="card" *ngFor="let usr of userdata">
+            <div class="card-header card-header2 ">
+              {{addata.value.date}} {{addata.value.time}}
+            </div>
+            <div class="card-body">
+              <div class="row">
+       
+              <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
+             
+              <div class="col">
+              <h4 class="card-title">{{usr.yourReview}}</h4>
+              <p class="card-text">{{usr.description}}</p> 
+              <h4 class="card-title"style="font-size: var(--font-size-base);
+              line-height: 26px;
+              font-weight: 500;
+              color: var(--kraft-d-green);">{{usr.yourName}}</h4>
+              <div class="btn-container">
+                <button (click)="deleteTest(usr.id)" type="submit" class="btn btn-success btn1">Delete</button>  
+                <button (click)="approveTest(usr,usr.id)" type="submit" class="btn btn-success btn-large">Approve</button>
+
+              </div>
+              
+            
+            </div>
+          </div>
+        </div>
+  </div>
+  </div>
+  <div class="space"></div>
+  <div class="desktop-5-item" style="border-radius: 30%;">
+    <div class="alert alert-success" role="alert" *ngIf="successMessage1">
+      {{ successMessage1 }}
+    </div>
+  <div class="card" *ngFor="let usr of approvedata">
+    <div class="card-header card-header1">
+      {{addata.value.date}} {{addata.value.time}}
+    </div>
+    <div class="card-body">
+      <div class="row">
+
+      <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
+     
+      <div class="col">
+      <h4 class="card-title">{{usr.yourReview}}</h4>
+      <p class="card-text">{{usr.description}}</p> 
+      <h4 class="card-title"style="font-size: var(--font-size-base);
+              line-height: 26px;
+              font-weight: 500;
+              color: var(--kraft-d-green);">{{usr.yourName}}</h4>
+      <div class="container">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1"  (change)="onCheckboxChange1(usr.id)">
+          <label class="form-check-label" for="inlineCheckbox1">Delete</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2" (change)="onCheckboxChange(usr,usr.id)">
+          <label class="form-check-label" for="inlineCheckbox2">Hide</label>
+        </div>
+        
+        
+
+      </div>
+      
+    
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+
+</div>
 
