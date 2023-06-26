@@ -1,10 +1,10 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
-import com.bezkoder.spring.jpa.h2.dto.HomePageSliderRequestDto;
-import com.bezkoder.spring.jpa.h2.dto.HomePageSliderResponseDto;
 import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
-import com.bezkoder.spring.jpa.h2.mapper.HomePageSliderMapper;
-import com.bezkoder.spring.jpa.h2.service.HomePageSliderService;
+import com.bezkoder.spring.jpa.h2.dto.TestimonialSliderRequestDto;
+import com.bezkoder.spring.jpa.h2.dto.TestimonialSliderResponseDto;
+import com.bezkoder.spring.jpa.h2.mapper.TestimonialSliderMapper;
+import com.bezkoder.spring.jpa.h2.service.TestimonialSliderService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,24 +16,24 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
-@RequestMapping("/api/homepage-banner")
-public class HomePageSliderController {
+@RequestMapping("/api/testimonial-slider")
+public class TestimonialSliderController {
     @Autowired
-    private HomePageSliderService homePageSliderService;
+    private TestimonialSliderService testimonialSliderService;
 
     @Autowired
-    private HomePageSliderMapper homePageSliderMapper;
+    private TestimonialSliderMapper testimonialSliderMapper;
 
     @PostMapping
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
-    public ResponseEntity<MessageResponse> uploadSliderImage(HomePageSliderRequestDto homePageSliderRequestDto) throws IOException {
-        HomePageSliderResponseDto responseDto = homePageSliderService.uploadMultipleImages(homePageSliderRequestDto);
+    public ResponseEntity<MessageResponse> uploadSliderImage(TestimonialSliderRequestDto requestDto) throws IOException {
+        TestimonialSliderResponseDto responseDto = testimonialSliderService.uploadMultipleImages(requestDto);
         return ResponseEntity.ok(new MessageResponse("Images Uploaded Successfully"));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<HomePageSliderResponseDto> getSliderImage(@PathVariable("id") Long id) {
-        HomePageSliderResponseDto responseDto = homePageSliderService.getSliderImageById(id);
+    public ResponseEntity<TestimonialSliderResponseDto> getSliderImage(@PathVariable("id") Long id) {
+        TestimonialSliderResponseDto responseDto = testimonialSliderService.getSliderImageById(id);
         if (responseDto == null) {
             return ResponseEntity.notFound().build();
         }
@@ -42,8 +42,8 @@ public class HomePageSliderController {
     }
 
     @GetMapping
-    public ResponseEntity<List<HomePageSliderResponseDto>> getAllSliderImages() {
-        List<HomePageSliderResponseDto> sliderImages = homePageSliderService.getAllSliderImages();
+    public ResponseEntity<List<TestimonialSliderResponseDto>> getAllSliderImages() {
+        List<TestimonialSliderResponseDto> sliderImages = testimonialSliderService.getAllSliderImages();
         if (sliderImages.isEmpty()) {
             return ResponseEntity.noContent().build();
         }
@@ -53,7 +53,7 @@ public class HomePageSliderController {
     @DeleteMapping("/{id}")
     @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<MessageResponse> deleteSliderImage(@PathVariable("id") Long id) {
-        homePageSliderService.deleteSliderImageById(id);
-        return ResponseEntity.ok(new MessageResponse("Image Deleted Successfully!"));
+        testimonialSliderService.deleteSliderImageById(id);
+        return ResponseEntity.ok(new MessageResponse("Image Deleted Successfully"));
     }
 }

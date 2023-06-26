@@ -30,7 +30,8 @@ export class AdminContactUsComponent {
       email : [''],
       phonenumber: [''],
       message:[''],
-      date:['']
+      date:[''],
+      time:['']
     })
     this.userDetails = this.formbuilder.group ({ 
      address:['']
@@ -52,6 +53,28 @@ export class AdminContactUsComponent {
         this.userDetails.controls['address'].setValue(previousValue.address);
 
   })
+  const currentTime = new Date();
+
+
+let hours = currentTime.getHours();
+let minutes = currentTime.getMinutes();
+
+
+const ampm = hours >= 12 ? 'pm' : 'am';
+
+
+hours = hours % 12;
+hours = hours ? hours : 12;
+
+
+let minute = minutes < 10 ? '0' + minutes : minutes;
+
+// Format the time string
+const formattedTime = hours + ':' + minute + ' ' + ampm;
+
+this.userDetail.patchValue({
+  time: formattedTime
+});
 }
   
         

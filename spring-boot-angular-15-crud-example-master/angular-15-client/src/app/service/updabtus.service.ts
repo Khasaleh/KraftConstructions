@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { aboutusdata } from '../data-type';
 import { Observable } from 'rxjs';
-import { ObserversModule } from '@angular/cdk/observers';
 @Injectable({
   providedIn: 'root'
 })

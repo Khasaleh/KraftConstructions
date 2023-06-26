@@ -1,6 +1,7 @@
 <div class="admin-header ">
   <div class="header-wrape">
-  <p class="admin-name">Koray Okumus</p>
- <a routerLink="/login"><img class="admin-img" src="../../../assets/admin.png" alt=""></a>
+  <p class="admin-name">{{user.firstname }} {{user.lastname }}</p>
+ <a routerLink="/login"><img class="admin-img" src={{globalUrl+user?.imageUrl}} alt=""></a>
 </div>
 </div>
+ 
