@@ -28,7 +28,7 @@
 }
 .card-shade {
     box-shadow: 2px 8px 4px 0px lightgray;
-    height: 550px;
+    /* height: 550px; */
 }
 @media (max-width: 47em) {
     .new-container {

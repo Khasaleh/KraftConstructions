@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {InteriorRemodelingService} from '../../service/interior-remodeling.service'
+import { InteriorRemodelingService } from '../../service/interior-remodeling.service'
+import { error } from 'jquery';
 
 @Component({
   selector: 'app-admin-services',
@@ -8,14 +9,14 @@ import {InteriorRemodelingService} from '../../service/interior-remodeling.servi
   styleUrls: ['./admin-services.component.css']
 })
 export class AdminServicesComponent {
-urllinkImg: string = "../../../assets/Decks-and-Patioss 1.png";
+  urllinkImg: string = "../../../assets/Decks-and-Patioss 1.png";
 
-cards = [
-  { id: 1, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-  { id: 2, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-  { id: 3, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-  { id: 4, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-];
+  cards = [
+    { id: 1, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
+    { id: 2, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
+    { id: 3, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
+    { id: 4, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
+  ];
   selectedOption: string = 'interior remodeling';
   selectedOption1: string = 'interior remodeling';
   selectedOption2: string = 'interior remodeling';
@@ -24,123 +25,261 @@ cards = [
   selectedQuantity = 4;
 
 
-  
-quantityOptions = [1, 2, 3, 4];
-options: string[] = ['interior remodeling', 'New Additions'];
-optionSevice: string[] = ['Decks and Patios', 'New Additions'];
-option1: string[] = ['1 column', '2 columns', '3 columns','4 columns'];
 
+  quantityOptions = [1, 2, 3, 4];
+  options: string[] = ['interior remodeling', 'New Additions'];
+  optionSevice: string[] = ['Decks and Patios', 'New Additions'];
+  option1: string[] = ['1 column', '2 columns', '3 columns', '4 columns'];
 
-urllink:string ="../../../assets/before1.png";
-selectFiles(event:any)
-{
-  if(event.target.files){
-    var reader = new FileReader()
-    reader.readAsDataURL(event.target.files[0])
-    reader.onload = (event:any) => {
-      this.urllink = event.target.result
-    }
+  urllink!: File;
+  imageLink: any;
+  urllink2!: File;
+  imageLink2: any;
+  urllink3!: File
+  // urllink:string ="../../../assets/before1.png";
+  // selectFiles(event:any)
+  // {
+  //   if(event.target.files){
+  //     var reader = new FileReader()
+  //     reader.readAsDataURL(event.target.files[0])
+  //     reader.onload = (event:any) => {
+  //       this.urllink = event.target.result
+  //     }
+  //   }
+  // }
+  selectFiles(event: any) {
+    this.urllink = event.target.files[0];
+    this.imageLink = URL.createObjectURL(this.urllink);
+    console.log(this.urllink);
+    console.log(this.imageLink, 'image');
+
   }
-}
+  selectFiles2(event: any) {
+    this.urllink2 = event.target.files[0];
+    this.imageLink2 = URL.createObjectURL(this.urllink2);
 
-urllink1:string ="../../../assets/after1.png";
-selectFiles2(event:any)
-{
-  if(event.target.files){
-    var reader1 = new FileReader()
-    reader1.readAsDataURL(event.target.files[0])
-    reader1.onload = (event:any) => {
-      this.urllink1 = event.target.result
-    }
+    console.log(this.urllink2);
+    console.log(this.imageLink2, 'image');
   }
-}
+  // urllinkImg: string = "../../../assets/Decks-and-Patioss 1.png";
 
+  // selectImage(event: any, card: any) {
+  //   if (event.target.files) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(event.target.files[0]);
+  //     reader.onload = (event: any) => {
+  //       card.imgSrc = event.target.result;
+  //     };
+  //   }
+  // }
 
-// urllinkImg: string = "../../../assets/Decks-and-Patioss 1.png";
-
-selectImage(event: any, card: any) {
-  if (event.target.files) {
-    const reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event: any) => {
-      card.imgSrc = event.target.result;
-    };
-  }
-}
-isActive: boolean = false;
-interiorRemodForm!: FormGroup;
-services: any[] = [];
-// apiData: any;
+  isActive: boolean = false;
+  interiorRemodForm!: FormGroup;
+  interiorRemodForm2!: FormGroup;
+  isCheck: boolean = false;
+  services: any[] = [];
+  selectedService!: string;
+  service!: { id: number; serviceName: string; pageName: string; active: boolean; }[];
+  serviceNames!: string[];
+  // apiData: any;
   constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
-ngOnInit(): void {
+  ngOnInit(): void {
+    this.selectedService = ''; // Initialize the selected service
+    this.service = []; // Initialize the services array
+    this.serviceNames = [];
 
-  this.getServices();
+    this.getServices();
+    this.interiorRemodForm = this.formBuilder.group({
 
-  this.interiorRemodForm = this.formBuilder.group({
+      addServiceName: ['', Validators.required],
+      selectServicePage: ['', Validators.required],
+      isActive: [this.isActive]
 
-    addServiceName: ['', Validators.required],
-    selectServicePage: ['', Validators.required],
-    isActive: [this.isActive]
-  
-  });
+    });
+    this.interiorRemodForm2 = this.formBuilder.group({
 
-}
-getServices(){
-  this.interiorRemodelingService.getServiceData().subscribe(
-    (response) => {
-      this.services = response;
-      console.log("ResponseData",response);
-    },
-    (error) => {
-      
-      console.error(error);
+      beforeImage: ['', Validators.required],
+      afterImage: ['', Validators.required],
+      description: ['', Validators.required],
+      isCheck: [this.isCheck]
+
+    });
+  }
+  getServices() {
+    this.interiorRemodelingService.getServiceData().subscribe(
+      (response) => {
+        this.services = response;
+        console.log("ResponseData", response);
+      },
+      (error) => {
+
+        console.error(error);
+      }
+    )
+  }
+  onSubmit() {
+
+    if (this.interiorRemodForm.valid) {
+      const addServiceName = this.interiorRemodForm.get('addServiceName')?.value;
+      const selectServicePage = this.interiorRemodForm.get('selectServicePage')?.value;
+      const isActive = this.interiorRemodForm.get('isActive')?.value;
+
+      this.interiorRemodelingService.saveInteriorRemodelingpageData(addServiceName, selectServicePage, isActive).subscribe(
+        response => {
+          // Handle the API response here
+          console.log("data submit successfully");
+          console.log("response", response)
+          this.getServices()
+        },
+        error => {
+          // Handle any error that occurs during the API request
+          console.error(error);
+        }
+      )
     }
-    )
-}
-onSubmit() {
- 
-  if (this.interiorRemodForm.valid) {
-    const addServiceName = this.interiorRemodForm.get('addServiceName')?.value;
-    const selectServicePage = this.interiorRemodForm.get('selectServicePage')?.value;
-    const isActive = this.interiorRemodForm.get('isActive')?.value;
+  }
+  onClick1() {
+    const selectedServiceId = this.service.find(service => service.serviceName === this.selectedService)?.id;
+  
+    if (selectedServiceId) {
+      const formData = new FormData();
+      formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
+      formData.append('serviceId', selectedServiceId.toString()); 
+      formData.append('beforeImage', this.urllink);
+      formData.append('afterImage', this.urllink2);
+      formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
+      formData.append('afterImageTitle', this.interiorRemodForm2.value.afterImage);
+      formData.append('description', this.interiorRemodForm2.value.description);
+     // Append the selected service ID
+  
+      this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
+        response => {
+          console.log(response, 'response for service details');
+        },
+        error => {
+          console.log(error, 'error for service details');
+        }
+      );
+  
+      this.onClick2();
+    }
+  }
+  
+  // onClick1() {
 
-    this.interiorRemodelingService.saveInteriorRemodelingpageData(addServiceName,selectServicePage,isActive).subscribe(
-      response => {
-              // Handle the API response here
-              console.log("data submit successfully");
-              console.log("response",response)
-              this.getServices()
-            },
-              error => {
-              // Handle any error that occurs during the API request
-              console.error(error);
-            }
-    )
+  //   const formData = new FormData();
+  //   formData.append('file', this.urllink);
+  //   formData.append('file', this.urllink2);
+  //   formData.append('beforeImage', this.interiorRemodForm2.value.beforeImage);
+  //   formData.append('afterImage', this.interiorRemodForm2.value.afterImage);
+  //   formData.append('description', this.interiorRemodForm2.value.description);
+  //   formData.append('isCheck', this.interiorRemodForm2.value.isCheck);
+  //   this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
+  //     response => {
+  //       console.log(response, 'response for service details');
+  //     },
+  //     error => {
+  //       console.log(error, 'error for service details');
+  //     }
+  //   )
+  //   this.onClick2()
+  // }
+  // selectImage(event: any, card: any) {
+  //   if (event.target.files) {
+  //     this.urllink3 = event.target.files[0];
+  //     card.imgSrc = URL.createObjectURL(this.urllink3);
+  //     console.log(this.urllink3);
+  //   }
+  // }
+  // onClick2() {
+  //   const formData = new FormData();
+  //   for (let i = 0; i < this.cards.length; i++) {
+  //     const card = this.cards[i];
+  //     if (card.imgSrc) {
+  //       formData.append('files', card.imgSrc);
+  //     }
+  //   }
+
+  //   this.interiorRemodelingService.saveServicesImages(formData).subscribe(
+  //     response => {
+  //       console.log(response, "response for service images");
+  //     },
+  //     error => {
+  //       console.log(error, "error for service images");
+  //     }
+  //   );
+  // }
+  images: File[] = [];
+  selectImage(event: any, card: any) {
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      const file = files[i];
+      this.images.push(file);
+      // this.imageLink.push(URL.createObjectURL(file));
+      card.imgSrc = URL.createObjectURL(file)
+    }
   }
-  
-}
-toggleCheckbox(service: any) {
-  service.active = !service.active;
-  
-  if (service.active) {
-    this.interiorRemodelingService.enableService(service.id).subscribe(
+  onClick2() {
+    const formData = new FormData();
+    for (let i = 0; i < this.images.length; i++) {
+      formData.append('images', this.images[i]);
+    }
+    console.log(formData);
+    this.interiorRemodelingService.saveServicesImages(formData).subscribe(
       response => {
-        console.log("Service enabled:", service.serviceName,response);
+        console.log(response);
       },
       error => {
-        console.error("Error enabling service:", error);
-      }
-    );
-  } else {
-    this.interiorRemodelingService.disableService(service.id).subscribe(
-      response => {
-        console.log("Service disabled:", service.serviceName,response);
-      },
-      error => {
-        console.error("Error disabling service:", error);
+        console.error(error);
       }
     );
   }
-}
+  onOptionSelected(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    if (selectedValue === 'interior') {
+      this.interiorRemodelingService.getServiceByPage1()
+        .subscribe(
+          data => {
+            console.log(data);
+            
+          this.service = data; // Assign the API response to the services array
+          this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+          this.selectedService = ''; 
+          });
+    } else if (selectedValue === 'addition') {
+      this.interiorRemodelingService.getServiceByPage2()
+        .subscribe(
+          data => {
+            console.log(data);
+            this.service = data; // Assign the API response to the services array
+            this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+            this.selectedService = ''; // 
+          });
+    }
+  }
+
+  toggleCheckbox(service: any) {
+    service.active = !service.active;
+
+    if (service.active) {
+      this.interiorRemodelingService.enableService(service.id).subscribe(
+        response => {
+          console.log("Service enabled:", service.serviceName, response);
+        },
+        error => {
+          console.error("Error enabling service:", error);
+        }
+      );
+    } else {
+      this.interiorRemodelingService.disableService(service.id).subscribe(
+        response => {
+          console.log("Service disabled:", service.serviceName, response);
+        },
+        error => {
+          console.error("Error disabling service:", error);
+        }
+      );
+    }
+  }
 
 }

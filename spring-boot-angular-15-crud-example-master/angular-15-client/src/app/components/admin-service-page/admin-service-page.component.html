@@ -11,7 +11,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr class="">
+              <tr *ngFor="let row of tableData" [class.background]="row.index % 2 === 0">
+                <td>{{ row.serviceName }}</td>
+                <td>{{ row.author }}</td>
+                <td>{{ row.description }}</td>
+                <td>{{ row.updateDate }}</td>
+              </tr>
+              <!-- <tr class="">
                 <td>Decks-Patios</td>
                 <td>Ali</td>
                 <td>Simply dummy text of the printing <br> and typesetting industry.</td>
@@ -35,7 +41,7 @@
                 <td>Ali</td>
                 <td>Simply dummy text of the printing <br> and typesetting industry.</td>
                 <td>Published <br> 2023/04/07 at 12:47 pm</td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         <!-- <div class="card-body">

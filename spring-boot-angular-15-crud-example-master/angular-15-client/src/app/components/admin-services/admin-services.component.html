@@ -1,44 +1,47 @@
 <div class="add-services">
     <form [formGroup]="interiorRemodForm" (ngSubmit)="onSubmit()">
-    <section class="section-1">
-        <div class="new-container">
-            <div class="card  card-shade">
-                <div class="card-head">Services</div>
-                <div class="card-body">
-                    <div class="service-wrape">
-                        <div class="service-form">
-                            <div class="form-group">
-                                <label class="label" for="formGroupExampleInput">Add Service</label>
-                                <input type="text" class="form-control mt-3 mb-3" id="formGroupExampleInput"
-                                    placeholder="Interior remodeling" formControlName="addServiceName">
-                            </div>
+        <section class="section-1">
+            <div class="new-container">
+                <div class="card  card-shade">
+                    <div class="card-head">Services</div>
+                    <div class="card-body">
+                        <div class="service-wrape">
+                            <div class="service-form">
+                                <div class="form-group">
+                                    <label class="label" for="formGroupExampleInput">Add Service</label>
+                                    <input type="text" class="form-control mt-3 mb-3" id="formGroupExampleInput"
+                                        placeholder="Interior remodeling" formControlName="addServiceName">
+                                </div>
 
-                            <div class="drop-1">
-                                <label class="label2" for="inputField">Select Service Page</label> <br>
-                                <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption" formControlName="selectServicePage">
-                                    <option *ngFor="let option of options" [value]="option">{{ option }}</option>
-                                </select>
-                            </div>
-                            <!-- <button class="cardbtn1"  type="submit" >
+                                <div class="drop-1">
+                                    <label class="label2" for="inputField">Select Service Page</label> <br>
+                                    <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption"
+                                        formControlName="selectServicePage">
+                                        <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                                    </select>
+                                </div>
+                                <!-- <button class="cardbtn1"  type="submit" >
                                 <label for="file-input" class="custom-button">Add now</label>
                             </button> -->
-                            <button class="custom-button" type="submit" >Add now</button>
-                        </div>
-                 
-                        <div class="grey-box">
-                            <h3 class="label-box">Active Services</h3>
-                            <div *ngFor="let service of services" class="check-button">
-                              <input type="checkbox" [checked]="service.active"(change)="toggleCheckbox(service)">
-                              <label class="check-btn">{{ service.serviceName }}</label>
+                                <button class="custom-button" type="submit">Add now</button>
                             </div>
-                          </div>
-                          
+
+                            <div class="grey-box">
+                                <h3 class="label-box">Active Services</h3>
+                                <div *ngFor="let service of services" class="check-button">
+                                    <input type="checkbox" [checked]="service.active"
+                                        (change)="toggleCheckbox(service)">
+                                    <label class="check-btn">{{ service.serviceName }}</label>
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-</form>
+        </section>
+    </form>
+    <!-- <form [formGroup]="interiorRemodForm2" (ngSubmit)="onSubmit2()"> -->
     <section class="section-2">
         <div class="new-container">
             <div class="card  card-shade">
@@ -46,52 +49,65 @@
                     <div class="drop-wrape">
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Page</label> <br>
-                            <select class="inputField" [(ngModel)]="selectedOption1">
-                                <option *ngFor="let option of options" [value]="option">{{ option }}</option>
+                            <select class="inputField"  (change)="onOptionSelected($event)"
+                            [(ngModel)]="selectedOption1" >
+                                <!-- <option *ngFor="let option of options" [value]="option">{{ option }}</option> -->
+                                <option value="interior">Interior Remodeling</option>
+                                <option value="addition">New Addition</option>
                             </select>
                         </div>
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Service</label> <br>
-                            <select class="inputField" [(ngModel)]="selectedOption4">
+                            <!-- <select class="inputField" [(ngModel)]="selectedOption4">
                                 <option *ngFor="let option of optionSevice" [value]="option">{{ option }}</option>
-                            </select>
+                            </select> -->
+                            <select  class="inputField" [(ngModel)]="selectedService">
+                                <option *ngFor="let serviceName of serviceNames" [value]="serviceName">{{ serviceName }}</option>
+                              </select>
                         </div>
                     </div>
-                    <div class="img-wrape">
-                        <div class="content1">
-                            <div class="img-box">
-                                <img class="img-dyn" [src]="urllink" alt="">
-                                <input type="file" id="file-input" class="input-file" (change)="selectFiles($event)">
-                                <label for="file-input" id="file-input" class="upload-label"></label>
+                    <form [formGroup]="interiorRemodForm2">
+                        <div class="img-wrape">
+                            <div class="content1">
+                                <div class="img-box">
+                                    <img *ngIf="urllink" class="img-dyn" [src]="imageLink" alt="">
+                                    <input type="file" id="file-input" class="input-file"
+                                        (change)="selectFiles($event)">
+                                    <label for="file-input" id="file-input" class="upload-label"></label>
+                                </div>
+                                <div class="form-group">
+                                    <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
+                                    <input type="text" class="form-control mb-3" placeholder="Before image"
+                                        formControlName="beforeImage">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
-                                <input type="text" class="form-control mb-3" placeholder="Before image">
-                            </div>
-                        </div>
-                        <div class="content1">
-                            <div class="img-box">
-                                <img class="img-dyn" [src]="urllink1" alt="">
-                                <input type="file" id="file-input1" class="input-file1" (change)="selectFiles2($event)">
-                                <label for="file-input1" id="file-input1" class="upload-label1"></label>
+                            <div class="content1">
+                                <div class="img-box">
+                                    <img *ngIf="urllink2" class="img-dyn" [src]="imageLink2" alt="">
+                                    <input type="file" id="file-input1" class="input-file1"
+                                        (change)="selectFiles2($event)">
+                                    <label for="file-input1" id="file-input1" class="upload-label1"></label>
 
+                                </div>
+                                <div class="form-group">
+                                    <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
+                                    <input type="text" class="form-control mb-3" placeholder="After image"
+                                        formControlName="afterImage">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
-                                <input type="text" class="form-control mb-3" placeholder="After image">
-                            </div>
-                        </div>
 
-                    </div>
-                    <div class="form-group  form-group-pad">
-                        <label class="label2 mt-2 mb-3" for="exampleTextarea">Description</label>
-                        <textarea class="form-control form-control-lg  mb-3" id="exampleTextarea" rows="5"
-                            placeholder="Enter a description"></textarea>
-                    </div>
-                    <div class="check-button1">
-                        <input type="checkbox" class="input-check1">
-                        <label class="check-btn1">Add Projects</label>
-                    </div>
+                        </div>
+                        <div class="form-group  form-group-pad">
+                            <label class="label2 mt-2 mb-3" for="exampleTextarea">Description</label>
+                            <textarea class="form-control form-control-lg  mb-3" id="exampleTextarea" rows="5"
+                                placeholder="Enter a description" formControlName="description"></textarea>
+                        </div>
+                        <div class="check-button1">
+                            <input type="checkbox" class="input-check1" formControlName="isCheck">
+                            <label class="check-btn1">Add Projects</label>
+                        </div>
+                    </form>
+
                     <div id="grey-sec" class="card">
                         <div class="card-body">
                             <div class="drop-2">
@@ -104,16 +120,18 @@
                         </div>
                     </div>
                     <div class="card-wrape">
+                        <!-- <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box"> -->
                         <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
-                          <img class="card-img" [src]="card.imgSrc" alt="">
-                          <div class="file-upload cardbtn">
-                            <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
-                            <input type="file" id="file-input2{{card.id}}" class="input-file" (change)="selectImage($event, card)">
-                          </div>
+                            <img class="card-img" [src]="card.imgSrc" alt="">
+                            <div class="file-upload cardbtn">
+                                <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
+                                <input type="file" id="file-input2{{card.id}}" class="input-file"
+                                    (change)="selectImage($event, card)">
+                            </div>
                         </div>
-                      </div>
+                    </div>
                     <div class="create-btn">
-                        <button class="custom-button-create">
+                        <button (click)="onClick1()" class="custom-button-create">
                             Save
                         </button>
                     </div>
@@ -122,4 +140,5 @@
         </div>
 
     </section>
+    <!-- </form> -->
 </div>

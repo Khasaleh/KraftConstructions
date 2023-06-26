@@ -28,10 +28,16 @@
             <b>Interior Remodeling</b>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><b>Custom Kitchens</b></li>
+            <!-- <li class="list-group-item"><b>Custom Kitchens</b></li>
             <li class="list-group-item">Custom Baths</li>
             <li class="list-group-item">Basement Remodeling</li>
-            <li class="list-group-item">Decks and Patios</li>
+            <li class="list-group-item">Decks and Patios</li> -->
+            <!-- {{data?.serviceName}} -->
+            <!-- <li (click)="abc(service.id)" *ngFor="let service of data">{{ service?.serviceName }}</li> -->
+            <button (click)="getOneService(service?.id)"
+             *ngFor="let service of data">{{ service?.serviceName }}
+            </button>
+          
           </ul>
         </div>
       </div>

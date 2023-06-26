@@ -114,6 +114,7 @@ export class AdminHomeComponent {
         console.log(error,"error for test data");
       }
     )
+    this.getBannerImages();
   }
  
   onSubmit2() {
@@ -241,6 +242,19 @@ export class AdminHomeComponent {
         console.error(error);
       }
     );
+  }
+  getBannerImages(){
+    this.homeService.getHomePageBanner().subscribe(
+      response => {
+        console.log(response);
+  
+        // Update the imageLinks array with the fetched image URLs
+        this.imageLink = response.map((image: { imageUrl: any; }) => image.imageUrl);
+      },
+      error => {
+        console.error(error);
+      }
+    )
   }
   uploadImages() {
     this.uploadImages1();

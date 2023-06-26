@@ -23,12 +23,19 @@ h2 {
 .list-group-item:not(:last-child) {
   border-bottom: 1px solid white;
 }
+.list-group{
+  list-style: none;
+  /* padding: 5px 0px 5px 15px; */
+}
 .card-img {
   background-image:  linear-gradient(rgba(2, 90, 0, 0.6), rgba(2, 90, 0, 0.6)),url("../../../assets/images/aboutus2 1 (1).png");
    background-position: center;
   background-repeat: no-repeat;
   background-size:cover;
   height: 20vh; 
+}
+.card-header{
+  text-align: center;
 }
   
 
