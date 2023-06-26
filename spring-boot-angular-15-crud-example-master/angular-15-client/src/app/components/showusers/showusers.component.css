@@ -15,7 +15,7 @@
         background-color: var(--colors-white);
         box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
         width: 80%;
-        height: 50% ;
+        height:auto;
       }
       .desktop-11-inner {
         position: absolute;
@@ -76,7 +76,7 @@
       @media only screen and (max-width: 576px) {
         .home {
             width: auto;
-            height: auto;
+            /* height: auto; */
           }
           .desktop-3-item {
             position: relative;

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddUser } from 'src/app/model/add-user';
 import { AddUserService } from 'src/app/service/add-user.service';
 import { DialogeComponent } from '../dialoge/dialoge.component';
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',

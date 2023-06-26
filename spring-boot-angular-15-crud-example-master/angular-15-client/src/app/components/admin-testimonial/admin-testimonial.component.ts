@@ -185,7 +185,7 @@ onClick1() {
   const formData = new FormData();
   formData.append('image', this.fileURL);
   formData.append('page','TESTIMONIAL')
-  // formData.append('id', this.userIdtoView)
+ 
   console.log(this.fileURL,'image');
   this.testimonialService.saveImage(formData).subscribe(
     response => {
@@ -226,7 +226,6 @@ onClick2() {
     formData.append('images', this.images[i]);
   }
 
-  // Perform upload logic here, e.g., send formData to server
   console.log(formData);
   this.testimonialService.saveSlider(formData).subscribe(
     response => {
