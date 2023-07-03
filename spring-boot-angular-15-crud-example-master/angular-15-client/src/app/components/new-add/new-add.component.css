@@ -11,6 +11,9 @@
      filter: brightness(40%); 
    
  }
+ .height {
+  height: 230px;
+}
  h2 {
    font-size: 34px;
    margin-left: 9rem;

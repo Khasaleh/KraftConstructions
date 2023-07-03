@@ -28,27 +28,27 @@
             <b>New Additions</b>
           </div>
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"><b>Sunrooms</b></li>
-            <li class="list-group-item">Second story additions</li>
-            <li class="list-group-item">Other additions</li>
+            <button (click)="getOneService(service?.id)"
+            *ngFor="let service of data">{{ service?.serviceName }}
+           </button>
           </ul>
         </div>
       </div>
     
       <div class="col-lg-4 col-md-6">
         <div class="card sm-12">
-          <img src="../../../assets/img/before1 (1).png" class="card-img-top" alt="...">
+          <img src={{this.globalUrl+serviceData?.beforeImageUrl}} class="height " alt="...">
           <div class="card-body" style="background-color: #FFE7E7;">
-            <h5 class="card-title"><b>Before</b></h5>
+            <h5 class="card-title"><b>{{serviceData?.beforeImageTitle}}</b></h5>
           </div>
         </div>
       </div>
     
       <div class="col-lg-4 col-md-6">
         <div class="card sm-13">
-          <img src="../../../assets/img/after1 (1).png" class="card-img-top" alt="...">
+          <img src={{this.globalUrl+serviceData?.afterImageUrl}}  class="height" alt="...">
           <div class="card-body" style="background-color: var(--kraft-light-green);">
-            <h5 class="card-title"><b>After</b></h5>
+            <h5 class="card-title"><b>{{serviceData?.afterImageTitle}}</b></h5>
           </div>
         </div>
       </div>
@@ -57,15 +57,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm-12 col-md-6 offset-md-4 col-lg-7 offset-lg-3">
-          <p class="txt">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-          <ul class="lii">
-            <li>Lower electric bills</li>
-            <li>Lower heating and cooling bills</li>
-            <li>Lower water bills</li>
-            <li>Better in home air quality</li>
-            <li>Higher re-sale values </li>
-          </ul>
-          <p class="txt">simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+          <p class="txt">{{serviceData?.description}}</p> 
         </div>
       </div>
     </div>

@@ -57,10 +57,14 @@ h2 {
   width:63rem;
   margin-left:5.5rem;
   }
+  .height{
+    height: 230px;
+  }
 
 .card-title {
   font-size:14px ;
 }
+
 @media (max-width: 576px) {
   h2 {
      font-size: 24px;

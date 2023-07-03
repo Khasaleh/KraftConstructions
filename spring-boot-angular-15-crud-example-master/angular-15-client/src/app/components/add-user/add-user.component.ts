@@ -46,32 +46,36 @@ ngOnInit(): void {
 }
   addUser() {
     
-    
-    this.userObj.username = this.userDetail.value?.username;
-    this.userObj.email = this.userDetail.value?.email;
-    this.userObj.firstname = this.userDetail.value?.firstname;
-    this.userObj.lastname = this.userDetail.value?.lastname;
-    this.userObj.password = this.userDetail.value?.password;
-    this.userObj.role = [this.userDetail.value?.role];
-    this.userObj.imageUrl= this.userDetail.value?.imageUrl;
-    console.log(this.userObj.role)
-     this.adService.AddUser(this.userObj).subscribe(res=>{
-      this.onClick();
-      console.log(res);
-      this.openDialog();
-      this.successMessage = "User added Successfully.";
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
-      
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      alert("Sorry you don't have any accesss")
+    }else{
+      this.userObj.username = this.userDetail.value?.username;
+      this.userObj.email = this.userDetail.value?.email;
+      this.userObj.firstname = this.userDetail.value?.firstname;
+      this.userObj.lastname = this.userDetail.value?.lastname;
+      this.userObj.password = this.userDetail.value?.password;
+      this.userObj.role = [this.userDetail.value?.role];
+      this.userObj.imageUrl= this.userDetail.value?.imageUrl;
+      console.log(this.userObj.role)
+      this.adService.AddUser(this.userObj).subscribe(res=>{
+        this.onClick();
+        console.log(res);
+        this.openDialog();
+        this.successMessage = "User added Successfully.";
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 1000);
+        
 
-     }, err=> {
-      this.errorMessage = "User was not added.";
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
-      console.log(err)
-     })
+      }, err=> {
+        this.errorMessage = "User was not added.";
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 1000);
+        console.log(err)
+      })
+    }
   }
   onClick() {
  

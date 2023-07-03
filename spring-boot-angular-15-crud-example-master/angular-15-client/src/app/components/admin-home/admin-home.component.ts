@@ -71,7 +71,14 @@ export class AdminHomeComponent {
   }
 
   apiData: any;
+  selectedService!: string;
+  service!: { id: number; serviceName: string; pageName: string; active: boolean; }[];
+  serviceNames!: string[];
+  globalUrl = 'http://99.72.32.144:8083'
   ngOnInit(): void {
+    this.selectedService = ''; // Initialize the selected service
+    this.service = []; // Initialize the services array
+    this.serviceNames = [];
     this.aboutUsForm = this.formBuilder.group({
       textEditor: ['', Validators.required],
       addLink: ['', Validators.required],
@@ -94,6 +101,16 @@ export class AdminHomeComponent {
         this.bannerForm.controls['bannerDescription'].setValue(previousResponse.bannerDescription);
         this.bannerForm.controls['linkStatus'].setValue(previousResponse.linkStatus);
         console.log(previousResponse, "response for banner data");
+      },
+    )
+    this.homeService.getHomePageData().subscribe(
+      previousResponse => {
+        this.aboutUsForm.controls['textEditor'].setValue(previousResponse.aboutusDescription);
+        this.aboutUsForm.controls['addLink'].setValue(previousResponse.aboutusLink);
+        this.videoLink =this.globalUrl + previousResponse.aboutusVideoUrl;
+        // this.videoLink = previousResponse.map((video: { aboutusVideoUrl: any; }) => this.globalUrl + video.aboutusVideoUrl);
+
+        console.log(previousResponse, "response for AboutUs section data");
       },
     )
     // this.testimonialForm = this.formBuilder.group({
@@ -249,12 +266,38 @@ export class AdminHomeComponent {
         console.log(response);
   
         // Update the imageLinks array with the fetched image URLs
-        this.imageLink = response.map((image: { imageUrl: any; }) => image.imageUrl);
+        // this.imageLink = response.map((image: { imageUrl: any; }) => image.imageUrl);
+        this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
+
       },
       error => {
         console.error(error);
       }
     )
+  }
+
+  onOptionSelected(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    if (selectedValue === 'interior') {
+      this.homeService.getServiceByPage1()
+        .subscribe(
+          data => {
+            console.log(data);
+            
+          this.service = data; // Assign the API response to the services array
+          this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+          this.selectedService = ''; 
+          });
+    } else if (selectedValue === 'addition') {
+      this.homeService.getServiceByPage2()
+        .subscribe(
+          data => {
+            console.log(data);
+            this.service = data; // Assign the API response to the services array
+            this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+            this.selectedService = ''; // 
+          });
+    }
   }
   uploadImages() {
     this.uploadImages1();

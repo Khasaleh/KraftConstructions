@@ -30,6 +30,12 @@
     box-shadow: 2px 8px 4px 0px lightgray;
     /* height: 550px; */
 }
+.width{
+    width: 250px;
+  }
+  .desWidth{
+    width: 420px;
+}
 @media (max-width: 47em) {
     .new-container {
         padding: 0px;

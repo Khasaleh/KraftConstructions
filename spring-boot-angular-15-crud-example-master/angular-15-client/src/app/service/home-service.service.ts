@@ -8,6 +8,12 @@ import { Observable } from 'rxjs';
 export class HomeServiceService {
 
   constructor(private http: HttpClient) { }
+  getServiceByPage1(): Observable<any> {
+    return this.http.get('http://99.72.32.144:8081/api/pageServices/Interior Remodelling')
+  }
+  getServiceByPage2(): Observable<any> {
+    return this.http.get('http://99.72.32.144:8081/api/pageServices/New Addition')
+  }
   getHomeBannerDescription(): Observable<any> {
     return this.http.get('http://99.72.32.144:8081/api/homepageabout-us/banner')
   }

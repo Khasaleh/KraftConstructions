@@ -27,7 +27,7 @@ export class AdminServicesComponent {
 
 
   quantityOptions = [1, 2, 3, 4];
-  options: string[] = ['interior remodeling', 'New Additions'];
+  options: string[] = ['Interior Remodelling', 'New Addition'];
   optionSevice: string[] = ['Decks and Patios', 'New Additions'];
   option1: string[] = ['1 column', '2 columns', '3 columns', '4 columns'];
 
