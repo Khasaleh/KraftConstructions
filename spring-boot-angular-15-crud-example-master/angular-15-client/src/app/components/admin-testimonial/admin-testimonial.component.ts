@@ -106,17 +106,7 @@ this.testimonialService.getSlider().subscribe((res)=> {
  
  })
 }
-// getSliderbyId(id: number) {
-//   this.userIdtoView = id;
-//   this.testimonialService.getSliderById(this.userIdtoView).subscribe(
-//     (res: Image) => {
-//       console.log('Retrieved image:', res);
-//     },
-//     (error: any) => {
-//       console.error('Failed to retrieve image:', error);
-//     }
-//   );
-// }
+
 
 onFileSelected1(event:any) {
 this.fileURL = event.target?.files[0];
@@ -137,6 +127,7 @@ this.testimonialService.getImage().subscribe((res)=> {
 }
 
 deleteSlider(id:number) {
+
   
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
@@ -159,6 +150,7 @@ deleteSlider(id:number) {
   });
 }
 deleteImage(id:number) {
+
   
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
@@ -181,6 +173,7 @@ deleteImage(id:number) {
   });
 }
 onClick1() {
+
  
   const formData = new FormData();
   formData.append('image', this.fileURL);
@@ -219,6 +212,15 @@ onFileSelected(event:any) {
    
   }
 onClick2() {
+  const user=JSON.parse(localStorage.getItem("user")!);
+  if(!user.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
  
   const formData = new FormData();
  
@@ -274,6 +276,16 @@ getAll() {
   });
 }
 approveTest(user:Testimonial,id:number) {
+  const activeUser=JSON.parse(localStorage.getItem("user")!);
+  if(!activeUser.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
+  else if(activeUser.roles.includes('ROLE_ADMIN')) {
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to Approve ${id}?`,
@@ -301,8 +313,18 @@ approveTest(user:Testimonial,id:number) {
         });
     }
   
-
+  }
 deleteTest(id:number) {
+  const user=JSON.parse(localStorage.getItem("user")!);
+  if(!user.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
+  else if(user.roles.includes('ROLE_ADMIN')) {
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to delete ${id}?`,
@@ -323,9 +345,20 @@ deleteTest(id:number) {
     }
   });
 }
+}
 hideTest(user:Testimonial,id:number) 
 { 
-  console.log(id)
+  
+  const activeUser=JSON.parse(localStorage.getItem("user")!);
+  if(!activeUser.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
+  else if(activeUser.roles.includes('ROLE_ADMIN')) {
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to hide ${id}?`,
@@ -345,6 +378,7 @@ hideTest(user:Testimonial,id:number)
         });
     }
   });
+}
 }
 onCheckboxChange(user:Testimonial,id:number) {
 

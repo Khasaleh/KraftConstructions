@@ -115,6 +115,7 @@ editUser(user: User) {
   });
 }
   updateUser() {
+    
     const updatedUser: AddUser = {
     username: this.userDetail.value.username,
     email : this.userDetail.value.email,
@@ -157,7 +158,15 @@ editUser(user: User) {
   }
   addUser() {
     
-    
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      const dialogRef = this.dialog.open(DialogeComponent, {
+        data: {
+          message: `You don't have the access`,
+          showYesNoButtons: false
+        }
+      });
+    }
     this.userObj.username = this.userDetail.value?.username;
     this.userObj.email = this.userDetail.value?.email;
     this.userObj.firstname = this.userDetail.value?.firstname;
