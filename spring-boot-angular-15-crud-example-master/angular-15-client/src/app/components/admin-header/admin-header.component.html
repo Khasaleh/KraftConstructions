@@ -1,7 +1,18 @@
 <div class="admin-header ">
   <div class="header-wrape">
   <p class="admin-name">{{user.firstname }} {{user.lastname }}</p>
- <a routerLink="/login"><img class="admin-img" src={{globalUrl+user?.imageUrl}} alt=""></a>
+ <a><img class="admin-img" src={{globalUrl+user?.imageUrl}} alt=""></a>
+ <button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+
+  <button routerLink="/login" mat-menu-item>
+    <i class="fa fa-sign-out"> Logout </i>
+
+  </button>
+  
+</mat-menu>
 </div>
 </div>
  
