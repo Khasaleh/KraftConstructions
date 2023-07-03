@@ -32,7 +32,11 @@ import { AuthService } from 'src/app/service/auth.service';
 
 export class LoginComponent {
 
-hidePassword = true;
+    hidePassword = true;
+
+    togglePassword() {
+      this.hidePassword = !this.hidePassword;
+    }
     constructor(private builder: FormBuilder, private service: AuthService, private router: Router) {
 
 

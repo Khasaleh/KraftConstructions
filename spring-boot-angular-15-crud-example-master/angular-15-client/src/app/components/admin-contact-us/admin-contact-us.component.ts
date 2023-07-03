@@ -79,15 +79,35 @@ this.userDetail.patchValue({
   
         
   getAll() {
+    // const user=JSON.parse(localStorage.getItem("user")!);
+    // if(!user.roles.includes('ROLE_ADMIN')){
+    //   const dialogRef = this.dialog.open(DialogeComponent, {
+    //     data: {
+    //       message: `You don't have the access`,
+    //       showYesNoButtons: false
+    //     }
+    //   });
+    // }
+    // else if (user.roles.includes('ROLE_ADMIN')){
     this.conus.getAll().subscribe((res) => {
       console.log(res);
       this.userdata = res;
-  
-    });
-  }
+  })
+}
+
   
 
   deleteUser(id: number) {
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      const dialogRef = this.dialog.open(DialogeComponent, {
+        data: {
+          message: `You don't have the access`,
+          showYesNoButtons: false
+        }
+      });
+    }
+    else if(user.roles.includes('ROLE_ADMIN')){
     const dialogRef = this.dialog.open(DialogeComponent, {
       data: {
         message: `Do You want to delete ${id}?`,
@@ -113,8 +133,18 @@ this.userDetail.patchValue({
       }
     });
   }
+}
   edit(data:Address) {
-    
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      const dialogRef = this.dialog.open(DialogeComponent, {
+        data: {
+          message: `You don't have the access`,
+          showYesNoButtons: false
+        }
+      });
+    }
+   else if(!user.roles.includes('ROLE_ADMIN')){
   this.conus.updateContact(data).subscribe(res=> {
     this.successMessage = 'Address Edited successfully.';
     setTimeout(() => {
@@ -125,6 +155,6 @@ this.userDetail.patchValue({
     
   })
 }
-
+}
 
 }

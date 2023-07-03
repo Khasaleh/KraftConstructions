@@ -164,4 +164,65 @@ h1 {
   }
 
    }
+   @media (max-width: 768px) {
+    .abtus, h2 {
+       font-size: 24px;
+       margin-left: 0;
+    }
+    #my-img {
+      width: auto;
+    }
+    .abc {
+      position: absolute;
+      right: 0;
+      top: 0;
+      left: 0;
+      padding-top: auto;
+      padding-bottom: auto;
+      color: #fff;
+      text-align: auto;
+  }
+  .design-your-home {
+ 
+    font-size: 25;
+    font-weight: 600; 
+     font-family: var(--h2-semibold);
+  }
+  .get-a-quote {
 
+    font-family: var(--font-lato); 
+     font-size: 25px; 
+  }
+  p {
+    line-height: auto;
+  }
+  .about-text {
+    margin-top: auto;
+   
+  }
+  .btn {
+
+    display: inline-block;
+    background-color: var(--kraft-d-green);
+    width: auto;
+    height: auto;
+}
+.test-nav {
+  margin-left:0;
+  width: 100%;
+ }
+ .card-body p {
+  line-height: 0.1rem;
+}
+.card2.sm-2 {
+  max-width: 100%;
+  margin-left: 0; 
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+.image {
+  max-width: 100%;
+  margin-left: 0;
+}
+
+ }

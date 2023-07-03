@@ -9,15 +9,17 @@
         <form [formGroup]="loginform" (ngSubmit)="proceedlogin()">
           <div class="col mb-3"style="margin-left:22px;">
             <label for="username" class="form-label">User name</label>
-            <input type="text" class="form-control" id="username" formControlName="username">
+            <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter Username">
           </div>
-          <div class="col mb-3"style="margin-left:22px;">
+          <div class="col mb-3" style="margin-left: 22px;">
             <label for="password" class="form-label">Password</label>
-            <input #x type="password" class="form-control" id="password" formControlName="password" style="display: inline-block;">
-<span style="display: inline-block;"><mat-icon style="padding-top: 5px;padding-left: 1px; cursor: pointer;"matSuffix (click)="x.type=x.type=='password'?'text':'password'">visibility</mat-icon></span>
-
+            <div class="input-group">
+              <input formControlName="password" type="password" type="{{ hidePassword ? 'password' : 'text' }}" id="password" class="form-control" placeholder="Enter password">
+              <button class="btn btn-outline-secondary" type="button" (click)="togglePassword()">
+                <i class="fa" [ngClass]="{'fa-eye': !hidePassword, 'fa-eye-slash': hidePassword}"></i>
+              </button>
               
-         
+            </div>
           </div>
           
           <div class="form-group"style="margin-left:22px;">

@@ -15,6 +15,8 @@ export class AdminRequestComponent implements OnInit {
   userDetail!:FormGroup;
   userIdtoView!:number;
   successMessage: string | null = null;
+
+
   constructor(private requser:ReqUserService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
    
@@ -41,6 +43,7 @@ export class AdminRequestComponent implements OnInit {
   
 show = false;
 ahide=true;
+
 content() {
   this.show = true;
   this.ahide = false;
@@ -51,6 +54,8 @@ getAll() {
     console.log(res);
     this.userdata=res;
   });
+
+  
 }
 deleteUser(id: number) {
   const dialogRef = this.dialog.open(DialogeComponent, {
