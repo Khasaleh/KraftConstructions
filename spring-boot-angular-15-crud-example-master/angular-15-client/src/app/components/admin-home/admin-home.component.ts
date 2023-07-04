@@ -132,7 +132,7 @@ export class AdminHomeComponent {
     this.homeService.saveTestimonialData(testData).subscribe(
       response => {
         console.log("Response for testimonial section", response);
-        this.successMessage = response?.message;
+        this.successMessage = "Data Added successfully";
         console.log(response)
         setTimeout(() => {
 
@@ -186,7 +186,7 @@ export class AdminHomeComponent {
       const linkStatus = this.bannerForm.get('linkStatus')?.value;
       this.homeService.saveBannerData(bannerLink, bannerDescription, linkStatus).subscribe(
         response => {
-          this.successMessage = response?.message;
+          this.successMessage = "Slider data added successfully";
           console.log(response)
           setTimeout(() => {
 
@@ -217,7 +217,7 @@ export class AdminHomeComponent {
       const addLink = this.aboutUsForm.get('addLink')?.value;
       this.homeService.saveHomepageData(textEditor, addLink).subscribe(
         response => {
-          this.successMessage = response?.message;
+          this.successMessage = "About us data added successfully";
           console.log(response)
           setTimeout(() => {
   

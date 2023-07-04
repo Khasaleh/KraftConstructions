@@ -66,7 +66,7 @@ export class AdminAddCareersNewsComponent {
       const status = this.careerNewsForm.get('status')?.value;
       this.careerNewsService.careerNewsData(currentNews, backgroundColor, textColor, startDate, endDate, status).subscribe(
         response => {
-          this.successMessage = response?.message;
+          this.successMessage = "Career news added successfully";
           console.log(response)
           setTimeout(() => {
   
