@@ -164,12 +164,12 @@ export class AdminServicesComponent {
     }
   }
   onClick1() {
-    const selectedServiceId = this.service.find(service => service.serviceName === this.selectedService)?.id;
+    // const selectedServiceId = this.service.find(service => service.serviceName === this.selectedService)?.id;
 
-    if (selectedServiceId) {
+    if (this.selectedServicId) {
       const formData = new FormData();
       formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
-      formData.append('serviceId', selectedServiceId.toString());
+      formData.append('serviceId', this.selectedServicId.toString());
       formData.append('beforeImage', this.urllink);
       formData.append('afterImage', this.urllink2);
       formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
@@ -198,7 +198,7 @@ export class AdminServicesComponent {
         }
       );
 
-      this.onClick2(selectedServiceId);
+      this.onClick2(this.selectedServicId);
     }
   }
 
@@ -320,31 +320,31 @@ export class AdminServicesComponent {
   }
   serviceData: any;
   imageData: any;
+  selectedServicId : any;
   getOneService(event: any) {
     console.log(event.target?.value);
+    this.selectedServicId  = event.target?.value
     this.interiorRemodelingService.getServiceById(event.target?.value).subscribe(
       response => {
-        this.serviceData = response;
-        // this.imageLink = response.beforeImageUrl
-        // this.imageLink = response.map((image: { afterImageUrl: any; }) => this.globalUrl + image.afterImageUrl);
-        this.imageLink = this.globalUrl + response.beforeImageUrl;
-        this.imageLink2 = this.globalUrl + response.afterImageUrl;
-        this.interiorRemodForm2.controls['beforeImage'].setValue(response.beforeImageTitle);
-        this.interiorRemodForm2.controls['afterImage'].setValue(response.afterImageTitle);
-        this.interiorRemodForm2.controls['description'].setValue(response.description);
-        this.interiorRemodForm2.controls['isCheck'].setValue(response.addPortfolio);
-        this.isCardBodyVisible = response.addPortfolio;
-
-
-        // this.videoLink = this.globalUrl + previousResponse.aboutusVideoUrl;
-        console.log(this.serviceData);
-
+        if (response) {
+          this.serviceData = response;
+          this.imageLink = this.globalUrl + response.beforeImageUrl;
+          this.imageLink2 = this.globalUrl + response.afterImageUrl;
+          this.interiorRemodForm2.controls['beforeImage'].setValue(response.beforeImageTitle);
+          this.interiorRemodForm2.controls['afterImage'].setValue(response.afterImageTitle);
+          this.interiorRemodForm2.controls['description'].setValue(response.description);
+          this.interiorRemodForm2.controls['isCheck'].setValue(response.addPortfolio);
+          this.isCardBodyVisible = response.addPortfolio;
+          console.log(this.serviceData);
+          this.getImages(event.target?.value); // Trigger the API call only if the response has data
+        } else {
+          console.log('No data available');
+        }
       },
       error => {
         console.log(error);
-
       }
-    )
+    );
     this.getImages(event.target?.value);
   }
   getImages(service: any) {

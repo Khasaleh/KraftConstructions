@@ -28,7 +28,7 @@
           <b>New Additions</b>
         </div>
         <ul class="list-group list-group-flush">
-          <button (click)="getOneService(service?.id)" *ngFor="let service of data">{{ service?.serviceName }}
+          <button class="btnClick" (click)="getOneService(service?.id)" *ngFor="let service of data">{{ service?.serviceName }}
           </button>
         </ul>
       </div>
