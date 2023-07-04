@@ -9,8 +9,17 @@ export class InteriorRemodelingService {
   constructor(private http: HttpClient) { }
   
   //API for Pages section in services
+  getServicesbyPageFornew(): Observable<any>{
+    return this.http.get('http://99.72.32.144:8081/api/services/23/details')
+  }
+  getServiceLoadImagesFornew(): Observable<any>{
+    return this.http.get('http://99.72.32.144:8081/api/23/images')
+  }
   getServicesbyPage(): Observable<any>{
-    return this.http.get('http://99.72.32.144:8081/api/services/22/details')
+    return this.http.get('http://99.72.32.144:8081/api/services/26/details')
+  }
+  getServiceLoadImages(): Observable<any>{
+    return this.http.get('http://99.72.32.144:8081/api/26/images')
   }
   getServicebyPage(): Observable<any>{
     return this.http.get('http://99.72.32.144:8081/api/services/23/details')
@@ -48,9 +57,11 @@ export class InteriorRemodelingService {
   saveSeviceDetails(serviceData: FormData): Observable<any> {
     return this.http.post('http://99.72.32.144:8081/api/services/addDetails', serviceData);
   }
-  saveServicesImages(serviceImage: FormData): Observable<any> {
-    return this.http.post('http://99.72.32.144:8081/api/service/1/images', serviceImage)
+  saveServicesImages(serviceImage: FormData, serviceId: number): Observable<any> {
+    return this.http.post(`http://99.72.32.144:8081/api/service/${serviceId}/images`, serviceImage)
   }
-
+  getServicesImages(serviceId: number): Observable<any>{
+    return this.http.get(`http://99.72.32.144:8081/api/${serviceId}/images`)
+  }
 
 }

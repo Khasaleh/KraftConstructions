@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InteriorRemodelingService } from '../../service/interior-remodeling.service'
-import { error } from 'jquery';
+import { error, event } from 'jquery';
 
 @Component({
   selector: 'app-admin-services',
@@ -12,10 +12,10 @@ export class AdminServicesComponent {
   urllinkImg: string = "../../../assets/Decks-and-Patioss 1.png";
 
   cards = [
-    { id: 1, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-    { id: 2, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-    { id: 3, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
-    { id: 4, imgSrc: './../../assets/Decks-and-Patioss 1.png' },
+    { id: 1, imgSrc: '' },
+    { id: 2, imgSrc: '' },
+    { id: 3, imgSrc: '' },
+    { id: 4, imgSrc: '' },
   ];
   selectedOption: string = 'interior remodeling';
   selectedOption1: string = 'interior remodeling';
@@ -36,6 +36,8 @@ export class AdminServicesComponent {
   urllink2!: File;
   imageLink2: any;
   urllink3!: File
+  globalUrl = 'http://99.72.32.144:8083'
+
   // urllink:string ="../../../assets/before1.png";
   // selectFiles(event:any)
   // {
@@ -73,13 +75,16 @@ export class AdminServicesComponent {
   //   }
   // }
 
+
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
   isActive: boolean = false;
   interiorRemodForm!: FormGroup;
   interiorRemodForm2!: FormGroup;
   isCheck: boolean = false;
   services: any[] = [];
   selectedService!: string;
-  service!: { id: number; serviceName: string; pageName: string; active: boolean; }[];
+  service: { id: number; serviceName: string; pageName: string; active: boolean; }[] = [];
   serviceNames!: string[];
   // apiData: any;
   constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
@@ -105,6 +110,10 @@ export class AdminServicesComponent {
 
     });
   }
+  isCardBodyVisible: boolean = false;
+  toggleCardBody() {
+    this.isCardBodyVisible = !this.isCardBodyVisible;
+  }
   getServices() {
     this.interiorRemodelingService.getServiceData().subscribe(
       (response) => {
@@ -126,12 +135,28 @@ export class AdminServicesComponent {
 
       this.interiorRemodelingService.saveInteriorRemodelingpageData(addServiceName, selectServicePage, isActive).subscribe(
         response => {
+          this.successMessage = "Service added Successfully.";
+
+          setTimeout(() => {
+
+            this.successMessage = '';
+
+          }, 1000);
+
+
           // Handle the API response here
           console.log("data submit successfully");
           console.log("response", response)
           this.getServices()
         },
         error => {
+          this.errorMessage = "Service is not added.";
+
+          setTimeout(() => {
+
+            this.errorMessage = '';
+
+          }, 1000);
           // Handle any error that occurs during the API request
           console.error(error);
         }
@@ -140,31 +165,43 @@ export class AdminServicesComponent {
   }
   onClick1() {
     const selectedServiceId = this.service.find(service => service.serviceName === this.selectedService)?.id;
-  
+
     if (selectedServiceId) {
       const formData = new FormData();
       formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
-      formData.append('serviceId', selectedServiceId.toString()); 
+      formData.append('serviceId', selectedServiceId.toString());
       formData.append('beforeImage', this.urllink);
       formData.append('afterImage', this.urllink2);
       formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
       formData.append('afterImageTitle', this.interiorRemodForm2.value.afterImage);
       formData.append('description', this.interiorRemodForm2.value.description);
-     // Append the selected service ID
-  
+      // Append the selected service ID
+
       this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
         response => {
           console.log(response, 'response for service details');
+          this.successMessage = response?.message;
+          setTimeout(() => {
+  
+            this.successMessage = '';
+  
+          }, 1000);
         },
         error => {
           console.log(error, 'error for service details');
+          this.errorMessage = error?.message;
+          setTimeout(() => {
+  
+            this.errorMessage = '';
+  
+          }, 1000);
         }
       );
-  
-      this.onClick2();
+
+      this.onClick2(selectedServiceId);
     }
   }
-  
+
   // onClick1() {
 
   //   const formData = new FormData();
@@ -219,13 +256,13 @@ export class AdminServicesComponent {
       card.imgSrc = URL.createObjectURL(file)
     }
   }
-  onClick2() {
+  onClick2(service: any) {
     const formData = new FormData();
     for (let i = 0; i < this.images.length; i++) {
       formData.append('images', this.images[i]);
     }
     console.log(formData);
-    this.interiorRemodelingService.saveServicesImages(formData).subscribe(
+    this.interiorRemodelingService.saveServicesImages(formData, service).subscribe(
       response => {
         console.log(response);
       },
@@ -241,10 +278,10 @@ export class AdminServicesComponent {
         .subscribe(
           data => {
             console.log(data);
-            
-          this.service = data; // Assign the API response to the services array
-          this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
-          this.selectedService = ''; 
+
+            this.service = data; // Assign the API response to the services array
+            this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+            this.selectedService = '';
           });
     } else if (selectedValue === 'addition') {
       this.interiorRemodelingService.getServiceByPage2()
@@ -281,5 +318,50 @@ export class AdminServicesComponent {
       );
     }
   }
+  serviceData: any;
+  imageData: any;
+  getOneService(event: any) {
+    console.log(event.target?.value);
+    this.interiorRemodelingService.getServiceById(event.target?.value).subscribe(
+      response => {
+        this.serviceData = response;
+        // this.imageLink = response.beforeImageUrl
+        // this.imageLink = response.map((image: { afterImageUrl: any; }) => this.globalUrl + image.afterImageUrl);
+        this.imageLink = this.globalUrl + response.beforeImageUrl;
+        this.imageLink2 = this.globalUrl + response.afterImageUrl;
+        this.interiorRemodForm2.controls['beforeImage'].setValue(response.beforeImageTitle);
+        this.interiorRemodForm2.controls['afterImage'].setValue(response.afterImageTitle);
+        this.interiorRemodForm2.controls['description'].setValue(response.description);
+        this.interiorRemodForm2.controls['isCheck'].setValue(response.addPortfolio);
+        this.isCardBodyVisible = response.addPortfolio;
 
+
+        // this.videoLink = this.globalUrl + previousResponse.aboutusVideoUrl;
+        console.log(this.serviceData);
+
+      },
+      error => {
+        console.log(error);
+
+      }
+    )
+    this.getImages(event.target?.value);
+  }
+  getImages(service: any) {
+    this.interiorRemodelingService.getServicesImages(service).subscribe(
+      (response: any[]) => {
+        this.cards = response.map(item => ({
+          id: item.id,
+          imgSrc: this.globalUrl + item.imageUrl // Adjust the URL according to your API response
+        }))
+        // this.imageData = response;
+        
+        console.log(this.imageData);
+      },
+      error => {
+        console.log(error);
+
+      }
+    )
+  }
 }

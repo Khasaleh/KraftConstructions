@@ -48,6 +48,17 @@
                         <div class="saveBtn  mb-3 mt-5">
                             <button type="submit" class="save-btn">save</button>
                         </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                            {{ errorMessage }}
+                      
+                          </div>
+                      
+                          <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                      
+                            {{ successMessage }}
+                      
+                          </div>
                     </div>
                 </div>
             </div>
@@ -88,12 +99,24 @@
                                         <input type="file" id="file-input" class="input-file" (change)="
                                     onFileSelected($event)" accept="image/*,video/*">
                                     </button>
+                                   
                                 </div>
                             </div>
                         </div>
                         <div class="saveBtn  mb-3 mt-5">
                             <button class="save-btn" type="submit">save</button>
                         </div>
+                        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                            {{ errorMessage }}
+                      
+                          </div>
+                      
+                          <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                      
+                            {{ successMessage }}
+                      
+                          </div>
                     </div>
                 </div>
             </div>
@@ -106,9 +129,7 @@
                 <div class="card-body">
                     <div class="drop-1 mb-3 mt-3">
                         <label class="card-head-services" for="inputField">Select Service</label> <br>
-                        <!-- <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption">
-                            <option *ngFor="let option of options" [value]="option">{{ option }}</option>
-                        </select> -->
+                  
                         <select class="inputField mt-3 mb-3"  (change)="onOptionSelected($event)"
                         [(ngModel)]="selectedOption" >
                             <!-- <option *ngFor="let option of options" [value]="option">{{ option }}</option> -->
@@ -135,9 +156,10 @@
                         </div>
                     </div> -->
                     <div class="check-button-wrape">
-                        <div class="check-button" *ngFor="let serviceName of serviceNames">
-                          <input type="checkbox" id="file-input" class="input-check" [value]="serviceName">
-                          <label class="check-btn">{{ serviceName }}</label>
+                        <div class="check-button" *ngFor="let services of service">
+                          <input type="checkbox" id="file-input" class="input-check" [value]="services"
+                          (click)= "addServiceOnHomePage(services.id)">
+                          <label class="check-btn">{{ services.serviceName }}</label>
                         </div>
                       </div>
                       
@@ -184,8 +206,20 @@
                         </div>
                     </div>
                     <div class="saveBtn  mb-3 mt-5">
-                        <button class="save-btn">save</button>
+                        <button class="save-btn" (click)="onServiceClick()">save</button>
                     </div>
+                 
+                  
+                      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                  
+                        {{ successMessage }}
+                  
+                      </div>
+                      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                        {{ errorMessage }}
+                  
+                      </div>
                 </div>
             </div>
         </div>
@@ -212,20 +246,25 @@
                         </div>
                         <div class="clientSec-cont">
                             <ng-container *ngFor="let form of testimonialData; let i = index">
-                                <div class="form-test mb-3">
-                                    <label class="mb-2">Heading</label>
-                                    <input type="text" class="form-control mb-3" [(ngModel)]="form.heading">
-
-                                    <label class="mb-2">Description</label>
-                                    <textarea class="form-control form-control-lg  mb-3" [(ngModel)]="form.description"
-                                        placeholder="Enter a description..."></textarea>
-                                    <label class="mb-2">Name</label>
-                                    <input type="text" class="form-control" [(ngModel)]="form.name">
-                                    <div class="btn-wrap mt-3">
-                                        <button class="add-btn" (click)="deleteForm(i)">Delete</button>
+                            
+                                <div *ngFor="let item of testData">
+                                    <div class="form-test mb-3">
+                                      <label class="mb-2">Heading</label>
+                                      <input type="text" class="form-control mb-3" [(ngModel)]="item.heading">
+                                  
+                                      <label class="mb-2">Description</label>
+                                      <textarea class="form-control form-control-lg mb-3" [(ngModel)]="item.description" placeholder="Enter a description..."></textarea>
+                                  
+                                      <label class="mb-2">Name</label>
+                                      <input type="text" class="form-control" [(ngModel)]="item.name">
+                                  
+                                      <div class="btn-wrap mt-3">
+                                        <button class="add-btn" (click)="deleteForm(item)">Delete</button>
                                         <button class="add-btn" (click)="addForm()">Duplicate</button>
+                                      </div>
                                     </div>
-                                </div>
+                                  </div>
+                                  
                             </ng-container>
                         </div>
 
@@ -233,6 +272,17 @@
                     <div class="saveBtn  mb-5 mt-3">
                         <button (click)="onSubmit2()" class="save-btn">save</button>
                     </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                        {{ errorMessage }}
+                  
+                      </div>
+                  
+                      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                  
+                        {{ successMessage }}
+                  
+                      </div>
                 </div>
             </div>
         </div>

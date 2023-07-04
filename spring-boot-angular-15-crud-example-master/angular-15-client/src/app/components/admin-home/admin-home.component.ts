@@ -40,9 +40,7 @@ export class AdminHomeComponent {
   });
   forms: FormGroup[] = [];
   addForm() {
-    // const newForm = new FormGroup({ ...this.myForm.controls });
-    // this.forms.push(newForm);
-    this.testimonialData.push({heading:'', description:'', name:''});
+    this.testimonialData.push({ heading: '', description: '', name: '' });
   }
   deleteForm(index: number) {
     this.testimonialData.splice(index, 1);
@@ -52,9 +50,12 @@ export class AdminHomeComponent {
   testimonialForm!: FormGroup;
   testimonialForm2!: FormGroup;
   linkStatus: boolean = false;
-  testimonialData: [{heading:string, description:string, name:string}] = [{heading:'', description:'', name:''}];
+  testimonialData: [{ heading: string, description: string, name: string }] = [{ heading: '', description: '', name: '' }];
+  serviceList: any[] = []
   test = '';
-  
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
+
   constructor(private formBuilder: FormBuilder, private homeService: HomeServiceService,
   ) { }
   onVideoUploadBtnClick() {
@@ -76,8 +77,9 @@ export class AdminHomeComponent {
   serviceNames!: string[];
   globalUrl = 'http://99.72.32.144:8083'
   ngOnInit(): void {
-    this.selectedService = ''; // Initialize the selected service
-    this.service = []; // Initialize the services array
+    this.getTestData();
+    this.selectedService = '';
+    this.service = []; 
     this.serviceNames = [];
     this.aboutUsForm = this.formBuilder.group({
       textEditor: ['', Validators.required],
@@ -107,75 +109,73 @@ export class AdminHomeComponent {
       previousResponse => {
         this.aboutUsForm.controls['textEditor'].setValue(previousResponse.aboutusDescription);
         this.aboutUsForm.controls['addLink'].setValue(previousResponse.aboutusLink);
-        this.videoLink =this.globalUrl + previousResponse.aboutusVideoUrl;
-        // this.videoLink = previousResponse.map((video: { aboutusVideoUrl: any; }) => this.globalUrl + video.aboutusVideoUrl);
-
+        this.videoLink = this.globalUrl + previousResponse.aboutusVideoUrl;
         console.log(previousResponse, "response for AboutUs section data");
       },
     )
-    // this.testimonialForm = this.formBuilder.group({
-    //   heading: ['', Validators.required],
-    //   description: ['', Validators.required],
-    //   name: ['', Validators.required],
-    // })
-    // this.testimonialForm2 = this.formBuilder.group({
-    //   heading2: ['', Validators.required],
-    //   description2: ['', Validators.required],
-    //   name2: ['', Validators.required],
-    // })
     this.homeService.getTestimonialsData().subscribe(
       response => {
-        console.log(response,"response for test get data");
+        console.log(response, "response for test get data");
       },
       error => {
-        console.log(error,"error for test data");
+        console.log(error, "error for test data");
       }
     )
     this.getBannerImages();
   }
- 
+
   onSubmit2() {
     console.log("data for test", this.testimonialData);
     console.log(this.test);
     const testData = this.testimonialData;
-      this.homeService.saveTestimonialData(testData).subscribe(
-        response => {
-          console.log("Response for testimonial section", response);
-          // Handle the response here
-        },
-        error => {
-          console.error(error);
-          // Handle the error here0
-        }
-      );
-    }
+    this.homeService.saveTestimonialData(testData).subscribe(
+      response => {
+        console.log("Response for testimonial section", response);
+        this.successMessage = response?.message;
+        console.log(response)
+        setTimeout(() => {
 
-  
-  // onFormSubmit() {
-  //   if (this.testimonialForm2.valid) {
-  //     const heading2 = this.testimonialForm2.get('heading2')?.value;
-  //     const description2 = this.testimonialForm2.get('description2')?.value;
-  //     const name2 = this.testimonialForm2.get('name2')?.value;
+          this.successMessage = '';
 
-  //     const testimonial = {
-  //       heading: heading2,
-  //       description: description2,
-  //       name: name2
-  //     };
+        }, 1000);
 
-  //     this.homeService.saveTestimonialData([testimonial]).subscribe(
-  //       response => {
-  //         console.log("Response for testimonial section", response);
-  //         // Handle the response here
-  //       },
-  //       error => {
-  //         console.error(error);
-  //         // Handle the error here
-  //       }
-  //     );
-  //   }
+      },
+      error => {
+        this.errorMessage = error?.message;
+        setTimeout(() => {
 
-  // }
+          this.errorMessage = '';
+
+        }, 1000);
+        console.error(error);
+
+      }
+    );
+
+  }
+  onServiceClick() {
+    this.homeService.addServicesData(this.serviceList).subscribe(
+      response => {
+        this.successMessage = response?.message;
+        console.log(response)
+        setTimeout(() => {
+
+          this.successMessage = '';
+
+        }, 1000);
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error?.message;
+        setTimeout(() => {
+
+          this.errorMessage = '';
+
+        }, 1000);
+
+      }
+    )
+  }
 
   onSubmit1() {
 
@@ -185,10 +185,24 @@ export class AdminHomeComponent {
       const linkStatus = this.bannerForm.get('linkStatus')?.value;
       this.homeService.saveBannerData(bannerLink, bannerDescription, linkStatus).subscribe(
         response => {
+          this.successMessage = response?.message;
+          console.log(response)
+          setTimeout(() => {
+
+            this.successMessage = '';
+
+          }, 1000);
           console.log(" banner data submit successfully");
           console.log("response", response)
         },
         error => {
+          console.log(error);
+          this.errorMessage = error?.message;
+          setTimeout(() => {
+  
+            this.errorMessage = '';
+  
+          }, 1000);
           console.error(error);
         }
       )
@@ -202,35 +216,48 @@ export class AdminHomeComponent {
       const addLink = this.aboutUsForm.get('addLink')?.value;
       this.homeService.saveHomepageData(textEditor, addLink).subscribe(
         response => {
+          this.successMessage = response?.message;
+          console.log(response)
+          setTimeout(() => {
+  
+            this.successMessage = '';
+  
+          }, 1000);
           console.log("data submit successfully");
           console.log("response", response)
         },
         error => {
+          console.log(error);
+          this.errorMessage = error?.message;
+          setTimeout(() => {
+  
+            this.errorMessage = '';
+  
+          }, 1000);
           console.error(error);
         }
       )
     }
   }
-  buttonLinkStatus(){
+  buttonLinkStatus() {
     this.homeService.bannerLinkStatus().subscribe(
-      response =>{
+      response => {
         console.log(response);
       },
-      error =>{
+      error => {
         console.log(error);
-        
+
       }
     )
   }
   isCardBodyVisible: boolean = false;
   toggleCardBody() {
     this.isCardBodyVisible = !this.isCardBodyVisible;
-    
   }
   isLinkVisible: boolean = false;
   toggleLink() {
     console.log("hello world");
-    
+
     this.isLinkVisible = !this.isLinkVisible;
     this.buttonLinkStatus();
   }
@@ -260,13 +287,11 @@ export class AdminHomeComponent {
       }
     );
   }
-  getBannerImages(){
+  getBannerImages() {
     this.homeService.getHomePageBanner().subscribe(
       response => {
         console.log(response);
-  
-        // Update the imageLinks array with the fetched image URLs
-        // this.imageLink = response.map((image: { imageUrl: any; }) => image.imageUrl);
+
         this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
 
       },
@@ -283,10 +308,10 @@ export class AdminHomeComponent {
         .subscribe(
           data => {
             console.log(data);
-            
-          this.service = data; // Assign the API response to the services array
-          this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
-          this.selectedService = ''; 
+
+            this.service = data; // Assign the API response to the services array
+            this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+            this.selectedService = '';
           });
     } else if (selectedValue === 'addition') {
       this.homeService.getServiceByPage2()
@@ -299,11 +324,24 @@ export class AdminHomeComponent {
           });
     }
   }
+  addServiceOnHomePage(serviceIds: any) {
+ 
+    this.serviceList.push(serviceIds)
+  }
+
   uploadImages() {
     this.uploadImages1();
     console.log(this.images);
   }
   setActiveIndex(index: number) {
     this.activeIndex = index;
+  }
+  testData: any
+  getTestData() {
+    this.homeService.getTestimonialsData().subscribe(
+      response => {
+        this.testData = response;
+      }
+    )
   }
 }

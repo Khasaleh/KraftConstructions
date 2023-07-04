@@ -126,11 +126,14 @@
  .card.sm-8 {
      background-color: var(--kraft-light-green);box-sizing: border-box;
      border: 1px solid #DDDD;
-     height: 360px;
+     /* height: 360px; */
      width: 240px;
-     border-radius: 5px 5px 0px 0px;
-     margin-left: 6.5rem;
+     border-radius: 5px;
+     /* margin-left: 6.5rem; */
  }
+ img.card-img-top {
+  height: 195px;
+}
  .test-nav {
    margin-left: 9rem;
    width: 200px;

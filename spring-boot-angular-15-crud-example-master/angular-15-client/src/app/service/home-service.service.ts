@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, retry } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -60,4 +60,20 @@ export class HomeServiceService {
 bannerLinkStatus(): Observable<any>{
   return this.http.put('http://99.72.32.144:8081/api/homepageabout-us/banner-link-status',{})
 }
+// addServicesData(serviceIds: number[]): Observable<any>{
+//   const url = 'http://99.72.32.144:8081/api/homepageabout-us/1/addservices';
+  
+//   const requestBody = { serviceIds };
+//     return this.http.post(url, requestBody)
+
+// }
+addServicesData(serviceId: any[]): Observable<any> {
+  const url = 'http://99.72.32.144:8081/api/homepageabout-us/1/addservices';
+  const requestBody = { serviceIds:  serviceId};
+
+  // requestBody.serviceIds[] = serviceId;
+
+  return this.http.post(url, requestBody);
+}
+
 }

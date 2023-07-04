@@ -24,6 +24,17 @@
                                 <label for="file-input" class="custom-button">Add now</label>
                             </button> -->
                                 <button class="custom-button" type="submit">Add now</button>
+                                <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                                    {{ errorMessage }}
+                              
+                                  </div>
+                              
+                                  <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                              
+                                    {{ successMessage }}
+                              
+                                  </div>
                             </div>
 
                             <div class="grey-box">
@@ -49,8 +60,8 @@
                     <div class="drop-wrape">
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Page</label> <br>
-                            <select class="inputField"  (change)="onOptionSelected($event)"
-                            [(ngModel)]="selectedOption1" >
+                            <select class="inputField" (change)="onOptionSelected($event)"
+                                [(ngModel)]="selectedOption1">
                                 <!-- <option *ngFor="let option of options" [value]="option">{{ option }}</option> -->
                                 <option value="interior">Interior Remodeling</option>
                                 <option value="addition">New Addition</option>
@@ -61,16 +72,21 @@
                             <!-- <select class="inputField" [(ngModel)]="selectedOption4">
                                 <option *ngFor="let option of optionSevice" [value]="option">{{ option }}</option>
                             </select> -->
-                            <select  class="inputField" [(ngModel)]="selectedService">
-                                <option *ngFor="let serviceName of serviceNames" [value]="serviceName">{{ serviceName }}</option>
-                              </select>
+                            <select class="inputField" (change)="getOneService($event)">
+                                <option  *ngFor="let services of service"
+                                    [value]="services?.id">{{ services?.serviceName }}</option>
+                            </select>
+                            <!-- <select class="inputField" (change)="getOneService($event.target.value)">
+                                <option *ngFor="let service of services" [ngValue]="service.id">{{ service.serviceName }}</option>
+                              </select> -->
+
                         </div>
                     </div>
                     <form [formGroup]="interiorRemodForm2">
                         <div class="img-wrape">
                             <div class="content1">
                                 <div class="img-box">
-                                    <img *ngIf="urllink" class="img-dyn" [src]="imageLink" alt="">
+                                    <img *ngIf="urllink || imageLink" class="img-dyn" [src]="imageLink" alt="">
                                     <input type="file" id="file-input" class="input-file"
                                         (change)="selectFiles($event)">
                                     <label for="file-input" id="file-input" class="upload-label"></label>
@@ -83,7 +99,7 @@
                             </div>
                             <div class="content1">
                                 <div class="img-box">
-                                    <img *ngIf="urllink2" class="img-dyn" [src]="imageLink2" alt="">
+                                    <img *ngIf="urllink2 || imageLink2" class="img-dyn" [src]="imageLink2" alt="">
                                     <input type="file" id="file-input1" class="input-file1"
                                         (change)="selectFiles2($event)">
                                     <label for="file-input1" id="file-input1" class="upload-label1"></label>
@@ -103,31 +119,50 @@
                                 placeholder="Enter a description" formControlName="description"></textarea>
                         </div>
                         <div class="check-button1">
-                            <input type="checkbox" class="input-check1" formControlName="isCheck">
+                            <input type="checkbox" class="input-check1" formControlName="isCheck"
+                                (click)="toggleCardBody()">
                             <label class="check-btn1">Add Projects</label>
                         </div>
                     </form>
-
-                    <div id="grey-sec" class="card">
-                        <div class="card-body">
-                            <div class="drop-2">
-                                <label for="inputField" class="col-head mb-3">Select column</label> <br>
-                                <select class="inputField" [(ngModel)]="selectedQuantity">
-                                    <option *ngFor="let option of quantityOptions" [value]="option">{{ option }}
-                                    </option>
-                                </select>
+                    <div *ngIf="isCardBodyVisible">
+                        <div id="grey-sec" class="card">
+                            <div class="card-body">
+                                <div class="drop-2">
+                                    <label for="inputField" class="col-head mb-3">Select column</label> <br>
+                                    <select class="inputField" [(ngModel)]="selectedQuantity">
+                                        <option *ngFor="let option of quantityOptions" [value]="option">{{ option }}
+                                        </option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="card-wrape">
-                        <!-- <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box"> -->
-                        <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
-                            <img class="card-img" [src]="card.imgSrc" alt="">
-                            <div class="file-upload cardbtn">
-                                <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
-                                <input type="file" id="file-input2{{card.id}}" class="input-file"
-                                    (change)="selectImage($event, card)">
+                        <div class="card-wrape">
+                            <!-- <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box"> -->
+                            <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
+                                <img class="card-img" [src]="card.imgSrc" alt="">
+                                <div class="file-upload cardbtn">
+                                    <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
+                                    <input type="file" id="file-input2{{card.id}}" class="input-file"
+                                        (change)="selectImage($event, card)">
+                                </div>
                             </div>
+                            <!-- <div *ngFor="let card of cards" class="card-box">
+                                <ng-container *ngIf="card.imgSrc !== ''; else emptyCard">
+                                  <img class="card-img" [src]="card.imgSrc" alt="">
+                                  <div class="file-upload cardbtn">
+                                    <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
+                                    <input type="file" id="file-input2{{card.id}}" class="input-file" (change)="selectImage($event, card)">
+                                  </div>
+                                </ng-container>
+                                <ng-template #emptyCard>
+                                  <div class="empty-card">
+                                    Add any content or styling for the empty card
+                                    Empty Image
+                                  </div>
+                                </ng-template>
+                              </div>
+                               -->
+                              
                         </div>
                     </div>
                     <div class="create-btn">
@@ -135,6 +170,17 @@
                             Save
                         </button>
                     </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                        {{ errorMessage }}
+                  
+                      </div>
+                  
+                      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                  
+                        {{ successMessage }}
+                  
+                      </div>
                 </div>
             </div>
         </div>

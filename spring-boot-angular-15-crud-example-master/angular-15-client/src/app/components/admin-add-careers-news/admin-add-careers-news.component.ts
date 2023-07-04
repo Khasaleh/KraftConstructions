@@ -15,6 +15,8 @@ export class AdminAddCareersNewsComponent {
     this.isCardBodyVisible = !this.isCardBodyVisible;
     this.buttonToggle();
   }
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
   careerNewsForm!: FormGroup;
   status: boolean = false;
   sliderData: any;
@@ -64,11 +66,22 @@ export class AdminAddCareersNewsComponent {
       const status = this.careerNewsForm.get('status')?.value;
       this.careerNewsService.careerNewsData(currentNews, backgroundColor, textColor, startDate, endDate, status).subscribe(
         response => {
-          console.log("data submit successfully");
-          console.log("response", response)
+          this.successMessage = response?.message;
+          console.log(response)
+          setTimeout(() => {
+  
+            this.successMessage = '';
+  
+          }, 1000);
         },
         error => {
           console.error(error);
+          this.errorMessage = error?.message;
+          setTimeout(() => {
+  
+            this.errorMessage = '';
+  
+          }, 1000);
         }
       )
     }

@@ -9,12 +9,14 @@ import { InteriorRemodelingService } from 'src/app/service/interior-remodeling.s
 })
 export class NewAddComponent {
   serviceData: any
+  imageData: any
   data!: any[];
   globalUrl = 'http://99.72.32.144:8083'
   // serviceNames: string[] = [];
 
   constructor(private newAdditionService: InteriorRemodelingService) { }
   ngOnInit() {
+    this.getDataonload();
     this.newAdditionService.getServicebyPage().subscribe(
       response => {
         this.serviceData = response;
@@ -35,11 +37,39 @@ export class NewAddComponent {
       }
     )
   }
+  getDataonload(){
+    this.newAdditionService.getServicesbyPageFornew().subscribe(
+      response => {
+        this.serviceData = response;
+        console.log(response);
+      }
+    )
+    this.newAdditionService.getServiceLoadImagesFornew().subscribe(
+      response =>{
+        this.imageData = response;
+        console.log(response);
+
+      }
+    )
+  }
   getOneService(service: any){
     this.newAdditionService.getServiceById(service).subscribe(
       response =>{
         this.serviceData = response;
         console.log(this.serviceData);
+      },
+      error => {
+        console.log(error);
+        
+      }
+    )
+    this.getImages(service)
+  }
+  getImages(service: any){
+    this.newAdditionService.getServicesImages(service).subscribe(
+      response =>{
+        this.imageData = response;
+        console.log(this.imageData);
       },
       error => {
         console.log(error);

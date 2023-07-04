@@ -64,6 +64,9 @@ h2 {
 .card-title {
   font-size:14px ;
 }
+img.card-img-top {
+  height: 190px;
+}
 
 @media (max-width: 576px) {
   h2 {
@@ -107,9 +110,9 @@ h2 {
   background-color: var(--kraft-light-green);
   box-sizing: border-box;
   border: 1px solid #DDDD;
-  height: 360px;
+  /* height: 360px; */
   width: 240px;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px;
   margin-left: -7.5rem;
 
 }
@@ -134,10 +137,10 @@ h2 {
 .card.sm-8 {
     background-color: var(--kraft-light-green);box-sizing: border-box;
     border: 1px solid #DDDD;
-    height: 360px;
+    /* height: 360px; */
     width: 240px;
-    border-radius: 5px 5px 0px 0px;
-    margin-left: 6.5rem;
+    border-radius: 5px;
+    /* margin-left: 6.5rem; */
 }
 .test-nav {
   margin-left: 9rem;
