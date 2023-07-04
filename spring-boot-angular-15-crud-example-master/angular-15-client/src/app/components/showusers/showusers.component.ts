@@ -60,14 +60,17 @@ deleteUser(username: string) {
       
       this.adduserdata.deleteUser(username)
         .subscribe(res => {
-          this.successMessage="User Deleted Successfully!"
+          this.successMessage= res?.message;
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAllUsers();
         
         }, err=>{
-          this.errorMessage="User can't be deleted!"
+          this.errorMessage=err?.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
         }
         );
         
@@ -136,19 +139,19 @@ editUser(user: User) {
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
     this.adduserdata.updateUser(updatedUser,this.oldUser).subscribe(res=>{
-      this.successMessage="User Updated Successfully";
+      this.successMessage= res?.message;
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       console.log(res);
    
       this.getAllUsers();
     },err=>{
       console.log(err);
-      this.errorMessage="User cannot be Updated";
+      this.errorMessage= err?.message;
       setTimeout(() => {
         this.errorMessage = '';
-      }, 1000);
+      }, 3000);
     });
   
 
@@ -177,17 +180,17 @@ editUser(user: User) {
     console.log(this.userObj.role)
      this.adduserdata.AddUser(this.userObj).subscribe(res=>{
       this.onClick();
-      this.successMessage="User Added Successfully"
+      this.successMessage= res?.message;
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       console.log(res);
       this.getAllUsers();
     
       
 
      }, err=> {
-      this.errorMessage="User cannot be added!"
+      this.errorMessage= err?.message;
       setTimeout(() => {
         this.errorMessage = '';
       }, 1000);

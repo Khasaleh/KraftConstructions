@@ -140,10 +140,10 @@ deleteSlider(id:number) {
     if (result === true) {
       this.testimonialService.deleteSlider(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAllSlider();
         });
     }
@@ -163,13 +163,13 @@ deleteImage(id:number) {
     if (result === true) {
       this.testimonialService.deleteImage(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
-          this.getAllImage();
+          }, 3000);
         });
     }
+    this.getAllImage();
   });
 }
 onClick1() {
@@ -183,21 +183,21 @@ onClick1() {
   this.testimonialService.saveImage(formData).subscribe(
     response => {
       this.savedImageId = response.id;
-      this.successMessage='Data Saved Successfully'
+      this.successMessage=response?.message;
       
 
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       
       console.log(response);
           
          
         },err=> {
-          this.errorMessage='Unable to save data'
+          this.errorMessage= err?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 3000);
           console.log(err);
         });
 }
@@ -231,20 +231,20 @@ onClick2() {
   console.log(formData);
   this.testimonialService.saveSlider(formData).subscribe(
     response => {
-      this.successMessage='Data Saved Successfully'
+      this.successMessage= response?.message;
       
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       
           
           
          
         },err=> {
-          this.errorMessage='Unable to save data'
+          this.errorMessage = err?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAllSlider();
         });
 }
@@ -297,15 +297,16 @@ approveTest(user:Testimonial,id:number) {
     if (result === true) {
       this.testimonialService.approveTest(user,id)
         .subscribe(res => {
-          this.successMessage2 = 'Data Approved Successfully.';
+          console.log(res?.message)
+          this.successMessage2 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage2 = '';
-          }, 1000);
+          }, 3000);
          } ,err=> {
-            this.errorMessage='Unable to save data'
+            this.errorMessage = err?.approvalStatus;
             setTimeout(() => {
               this.errorMessage = '';
-            }, 1000);
+            }, 3000);
             
           });
         }
@@ -336,7 +337,7 @@ deleteTest(id:number) {
     if (result === true) {
       this.testimonialService.deleteTest(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message;
           setTimeout(() => {
             this.successMessage = '';
           }, 1000);
@@ -370,14 +371,17 @@ hideTest(user:Testimonial,id:number)
     if (result === true) {
       this.testimonialService.hideTest(user,id)
         .subscribe(res => {
-          this.successMessage1 = 'Data Hidden Successfully.';
+          this.successMessage1 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage1 = '';
-          }, 1000);
+          }, 3000);
           this.getAll();
         });
+     
     }
+    
   });
+
 }
 }
 onCheckboxChange(user:Testimonial,id:number) {

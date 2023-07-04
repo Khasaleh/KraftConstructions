@@ -19,13 +19,13 @@ export class ReqUserService {
   this.getUserById="http://99.72.32.144:8081/api/estimate-request/getrequests";
 
 }
-ReqUser(user: ReqUser): Observable<AddUser> {
+ReqUser(user: ReqUser): Observable<any> {
   return this.http.post<AddUser>(this.ReqUserUrl, user);
 }
 getAll():Observable<ReqUser[]> {
   return this.http.get<ReqUser[]>(this.getAllUrl);
   }
-  deleteUser(id: number) {
+  deleteUser(id: number) : Observable<any>{
     return this.http.delete<ReqUser>(`${this.deleteUrl}/${id}`)
   }
   getUserbyId(id: number) :Observable<ReqUser>{

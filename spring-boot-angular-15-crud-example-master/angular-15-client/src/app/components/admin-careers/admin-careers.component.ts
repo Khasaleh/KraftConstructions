@@ -94,7 +94,7 @@ export class AdminCareersComponent {
       if (result === true) {
         this.careerData.deleteUser(id)
           .subscribe(res => {
-            this.successMessage = 'Data Deleted successfully.';
+            this.successMessage = res?.message;
             setTimeout(() => {
               this.successMessage = '';
             }, 1000);

@@ -15,6 +15,7 @@ export class AdminRequestComponent implements OnInit {
   userDetail!:FormGroup;
   userIdtoView!:number;
   successMessage: string | null = null;
+  errorMessage: string | null = null;
 
 
   constructor(private requser:ReqUserService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
@@ -69,10 +70,10 @@ deleteUser(id: number) {
     if (result === true) {
       this.requser.deleteUser(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message;
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAll();
         });
     }
@@ -89,7 +90,7 @@ viewUser(id: number) {
         this.populateForm(res);
       },
       error: (err) => {
-        console.log(err);
+        this.errorMessage= err?.message;
       }
     });
 }

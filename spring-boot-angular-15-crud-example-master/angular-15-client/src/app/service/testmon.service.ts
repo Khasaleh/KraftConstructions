@@ -44,7 +44,7 @@ PostTest(user: Testimonial): Observable<Testimonial> {
 getAll():Observable<Testimonial[]> {
   return this.http.get<Testimonial[]>(this.getAllUrl);
   }
-  deleteTest(id: number) {
+  deleteTest(id: number) : Observable<any> {
     return this.http.delete<Testimonial>(`${this.deleteUrl}/${id}`)
   }
   getTestbyId(id: number) :Observable<Testimonial>{
@@ -53,10 +53,10 @@ getAll():Observable<Testimonial[]> {
   getapproveTest():Observable<Testimonial[]> {
     return this.http.get<Testimonial[]>(this.getapprovedUrl);
   }
-  approveTest(user: Testimonial,id: number):Observable<Testimonial> {
+  approveTest(user: Testimonial,id: number):Observable<any> {
     return this.http.put<Testimonial>(`${this.approveUrl}/${id}`,user);
   }
-  hideTest(user:Testimonial,id:number) {
+  hideTest(user:Testimonial,id:number) : Observable<any> {
     return this.http.put<Testimonial>(`${this.hideUrl}/${id}`,user)
   }
   saveImage(data: FormData): Observable<any> {
@@ -65,7 +65,7 @@ getAll():Observable<Testimonial[]> {
   getImage() : Observable<any> {
     return this.http.get<FormData>(this.getImageUrl);
 }
-deleteImage(id: number) {
+deleteImage(id: number) : Observable<any> {
   return this.http.delete(`${this.deleteImageUrl}/${id}`)
 }
 saveSlider(data :FormData) : Observable<any> {
@@ -74,7 +74,7 @@ saveSlider(data :FormData) : Observable<any> {
 getSlider() : Observable<FormData>  {
   return this.http.get<FormData>(this.getSliderUrl);
 }
-deleteSlider(id:number) {
+deleteSlider(id:number): Observable<any> {
 return this.http.delete(`${this.deleteSliderUrl}/${id}`)
 }
 // getSliderById(id: number): Observable<any> {

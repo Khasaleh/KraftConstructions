@@ -84,7 +84,7 @@
     padding: 10px 0px;
 }
 .larger-checkbox {
-    -webkit-transform: scale(3);
+    --webkit-transform: scale(3);
   }
   .captcha-head{
     font-size: var( --font-size-xl);
@@ -190,6 +190,11 @@
 .get-a-quote:hover {
     color: #fff;
     text-decoration: none;
+}
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 @media (max-width: 72.5em) {
     .wrape-robot{

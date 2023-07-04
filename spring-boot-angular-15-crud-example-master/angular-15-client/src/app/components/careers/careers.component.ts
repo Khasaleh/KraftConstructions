@@ -16,6 +16,7 @@ export class CareersComponent {
 errorMessage: string | null = null;
 imageLink: any;
 fileURL1!: File;
+
 states: string[] = [
   'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
   'Hawaii', 'Idaho', 'Illinois', 'Indiana', 'Iowa', 'Kansas', 'Kentucky', 'Louisiana', 'Maine', 'Maryland',
@@ -103,11 +104,17 @@ onClick1() {
   this.careerData.SaveUser(formData).subscribe(
     response => {
  
-      console.log(response);
+      this.successMessage= response?.message;
+      setTimeout(() => {
+        this.successMessage = '';
+      }, 3000);
     },
     error => {
 
-      console.error(error);
+      this.errorMessage= error?.message;
+      setTimeout(() => {
+        this.errorMessage = '';
+      }, 3000);
     }
   );
 }

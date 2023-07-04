@@ -67,19 +67,21 @@ ngOnInit(): void {
       this.onClick();
       console.log(res);
       this.openDialog();
-      this.successMessage = "User added Successfully.";
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
-      
+        this.successMessage = res?.message;
 
-     }, err=> {
-      this.errorMessage = "User was not added.";
-      setTimeout(() => {
-        this.errorMessage = '';
-      }, 1000);
-      console.log(err)
-     })
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 3000);
+        
+            
+            
+           
+          },err=> {
+            this.errorMessage= err?.message
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 3000);
+          });
   }
   onClick() {
  

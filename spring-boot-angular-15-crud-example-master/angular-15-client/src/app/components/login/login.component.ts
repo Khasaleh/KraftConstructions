@@ -50,8 +50,8 @@ export class LoginComponent {
     // userdata: UserData= {username:'', password:'',role:null};
 
     responsedata: any;
-  
-
+    errorMessage: string | null = null;
+    successMessage: string | null = null;
 
 
     loginform = this.builder.group({
@@ -81,14 +81,14 @@ export class LoginComponent {
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
                     localStorage.setItem('user',JSON.stringify(result))
-                  
-                    
-                    this.router.navigate(['/admin']);
                    
                     console.log(localStorage.getItem('user'));
-                    
+                   
+                    this.router.navigate(['/admin']);
 
                 }
+               
+                
                 
                
                
@@ -98,17 +98,22 @@ export class LoginComponent {
 
             
           
-            })
+            }, err => {
+                this.errorMessage=err?.message;
+                setTimeout(() => {
+                    this.errorMessage = '';
+                  }, 2000);
+            }
+            )
 
 
 
 
-
+            
 
         }
-        
-        
+     
+       
 
     }
-
-}
+    }
