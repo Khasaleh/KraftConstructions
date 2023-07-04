@@ -103,17 +103,12 @@ this.testimonialService.getSlider().subscribe((res)=> {
 
 })
 
-// this.testimonialService.getSlider().subscribe(res[]=> {
- 
-//   this.imageLink1 =  res
- 
-//  })
 
 }
 getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
   this.imagedata=res;
-  this.recentlyUploadedImage1=this.imagedata[this.imageData.length];
+  this.recentlyUploadedImage1=this.imagedata[this.imageData.length-1];
 
  })
  
