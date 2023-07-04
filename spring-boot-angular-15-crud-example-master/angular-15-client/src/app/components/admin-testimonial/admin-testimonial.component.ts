@@ -41,6 +41,7 @@ constructor(private testimonialService:TestimonialService, private dialog : MatD
 ngOnInit():void {
   this.getAll();
   this.getApprovedTest();
+  this.getAllSlider();
   this.addata = this.fb.group ({
    id:[''],
    imageUrl:[''],
@@ -82,30 +83,43 @@ this.addata.patchValue({
 
 this.testimonialService.getImage().subscribe((res) => {
   this.imageData = res;
-
   console.log(this.imageData);
   if (this.imageData.length > 0) {
     this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
     this.imageLink = URL.createObjectURL(this.recentlyUploadedImage);
-  
   }
 });
+this.testimonialService.getImage().subscribe(
+  previousValue => {
+   
 
+    this.imageLink= this.globalUrl+ this.imageData[0].imageUrl;
+}) 
 
 this.testimonialService.getSlider().subscribe((res)=> {
  this.imagedata=res;
- this.recentlyUploadedImage1=this.imagedata[this.imageData.length];
+ this.recentlyUploadedImage1=this.imagedata[this.imageData.length -1 ];
  
 
 })
+
+// this.testimonialService.getSlider().subscribe(res[]=> {
+ 
+//   this.imageLink1 =  res
+ 
+//  })
+
 }
 getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
   this.imagedata=res;
   this.recentlyUploadedImage1=this.imagedata[this.imageData.length];
- 
+
  })
+ 
 }
+
+
 
 
 onFileSelected1(event:any) {
