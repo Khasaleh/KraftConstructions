@@ -350,10 +350,14 @@ export class AdminServicesComponent {
   getImages(service: any) {
     this.interiorRemodelingService.getServicesImages(service).subscribe(
       (response: any[]) => {
-        this.cards = response.map(item => ({
-          id: item.id,
-          imgSrc: this.globalUrl + item.imageUrl // Adjust the URL according to your API response
-        }))
+        if (response.length > 0){
+
+          this.cards = response.map(item => ({
+            id: item.id,
+            imgSrc: this.globalUrl + item.imageUrl // Adjust the URL according to your API response
+          }))
+        }
+      
         // this.imageData = response;
         
         console.log(this.imageData);

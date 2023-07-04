@@ -8,6 +8,9 @@ import { Observable, retry } from 'rxjs';
 export class HomeServiceService {
 
   constructor(private http: HttpClient) { }
+  getServicesData(): Observable <any> {
+    return this.http.get('http://99.72.32.144:8081/api/homepageabout-us/1/services')
+  }
   getServiceByPage1(): Observable<any> {
     return this.http.get('http://99.72.32.144:8081/api/pageServices/Interior Remodelling')
   }
@@ -60,18 +63,10 @@ export class HomeServiceService {
 bannerLinkStatus(): Observable<any>{
   return this.http.put('http://99.72.32.144:8081/api/homepageabout-us/banner-link-status',{})
 }
-// addServicesData(serviceIds: number[]): Observable<any>{
-//   const url = 'http://99.72.32.144:8081/api/homepageabout-us/1/addservices';
-  
-//   const requestBody = { serviceIds };
-//     return this.http.post(url, requestBody)
 
-// }
 addServicesData(serviceId: any[]): Observable<any> {
   const url = 'http://99.72.32.144:8081/api/homepageabout-us/1/addservices';
   const requestBody = { serviceIds:  serviceId};
-
-  // requestBody.serviceIds[] = serviceId;
 
   return this.http.post(url, requestBody);
 }

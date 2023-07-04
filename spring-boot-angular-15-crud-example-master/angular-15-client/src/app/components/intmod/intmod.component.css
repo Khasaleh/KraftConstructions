@@ -66,9 +66,6 @@ h2 {
 }
 img.card-img-top {
   height: 190px;
-.offset-md-4 {
-margin-left: 22%;
-width: 66%;
 }
 
 @media (max-width: 576px) {
@@ -451,5 +448,4 @@ width: 66%;
  .col-12 {
   width: 100%;
  }
-}
 }

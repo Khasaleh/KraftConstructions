@@ -12,8 +12,6 @@ export class NewAddComponent {
   imageData: any
   data!: any[];
   globalUrl = 'http://99.72.32.144:8083'
-  // serviceNames: string[] = [];
-
   constructor(private newAdditionService: InteriorRemodelingService) { }
   ngOnInit() {
     this.getDataonload();
@@ -25,11 +23,9 @@ export class NewAddComponent {
     )
     this.newAdditionService.getServiceByPage2().subscribe(
       response => {
-        // this.data = response
         this.data = response.filter((service: { active: boolean; }) => service.active === true);
 
         console.log(this.data);
-        // this.activeServices = response.filter(service => service.active === true);
       },
       error => {
         console.log(error);

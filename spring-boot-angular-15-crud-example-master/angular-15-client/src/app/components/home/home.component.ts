@@ -62,7 +62,19 @@ export class HomeComponent implements OnInit {
         console.log(error, "error for banner data");
       }
     )
+    this.getSrviceData();
 
+  }
+  serviceData : any
+  getSrviceData(){
+   this.homeService.getServicesData().subscribe(
+    response => {
+      this.serviceData = response;
+    },
+    error => {
+      console.log(error);
+    }
+   )
   }
   setActiveSlide(index: number) {
     this.activeSlideIndex = index;
