@@ -166,7 +166,16 @@
                     <div class="services-parent">
 
                         <div class="services-wrap ">
-                            <div class="component">
+                            <div *ngFor="let service of serviceData" class="component">
+                               
+                                <div class="kitchen-1-icon"><img class="img-logo" alt="" src={{this.globalUrl+service?.afterImageUrl}}/></div>
+                                <h3 class="custom-kitchens">{{ service.serviceName }}</h3>
+                                <p class="simply-dummy-text">{{ service.description }}</p>
+                                <a class="rectangle-group">
+                                  <div class="read-more">Read more</div>
+                                </a>
+                              </div>
+                            <!-- <div class="component">
                                 <div class="kitchen-1-icon"><img class="img-logo" alt=""
                                         src="../../../assets/kitchen 1 (1).png" /></div>
                                 <h3 class="custom-kitchens">Custom Kitchens</h3>
@@ -202,7 +211,7 @@
                                 <a href="#" class="rectangle-group">
                                     <div class="read-more">Read more</div>
                                 </a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="saveBtn  mb-3 mt-5">

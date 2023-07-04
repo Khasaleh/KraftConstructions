@@ -9,7 +9,7 @@
 
 .img-logo {
     width: 100%;
-    height: auto;
+    height: 200px;
 }
 
 .new-container {
@@ -278,7 +278,7 @@
     color: var(--kraft-d-green);
     background-color: #EFF2F5;
     padding: 30px 70px;
-    margin: 20px 0px;
+    /* margin: 20px 0px; */
 }
 
 .services-wrap {
@@ -289,12 +289,13 @@
 
 .component {
     width: 30%;
+    height: 600px;
 
 }
 
 .kitchen-1-icon {
     width: 100%;
-    height: 50%;
+    /* height: 50%; */
 }
 
 .custom-kitchens {

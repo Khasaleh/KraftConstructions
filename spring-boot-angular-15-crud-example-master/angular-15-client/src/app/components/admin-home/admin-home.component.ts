@@ -77,6 +77,7 @@ export class AdminHomeComponent {
   serviceNames!: string[];
   globalUrl = 'http://99.72.32.144:8083'
   ngOnInit(): void {
+    this.getSrviceData();
     this.getTestData();
     this.selectedService = '';
     this.service = []; 
@@ -323,6 +324,17 @@ export class AdminHomeComponent {
             this.selectedService = ''; // 
           });
     }
+  }
+  serviceData : any
+  getSrviceData(){
+   this.homeService.getServicesData().subscribe(
+    response => {
+      this.serviceData = response;
+    },
+    error => {
+      console.log(error);
+    }
+   )
   }
   addServiceOnHomePage(serviceIds: any) {
  
