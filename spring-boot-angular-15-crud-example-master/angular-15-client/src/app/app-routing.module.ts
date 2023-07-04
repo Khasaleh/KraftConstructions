@@ -48,7 +48,7 @@ const routes: Routes = [
     component: AdminMainComponent, canActivate: [AuthGuard],
     children:
       [
-        { path: '', component: AdminDashboardComponent, pathMatch: 'full' },
+        { path: '', component: AdminDashboardComponent },
         { path: 'admin-home', component: AdminHomeComponent },
         { path: 'dashboard', component: AdminDashboardComponent },
         { path: 'admin-aboutUs', component: AdminAboutUsComponent },

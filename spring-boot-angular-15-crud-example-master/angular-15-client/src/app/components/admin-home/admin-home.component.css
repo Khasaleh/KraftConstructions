@@ -181,8 +181,10 @@
 }
 
 .img-dyn {
-    width: 190px;
-    height: 234px;
+    /* width: 190px;
+    height: 234px; */
+    width: 220px;
+    height: 255px;
 }
 
 .card-content {
@@ -236,7 +238,7 @@
 .check-button-wrape {
     display: flex;
     gap: 10px;
-    width: 50%;
+    width: 85%;
 }
 
 #grey-sec {

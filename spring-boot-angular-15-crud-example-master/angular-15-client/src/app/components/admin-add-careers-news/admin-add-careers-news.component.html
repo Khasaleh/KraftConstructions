@@ -52,6 +52,17 @@
                     <div class="add-btn  d-flex justify-content-lg-end  justify-content-sm-start">
                         <button type="submit" class="add-news-btn ">Add News</button>
                     </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+
+                        {{ errorMessage }}
+                  
+                      </div>
+                  
+                      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                  
+                        {{ successMessage }}
+                  
+                      </div>
                 </div>
             </div>
         </form>

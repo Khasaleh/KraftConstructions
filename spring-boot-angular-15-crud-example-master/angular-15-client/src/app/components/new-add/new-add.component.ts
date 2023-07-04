@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InteriorRemodelingService } from 'src/app/service/interior-remodeling.service';
 
 @Component({
   selector: 'app-new-add',
@@ -7,5 +8,73 @@ import { Component } from '@angular/core';
 ]
 })
 export class NewAddComponent {
- 
+  serviceData: any
+  imageData: any
+  data!: any[];
+  globalUrl = 'http://99.72.32.144:8083'
+  // serviceNames: string[] = [];
+
+  constructor(private newAdditionService: InteriorRemodelingService) { }
+  ngOnInit() {
+    this.getDataonload();
+    this.newAdditionService.getServicebyPage().subscribe(
+      response => {
+        this.serviceData = response;
+        console.log(response);
+      }
+    )
+    this.newAdditionService.getServiceByPage2().subscribe(
+      response => {
+        // this.data = response
+        this.data = response.filter((service: { active: boolean; }) => service.active === true);
+
+        console.log(this.data);
+        // this.activeServices = response.filter(service => service.active === true);
+      },
+      error => {
+        console.log(error);
+
+      }
+    )
+  }
+  getDataonload(){
+    this.newAdditionService.getServicesbyPageFornew().subscribe(
+      response => {
+        this.serviceData = response;
+        console.log(response);
+      }
+    )
+    this.newAdditionService.getServiceLoadImagesFornew().subscribe(
+      response =>{
+        this.imageData = response;
+        console.log(response);
+
+      }
+    )
+  }
+  getOneService(service: any){
+    this.newAdditionService.getServiceById(service).subscribe(
+      response =>{
+        this.serviceData = response;
+        console.log(this.serviceData);
+      },
+      error => {
+        console.log(error);
+        
+      }
+    )
+    this.getImages(service)
+  }
+  getImages(service: any){
+    this.newAdditionService.getServicesImages(service).subscribe(
+      response =>{
+        this.imageData = response;
+        console.log(this.imageData);
+      },
+      error => {
+        console.log(error);
+        
+      }
+    )
+  }
 }
