@@ -12,7 +12,6 @@ export class IntmodComponent {
   imageData:any
   data!: any[];
   globalUrl = 'http://99.72.32.144:8083'
-  // serviceNames: string[] = [];
 
   constructor(private interiorRemodService: InteriorRemodelingService) { }
   ngOnInit() {
