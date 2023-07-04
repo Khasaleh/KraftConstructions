@@ -60,14 +60,17 @@ deleteUser(username: string) {
       
       this.adduserdata.deleteUser(username)
         .subscribe(res => {
-          this.successMessage="User Deleted Successfully!"
+          this.successMessage= res?.message;
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAllUsers();
         
         }, err=>{
-          this.errorMessage="User can't be deleted!"
+          this.errorMessage=err?.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
         }
         );
         
@@ -115,6 +118,7 @@ editUser(user: User) {
   });
 }
   updateUser() {
+    
     const updatedUser: AddUser = {
     username: this.userDetail.value.username,
     email : this.userDetail.value.email,
@@ -135,19 +139,19 @@ editUser(user: User) {
     dialogRef.afterClosed().subscribe(result => {
       if (result === true) {
     this.adduserdata.updateUser(updatedUser,this.oldUser).subscribe(res=>{
-      this.successMessage="User Updated Successfully";
+      this.successMessage= res?.message;
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       console.log(res);
    
       this.getAllUsers();
     },err=>{
       console.log(err);
-      this.errorMessage="User cannot be Updated";
+      this.errorMessage= err?.message;
       setTimeout(() => {
         this.errorMessage = '';
-      }, 1000);
+      }, 3000);
     });
   
 
@@ -157,7 +161,15 @@ editUser(user: User) {
   }
   addUser() {
     
-    
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      const dialogRef = this.dialog.open(DialogeComponent, {
+        data: {
+          message: `You don't have the access`,
+          showYesNoButtons: false
+        }
+      });
+    }
     this.userObj.username = this.userDetail.value?.username;
     this.userObj.email = this.userDetail.value?.email;
     this.userObj.firstname = this.userDetail.value?.firstname;
@@ -168,17 +180,17 @@ editUser(user: User) {
     console.log(this.userObj.role)
      this.adduserdata.AddUser(this.userObj).subscribe(res=>{
       this.onClick();
-      this.successMessage="User Added Successfully"
+      this.successMessage= res?.message;
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       console.log(res);
       this.getAllUsers();
     
       
 
      }, err=> {
-      this.errorMessage="User cannot be added!"
+      this.errorMessage= err?.message;
       setTimeout(() => {
         this.errorMessage = '';
       }, 1000);

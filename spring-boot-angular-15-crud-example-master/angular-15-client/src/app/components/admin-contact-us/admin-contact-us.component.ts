@@ -18,6 +18,8 @@ export class AdminContactUsComponent {
   data!:any;
   successMessage: string | null = null;
   errorMessage:string | null= null;
+  successMessage1: string | null = null;
+  errorMessage1:string | null= null;
   constructor(private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
  
@@ -79,15 +81,35 @@ this.userDetail.patchValue({
   
         
   getAll() {
+    // const user=JSON.parse(localStorage.getItem("user")!);
+    // if(!user.roles.includes('ROLE_ADMIN')){
+    //   const dialogRef = this.dialog.open(DialogeComponent, {
+    //     data: {
+    //       message: `You don't have the access`,
+    //       showYesNoButtons: false
+    //     }
+    //   });
+    // }
+    // else if (user.roles.includes('ROLE_ADMIN')){
     this.conus.getAll().subscribe((res) => {
       console.log(res);
       this.userdata = res;
-  
-    });
-  }
+  })
+}
+
   
 
   deleteUser(id: number) {
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      const dialogRef = this.dialog.open(DialogeComponent, {
+        data: {
+          message: `You don't have the access`,
+          showYesNoButtons: false
+        }
+      });
+    }
+    else if(user.roles.includes('ROLE_ADMIN')){
     const dialogRef = this.dialog.open(DialogeComponent, {
       data: {
         message: `Do You want to delete ${id}?`,
@@ -103,28 +125,49 @@ this.userDetail.patchValue({
       {
         this.conus.deleteUser(id)
           .subscribe(res => {
-            this.successMessage = 'Deleted successfully.';
-            setTimeout(() => {
-              this.successMessage = '';
-            }, 1000);
-            this.getAll();
-          });
+          
+              this.successMessage = res?.message;
+      
+              setTimeout(() => {
+                this.successMessage = '';
+              }, 3000);
+              
+                  
+                  
+                 
+                },err=> {
+                  this.errorMessage= err?.message
+                  setTimeout(() => {
+                    this.errorMessage = '';
+                  }, 3000);
+                });
           
       }
     });
   }
+  this.getAll();
+}
   edit(data:Address) {
-    
+    const user=JSON.parse(localStorage.getItem("user")!);
+    if(!user.roles.includes('ROLE_ADMIN')){
+      const dialogRef = this.dialog.open(DialogeComponent, {
+        data: {
+          message: `You don't have the access`,
+          showYesNoButtons: false
+        }
+      });
+    }
+    else if(user.roles.includes('ROLE_ADMIN')){
   this.conus.updateContact(data).subscribe(res=> {
-    this.successMessage = 'Address Edited successfully.';
+    this.successMessage1 = res.message;
     setTimeout(() => {
-      this.successMessage = '';
+      this.successMessage1 = '';
     }, 1000);
     console.log(res);
     this.getAll();
     
   })
 }
-
+}
 
 }

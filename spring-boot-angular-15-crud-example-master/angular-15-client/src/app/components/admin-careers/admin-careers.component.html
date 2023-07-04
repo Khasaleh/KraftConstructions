@@ -13,6 +13,7 @@
       <div class="alert alert-success" role="alert" *ngIf="successMessage">
         {{ successMessage }}
       </div>
+     
       <form [formGroup]="userDetail" class="row g-3" *ngIf="show">
         <div class="col-md-4">
           <label for="inputEmail4" class="form-label">First Name</label>
@@ -73,7 +74,7 @@
               <option>{{ userDetail.value.hoursRestrictions}}</option>
             </select>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-3" style="width: 31%;">
             <label for="inputState" class="form-label">Do you have any skills that relates to this job?</label>
             <select id="inputState" class="form-select">
               <option>{{userDetail.value.skills}}</option>
@@ -125,12 +126,7 @@
               <label class= "mb-2" class="form-label" for="otherNotes">Other Notes</label>
               <textarea formControlName="otherNotes" class="form-control form-control-lg" id="otherNotes" rows="5"></textarea>
           </div>
-          <!-- <div class="file">
-              <h3 class="mini-head" class="form-label" >Resume Upload </h3>
-              <div >
-                <img [src]="globalUrl+data?.resumeUrl" formControlName="resumeUrl" alt="Uploaded Image" accept="resumeUrl/*">
-              </div>
-          </div> -->
+          
         
       </form>
   <div class ="table-responsive">

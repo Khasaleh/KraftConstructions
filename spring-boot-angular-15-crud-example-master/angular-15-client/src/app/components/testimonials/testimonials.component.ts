@@ -83,13 +83,7 @@ getApprovedTest() {
     this.userdata=res;
   });
 }
-// getHiddenTest (id:number) {
-//   this.userIdtoView = id;
-//   this.testimonialService.getTestbyId(id).subscribe((res)=> {
-//     console.log(res);
-   
-//   })
-// }
+
 getSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
   console.log(res);

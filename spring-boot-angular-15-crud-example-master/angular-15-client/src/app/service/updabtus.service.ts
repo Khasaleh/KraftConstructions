@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class UpdabtusService {
  apiUrl= 'http://99.72.32.144:8081/api';
   constructor( private http: HttpClient ) { }
-  addata(data:aboutusdata) {
+  addata(data:aboutusdata) : Observable<any> {
     console.log("service called");
     return this.http.post( this.apiUrl+'/about-us/update-description', data);
    
@@ -19,7 +19,7 @@ export class UpdabtusService {
   saveImage(image: FormData): Observable<any> {
     return this.http.post('http://99.72.32.144:8081/api/about-us/upload-image', image);
   }
-  saveFootImage(data: FormData) {
+  saveFootImage(data: FormData) :Observable<any> {
     return this.http.post('http://99.72.32.144:8081/api/about-us/update-footer',data)
   }
   getFootImage() : Observable<any> {

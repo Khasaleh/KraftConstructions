@@ -8,6 +8,12 @@
     </nav> 
   </div>
   <div class="desktop-3-item">
+    <div class="alert alert-success" role="alert" *ngIf="successMessage1">
+      {{ successMessage1 }}
+    </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage1">
+      {{ errorMessage1 }}
+    </div>
     <form [formGroup]="userDetails" (ngSubmit)="edit(userDetails.value)">
     <div class="col-10">
       <label for="inputAddress" class="form-label"style="margin-top:1rem;margin-left:1rem;">Address</label>

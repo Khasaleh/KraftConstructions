@@ -18,7 +18,7 @@ export class AddUserService {
   this.deleteURL=   'http://99.72.32.144:8081/api/auth/users/delete';
   this.uploadUrl = 'http://99.72.32.144:8081/api/auth/users/uploadprofile/'
 }
-AddUser(usr: AddUser):Observable<AddUser> {
+AddUser(usr: AddUser):Observable<any> {
   return this.http.post<AddUser>(this.addUserURL,usr);
 }
 getAllUsers():Observable<AddUser[]> {

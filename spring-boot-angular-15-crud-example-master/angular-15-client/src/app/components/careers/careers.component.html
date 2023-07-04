@@ -152,8 +152,20 @@
                 </div>
                 <a id="btn" class="button">
                     <div type="submit" (click)='submit()' class="learn-more">Submit</div>
+                    
                 </a>
+                <div class=" message">
+                <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                    {{ successMessage }}
+                  </div>
+                  
+                  <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                    {{ errorMessage }}
+                  </div>
             </div>
+            </div>
+
+            
             
             <!-- boxes -->
             <div class="green-contruct-box">

@@ -2,6 +2,13 @@
     <div class="card-body ">
       <section class="first">
         <div class="new-container">
+          <div class="alert alert-success" role="alert" *ngIf="successMessage1">
+            {{ successMessage1 }}
+          </div>
+          
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage1">
+            {{ errorMessage1 }}
+          </div>
           <div class="card  card-shade">
             <div class="card-head">About us</div>
             <form [formGroup]="addata" (ngSubmit)="submit(addata.value)">
@@ -35,7 +42,15 @@
         </div>
       </section>
       <section class="second">
+    
         <div class="new-container">
+          <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{ successMessage }}
+          </div>
+          
+          <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
           <div id="card-length" class="card card-shade ">
             <form [formGroup]="userDetail" (ngSubmit)="submit1()">
             <div class="content-wrap">
@@ -56,13 +71,13 @@
                 <button class="save-btn" type="submit">save</button>
               </div>
             </div>
-            <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            <!-- <div class="alert alert-success" role="alert" *ngIf="successMessage">
               {{ successMessage }}
             </div>
             
             <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-              {{ errorMessage }}
-            </div>
+              {{ errorMessage }} -->
+            <!-- </div> -->
             </form>
           </div>
         </div>

@@ -28,13 +28,13 @@ saveData(user:ContactUs): Observable<ContactUs> {
   getAll():Observable<ContactUs[]> {
     return this.http.get<ContactUs[]>(this.getAllUrl);
     }
-    deleteUser(id: number) {
+    deleteUser(id: number) :Observable<any>{
       return this.http.delete<ContactUs>(`${this.deleteUrl}/${id}`)
     }  
     getContactAll() {
       return this.http.get<any>(this.getContact);
     }
-    updateContact (data:Address): Observable<any> {
+    updateContact (data:Address) {
       return this.http.post<any>(this.updateContactUrl,data);
     }
   }

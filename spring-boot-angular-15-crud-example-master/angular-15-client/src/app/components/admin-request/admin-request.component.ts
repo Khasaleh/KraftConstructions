@@ -15,6 +15,9 @@ export class AdminRequestComponent implements OnInit {
   userDetail!:FormGroup;
   userIdtoView!:number;
   successMessage: string | null = null;
+  errorMessage: string | null = null;
+
+
   constructor(private requser:ReqUserService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
    
@@ -41,6 +44,7 @@ export class AdminRequestComponent implements OnInit {
   
 show = false;
 ahide=true;
+
 content() {
   this.show = true;
   this.ahide = false;
@@ -51,6 +55,8 @@ getAll() {
     console.log(res);
     this.userdata=res;
   });
+
+  
 }
 deleteUser(id: number) {
   const dialogRef = this.dialog.open(DialogeComponent, {
@@ -64,10 +70,10 @@ deleteUser(id: number) {
     if (result === true) {
       this.requser.deleteUser(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message;
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAll();
         });
     }
@@ -84,7 +90,7 @@ viewUser(id: number) {
         this.populateForm(res);
       },
       error: (err) => {
-        console.log(err);
+        this.errorMessage= err?.message;
       }
     });
 }

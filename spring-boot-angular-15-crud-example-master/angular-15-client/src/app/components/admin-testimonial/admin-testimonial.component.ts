@@ -106,17 +106,7 @@ this.testimonialService.getSlider().subscribe((res)=> {
  
  })
 }
-// getSliderbyId(id: number) {
-//   this.userIdtoView = id;
-//   this.testimonialService.getSliderById(this.userIdtoView).subscribe(
-//     (res: Image) => {
-//       console.log('Retrieved image:', res);
-//     },
-//     (error: any) => {
-//       console.error('Failed to retrieve image:', error);
-//     }
-//   );
-// }
+
 
 onFileSelected1(event:any) {
 this.fileURL = event.target?.files[0];
@@ -137,6 +127,7 @@ this.testimonialService.getImage().subscribe((res)=> {
 }
 
 deleteSlider(id:number) {
+
   
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
@@ -149,16 +140,17 @@ deleteSlider(id:number) {
     if (result === true) {
       this.testimonialService.deleteSlider(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAllSlider();
         });
     }
   });
 }
 deleteImage(id:number) {
+
   
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
@@ -171,16 +163,17 @@ deleteImage(id:number) {
     if (result === true) {
       this.testimonialService.deleteImage(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
-          this.getAllImage();
+          }, 3000);
         });
     }
+    this.getAllImage();
   });
 }
 onClick1() {
+
  
   const formData = new FormData();
   formData.append('image', this.fileURL);
@@ -190,21 +183,21 @@ onClick1() {
   this.testimonialService.saveImage(formData).subscribe(
     response => {
       this.savedImageId = response.id;
-      this.successMessage='Data Saved Successfully'
+      this.successMessage=response?.message;
       
 
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       
       console.log(response);
           
          
         },err=> {
-          this.errorMessage='Unable to save data'
+          this.errorMessage= err?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 3000);
           console.log(err);
         });
 }
@@ -219,6 +212,15 @@ onFileSelected(event:any) {
    
   }
 onClick2() {
+  const user=JSON.parse(localStorage.getItem("user")!);
+  if(!user.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
  
   const formData = new FormData();
  
@@ -229,20 +231,20 @@ onClick2() {
   console.log(formData);
   this.testimonialService.saveSlider(formData).subscribe(
     response => {
-      this.successMessage='Data Saved Successfully'
+      this.successMessage= response?.message;
       
       setTimeout(() => {
         this.successMessage = '';
-      }, 1000);
+      }, 3000);
       
           
           
          
         },err=> {
-          this.errorMessage='Unable to save data'
+          this.errorMessage = err?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 3000);
           this.getAllSlider();
         });
 }
@@ -274,6 +276,16 @@ getAll() {
   });
 }
 approveTest(user:Testimonial,id:number) {
+  const activeUser=JSON.parse(localStorage.getItem("user")!);
+  if(!activeUser.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
+  else if(activeUser.roles.includes('ROLE_ADMIN')) {
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to Approve ${id}?`,
@@ -285,15 +297,16 @@ approveTest(user:Testimonial,id:number) {
     if (result === true) {
       this.testimonialService.approveTest(user,id)
         .subscribe(res => {
-          this.successMessage2 = 'Data Approved Successfully.';
+          console.log(res?.message)
+          this.successMessage2 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage2 = '';
-          }, 1000);
+          }, 3000);
          } ,err=> {
-            this.errorMessage='Unable to save data'
+            this.errorMessage = err?.approvalStatus;
             setTimeout(() => {
               this.errorMessage = '';
-            }, 1000);
+            }, 3000);
             
           });
         }
@@ -301,8 +314,18 @@ approveTest(user:Testimonial,id:number) {
         });
     }
   
-
+  }
 deleteTest(id:number) {
+  const user=JSON.parse(localStorage.getItem("user")!);
+  if(!user.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
+  else if(user.roles.includes('ROLE_ADMIN')) {
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to delete ${id}?`,
@@ -314,7 +337,7 @@ deleteTest(id:number) {
     if (result === true) {
       this.testimonialService.deleteTest(id)
         .subscribe(res => {
-          this.successMessage = 'Data Deleted successfully.';
+          this.successMessage = res?.message;
           setTimeout(() => {
             this.successMessage = '';
           }, 1000);
@@ -323,9 +346,20 @@ deleteTest(id:number) {
     }
   });
 }
+}
 hideTest(user:Testimonial,id:number) 
 { 
-  console.log(id)
+  
+  const activeUser=JSON.parse(localStorage.getItem("user")!);
+  if(!activeUser.roles.includes('ROLE_ADMIN')){
+    const dialogRef = this.dialog.open(DialogeComponent, {
+      data: {
+        message: `You don't have the access`,
+        showYesNoButtons: false
+      }
+    });
+  }
+  else if(activeUser.roles.includes('ROLE_ADMIN')) {
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to hide ${id}?`,
@@ -337,14 +371,18 @@ hideTest(user:Testimonial,id:number)
     if (result === true) {
       this.testimonialService.hideTest(user,id)
         .subscribe(res => {
-          this.successMessage1 = 'Data Hidden Successfully.';
+          this.successMessage1 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage1 = '';
-          }, 1000);
+          }, 3000);
           this.getAll();
         });
+     
     }
+    
   });
+
+}
 }
 onCheckboxChange(user:Testimonial,id:number) {
 

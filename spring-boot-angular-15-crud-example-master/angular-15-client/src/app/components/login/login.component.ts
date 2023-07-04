@@ -32,7 +32,11 @@ import { AuthService } from 'src/app/service/auth.service';
 
 export class LoginComponent {
 
-hidePassword = true;
+    hidePassword = true;
+
+    togglePassword() {
+      this.hidePassword = !this.hidePassword;
+    }
     constructor(private builder: FormBuilder, private service: AuthService, private router: Router) {
 
 
@@ -46,8 +50,8 @@ hidePassword = true;
     // userdata: UserData= {username:'', password:'',role:null};
 
     responsedata: any;
-  
-
+    errorMessage: string | null = null;
+    successMessage: string | null = null;
 
 
     loginform = this.builder.group({
@@ -77,14 +81,14 @@ hidePassword = true;
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
                     localStorage.setItem('user',JSON.stringify(result))
-                  
-                    
-                    this.router.navigate(['/admin']);
                    
                     console.log(localStorage.getItem('user'));
-                    
+                   
+                    this.router.navigate(['/admin']);
 
                 }
+               
+                
                 
                
                
@@ -94,17 +98,22 @@ hidePassword = true;
 
             
           
-            })
+            }, err => {
+                this.errorMessage=err?.message;
+                setTimeout(() => {
+                    this.errorMessage = '';
+                  }, 2000);
+            }
+            )
 
 
 
 
-
+            
 
         }
-        
-        
+     
+       
 
     }
-
-}
+    }

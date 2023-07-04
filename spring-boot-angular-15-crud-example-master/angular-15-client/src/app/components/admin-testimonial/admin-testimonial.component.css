@@ -467,13 +467,14 @@ background-color: var(--kraft-d-green);
   }
 
   .group-child20 {
-    width: 100%;
-    margin-left: 0;
+    width: 70%;
+    margin-left: 10px;
+    height: 20%;
     margin-top: 0;
   }
 
   .add-slider {
-    width: 100%; 
+    width: 20%; 
     margin-left: 0;
     margin-top: 0;
     text-align: center; 
@@ -503,7 +504,7 @@ background-color: var(--kraft-d-green);
   }
   .user-icon {
   
-    width: 10.67%;
+    width: auto;   
     margin-left: 0;
     height: auto;
     margin-top: 2px;
@@ -565,4 +566,110 @@ background-color: var(--kraft-d-green);
       font-size: 11px;
     }
    
+}
+@media only screen and (max-width: 768px) {
+  .user-icon {
+
+    width: auto;
+    margin-left: 0;
+    height: 100%;
+    margin-top: 2px;
+  }
+  
+  .group-child20 {
+    width: 70%;
+    margin-left: 10px;
+    height: 20%;
+    margin-top: 0;
+  }
+  .group-child21 {
+    
+    width: 100%;
+    height: auto;
+    margin-left:0;
+  
+   
+  }
+
+  .add-slider {
+    width: 20%; 
+    margin-left: 0;
+    margin-top: 0;
+    text-align: center; 
+  }
+  .card-header2 {
+    border-radius: var(--br-8xs) var(--br-8xs) 0 0;
+    background-color: var(--colors-buttun-gray-10);
+    margin-top: 1px;
+    margin-left: 0;
+    width: 90%;
+  }
+  .card-header1 {
+    border-radius: var(--br-8xs) var(--br-8xs) 0 0;
+    background-color: var(--colors-buttun-gray-10);
+     margin-top: 1px;
+   margin-left: 1px;
+    width: 99.5%;
+   
+  }
+  .cardheader3 {
+    border-radius: var(--br-8xs) var(--br-8xs) 0 0;
+    background-color: var(--colors-buttun-gray-10);
+    margin-top: 0;
+    margin-left:0;
+    width: 90%;
+    height: auto;
+  }
+}
+@media only screen and (max-width: 992px) {
+  .user-icon {
+
+    width: auto;
+    margin-left: 0;
+    height: 100%;
+    margin-top: 2px;
+  }
+  
+  .group-child20 {
+    width: 70%;
+    margin-left: 10px;
+    /* height: 20%; */
+    margin-top: 0;
+  }
+
+  .add-slider {
+    width: 20%; 
+    margin-left: 0;
+    margin-top: 0;
+    text-align: center; 
+  }
+  .card-header2 {
+   
+    margin-top: 1px;
+    margin-left: 0;
+    width: auto;
+  }
+  .card-header1 {
+   
+     margin-top: 1px;
+   margin-left: 1px;
+    width: auto;
+   
+  }
+  .group-child21 {
+    
+    width: 100%;
+    height: auto;
+    margin-left:0;
+  
+   
+  }
+  .cardheader3 {
+    border-radius: var(--br-8xs) var(--br-8xs) 0 0;
+    background-color: var(--colors-buttun-gray-10);
+    margin-top: 0;
+    margin-left:0;
+    width: 90%;
+    height: auto;
+  }
 }

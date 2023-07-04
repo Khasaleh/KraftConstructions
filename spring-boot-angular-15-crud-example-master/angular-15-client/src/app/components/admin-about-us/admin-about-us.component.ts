@@ -23,6 +23,8 @@ data!:any;
 globalUrl="http://99.72.32.144:8083";
 successMessage: string | null = null;
 errorMessage: string | null = null;
+successMessage1: string | null = null;
+errorMessage1: string | null = null;
 ngOnInit(): void {
 
     this.addata = this.fb.group ({
@@ -54,21 +56,21 @@ submit(data: aboutusdata) {
   console.log(data);
   this.aboutus.addata(data).subscribe((result)=> {
     this.onClick();
-    this.successMessage='Data Saved Successfully'
+      this.successMessage1 = result?.message;
 
-setTimeout(() => {
-  this.successMessage = '';
-}, 1000);
-
-    
-    console.log(result);
-   
-  },err=> {
-    this.errorMessage='Unable to save data'
-    setTimeout(() => {
-      this.errorMessage = '';
-    }, 1000);
-  });
+      setTimeout(() => {
+        this.successMessage1 = '';
+      }, 3000);
+      
+          
+          
+         
+        },err=> {
+          this.errorMessage1= err?.message
+          setTimeout(() => {
+            this.errorMessage1 = '';
+          }, 3000);
+        });
 
 
 }
@@ -110,15 +112,21 @@ onFileSelected(event: any) {
   
     this.aboutus.saveImage(formData).subscribe(
       response => {
-    
-   
-        console.log(response);
-      },
-      error => {
-  
-        console.error(error);
-      }
-    );
+        this.successMessage1 = response?.message;
+
+        setTimeout(() => {
+          this.successMessage1 = '';
+        }, 3000);
+        
+            
+            
+           
+          },err=> {
+            this.errorMessage1= err?.message
+            setTimeout(() => {
+              this.errorMessage1 = '';
+            }, 3000);
+          });
   }
   onClick1() {
  
@@ -127,20 +135,20 @@ onFileSelected(event: any) {
     formData.append('title',this.userDetail.value.title)
     this.aboutus.saveFootImage(formData).subscribe(
       response => {
-        this.successMessage='Data Saved Successfully'
+        this.successMessage = response?.message;
 
         setTimeout(() => {
           this.successMessage = '';
-        }, 1000);
+        }, 3000);
         
             
             
            
           },err=> {
-            this.errorMessage='Unable to save data'
+            this.errorMessage= err?.message
             setTimeout(() => {
               this.errorMessage = '';
-            }, 1000);
+            }, 3000);
           });
   }
 
