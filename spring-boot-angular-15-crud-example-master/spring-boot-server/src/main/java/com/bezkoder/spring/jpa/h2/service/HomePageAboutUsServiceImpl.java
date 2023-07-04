@@ -86,8 +86,13 @@ public class HomePageAboutUsServiceImpl implements HomePageAboutUsService {
                 .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Home page not found for id: " + id, "Incorrect id"));
 
 
+        homePage.getServices().stream().forEach(s -> {
+            s.setHomePage(null);
+            servicesRepository.save(s);
+        });
         homePage.getServices().clear();
 
+        homePageRepository.save(homePage);
         for (Long sId : serviceIds) {
             Services service = servicesRepository.findById(sId).orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Service not found for id: " + id, "Incorrect id"));
             if (Objects.nonNull(service)) {

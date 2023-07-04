@@ -41,7 +41,7 @@ public class Services {
     private List<Portfolio> portfolios=new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "home_page_id")
+    @JoinColumn(name = "home_page_id",nullable = true)
     private HomePage homePage;
 
 
