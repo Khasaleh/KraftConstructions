@@ -78,7 +78,7 @@ public class HomePageAboutUsController {
     }
 
     @PostMapping("/{id}/addservices")
-//    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
     public ResponseEntity<MessageResponse> addServiceToHomePage(@PathVariable Long id, @RequestBody ServiceHomePageRequestDto serviceHomeRequestDto) {
         String message = homePageAboutUsService.addServiceToHomePage(id, serviceHomeRequestDto.getServiceIds());
         return ResponseEntity.ok(new MessageResponse(message));
