@@ -36,7 +36,7 @@ ngOnInit(): void {
       previousValue => {
         this.addata.controls['description'].setValue(previousValue?.description);
         this.addata.controls['imageUrl'].setValue(previousValue.imageUrl);
-    
+        this.imageLink = this.globalUrl + previousValue.imageUrl;
     }) 
     this.userDetail = this.fb.group ({
       title:[''],
@@ -46,7 +46,7 @@ ngOnInit(): void {
       previousValue1 => {
         this.userDetail.controls['title'].setValue(previousValue1?.title);
         this.userDetail.controls['footerImage'].setValue(previousValue1?.footerImage);
- 
+        this.imageLink1 = this.globalUrl + previousValue1.footerImageUrl;
       }
     )
 
