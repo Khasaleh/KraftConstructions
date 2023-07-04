@@ -19,9 +19,7 @@ export class IntmodComponent {
     this.getDataonload();
     this.interiorRemodService.getServiceByPage1().subscribe(
       response => {
-        // this.serviceNames = response.map((service: { serviceName: any; }) => service.serviceName);
-        // console.log(this.serviceNames);
-        // this.data = response
+       
         this.data = response.filter((service: { active: boolean; }) => service.active === true);
         console.log(this.data);
       },

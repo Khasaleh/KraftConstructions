@@ -69,16 +69,12 @@
                         </div>
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Service</label> <br>
-                            <!-- <select class="inputField" [(ngModel)]="selectedOption4">
-                                <option *ngFor="let option of optionSevice" [value]="option">{{ option }}</option>
-                            </select> -->
+                     
                             <select class="inputField" (change)="getOneService($event)">
                                 <option  *ngFor="let services of service"
                                     [value]="services?.id">{{ services?.serviceName }}</option>
                             </select>
-                            <!-- <select class="inputField" (change)="getOneService($event.target.value)">
-                                <option *ngFor="let service of services" [ngValue]="service.id">{{ service.serviceName }}</option>
-                              </select> -->
+                     
 
                         </div>
                     </div>
