@@ -84,7 +84,7 @@
     padding: 10px 0px;
 }
 .larger-checkbox {
-    --webkit-transform: scale(3);
+    -webkit-transform: scale(3);
   }
   .captcha-head{
     font-size: var( --font-size-xl);
