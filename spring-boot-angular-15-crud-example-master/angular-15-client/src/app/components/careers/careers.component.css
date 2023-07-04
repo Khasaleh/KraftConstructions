@@ -191,6 +191,11 @@
     color: #fff;
     text-decoration: none;
 }
+.message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 @media (max-width: 72.5em) {
     .wrape-robot{
         display: flex;

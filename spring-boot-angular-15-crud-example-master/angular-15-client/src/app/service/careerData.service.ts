@@ -18,13 +18,13 @@ export class CareerDataService {
   this.getUserById="http://99.72.32.144:8081/api/careers-applications";
 
 }
-SaveUser(user: FormData): Observable<CareerData> {
+SaveUser(user: FormData): Observable<any> {
     return this.http.post<CareerData>(this.CareerUrl, user);
   }
   getAll():Observable<CareerData[]> {
     return this.http.get<CareerData[]>(this.getAllUrl);
     }
-    deleteUser(id: number) {
+    deleteUser(id: number) : Observable<any>{
       return this.http.delete<CareerData>(`${this.deleteUrl}/${id}`)
     }
     getUserbyId(id: number) :Observable<CareerData>{

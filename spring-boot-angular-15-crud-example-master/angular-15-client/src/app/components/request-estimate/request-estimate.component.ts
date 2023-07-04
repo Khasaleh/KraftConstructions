@@ -64,14 +64,14 @@ submit() {
   
   this.userDetail.reset();
   this.requser.ReqUser(this.userObj).subscribe(res => {
-    this.successMessage = 'Data saved successfully.';
+    this.successMessage =  res.message;
     setTimeout(() => {
       this.successMessage = '';
     }, 3000);
     // this.openDialog();
     console.log(res);
   }, err => {
-    this.errorMessage = 'An error occurred while saving the data.';
+    this.errorMessage = err?.message;
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);

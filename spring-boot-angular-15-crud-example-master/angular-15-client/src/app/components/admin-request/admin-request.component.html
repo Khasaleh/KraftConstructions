@@ -13,6 +13,9 @@
     <div class="alert alert-success" role="alert" *ngIf="successMessage">
       {{ successMessage }}
     </div>
+    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </div>
     <form [formGroup]="userDetail" class="row g-3" *ngIf="show">
       <div class="col-md-4">
         <label for="inputEmail4" class="form-label">First Name</label>

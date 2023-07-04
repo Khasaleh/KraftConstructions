@@ -53,17 +53,17 @@ submit() {
   console.log(this.userObj);
 
   this.conus.saveData(this.userObj).subscribe(res => {
-    this.successMessage = 'Data saved successfully.';
+    this.successMessage = "Contact Us Submitted Successfully";
     setTimeout(() => {
       this.successMessage = '';
-    }, 1000);
+    }, 3000);
     // this.openDialog();
     console.log(res);
   }, err => {
-    this.errorMessage = 'An error occurred while saving the data.';
+    this.errorMessage = err?.message;
     setTimeout(() => {
       this.errorMessage = '';
-    }, 1000);
+    }, 3000);
     console.log(err);
   });
 }

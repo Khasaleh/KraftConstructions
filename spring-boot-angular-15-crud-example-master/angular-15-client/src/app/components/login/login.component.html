@@ -7,7 +7,9 @@
           <h2 class="text-center mb-4" style="color: var(--kraft-d-green);font-family: var(--font-kanit);font-size:22px;">Kraft Construction</h2>
         </div>
         <form [formGroup]="loginform" (ngSubmit)="proceedlogin()">
+        
           <div class="col mb-3"style="margin-left:22px;">
+           
             <label for="username" class="form-label">User name</label>
             <input type="text" class="form-control" id="username" formControlName="username" placeholder="Enter Username">
           </div>
@@ -24,7 +26,12 @@
           
           <div class="form-group"style="margin-left:22px;">
           <button type="submit" class="btn btn-success"style="font-family: var(--text-sm-medium);font-size: 16px;">Login now</button>
-        
+          <div class="alert alert-danger" role="alert"style="width:90%;" *ngIf="errorMessage">
+            {{ errorMessage }}
+          </div>
+          <div class="alert alert-success" role="alert" *ngIf="successMessage">
+            {{ successMessage }}
+          </div>
         </div>
       
         </form>
