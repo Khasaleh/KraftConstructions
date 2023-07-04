@@ -38,15 +38,20 @@
    height: 20vh; 
  }
    
+ .btnClick{
+  border: white;
+  font-weight: normal;
+  transition: font-weight 0.3s;
+}
+.btnClick:active {
+  font-weight: bold;
+}
  
  .btn {
    display: inline-block;
    background-color: var(--kraft-d-green);
    border-radius: 5px;
-   margin-left: 1em;
-   
- 
- 
+   margin-left: 3em;
  }
   .card.align-items-center.justify-content-center {
       
@@ -133,11 +138,13 @@
      /* height: 360px; */
      width: 240px;
      border-radius: 5px;
+     padding: 0px;
      /* margin-left: 6.5rem; */
  }
  img.card-img-top {
-  height: 195px;
+  height: 250px;
 }
+
  .test-nav {
    margin-left: 9rem;
    width: 200px;

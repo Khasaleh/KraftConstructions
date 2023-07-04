@@ -43,11 +43,18 @@ h2 {
   display: inline-block;
   background-color: var(--kraft-d-green);
   border-radius: 5px;
-  margin-left: 1em;
-  
-
-
+  margin-left: 3em;
 }
+.btnClick{
+  border: white;
+  font-weight: normal;
+  transition: font-weight 0.3s;
+}
+.btnClick:active {
+  font-weight: bold;
+}
+
+
  .card.align-items-center.justify-content-center {
      
   background-color: #025A00;
@@ -65,7 +72,7 @@ h2 {
   font-size:14px ;
 }
 img.card-img-top {
-  height: 190px;
+  height: 250px;
 }
 
 @media (max-width: 576px) {
@@ -141,6 +148,7 @@ img.card-img-top {
     width: 240px;
     border-radius: 5px;
     /* margin-left: 6.5rem; */
+    padding: 0px;
 }
 .test-nav {
   margin-left: 9rem;

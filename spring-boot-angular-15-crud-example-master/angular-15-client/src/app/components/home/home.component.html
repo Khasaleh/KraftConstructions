@@ -43,7 +43,7 @@
         <div class="content">
           <div class="apidata" [innerHTML]="apiData.aboutusDescription"></div>
           <a id="btn" class="button" routerLink="./about-us">
-            <div class="learn-more">Learn more</div>
+            <a routerLink="/about-us" class="learn-more">Learn more</a>
             <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png"
                 alt="">
             </div>
@@ -62,7 +62,7 @@
             Looking for a affordable and reliable construction
             company for your project?
           </p>
-          <a href="#" class="get-a-quote">Get a Quote</a>
+          <a routerLink="/request-estimate" class="get-a-quote">Get a Quote</a>
         </div>
       </div>
     </div>
@@ -80,7 +80,7 @@
             <h3 class="custom-kitchens">{{ service.serviceName }}</h3>
             <p class="simply-dummy-text">{{ service.description }}</p>
             <a class="rectangle-group">
-              <div class="read-more">Read more</div>
+              <a routerLink="/interior-remodelling" class="read-more">Read more</a>
             </a>
           </div>
           <!-- <div class="component">

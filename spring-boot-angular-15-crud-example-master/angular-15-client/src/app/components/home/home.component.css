@@ -248,6 +248,11 @@ a {
     top: calc(50% - 12px);
     line-height: 24px;
     display: inline-block;
+    text-decoration: none;
+    color: #fff
+}
+.learn-more:hover{
+    color: #fff
 }
 
 .button,
@@ -556,8 +561,13 @@ a {
     border-radius: var(--br-8xs);
     background-color: var(--kraft-d-green);
     padding: 1.5% 3%;
+    text-decoration: none;
+    color: #fff
 }
+.read-more:hover{
+    color: #fff;
 
+}
 
 .rectangle-group {
     font-size: var(--font-size-xl);
