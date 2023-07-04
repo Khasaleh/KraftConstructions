@@ -25,6 +25,7 @@
     width: 20%;
     display: flex;
     justify-content: space-between;
+    cursor: pointer;
 }
 
 .about-us {
@@ -32,6 +33,7 @@
     font-size: var(--font-size-xl);
     color: var(--colors-white);
     padding: 0px 15px;
+    cursor: pointer;
 }
 
 .footer-line {

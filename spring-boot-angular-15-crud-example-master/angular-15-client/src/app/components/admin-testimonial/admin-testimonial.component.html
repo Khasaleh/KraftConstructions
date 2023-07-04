@@ -15,7 +15,7 @@
         <img class="form-img-1" [src]="imageLink" controls>
        
         <label for="file-input" class="custom-button">Upload Image</label>
-        <input type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
+        <input formControlName="imageUrl" type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
         <button (click)="onClick1()" type="submit" class="btn btn-success btn3">Save</button>
         <label (click)="deleteImage(recentlyUploadedImage?.id)" class="custom-button1">Delete Image</label>
 
@@ -26,8 +26,8 @@
               
                   <!-- <img class="user-icon1" alt="" [src]="imageLink1" /> -->
                   <div class="a d-flex gap-3">
-                    <div  *ngFor="let imageLink of imageLink1; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
-                    <img class="user-icon1" [src]="imageLink" alt="Slide {{i}}">
+                    <div  *ngFor="let imageLink of imagedata; let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                    <img class="user-icon1" [src]="globalUrl+imageLink.imageUrl" alt="Slide {{i}}">
                     <div class="slider-text"> Slider {{i+1}}</div>
                   </div>
                   </div>
