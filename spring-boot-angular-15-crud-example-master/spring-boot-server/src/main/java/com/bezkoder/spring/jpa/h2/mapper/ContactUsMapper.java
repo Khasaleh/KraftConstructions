@@ -4,6 +4,7 @@ import com.bezkoder.spring.jpa.h2.Entity.ContactUs;
 import com.bezkoder.spring.jpa.h2.dto.ContactUsDto;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,7 @@ public class ContactUsMapper {
         contactUsDto.setEmail(contactUs.getEmail());
         contactUsDto.setPhonenumber(contactUs.getPhonenumber());
         contactUsDto.setMessage(contactUs.getMessage());
+        contactUsDto.setCreatedDate(contactUs.getCreatedDate());
         return contactUsDto;
     }
 
@@ -28,6 +30,7 @@ public class ContactUsMapper {
         contactUs.setEmail(contactUsDto.getEmail());
         contactUs.setPhonenumber(contactUsDto.getPhonenumber());
         contactUs.setMessage(contactUsDto.getMessage());
+        contactUs.setCreatedDate(LocalDateTime.now().toString());
         return contactUs;
     }
 

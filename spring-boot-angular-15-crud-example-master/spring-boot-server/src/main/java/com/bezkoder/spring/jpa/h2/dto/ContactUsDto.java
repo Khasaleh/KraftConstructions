@@ -27,4 +27,5 @@ public class ContactUsDto {
     private String phonenumber;
     @NotNull
     private String message;
+    private String createdDate;
 }
