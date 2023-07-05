@@ -39,14 +39,16 @@
  }
    
  .btnClick{
-  border: white;
+  border: 1px solid white;
   font-weight: normal;
   transition: font-weight 0.3s;
 }
 .btnClick:active {
   font-weight: bold;
 }
- 
+.btnClick:hover{
+  background-color: lightgray;
+}
  .btn {
    display: inline-block;
    background-color: var(--kraft-d-green);

@@ -180,7 +180,7 @@ export class AdminServicesComponent {
       this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
         response => {
           console.log(response, 'response for service details');
-          this.successMessage = response?.message;
+          this.successMessage = "service details added succesfully";
           setTimeout(() => {
   
             this.successMessage = '';

@@ -46,10 +46,14 @@ h2 {
   margin-left: 3em;
 }
 .btnClick{
-  border: white;
+  border: 1px solid white;
   font-weight: normal;
   transition: font-weight 0.3s;
 }
+.btnClick:hover{
+  background-color: lightgray;
+}
+
 .btnClick:active {
   font-weight: bold;
 }
