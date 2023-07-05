@@ -77,7 +77,7 @@
          
           <div class="card" *ngFor="let usr of userdata">
             <div class="card-header card-header2 ">
-              {{addata.value.date}} {{addata.value.time}}
+              {{ usr?.createdDate | date:'yyyy-MM-dd' }} {{ usr?.createdDate | date:'hh:mm' }}
             </div>
             <div class="card-body">
               <div class="row">

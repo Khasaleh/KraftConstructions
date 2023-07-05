@@ -85,7 +85,7 @@
                                     <img class="star-img" src="../../../assets/star.png" alt="">
                                     <img class="star-img" src="../../../assets/Star5.png" alt="">
                                 </div>
-                                <div class="date"> {{this.userDetail.value.date1}}</div>
+                                <div class="date"> {{ data?.createdDate | date:'yyyy-MM-dd' }} {{ data?.createdDate | date:'hh:mm' }}</div>
                             </div>
                         </div>
                         <p class="test-para">
