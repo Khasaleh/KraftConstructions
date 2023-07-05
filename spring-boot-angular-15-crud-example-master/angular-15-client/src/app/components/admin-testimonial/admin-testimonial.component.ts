@@ -15,7 +15,7 @@ Show = false;
 imageLink: any;
 recentlyUploadedImage: any;
 recentlyUploadedImage1:any;
-imagedata!:any;
+imagedata!:string[];
 fileURL!: File;
 imageData!:any;
 sliderdata!:any;
@@ -46,40 +46,9 @@ ngOnInit():void {
    id:[''],
    imageUrl:[''],
     page:[''],
-    date:[''],
-    time:['']
+   
   });
-  let currentDate = new Date();
-    let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1;
-    let year = currentDate.getFullYear();
-    let formattedDate = day + "-" + month + "-" + year;
-    this.addata.patchValue({
-      date: formattedDate
-    });
-  // Get the current date and time
-const currentTime = new Date();
 
-
-let hours = currentTime.getHours();
-let minutes = currentTime.getMinutes();
-
-
-const ampm = hours >= 12 ? 'pm' : 'am';
-
-
-hours = hours % 12;
-hours = hours ? hours : 12;
-
-
-let minute = minutes < 10 ? '0' + minutes : minutes;
-
-// Format the time string
-const formattedTime = hours + ':' + minute + ' ' + ampm;
-
-this.addata.patchValue({
-  time: formattedTime
-});
 
 this.testimonialService.getImage().subscribe((res) => {
   this.imageData = res;
@@ -115,7 +84,8 @@ err => {
 }
 getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
-  this.imagedata=res;
+  this.imagedata=res
+  console.log(this.imagedata)
   this.recentlyUploadedImage1=this.imagedata[this.imageData.length-1];
   
  })
@@ -157,12 +127,16 @@ deleteSlider(id:number) {
       this.testimonialService.deleteSlider(id)
         .subscribe(res => {
           this.successMessage = res?.message;
+          
           setTimeout(() => {
             this.successMessage = '';
+
           }, 3000);
-          this.getAllSlider();
+          this.imageLink1.pop();
         });
-    }
+        this.getAllSlider(); 
+      }
+      this.getAllSlider();
   });
 }
 deleteImage(id:number) {

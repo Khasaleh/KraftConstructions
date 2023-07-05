@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Address } from 'src/app/model/address';
 import { DialogeComponent } from '../dialoge/dialoge.component';
 import { MatDialog } from '@angular/material/dialog';
+import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-admin-contact-us',
   templateUrl: './admin-contact-us.component.html',
@@ -13,6 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class AdminContactUsComponent {
   userdata!:any[];
+  formattedDateTime!:string | null;
   userDetail!:FormGroup;
   userDetails!:FormGroup;
   data!:any;
@@ -20,11 +22,14 @@ export class AdminContactUsComponent {
   errorMessage:string | null= null;
   successMessage1: string | null = null;
   errorMessage1:string | null= null;
-  constructor(private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
+  constructor(private datePipe : DatePipe ,private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
+  
   ngOnInit():void {
- 
-
     this.getAll();
+    // const createdDate = this.data.createdDate;
+    // this.formattedDateTime = this.datePipe.transform(createdDate, 'yyyy-MM-dd HH:mm:ss');  
+
+    
     this.userDetail = this.formbuilder.group ({ 
       id:[''],
       firstname : [''],
@@ -38,45 +43,45 @@ export class AdminContactUsComponent {
     this.userDetails = this.formbuilder.group ({ 
      address:['']
     })
-   
-
-
-    let currentDate = new Date();
-    let day = currentDate.getDate();
-    let month = currentDate.getMonth() + 1;
-    let year = currentDate.getFullYear();
-    let formattedDate = day + "-" + month + "-" + year;
-
-    this.userDetail.patchValue({
-      date: formattedDate
-    });
     this.conus.getContactAll().subscribe(
       previousValue => {
         this.userDetails.controls['address'].setValue(previousValue.address);
 
   })
-  const currentTime = new Date();
 
 
-let hours = currentTime.getHours();
-let minutes = currentTime.getMinutes();
+//     let currentDate = new Date();
+//     let day = currentDate.getDate();
+//     let month = currentDate.getMonth() + 1;
+//     let year = currentDate.getFullYear();
+//     let formattedDate = day + "-" + month + "-" + year;
+
+//     this.userDetail.patchValue({
+//       date: formattedDate
+//     });
+
+//   const currentTime = new Date();
 
 
-const ampm = hours >= 12 ? 'pm' : 'am';
+// let hours = currentTime.getHours();
+// let minutes = currentTime.getMinutes();
 
 
-hours = hours % 12;
-hours = hours ? hours : 12;
+// const ampm = hours >= 12 ? 'pm' : 'am';
 
 
-let minute = minutes < 10 ? '0' + minutes : minutes;
+// hours = hours % 12;
+// hours = hours ? hours : 12;
 
-// Format the time string
-const formattedTime = hours + ':' + minute + ' ' + ampm;
 
-this.userDetail.patchValue({
-  time: formattedTime
-});
+// let minute = minutes < 10 ? '0' + minutes : minutes;
+
+// // Format the time string
+// const formattedTime = hours + ':' + minute + ' ' + ampm;
+
+// this.userDetail.patchValue({
+//   time: formattedTime
+// });
 }
   
         
@@ -141,11 +146,10 @@ this.userDetail.patchValue({
                     this.errorMessage = '';
                   }, 3000);
                 });
-          
+          this.getAll();
       }
     });
   }
-  this.getAll();
 }
   edit(data:Address) {
     const user=JSON.parse(localStorage.getItem("user")!);

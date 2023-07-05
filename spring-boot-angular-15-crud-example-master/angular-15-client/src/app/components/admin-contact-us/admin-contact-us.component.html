@@ -73,7 +73,7 @@
             </div>
           </div>
         </div>
-        <div class="pm">{{userDetail.value.date}} <span> {{userDetail.value.time}}</span></div>
+        <div class="pm">{{ data?.createdDate | date:'yyyy-MM-dd' }} {{ data?.createdDate | date:'hh:mm' }}</div>
         <button (click)="deleteUser(data.id)" class="delete">Delete</button>
        
         
