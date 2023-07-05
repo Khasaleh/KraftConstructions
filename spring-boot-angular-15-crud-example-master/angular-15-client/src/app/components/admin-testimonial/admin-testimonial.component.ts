@@ -98,7 +98,7 @@ this.testimonialService.getImage().subscribe(
 
 this.testimonialService.getSlider().subscribe((res)=> {
  this.imagedata=res;
- this.recentlyUploadedImage1=this.imagedata[this.imageData.length -1];
+ this.recentlyUploadedImage1=this.imagedata[this.imageData.length-1];
  
 
 })
@@ -116,7 +116,7 @@ err => {
 getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
   this.imagedata=res;
-  this.recentlyUploadedImage1=this.imagedata[this.imageData.length - 1];
+  this.recentlyUploadedImage1=this.imagedata[this.imageData.length-1];
   
  })
  
@@ -145,14 +145,13 @@ this.testimonialService.getImage().subscribe((res)=> {
 
 deleteSlider(id:number) {
 
-  
+
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
       message: `Do You want to delete ${id}?`,
       showYesNoButtons: true
     }
   });
-
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
       this.testimonialService.deleteSlider(id)
@@ -162,21 +161,9 @@ deleteSlider(id:number) {
             this.successMessage = '';
           }, 3000);
           this.getAllSlider();
-         
-        }, err => {
-          this.errorMessage = err?.message;
-          setTimeout(() => {
-            this.errorMessage = '';
-          }, 3000);
-          
         });
-        this.getAllSlider();
-    
     }
-  
   });
-
- 
 }
 deleteImage(id:number) {
 
