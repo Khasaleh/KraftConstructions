@@ -71,8 +71,8 @@ deleteImage(id: number) : Observable<any> {
 saveSlider(data :FormData) : Observable<any> {
   return this.http.post(this.sliderUrl, data);
 }
-getSlider() : Observable<FormData>  {
-  return this.http.get<FormData>(this.getSliderUrl);
+getSlider() : Observable<any>  {
+  return this.http.get(this.getSliderUrl);
 }
 deleteSlider(id:number): Observable<any> {
 return this.http.delete(`${this.deleteSliderUrl}/${id}`)
