@@ -15,7 +15,8 @@
                 <td>{{ row.serviceName }}</td>
                 <td>{{ row.author }}</td>
                 <td>{{ row.description }}</td>
-                <td>{{ row.updateDate }}</td>
+                <td>{{ row?.updateDate | date:'yyyy-MM-dd' }} {{ row?.updateDate | date:'hh:mm' }}</td>
+                
               </tr>
               <!-- <tr class="">
                 <td>Decks-Patios</td>
