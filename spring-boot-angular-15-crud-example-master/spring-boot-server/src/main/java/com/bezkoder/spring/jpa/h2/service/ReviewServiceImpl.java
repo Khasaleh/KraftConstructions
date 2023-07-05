@@ -44,7 +44,7 @@ public class ReviewServiceImpl implements ReviewService {
 
     @Override
     public Review createReview(Review review) {
-        return reviewRepository.saveReview(review);
+        return reviewRepository.save(review);
     }
 
 

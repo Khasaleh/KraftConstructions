@@ -30,6 +30,7 @@ public class ReviewMapper {
         review.setWorkExperience(dto.getWorkExperience());
         review.setYourName(dto.getYourName());
         review.setYourEmail(dto.getYourEmail());
+        review.setCreatedDate(LocalDateTime.now().toString());
         review.setApprovalStatus(dto.getApprovalStatus());
         return review;
     }
