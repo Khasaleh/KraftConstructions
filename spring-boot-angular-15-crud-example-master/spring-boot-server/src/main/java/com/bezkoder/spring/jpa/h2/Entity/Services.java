@@ -37,7 +37,7 @@ public class Services {
     private ServiceDetails serviceDetails;
 
 
-    @OneToMany(mappedBy = "services")
+    @OneToMany(mappedBy = "services", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Portfolio> portfolios=new ArrayList<>();
 
     @ManyToOne

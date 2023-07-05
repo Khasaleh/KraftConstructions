@@ -98,23 +98,26 @@ this.testimonialService.getImage().subscribe(
 
 this.testimonialService.getSlider().subscribe((res)=> {
  this.imagedata=res;
- this.recentlyUploadedImage1=this.imagedata[this.imageData.length -1 ];
+ this.recentlyUploadedImage1=this.imagedata[this.imageData.length -1];
  
 
 })
+this.testimonialService.getSlider().subscribe(response => {
+  console.log(response);
 
-// this.testimonialService.getSlider().subscribe(res[]=> {
- 
-//   this.imageLink1 =  res
- 
-//  })
+  this.imageLink1 = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
+
+},
+err => {
+  console.error(err);
+})
 
 }
 getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
   this.imagedata=res;
-  this.recentlyUploadedImage1=this.imagedata[this.imageData.length];
-
+  this.recentlyUploadedImage1=this.imagedata[this.imageData.length - 1];
+  
  })
  
 }
@@ -154,14 +157,26 @@ deleteSlider(id:number) {
     if (result === true) {
       this.testimonialService.deleteSlider(id)
         .subscribe(res => {
-          this.successMessage = res?.message
+          this.successMessage = res?.message;
           setTimeout(() => {
             this.successMessage = '';
           }, 3000);
           this.getAllSlider();
+         
+        }, err => {
+          this.errorMessage = err?.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 3000);
+          
         });
+        this.getAllSlider();
+    
     }
+  
   });
+
+ 
 }
 deleteImage(id:number) {
 
