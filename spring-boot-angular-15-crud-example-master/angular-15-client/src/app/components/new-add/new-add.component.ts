@@ -14,7 +14,6 @@ export class NewAddComponent {
   globalUrl = 'http://99.72.32.144:8083'
   constructor(private newAdditionService: InteriorRemodelingService) { }
   ngOnInit() {
-    this.getDataonload();
     this.newAdditionService.getServicebyPage().subscribe(
       response => {
         this.serviceData = response;
@@ -26,6 +25,8 @@ export class NewAddComponent {
         this.data = response.filter((service: { active: boolean; }) => service.active === true);
 
         console.log(this.data);
+        this.getOneService(this.data[0].id);
+        
       },
       error => {
         console.log(error);
@@ -33,21 +34,7 @@ export class NewAddComponent {
       }
     )
   }
-  getDataonload(){
-    this.newAdditionService.getServicesbyPageFornew().subscribe(
-      response => {
-        this.serviceData = response;
-        console.log(response);
-      }
-    )
-    this.newAdditionService.getServiceLoadImagesFornew().subscribe(
-      response =>{
-        this.imageData = response;
-        console.log(response);
-
-      }
-    )
-  }
+ 
   getOneService(service: any){
     this.newAdditionService.getServiceById(service).subscribe(
       response =>{
