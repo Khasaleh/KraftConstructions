@@ -34,8 +34,8 @@ public class Review {
 
     @Column(name = "your_email")
     private String YourEmail;
-
-
+    @Column(name = "createdDate")
+    private String createdDate;
     @Enumerated(EnumType.STRING)
     private ApprovalStatus approvalStatus = ApprovalStatus.HIDDEN;
 

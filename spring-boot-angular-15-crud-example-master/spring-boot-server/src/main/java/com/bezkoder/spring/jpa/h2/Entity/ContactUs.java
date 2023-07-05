@@ -4,10 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
 
 
 @Getter
@@ -42,6 +40,8 @@ public class ContactUs {
     @Column(name = "message")
     private String message;
 
+    @Column(name = "createdDate")
+    private String createdDate;
 
 
 

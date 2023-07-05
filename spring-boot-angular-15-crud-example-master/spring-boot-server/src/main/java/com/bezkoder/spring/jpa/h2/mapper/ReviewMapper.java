@@ -1,8 +1,10 @@
 package com.bezkoder.spring.jpa.h2.mapper;
 
-import com.bezkoder.spring.jpa.h2.dto.ReviewDto;
 import com.bezkoder.spring.jpa.h2.Entity.Review;
+import com.bezkoder.spring.jpa.h2.dto.ReviewDto;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDateTime;
 
 @Component
 public class ReviewMapper {
@@ -15,6 +17,7 @@ public class ReviewMapper {
         dto.setWorkExperience(review.getWorkExperience());
         dto.setYourName(review.getYourName());
         dto.setYourEmail(review.getYourEmail());
+        dto.setCreatedDate(review.getCreatedDate());
         dto.setApprovalStatus(review.getApprovalStatus());
         return dto;
     }
@@ -27,6 +30,7 @@ public class ReviewMapper {
         review.setWorkExperience(dto.getWorkExperience());
         review.setYourName(dto.getYourName());
         review.setYourEmail(dto.getYourEmail());
+        review.setCreatedDate(LocalDateTime.now().toString());
         review.setApprovalStatus(dto.getApprovalStatus());
         return review;
     }
@@ -39,6 +43,7 @@ public class ReviewMapper {
         review.setWorkExperience(reviewDto.getWorkExperience());
         review.setYourName(reviewDto.getYourName());
         review.setYourEmail(reviewDto.getYourEmail());
+        review.setCreatedDate(LocalDateTime.now().toString());
         review.setApprovalStatus(reviewDto.getApprovalStatus());
         return review;
     }

@@ -22,7 +22,6 @@ public class ContactUsController {
     private ContactUsService contactUsService;
 
     @PostMapping
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<ContactUsDto> createContactUs(@Valid @RequestBody ContactUsDto contactUsDTO) {
         ContactUsDto createdContactUs = contactUsService.createContactUs(contactUsDTO);
         return new ResponseEntity<>(createdContactUs, HttpStatus.CREATED);
@@ -31,6 +30,7 @@ public class ContactUsController {
 
 
     @GetMapping
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<List<ContactUsDto>> getAllContactUs() {
         List<ContactUsDto> contactUsDTOList = contactUsService.getAllContactUs();
         return ResponseEntity.ok(contactUsDTOList);

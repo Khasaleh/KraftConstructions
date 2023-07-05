@@ -48,6 +48,7 @@ import { MatListModule } from '@angular/material/list';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { DialogeComponent } from './components/dialoge/dialoge.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -118,10 +119,12 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     
   ],
   providers: [
+    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true,
+      
     },
   ],
   bootstrap: [AppComponent]

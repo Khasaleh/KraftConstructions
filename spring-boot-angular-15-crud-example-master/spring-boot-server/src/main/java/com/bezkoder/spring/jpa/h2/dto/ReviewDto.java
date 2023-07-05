@@ -24,6 +24,7 @@ public class ReviewDto {
     private String YourName;
     @NotNull(message = "YourEmail field cannot be null")
     private String YourEmail;
+    private String createdDate;
     @NotNull(message = "approvalStatus field cannot be null")
     private ApprovalStatus approvalStatus;
 
