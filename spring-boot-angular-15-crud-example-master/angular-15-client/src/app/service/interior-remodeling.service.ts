@@ -16,10 +16,10 @@ export class InteriorRemodelingService {
     return this.http.get('http://99.72.32.144:8081/api/23/images')
   }
   getServicesbyPage(): Observable<any>{
-    return this.http.get('http://99.72.32.144:8081/api/services/26/details')
+    return this.http.get('http://99.72.32.144:8081/api/services/22/details')
   }
   getServiceLoadImages(): Observable<any>{
-    return this.http.get('http://99.72.32.144:8081/api/26/images')
+    return this.http.get('http://99.72.32.144:8081/api/22/images')
   }
   getServicebyPage(): Observable<any>{
     return this.http.get('http://99.72.32.144:8081/api/services/23/details')
