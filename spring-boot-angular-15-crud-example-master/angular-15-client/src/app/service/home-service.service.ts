@@ -70,5 +70,11 @@ addServicesData(serviceId: any[]): Observable<any> {
 
   return this.http.post(url, requestBody);
 }
+deleteAllTestimonial(): Observable<any>{
+ return this.http.delete('http://99.72.32.144:8081/api/testimonial-homepage/delete-all')
+}
+deleteBannerImage(bannerId: number): Observable<any> {
+  return this.http.delete(`http://99.72.32.144:8081/api/homepage-banner/${bannerId}`)
+}
 
 }

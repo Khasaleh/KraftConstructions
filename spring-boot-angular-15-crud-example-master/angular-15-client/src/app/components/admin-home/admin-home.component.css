@@ -305,12 +305,19 @@
 }
 
 .simply-dummy-text {
-    height: 23.77%;
+    height: 25%;
     width: 96.57%;
     font-size: var(--paragraph-regular-size);
     line-height: 25px;
     font-family: var(--paragraph-regular);
     color: var(--color-darkslategray);
+    overflow: hidden;
+}
+.delete-icon {
+    margin-top: -20px;
+    background-color: transparent;
+    border: none;
+    color: #fff;
 }
 
 .rectangle-group {
