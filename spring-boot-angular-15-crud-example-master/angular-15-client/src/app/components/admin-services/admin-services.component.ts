@@ -326,7 +326,7 @@ export class AdminServicesComponent {
     this.selectedServicId  = event.target?.value
     this.interiorRemodelingService.getServiceById(event.target?.value).subscribe(
       response => {
-        if (response) {
+        if (response ) {
           this.serviceData = response;
           this.imageLink = this.globalUrl + response.beforeImageUrl;
           this.imageLink2 = this.globalUrl + response.afterImageUrl;
@@ -337,12 +337,25 @@ export class AdminServicesComponent {
           this.isCardBodyVisible = response.addPortfolio;
           console.log(this.serviceData);
           this.getImages(event.target?.value); // Trigger the API call only if the response has data
-        } else {
-          console.log('No data available');
+        } 
+        else {
+          this.imageLink = null;
+          this.imageLink2 = null;
+          this.interiorRemodForm2.controls['beforeImage'].setValue('');
+          this.interiorRemodForm2.controls['afterImage'].setValue('');
+          this.interiorRemodForm2.controls['description'].setValue('');
+          this.interiorRemodForm2.controls['isCheck'].setValue('');
+          this.isCardBodyVisible = false;
         }
       },
       error => {
-        console.log(error);
+        this.imageLink = null;
+        this.imageLink2 = null;
+        this.interiorRemodForm2.controls['beforeImage'].setValue('');
+        this.interiorRemodForm2.controls['afterImage'].setValue('');
+        this.interiorRemodForm2.controls['description'].setValue('');
+        this.interiorRemodForm2.controls['isCheck'].setValue('');
+        this.isCardBodyVisible = false;    
       }
     );
     this.getImages(event.target?.value);
@@ -357,6 +370,14 @@ export class AdminServicesComponent {
             imgSrc: this.globalUrl + item.imageUrl // Adjust the URL according to your API response
           }))
         }
+        else {
+          this.cards = [
+            { id: 1, imgSrc: '' },
+            { id: 2, imgSrc: '' },
+            { id: 3, imgSrc: '' },
+            { id: 4, imgSrc: '' },
+          ];
+        }
       
         // this.imageData = response;
         
@@ -364,6 +385,7 @@ export class AdminServicesComponent {
       },
       error => {
         console.log(error);
+
 
       }
     )

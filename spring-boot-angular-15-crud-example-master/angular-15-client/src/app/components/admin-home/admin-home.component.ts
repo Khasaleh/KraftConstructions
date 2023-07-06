@@ -42,7 +42,8 @@ export class AdminHomeComponent {
   addForm() {
     this.testimonialData.push({ heading: '', description: '', name: '' });
   }
-  deleteForm(index: number) {
+  deleteForm(item:any,index: number) {
+    // if(item )
     this.testimonialData.splice(index, 1);
   }
   aboutUsForm!: FormGroup;
@@ -55,9 +56,11 @@ export class AdminHomeComponent {
   test = '';
   errorMessage: string | null = null;
   successMessage: string | null = null;
+  images1!: any[];
 
   constructor(private formBuilder: FormBuilder, private homeService: HomeServiceService,
   ) { }
+
   onVideoUploadBtnClick() {
     const formData = new FormData();
     formData.append('file', this.fileURL);
@@ -129,6 +132,7 @@ export class AdminHomeComponent {
     console.log("data for test", this.testimonialData);
     console.log(this.test);
     const testData = this.testimonialData;
+    this.deleteAllTestimonial();
     this.homeService.saveTestimonialData(testData).subscribe(
       response => {
         console.log("Response for testimonial section", response);
@@ -273,6 +277,13 @@ export class AdminHomeComponent {
       this.imageLink.push(URL.createObjectURL(file));
     }
   }
+  deleteAllTestimonial(){
+    this.homeService.deleteAllTestimonial().subscribe(
+      response => {
+
+      }
+    )
+  }
   uploadImages1() {
     const formData = new FormData();
     for (let i = 0; i < this.images.length; i++) {
@@ -302,6 +313,15 @@ export class AdminHomeComponent {
     )
   }
 
+
+
+  deleteImage(index: number) {
+
+    this.imageLink.splice(index, 1);
+  }
+  
+ 
+  
   onOptionSelected(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'interior') {
@@ -351,9 +371,13 @@ export class AdminHomeComponent {
   testData: any
   getTestData() {
     this.homeService.getTestimonialsData().subscribe(
-      response => {
-        this.testData = response;
+     response => {
+      if(response.length > 0){
+        this.testimonialData = response;
+      }
+        
       }
     )
   }
+  
 }
