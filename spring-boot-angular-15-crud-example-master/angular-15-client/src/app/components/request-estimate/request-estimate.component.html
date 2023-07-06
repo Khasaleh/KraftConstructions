@@ -23,39 +23,79 @@
       <div class="col-md-5">
         <label for="inputEmail4"  class="form-label">First Name</label>
         <input type="name" formControlName = "firstName" class="form-control" id="firstName">
+        <div *ngIf="getControl['firstName'].touched && getControl['firstName'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['firstName'].errors?.['required']">First Name is required</div>
+
+        </div>
       </div>
       <div class="col-md-5">
         <label for="inputPassword4" class="form-label">Last Name</label>
         <input type="name" formControlName = "lastName" class="form-control" id="inputPassword4">
+        <div *ngIf="getControl['lastName'].touched && getControl['lastName'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['lastName'].errors?.['required']">Last Name is required</div>
+
+        </div>
       </div>
       <div class="col-md-5">
         <label for="inputEmail4" class="form-label">Email</label>
         <input type="email" formControlName = "email" class="form-control" id="inputEmail4">
+        <div *ngIf="getControl['email'].touched && getControl['email'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['email'].errors?.['required']">Email is required</div>
+
+        </div>
       </div>
       <div class="col-md-5">
         <label for="phoneNumber"  class="form-label">Phone Number</label>
         <input type="text" formControlName = "phoneNumber" class="form-control" id="phoneNumber">
+        <div *ngIf="getControl['phoneNumber'].touched && getControl['phoneNumber'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['phoneNumber'].errors?.['required']">Phone Number is required</div>
+
+        </div>
       </div>
       <div class="col-10">
         <label for="inputAddress" class="form-label">Address</label>
         <input ngx-google-places-autocomplete formControlName="address" class="form-control" id="inputAddress" placeholder="1234 Main St" (onAddressChange)="handleAddressChange($event)">
+        <div *ngIf="getControl['address'].touched && getControl['address'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['address'].errors?.['required']">Address is required</div>
+
+        </div>
       </div>
       
       <div class="col-md-4">
         <label for="inputCity" class="form-label">City</label>
         <input type="text" formControlName = "city"  class="form-control" id="inputCity">
+        <div *ngIf="getControl['city'].touched && getControl['city'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['city'].errors?.['required']">City is required</div>
+
+        </div>
       </div>
       <div class="col-md-4">
         <label for="inputState" class="form-label">State</label>
         <select id="inputState" formControlName="state" class="form-select">
           <option *ngFor="let state of states" [value]="state">{{ state }}</option>
         </select>
+        <div *ngIf="getControl['state'].touched && getControl['state'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['state'].errors?.['required']">State is required</div>
+
+        </div>
       </div>
       
       
       <div class="col-md-4">
         <label for="inputZip" class="form-label">Zip</label>
         <input type="text" formControlName = "zip" class="form-control" id="inputZip">
+        <div *ngIf="getControl['zip'].touched && getControl['zip'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['zip'].errors?.['required']">Zip is required</div>
+
+        </div>
       </div>
       <div class="row">
         <div class="chcktxt">What Remodelling Services are you looking for?</div>
@@ -64,6 +104,11 @@
             <div *ngFor="let service of requestedServices">
               <input class="form-check-input" [value]="service" type="checkbox" [id]="service" (change)="toggleService(service)">
               <label class="form-check-label" [for]="service">{{ service }}</label>
+              <div *ngIf="getControl['requestedServices'].touched && getControl['requestedServices'].invalid" class="text-danger">
+
+                <div *ngIf="getControl['requestedServices'].errors?.['required']">Requested Services is required</div>
+      
+              </div>
             </div>
           </div>
         </div>
@@ -76,6 +121,11 @@
         <div *ngFor="let service of budgets">
         <input class="form-check-input" formControlName="budget" [value]="service" type="radio" >
         <label class="form-check-label" [for]="service"> {{service}} </label>
+        <div *ngIf="getControl['budget'].touched && getControl['budget'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['budget'].errors?.['required']">Requested Services is required</div>
+
+        </div>
       </div>
       
       </div>
@@ -84,6 +134,11 @@
       <div class="col-md-6">
         <label for="exampleFormControlTextarea1" class="form-label">Breifly Describe your project?</label>
         <textarea class="form-control" formControlName="projectDescription" id="exampleFormControlTextarea1" rows="3"></textarea>
+        <div *ngIf="getControl['projectDescription'].touched && getControl['projectDescription'].invalid" class="text-danger">
+
+          <div *ngIf="getControl['projectDescription'].errors?.['required']">Project Description is required</div>
+
+        </div>
       </div>
      
      <div class="row g-3">
@@ -92,6 +147,11 @@
         <select id="inputState" formControlName="aboutUs" class="form-select">
           <option *ngFor="let aboutUs of aboutUss" [value]="aboutUs">{{ aboutUs }}</option>
       </select>
+      <div *ngIf="getControl['aboutUs'].touched && getControl['aboutUs'].invalid" class="text-danger">
+
+        <div *ngIf="getControl['aboutUs'].errors?.['required']">This Field is required</div>
+
+      </div>
       </div>
       </div>
    
