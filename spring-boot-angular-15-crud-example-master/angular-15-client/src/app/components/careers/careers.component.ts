@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup,FormArray  } from '@angular/forms';
+import { FormBuilder, FormGroup,FormArray, AbstractControl  } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { CareerData } from 'src/app/model/career';
 import { CareerDataService } from 'src/app/service/careerData.service';
 import { DialogeComponent } from '../dialoge/dialoge.component';
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-careers',
   templateUrl: './careers.component.html',
@@ -31,33 +32,38 @@ jobType:string[]=['Yes','No'];
   constructor(private formBuilder : FormBuilder, private dialog:MatDialog, private careerData: CareerDataService) {}
 ngOnInit(): void {
 this.userDetail = this.formBuilder.group ({
-  firstName : [''],
-  lastName : [''],
-  email : [''],
-  phoneNumber: [''],
-  address : [''],
-  city : [''],
-  state: [''],
-  zip:[''],
+  firstName : ['',Validators.required],
+  lastName : ['',Validators.required],
+  email : ['',Validators.required],
+  phoneNumber: ['',Validators.required],
+  address : ['',Validators.required],
+  city : ['',Validators.required],
+  state: ['',Validators.required],
+  zip:['',Validators.required],
   workExperience:[''],
-  jobType:[''],
-  workRestrictions:[''],
-  hoursRestrictions:[''],
-  resume:[''],
+  jobType:['',Validators.required],
+  workRestrictions:['',Validators.required],
+  hoursRestrictions:['',Validators.required],
+  resume:['',Validators.required],
   otherNotes:[''],
-  skills:[''],
-  references:[[]],
-  referencesrel:[[]],
-  referencesnum:[[]],
-  references1:[[]],
-  referencesrel1:[[]],
-  referencesnum1:[[]],
+  skills:['',Validators.required],
+  references:[[],Validators.required],
+  referencesrel:[[],Validators.required],
+  referencesnum:[[],Validators.required],
+  references1:[[],Validators.required],
+  referencesrel1:[[],Validators.required],
+  referencesnum1:[[],Validators.required],
   references2:[[]],
   referencesrel2:[[]],
   referencesnum2:[[]],
 });
 
 
+
+}
+get getControl(): { [key: string]: AbstractControl; } {
+
+  return this.userDetail.controls;
 
 }
 
@@ -75,6 +81,7 @@ handleAddressChange(address: any) {
   this.userDetail.controls['address'].setValue(address.formatted_address);
 }
 onClick1() {
+  this.userDetail.markAllAsTouched();
  
   const formData = new FormData();
   formData.append('resume', this.fileURL1);
@@ -104,14 +111,14 @@ onClick1() {
   this.careerData.SaveUser(formData).subscribe(
     response => {
  
-      this.successMessage= response?.message;
+      this.successMessage= 'Data Submitted Successfully!';
       setTimeout(() => {
         this.successMessage = '';
       }, 3000);
     },
     error => {
 
-      this.errorMessage= error?.message;
+      this.errorMessage= 'Data cant be submitted!';
       setTimeout(() => {
         this.errorMessage = '';
       }, 3000);

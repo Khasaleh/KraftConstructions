@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms'
+import {FormGroup, FormBuilder, AbstractControl} from '@angular/forms'
 import { MatDialog } from '@angular/material/dialog';
 import { ContactUs } from 'src/app/model/conus';
 import { ContactUsService } from 'src/app/service/contact.us.service';
 import { DialogeComponent } from '../dialoge/dialoge.component';
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
@@ -47,8 +48,14 @@ this.data=result;
 })
 
 }
+// get getControl(): { [key: string]: AbstractControl; } {
+
+//   return this.userDetail.controls;
+
+// }
 
 submit() {
+  // this.userDetail.markAllAsTouched();
   this.userObj = this.userDetail.value;
   console.log(this.userObj);
 

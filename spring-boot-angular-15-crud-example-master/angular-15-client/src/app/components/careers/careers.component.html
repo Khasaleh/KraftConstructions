@@ -25,45 +25,87 @@
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="firstName">First Name</label>
                         <input type="name" formControlName="firstName" class="form-control" id="firstName">
+                        <div *ngIf="getControl['firstName'].touched && getControl['firstName'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['firstName'].errors?.['required']">First Name is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" for="lastName" class="form-label">Last Name</label>
                         <input type="lastname" formControlName="lastName" class="form-control" id="lastName">
+                        <div *ngIf="getControl['lastName'].touched && getControl['lastName'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['lastName'].errors?.['required']">Last Name is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" for="email" class="form-label">Email</label>
                         <input type="email" formControlName="email"class="form-control" id="email">
+                        <div *ngIf="getControl['email'].touched && getControl['email'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['email'].errors?.['required']">Email is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="phoneNumber">Phone Number</label>
                         <input type="phone" formControlName="phoneNumber" class="form-control" id="phoneNumber">
+                        <div *ngIf="getControl['phoneNumber'].touched && getControl['phoneNumber'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['phoneNumber'].errors?.['required']">Phone Number is required</div>
+                  
+                          </div>
                     </div>
                 </div>
                 <div class="form-group text-form-area">
                     <label class= "mb-2" for="inputAddress" class="form-label" >Address</label>
-                    <!-- <textarea formControlName="address" class="form-control form-control-lg" id="exampleTextarea" rows="5"></textarea> -->
+                    
                     <input ngx-google-places-autocomplete formControlName="address" class="form-control form-control-lg" id="inputAddress" placeholder="1234 Main St" (onAddressChange)="handleAddressChange($event)">
+                    <div *ngIf="getControl['address'].touched && getControl['address'].invalid" class="text-danger">
+
+                        <div *ngIf="getControl['address'].errors?.['required']">Address is required</div>
+              
+                      </div>
                 </div>
                 <div class="grid-container2">
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="city">City</label>
                         <input type="text" formControlName="city" class="form-control" id="city">
+                        <div *ngIf="getControl['city'].touched && getControl['city'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['city'].errors?.['required']">City is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="inputState">State</label>
                         <select id="inputState" class="form-select" formControlName="state">
                             <option *ngFor="let state of states" [value]="state">{{ state }}</option>
+
                         </select>
+                        <div *ngIf="getControl['state'].touched && getControl['state'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['state'].errors?.['required']">State is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2"class="form-label" for="zip">Zip/postal</label>
                         <input formControlName="zip" type="text" class="form-control" id="zip">
+                        <div *ngIf="getControl['zip'].touched && getControl['zip'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['zip'].errors?.['required']">Zip is required</div>
+                  
+                          </div>
                     </div>
                 </div>
 
                 <div class="form-group text-form-area">
                     <label class= "mb-2" class="form-label" for="workExperience">Work Experience</label>
                     <textarea formControlName="workExperience" class="form-control form-control-lg" id="workExperience" rows="5"></textarea>
+                  
                 </div>
                 <div class="grid-container1">
                     <div class="form-group">
@@ -71,24 +113,44 @@
                         <select id="inputJob" formControlName="jobType" class="form-select">
                             <option *ngFor="let state of jobType" [value]="state">{{ state }}</option>
                           </select>
+                          <div *ngIf="getControl['jobType'].touched && getControl['jobType'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['jobType'].errors?.['required']">Job Type is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" for="formGroupExampleInput">Do you have any work restrictions?</label>
                         <select class="form-control" formControlName="workRestrictions">
                             <option *ngFor="let state of jobType" [value]="state">{{ state }}</option>
                         </select>
+                        <div *ngIf="getControl['workRestrictions'].touched && getControl['workRestrictions'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['workRestrictions'].errors?.['required']">Work Restrictions is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="formGroupExampleInput">Do you have any hour restrictions?*</label>
                         <select class="form-control" formControlName="hoursRestrictions">
                             <option *ngFor="let state of jobType" [value]="state">{{ state }}</option>
                         </select>
+                        <div *ngIf="getControl['hoursRestrictions'].touched && getControl['hoursRestrictions'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['hoursRestrictions'].errors?.['required']">Hours Restrictions is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="formGroupExampleInput">Do you have any skills that relates to this job?*</label>
                         <select class="form-control" formControlName="skills">
                             <option *ngFor="let state of jobType" [value]="state">{{ state }}</option>
                         </select>
+                        <div *ngIf="getControl['skills'].touched && getControl['skills'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['skills'].errors?.['required']">Skill is required</div>
+                  
+                          </div>
                     </div>
                 </div>
 
@@ -98,26 +160,56 @@
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Name">Name</label>
                         <input type="name" formControlName="references" class="form-control" id="Name">
+                        <div *ngIf="getControl['references'].touched && getControl['references'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['references'].errors?.['required']">Name is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Relationship">Relationship</label>
                         <input type="text" formControlName="referencesrel" class="form-control" id="Relationship">
+                        <div *ngIf="getControl['referencesrel'].touched && getControl['referencesrel'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['referencesrel'].errors?.['required']">Relationship is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="phoneNumber">Phone</label>
                         <input type="phone" formControlName="referencesnum" class="form-control" id="phoneNumber">
+                        <div *ngIf="getControl['referencesnum'].touched && getControl['referencesnum'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['referencesnum'].errors?.['required']">Phone Number is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Name1">Name</label>
                         <input type="name" formControlName="references1" class="form-control" id="Name1">
+                        <div *ngIf="getControl['references1'].touched && getControl['references1'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['references1'].errors?.['required']">Name is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Relationship1">Relationship</label>
                         <input type="text" formControlName="referencesrel1" class="form-control" id="Relationship1">
+                        <div *ngIf="getControl['referencesrel1'].touched && getControl['referencesrel1'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['referencesrel1'].errors?.['required']">Relationship is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="phoneNumber1">Phone</label>
                         <input type="phone" formControlName="referencesnum1" class="form-control" id="phoneNumber1">
+                        <div *ngIf="getControl['referencesnum1'].touched && getControl['referencesnum1'].invalid" class="text-danger">
+
+                            <div *ngIf="getControl['referencesnum1'].errors?.['required']">Phone Number is required</div>
+                  
+                          </div>
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Name2">Name</label>
@@ -140,6 +232,11 @@
                 <div class="file">
                     <h3 class="mini-head" class="form-label" >Resume Upload </h3>
                     <input type="file"formControlName="resume" class="form-control-file" id="resume" (change)="onFileSelected($event)">
+                    <div *ngIf="getControl['resume'].touched && getControl['resume'].invalid" class="text-danger">
+
+                        <div *ngIf="getControl['resume'].errors?.['required']">Resume is required</div>
+              
+                      </div>
                 </div>
                 <h3 class="captcha-head">CAPTCHA</h3>
 

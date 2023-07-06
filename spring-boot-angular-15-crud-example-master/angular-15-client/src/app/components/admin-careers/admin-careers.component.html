@@ -82,49 +82,49 @@
           </div>
       
           <h2 class="head2">Refferences</h2>
-
-          <div class="grid-container2">
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="Name">Name</label>
-                  <input [value]="userDetail.value.references[0]?.name" class="form-control" id="Name">
-                 
+          
+    
+              <div class="col-md-4">
+                <label for="Name" class="form-label" for="Name">Name</label>
+                <input [value]="userDetail.value.references[0]?.name" class="form-control" id="Name">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="Relationship">Relationship</label>
+              <div class="col-md-4">
+                  <label  class="form-label" for="Relationship">Relationship</label>
                   <input [value]="userDetail.value.references[0]?.relationship"class="form-control" id="Relationship">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="PhoneNumber">Phone</label>
+              <div class="col-md-3">
+                  <label class="form-label" for="PhoneNumber">Phone</label>
                   <input [value]="userDetail.value.references[0]?.phoneNumber" class="form-control" id="PhoneNumber">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="Name1">Name</label>
+              <div class="col-md-4">
+                  <label  class="form-label" for="Name1">Name</label>
                   <input [value]="userDetail.value.references[1]?.name" class="form-control" id="Name1">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="Relationship1">Relationship</label>
+              <div class="col-md-4">
+                  <label class="form-label" for="Relationship1">Relationship</label>
                   <input [value]="userDetail.value.references[1]?.relationship" class="form-control" id="Relationship1">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="phoneNumber1">Phone</label>
+              <div class="col-md-3">
+                  <label class="form-label" for="phoneNumber1">Phone</label>
                   <input [value]="userDetail.value.references[1]?.phoneNumber" class="form-control" id="phoneNumber1">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="Name2">Name</label>
+              <div class="col-md-4">
+                  <label class="form-label" for="Name2">Name</label>
                   <input [value]="userDetail.value.references[2]?.name" class="form-control" id="Name2">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2"class="form-label" for="Relationship2">Relationship</label>
+              <div class="col-md-4">
+                  <label class="form-label" for="Relationship2">Relationship</label>
                   <input [value]="userDetail.value.references[2]?.relationship" class="form-control" id="Relationship2">
               </div>
-              <div class="form-group">
-                  <label class= "mb-2" class="form-label" for="phoneNumber2">Phone</label>
+              <div class="col-md-3">
+                  <label  class="form-label" for="phoneNumber2">Phone</label>
                   <input [value]="userDetail.value.references[2]?.phoneNumber" class="form-control" id="phoneNumber2">
               </div>
-          </div>
-          <div class="form-group text-form-area">
-              <label class= "mb-2" class="form-label" for="otherNotes">Other Notes</label>
-              <textarea formControlName="otherNotes" class="form-control form-control-lg" id="otherNotes" rows="5"></textarea>
+          <!-- </div> -->
+          
+          <div class="col-md-10">
+            <label for="otherNotes" class="form-label">Other Notes</label>
+            <textarea formControlName="otherNotes" class="form-control" id="otherNotes" rows="5"></textarea>
           </div>
           
         
