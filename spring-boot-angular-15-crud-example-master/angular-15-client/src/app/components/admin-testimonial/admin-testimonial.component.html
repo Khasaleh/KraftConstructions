@@ -37,12 +37,15 @@
        
             <div class="card-body">
             
-              <label (click)="deleteSlider(recentlyUploadedImage1?.id)" class=" abcd">Delete Image</label>
+              <label (click)="deleteSlider()" class=" abcd">Delete Image</label>
              
               <label for="file-input1" class=" abc">Upload Image</label>
               <input multiple type="file" id="file-input1" class="input-file1" (change)="onFileSelected($event)" accept="image/*">
               <button (click)="content1()" type="submit" class="btn btn-success btn2">Cancel</button>
               <button (click)="submit1()"type="submit" class="btn btn-success btn-large1">Save</button>
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage3">
+              {{ successMessage3 }}
             </div>
           </div>
         </div>
@@ -110,7 +113,7 @@
     </div>
   <div class="card" *ngFor="let usr of approvedata">
     <div class="card-header card-header1">
-      {{addata.value.date}} {{addata.value.time}}
+      {{ usr?.createdDate | date:'yyyy-MM-dd' }} {{ usr?.createdDate | date:'hh:mm' }}
     </div>
     <div class="card-body">
       <div class="row">

@@ -43,13 +43,17 @@
   font-size:var(--font-size-13xl);
   font-family:var(--h2-semibold);
   font-weight: 500;
-  margin-left: 35%;
+  margin-left: 37%;
   margin-top: 5%;
 }
-.col-md-4, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
- , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt #inputYears {
+.col-md-4, .col-md-10, .col-mb-2 , .col-md-6 .col-10 , .form-check , .form-label .inputtxt, .dropdown, .dropdown-menu, .form-check-label, .form-check-input, .form-label 
+ , #inputAddress , #inputCity , #inputState , #InputZip, .inputtxt, #inputYears {
   margin-top: 20px;
   margin-left: 20px;
+}
+#Name , #Relationship, #phoneNumber,#Name1 , #Relationship1, #phoneNumber1,#Name2 , #Relationship2, #phoneNumber2 {
+  margin-top: 20px;
+  margin-left: 6px;
 }
 #exampleFormControlTextarea1 {
   margin-top: 10px;

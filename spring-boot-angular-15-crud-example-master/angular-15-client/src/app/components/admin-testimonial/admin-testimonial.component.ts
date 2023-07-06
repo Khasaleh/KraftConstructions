@@ -25,6 +25,7 @@ userdata!:any[];
 successMessage: string | null = null;
 successMessage2: string | null = null;
 successMessage1: string | null = null;
+successMessage3: string | null = null;
 errorMessage: string | null = null;
 approvedata!:any[];
 addata!:FormGroup;
@@ -67,7 +68,7 @@ this.testimonialService.getImage().subscribe(
 
 this.testimonialService.getSlider().subscribe((res)=> {
  this.imagedata=res;
- this.recentlyUploadedImage1=this.imagedata[this.imageData.length-1];
+ this.recentlyUploadedImage1=this.imagedata[this.imagedata.length-1];
  
 
 })
@@ -86,7 +87,7 @@ getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
   this.imagedata=res
   console.log(this.imagedata)
-  this.recentlyUploadedImage1=this.imagedata[this.imageData.length-1];
+ 
   
  })
  
@@ -113,23 +114,23 @@ this.testimonialService.getImage().subscribe((res)=> {
 });
 }
 
-deleteSlider(id:number) {
-
+deleteSlider() {
+  this.recentlyUploadedImage1=this.imagedata[this.imagedata.length-1];
 
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
-      message: `Do You want to delete ${id}?`,
+      message: `Do You want to delete ${this.recentlyUploadedImage1.id}?`,
       showYesNoButtons: true
     }
   });
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
-      this.testimonialService.deleteSlider(id)
+      this.testimonialService.deleteSlider(this.recentlyUploadedImage1.id)
         .subscribe(res => {
-          this.successMessage = res?.message;
+          this.successMessage3 = res?.message;
           
           setTimeout(() => {
-            this.successMessage = '';
+            this.successMessage3 = '';
 
           }, 3000);
           this.imageLink1.pop();
@@ -221,10 +222,10 @@ onClick2() {
   console.log(formData);
   this.testimonialService.saveSlider(formData).subscribe(
     response => {
-      this.successMessage= response?.message;
+      this.successMessage3= response?.message;
       
       setTimeout(() => {
-        this.successMessage = '';
+        this.successMessage3 = '';
       }, 3000);
       
           
@@ -291,16 +292,18 @@ approveTest(user:Testimonial,id:number) {
           this.successMessage2 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage2 = '';
+            this.getApprovedTest();
           }, 3000);
          } ,err=> {
             this.errorMessage = err?.approvalStatus;
             setTimeout(() => {
+             
               this.errorMessage = '';
             }, 3000);
             
           });
         }
-        this.getAll(); 
+        
         });
     }
   
@@ -363,9 +366,10 @@ hideTest(user:Testimonial,id:number)
         .subscribe(res => {
           this.successMessage1 = res?.approvalStatus;
           setTimeout(() => {
+            this.getApprovedTest();
             this.successMessage1 = '';
           }, 3000);
-          this.getAll();
+          
         });
      
     }

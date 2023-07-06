@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms'
+import {FormGroup, FormBuilder, AbstractControl} from '@angular/forms'
 import { ReqUser } from 'src/app/model/requsr';
 import { ReqUserService } from 'src/app/service/Reqest.service';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogeComponent } from '../dialoge/dialoge.component' // Create a separate component for the dialog content
-
-
+import { Validators } from '@angular/forms';
 @Component({
   selector: 'app-request-estimate',
   templateUrl: './request-estimate.component.html',
@@ -32,18 +31,18 @@ errorMessage: string | null = null;
 constructor(private formBuilder : FormBuilder,private requser: ReqUserService,private dialog: MatDialog) {}
 ngOnInit(): void {
 this.userDetail = this.formBuilder.group ({
-  firstName : [''],
-  lastName : [''],
-  email : [''],
-  phoneNumber: [''],
-  address : [''],
-  city : [''],
-  state: [''],
-  zip:[''],
-  requestedServices: [[]],
-  budget: [''],
-  projectDescription: [''],
-  aboutUs: ['']
+  firstName : ['',Validators.required],
+  lastName : ['',Validators.required],
+  email : ['',Validators.required],
+  phoneNumber: ['',Validators.required],
+  address : ['',Validators.required],
+  city : ['',Validators.required],
+  state: ['',Validators.required],
+  zip:['',Validators.required],
+  requestedServices: [[],Validators.required],
+  budget: ['',Validators.required],
+  projectDescription: ['',Validators.required],
+  aboutUs: ['',Validators.required]
 
   
 });
@@ -54,10 +53,15 @@ this.userDetail = this.formBuilder.group ({
 handleAddressChange(address: any) {
   this.userDetail.controls['address'].setValue(address.formatted_address);
 }
+get getControl(): { [key: string]: AbstractControl; } {
 
+  return this.userDetail.controls;
+
+}
 
 
 submit() {
+  this.userDetail.markAllAsTouched();
   this.userObj = this.userDetail.value; 
   console.log(this.userObj); 
   // this.openDialog();

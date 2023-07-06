@@ -16,7 +16,7 @@
     background-color: var(--colors-white);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
       width: 65rem ; 
-    height: 25% ;
+    height: 30% ;
   }
 
   .navbar-brand {
@@ -42,7 +42,7 @@
 
 .group-icon {
   position: absolute;
-  top: 382px;
+  /* top: 382px; */
   width: 83.2px;
   height: 78px;
   object-fit: cover;

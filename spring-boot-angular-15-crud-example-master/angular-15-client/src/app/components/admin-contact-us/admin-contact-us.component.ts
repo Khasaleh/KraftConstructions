@@ -134,6 +134,7 @@ export class AdminContactUsComponent {
               this.successMessage = res?.message;
       
               setTimeout(() => {
+                this.getAll();
                 this.successMessage = '';
               }, 3000);
               
@@ -146,7 +147,7 @@ export class AdminContactUsComponent {
                     this.errorMessage = '';
                   }, 3000);
                 });
-          this.getAll();
+         
       }
     });
   }
