@@ -4,7 +4,6 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { Address } from 'src/app/model/address';
 import { DialogeComponent } from '../dialoge/dialoge.component';
 import { MatDialog } from '@angular/material/dialog';
-import { DatePipe } from '@angular/common';
 @Component({
   selector: 'app-admin-contact-us',
   templateUrl: './admin-contact-us.component.html',
@@ -22,11 +21,13 @@ export class AdminContactUsComponent {
   errorMessage:string | null= null;
   successMessage1: string | null = null;
   errorMessage1:string | null= null;
-  constructor(private datePipe : DatePipe ,private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
+  constructor(private conus:ContactUsService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   
   ngOnInit():void {
     this.getAll();
+ 
 
+    
     this.userDetail = this.formbuilder.group ({ 
       id:[''],
       firstname : [''],
@@ -46,12 +47,13 @@ export class AdminContactUsComponent {
 
   })
 
+
 }
   
         
   getAll() {
+
     this.conus.getAll().subscribe((res) => {
-      console.log(res);
       this.userdata = res;
   })
 }
@@ -61,7 +63,7 @@ export class AdminContactUsComponent {
   deleteUser(id: number) {
     const user=JSON.parse(localStorage.getItem("user")!);
     if(!user.roles.includes('ROLE_ADMIN')){
-     this.dialog.open(DialogeComponent, {
+       this.dialog.open(DialogeComponent, {
         data: {
           message: `You don't have the access`,
           showYesNoButtons: false
@@ -109,7 +111,7 @@ export class AdminContactUsComponent {
   editAddress(data:Address) {
     const user=JSON.parse(localStorage.getItem("user")!);
     if(!user.roles.includes('ROLE_ADMIN')){
-     this.dialog.open(DialogeComponent, {
+       this.dialog.open(DialogeComponent, {
         data: {
           message: `You don't have the access`,
           showYesNoButtons: false
