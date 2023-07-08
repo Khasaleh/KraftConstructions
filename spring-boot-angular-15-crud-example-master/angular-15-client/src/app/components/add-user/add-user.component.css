@@ -11,7 +11,6 @@
   }
   .desktop-3-item {
     position: relative;
-    /* top: 135px; */
     left: 21px;
     background-color: var(--colors-white);
     box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
@@ -23,7 +22,6 @@
     font-size: 18px;
     font-weight: 600;
     font-family: sans-serif;
-    /* padding: 16px 0px 9px 22px; */
 
   }
   .btn {
@@ -42,7 +40,6 @@
 
 .group-icon {
   position: absolute;
-  /* top: 382px; */
   width: 83.2px;
   height: 78px;
   object-fit: cover;

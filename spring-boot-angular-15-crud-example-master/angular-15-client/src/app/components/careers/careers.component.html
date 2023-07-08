@@ -92,20 +92,22 @@
                           </div>
                     </div>
                     <div class="form-group">
-                        <label class= "mb-2"class="form-label" for="zip">Zip/postal</label>
+                        <label class="mb-2 form-label" for="zip">Zip/postal</label>
                         <input formControlName="zip" type="text" class="form-control" id="zip">
                         <div *ngIf="getControl['zip'].touched && getControl['zip'].invalid" class="text-danger">
-
                             <div *ngIf="getControl['zip'].errors?.['required']">Zip is required</div>
-                  
-                          </div>
+                            <div *ngIf="getControl['zip'].errors?.['pattern']">Zip should only contain numbers</div>
+                        </div>
                     </div>
+                    
                 </div>
 
                 <div class="form-group text-form-area">
                     <label class= "mb-2" class="form-label" for="workExperience">Work Experience</label>
                     <textarea formControlName="workExperience" class="form-control form-control-lg" id="workExperience" rows="5"></textarea>
-                  
+                    <div *ngIf="getControl['workExperience'].touched && getControl['workExperience'].invalid" class="text-danger">
+                        <div *ngIf="getControl['workExperience'].errors?.['maxlength']">Work Experience should have at most {{ getControl['workExperience'].errors?.['maxlength'].requiredLength }} characters</div>
+                    </div>
                 </div>
                 <div class="grid-container1">
                     <div class="form-group">
@@ -228,6 +230,9 @@
                 <div class="form-group text-form-area">
                     <label class= "mb-2" class="form-label" for="otherNotes">Other Notes</label>
                     <textarea formControlName="otherNotes" class="form-control form-control-lg" id="otherNotes" rows="5"></textarea>
+                    <div *ngIf="getControl['otherNotes'].touched && getControl['otherNotes'].invalid" class="text-danger">
+                        <div *ngIf="getControl['otherNotes'].errors?.['maxlength']">Work Experience should have at most {{ getControl['otherNotes'].errors?.['maxlength'].requiredLength }} characters</div>
+                    </div>
                 </div>
                 <div class="file">
                     <h3 class="mini-head" class="form-label" >Resume Upload </h3>
@@ -248,7 +253,7 @@
                     </div>
                 </div>
                 <a id="btn" class="button">
-                    <div type="submit" (click)='submit()' class="learn-more">Submit</div>
+                    <div type="submit" (click)='subitData()' class="learn-more">Submit</div>
                     
                 </a>
                 <div class=" message">

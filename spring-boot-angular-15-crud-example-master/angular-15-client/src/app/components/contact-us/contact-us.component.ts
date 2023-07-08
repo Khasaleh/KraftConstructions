@@ -48,14 +48,8 @@ this.data=result;
 })
 
 }
-// get getControl(): { [key: string]: AbstractControl; } {
-
-//   return this.userDetail.controls;
-
-// }
 
 submit() {
-  // this.userDetail.markAllAsTouched();
   this.userObj = this.userDetail.value;
   console.log(this.userObj);
 
@@ -64,19 +58,16 @@ submit() {
     setTimeout(() => {
       this.successMessage = '';
     }, 3000);
-    // this.openDialog();
-    console.log(res);
   }, err => {
     this.errorMessage = err?.message;
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);
-    console.log(err);
   });
 }
 
 openDialog(): void {
-  const dialogRef = this.dialog.open(DialogeComponent, {
+  this.dialog.open(DialogeComponent, {
     data: {
       message: 'Submitted Successfully',
       showYesNoButtons: false,
@@ -84,12 +75,7 @@ openDialog(): void {
     }
 
   });
-  dialogRef.afterClosed().subscribe(result => {
-  
-    console.log(result);
-  });
 
- 
 }
 
 }

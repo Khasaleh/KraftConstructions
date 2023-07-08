@@ -100,6 +100,10 @@ h1 {
 .card-body p {
   line-height: 0.2rem;
 }
+.mainImage {
+  width: 70%;
+  height: 100%;
+}
 
 
    @media (max-width: 576px) {
@@ -119,6 +123,10 @@ h1 {
         padding-bottom: auto;
         color: #fff;
         text-align: auto;
+    }
+    .mainImage {
+      width: 70%;
+      height: 100%;
     }
     .design-your-home {
    
@@ -171,6 +179,10 @@ h1 {
     }
     #my-img {
       width: auto;
+    }
+    .mainImage {
+      width: 70%;
+      height: auto;
     }
     .abc {
       position: absolute;
@@ -257,6 +269,10 @@ h1 {
 }
 p {
   line-height: auto;
+}
+.mainImage {
+  width: 70%;
+  height: auto;
 }
 .about-text {
   margin-top: auto;

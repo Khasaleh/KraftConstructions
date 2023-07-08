@@ -11,11 +11,11 @@ import { footerImage } from 'src/app/model/footer';
 })
 export class AdminAboutUsComponent{
   constructor(private aboutus : UpdabtusService, private fb:FormBuilder ) {}
-addata!: FormGroup;
-userDetail!:FormGroup;
-imageLink: any;
+  headData!: FormGroup;
+footerData!:FormGroup;
+HeadImage: any;
 fileURL!: File;
-imageLink1: any;
+FooterImage: any;
 fileURL1!: File;
 title!:string;
 userdata!:any;
@@ -27,26 +27,26 @@ successMessage1: string | null = null;
 errorMessage1: string | null = null;
 ngOnInit(): void {
 
-    this.addata = this.fb.group ({
+    this.headData = this.fb.group ({
       description:[''],
       imageUrl:['']
       
     });
     this.aboutus.showdata().subscribe(
       previousValue => {
-        this.addata.controls['description'].setValue(previousValue?.description);
-        this.addata.controls['imageUrl'].setValue(previousValue.imageUrl);
-        this.imageLink = this.globalUrl + previousValue.imageUrl;
+        this.headData.controls['description'].setValue(previousValue?.description);
+        this.headData.controls['imageUrl'].setValue(previousValue.imageUrl);
+        this.HeadImage = this.globalUrl + previousValue.imageUrl;
     }) 
-    this.userDetail = this.fb.group ({
+    this.footerData = this.fb.group ({
       title:[''],
       footerImage:['']
     })
     this.aboutus.getFootImage().subscribe( 
       previousValue1 => {
-        this.userDetail.controls['title'].setValue(previousValue1?.title);
-        this.userDetail.controls['footerImage'].setValue(previousValue1?.footerImage);
-        this.imageLink1 = this.globalUrl + previousValue1.footerImageUrl;
+        this.footerData.controls['title'].setValue(previousValue1?.title);
+        this.footerData.controls['footerImage'].setValue(previousValue1?.footerImage);
+        this.FooterImage = this.globalUrl + previousValue1.footerImageUrl;
       }
     )
 
@@ -55,7 +55,7 @@ ngOnInit(): void {
 submit(data: aboutusdata) {
   console.log(data);
   this.aboutus.addata(data).subscribe((result)=> {
-    this.onClick();
+    this.saveImageData();
       this.successMessage1 = result?.message;
 
       setTimeout(() => {
@@ -74,84 +74,56 @@ submit(data: aboutusdata) {
 
 
 }
-submit1() {
 
-    this.onClick1();
+  onHeaderFileSelected(event: any) {
+    this.fileURL = event.target.files[0];
+    this.HeadImage = URL.createObjectURL(this.fileURL);
 
- 
-    
-
-       
-   
-
-
-}
-
-
-
-onFileSelected(event: any) {
-  this.fileURL = event.target.files[0];
-  this.imageLink = URL.createObjectURL(this.fileURL);
- 
-  console.log(this.fileURL);
-  console.log(this.imageLink,'image');
+    }
+    onFooterFileSelected(event: any) {
+      this.fileURL1 = event.target?.files[0];
+      this.FooterImage = URL.createObjectURL(this.fileURL1);
+      } 
+    saveImageData() {
   
-
-  }
-  onFileSelected1(event: any) {
-    this.fileURL1 = event.target?.files[0];
-    this.imageLink1 = URL.createObjectURL(this.fileURL1);
-    console.log(this.fileURL1);
+      const formData = new FormData();
+      formData.append('image', this.fileURL);
     
-     
-    } 
-  onClick() {
- 
-    const formData = new FormData();
-    formData.append('image', this.fileURL);
-  
-    this.aboutus.saveImage(formData).subscribe(
-      response => {
-        this.successMessage1 = response?.message;
+      this.aboutus.saveImage(formData).subscribe(
+        response => {
+          this.successMessage1 = response?.message;
 
-        setTimeout(() => {
-          this.successMessage1 = '';
-        }, 3000);
-        
-            
-            
-           
-          },err=> {
+          setTimeout(() => {
+            this.successMessage1 = '';
+          }, 3000);
+    },err=> {
             this.errorMessage1= err?.message
             setTimeout(() => {
               this.errorMessage1 = '';
             }, 3000);
-          });
-  }
-  onClick1() {
- 
-    const formData = new FormData();
-    formData.append('footerImage', this.fileURL1);
-    formData.append('title',this.userDetail.value.title)
-    this.aboutus.saveFootImage(formData).subscribe(
-      response => {
-        this.successMessage = response?.message;
-
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 3000);
-        
-            
-            
-           
-          },err=> {
-            this.errorMessage= err?.message
-            setTimeout(() => {
-              this.errorMessage = '';
-            }, 3000);
-          });
-  }
-
+        });
+    }
+    submitFooterData() {
   
-}
+      const formData = new FormData();
+      formData.append('footerImage', this.fileURL1);
+      formData.append('title',this.footerData.value.title)
+      this.aboutus.saveFootImage(formData).subscribe(
+        response => {
+          this.successMessage = response?.message;
+
+          setTimeout(() => {
+            this.successMessage = '';
+          }, 3000);
+
+            },err=> {
+              this.errorMessage= err?.message
+              setTimeout(() => {
+                this.errorMessage = '';
+              }, 3000);
+            });
+    }
+
+    
+  }
 

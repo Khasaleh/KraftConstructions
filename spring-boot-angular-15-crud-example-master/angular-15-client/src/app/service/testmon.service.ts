@@ -77,9 +77,5 @@ getSlider() : Observable<any>  {
 deleteSlider(id:number): Observable<any> {
 return this.http.delete(`${this.deleteSliderUrl}/${id}`)
 }
-// getSliderById(id: number): Observable<any> {
-//   const url = `${this.getSliderUrl}/${id}`;
-//   return this.http.get<any>(url);
-// }
 
 }

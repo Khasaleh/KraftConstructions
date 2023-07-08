@@ -52,7 +52,6 @@
 .heading {
   background-color: white;
   width: 60%;
-  /* height: 75px; */
   left: 10px;
   margin-left: 20px;
   border-bottom: 1px solid #DDDDDD;
@@ -90,7 +89,7 @@
       
      padding: 8px 29px;
       
-     /* margin-top: 10rem; */
+
       
      text-align: center;
     margin-right: 2rem;
@@ -315,7 +314,7 @@
       }
       .country-parent {
         position: absolute;
-        /* top: 9px; */
+      
         left: 17.51px;
         width: 49.45px;
         height: 40px;
@@ -344,7 +343,7 @@
         left: 14.42px;
         line-height: 20px;
         display: inline-block;
-        /* width: 125.69px; */
+      
       }
       .delete {
         cursor: pointer;

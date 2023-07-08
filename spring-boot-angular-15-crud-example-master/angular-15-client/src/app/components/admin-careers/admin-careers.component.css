@@ -11,7 +11,6 @@
 }
 .desktop-3-item {
   position: relative;
-  /* top: 135px; */
   left: 21px;
   background-color: var(--colors-white);
   box-shadow: 0 4px 4px rgba(0, 0, 0, 0.2);
@@ -66,7 +65,6 @@
 .table-cell,
 .table-cell1 {
   align-self: stretch;
-  /* border-bottom: 1px solid var(--gray-200); */
   box-sizing: border-box;
   height: 42px;
   flex-direction: row;
@@ -96,10 +94,10 @@
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between; /* or any other option that suits your layout */
+  justify-content: space-between;
 }
 
-/* Responsive properties */
+
 @media screen and (max-width: 768px) {
   .flex-container {
     flex-direction: column;

@@ -92,7 +92,7 @@
         <label for="inputZip" class="form-label">Zip</label>
         <input type="text" formControlName = "zip" class="form-control" id="inputZip">
         <div *ngIf="getControl['zip'].touched && getControl['zip'].invalid" class="text-danger">
-
+          <div *ngIf="getControl['zip'].errors?.['pattern']">Zip should only contain numbers</div>
           <div *ngIf="getControl['zip'].errors?.['required']">Zip is required</div>
 
         </div>
@@ -104,11 +104,7 @@
             <div *ngFor="let service of requestedServices">
               <input class="form-check-input" [value]="service" type="checkbox" [id]="service" (change)="toggleService(service)">
               <label class="form-check-label" [for]="service">{{ service }}</label>
-              <div *ngIf="getControl['requestedServices'].touched && getControl['requestedServices'].invalid" class="text-danger">
-
-                <div *ngIf="getControl['requestedServices'].errors?.['required']">Requested Services is required</div>
-      
-              </div>
+             
             </div>
           </div>
         </div>

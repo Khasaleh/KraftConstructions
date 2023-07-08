@@ -26,10 +26,7 @@ export class AdminContactUsComponent {
   
   ngOnInit():void {
     this.getAll();
-    // const createdDate = this.data.createdDate;
-    // this.formattedDateTime = this.datePipe.transform(createdDate, 'yyyy-MM-dd HH:mm:ss');  
 
-    
     this.userDetail = this.formbuilder.group ({ 
       id:[''],
       firstname : [''],
@@ -49,53 +46,10 @@ export class AdminContactUsComponent {
 
   })
 
-
-//     let currentDate = new Date();
-//     let day = currentDate.getDate();
-//     let month = currentDate.getMonth() + 1;
-//     let year = currentDate.getFullYear();
-//     let formattedDate = day + "-" + month + "-" + year;
-
-//     this.userDetail.patchValue({
-//       date: formattedDate
-//     });
-
-//   const currentTime = new Date();
-
-
-// let hours = currentTime.getHours();
-// let minutes = currentTime.getMinutes();
-
-
-// const ampm = hours >= 12 ? 'pm' : 'am';
-
-
-// hours = hours % 12;
-// hours = hours ? hours : 12;
-
-
-// let minute = minutes < 10 ? '0' + minutes : minutes;
-
-// // Format the time string
-// const formattedTime = hours + ':' + minute + ' ' + ampm;
-
-// this.userDetail.patchValue({
-//   time: formattedTime
-// });
 }
   
         
   getAll() {
-    // const user=JSON.parse(localStorage.getItem("user")!);
-    // if(!user.roles.includes('ROLE_ADMIN')){
-    //   const dialogRef = this.dialog.open(DialogeComponent, {
-    //     data: {
-    //       message: `You don't have the access`,
-    //       showYesNoButtons: false
-    //     }
-    //   });
-    // }
-    // else if (user.roles.includes('ROLE_ADMIN')){
     this.conus.getAll().subscribe((res) => {
       console.log(res);
       this.userdata = res;
@@ -107,7 +61,7 @@ export class AdminContactUsComponent {
   deleteUser(id: number) {
     const user=JSON.parse(localStorage.getItem("user")!);
     if(!user.roles.includes('ROLE_ADMIN')){
-      const dialogRef = this.dialog.open(DialogeComponent, {
+     this.dialog.open(DialogeComponent, {
         data: {
           message: `You don't have the access`,
           showYesNoButtons: false
@@ -152,10 +106,10 @@ export class AdminContactUsComponent {
     });
   }
 }
-  edit(data:Address) {
+  editAddress(data:Address) {
     const user=JSON.parse(localStorage.getItem("user")!);
     if(!user.roles.includes('ROLE_ADMIN')){
-      const dialogRef = this.dialog.open(DialogeComponent, {
+     this.dialog.open(DialogeComponent, {
         data: {
           message: `You don't have the access`,
           showYesNoButtons: false
@@ -168,7 +122,6 @@ export class AdminContactUsComponent {
     setTimeout(() => {
       this.successMessage1 = '';
     }, 1000);
-    console.log(res);
     this.getAll();
     
   })

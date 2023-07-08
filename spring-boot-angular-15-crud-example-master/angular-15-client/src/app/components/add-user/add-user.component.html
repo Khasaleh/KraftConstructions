@@ -95,7 +95,7 @@
         <label for="profile-pic" class="col-sm-2 col-form-label">Profile Picture</label>
         <div class="col-sm-3">
           
-            <img class="group-icon" [src]="imageLink? imageLink: 'assets/admin-testimg/Group 160.png' "/> 
+            <img class="group-icon" [src]="profileImage? profileImage: 'assets/admin-testimg/Group 160.png' "/> 
             <input type="file" class="form-control" id="imageUrl" (change)="onFileSelected($event)"accept="image/*">
           </div>
           </div>
@@ -113,5 +113,7 @@
       
 </div>
       
+ 
+
  
 
