@@ -21,7 +21,7 @@ export class AdminRequestComponent implements OnInit {
   constructor(private requser:ReqUserService,private formbuilder: FormBuilder, private dialog : MatDialog ) {}
   ngOnInit():void {
    
-    this.getAll();
+    this.getAllUsers();
     this.userDetail = this.formbuilder.group ({ 
       id:[''],
       firstName : [''],
@@ -42,17 +42,16 @@ export class AdminRequestComponent implements OnInit {
   }
 
   
-show = false;
-ahide=true;
+showTable = false;
+hideTable=true;
 
 content() {
-  this.show = true;
-  this.ahide = false;
+  this.showTable = true;
+  this.hideTable = false;
 
 }
-getAll() {
+getAllUsers() {
   this.requser.getAll().subscribe((res)=> {
-    console.log(res);
     this.userdata=res;
   });
 
@@ -74,7 +73,7 @@ deleteUser(id: number) {
           setTimeout(() => {
             this.successMessage = '';
           }, 3000);
-          this.getAll();
+          this.getAllUsers();
         });
     }
   });
@@ -85,8 +84,8 @@ viewUser(id: number) {
   this.requser.getUserbyId(this.userIdtoView)
     .subscribe({
       next: (res) => {
-        this.show = true;
-        this.ahide = false;
+        this.showTable = true;
+        this.hideTable = false;
         this.populateForm(res);
       },
       error: (err) => {

@@ -16,8 +16,8 @@ addata!:FormGroup;
     
   }
   
-  data! : any;
-  abc!:any;
+  aboutusData! : any;
+  footerData!:any;
 
  
   
@@ -25,19 +25,14 @@ addata!:FormGroup;
   
 
     this.aboutusdata.showdata().subscribe((result)=>{
-      console.log(result);
-      this.data=result;
+      this.aboutusData=result;
     });
     this.aboutusdata.getFootImage().subscribe((result)=> {
-      this.abc=result;
+      this.footerData=result;
     });
 
 
 
   }
-  
-  
-  
-  
- 
+
 }

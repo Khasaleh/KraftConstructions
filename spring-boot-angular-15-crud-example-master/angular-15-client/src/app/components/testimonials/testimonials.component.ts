@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Testimonial } from 'src/app/model/testimonial.model';
 import { TestimonialService } from 'src/app/service/testmon.service';
@@ -14,7 +14,6 @@ import { TestimonialService } from 'src/app/service/testmon.service';
 export class TestimonialsComponent {
   userdata!:any[];
   imagedata!:any;
- 
   userDetail!:FormGroup;
   userObj: Testimonial = new Testimonial();
   successMessage: string | null = null;
@@ -29,20 +28,6 @@ export class TestimonialsComponent {
   this.testimonialService.getImage().subscribe((res)=> {
     
     this.imagedata=res;
-    
-    console.log(this.imagedata);
-   
-    
-    let currentDate = new Date();
-      let day = currentDate.getDate();
-      let month = currentDate.getMonth() + 1;
-      let year = currentDate.getFullYear();
-      let formattedDate = day + "-" + month + "-" + year;
-      this.userDetail.patchValue({
-        date1: formattedDate
-      });
-  
-
   })
   
   
@@ -50,13 +35,19 @@ export class TestimonialsComponent {
   this.userDetail = this.formBuilder.group ({
     yourReview:[''],
     yourEmail:[''],
-    description:[''],
+    description:['',Validators.maxLength(250)],
     workExperience:[''],
     yourName:[''],
     date1:[''],
     imageUrl:['']
   });
   
+  
+}
+get getControl(): { [key: string]: AbstractControl; } {
+
+  return this.userDetail.controls;
+
 }
 submit() {
   this.userObj = this.userDetail.value;
@@ -66,13 +57,11 @@ submit() {
       this.successMessage = '';
     }, 3000);
    
-    console.log(res);
   }, err => {
     this.errorMessage = 'An error occurred while saving the data.';
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);
-    console.log(err);
   })
 
   
@@ -86,7 +75,6 @@ getApprovedTest() {
 
 getSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
-  console.log(res);
   this.sliderdata=res;
 })
 }

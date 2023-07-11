@@ -32,7 +32,7 @@ import { AdminCareersComponent } from './components/admin-careers/admin-careers.
 import { AdminServicesComponent } from './components/admin-services/admin-services.component';
 import { PaymentTabComponent } from './components/payment-tab/payment-tab.component';
 import { AdminRequestComponent } from './components/admin-request/admin-request.component';
-import { MatMenuContent, MatMenuModule } from '@angular/material/menu';
+import { MatMenuModule } from '@angular/material/menu';
 import { ShowusersComponent } from './components/showusers/showusers.component';
 import { AdminServicePageComponent } from './components/admin-service-page/admin-service-page.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -48,7 +48,6 @@ import { MatListModule } from '@angular/material/list';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { DialogeComponent } from './components/dialoge/dialoge.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
-import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -119,7 +118,6 @@ import { DatePipe } from '@angular/common';
     
   ],
   providers: [
-    DatePipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

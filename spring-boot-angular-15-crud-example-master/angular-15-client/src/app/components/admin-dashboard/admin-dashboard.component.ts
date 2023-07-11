@@ -9,21 +9,9 @@ export class AdminDashboardComponent {
 constructor(private dashboardService : dashboardService) {}
 data!:any;
 ngOnInit():void {
-this.getAll();
+  this.dashboardService.getAll().subscribe((res)=> {
+    this.data=res;
+  })
+  }
 }
-getAll () {
-this.dashboardService.getAll().subscribe((res)=> {
-  console.log(res);
-  this.data=res;
-})
-}
-// careerApplicationCount
-// : 
-// 2
-// requestEstimateCount
-// : 
-// 1
-// testimonialCount
-// : 
-// 1
-}
+

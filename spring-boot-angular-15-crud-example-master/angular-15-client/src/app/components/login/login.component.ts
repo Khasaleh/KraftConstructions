@@ -5,13 +5,6 @@ import { FormBuilder } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { AuthService } from 'src/app/service/auth.service';
-// interface UserData {
-//     username:string;
-//     password:string;
-//     role:string|null;
-// }
-
-
 
 @Component({
 
@@ -24,11 +17,6 @@ import { AuthService } from 'src/app/service/auth.service';
 
 })
 
-   
-  
-  
-
-  
 
 export class LoginComponent {
 
@@ -37,22 +25,11 @@ export class LoginComponent {
     togglePassword() {
       this.hidePassword = !this.hidePassword;
     }
-    constructor(private builder: FormBuilder, private service: AuthService, private router: Router) {
-
-
-
-
-    }
-
-
-
-  
-    // userdata: UserData= {username:'', password:'',role:null};
+    constructor(private builder: FormBuilder, private service: AuthService, private router: Router) {}
 
     responsedata: any;
     errorMessage: string | null = null;
     successMessage: string | null = null;
-
 
     loginform = this.builder.group({
 
@@ -64,12 +41,8 @@ export class LoginComponent {
 
     ngOnInit(): void {
 
-
     }
  
-      
-
-    
     proceedlogin() {
 
         if (this.loginform.valid) {
@@ -87,17 +60,7 @@ export class LoginComponent {
                     this.router.navigate(['/admin']);
 
                 }
-               
-                
-                
-               
-               
-
-
-
-
-            
-          
+           
             }, err => {
                 this.errorMessage=err?.message;
                 setTimeout(() => {
@@ -106,14 +69,7 @@ export class LoginComponent {
             }
             )
 
-
-
-
-            
-
         }
-     
-       
-
+    
     }
     }

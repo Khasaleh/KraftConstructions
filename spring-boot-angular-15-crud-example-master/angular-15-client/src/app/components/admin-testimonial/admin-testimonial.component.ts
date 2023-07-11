@@ -11,16 +11,15 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 ]
 })
 export class AdminTestimonialComponent {
-Show = false;
-imageLink: any;
+showSlider = false;
+testImage: any;
 recentlyUploadedImage: any;
-recentlyUploadedImage1:any;
-imagedata!:string[];
+sliderRecentlyUploadedImage:any;
+sliderData!:string[];
 fileURL!: File;
 imageData!:any;
-sliderdata!:any;
 urllink:string ="";
-abc=true;
+hideButton=true;
 userdata!:any[];
 successMessage: string | null = null;
 successMessage2: string | null = null;
@@ -35,12 +34,11 @@ savedImageId!: number;
 userIdtoView!: number
 globalUrl="http://99.72.32.144:8083";
 images: File[] = [];
-imageLink1: any[] = [];
+sliderImages: any[] = [];
 activeIndex = 0;
-// image: any;
 constructor(private testimonialService:TestimonialService, private dialog : MatDialog,private fb:FormBuilder ) {}
 ngOnInit():void {
-  this.getAll();
+  this.getAllTestimonials();
   this.getApprovedTest();
   this.getAllSlider();
   this.addata = this.fb.group ({
@@ -53,41 +51,33 @@ ngOnInit():void {
 
 this.testimonialService.getImage().subscribe((res) => {
   this.imageData = res;
-  console.log(this.imageData);
   if (this.imageData.length > 0) {
     this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
-    this.imageLink = URL.createObjectURL(this.recentlyUploadedImage);
+    this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
   }
 });
 this.testimonialService.getImage().subscribe(
   previousValue => {
    
 
-    this.imageLink= this.globalUrl+ this.imageData[0].imageUrl;
+    this.testImage= this.globalUrl+ this.imageData[0].imageUrl;
 }) 
 
 this.testimonialService.getSlider().subscribe((res)=> {
- this.imagedata=res;
- this.recentlyUploadedImage1=this.imagedata[this.imagedata.length-1];
+ this.sliderData=res;
+ this.sliderRecentlyUploadedImage=this.sliderData[this.sliderData.length-1];
  
 
 })
 this.testimonialService.getSlider().subscribe(response => {
-  console.log(response);
+  this.sliderImages = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
 
-  this.imageLink1 = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
-
-},
-err => {
-  console.error(err);
 })
 
 }
 getAllSlider() {
 this.testimonialService.getSlider().subscribe((res)=> {
-  this.imagedata=res
-  console.log(this.imagedata)
- 
+  this.sliderData=res;
   
  })
  
@@ -98,7 +88,7 @@ this.testimonialService.getSlider().subscribe((res)=> {
 
 onFileSelected1(event:any) {
 this.fileURL = event.target?.files[0];
-this.imageLink = URL.createObjectURL(this.fileURL);
+this.testImage = URL.createObjectURL(this.fileURL);
 
  
 }
@@ -106,26 +96,24 @@ getAllImage() {
 this.testimonialService.getImage().subscribe((res)=> {
     
   this.imageData=res;
-  console.log(this.imageData)
- 
-    
+
   this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
  
 });
 }
 
 deleteSlider() {
-  this.recentlyUploadedImage1=this.imagedata[this.imagedata.length-1];
+  this.sliderRecentlyUploadedImage=this.sliderData[this.sliderData.length-1];
 
   const dialogRef = this.dialog.open(DialogeComponent, {
     data: {
-      message: `Do You want to delete ${this.recentlyUploadedImage1.id}?`,
+      message: `Do You want to delete ${this.sliderRecentlyUploadedImage.id}?`,
       showYesNoButtons: true
     }
   });
   dialogRef.afterClosed().subscribe(result => {
     if (result === true) {
-      this.testimonialService.deleteSlider(this.recentlyUploadedImage1.id)
+      this.testimonialService.deleteSlider(this.sliderRecentlyUploadedImage.id)
         .subscribe(res => {
           this.successMessage3 = res?.message;
           
@@ -133,14 +121,14 @@ deleteSlider() {
             this.successMessage3 = '';
 
           }, 3000);
-          this.imageLink1.pop();
+          this.sliderImages.pop();
         });
         this.getAllSlider(); 
       }
       this.getAllSlider();
   });
 }
-deleteImage(id:number) {
+deleteTestimonialImage(id:number) {
 
   
   const dialogRef = this.dialog.open(DialogeComponent, {
@@ -163,7 +151,7 @@ deleteImage(id:number) {
     this.getAllImage();
   });
 }
-onClick1() {
+testimonialImage() {
 
  
   const formData = new FormData();
@@ -181,23 +169,22 @@ onClick1() {
         this.successMessage = '';
       }, 3000);
       
-      console.log(response);
-          
-         
+     
+      
         },err=> {
           this.errorMessage= err?.message;
           setTimeout(() => {
             this.errorMessage = '';
           }, 3000);
-          console.log(err);
+          
         });
 }
-onFileSelected(event:any) {
+OnSliderSelected(event:any) {
   const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.images.push(file);
-      this.imageLink1.push(URL.createObjectURL(file));
+      this.sliderImages.push(URL.createObjectURL(file));
     }
   
    
@@ -205,7 +192,7 @@ onFileSelected(event:any) {
 onClick2() {
   const user=JSON.parse(localStorage.getItem("user")!);
   if(!user.roles.includes('ROLE_ADMIN')){
-    const dialogRef = this.dialog.open(DialogeComponent, {
+     this.dialog.open(DialogeComponent, {
       data: {
         message: `You don't have the access`,
         showYesNoButtons: false
@@ -218,8 +205,6 @@ onClick2() {
   for (let i = 0; i < this.images.length; i++) {
     formData.append('images', this.images[i]);
   }
-
-  console.log(formData);
   this.testimonialService.saveSlider(formData).subscribe(
     response => {
       this.successMessage3= response?.message;
@@ -228,9 +213,7 @@ onClick2() {
         this.successMessage3 = '';
       }, 3000);
       
-          
-          
-         
+       
         },err=> {
           this.errorMessage = err?.message;
           setTimeout(() => {
@@ -239,37 +222,31 @@ onClick2() {
           this.getAllSlider();
         });
 }
-submit() {
-  this.onClick1();
-}
-submit1() {
+saveSliderImage() {
 this.onClick2();
 }
 getApprovedTest() {
   this.testimonialService.getapproveTest().subscribe((res)=> {
-    console.log(res);
     this.approvedata=res;
-    this.getAll();
 });
 }
 content() {
-  this.Show=true;
-  this.abc=false;
+  this.showSlider=true;
+  this.hideButton=false;
 }
-content1() {
-  this.Show=false;
-  this.abc=true;
+hideContent() {
+  this.showSlider=false;
+  this.hideButton=true;
 }
-getAll() {
+getAllTestimonials() {
   this.testimonialService.getAll().subscribe((res)=> {
-    console.log(res);
     this.userdata=res;
   });
 }
-approveTest(user:Testimonial,id:number) {
+approveTestimonial(user:Testimonial,id:number) {
   const activeUser=JSON.parse(localStorage.getItem("user")!);
   if(!activeUser.roles.includes('ROLE_ADMIN')){
-    const dialogRef = this.dialog.open(DialogeComponent, {
+    this.dialog.open(DialogeComponent, {
       data: {
         message: `You don't have the access`,
         showYesNoButtons: false
@@ -308,10 +285,10 @@ approveTest(user:Testimonial,id:number) {
     }
   
   }
-deleteTest(id:number) {
+  deleteTestimonial(id:number) {
   const user=JSON.parse(localStorage.getItem("user")!);
   if(!user.roles.includes('ROLE_ADMIN')){
-    const dialogRef = this.dialog.open(DialogeComponent, {
+    this.dialog.open(DialogeComponent, {
       data: {
         message: `You don't have the access`,
         showYesNoButtons: false
@@ -334,18 +311,18 @@ deleteTest(id:number) {
           setTimeout(() => {
             this.successMessage = '';
           }, 1000);
-          this.getAll();
+          this.getAllTestimonials();
         });
     }
   });
 }
 }
-hideTest(user:Testimonial,id:number) 
+hideTestimonial(user:Testimonial,id:number) 
 { 
   
   const activeUser=JSON.parse(localStorage.getItem("user")!);
   if(!activeUser.roles.includes('ROLE_ADMIN')){
-    const dialogRef = this.dialog.open(DialogeComponent, {
+    this.dialog.open(DialogeComponent, {
       data: {
         message: `You don't have the access`,
         showYesNoButtons: false
@@ -379,20 +356,13 @@ hideTest(user:Testimonial,id:number)
 }
 }
 onCheckboxChange(user:Testimonial,id:number) {
-
-    
-    this.hideTest(user,id) 
-    
-  
+    this.hideTestimonial(user,id) 
 }
+
 onCheckboxChange1(id:number) {
-
-    
-  this.deleteTest(id); 
-
-  
-
+  this.deleteTestimonial(id); 
 }
+
 setActiveIndex(index: number) {
   this.activeIndex = index;
 }
