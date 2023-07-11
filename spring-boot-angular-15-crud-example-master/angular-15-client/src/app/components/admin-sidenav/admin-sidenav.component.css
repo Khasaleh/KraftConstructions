@@ -1,11 +1,4 @@
-/* 
-.side-menu{
-    background-color: var(--kraft-d-green);
-    display: flex;
-    flex-direction: column;
-    width: 250px;
-    height: 100%;
-} */
+
 .side-menu{
     background-color: var(--kraft-d-green);
     display: flex;
@@ -103,9 +96,6 @@
 }
 
 
-
-
-
 /* w3 scool */
 body {
     font-family: "Lato", sans-serif;
@@ -138,12 +128,10 @@ body {
     cursor: pointer;
     outline: none;
   }
-  
   /* On mouse-over */
   .sidenav a:hover, .dropdown-btn:hover {
     color: #f1f1f1;
   }
-  
   /* Main content */
   .main {
     margin-left: 200px; /* Same as the width of the sidenav */
