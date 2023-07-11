@@ -10,8 +10,8 @@ import { CareerData } from 'src/app/model/career';
   styleUrls: ['./admin-careers.component.css']
 })
 export class AdminCareersComponent {
-  show = false;
-  ahide=true;
+  showTable = false;
+  hideTable=true;
   userDetail!: FormGroup;
   userdata!:any[];
   userIdtoView!:number;
@@ -39,18 +39,12 @@ export class AdminCareersComponent {
     resumeUrl:[''],
     otherNotes:[''],
     references: [[]],
-   
-  
-  
-  
-  
-    
   });
 
   }
   content() {
-    this.show = true;
-    this.ahide = false;
+    this.showTable = true;
+    this.hideTable = false;
   
   }
   downloadResume(id:number) {
@@ -59,15 +53,12 @@ export class AdminCareersComponent {
     this.careerData.getUserbyId(this.userIdtoView)
       .subscribe({
         next: (res) => {
-          this.show = true;
-          this.ahide = false;
+          this.showTable = true;
+          this.hideTable = false;
           this.populateForm(res);
           
           const link = this.globalUrl+res.resumeUrl;
           window.open(link,'blank');
-        },
-        error: (err) => {
-          console.log(err);
         }
       });
 
@@ -78,7 +69,6 @@ export class AdminCareersComponent {
   
   getAll() {
     this.careerData.getAll().subscribe((res)=> {
-      console.log(res);
       this.userdata=res;
     });
   }
@@ -111,12 +101,9 @@ export class AdminCareersComponent {
     this.careerData.getUserbyId(this.userIdtoView)
       .subscribe({
         next: (res) => {
-          this.show = true;
-          this.ahide = false;
+          this.showTable = true;
+          this.hideTable = false;
           this.populateForm(res);
-        },
-        error: (err) => {
-          console.log(err);
         }
       });
   }

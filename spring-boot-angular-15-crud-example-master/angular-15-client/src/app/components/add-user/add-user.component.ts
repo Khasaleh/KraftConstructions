@@ -12,7 +12,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./add-user.component.css']
 })
 export class AddUserComponent {
-  imageLink: any;
+profileImage: any;
 fileURL!: File;
 
 errorMessage: string | null = null;
@@ -24,10 +24,7 @@ togglePassword() {
 }
 onFileSelected(event: any) {
   this.fileURL = event.target.files[0];
-  this.imageLink = URL.createObjectURL(this.fileURL);
-  // this.onClick();
-  console.log(this.fileURL);
-  console.log(this.imageLink);
+  this.profileImage = URL.createObjectURL(this.fileURL);
   
 
   }
@@ -59,7 +56,7 @@ get getControl(): { [key: string]: AbstractControl; } {
     this.userDetail.markAllAsTouched();
     const user=JSON.parse(localStorage.getItem("user")!);
     if(!user.roles.includes('ROLE_ADMIN')){
-      const dialogRef = this.dialog.open(DialogeComponent, {
+      this.dialog.open(DialogeComponent, {
         data: {
           message: `You don't have the access`,
           showYesNoButtons: false
@@ -102,11 +99,11 @@ get getControl(): { [key: string]: AbstractControl; } {
   
     this.adService.saveImage(formData,this.userObj.username).subscribe(
       response => {
-        // Handle the API response here
+       
         console.log(response);
       },
       error => {
-        // Handle any error that occurs during the API request
+        
         console.error(error);
       }
     );
@@ -130,4 +127,3 @@ get getControl(): { [key: string]: AbstractControl; } {
    
   }
 }
-

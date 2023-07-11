@@ -14,7 +14,7 @@
         {{ successMessage }}
       </div>
      
-      <form [formGroup]="userDetail" class="row g-3" *ngIf="show">
+      <form [formGroup]="userDetail" class="row g-3" *ngIf="showTable">
         <div class="col-md-4">
           <label for="inputEmail4" class="form-label">First Name</label>
           <input formControlName="firstName" type="name" class="form-control" id="inputEmail4">
@@ -120,7 +120,7 @@
                   <label  class="form-label" for="phoneNumber2">Phone</label>
                   <input [value]="userDetail.value.references[2]?.phoneNumber" class="form-control" id="phoneNumber2">
               </div>
-          <!-- </div> -->
+         >
           
           <div class="col-md-10">
             <label for="otherNotes" class="form-label">Other Notes</label>
@@ -130,7 +130,7 @@
         
       </form>
   <div class ="table-responsive">
-  <table class="table" *ngIf="ahide">
+  <table class="table" *ngIf="hideTable">
       
         <thead>   
              <tr>
@@ -143,19 +143,19 @@
             </thead>
             <tbody>
             
-              <tr *ngFor="let usr of userdata" class = table-cell>
-                <td>{{usr.firstName}}</td>
-                <td>{{usr.state}}</td>
-                <td>{{usr.phoneNumber}}</td>
-                <td>{{usr.email}}</td>
+              <tr *ngFor="let user of userdata" class = table-cell>
+                <td>{{user.firstName}}</td>
+                <td>{{user.state}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td>{{user.email}}</td>
               <td> 
                 <button mat-icon-button [matMenuTriggerFor]="menu">
                     <mat-icon>more_vert</mat-icon>
                   </button>
                   <mat-menu #menu="matMenu">
-                    <button (click)="viewUser(usr.id)" mat-menu-item (click)="content()">View Complete Info</button>
-                     <button (click)="downloadResume(usr.id)" mat-menu-item>Download CV</button>
-                     <button  (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
+                    <button (click)="viewUser(user.id)" mat-menu-item (click)="content()">View Complete Info</button>
+                     <button (click)="downloadResume(user.id)" mat-menu-item>Download CV</button>
+                     <button  (click)="deleteUser(user.id)" mat-menu-item>Delete</button>
                     
                   </mat-menu>
              

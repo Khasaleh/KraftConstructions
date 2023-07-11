@@ -14,9 +14,9 @@ export class CareersComponent {
   userDetail!:FormGroup;
   userObj: CareerData = new CareerData();
   successMessage: string | null = null;
-errorMessage: string | null = null;
-imageLink: any;
-fileURL1!: File;
+  errorMessage: string | null = null;
+  resumeFile: any;
+  fileURL!: File;
 
 states: string[] = [
   'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
@@ -25,9 +25,6 @@ states: string[] = [
   'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
   'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
-
-
-
 jobType:string[]=['Yes','No'];
   constructor(private formBuilder : FormBuilder, private dialog:MatDialog, private careerData: CareerDataService) {}
 ngOnInit(): void {
@@ -39,13 +36,13 @@ this.userDetail = this.formBuilder.group ({
   address : ['',Validators.required],
   city : ['',Validators.required],
   state: ['',Validators.required],
-  zip:['',Validators.required],
-  workExperience:[''],
+  zip:['',[Validators.required,Validators.pattern('^[0-9]+$')]],
+  workExperience:['',Validators.maxLength(255)],
   jobType:['',Validators.required],
   workRestrictions:['',Validators.required],
   hoursRestrictions:['',Validators.required],
   resume:['',Validators.required],
-  otherNotes:[''],
+  otherNotes:['',Validators.maxLength(255)],
   skills:['',Validators.required],
   references:[[],Validators.required],
   referencesrel:[[],Validators.required],
@@ -68,23 +65,17 @@ get getControl(): { [key: string]: AbstractControl; } {
 }
 
 onFileSelected(event: any) {
-  this.fileURL1 = event.target.files[0];
-  this.imageLink = URL.createObjectURL(this.fileURL1);
- 
-  console.log(this.fileURL1);
-  console.log(this.imageLink,'image');
-  
-
+  this.fileURL = event.target.files[0];
   }
 
 handleAddressChange(address: any) {
   this.userDetail.controls['address'].setValue(address.formatted_address);
 }
-onClick1() {
+subitData() {
   this.userDetail.markAllAsTouched();
  
   const formData = new FormData();
-  formData.append('resume', this.fileURL1);
+  formData.append('resume', this.fileURL);
   formData.append('firstName',this.userDetail.value.firstName);
   formData.append('lastName',this.userDetail.value.lastName);
   formData.append('email',this.userDetail.value.email)
@@ -127,26 +118,14 @@ onClick1() {
 }
 
 
-
-
-
-submit() {
-
-  this.onClick1();
-}
-
 openDialog(): void {
-  const dialogRef = this.dialog.open(DialogeComponent, {
+  this.dialog.open(DialogeComponent, {
     data: {
       message: 'Submitted Successfully',
       showYesNoButtons: false,
       customButton: { label: 'Ok', action: 'custom-action' }
     }
 
-  });
-  dialogRef.afterClosed().subscribe(result => {
-  
-    console.log(result);
   });
 
  

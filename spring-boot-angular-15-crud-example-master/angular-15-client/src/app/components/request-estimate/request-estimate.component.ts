@@ -38,8 +38,8 @@ this.userDetail = this.formBuilder.group ({
   address : ['',Validators.required],
   city : ['',Validators.required],
   state: ['',Validators.required],
-  zip:['',Validators.required],
-  requestedServices: [[],Validators.required],
+  zip:['',[Validators.required,Validators.pattern('^[0-9]+$')]],
+  requestedServices: [[]],
   budget: ['',Validators.required],
   projectDescription: ['',Validators.required],
   aboutUs: ['',Validators.required]
@@ -62,9 +62,7 @@ get getControl(): { [key: string]: AbstractControl; } {
 
 submit() {
   this.userDetail.markAllAsTouched();
-  this.userObj = this.userDetail.value; 
-  console.log(this.userObj); 
-  // this.openDialog();
+  this.userObj = this.userDetail.value;
   
   this.userDetail.reset();
   this.requser.ReqUser(this.userObj).subscribe(res => {
@@ -72,14 +70,11 @@ submit() {
     setTimeout(() => {
       this.successMessage = '';
     }, 3000);
-    // this.openDialog();
-    console.log(res);
   }, err => {
     this.errorMessage = err?.message;
     setTimeout(() => {
       this.errorMessage = '';
     }, 3000);
-    console.log(err);
   })
   
 }
@@ -91,23 +86,5 @@ toggleService(service: string) {
     this.userDetail.controls['requestedServices'].setValue([...requestedServices, service]);
   }
 }
-openDialog(): void {
-  const dialogRef = this.dialog.open(DialogeComponent, {
-    data: {
-      message: 'Submitted Successfully',
-      showYesNoButtons: false,
-      customButton: { label: 'Ok', action: 'custom-action' }
-    }
-
-  });
-  dialogRef.afterClosed().subscribe(result => {
-  
-    console.log(result);
-  });
-
- 
 }
-
-}
-
 
