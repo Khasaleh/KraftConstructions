@@ -1,13 +1,18 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InteriorRemodelingService {
-  constructor(private http: HttpClient) { }
   
+  constructor(private http: HttpClient) { }
+  private dataSubject = new BehaviorSubject<any>(null);
+  data$ = this.dataSubject.asObservable();
+  updateData(data: any) {
+    this.dataSubject.next(data);
+  }
   //API for Pages section in services
   getServicebyPage(): Observable<any>{
     return this.http.get('http://99.72.32.144:8081/api/services/23/details')

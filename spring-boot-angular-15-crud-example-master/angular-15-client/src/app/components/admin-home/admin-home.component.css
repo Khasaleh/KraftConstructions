@@ -238,7 +238,8 @@
 .check-button-wrape {
     display: flex;
     gap: 10px;
-    width: 85%;
+    width: 100%;
+    margin-bottom: 10px;
 }
 
 #grey-sec {

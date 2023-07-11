@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   showSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
   }
-
   apiData: any;
   sliderData: any;
   bannerData: any;
@@ -23,6 +22,7 @@ export class HomeComponent implements OnInit {
   objects: any[] = [];
   activeSlideIndex: number = 0;
   globalUrl = 'http://99.72.32.144:8083'
+  serviceData: any
   constructor(private homeService: HomeServiceService) { }
   ngOnInit(): void {
     setInterval(() => this.showSlide(), 5000);
@@ -63,18 +63,16 @@ export class HomeComponent implements OnInit {
       }
     )
     this.getSrviceData();
-
   }
-  serviceData : any
-  getSrviceData(){
-   this.homeService.getServicesData().subscribe(
-    response => {
-      this.serviceData = response;
-    },
-    error => {
-      console.log(error);
-    }
-   )
+  getSrviceData() {
+    this.homeService.getServicesData().subscribe(
+      response => {
+        this.serviceData = response;
+      },
+      error => {
+        console.log(error);
+      }
+    )
   }
   setActiveSlide(index: number) {
     this.activeSlideIndex = index;

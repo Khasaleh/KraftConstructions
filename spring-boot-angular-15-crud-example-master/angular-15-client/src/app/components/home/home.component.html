@@ -1,8 +1,9 @@
 <app-header></app-header>
 <main>
   <!-- Banner Section -->
-  <section class="banner-section slide"  [style.background-image]="'url(' + slides[currentSlide] + ')'">
-    <div *ngIf="sliderData?.status" class="headline" [style.background]="sliderData.backgroundColor"   [style.color]="sliderData.textColor">
+  <section class="banner-section slide" [style.background-image]="'url(' + slides[currentSlide] + ')'">
+    <div *ngIf="sliderData?.status" class="headline" [style.background]="sliderData.backgroundColor"
+      [style.color]="sliderData.textColor">
       <marquee>{{ sliderData?.description }}</marquee>
     </div>
     <div class="new-container">
@@ -11,7 +12,7 @@
           <!-- Remodeling for<br>your home -->
           {{ bannerDescription?.bannerDescription }}
         </h1>
-        <a class="button" routerLink= {{bannerDescription.bannerLink}}>
+        <a class="button" routerLink={{bannerDescription.bannerLink}}>
           <div class="learn-more">Learn more</div>
           <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png" alt="">
           </div>
@@ -42,7 +43,7 @@
       <div class="dream-home">
         <div class="content">
           <div class="apidata" [innerHTML]="apiData.aboutusDescription"></div>
-          <a id="btn" class="button" routerLink= {{apiData.aboutusLink}}>
+          <a id="btn" class="button" routerLink={{apiData.aboutusLink}}>
             <a class="learn-more">Learn more</a>
             <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png"
                 alt="">
@@ -51,7 +52,6 @@
         </div>
         <!-- about section image -->
         <div class="images-icon">
-          <!-- <img class="img-logo" alt="" src="../../../assets/doubleImg.png" /> -->
           <video class="img-dyn" src={{this.globalUrl+apiData?.aboutusVideoUrl}} controls></video>
         </div>
       </div>
@@ -75,48 +75,14 @@
         <h2 class="our-services-include">Our Services Include</h2>
         <div class="services-wrap">
           <div *ngFor="let service of serviceData" class="component">
-                               
-            <div class="kitchen-1-icon"><img class="img-logofor" alt="" src={{this.globalUrl+service?.afterImageUrl}}/></div>
+            <div class="kitchen-1-icon"><img class="img-logofor" alt="" src={{this.globalUrl+service?.afterImageUrl}} />
+            </div>
             <h3 class="custom-kitchens">{{ service.serviceName }}</h3>
             <p class="simply-dummy-text">{{ service.description }}</p>
             <a class="rectangle-group">
               <a routerLink="/interior-remodelling" class="read-more">Read more</a>
             </a>
           </div>
-          <!-- <div class="component">
-            <div><img class="img-logo1" alt="" src="../../../assets/kitchen 1 (1).png" /></div>
-            <h3 class="custom-kitchens">Custom Kitchens</h3>
-            <p class="simply-dummy-text">
-              simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard
-            </p>
-            <a href="#" class="rectangle-group">
-              <div class="read-more">Read more</div>
-            </a>
-          </div>
-          <div class="component">
-            <div><img class="img-logo1" alt="" src="../../../assets/newAddtion.png" /></div>
-            <h3 class="custom-kitchens">New Additions</h3>
-            <p class="simply-dummy-text">
-              simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard
-            </p>
-            <a routerLink="/new-additions" class="rectangle-group">
-              <div class="read-more">Read more</div>
-            </a>
-          </div>
-          <div class="component">
-            <div><img class="img-logo1" alt="" src="../../../assets/Decks-and-Patioss 1.png" />
-            </div>
-            <h3 class="custom-kitchens">Decks and Patios</h3>
-            <p class="simply-dummy-text">
-              simply dummy text of the printing and typesetting industry. Lorem
-              Ipsum has been the industry's standard
-            </p>
-            <a href="#" class="rectangle-group">
-              <div class="read-more">Read more</div>
-            </a>
-          </div> -->
         </div>
       </div>
     </div>
@@ -127,21 +93,19 @@
       <h2 class="our-clients-say">Our Clients Say</h2>
       <div class="component-13">
         <div class="img-icon"><img class="img-test" alt="" src="../../../assets/client3.png" /></div>
-       
         <div class="slide-container">
           <div class="bg6"><img id="eyes-img" class="img-logo" src="../../../assets/eyes.png" alt=""></div>
-            <ng-container *ngFor="let object of objects; let i = index">
-              <div *ngIf="i === activeSlideIndex" class="slide-item  client-Sec-Para">
-                <!-- Render your object data here -->
-                <div class="heading mb-3">{{ object.heading }}</div>
-                <div class="description mb-3">{{ object.description }}</div>
-                <div class="katy-grey">{{ object.name }}</div>
-              </div>
-            </ng-container>
+          <ng-container *ngFor="let object of objects; let i = index">
+            <div *ngIf="i === activeSlideIndex" class="slide-item  client-Sec-Para">
+              <!-- Render your object data here -->
+              <div class="heading mb-3">{{ object.heading }}</div>
+              <div class="description mb-3">{{ object.description }}</div>
+              <div class="katy-grey">{{ object.name }}</div>
+            </div>
+          </ng-container>
           <div class="dot-indicators">
-            <span *ngFor="let object of objects; let i = index"
-                  [class.active]="i === activeSlideIndex"
-                  (click)="setActiveSlide(i)">
+            <span *ngFor="let object of objects; let i = index" [class.active]="i === activeSlideIndex"
+              (click)="setActiveSlide(i)">
             </span>
           </div>
         </div>
@@ -177,7 +141,7 @@
           <h3 class="address-heading">Our Address</h3>
           <p class="contact-para">
             Kraft Construction Company,<br>
-            1437 Compton road,<br>         
+            1437 Compton road,<br>
             Cincinnati, Ohio 45231.
           </p>
         </div>

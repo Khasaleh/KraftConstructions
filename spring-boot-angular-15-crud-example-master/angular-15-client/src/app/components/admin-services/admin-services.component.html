@@ -12,7 +12,6 @@
                                     <input type="text" class="form-control mt-3 mb-3" id="formGroupExampleInput"
                                         placeholder="Interior remodeling" formControlName="addServiceName">
                                 </div>
-
                                 <div class="drop-1">
                                     <label class="label2" for="inputField">Select Service Page</label> <br>
                                     <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption"
@@ -20,23 +19,14 @@
                                         <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                                     </select>
                                 </div>
-                                <!-- <button class="cardbtn1"  type="submit" >
-                                <label for="file-input" class="custom-button">Add now</label>
-                            </button> -->
                                 <button class="custom-button" type="submit">Add now</button>
                                 <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-
                                     {{ errorMessage }}
-                              
-                                  </div>
-                              
-                                  <div class="alert alert-success" role="alert" *ngIf="successMessage">
-                              
+                                </div>
+                                <div class="alert alert-success" role="alert" *ngIf="successMessage">
                                     {{ successMessage }}
-                              
-                                  </div>
+                                </div>
                             </div>
-
                             <div class="grey-box">
                                 <h3 class="label-box">Active Services</h3>
                                 <div *ngFor="let service of services" class="check-button">
@@ -52,7 +42,6 @@
             </div>
         </section>
     </form>
-    <!-- <form [formGroup]="interiorRemodForm2" (ngSubmit)="onSubmit2()"> -->
     <section class="section-2">
         <div class="new-container">
             <div class="card  card-shade">
@@ -62,19 +51,16 @@
                             <label class="label2 mb-3" for="inputField">Select Page</label> <br>
                             <select class="inputField" (change)="onOptionSelected($event)"
                                 [(ngModel)]="selectedOption1">
-                                <!-- <option *ngFor="let option of options" [value]="option">{{ option }}</option> -->
                                 <option value="interior">Interior Remodeling</option>
                                 <option value="addition">New Addition</option>
                             </select>
                         </div>
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Service</label> <br>
-                     
                             <select class="inputField" (change)="getOneService($event)">
-                                <option  *ngFor="let services of service"
-                                    [value]="services?.id">{{ services?.serviceName }}</option>
+                                <option *ngFor="let services of service" [value]="services?.id">{{ services?.serviceName
+                                    }}</option>
                             </select>
-                     
                         </div>
                     </div>
                     <form [formGroup]="interiorRemodForm2">
@@ -132,7 +118,6 @@
                             </div>
                         </div>
                         <div class="card-wrape">
-                            <!-- <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box"> -->
                             <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
                                 <img class="card-img" [src]="card.imgSrc" alt="">
                                 <div class="file-upload cardbtn">
@@ -141,23 +126,6 @@
                                         (change)="selectImage($event, card)">
                                 </div>
                             </div>
-                            <!-- <div *ngFor="let card of cards" class="card-box">
-                                <ng-container *ngIf="card.imgSrc !== ''; else emptyCard">
-                                  <img class="card-img" [src]="card.imgSrc" alt="">
-                                  <div class="file-upload cardbtn">
-                                    <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
-                                    <input type="file" id="file-input2{{card.id}}" class="input-file" (change)="selectImage($event, card)">
-                                  </div>
-                                </ng-container>
-                                <ng-template #emptyCard>
-                                  <div class="empty-card">
-                                    Add any content or styling for the empty card
-                                    Empty Image
-                                  </div>
-                                </ng-template>
-                              </div>
-                               -->
-                              
                         </div>
                     </div>
                     <div class="create-btn">
@@ -166,21 +134,14 @@
                         </button>
                     </div>
                     <div class="alert alert-success" role="alert" *ngIf="successMessage">
-                  
                         {{ successMessage }}
-                  
-                      </div>
+                    </div>
                     <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-
                         {{ errorMessage }}
-                  
-                      </div>
-                  
-                   
+                    </div>
                 </div>
             </div>
         </div>
 
     </section>
-    <!-- </form> -->
 </div>
