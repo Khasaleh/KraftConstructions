@@ -41,7 +41,7 @@ export class AdminHomeComponent {
   selectedService!: string;
   service!: { id: number; serviceName: string; pageName: string; active: boolean; }[];
   serviceNames!: string[];
-  globalUrl = 'http://99.72.32.144:8083'
+  globalUrl = 'https://img.kraftconstructionco.com';
   forms: FormGroup[] = [];
   serviceData: any
   images: File[] = [];
