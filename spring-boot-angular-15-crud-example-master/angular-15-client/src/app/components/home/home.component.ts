@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeServiceService } from '../../service/home-service.service'
 import { data } from 'jquery';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,19 +22,18 @@ export class HomeComponent implements OnInit {
 
 
   globalUrl = 'https://img.kraftconstructionco.com';
-  constructor(private homeService:HomeServiceService){}
-
   bannerDescription: any;
   objects: any[] = [];
   activeSlideIndex: number = 0;
   serviceData: any
   constructor(private homeService: HomeServiceService) { }
   ngOnInit(): void {
-    setInterval(() => this.showSlide(), 5000);
+    setInterval(() => this.showSlide(), 1000);
     this.homeService.getHomePageBanner().subscribe(
       response => {
         this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl); // Assuming the API response is an array of strings
-        console.log(this.slides, "sides data"); // Check the updated slides array
+        console.log(this.slides, "sides data"); 
+        console.log(this.slides.length,"slide length")// Check the updated slides array
       },
     )
     this.homeService.getHomePageData().subscribe(

@@ -50,6 +50,7 @@ import { DialogeComponent } from './components/dialoge/dialoge.component';
 import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -86,10 +87,7 @@ import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
     ShowusersComponent,
     AdminServicePageComponent,
     AdminAddCareersNewsComponent,
-    DialogeComponent
-    
-   
-
+    DialogeComponent,
   ],
   imports: [
     NoopAnimationsModule,

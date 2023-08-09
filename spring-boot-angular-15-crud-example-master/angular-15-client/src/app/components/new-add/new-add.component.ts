@@ -11,7 +11,7 @@ export class NewAddComponent {
   serviceData: any
   imageData: any
   data!: any[];
-  globalUrl = 'http://99.72.32.144:8083'
+  globalUrl = 'https://img.kraftconstructionco.com';
   itemId : any;
 
   constructor(private newAdditionService: InteriorRemodelingService) { }

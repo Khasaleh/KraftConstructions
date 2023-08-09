@@ -32,7 +32,7 @@ export class AdminServicesComponent {
   urllink2!: File;
   imageLink2: any;
   urllink3!: File
-  globalUrl = 'http://99.72.32.144:8083'
+  globalUrl = 'https://img.kraftconstructionco.com';
   errorMessage: string | null = null;
   successMessage: string | null = null;
   isActive: boolean = false;
