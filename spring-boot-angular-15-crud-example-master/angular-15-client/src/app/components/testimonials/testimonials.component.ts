@@ -19,7 +19,7 @@ export class TestimonialsComponent {
   successMessage: string | null = null;
   errorMessage: string | null = null;
   userIdtoView!: number;
-  globalUrl = 'http://99.72.32.144:8083';
+  globalUrl = 'https://img.kraftconstructionco.com';
   constructor(private formBuilder : FormBuilder, private testimonialService: TestimonialService,private dialog: MatDialog) {}
   sliderdata!:any;
   ngOnInit(): void {

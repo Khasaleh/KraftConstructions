@@ -32,7 +32,7 @@ date!:Date
 fileURL1!: File;
 savedImageId!: number;
 userIdtoView!: number
-globalUrl="http://99.72.32.144:8083";
+globalUrl = 'https://img.kraftconstructionco.com'
 images: File[] = [];
 sliderImages: any[] = [];
 activeIndex = 0;

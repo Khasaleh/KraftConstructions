@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 })
 export class TestimonialService {
   SaveUrl: string;
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   getAllUrl:string;
   deleteUrl:string;
   getUserById:string;
@@ -23,20 +24,20 @@ export class TestimonialService {
   deleteSliderUrl:string;
   getSliderbyIdUrl:string
   constructor(private http : HttpClient) { 
-  this.SaveUrl = 'http://99.72.32.144:8081/api/reviews';
-  this.getAllUrl="http://99.72.32.144:8081/api/reviews";
-  this.deleteUrl="http://99.72.32.144:8081/api/reviews";
-  this.getUserById="http://99.72.32.144:8081/api/reviews";
-  this.getapprovedUrl="http://99.72.32.144:8081/api/reviews/approved";
-  this.approveUrl="http://99.72.32.144:8081/api/reviews/approve";
-  this.hideUrl="http://99.72.32.144:8081/api/reviews/hide";
-  this.saveImageUrl="http://99.72.32.144:8081/api/testimonials/images";
-  this.getImageUrl="http://99.72.32.144:8081/api/testimonials/TESTIMONIAL";
-  this.deleteImageUrl="http://99.72.32.144:8081/api/testimonials";
-  this.sliderUrl="http://99.72.32.144:8081/api/testimonial-slider";
-  this.getSliderUrl="http://99.72.32.144:8081/api/testimonial-slider";
-  this.deleteSliderUrl="http://99.72.32.144:8081/api/testimonial-slider";
- this.getSliderbyIdUrl= "http://99.72.32.144:8081/api/testimonial-slider";
+  this.SaveUrl = this.apiUrl+'/reviews';
+  this.getAllUrl=this.apiUrl+"/reviews";
+  this.deleteUrl=this.apiUrl+"/reviews";
+  this.getUserById=this.apiUrl+"/reviews";
+  this.getapprovedUrl=this.apiUrl+"/reviews/approved";
+  this.approveUrl=this.apiUrl+"/reviews/approve";
+  this.hideUrl=this.apiUrl+"/reviews/hide";
+  this.saveImageUrl=this.apiUrl+"/testimonials/images";
+  this.getImageUrl=this.apiUrl+"/testimonials/TESTIMONIAL";
+  this.deleteImageUrl=this.apiUrl+"/testimonials";
+  this.sliderUrl=this.apiUrl+"/testimonial-slider";
+  this.getSliderUrl=this.apiUrl+"/testimonial-slider";
+  this.deleteSliderUrl=this.apiUrl+"/testimonial-slider";
+ this.getSliderbyIdUrl= this.apiUrl+"/testimonial-slider";
 }
 PostTest(user: Testimonial): Observable<Testimonial> {
   return this.http.post<Testimonial>(this.SaveUrl, user);

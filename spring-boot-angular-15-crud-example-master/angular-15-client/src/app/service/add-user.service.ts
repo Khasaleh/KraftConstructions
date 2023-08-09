@@ -11,12 +11,13 @@ export class AddUserService {
   updateURL : string;
   deleteURL: string;
   uploadUrl:string;
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor(private http : HttpClient) { 
-  this.addUserURL = 'http://99.72.32.144:8081/api/auth/users/create';
-  this.getUserURL=  'http://99.72.32.144:8081/api/auth/users';
-  this.updateURL=   'http://99.72.32.144:8081/api/auth/users/update';
-  this.deleteURL=   'http://99.72.32.144:8081/api/auth/users/delete';
-  this.uploadUrl = 'http://99.72.32.144:8081/api/auth/users/uploadprofile/'
+  this.addUserURL = this.apiUrl+'/auth/users/create';
+  this.getUserURL=  this.apiUrl+'/auth/users';
+  this.updateURL=   this.apiUrl+'/auth/users/update';
+  this.deleteURL=   this.apiUrl+'/auth/users/delete';
+  this.uploadUrl =  this.apiUrl+'/auth/users/uploadprofile/'
 }
 AddUser(usr: AddUser):Observable<any> {
   return this.http.post<AddUser>(this.addUserURL,usr);

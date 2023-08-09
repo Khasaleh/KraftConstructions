@@ -10,7 +10,7 @@ import { UpdabtusService } from 'src/app/service/updabtus.service';
 })
 
 export class AboutUsComponent {
- globalUrl = 'http://99.72.32.144:8083'
+ globalUrl = 'https://img.kraftconstructionco.com'
 addata!:FormGroup;
   constructor(private aboutusdata : UpdabtusService, private fb: FormBuilder) {
     

@@ -19,10 +19,14 @@ export class HomeComponent implements OnInit {
   apiData: any;
   sliderData: any;
   bannerData: any;
+
+
+  globalUrl = 'https://img.kraftconstructionco.com';
+  constructor(private homeService:HomeServiceService){}
+
   bannerDescription: any;
   objects: any[] = [];
   activeSlideIndex: number = 0;
-  globalUrl = 'http://99.72.32.144:8083'
   serviceData: any
   constructor(private homeService: HomeServiceService) { }
   ngOnInit(): void {
