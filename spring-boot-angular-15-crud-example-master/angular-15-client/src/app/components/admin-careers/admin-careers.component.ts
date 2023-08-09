@@ -17,7 +17,7 @@ export class AdminCareersComponent {
   userIdtoView!:number;
   successMessage: string | null = null;
   data:any;
-  globalUrl = 'http://99.72.32.144:8083';
+  globalUrl = 'https://img.kraftconstructionco.com'
   constructor(private formBuilder : FormBuilder, private dialog:MatDialog, private careerData: CareerDataService) {}
   ngOnInit(): void {
     this.getAll();

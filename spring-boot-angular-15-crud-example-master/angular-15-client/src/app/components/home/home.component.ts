@@ -27,7 +27,7 @@ export class HomeComponent implements OnInit {
   sliderData: any;
   bannerData: any;
 
-  globalUrl = 'http://99.72.32.144:8083'
+  globalUrl = 'https://img.kraftconstructionco.com';
   constructor(private homeService:HomeServiceService){}
   ngOnInit(): void {
     setInterval(() => this.showSlide(), 5000);

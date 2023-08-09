@@ -12,11 +12,12 @@ export class ReqUserService {
   getAllUrl:string;
   deleteUrl:string;
   getUserById:string;
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor(private http : HttpClient) { 
-  this.ReqUserUrl = 'http://99.72.32.144:8081/api/estimate-request/saverequest';
-  this.getAllUrl="http://99.72.32.144:8081/api/estimate-request/getrequests";
-  this.deleteUrl="http://99.72.32.144:8081/api/estimate-request/delete";
-  this.getUserById="http://99.72.32.144:8081/api/estimate-request/getrequests";
+  this.ReqUserUrl= this.apiUrl+'/estimate-request/saverequest';
+  this.getAllUrl=  this.apiUrl+"/estimate-request/getrequests";
+  this.deleteUrl=  this.apiUrl+"/estimate-request/delete";
+  this.getUserById=this.apiUrl+"/estimate-request/getrequests";
 
 }
 ReqUser(user: ReqUser): Observable<any> {

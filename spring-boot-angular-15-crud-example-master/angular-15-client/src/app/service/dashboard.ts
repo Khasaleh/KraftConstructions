@@ -9,10 +9,10 @@ import { Observable } from 'rxjs';
 export class dashboardService {
 
   getAllUrl:string;
-
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor(private http : HttpClient) { 
   
-  this.getAllUrl="http://99.72.32.144:8081/api/dashboard";
+  this.getAllUrl=this.apiUrl+"/dashboard";
 
 
 }

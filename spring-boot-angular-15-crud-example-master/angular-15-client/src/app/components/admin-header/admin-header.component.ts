@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 
 export class AdminHeaderComponent implements OnInit {
   user:any;
-  globalUrl = 'http://99.72.32.144:8083';
+  globalUrl = 'https://img.kraftconstructionco.com';
 ngOnInit(): void {
   this.user = JSON.parse(localStorage.getItem('user')!);
 
