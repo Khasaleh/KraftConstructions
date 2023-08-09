@@ -12,7 +12,7 @@
           <!-- Remodeling for<br>your home -->
           {{ bannerDescription?.bannerDescription }}
         </h1>
-        <a class="button" routerLink={{bannerDescription.bannerLink}}>
+        <a class="button" routerLink={{bannerDescription?.bannerLink}}>
           <div class="learn-more">Learn more</div>
           <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png" alt="">
           </div>
@@ -42,8 +42,8 @@
       <!-- about section content -->
       <div class="dream-home">
         <div class="content">
-          <div class="apidata" [innerHTML]="apiData.aboutusDescription"></div>
-          <a id="btn" class="button" routerLink={{apiData.aboutusLink}}>
+          <div class="apidata" [innerHTML]="apiData?.aboutusDescription"></div>
+          <a id="btn" class="button" routerLink={{apiData?.aboutusLink}}>
             <a class="learn-more">Learn more</a>
             <div class="long-arrow-alt-right"><img class="img-logo" src="../../../assets/long-arrow-alt-right.png"
                 alt="">
