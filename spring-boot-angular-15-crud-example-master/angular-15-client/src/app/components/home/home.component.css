@@ -36,9 +36,15 @@ a {
 
 .img-logo {
     width: 100%;
-    height: auto;
+    /* height: 200; */
 }
-
+.img-logofor {
+    width: 100%;
+    height: 200;
+}
+.img-test {
+    width: 100%;
+}
 .img-logo-project {
     width: 100%;
     height: 300px;
@@ -221,6 +227,7 @@ a {
     line-height: 60px;
     margin-bottom: 39px;
     font-family: sans-serif;
+    color: #fff;
 }
 
 .span {
@@ -242,6 +249,11 @@ a {
     top: calc(50% - 12px);
     line-height: 24px;
     display: inline-block;
+    text-decoration: none;
+    color: #fff
+}
+.learn-more:hover{
+    color: #fff
 }
 
 .button,
@@ -297,11 +309,12 @@ a {
 }
 
 .content {
-    width: 55%;
+    width: 50%;
 }
 
 .img-dyn {
     width: 85%;
+    height: 235px;
 }
 
 .content p {
@@ -497,7 +510,7 @@ a {
 
 .kitchen-1-icon {
     width: 100%;
-    height: 50%;
+    /* height: 50%; */
 }
 
 .services-section {
@@ -531,12 +544,13 @@ a {
 }
 
 .simply-dummy-text {
-    height: 23.77%;
+    height: 25%;
     width: 96.57%;
     font-size: var(--paragraph-regular-size);
     line-height: 25px;
     font-family: var(--paragraph-regular);
     color: var(--color-darkslategray);
+    overflow: hidden;
 }
 
 .read-more {
@@ -549,8 +563,13 @@ a {
     border-radius: var(--br-8xs);
     background-color: var(--kraft-d-green);
     padding: 1.5% 3%;
+    text-decoration: none;
+    color: #fff
 }
+.read-more:hover{
+    color: #fff;
 
+}
 
 .rectangle-group {
     font-size: var(--font-size-xl);
@@ -570,7 +589,8 @@ a {
 
 .component {
     width: 30%;
-    padding-bottom: 4%;
+    height: 600px;
+    /* padding-bottom: 4%; */
 }
 
 /* our client section */
@@ -600,8 +620,8 @@ a {
 }
 
 #eyes-img {
-    height: 30.18%;
-    width: 40.65%;
+    height: 15%;
+    width: 50%;
     margin: 26%;
 }
 
@@ -893,7 +913,44 @@ a {
 
 }
 
-
+.slide-container {
+    position: relative;
+    width: 55%;
+    height: 300px; /* Set the desired height */
+    /* overflow: hidden; */
+  }
+  
+  .slide {
+    /* display: flex; */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .slide-item {
+    width: 80%;
+  }
+  
+  .dot-indicators {
+    display: flex;
+    margin-top: 50px;
+  }
+  
+  .dot-indicators span {
+    width: 15px;
+    height: 15px;
+    background-color: #aaa;
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .dot-indicators span.active {
+    background-color: #333;
+  }
+  
+  .heading {
+    font-size: 19;
+    font-weight: 600;
+}
 /* media queries */
 @media (max-width: 72.5em) {
     .button{

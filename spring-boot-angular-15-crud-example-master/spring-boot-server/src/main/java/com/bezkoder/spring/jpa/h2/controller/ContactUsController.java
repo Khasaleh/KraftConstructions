@@ -1,6 +1,7 @@
 package com.bezkoder.spring.jpa.h2.controller;
 
 import com.bezkoder.spring.jpa.h2.dto.ContactUsDto;
+import com.bezkoder.spring.jpa.h2.dto.MessageResponse;
 import com.bezkoder.spring.jpa.h2.service.ContactUsService;
 import com.bezkoder.spring.jpa.h2.util.Roles;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
 @RequestMapping("/api/contact-us")
 public class ContactUsController {
@@ -21,7 +22,6 @@ public class ContactUsController {
     private ContactUsService contactUsService;
 
     @PostMapping
-    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<ContactUsDto> createContactUs(@Valid @RequestBody ContactUsDto contactUsDTO) {
         ContactUsDto createdContactUs = contactUsService.createContactUs(contactUsDTO);
         return new ResponseEntity<>(createdContactUs, HttpStatus.CREATED);
@@ -30,6 +30,7 @@ public class ContactUsController {
 
 
     @GetMapping
+    @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
     public ResponseEntity<List<ContactUsDto>> getAllContactUs() {
         List<ContactUsDto> contactUsDTOList = contactUsService.getAllContactUs();
         return ResponseEntity.ok(contactUsDTOList);
@@ -37,8 +38,8 @@ public class ContactUsController {
 
     @DeleteMapping("/{id}")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<String> deleteContactUs(@PathVariable Long id) {
+    public ResponseEntity<MessageResponse> deleteContactUs(@PathVariable Long id) {
         contactUsService.deleteContactUs(id);
-        return ResponseEntity.ok("Contact us deleted successfully");
+        return ResponseEntity.ok(new MessageResponse("Contact us deleted successfully"));
     }
 }

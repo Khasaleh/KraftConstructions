@@ -28,4 +28,7 @@ public class AboutUs {
 
     @Column(name = "image_url")
     private String imageUrl;
+
+    @Column(name = "footer_image")
+    private String footerImage;
 }

@@ -53,6 +53,9 @@ public class CareersApplication {
     @Column(name = "hours_restrictions")
     private String hoursRestrictions;
 
+    @Column(name="skills")
+    private String skills;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "application_id")
     private List<Reference> references;

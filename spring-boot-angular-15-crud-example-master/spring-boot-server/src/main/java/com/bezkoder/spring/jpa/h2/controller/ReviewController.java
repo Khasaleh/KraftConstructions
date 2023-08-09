@@ -12,12 +12,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
 @RequestMapping("/api/reviews")
 public class ReviewController {
@@ -41,7 +40,7 @@ public class ReviewController {
     }
 
     @PostMapping
-    public ReviewDto createReview(@Valid @RequestBody ReviewDto reviewDto) {
+    public ReviewDto createReview(@RequestBody ReviewDto reviewDto) {
         Review review = reviewMapper.toEntity(reviewDto);
         Review createdReview = reviewService.createReview(review);
         return reviewMapper.toDto(createdReview);

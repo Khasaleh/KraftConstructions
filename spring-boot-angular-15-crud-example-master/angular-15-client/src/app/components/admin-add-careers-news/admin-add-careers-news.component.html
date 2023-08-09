@@ -1,72 +1,65 @@
 <div class="add-career-news">
     <div class="new-container">
         <form [formGroup]="careerNewsForm" (ngSubmit)="onSubmit()">
-        <div class="card   card-shade">
-            <div class="head-btn-wrap d-flex justify-content-between align-items-center">
-                <div>
-                    <h2 class="main-head">Add Career News</h2>
-                </div>
-                <div class="slider-wrape mt-3">
-                    <label class="switch">
-                         <input type="checkbox" (click)="toggleCardBody()"
-                         formControlName="status"
-                         >
-                        <span class="slider round"></span>
-                    </label>
-                </div>
-            </div>
-            
-            <div class="card-body" *ngIf="isCardBodyVisible">
-                <label class="head2 mb-2">Current News</label>
-                <input id="btn" type="text" class="form-control mb-3" formControlName="currentNews"
-                    placeholder="Write your current news here" name="selectedColor" [style.background]="selectedColor"
-                    [style.color]=" textColor">
-             
-                <div class="cont-wrap  d-flex  justify-content-between mt-2">
-                    <div class="color-cont">
-                        <div class="mb-4">
-                            <h3 class="head2">Background Color</h3>
-                            <button id="btn" class="input-btn" [(colorPicker)]="selectedColor"
-                                [style.background]="selectedColor"
-                            
-                                >
-                                
-                            </button>
-                           
-                        </div>
-                        <div class="mb-3">
-                            <h3 class="head2">Text Color</h3>
-                            <button id="btn" class="input-btn" [(colorPicker)]="textColor" [style.color]=" textColor"
-                          
-                                >
-                            </button>
-                          
-                        </div>
+            <div class="card   card-shade">
+                <div class="head-btn-wrap d-flex justify-content-between align-items-center">
+                    <div>
+                        <h2 class="main-head">Add Career News</h2>
                     </div>
-                    <div class="date-cont">
-                        <h3 class="head2 mb-3">Update time</h3>
-                        <div class="datewrap d-flex gap-3">
-                            <div class="mb-3">
-                                <label class="d-block mb-2" for="date-time1">Start</label>
-                                <input class="date-style" type="datetime-local" id="date-time1"
-                                formControlName="startDate">
+                    <div class="slider-wrape mt-3">
+                        <label class="switch">
+                            <input type="checkbox" (click)="toggleCardBody()" formControlName="status">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+                <div class="card-body" *ngIf="isCardBodyVisible">
+                    <label class="head2 mb-2">Current News</label>
+                    <input id="btn" type="text" class="form-control mb-3" formControlName="currentNews"
+                        placeholder="Write your current news here" name="selectedColor"
+                        [style.background]="selectedColor" [style.color]=" textColor">
+                    <div class="cont-wrap  d-flex  justify-content-between mt-2">
+                        <div class="color-cont">
+                            <div class="mb-4">
+                                <h3 class="head2">Background Color</h3>
+                                <button id="btn" class="input-btn" [(colorPicker)]="selectedColor"
+                                    [style.background]="selectedColor">
+                                </button>
                             </div>
                             <div class="mb-3">
-                                <label class="d-block mb-2" for="date-time2">End</label>
-                                <input class="date-style" type="datetime-local" id="date-time2"
-                                formControlName="endDate">
+                                <h3 class="head2">Text Color</h3>
+                                <button id="btn" class="input-btn" [(colorPicker)]="textColor"
+                                    [style.color]=" textColor">
+                                </button>
+                            </div>
+                        </div>
+                        <div class="date-cont">
+                            <h3 class="head2 mb-3">Update time</h3>
+                            <div class="datewrap d-flex gap-3">
+                                <div class="mb-3">
+                                    <label class="d-block mb-2" for="date-time1">Start</label>
+                                    <input class="date-style" type="datetime-local" id="date-time1"
+                                        formControlName="startDate">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="d-block mb-2" for="date-time2">End</label>
+                                    <input class="date-style" type="datetime-local" id="date-time2"
+                                        formControlName="endDate">
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="add-btn  d-flex justify-content-lg-end  justify-content-sm-start">
-                    <button type="submit" class="add-news-btn " >Add News</button>
+                    <div class="add-btn  d-flex justify-content-lg-end  justify-content-sm-start">
+                        <button type="submit" class="add-news-btn ">Add News</button>
+                    </div>
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                        {{ errorMessage }}
+                    </div>
+                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                        {{ successMessage }}
+                    </div>
                 </div>
             </div>
-     
-
-        </div>
-    </form>
+        </form>
     </div>
-
 </div>

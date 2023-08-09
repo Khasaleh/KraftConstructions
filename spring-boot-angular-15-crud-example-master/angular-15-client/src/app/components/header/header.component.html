@@ -50,7 +50,6 @@
         <div class="logo">
           <a routerLink="/home"><img class="img-logo" src="../../../assets/logo.png"></a>
         </div>
-
         <div>
           <div class="nav-links-2">
             <a routerLink="/about-us"> About Us </a>
@@ -58,26 +57,19 @@
             <div class="drop-down">
               <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
               <div class="drop-down-content">
-                <a href="#">Decks-Patios</a>
-                <a href="#">Bathroom</a>
-                <a href="#">Kitchen</a>
-                <a href="#">Basement</a>
-
+                <a *ngFor="let item of DropData"  (click)="getOneService(item.id)">{{ item.serviceName }} </a>
               </div>
             </div>
             <a routerLink="/new-additions">New Additions</a>
             <div class="drop-down">
               <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
               <div class="drop-down-content">
-                <a href="#">Sunrooms </a>
-                <a href="#">Second story addition</a>
-                <a href="#">Room additions</a>
+                <a *ngFor="let item of DropData2"  (click)="getOneService1(item.id)">{{ item.serviceName }}</a>
               </div>
             </div>
-            <a routerLink="/careers">Careers</a>
+            <a *ngIf="sliderData?.status" routerLink="/careers">Careers</a>
             <a routerLink="/testimonials">Testimonials</a>
-            <a routerLink="/payment">Payments</a>
-            <!-- <a routerLink="/contact-us">Contact us</a> -->
+            <a href="https://huntington.billeriq.com/ebpp/Kraft/">Payments</a>
             <a routerLink="/request-estimate">Request Estimate</a>
           </div>
         </div>
@@ -98,10 +90,7 @@
         <div class="drop-down">
           <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
           <div class="drop-down-content">
-            <a href="#">Decks-Patios</a>
-            <a href="#">Bathroom</a>
-            <a href="#">Kitchen</a>
-            <a href="#">Basement</a>
+            <a routerLink="/interior-remodelling" *ngFor="let item of DropData">{{ item.serviceName }}</a>
           </div>
         </div>
       </li>
@@ -110,9 +99,7 @@
         <div class="drop-down">
           <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
           <div class="drop-down-content">
-            <a href="#">Sunrooms </a>
-            <a href="#">Second story addition</a>
-            <a href="#">Room additions</a>
+            <a routerLink="/new-additions" *ngFor="let item of DropData2">{{ item.serviceName }}</a>
           </div>
         </div>
       </li>

@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import java.io.IOException;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
 @RequestMapping("/api/homepage-banner")
 public class HomePageSliderController {
@@ -25,8 +25,8 @@ public class HomePageSliderController {
     private HomePageSliderMapper homePageSliderMapper;
 
     @PostMapping
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
-    public ResponseEntity<?> uploadSliderImage(HomePageSliderRequestDto homePageSliderRequestDto) throws IOException {
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
+    public ResponseEntity<MessageResponse> uploadSliderImage(HomePageSliderRequestDto homePageSliderRequestDto) throws IOException {
         HomePageSliderResponseDto responseDto = homePageSliderService.uploadMultipleImages(homePageSliderRequestDto);
         return ResponseEntity.ok(new MessageResponse("Images Uploaded Successfully"));
     }
@@ -51,9 +51,9 @@ public class HomePageSliderController {
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_USER + "')")
-    public ResponseEntity<Void> deleteSliderImage(@PathVariable("id") Long id) {
+    @PreAuthorize("hasAnyRole('" + Roles.ROLE_ADMIN + "','" + Roles.ROLE_PHOTOGRAPHER + "')")
+    public ResponseEntity<MessageResponse> deleteSliderImage(@PathVariable("id") Long id) {
         homePageSliderService.deleteSliderImageById(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new MessageResponse("Image Deleted Successfully!"));
     }
 }

@@ -5,41 +5,27 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import org.hibernate.validator.constraints.Range;
-
-import javax.persistence.Column;
-import javax.validation.constraints.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class ContactUsDto {
-
-
-    @NotNull
-    private Long id;
-
-
+    private long id;
     @NotNull
     private String firstname;
-
-
     @NotNull
     private String lastname;
-
     @NotNull
     @Email
     private String email;
-
-
-
     @NotNull
     @Size(min = 10, max = 15)
     private String phonenumber;
-
-
     @NotNull
     private String message;
-
+    private String createdDate;
 }

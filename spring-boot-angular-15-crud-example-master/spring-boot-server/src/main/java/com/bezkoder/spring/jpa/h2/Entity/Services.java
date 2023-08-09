@@ -37,11 +37,11 @@ public class Services {
     private ServiceDetails serviceDetails;
 
 
-    @OneToMany(mappedBy = "services")
+    @OneToMany(mappedBy = "services", cascade = CascadeType.ALL,orphanRemoval = true)
     private List<Portfolio> portfolios=new ArrayList<>();
 
     @ManyToOne
-    @JoinColumn(name = "home_page_id")
+    @JoinColumn(name = "home_page_id",nullable = true)
     private HomePage homePage;
 
 

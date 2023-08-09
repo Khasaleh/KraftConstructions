@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin(origins = "*", maxAge = 4300)
 @RestController
 @RequestMapping("/api/news")
 public class CareerNewsController {
@@ -49,7 +49,7 @@ public class CareerNewsController {
     }
     @PutMapping("/update-status")
     @PreAuthorize("hasRole('" + Roles.ROLE_ADMIN + "')")
-    public ResponseEntity<?> updateLinkStatus() {
+    public ResponseEntity<MessageResponse> updateLinkStatus() {
         boolean updatedLinkStatus = newsService.updateStatus(CAREER_NEWS);
         if (updatedLinkStatus) {
             return ResponseEntity.ok(new MessageResponse("Link status updated to true"));

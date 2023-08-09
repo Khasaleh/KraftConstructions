@@ -4,6 +4,7 @@ import { CKEditorComponent, ChangeEvent } from '@ckeditor/ckeditor5-angular/cked
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeServiceService } from '../../service/home-service.service'
 import { HttpClient } from '@angular/common/http';
+import { error } from 'jquery';
 
 interface Image {
   image: string;
@@ -13,156 +14,227 @@ interface Image {
   templateUrl: './admin-home.component.html',
   styleUrls: ['./admin-home.component.css', '../../../styles.css']
 })
-
 export class AdminHomeComponent {
   selectedOption: string = 'interior remodeling';
   options: string[] = ['interior remodeling', 'New Additions'];
   title = 'angular-template-ckeditor5-classic';
   public Editor = ClassicEditor;
-
   public onReady(editor: any) {
     console.log("CKEditor5 Angular Component is ready to use!", editor);
   }
   public onChange({ editor }: ChangeEvent) {
   }
-
   videoLink: any;
   fileURL!: File;
-
-
+  aboutUsForm!: FormGroup;
+  bannerForm!: FormGroup;
+  testimonialForm!: FormGroup;
+  testimonialForm2!: FormGroup;
+  linkStatus: boolean = false;
+  testimonialData: [{ heading: string, description: string, name: string }] = [{ heading: '', description: '', name: '' }];
+  serviceList: any[] = []
+  test = '';
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
+  images1!: any[];
+  apiData: any;
+  selectedService!: string;
+  service!: { id: number; serviceName: string; pageName: string; active: boolean; }[];
+  serviceNames!: string[];
+  globalUrl = 'http://99.72.32.144:8083'
+  forms: FormGroup[] = [];
+  serviceData: any
+  images: File[] = [];
+  imageLink: any[] = [];
+  testData: any
   onFileSelected(event: any) {
     this.fileURL = event.target.files[0];
     this.videoLink = URL.createObjectURL(this.fileURL);
-
     this.onVideoUploadBtnClick();
     console.log(this.fileURL)
     console.log(this.videoLink, "video link");
   }
-
-
   myForm = new FormGroup({
     name: new FormControl(''),
     email: new FormControl(''),
     phone: new FormControl('')
   });
-  forms: FormGroup[] = [];
   addForm() {
-    const newForm = new FormGroup({ ...this.myForm.controls });
-    this.forms.push(newForm);
+    this.testimonialData.push({ heading: '', description: '', name: '' });
   }
-  deleteForm(index: number) {
-    this.forms.splice(index, 1);
+  deleteForm(item: any, index: number) {
+    // if(item )
+    this.testimonialData.splice(index, 1);
   }
-  //for Api integration
-
-  aboutUsForm!: FormGroup;
-  bannerForm!: FormGroup;
-  linkStatus: boolean =  false;
-
   constructor(private formBuilder: FormBuilder, private homeService: HomeServiceService,
   ) { }
 
   onVideoUploadBtnClick() {
-
     const formData = new FormData();
     formData.append('file', this.fileURL);
-
     this.homeService.saveVideo(formData).subscribe(
       response => {
-        // Handle the API response here
         console.log(response);
       },
       error => {
-        // Handle any error that occurs during the API request
         console.error(error);
       }
     );
   }
-
   ngOnInit(): void {
-
+    this.getSrviceData();
+    this.getTestData();
+    this.selectedService = '';
+    this.service = [];
+    this.serviceNames = [];
     this.aboutUsForm = this.formBuilder.group({
-
       textEditor: ['', Validators.required],
       addLink: ['', Validators.required],
     });
-
     this.bannerForm = this.formBuilder.group({
-
       bannerLink: ['', Validators.required],
       bannerDescription: ['', Validators.required],
       linkStatus: [this.linkStatus]
     });
-    
-
+    this.homeService.getHomePageData().subscribe(
+      data => {
+        this.apiData = data;
+        console.log("ResponseData1", data);
+      },
+    )
+    this.homeService.getHomeBannerDescription().subscribe(
+      previousResponse => {
+        this.bannerForm.controls['bannerLink'].setValue(previousResponse.bannerLink);
+        this.bannerForm.controls['bannerDescription'].setValue(previousResponse.bannerDescription);
+        this.bannerForm.controls['linkStatus'].setValue(previousResponse.linkStatus);
+      },
+    )
+    this.homeService.getHomePageData().subscribe(
+      previousResponse => {
+        this.aboutUsForm.controls['textEditor'].setValue(previousResponse.aboutusDescription);
+        this.aboutUsForm.controls['addLink'].setValue(previousResponse.aboutusLink);
+        this.videoLink = this.globalUrl + previousResponse.aboutusVideoUrl;
+      },
+    )
+    this.homeService.getTestimonialsData().subscribe(
+      response => {
+        console.log(response, "response for test get data");
+      },
+      error => {
+        console.log(error, "error for test data");
+      }
+    )
+    this.getBannerImages();
+  }
+  onSubmit2() {
+    const testData = this.testimonialData;
+    this.deleteAllTestimonial();
+    this.homeService.saveTestimonialData(testData).subscribe(
+      response => {
+        console.log("Response for testimonial section", response);
+        this.successMessage = "Data Added successfully";
+        console.log(response)
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 1000);
+      },
+      error => {
+        this.errorMessage = error?.message;
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 1000);
+        console.error(error);
+      }
+    );
+  }
+  onServiceClick() {
+    this.homeService.addServicesData(this.serviceList).subscribe(
+      response => {
+        this.successMessage = response?.message;
+        console.log(response)
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 1000);
+      },
+      error => {
+        console.log(error);
+        this.errorMessage = error?.message;
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 1000);
+      }
+    )
   }
   onSubmit1() {
-
     if (this.bannerForm.valid) {
       const bannerLink = this.bannerForm.get('bannerLink')?.value;
       const bannerDescription = this.bannerForm.get('bannerDescription')?.value;
       const linkStatus = this.bannerForm.get('linkStatus')?.value;
       this.homeService.saveBannerData(bannerLink, bannerDescription, linkStatus).subscribe(
         response => {
-          // Handle the API response here
-          console.log(" banner data submit successfully");
-          console.log("response", response)
+          this.successMessage = "Slider data added successfully";
+          console.log(response)
+          setTimeout(() => {
+            this.successMessage = '';
+          }, 1000);
         },
         error => {
-          // Handle any error that occurs during the API request
+          console.log(error);
+          this.errorMessage = error?.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 1000);
           console.error(error);
         }
       )
     }
     this.uploadImages();
   }
-
   onSubmit() {
-
     if (this.aboutUsForm.valid) {
       const textEditor = this.aboutUsForm.get('textEditor')?.value;
       const addLink = this.aboutUsForm.get('addLink')?.value;
       this.homeService.saveHomepageData(textEditor, addLink).subscribe(
         response => {
-          // Handle the API response here
-          console.log("data submit successfully");
-          console.log("response", response)
+          this.successMessage = "About us data added successfully";
+          console.log(response)
+          setTimeout(() => {
+            this.successMessage = '';
+          }, 1000);
         },
         error => {
-          // Handle any error that occurs during the API request
+          console.log(error);
+          this.errorMessage = error?.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 1000);
           console.error(error);
         }
       )
     }
-
   }
-  
+  buttonLinkStatus() {
+    this.homeService.bannerLinkStatus().subscribe(
+      response => {
+        console.log(response);
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
   isCardBodyVisible: boolean = false;
   toggleCardBody() {
     this.isCardBodyVisible = !this.isCardBodyVisible;
   }
   isLinkVisible: boolean = false;
   toggleLink() {
-    this.isLinkVisible = !this.isLinkVisible;
-  }
-  // images: Image[] = [];
-  images: File[] = [];
-  // imageLink: any;
-  imageLink: any[] = [];
-  activeIndex = 0;
+    console.log("hello world");
 
-  // onFileSelected1(event: any) {
-  //   const files = event.target.files;
-  //   for (let i = 0; i < files.length; i++) {
-  //     const file = files[i];
-  //     const reader = new FileReader();
-  //     reader.onload = (e) => {
-  //       const imageUrl = reader.result as string;
-  //       this.images.push({ url: imageUrl });
-  //     };
-  //     reader.readAsDataURL(file);
-  //   }
-  // }
+    this.isLinkVisible = !this.isLinkVisible;
+    this.buttonLinkStatus();
+  }
+  activeIndex = 0;
   onFileSelected1(event: any) {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
@@ -170,42 +242,100 @@ export class AdminHomeComponent {
       this.images.push(file);
       this.imageLink.push(URL.createObjectURL(file));
     }
-    // for (let i = 0; i < this.images.length; i++) {
-    //   this.imageLink = URL.createObjectURL(this.images[i]);
-    // }
-    console.log(this.imageLink, "image link");
   }
-
+  deleteAllTestimonial() {
+    this.homeService.deleteAllTestimonial().subscribe(
+      response => {
+      }
+    )
+  }
   uploadImages1() {
     const formData = new FormData();
     for (let i = 0; i < this.images.length; i++) {
       formData.append('images', this.images[i]);
     }
-
-    // Perform upload logic here, e.g., send formData to server
     console.log(formData);
     this.homeService.saveBannnerImage(formData).subscribe(
       response => {
-        // Handle the API response here
         console.log(response);
       },
       error => {
-        // Handle any error that occurs during the API request
         console.error(error);
       }
     );
+  }
+  getBannerImages() {
+    this.homeService.getHomePageBanner().subscribe(
+      response => {
+        console.log(response);
+
+        this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
+
+      },
+      error => {
+        console.error(error);
+      }
+    )
+  }
+  deleteImage(index: number) {
+
+    this.imageLink.splice(index, 1);
+  }
+  onOptionSelected(event: Event) {
+    const selectedValue = (event.target as HTMLSelectElement).value;
+    if (selectedValue === 'interior') {
+      this.homeService.getServiceByPage1()
+        .subscribe(
+          data => {
+            console.log(data);
+
+            this.service = data; // Assign the API response to the services array
+            this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+            this.selectedService = '';
+          });
+    } else if (selectedValue === 'addition') {
+      this.homeService.getServiceByPage2()
+        .subscribe(
+          data => {
+            console.log(data);
+            this.service = data; // Assign the API response to the services array
+            this.serviceNames = this.service.map(service => service.serviceName); // Extract the service names
+            this.selectedService = ''; // 
+          });
+    }
+  }
+ 
+  getSrviceData() {
+    this.homeService.getServicesData().subscribe(
+      response => {
+        this.serviceData = response;
+      },
+      error => {
+        console.log(error);
+      }
+    )
+  }
+  addServiceOnHomePage(serviceIds: any) {
+
+    this.serviceList.push(serviceIds)
   }
 
   uploadImages() {
     this.uploadImages1();
     console.log(this.images);
   }
-  // getPreviewURL(image: File): string {
-  //   return URL.createObjectURL(image);
-  //   // this.cdr.detectChanges();
-  // }
   setActiveIndex(index: number) {
     this.activeIndex = index;
   }
+ 
+  getTestData() {
+    this.homeService.getTestimonialsData().subscribe(
+      response => {
+        if (response.length > 0) {
+          this.testimonialData = response;
+        }
 
+      }
+    )
+  }
 }

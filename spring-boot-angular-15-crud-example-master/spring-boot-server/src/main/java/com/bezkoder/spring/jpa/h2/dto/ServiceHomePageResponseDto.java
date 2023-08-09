@@ -13,4 +13,5 @@ public class ServiceHomePageResponseDto {
     private String description;
     private String afterImageUrl;
     private String serviceName;
+    private String pageName;
 }

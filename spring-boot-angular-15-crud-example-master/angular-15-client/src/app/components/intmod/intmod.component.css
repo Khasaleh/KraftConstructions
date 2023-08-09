@@ -23,6 +23,10 @@ h2 {
 .list-group-item:not(:last-child) {
   border-bottom: 1px solid white;
 }
+.list-group{
+  list-style: none;
+  /* padding: 5px 0px 5px 15px; */
+}
 .card-img {
   background-image:  linear-gradient(rgba(2, 90, 0, 0.6), rgba(2, 90, 0, 0.6)),url("../../../assets/images/aboutus2 1 (1).png");
    background-position: center;
@@ -30,17 +34,31 @@ h2 {
   background-size:cover;
   height: 20vh; 
 }
+.card-header{
+  text-align: center;
+}
   
 
 .btn {
   display: inline-block;
   background-color: var(--kraft-d-green);
   border-radius: 5px;
-  margin-left: 1em;
-  
-
-
+  margin-left: 3em;
 }
+.btnClick{
+  border: 1px solid white;
+  font-weight: normal;
+  transition: font-weight 0.3s;
+}
+.btnClick:hover{
+  background-color: lightgray;
+}
+
+.btnClick:active {
+  font-weight: bold;
+}
+
+
  .card.align-items-center.justify-content-center {
      
   background-color: #025A00;
@@ -50,13 +68,15 @@ h2 {
   width:63rem;
   margin-left:5.5rem;
   }
+  .height{
+    height: 230px;
+  }
 
 .card-title {
   font-size:14px ;
 }
-.offset-md-4 {
-margin-left: 22%;
-width: 66%;
+img.card-img-top {
+  height: 250px;
 }
 
 @media (max-width: 576px) {
@@ -101,9 +121,9 @@ width: 66%;
   background-color: var(--kraft-light-green);
   box-sizing: border-box;
   border: 1px solid #DDDD;
-  height: 360px;
+  /* height: 360px; */
   width: 240px;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px;
   margin-left: -7.5rem;
 
 }
@@ -128,10 +148,11 @@ width: 66%;
 .card.sm-8 {
     background-color: var(--kraft-light-green);box-sizing: border-box;
     border: 1px solid #DDDD;
-    height: 360px;
+    /* height: 360px; */
     width: 240px;
-    border-radius: 5px 5px 0px 0px;
-    margin-left: 6.5rem;
+    border-radius: 5px;
+    /* margin-left: 6.5rem; */
+    padding: 0px;
 }
 .test-nav {
   margin-left: 9rem;

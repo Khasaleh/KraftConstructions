@@ -16,12 +16,15 @@ public class ReviewDto {
     private Long id;
     @NotNull(message = "YourReview field cannot be null")
     private String YourReview;
+    @NotNull(message = "Description field cannot be null")
+    private String description;
     @NotNull(message = "WorkExperience field cannot be null")
     private String WorkExperience;
     @NotNull(message = "YourName field cannot be null")
     private String YourName;
     @NotNull(message = "YourEmail field cannot be null")
     private String YourEmail;
+    private String createdDate;
     @NotNull(message = "approvalStatus field cannot be null")
     private ApprovalStatus approvalStatus;
 

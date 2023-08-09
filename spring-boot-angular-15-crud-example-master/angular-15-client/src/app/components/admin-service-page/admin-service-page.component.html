@@ -4,43 +4,21 @@
         <table class="table">
             <thead>
               <tr class="backgorund">
-                <th>Service name</th>
-                <th>Author</th>
-                <th>Description</th>
-                <th>Date</th>
+                <th class="width">Service name</th>
+                <th >Author</th>
+                <th class="desWidth">Description</th>
+                <th class="width">Date</th>
               </tr>
             </thead>
             <tbody>
-              <tr class="">
-                <td>Decks-Patios</td>
-                <td>Ali</td>
-                <td>Simply dummy text of the printing <br> and typesetting industry.</td>
-                <td>Published <br> 2023/04/07 at 12:47 pm</td>
-              </tr>      
-              <tr class="backgorund">
-                <td>Custom Kitchens</td>
-                <td>Ali</td>
-                <td>Simply dummy text of the printing <br> and typesetting industry.</td>
-                <td>Published <br> 2023/04/07 at 12:47 pm</td>
-              </tr>
-              <tr class="">
-                <td>Custom Baths <br> 
-                <button class="edit">Edit</button> <button class="mt-2 delete"> Delete</button></td>
-                <td>Ali</td>
-                <td>Simply dummy text of the printing <br> and typesetting industry.</td>
-                <td>Published <br> 2023/04/07 at 12:47 pm</td>
-              </tr>
-              <tr class="backgorund">
-                <td>Interior Remodeling</td>
-                <td>Ali</td>
-                <td>Simply dummy text of the printing <br> and typesetting industry.</td>
-                <td>Published <br> 2023/04/07 at 12:47 pm</td>
+              <tr *ngFor="let row of tableData" [class.background]="row.index % 2 === 0">
+                <td>{{ row.serviceName }}</td>
+                <td>{{ row.author }}</td>
+                <td>{{ row.description }}</td>
+                <td>{{ row?.updateDate | date:'yyyy-MM-dd' }} {{ row?.updateDate | date:'hh:mm' }}</td>  
               </tr>
             </tbody>
           </table>
-        <!-- <div class="card-body">
-          This is some text within a card block.
-        </div> -->
       </div>
     </div>
 </div>

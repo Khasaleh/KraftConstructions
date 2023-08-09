@@ -2,14 +2,12 @@
     <div class="logo">
         <a routerLink="#"><img class="img-logo" src="../../../../assets/logo.png"></a>
       </div>
-     
       <a class="dashboard" [routerLink]="['./dashboard']">Dashboard</a>
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdownOpen}"  (click)="toggleDropdown()">
         <div class="btn-wrape">
           <p class="">Pages</p>
           <img class="drop-icon" src="../../../assets/icon-drop.png" alt="">
         </div>
-        <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdownOpen}">
         <a [routerLink]="['./admin-home']">Home</a>
@@ -26,20 +24,17 @@
           <p class="">Services</p>
           <img class="drop-icon" src="../../../assets/icon-drop.png" alt="">
         </div>
-        <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown2Open}">
         <a [routerLink]="['./add-service']">Add Service</a>
         <a [routerLink]="['./pages']">Pages</a>
       </div>
-      
       <!-- button4 -->
       <button class="dropbtn"[ngClass]="{'dropdown-open': isDropdown4Open}"  (click)="toggleDropdown4()">
         <div class="btn-wrape">
           <p class="">User</p>
           <img class="drop-icon" src="../../../assets/icon-drop.png" alt="">
         </div>
-        <!-- <i class="fa fa-caret-down"></i> -->
       </button>
       <div class="dropdown-content" [ngClass]="{'show': isDropdown4Open}">
         <a [routerLink]="['./add-user']">Add new user</a>

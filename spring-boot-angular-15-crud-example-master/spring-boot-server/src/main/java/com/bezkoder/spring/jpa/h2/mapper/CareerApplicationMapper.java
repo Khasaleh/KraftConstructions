@@ -21,6 +21,7 @@ public class CareerApplicationMapper {
         careerApplication.setJobType(requestDto.getJobType());
         careerApplication.setWorkRestrictions(requestDto.getWorkRestrictions());
         careerApplication.setHoursRestrictions(requestDto.getHoursRestrictions());
+        careerApplication.setSkills(requestDto.getSkills());
         careerApplication.setReferences(requestDto.getReferences());
         careerApplication.setOtherNotes(requestDto.getOtherNotes());
         return careerApplication;
@@ -40,6 +41,7 @@ public class CareerApplicationMapper {
         responseDto.setJobType(careerApplication.getJobType());
         responseDto.setWorkRestrictions(careerApplication.getWorkRestrictions());
         responseDto.setHoursRestrictions(careerApplication.getHoursRestrictions());
+        responseDto.setSkills(careerApplication.getSkills());
         responseDto.setReferences(careerApplication.getReferences());
         responseDto.setOtherNotes(careerApplication.getOtherNotes());
         responseDto.setResumeUrl(careerApplication.getResumeUrl());
