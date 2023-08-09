@@ -20,7 +20,7 @@ fileURL1!: File;
 title!:string;
 userdata!:any;
 data!:any;
-globalUrl="http://99.72.32.144:8083";
+globalUrl = 'https://img.kraftconstructionco.com';
 successMessage: string | null = null;
 errorMessage: string | null = null;
 successMessage1: string | null = null;

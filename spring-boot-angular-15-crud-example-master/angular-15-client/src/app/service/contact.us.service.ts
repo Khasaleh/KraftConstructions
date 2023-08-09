@@ -14,12 +14,13 @@ export class ContactUsService {
   deleteUrl:string;
   getContact:string;
   updateContactUrl:string;
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor(private http : HttpClient) { 
-  this.contactUsUrl="http://99.72.32.144:8081/api/contact-us";
-  this.getAllUrl="http://99.72.32.144:8081/api/contact-us";
-  this.deleteUrl="http://99.72.32.144:8081/api/contact-us";
-  this.getContact="http://99.72.32.144:8081/api/contact-address";
-  this.updateContactUrl ="http://99.72.32.144:8081/api/contact-address/update-address";
+  this.contactUsUrl=this.apiUrl+"/contact-us";
+  this.getAllUrl=this.apiUrl+"/contact-us";
+  this.deleteUrl=this.apiUrl+"/contact-us";
+  this.getContact=this.apiUrl+"/contact-address";
+  this.updateContactUrl =this.apiUrl+"/contact-address/update-address";
 
 }
 saveData(user:ContactUs): Observable<ContactUs> {

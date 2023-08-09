@@ -11,11 +11,13 @@ export class CareerDataService {
   getAllUrl:string;
   deleteUrl:string;
   getUserById:string;
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor(private http : HttpClient) { 
-  this.CareerUrl = 'http://99.72.32.144:8081/api/careers-applications';
-  this.getAllUrl="http://99.72.32.144:8081/api/careers-applications";
-  this.deleteUrl="http://99.72.32.144:8081/api/careers-applications";
-  this.getUserById="http://99.72.32.144:8081/api/careers-applications";
+   
+  this.CareerUrl = this.apiUrl+'/careers-applications';
+  this.getAllUrl= this.apiUrl+"/careers-applications";
+  this.deleteUrl= this.apiUrl+"/careers-applications";
+  this.getUserById= this.apiUrl+"/careers-applications";
 
 }
 SaveUser(user: FormData): Observable<any> {

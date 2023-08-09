@@ -12,7 +12,7 @@ import { MatDialog } from '@angular/material/dialog';
   styleUrls: ['./showusers.component.css']
 })
 export class ShowusersComponent implements OnInit {
-  globalUrl = 'http://99.72.32.144:8083';
+  globalUrl = 'https://img.kraftconstructionco.com'
   userdata!:any[];
   userDetail!:FormGroup;
   userObj : AddUser = new AddUser();
