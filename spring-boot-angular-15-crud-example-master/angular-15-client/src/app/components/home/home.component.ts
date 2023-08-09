@@ -22,8 +22,6 @@ export class HomeComponent implements OnInit {
 
 
   globalUrl = 'https://img.kraftconstructionco.com';
-  constructor(private homeService:HomeServiceService){}
-
   bannerDescription: any;
   objects: any[] = [];
   activeSlideIndex: number = 0;
