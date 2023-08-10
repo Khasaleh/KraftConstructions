@@ -6,16 +6,14 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AddCareerNewsService {
-  // AddCareerNewsService(textEditor: any, addLink: any) {
-  //   throw new Error('Method not implemented.');
-  // }
 
+  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor(private http: HttpClient) { }
   getsliderdata(): Observable<any> {
-    return this.http.get('http://99.72.32.144:8081/api/news/')
+    return this.http.get(this.apiUrl+'/news/')
   }
   careerNewsData(description: string ,backgroundColor: string, textColor: string, startDate: string, endDate: string, status: boolean): Observable<any>{
-  return this.http.post('http://99.72.32.144:8081/api/news',{
+  return this.http.post(this.apiUrl+'/news',{
     "description":`${description}`,
     "backgroundColor":`${backgroundColor}`,
     "textColor":`${textColor}`,
@@ -25,6 +23,6 @@ export class AddCareerNewsService {
   })
   }
   toggleButton(): Observable<any>{
-    return this.http.put('http://99.72.32.144:8081/api/news/update-status',{})
+    return this.http.put(this.apiUrl+'/news/update-status',{})
   }
 }
