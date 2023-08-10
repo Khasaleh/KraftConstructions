@@ -45,7 +45,6 @@ export class InteriorRemodelingService {
 
   disableService(serviceId: number): Observable<any> {
     return this.http.patch(this.apiUrl+`/${serviceId}/disable`, {});
-    // http://99.72.32.144:8081/api/8/enable
   };
   saveSeviceDetails(serviceData: FormData): Observable<any> {
     return this.http.post(this.apiUrl+'/services/addDetails', serviceData);
