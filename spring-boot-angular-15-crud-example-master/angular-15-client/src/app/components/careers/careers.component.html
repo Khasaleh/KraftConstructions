@@ -189,29 +189,17 @@
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Name1">Name</label>
                         <input type="name" formControlName="references1" class="form-control" id="Name1">
-                        <div *ngIf="getControl['references1'].touched && getControl['references1'].invalid" class="text-danger">
-
-                            <div *ngIf="getControl['references1'].errors?.['required']">Name is required</div>
-                  
-                          </div>
+                        
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Relationship1">Relationship</label>
                         <input type="text" formControlName="referencesrel1" class="form-control" id="Relationship1">
-                        <div *ngIf="getControl['referencesrel1'].touched && getControl['referencesrel1'].invalid" class="text-danger">
-
-                            <div *ngIf="getControl['referencesrel1'].errors?.['required']">Relationship is required</div>
-                  
-                          </div>
+                      
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="phoneNumber1">Phone</label>
                         <input type="phone" formControlName="referencesnum1" class="form-control" id="phoneNumber1">
-                        <div *ngIf="getControl['referencesnum1'].touched && getControl['referencesnum1'].invalid" class="text-danger">
-
-                            <div *ngIf="getControl['referencesnum1'].errors?.['required']">Phone Number is required</div>
-                  
-                          </div>
+                       
                     </div>
                     <div class="form-group">
                         <label class= "mb-2" class="form-label" for="Name2">Name</label>
@@ -253,7 +241,7 @@
                     </div>
                 </div>
                 <a id="btn" class="button">
-                    <div type="submit" (click)='subitData()' class="learn-more">Submit</div>
+                    <button type="submit" (click)='subitData()' class="learn-more" [disabled]="!userDetail.valid">Submit</button>
                     
                 </a>
                 <div class=" message">
