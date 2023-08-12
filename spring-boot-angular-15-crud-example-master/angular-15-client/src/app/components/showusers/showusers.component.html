@@ -37,7 +37,12 @@
     </thead>
     <tbody>
       <tr *ngFor="let usr of userdata">
-        <td><img class="abc" src = {{globalUrl+usr?.imageUrl}}></td>
+        <td>
+          <img class="abc" [src]="globalUrl + usr?.imageUrl" *ngIf="usr?.imageUrl; else defaultImage">
+      </td>
+      <ng-template #defaultImage>
+          <img class="abc" [src]="'assets/admin-testimg/Group 160.png'">
+      </ng-template>
        
         <td>{{usr.username}}</td>
         <td>{{usr.email}}</td>

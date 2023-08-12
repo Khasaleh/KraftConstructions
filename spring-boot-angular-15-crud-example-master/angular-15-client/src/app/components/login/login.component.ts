@@ -62,10 +62,12 @@ export class LoginComponent {
                 }
            
             }, err => {
-                this.errorMessage=err?.message;
+                // Handle error response
+                this.errorMessage = err?.error.details;
+        
                 setTimeout(() => {
                     this.errorMessage = '';
-                  }, 2000);
+                }, 2000);
             }
             )
 
