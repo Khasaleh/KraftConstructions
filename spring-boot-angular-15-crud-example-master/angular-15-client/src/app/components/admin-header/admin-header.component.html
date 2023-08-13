@@ -1,7 +1,15 @@
 <div class="admin-header ">
   <div class="header-wrape">
   <p class="admin-name">{{user.firstname }} {{user.lastname }}</p>
- <a><img class="admin-img" src={{globalUrl+user?.imageUrl}} alt=""></a>
+  <a>
+    <img class="admin-img" [src]="globalUrl + user?.imageUrl" alt="" *ngIf="user?.imageUrl; else defaultImage">
+</a>
+<ng-template #defaultImage>
+    <a>
+        <img class="admin-img" src="assets/admin-testimg/Group 160.png" alt="">
+    </a>
+</ng-template>
+
  <button mat-icon-button [matMenuTriggerFor]="menu">
   <mat-icon>more_vert</mat-icon>
 </button>
