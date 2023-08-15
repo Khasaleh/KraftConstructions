@@ -13,6 +13,7 @@ export class NewAddComponent {
   data!: any[];
   globalUrl = 'https://img.kraftconstructionco.com';
   itemId : any;
+  selectedServiceId: any
 
   constructor(private newAdditionService: InteriorRemodelingService) { }
   ngOnInit() {
@@ -39,6 +40,7 @@ export class NewAddComponent {
     )
   }
   getOneService(service: any) {
+    this.selectedServiceId = service;
     this.newAdditionService.getServiceById(service).subscribe(
       response => {
         this.serviceData = response;

@@ -1,14 +1,35 @@
-.txt {
-  margin-top: 10px;
-  margin-left: 78px;
-  width: 85%;
+.txt{
+  padding-left: 10%;
+  width: 70%;
 }
 
 .lii {
   margin-left: 45px;
 
 }
-
+.whole-container {
+  padding: 0 5%;
+}
+.container-wrap {
+  width: 100%;
+ }
+.Row-wrap {
+  gap: 20px;
+  justify-content: center;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.green-box {
+  display: flex;
+  justify-content: center;
+}
+.selected-btn {
+  background-color: var(--kraft-d-green); 
+  color: white; 
+}
 #my-img {
   filter: brightness(40%);
 
@@ -74,13 +95,18 @@ h2 {
   padding: 20px;
   margin-bottom: 1rem;
   width: 63rem;
-  margin-left: 5.5rem;
+  /* margin-left: 5.5rem; */
 }
 
 .card-title {
   font-size: 14px;
 }
-
+@media (max-width: 72.5em) {
+  .txt{
+    padding-left: 0px;
+    width: 100%;
+  }
+  }
 @media (max-width: 576px) {
   h2 {
     font-size: 24px;
@@ -106,20 +132,26 @@ h2 {
 .card.sm-12 {
   width: 23rem;
   margin-top: 2rem;
-  margin-left: 7.5rem;
+  /* margin-left: 7.5rem; */
 }
 
 .card.sm-13 {
   width: 23rem;
   margin-top: 2rem;
-  margin-left: 5.5rem;
+  /* margin-left: 5.5rem; */
 }
 
 .card.sm-11 {
   width: 13rem;
   background-color: var(--kraft-light-green);
-  margin-left: 6.5rem;
+  /* margin-left: 6.5rem; */
   margin-top: 2rem;
+}
+.container-para {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
 
 .card.sm-6 {
@@ -211,11 +243,7 @@ img.card-img-top {
     margin-left: 0;
   }
 
-  .txt {
-    margin-top: 10px;
-    margin-left: 0;
-
-  }
+  
 
   .lii {
     margin-left: 0;
@@ -309,11 +337,7 @@ img.card-img-top {
     margin-left: 0;
   }
 
-  .txt {
-    margin-top: 10px;
-    margin-left: 0;
-
-  }
+  
 
   .lii {
     margin-left: 0;
@@ -374,11 +398,6 @@ img.card-img-top {
     margin-left: 0;
     width: 100%;
   }
-
-  .container {
-    width: 100%;
-  }
-
   .btn {
     margin-left: 0;
   }
@@ -427,11 +446,7 @@ img.card-img-top {
     margin-left: 0;
   }
 
-  .txt {
-    margin-top: 10px;
-    margin-left: 0;
-
-  }
+  
 
   .lii {
     margin-left: 0;
