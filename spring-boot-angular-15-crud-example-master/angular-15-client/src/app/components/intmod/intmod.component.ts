@@ -13,6 +13,7 @@ export class IntmodComponent {
   data: any[] = [];
   globalUrl = 'https://img.kraftconstructionco.com';
   itemId : any;
+  selectedServiceId: any
 
   constructor(private interiorRemodService: InteriorRemodelingService) { }
   ngOnInit() {
@@ -42,6 +43,7 @@ export class IntmodComponent {
 
   }
   getOneService(service: any) {
+    this.selectedServiceId = service;
     this.interiorRemodService.getServiceById(service).subscribe(
       response => {
         this.serviceData = response;

@@ -29,7 +29,8 @@
         </div>
         <ul class="list-group list-group-flush">
 
-          <button class="btnClick" (click)="getOneService(service?.id)" *ngFor="let service of data">{{
+          <button class="btnClick" (click)="getOneService(service?.id)" *ngFor="let service of data"
+          [ngClass]="{'selected-btn': service?.id === selectedServiceId}">{{
             service?.serviceName }}
           </button>
 

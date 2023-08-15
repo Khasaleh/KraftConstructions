@@ -38,7 +38,10 @@ h2 {
   text-align: center;
 }
   
-
+.selected-btn {
+  background-color: red; /* Change to your desired color */
+  color: white; /* Change to contrast with the background color */
+}
 .btn {
   display: inline-block;
   background-color: var(--kraft-d-green);

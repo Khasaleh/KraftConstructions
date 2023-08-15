@@ -46,7 +46,9 @@ export class AdminHomeComponent {
   serviceData: any
   images: File[] = [];
   imageLink: any[] = [];
-  testData: any
+  isUploadImage: boolean = false;
+  testData: any;
+  image: any;
   onFileSelected(event: any) {
     this.fileURL = event.target.files[0];
     this.videoLink = URL.createObjectURL(this.fileURL);
@@ -236,12 +238,14 @@ export class AdminHomeComponent {
   }
   activeIndex = 0;
   onFileSelected1(event: any) {
+    this.isUploadImage = true
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.images.push(file);
       this.imageLink.push(URL.createObjectURL(file));
     }
+    this.isUploadImage = false;
   }
   deleteAllTestimonial() {
     this.homeService.deleteAllTestimonial().subscribe(
@@ -268,18 +272,28 @@ export class AdminHomeComponent {
     this.homeService.getHomePageBanner().subscribe(
       response => {
         console.log(response);
-
+        this.image = response;
         this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
-
+        // console.log(this.imageLink,"image link");
+        // this.image = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
+        console.log(this.imageLink,"image link");
+        // console.log(this.imageLink.imageUrl,"image link");
       },
       error => {
         console.error(error);
       }
     )
   }
-  deleteImage(index: number) {
 
-    this.imageLink.splice(index, 1);
+  deleteImage(bannerId: number) {
+   
+    this.homeService.deleteBannerImage(bannerId).subscribe(
+      response => {
+        console.log(response," delete response"); 
+        this.getBannerImages();
+  
+      }
+    )
   }
   onOptionSelected(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
