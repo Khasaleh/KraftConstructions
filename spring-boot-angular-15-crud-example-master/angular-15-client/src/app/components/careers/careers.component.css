@@ -101,6 +101,7 @@
     font-size: var(--font-size-xl);
     color: var(--colors-white);
     text-decoration: none;
+    border: none;
 }
 
 #btn {
@@ -114,6 +115,9 @@
 }
 .learn-more{
     margin: auto;
+    border: none;
+    background-color: var(--kraft-d-green);
+    color: white;
 }
 
 .content5 {
