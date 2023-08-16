@@ -12,13 +12,18 @@
       <div class="alert alert-success" role="alert" *ngIf="successMessage">
         {{ successMessage }}
       </div>
-        <img class="form-img-1" [src]="testImage" controls>
+      <div class="col">
+        <img class="form-img-1 ml-5" [src]="testImage" controls>
        
-        <label for="file-input" class="custom-button">Upload Image</label>
+        <label for="file-input" class="custom-button ml-4 ">Upload Image</label>
         <input formControlName="imageUrl" type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
         <button (click)="testimonialImage()" type="submit" class="btn btn-success btn3">Save</button>
         <label (click)="deleteTestimonialImage(recentlyUploadedImage?.id)" class="custom-button1">Delete Image</label>
-
+      
+        
+          <button (click)="content()" type="submit" class=" btn btn-success slider-button" *ngIf="hideButton">Add Slider</button>
+     
+  </div>
         <div class="group-child21" *ngIf="showSlider">
           <div class="card">
             <div class="card-header cardheader3">
@@ -34,9 +39,9 @@
        
             <div class="card-body">
             
-              <label (click)="deleteSlider()" class=" abcd">Delete Image</label>
+              <label (click)="deleteSlider()" class=" abcd ml-1">Delete Image</label>
              
-              <label for="file-input1" class=" abc">Upload Image</label>
+              <label for="file-input1" class=" abc ml-2 mt-1">Upload Image</label>
               <input multiple type="file" id="file-input1" class="input-file1" (change)="OnSliderSelected($event)" accept="image/*">
               <button (click)="hideContent()" type="submit" class="btn btn-success btn2">Cancel</button>
               <button (click)="saveSliderImage()"type="submit" class="btn btn-success btn-large1">Save</button>
@@ -46,14 +51,6 @@
             </div>
           </div>
         </div>
-        
-  
-    
-          <button (click)="content()" class="group-child20" *ngIf="hideButton"></button>
-          <div (click)="content()"class="add-slider" *ngIf="hideButton" >Add Slider</div>
-         
-         
-          
           
     
       </div>
