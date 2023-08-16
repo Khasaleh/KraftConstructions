@@ -1,8 +1,7 @@
 <app-header></app-header>
-
 <div class="row">
 
-  <div class="col">
+  <div class="column">
 
     <div class="card text-bg-dark">
       <img class="card-img">
@@ -18,73 +17,68 @@
     </div>
   </div>
 </div>
+<div class="whole-container">
+  <div class="container-wrap">
+    <div class="row Row-wrap">
 
-<div class="container d-flex align-items-center justify-content-space-between">
-  <div class="row Row-wrap">
+      <div class="col-lg-2 col-md-6">
+        <div class="card sm-11">
+          <div class="card-header" style="color: var(--kraft-d-green);">
+            <b>Interior Remodeling</b>
+          </div>
+          <ul class="list-group list-group-flush">
 
-    <div class="col-lg-2 col-md-6">
-      <div class="card sm-11">
-        <div class="card-header" style="color: var(--kraft-d-green);">
-          <b>Interior Remodeling</b>
-        </div>
-        <ul class="list-group list-group-flush">
+            <button class="btnClick" (click)="getOneService(service?.id)" *ngFor="let service of data"
+              [ngClass]="{'selected-btn': service?.id === selectedServiceId}">{{
+              service?.serviceName }}
+            </button>
 
-          <button class="btnClick" (click)="getOneService(service?.id)" *ngFor="let service of data">{{
-            service?.serviceName }}
-          </button>
-
-        </ul>
-      </div>
-    </div>
-
-    <div class="col-lg-4 col-md-6">
-      <div class="card sm-12">
-        <img src={{this.globalUrl+serviceData?.beforeImageUrl}} class="height">
-        <div class="card-body" style="background-color: #FFE7E7;">
-          <h5 class="card-title"><b>{{serviceData?.beforeImageTitle}}</b></h5>
+          </ul>
         </div>
       </div>
-    </div>
 
-    <div class="col-lg-4 col-md-6">
-      <div class="card sm-13">
-        <img src={{this.globalUrl+serviceData?.afterImageUrl}} class=" height" alt="...">
-        <div class="card-body" style="background-color: var(--kraft-light-green);">
-          <h5 class="card-title"><b>{{serviceData?.afterImageTitle}}</b></h5>
+      <div class="col-lg-4 col-md-6">
+        <div *ngIf="serviceData?.beforeImageUrl" class="card sm-12">
+          <img src={{this.globalUrl+serviceData?.beforeImageUrl}} class="height">
+          <div class="card-body" style="background-color: #FFE7E7;">
+            <h5 class="card-title"><b>{{serviceData?.beforeImageTitle}}</b></h5>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div *ngIf="serviceData?.afterImageUrl" class="card sm-13">
+          <img src={{this.globalUrl+serviceData?.afterImageUrl}} class=" height" alt="...">
+          <div class="card-body" style="background-color: var(--kraft-light-green);">
+            <h5 class="card-title"><b>{{serviceData?.afterImageTitle}}</b></h5>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-<div class="container-fluid">
-  <div class="row mt-3 mb-2">
-    <div class="col-sm-12 col-md-6 offset-md-4 col-lg-7 offset-lg-3">
-      <p class="txt">{{serviceData?.description}}</p>
-
+  <div class="container-para">
+    <p class="txt">{{serviceData?.description}}</p>
+  </div>
+  <div class="container mt-3 mb-4">
+    <div class="row justify-content-center gap-3">
+      <div class="card sm-8" *ngFor="let item of imageData">
+        <img [src]=this.globalUrl+item?.imageUrl class="card-img-top" alt="...">
+        <!-- <div class="card-body">
+          <a href="#" class="btn btn-success">More Details</a>
+        </div> -->
+      </div>
     </div>
   </div>
-</div>
-<div class="container mt-3 mb-4">
-  <div class="row justify-content-center gap-3">
-    <div class="card sm-8" *ngFor="let item of imageData">
-      <img [src]=this.globalUrl+item?.imageUrl class="card-img-top" alt="...">
+  <div class="green-box">
+    <div class="card align-items-center justify-content-center ">
       <div class="card-body">
-        <a href="#" class="btn btn-success">More Details</a>
+        <p class="card-text" style="color: white; font-size: 20px;">
+          Looking for an affordable and reliable construction company for your project? <span>
+            <a routerLink="/request-estimate" class="btn btn-success" style="border-color:white;"><span>Get a
+                Quote</span></a> </span>
+        </p>
       </div>
     </div>
   </div>
 </div>
-<div class="col-12 col-lg-8 offset-lg-1">
-  <div class="card align-items-center justify-content-center ">
-    <div class="card-body">
-      <p class="card-text" style="color: white; font-size: 20px;">
-        Looking for an affordable and reliable construction company for your project? <span>
-          <a routerLink="/request-estimate" class="btn btn-success" style="border-color:white;"><span>Get a
-              Quote</span></a> </span>
-      </p>
-    </div>
-  </div>
-</div>
-
 
 <app-footer></app-footer>

@@ -28,7 +28,7 @@
                                         [class.active]="activeIndex === i">
                                         <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image"
                                             (click)="setActiveIndex(i)">
-                                        <div class="del-btn"><button class="delete-icon" (click)="deleteImage(i)"><i
+                                        <div *ngFor="let image of image" class="del-btn"><button class="delete-icon" (click)="deleteImage(image.id)"><i
                                                     class="fa fa-trash"></i></button></div>
                                     </div>
                                 </div>

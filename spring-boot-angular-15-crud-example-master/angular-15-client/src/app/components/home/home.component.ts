@@ -15,12 +15,11 @@ export class HomeComponent implements OnInit {
   currentSlide = 0;
   showSlide() {
     this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    // console.log( this.currentSlide)
   }
   apiData: any;
   sliderData: any;
   bannerData: any;
-
-
   globalUrl = 'https://img.kraftconstructionco.com';
   bannerDescription: any;
   objects: any[] = [];
@@ -28,10 +27,16 @@ export class HomeComponent implements OnInit {
   serviceData: any
   constructor(private homeService: HomeServiceService) { }
   ngOnInit(): void {
-    setInterval(() => this.showSlide(), 1000);
+    setInterval(() => 
+    this.showSlide(),
+     1000);
+     console.log(this.showSlide())
     this.homeService.getHomePageBanner().subscribe(
       response => {
-        this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl); // Assuming the API response is an array of strings
+        if(response){
+          this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl); 
+        }
+        // Assuming the API response is an array of strings
         console.log(this.slides, "sides data"); 
         console.log(this.slides.length,"slide length")// Check the updated slides array
       },
