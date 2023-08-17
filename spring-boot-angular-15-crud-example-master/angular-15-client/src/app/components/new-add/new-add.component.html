@@ -1,11 +1,11 @@
 <app-header></app-header>
 
 <div class="row">
-  <div class="col">
+  <div class="column">
     <div class="card text-bg-dark">
       <img class="card-img">
       <div class="card-img-overlay d-flex flex-column justify-content-center ">
-        <h2>New Additions</h2>
+        <h2 class="int-head">New Additions</h2>
         <div class="test-nav">
           <a href="">Home</a>
           <a href=""><img src="../../../assets/Vector 9.png" alt=""></a>
@@ -32,7 +32,7 @@
         </div>
       </div>
       <div class="col-lg-4 col-md-6">
-        <div class="card sm-12">
+        <div *ngIf="serviceData?.beforeImageUrl" class="card sm-12">
           <img src={{this.globalUrl+serviceData?.beforeImageUrl}} class="height " alt="...">
           <div class="card-body" style="background-color: #FFE7E7;">
             <h5 class="card-title"><b>{{serviceData?.beforeImageTitle}}</b></h5>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="col-lg-4 col-md-6">
-        <div class="card sm-13">
+        <div *ngIf="serviceData?.afterImageUrl" class="card sm-13">
           <img src={{this.globalUrl+serviceData?.afterImageUrl}} class="height" alt="...">
           <div class="card-body" style="background-color: var(--kraft-light-green);">
             <h5 class="card-title"><b>{{serviceData?.afterImageTitle}}</b></h5>

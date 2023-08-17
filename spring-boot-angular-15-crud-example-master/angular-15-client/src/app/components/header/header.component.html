@@ -55,15 +55,15 @@
             <a routerLink="/about-us"> About Us </a>
             <a routerLink="/interior-remodelling">Interior Remodeling</a>
             <div class="drop-down">
-              <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
-              <div class="drop-down-content">
+              <button class="dropbtn"(click)="toggleDropdown2()"><img src="../../../assets/dropDown.png" alt=""></button>
+              <div *ngIf="isDropdownOpen2" class="drop-down-content1">
                 <a *ngFor="let item of DropData"  (click)="getOneService(item.id)">{{ item.serviceName }} </a>
               </div>
             </div>
             <a routerLink="/new-additions">New Additions</a>
             <div class="drop-down">
-              <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
-              <div class="drop-down-content">
+              <button class="dropbtn"(click)="toggleDropdown()"><img src="../../../assets/dropDown.png" alt=""></button>
+              <div *ngIf="isDropdownOpen" class="drop-down-content">
                 <a *ngFor="let item of DropData2"  (click)="getOneService1(item.id)">{{ item.serviceName }}</a>
               </div>
             </div>
@@ -88,18 +88,18 @@
       <li><a routerLink="/payment">Payments</a></li>
       <li class="drop-down1"><a routerLink="/interior-remodelling">Interior Remodeling</a>
         <div class="drop-down">
-          <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
-          <div class="drop-down-content">
-            <a routerLink="/interior-remodelling" *ngFor="let item of DropData">{{ item.serviceName }}</a>
+          <button class="dropbtn"(click)="toggleDropdown2()"><img src="../../../assets/dropDown.png" alt=""></button>
+          <div *ngIf="isDropdownOpen2" class="drop-down-content1">
+            <a *ngFor="let item of DropData"  (click)="getOneService(item.id)">{{ item.serviceName }} </a>
           </div>
         </div>
       </li>
       <li class="drop-down2">
         <a routerLink="/new-additions">New Additions</a>
         <div class="drop-down">
-          <a href="#"><img src="../../../assets/dropDown.png" alt=""></a>
-          <div class="drop-down-content">
-            <a routerLink="/new-additions" *ngFor="let item of DropData2">{{ item.serviceName }}</a>
+          <button class="dropbtn"(click)="toggleDropdown()"><img src="../../../assets/dropDown.png" alt=""></button>
+          <div *ngIf="isDropdownOpen" class="drop-down-content">
+            <a *ngFor="let item of DropData2"  (click)="getOneService1(item.id)">{{ item.serviceName }}</a>
           </div>
         </div>
       </li>

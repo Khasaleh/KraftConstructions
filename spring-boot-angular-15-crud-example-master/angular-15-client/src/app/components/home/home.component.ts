@@ -14,8 +14,16 @@ export class HomeComponent implements OnInit {
   slides: string[] = [];
   currentSlide = 0;
   showSlide() {
-    this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-    // console.log( this.currentSlide)
+    console.log(this.slides.length)
+    // this.currentSlide = (this.currentSlide + 1) % this.slides.length;
+    if(this.currentSlide == this.slides.length-1){
+      this.currentSlide = 0;
+    }
+    else{
+      this.currentSlide = this.currentSlide + 1;
+    }
+    
+    console.log( this.currentSlide)
   }
   apiData: any;
   sliderData: any;
@@ -27,10 +35,6 @@ export class HomeComponent implements OnInit {
   serviceData: any
   constructor(private homeService: HomeServiceService) { }
   ngOnInit(): void {
-    setInterval(() => 
-    this.showSlide(),
-     1000);
-     console.log(this.showSlide())
     this.homeService.getHomePageBanner().subscribe(
       response => {
         if(response){
@@ -38,9 +42,15 @@ export class HomeComponent implements OnInit {
         }
         // Assuming the API response is an array of strings
         console.log(this.slides, "sides data"); 
-        console.log(this.slides.length,"slide length")// Check the updated slides array
+        console.log(this.slides.length,"slide length")// Check the updated slides arra
+        console.log(response,"response getting");
       },
     )
+    setInterval(() => 
+    this.showSlide(),
+     3000);
+     console.log(this.showSlide())
+   
     this.homeService.getHomePageData().subscribe(
       data => {
         this.apiData = data;

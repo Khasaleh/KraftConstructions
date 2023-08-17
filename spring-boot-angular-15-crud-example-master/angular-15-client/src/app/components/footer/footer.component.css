@@ -62,16 +62,20 @@ iframe.logo-2 {
 .group {
     width: 100%;
     display: flex;
-    gap: 300px;
+    gap: 26%;
     justify-content: end;
 }
 
 
-
+@media (max-width: 72.5em) {
+    .group {
+        gap: 20%;
+    }
+}
 /* media queries */
 @media (max-width: 59em) {
     .footer-bacground {
-        height: 315px;
+        height: auto;
     }
 
     .img-logo {
@@ -79,8 +83,10 @@ iframe.logo-2 {
     }
 
     .group {
-        gap:80px;
-        /* margin: 0px 43% 15px 35%; */
+        flex-direction: column;
+        justify-content: center;
+        margin-bottom: 10px;
+        align-items: center;
     }
 
     .footer-res {
@@ -119,10 +125,6 @@ iframe.logo-2 {
 }
 
 @media (max-width: 47em) {
-    .group {
-        /* margin: 0px 43% 15px 25%; */
-    }
-
     .about-us {
         font-size: 15px;
     }

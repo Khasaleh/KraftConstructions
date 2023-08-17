@@ -18,7 +18,7 @@
                                     [ngClass]="{ 'active': i === activeIndex }" (click)="setActiveIndex(i)"></span>
                             </div>
                             <div class="d-flex gap-3 mt-4">
-                                <button class="video-btn">
+                                <button type="button" class="video-btn">
                                     <label class="img-upld" for="file-inputt">+</label>
                                     <input type="file" id="file-inputt" class="input-file"
                                         (change)="onFileSelected1($event)" accept="image/*" multiple>
@@ -28,8 +28,9 @@
                                         [class.active]="activeIndex === i">
                                         <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image"
                                             (click)="setActiveIndex(i)">
-                                        <div *ngFor="let image of image" class="del-btn"><button class="delete-icon" (click)="deleteImage(image.id)"><i
-                                                    class="fa fa-trash"></i></button></div>
+                                        <div *ngFor="let image of image" class="del-btn"><button class="delete-icon"
+                                                (click)="deleteImage(image.id)"><i class="fa fa-trash"></i></button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -140,24 +141,6 @@
                             <option value="addition">New Addition</option>
                         </select>
                     </div>
-                    <!-- <div class="check-button-wrape">
-                        <div class="check-button">
-                            <input type="checkbox" id="file-input" class="input-check">
-                            <label class="check-btn">Kitchen</label>
-                        </div>
-                        <div class="check-button">
-                            <input type="checkbox" id="file-input" class="input-check">
-                            <label class="check-btn">Bathroom</label>
-                        </div>
-                        <div class="check-button">
-                            <input type="checkbox" id="file-input" class="input-check">
-                            <label class="check-btn">Decks-Patios</label>
-                        </div>
-                        <div class="check-button">
-                            <input type="checkbox" id="file-input" class="input-check">
-                            <label class="check-btn">Basements</label>
-                        </div>
-                    </div> -->
                     <div class="check-button-wrape">
                         <div class="check-button" *ngFor="let services of service">
                             <input type="checkbox" id="file-input" class="input-check" [value]="services"
@@ -179,43 +162,7 @@
                                     <div class="read-more">Read more</div>
                                 </a>
                             </div>
-                            <!-- <div class="component">
-                                <div class="kitchen-1-icon"><img class="img-logo" alt=""
-                                        src="../../../assets/kitchen 1 (1).png" /></div>
-                                <h3 class="custom-kitchens">Custom Kitchens</h3>
-                                <p class="simply-dummy-text">
-                                    simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard
-                                </p>
-                                <a href="#" class="rectangle-group">
-                                    <div class="read-more">Read more</div>
-                                </a>
-                            </div>
-                            <div class="component">
-                                <div class="kitchen-1-icon"><img class="img-logo" alt=""
-                                        src="../../../assets/kitchen 1 (1).png" /></div>
-                                <h3 class="custom-kitchens">New Additions</h3>
-                                <p class="simply-dummy-text">
-                                    simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard
-                                </p>
-                                <a routerLink="/new-additions" class="rectangle-group">
-                                    <div class="read-more">Read more</div>
-                                </a>
-                            </div>
-                            <div class="component">
-                                <div class="kitchen-1-icon"><img class="img-logo" alt=""
-                                        src="../../../assets/kitchen 1 (1).png" />
-                                </div>
-                                <h3 class="custom-kitchens">Decks and Patios</h3>
-                                <p class="simply-dummy-text">
-                                    simply dummy text of the printing and typesetting industry. Lorem
-                                    Ipsum has been the industry's standard
-                                </p>
-                                <a href="#" class="rectangle-group">
-                                    <div class="read-more">Read more</div>
-                                </a>
-                            </div> -->
+                        
                         </div>
                     </div>
                     <div class="saveBtn  mb-3 mt-5">
