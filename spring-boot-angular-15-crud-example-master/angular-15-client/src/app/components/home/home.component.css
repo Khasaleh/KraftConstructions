@@ -211,7 +211,7 @@ a {
 }
 .headline marquee {
     font-size: var(--font-size-sm);
-    color: whitesmoke;
+    /* color: whitesmoke; */
 }
 
 .slider {

@@ -15,6 +15,8 @@ export class HeaderComponent implements OnInit {
   DropData2: any
   serviceData: any
   imageData: any[] =[];
+  isDropdownOpen = false;
+  isDropdownOpen2 = false;
   constructor(private headerService: HomeServiceService, private intService: InteriorRemodelingService, private router: Router) { }
   ngOnInit(): void {
     this.headerService.getsliderdata().subscribe(
@@ -28,18 +30,23 @@ export class HeaderComponent implements OnInit {
     );
     this.headerService.getServiceByPage1().subscribe(
       response => {
-        this.DropData = response;
+        this.DropData = response.filter((service: { active: boolean; }) => service.active === true);
         console.log(this.DropData);
       }
     )
     this.headerService.getServiceByPage2().subscribe(
       response => {
-        this.DropData2 = response;
+        this.DropData2 = response.filter((service: { active: boolean; }) => service.active === true);
       }
     )
 
   }
-
+  toggleDropdown(): void {
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+  toggleDropdown2(): void {
+    this.isDropdownOpen2 = !this.isDropdownOpen2;
+  }
   getOneService(serviceId: any) {
     this.intService.updateData(serviceId);
     this.router.navigate(['/interior-remodelling']);

@@ -1,14 +1,21 @@
 .txt{
-  padding-left: 10%;
-  width: 70%;
+  padding-left: 15%;
+  width: 78%;
 }
 
 .lii {
   margin-left: 45px;
 
 }
+.row {
+  margin: 0px;
+}
 .whole-container {
   padding: 0 5%;
+}
+.column{
+  padding: 0px;
+  /* margin-top: 80px; */
 }
 .container-wrap {
   width: 100%;
@@ -25,6 +32,7 @@
 .green-box {
   display: flex;
   justify-content: center;
+  padding: 10px;
 }
 .selected-btn {
   background-color: var(--kraft-d-green); 
@@ -39,11 +47,10 @@
   height: 230px;
 }
 
-h2 {
+.int-head{
   font-size: 34px;
   margin-left: 9rem;
 }
-
 .list-group-item {
   background-color: var(--gray);
   border: 1px solid var(--color-darkwhite);
@@ -102,27 +109,12 @@ h2 {
   font-size: 14px;
 }
 @media (max-width: 72.5em) {
-  .txt{
-    padding-left: 0px;
-    width: 100%;
+
+  .int-head{
+    font-size: 34px;
+    margin-left: 0px
   }
   }
-@media (max-width: 576px) {
-  h2 {
-    font-size: 24px;
-    margin-left: 0;
-
-  }
-
-
-}
-
-
-
-
-
-
-
 
 .card-text {
   font-size: 14px;
@@ -186,14 +178,11 @@ h2 {
 }
 
 .card.sm-8 {
-  background-color: var(--kraft-light-green);
-  box-sizing: border-box;
-  border: 1px solid #DDDD;
-  /* height: 360px; */
+  border: none;
   width: 240px;
+  /* height:auto; */
   border-radius: 5px;
   padding: 0px;
-  /* margin-left: 6.5rem; */
 }
 
 img.card-img-top {
@@ -211,8 +200,16 @@ img.card-img-top {
   padding: 0px 3px;
 
 }
-
+@media (max-width: 59em) {
+  .txt{
+      padding-left: 15px;
+      width: 100%
+  }
+}
 @media (max-width: 567px) {
+  .column{
+    margin-top: 80px;
+  }
   .get-quote {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -285,13 +282,11 @@ img.card-img-top {
   }
 
   .card.sm-8 {
-    background-color: var(--kraft-light-green);
     box-sizing: border-box;
-    border: 1px solid #DDDD;
-    height: 100%;
     width: 100%;
     border-radius: 5px 5px 0px 0px;
     margin-left: 0;
+
   }
 
   .card.sm-13 {
@@ -379,10 +374,7 @@ img.card-img-top {
   }
 
   .card.sm-8 {
-    background-color: var(--kraft-light-green);
     box-sizing: border-box;
-    border: 1px solid #DDDD;
-    height: 100%;
     width: 100%;
     border-radius: 5px 5px 0px 0px;
     margin-left: 0;
@@ -488,10 +480,7 @@ img.card-img-top {
   }
 
   .card.sm-8 {
-    background-color: var(--kraft-light-green);
     box-sizing: border-box;
-    border: 1px solid #DDDD;
-    height: 100%;
     width: 100%;
     border-radius: 5px 5px 0px 0px;
     margin-left: 0;
