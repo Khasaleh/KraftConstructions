@@ -6,6 +6,9 @@
 .whole-wrape {
     display: flex;
 }
+.del-btn {
+    margin-top: -20px;
+}
 
 .img-logo {
     width: 100%;
