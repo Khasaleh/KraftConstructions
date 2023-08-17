@@ -26,9 +26,6 @@ export class HomeServiceService {
   getsliderdata(): Observable<any> {
     return this.http.get(this.apiUrl+'/news/')
   }
-  // getHomePageBanner(): Observable<any[]> {
-  //   return this.http.get(this.apiUrl+'/homepage-banner');
-  // }
   getHomePageBanner(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl + '/homepage-banner');
   }

@@ -46,7 +46,7 @@ export class AdminHomeComponent {
   serviceData: any
   images: File[] = [];
   imageLink: any[] = [];
-  isUploadImage: boolean = false;
+  // isUploadImage: boolean = false;
   testData: any;
   image: any;
   onFileSelected(event: any) {
@@ -189,8 +189,8 @@ export class AdminHomeComponent {
           console.error(error);
         }
       )
+      this.uploadImages1();
     }
-    this.uploadImages();
   }
   onSubmit() {
     if (this.aboutUsForm.valid) {
@@ -238,14 +238,13 @@ export class AdminHomeComponent {
   }
   activeIndex = 0;
   onFileSelected1(event: any) {
-    this.isUploadImage = true
+    // this.isUploadImage = true
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.images.push(file);
       this.imageLink.push(URL.createObjectURL(file));
     }
-    this.isUploadImage = false;
   }
   deleteAllTestimonial() {
     this.homeService.deleteAllTestimonial().subscribe(
@@ -259,14 +258,17 @@ export class AdminHomeComponent {
       formData.append('images', this.images[i]);
     }
     console.log(formData);
-    this.homeService.saveBannnerImage(formData).subscribe(
-      response => {
-        console.log(response);
-      },
-      error => {
-        console.error(error);
-      }
-    );
+    if (formData) {
+      this.homeService.saveBannnerImage(formData).subscribe(
+        response => {
+          console.log(response);
+        },
+        error => {
+          console.error(error);
+        }
+      );
+    }
+
   }
   getBannerImages() {
     this.homeService.getHomePageBanner().subscribe(
@@ -276,7 +278,7 @@ export class AdminHomeComponent {
         this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
         // console.log(this.imageLink,"image link");
         // this.image = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
-        console.log(this.imageLink,"image link");
+        console.log(this.imageLink, "image link");
         // console.log(this.imageLink.imageUrl,"image link");
       },
       error => {
@@ -286,12 +288,12 @@ export class AdminHomeComponent {
   }
 
   deleteImage(bannerId: number) {
-   
+
     this.homeService.deleteBannerImage(bannerId).subscribe(
       response => {
-        console.log(response," delete response"); 
+        console.log(response, " delete response");
         this.getBannerImages();
-  
+
       }
     )
   }
@@ -318,7 +320,7 @@ export class AdminHomeComponent {
           });
     }
   }
- 
+
   getSrviceData() {
     this.homeService.getServicesData().subscribe(
       response => {
@@ -334,14 +336,14 @@ export class AdminHomeComponent {
     this.serviceList.push(serviceIds)
   }
 
-  uploadImages() {
-    this.uploadImages1();
-    console.log(this.images);
-  }
+  // uploadImages() {
+  //   this.uploadImages1();
+  //   console.log(this.images);
+  // }
   setActiveIndex(index: number) {
     this.activeIndex = index;
   }
- 
+
   getTestData() {
     this.homeService.getTestimonialsData().subscribe(
       response => {
