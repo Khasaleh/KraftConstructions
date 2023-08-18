@@ -175,6 +175,7 @@ export class AdminServicesComponent {
       this.interiorRemodelingService.getServiceByPage1()
         .subscribe(
           data => {
+            this.services = data;
             this.service = data;
             this.serviceNames = this.service.map(service => service.serviceName);
             this.selectedService = '';
@@ -184,6 +185,7 @@ export class AdminServicesComponent {
         .subscribe(
           data => {
             console.log(data);
+            this.services = data;
             this.service = data;
             this.serviceNames = this.service.map(service => service.serviceName);
             this.selectedService = ''; // 
@@ -273,5 +275,14 @@ export class AdminServicesComponent {
         console.log(error);
       }
     )
+  }
+  deleteOneService(id: number){
+  this.interiorRemodelingService.deleteService(id).subscribe(
+    response => {
+      // this.successMessage = ''
+      console.log(response,"delete service");
+      this.getServices();
+    }
+  )
   }
 }

@@ -6,10 +6,6 @@
 .whole-wrape {
     display: flex;
 }
-.del-btn {
-    margin-top: -20px;
-}
-
 .img-logo {
     width: 100%;
     height: 200px;
@@ -692,4 +688,7 @@ input:checked+.slider:before {
         margin-right: 10px;
     }
 
+}
+.del-btn {
+    margin-top: -20px;
 }

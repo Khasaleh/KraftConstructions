@@ -25,10 +25,10 @@
                                 </button>
                                 <div class="slideshow-thumbnails d-flex gap-3">
                                     <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item"
-                                        [class.active]="activeIndex === i">
+                                        [class.active]="activeIndex === i" >
                                         <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image"
                                             (click)="setActiveIndex(i)">
-                                        <div *ngFor="let image of image" class="del-btn"><button class="delete-icon"
+                                        <div *ngFor="let image of image" class="del-btn"><button type="button" class="delete-icon"
                                                 (click)="deleteImage(image.id)"><i class="fa fa-trash"></i></button>
                                         </div>
                                     </div>

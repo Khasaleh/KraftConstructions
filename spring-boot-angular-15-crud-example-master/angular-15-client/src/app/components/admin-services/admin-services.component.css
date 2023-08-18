@@ -79,13 +79,23 @@
     padding: 18px 0px;
     width: 27%;
 }
-
+.drop-top {
+    padding-bottom: 30px;
+    width: 64%;
+}
+.delete-icon{
+    border: none;
+}
+.button-wrap {
+    display: flex;
+    justify-content: space-between;
+}
 .grey-box {
     background-color: #EFF2F5;
     width: 280px;
     border-radius: 4px;
     padding: 10px 10px 10px 20px;
-    overflow: scroll;
+    overflow-y: scroll;
     height: 300px;
 }
 
