@@ -237,14 +237,28 @@ export class AdminHomeComponent {
     this.buttonLinkStatus();
   }
   activeIndex = 0;
+  // onFileSelected1(event: any) {
+  //   // this.isUploadImage = true
+  //   const files = event.target.files;
+  //   for (let i = 0; i < files.length; i++) {
+  //     const file = files[i];
+  //     this.images.push(file);
+  //     this.imageLink.push(URL.createObjectURL(file));
+  //   }
+
+  // }
   onFileSelected1(event: any) {
-    // this.isUploadImage = true
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.images.push(file);
       this.imageLink.push(URL.createObjectURL(file));
     }
+    
+    // Trigger getBannerImages() after a delay of 2 seconds
+    // setTimeout(() => {
+    //   this.getBannerImages();
+    // }, 2000); // 2000 milliseconds = 2 seconds
   }
   deleteAllTestimonial() {
     this.homeService.deleteAllTestimonial().subscribe(
@@ -288,7 +302,7 @@ export class AdminHomeComponent {
   }
 
   deleteImage(bannerId: number) {
-
+    
     this.homeService.deleteBannerImage(bannerId).subscribe(
       response => {
         console.log(response, " delete response");
@@ -297,6 +311,26 @@ export class AdminHomeComponent {
       }
     )
   }
+  // deleteImage(bannerId: number) {
+  //   this.homeService.deleteBannerImage(bannerId).subscribe(
+  //     response => {
+  //       console.log(response, "delete response");
+  //       const imageToDelete = this.image.find((image: { id: number; }) => image.id === bannerId);
+  //       if (imageToDelete) {
+  //         const indexInArray = this.image.indexOf(imageToDelete);
+  //         if (indexInArray !== -1) {
+  //           this.images.splice(indexInArray, 1);
+  //           this.imageLink.splice(indexInArray, 1);
+  //         }
+  //       }
+  //     },
+  //     error => {
+  //       console.error(error);
+  //     }
+  //   );
+  // }
+  
+   
   onOptionSelected(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'interior') {

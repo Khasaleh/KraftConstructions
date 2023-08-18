@@ -55,5 +55,8 @@ export class InteriorRemodelingService {
   getServicesImages(serviceId: number): Observable<any>{
     return this.http.get(this.apiUrl+`/${serviceId}/images`)
   }
+  deleteService(serviceId: number): Observable<any>{
+    return this.http.delete(this.apiUrl+`/delete-service/${serviceId}`)
+  }
 
 }
