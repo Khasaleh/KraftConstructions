@@ -27,14 +27,38 @@
                                     {{ successMessage }}
                                 </div>
                             </div>
-                            <div class="grey-box">
-                                <h3 class="label-box">Active Services</h3>
-                                <div *ngFor="let service of services" class="check-button">
-                                    <input type="checkbox" [checked]="service.active"
-                                        (change)="toggleCheckbox(service)">
-                                    <label class="check-btn">{{ service.serviceName }}</label>
+                            <div>
+                                <div class="drop-top">
+                                    <label class="label2 mb-3" for="inputField">Select Page</label> <br>
+                                    <select class="inputField" (change)="onOptionSelected($event)"
+                                        [(ngModel)]="selectedOption1">
+                                        <option value="interior">Interior Remodeling</option>
+                                        <option value="addition">New Addition</option>
+                                    </select>
                                 </div>
+                                <div class="grey-box">
+                                    <h3 class="label-box">Active Services</h3>
+                                    <div *ngFor="let service of services" class="check-button">
+                                        <div class="button-wrap">
+                                            <div>
+                                                <input type="checkbox" [checked]="service.active"
+                                                    (change)="toggleCheckbox(service)">
+                                                <label class="check-btn">{{ service.serviceName }}</label>
+                                            </div>
+                                            <button (click)="deleteOneService(service.id)" type="button" class="delete-icon"><i
+                                                    class="fa fa-trash"></i></button>
+                                        </div>
+                                    </div>
+                                    <div class="alert alert-danger" role="alert" *ngIf="errorMessages">
+                                        {{ errorMessages }}
+                                    </div>
+                                    <div class="alert alert-success" role="alert" *ngIf="successMessages">
+                                        {{ successMessages }}
+                                    </div>
+                                </div>
+                              
                             </div>
+
 
                         </div>
                     </div>

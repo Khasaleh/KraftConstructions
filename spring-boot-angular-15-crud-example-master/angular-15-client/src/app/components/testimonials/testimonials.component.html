@@ -17,124 +17,134 @@
     <section class="rating-form">
         <div class="new-container">
             <div class="rating-stars-head">
-            <h4 class="your-rating">Your Rating</h4>
-            <div class="rating">
-                <input type="radio" id="star5" name="rating" value="5">
-                <label for="star5"></label>
-                <input type="radio" id="star4" name="rating" value="4">
-                <label for="star4"></label>
-                <input type="radio" id="star3" name="rating" value="3">
-                <label for="star3"></label>
-                <input type="radio" id="star2" name="rating" value="2">
-                <label for="star2"></label>
-                <input type="radio" id="star1" name="rating" value="1">
-                <label for="star1"></label>
-            </div>
+                <h4 class="your-rating">Your Rating</h4>
+                <div class="rating">
+                    <input type="radio" id="star5" name="rating" value="5">
+                    <label for="star5"></label>
+                    <input type="radio" id="star4" name="rating" value="4">
+                    <label for="star4"></label>
+                    <input type="radio" id="star3" name="rating" value="3">
+                    <label for="star3"></label>
+                    <input type="radio" id="star2" name="rating" value="2">
+                    <label for="star2"></label>
+                    <input type="radio" id="star1" name="rating" value="1">
+                    <label for="star1"></label>
+                </div>
             </div>
             <form>
-            <div class="rating-form-content">
-            
-                <div class="form-wrape">
-                    <form [formGroup]="userDetail">
-                        <div class="form-group  form-group-pad">
-                            <label for="formGroupExampleInput">Your Review</label>
-                            <input formControlName="yourReview" type="text" class="form-control" id="formGroupExampleInput"
-                                placeholder="Summarize your review">
-                        </div>
-                        <div class="form-group  form-group-pad">
-                            <label for="exampleTextarea">Description</label>
-                            <textarea formControlName="description" class="form-control form-control-lg" id="exampleTextarea" rows="5"></textarea>
-                            <div *ngIf="getControl['description'].touched && getControl['description'].invalid" class="text-danger">
-                                <div *ngIf="getControl['description'].errors?.['maxlength']">Work Experience should have at most {{ getControl['description'].errors?.['maxlength'].requiredLength }} characters</div>
-                            </div>
-                        </div>
-                        <div class="form-group  form-group-pad">
-                            <label for="formGroupExampleInput2">Working Experience</label>
-                            <input formControlName="workExperience" type="text" class="form-control" id="formGroupExampleInput2"
-                               >
-                        </div>
-                        <div class="form-group  form-group-pad">
-                            <label for="email">Your Email</label>
-                            <input formControlName="yourEmail" type="email" class="form-control" id="email"
-                                placeholder="Write your email">
-                        </div>
-                        <div class="form-group  form-group-pad">
-                            <label for="name">Your Name</label>
-                            <input formControlName="yourName" type="name" class="form-control" id="name"
-                                placeholder="Write your Name">
-                        </div>
-                   
-                    <a id="btn" class="button">
-                        <div (click)="submit()" class="learn-more">Submit your review</div>
-                    </a>
-                </form>
-                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
-                        {{ successMessage }}
-                      </div>
-                      
-                      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-                        {{ errorMessage }}
-                      </div>
-                    <h2 class="s-head">What other says about us</h2>
-                
-                    <div *ngFor="let data of userdata" class="review-part">
-                        <div class="review-sec-head">
-                            <h3 class="th-head">{{data.yourReview}}</h3>
-                            <div  class="review-head-wrape">
-                                <div class="test-rating">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/star.png" alt="">
-                                    <img class="star-img" src="../../../assets/Star5.png" alt="">
-                                </div>
-                                <div class="date"> {{ data?.createdDate | date:'yyyy-MM-dd' }} {{ data?.createdDate | date:'hh:mm' }}</div>
-                            </div>
-                        </div>
-                        <p class="test-para">
-                            {{data.description}}
-                        </p>
+                <div class="rating-form-content">
 
-                    </div> 
-                </div>
-                <div class="form-img">
-                    <ng-container *ngIf="imagedata && imagedata.length > 0">
-                        <img class="form-img-1" [src]="globalUrl + (imagedata[imagedata.length - 1]?.imageUrl || '')" alt="Uploaded Image" accept="image/*">
-                      </ng-container>
-                      
-                      
-                    
-                    <div id="carouselExample" class="carousel slide"style="margin-top:20px;">
-                        
-                        <div class="carousel-inner">
-                           <div class="carousel-item active" *ngFor="let abc of sliderdata">
-                            <img src={{globalUrl+abc?.imageUrl}} class="d-block w-100" alt="...">
-                          </div>
-                     
+                    <div class="form-wrape">
+                        <form [formGroup]="userDetail">
+                            <div class="form-group  form-group-pad">
+                                <label for="formGroupExampleInput">Your Review</label>
+                                <input formControlName="yourReview" type="text" class="form-control"
+                                    id="formGroupExampleInput" placeholder="Summarize your review">
+                            </div>
+                            <div class="form-group  form-group-pad">
+                                <label for="exampleTextarea">Description</label>
+                                <textarea formControlName="description" class="form-control form-control-lg"
+                                    id="exampleTextarea" rows="5"></textarea>
+                                <div *ngIf="getControl['description'].touched && getControl['description'].invalid"
+                                    class="text-danger">
+                                    <div *ngIf="getControl['description'].errors?.['maxlength']">Work Experience should
+                                        have at most {{ getControl['description'].errors?.['maxlength'].requiredLength
+                                        }} characters</div>
+                                </div>
+                            </div>
+                            <div class="form-group  form-group-pad">
+                                <label for="formGroupExampleInput2">Working Experience</label>
+                                <input formControlName="workExperience" type="text" class="form-control"
+                                    id="formGroupExampleInput2">
+                            </div>
+                            <div class="form-group  form-group-pad">
+                                <label for="email">Your Email</label>
+                                <input formControlName="yourEmail" type="email" class="form-control" id="email"
+                                    placeholder="Write your email">
+                            </div>
+                            <div class="form-group  form-group-pad">
+                                <label for="name">Your Name</label>
+                                <input formControlName="yourName" type="name" class="form-control" id="name"
+                                    placeholder="Write your Name">
+                            </div>
+
+                            <a id="btn" class="button">
+                                <div (click)="submit()" class="learn-more">Submit your review</div>
+                            </a>
+                        </form>
+                        <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                            {{ successMessage }}
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                          <span class="visually-hidden">Next</span>
-                        </button>
-                      </div>
-                      <div class="rectangle-parent1">
-                        <p class="let-begin-designing">
-                          Looking for a affordable and reliable construction
-                          company for your project?
-                        </p>
-                        <div class="quote-wrape"><a routerLink="/request-estimate" class="get-a-quote">Get a Quote</a></div>
-                      </div>
+
+                        <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                            {{ errorMessage }}
+                        </div>
+                        <h2 class="s-head">What other says about us</h2>
+
+                        <div *ngFor="let data of userdata" class="review-part">
+                            <div class="review-sec-head">
+                                <h3 class="th-head">{{data.yourReview}}</h3>
+                                <div class="review-head-wrape">
+                                    <div class="test-rating">
+                                        <img class="star-img" src="../../../assets/star.png" alt="">
+                                        <img class="star-img" src="../../../assets/star.png" alt="">
+                                        <img class="star-img" src="../../../assets/star.png" alt="">
+                                        <img class="star-img" src="../../../assets/star.png" alt="">
+                                        <img class="star-img" src="../../../assets/Star5.png" alt="">
+                                    </div>
+                                    <div class="date"> {{ data?.createdDate | date:'yyyy-MM-dd' }} {{ data?.createdDate
+                                        | date:'hh:mm' }}</div>
+                                </div>
+                            </div>
+                            <p class="test-para">
+                                {{data.description}}
+                            </p>
+
+                        </div>
+                    </div>
+                    <div class="form-img">
+                        <ng-container *ngIf="imagedata && imagedata.length > 0">
+                            <img class="form-img-1"
+                                [src]="globalUrl + (imagedata[imagedata.length - 1]?.imageUrl || '')"
+                                alt="Uploaded Image" accept="image/*">
+                        </ng-container>
+
+
+
+                        <div id="carouselExample" class="carousel slide" style="margin-top:20px;">
+
+                            <div class="carousel-inner">
+                                <div class="carousel-item active" *ngFor="let abc of sliderdata">
+                                    <img src={{globalUrl+abc?.imageUrl}} class="d-block w-100" alt="...">
+                                </div>
+
+                            </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
+                        </div>
+                        <div class="rectangle-parent1">
+                            <p class="let-begin-designing">
+                                Looking for a affordable and reliable construction
+                                company for your project?
+                            </p>
+                            <div class="quote-wrape"><a routerLink="/request-estimate" class="get-a-quote">Get a
+                                    Quote</a></div>
+                        </div>
+                    </div>
+
                 </div>
-                
-            </div>
             </form>
         </div>
     </section>
-   
+
 
 </div>
 <app-footer></app-footer>

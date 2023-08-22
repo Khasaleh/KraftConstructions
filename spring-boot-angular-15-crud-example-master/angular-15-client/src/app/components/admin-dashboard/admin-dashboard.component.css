@@ -1,23 +1,26 @@
-
-.dashboard{
+.dashboard {
     width: 100%;
-   
+
     background-color: #E8ECF3;
     padding-bottom: 500px;
 }
+
 .new-container {
     padding: 0px 2%;
 }
-.card-shade{
+
+.card-shade {
     box-shadow: 2px 8px 4px 0px lightgray;
     height: 900px;
 }
+
 .main-head {
     font-size: 35px;
     font-weight: 600;
     font-family: sans-serif;
     padding-top: 30px;
 }
+
 .content5 {
     background-color: var(--kraft-light-green);
     width: 300px;
@@ -27,6 +30,7 @@
 .content5:first-child {
     background-color: var(--kraft-d-green);
 }
+
 .div3 {
     font-size: 68px;
     line-height: 60px;
@@ -34,6 +38,7 @@
     font-family: var(--h2-semibold);
     color: #fff;
 }
+
 .completed-projects {
     font-size: 20px;
     font-weight: 500;
@@ -41,18 +46,21 @@
     font-family: var(--h2-semibold);
     color: #fff;
 }
-.content5-wrape{
-display: flex;
-gap: 15px;
+
+.content5-wrape {
+    display: flex;
+    gap: 15px;
 }
-.round{
+
+.round {
     width: 66px;
     height: 66px;
     border: 1px solid black;
     border-radius: 35px;
     background-color: #025A00;
 }
-.round-para{
+
+.round-para {
     color: #fff;
     font-weight: 600;
     font-size: 33px;
@@ -60,56 +68,63 @@ gap: 15px;
     font-family: sans-serif;
     margin-top: 20px;
 }
-.round-circles{
+
+.round-circles {
     padding-top: 35px;
 }
-.circle-head{
-font-size: 25px;
-font-weight:600 ;
-font-family:Myriad Pro;
-line-height: 30px;
+
+.circle-head {
+    font-size: 25px;
+    font-weight: 600;
+    font-family: Myriad Pro;
+    line-height: 30px;
 }
-.circle-para{
+
+.circle-para {
     font-size: 11px;
-    font-weight:400 ;
-    font-family:Myriad Pro;
+    font-weight: 400;
+    font-family: Myriad Pro;
     line-height: 12px;
 }
-.circle-wrape{
+
+.circle-wrape {
     display: flex;
     align-items: center;
     gap: 10px
 }
-.both-circle-wrape{
+
+.both-circle-wrape {
     display: flex;
     align-items: center;
     gap: 100px;
     padding-bottom: 50px;
 
 }
+
 @media (max-width: 65em) {
-    .content5-wrape{
+    .content5-wrape {
         display: flex;
         flex-direction: column;
     }
-   
+
 }
+
 @media (max-width: 59em) {
 
-    .content5-wrape{
+    .content5-wrape {
         display: flex;
         flex-direction: column;
     }
-    
-    .dashboard{
+
+    .dashboard {
         padding-bottom: 300px;
     }
-   
-    .both-circle-wrape{
+
+    .both-circle-wrape {
         display: flex;
         flex-wrap: wrap;
         gap: 50px;
     }
 
-    
+
 }

@@ -9,47 +9,36 @@ import { InteriorRemodelingService } from 'src/app/service/interior-remodeling.s
 })
 export class IntmodComponent {
   serviceData: any
-  imageData:  any[] = [];
+  imageData: any[] = [];
   data: any[] = [];
   globalUrl = 'https://img.kraftconstructionco.com';
-  itemId : any;
+  itemId: any;
   selectedServiceId: any
 
   constructor(private interiorRemodService: InteriorRemodelingService) { }
   ngOnInit() {
-  
-      this.interiorRemodService.data$.subscribe(
-        response => {
+    this.interiorRemodService.data$.subscribe(
+      response => {
         this.itemId = response;
-          
-        }
-      );
-     
+      }
+    );
     this.interiorRemodService.getServiceByPage1().subscribe(
       response => {
         this.data = response.filter((service: { active: boolean; }) => service.active === true);
-        // if(this.serviceData == '' && this.imageData == ''){
-          if(this.itemId){
-            this.getOneService(this.itemId);
-          }
-        else{
+        if (this.itemId) {
+          this.getOneService(this.itemId);
+        }
+        else {
           this.getOneService(this.data[0].id);
         }
-      },
-      error => {
-        console.log(error);
       }
     )
-
   }
   getOneService(service: any) {
     this.selectedServiceId = service;
     this.interiorRemodService.getServiceById(service).subscribe(
       response => {
         this.serviceData = response;
-      },
-      error => {
-        console.log(error);
       }
     )
     this.getImages(service);
@@ -58,12 +47,7 @@ export class IntmodComponent {
     this.interiorRemodService.getServicesImages(service).subscribe(
       response => {
         this.imageData = response;
-        console.log(this.imageData);
-      },
-      error => {
-        console.log(error);
       }
     )
   }
-
 }
