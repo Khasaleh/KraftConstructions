@@ -15,15 +15,16 @@
  
       <div class="row">
         <div class="col">
-            <img class="mt-2 form-img-1 col-3" [src]="testImage" controls *ngIf="testImage; else defaultImage">
-            <ng-template #defaultImage>
+            <img class="mt-2 form-img-1 col-3" [src]="testImage" controls 
+            onerror="this.src='assets/admin-testimg/Group 160.png'">
+            <!-- <ng-template #defaultImage>
                 <img class="mt-3 form-img-1" [src]="'assets/admin-testimg/Group 160.png'">
-            </ng-template>
+            </ng-template> -->
             </div>
             <div class="col d-flex justify-content-center align-items-center ml-3">
             <div class="btn-group-vertical mt-3" role="group" aria-label="Vertical button group">
                 <label for="file-input" class="custom-button ml-4">Upload Image</label>
-                <input formControlName="imageUrl" type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
+                <input type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
                 <button (click)="testimonialImage()" type="submit" class="btn btn-success btn3 mt-3">Save</button>
                 <label (click)="deleteTestimonialImage(recentlyUploadedImage?.id)" class="custom-button1 mt-3">Delete Image</label>
             </div>

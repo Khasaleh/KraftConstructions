@@ -49,18 +49,30 @@ ngOnInit():void {
   });
 
 
+// this.testimonialService.getImage().subscribe((res) => {
+//   this.imageData = res;
+//   if (this.imageData.length > 0) {
+//     this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
+//     this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
+//   }
+// });
 this.testimonialService.getImage().subscribe((res) => {
   this.imageData = res;
   if (this.imageData.length > 0) {
-    this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
-    this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
+      this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
+      if (this.recentlyUploadedImage instanceof Blob || this.recentlyUploadedImage instanceof File) {
+          this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
+      } else {
+          console.error('Invalid blob or file object:', this.recentlyUploadedImage);
+      }
   }
 });
+
 this.testimonialService.getImage().subscribe(
   previousValue => {
    
 
-    this.testImage= this.globalUrl+ this.imageData[0].imageUrl;
+    this.testImage= this.globalUrl+ this.imageData[0]?.imageUrl;
 }) 
 
 this.testimonialService.getSlider().subscribe((res)=> {
@@ -162,12 +174,12 @@ testimonialImage() {
   this.testimonialService.saveImage(formData).subscribe(
     response => {
       this.savedImageId = response.id;
-      this.successMessage=response?.message;
+      this.successMessage="Image added successfully";
       
 
       setTimeout(() => {
         this.successMessage = '';
-      }, 3000);
+      }, 2000);
       
      
       
@@ -175,7 +187,7 @@ testimonialImage() {
           this.errorMessage= err?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 3000);
+          }, 2000);
           
         });
 }

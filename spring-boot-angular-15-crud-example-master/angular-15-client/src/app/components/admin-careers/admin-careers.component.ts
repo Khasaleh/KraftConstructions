@@ -16,6 +16,7 @@ export class AdminCareersComponent {
   userdata!:any[];
   userIdtoView!:number;
   successMessage: string | null = null;
+  errorMessage: string | null = null;
   data:any;
   globalUrl = 'https://img.kraftconstructionco.com'
   constructor(private formBuilder : FormBuilder, private dialog:MatDialog, private careerData: CareerDataService) {}
@@ -70,7 +71,14 @@ export class AdminCareersComponent {
   getAll() {
     this.careerData.getAll().subscribe((res)=> {
       this.userdata=res;
-    });
+    },
+    error => {
+      this.errorMessage = error.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 1000);
+    }
+    );
   }
   deleteUser(id: number) {
     const dialogRef = this.dialog.open(DialogeComponent, {

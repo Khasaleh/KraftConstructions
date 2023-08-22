@@ -8,6 +8,8 @@ import { DatePipe } from '@angular/common';
 })
 export class AdminServicePageComponent {
   tableData!: any[];
+  errorMessage: string | null = null;
+  successMessage: string | null = null;
 constructor(private pagesService: InteriorRemodelingService){}
 
 ngOnInit(): void {
@@ -15,7 +17,10 @@ ngOnInit(): void {
     this.tableData = response
   },
     error => {
-      console.log(error);
+      this.errorMessage = error.message;
+          setTimeout(() => {
+            this.errorMessage = '';
+          }, 1000);
     }
   )
 }
