@@ -7,10 +7,10 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class AdminHeaderComponent implements OnInit {
-  user:any;
+  user: any;
   globalUrl = 'https://img.kraftconstructionco.com';
-ngOnInit(): void {
-  this.user = JSON.parse(localStorage.getItem('user')!);
+  ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('user')!);
 
-}
+  }
 }

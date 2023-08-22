@@ -1,26 +1,25 @@
 <div class="admin-header ">
   <div class="header-wrape">
-  <p class="admin-name">{{user.firstname }} {{user.lastname }}</p>
-  <a>
-    <img class="admin-img" [src]="globalUrl + user?.imageUrl" alt="" *ngIf="user?.imageUrl; else defaultImage">
-</a>
-<ng-template #defaultImage>
+    <p class="admin-name">{{user.firstname }} {{user.lastname }}</p>
     <a>
-        <img class="admin-img" src="assets/admin-testimg/Group 160.png" alt="">
+      <img class="admin-img" [src]="globalUrl + user?.imageUrl" alt="" *ngIf="user?.imageUrl; else defaultImage">
     </a>
-</ng-template>
+    <ng-template #defaultImage>
+      <a>
+        <img class="admin-img" src="assets/admin-testimg/Group 160.png" alt="">
+      </a>
+    </ng-template>
 
- <button mat-icon-button [matMenuTriggerFor]="menu">
-  <mat-icon>more_vert</mat-icon>
-</button>
-<mat-menu #menu="matMenu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
 
-  <button routerLink="/login" mat-menu-item>
-    <i class="fa fa-sign-out"> Logout </i>
+      <button routerLink="/login" mat-menu-item>
+        <i class="fa fa-sign-out"> Logout </i>
 
-  </button>
-  
-</mat-menu>
+      </button>
+
+    </mat-menu>
+  </div>
 </div>
-</div>
- 

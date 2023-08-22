@@ -69,18 +69,18 @@ export class AdminAddCareersNewsComponent {
           this.successMessage = "Career news added successfully";
           console.log(response)
           setTimeout(() => {
-  
+
             this.successMessage = '';
-  
+
           }, 1000);
         },
         error => {
           console.error(error);
           this.errorMessage = error?.message;
           setTimeout(() => {
-  
+
             this.errorMessage = '';
-  
+
           }, 1000);
         }
       )

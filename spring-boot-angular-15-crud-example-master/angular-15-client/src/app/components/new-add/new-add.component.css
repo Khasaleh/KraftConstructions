@@ -1,4 +1,4 @@
-.txt{
+.txt {
   padding-left: 15%;
   width: 78%;
 }
@@ -7,37 +7,45 @@
   margin-left: 45px;
 
 }
+
 .row {
   margin: 0px;
 }
+
 .whole-container {
   padding: 0 5%;
 }
-.column{
+
+.column {
   padding: 0px;
-  /* margin-top: 80px; */
 }
+
 .container-wrap {
   width: 100%;
- }
+}
+
 .Row-wrap {
   gap: 20px;
   justify-content: center;
 }
-.container{
+
+.container {
   display: flex;
   justify-content: center;
   width: 100%;
 }
+
 .green-box {
   display: flex;
   justify-content: center;
   padding: 10px;
 }
+
 .selected-btn {
-  background-color: var(--kraft-d-green); 
-  color: white; 
+  background-color: var(--kraft-d-green);
+  color: white;
 }
+
 #my-img {
   filter: brightness(40%);
 
@@ -47,10 +55,11 @@
   height: 230px;
 }
 
-.int-head{
+.int-head {
   font-size: 34px;
   margin-left: 9rem;
 }
+
 .list-group-item {
   background-color: var(--gray);
   border: 1px solid var(--color-darkwhite);
@@ -102,19 +111,19 @@
   padding: 20px;
   margin-bottom: 1rem;
   width: 63rem;
-  /* margin-left: 5.5rem; */
 }
 
 .card-title {
   font-size: 14px;
 }
+
 @media (max-width: 72.5em) {
 
-  .int-head{
+  .int-head {
     font-size: 34px;
     margin-left: 0px
   }
-  }
+}
 
 .card-text {
   font-size: 14px;
@@ -124,21 +133,19 @@
 .card.sm-12 {
   width: 23rem;
   margin-top: 2rem;
-  /* margin-left: 7.5rem; */
 }
 
 .card.sm-13 {
   width: 23rem;
   margin-top: 2rem;
-  /* margin-left: 5.5rem; */
 }
 
 .card.sm-11 {
   width: 13rem;
   background-color: var(--kraft-light-green);
-  /* margin-left: 6.5rem; */
   margin-top: 2rem;
 }
+
 .container-para {
   width: 100%;
   display: flex;
@@ -180,7 +187,6 @@
 .card.sm-8 {
   border: none;
   width: 240px;
-  /* height:auto; */
   border-radius: 5px;
   padding: 0px;
 }
@@ -200,16 +206,19 @@ img.card-img-top {
   padding: 0px 3px;
 
 }
+
 @media (max-width: 59em) {
-  .txt{
-      padding-left: 15px;
-      width: 100%
+  .txt {
+    padding-left: 15px;
+    width: 100%
   }
 }
+
 @media (max-width: 567px) {
-  .column{
+  .column {
     margin-top: 80px;
   }
+
   .get-quote {
     margin-top: 2rem;
     margin-bottom: 2rem;
@@ -240,7 +249,7 @@ img.card-img-top {
     margin-left: 0;
   }
 
-  
+
 
   .lii {
     margin-left: 0;
@@ -332,7 +341,7 @@ img.card-img-top {
     margin-left: 0;
   }
 
-  
+
 
   .lii {
     margin-left: 0;
@@ -390,6 +399,7 @@ img.card-img-top {
     margin-left: 0;
     width: 100%;
   }
+
   .btn {
     margin-left: 0;
   }
@@ -438,7 +448,7 @@ img.card-img-top {
     margin-left: 0;
   }
 
-  
+
 
   .lii {
     margin-left: 0;

@@ -49,7 +49,14 @@
                                                     class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
+                                    <div class="alert alert-danger" role="alert" *ngIf="errorMessages">
+                                        {{ errorMessages }}
+                                    </div>
+                                    <div class="alert alert-success" role="alert" *ngIf="successMessages">
+                                        {{ successMessages }}
+                                    </div>
                                 </div>
+                              
                             </div>
 
 

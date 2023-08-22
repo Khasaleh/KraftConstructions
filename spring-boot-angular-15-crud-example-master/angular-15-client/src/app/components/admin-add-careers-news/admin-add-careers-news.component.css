@@ -7,7 +7,8 @@
 }
 
 .new-container {
-    padding: 0px 6% 540px 2%;;
+    padding: 0px 6% 540px 2%;
+    ;
 }
 
 .card-shade {
@@ -77,7 +78,6 @@ input:checked+.slider:before {
     transform: translateX(26px);
 }
 
-/* Rounded sliders */
 .slider.round {
     border-radius: 34px;
 }
@@ -131,7 +131,6 @@ input:checked+.slider:before {
     }
 
     .add-btn {
-        /* display: flex; */
         justify-content: start;
     }
 }
@@ -168,13 +167,16 @@ input:checked+.slider:before {
     .head-btn-wrap {
         flex-direction: column;
     }
-    .date-style{
+
+    .date-style {
         width: 100%;
     }
-    .add-news-btn{
+
+    .add-news-btn {
         width: 100%;
     }
-    .input-btn{
+
+    .input-btn {
         width: 30px;
         height: 30px;
     }
