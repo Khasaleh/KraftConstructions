@@ -116,44 +116,124 @@ export class AdminServicesComponent {
       )
     }
   }
+  // onClick1() {
+  //   if (this.selectedServicId) {
+  //     const formData = new FormData();
+  //     formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
+  //     formData.append('serviceId', this.selectedServicId.toString());
+  //     formData.append('beforeImage', this.urllink);
+  //     formData.append('afterImage', this.urllink2);
+  //     formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
+  //     formData.append('afterImageTitle', this.interiorRemodForm2.value.afterImage);
+  //     formData.append('description', this.interiorRemodForm2.value.description);
+
+  //     this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
+  //       response => {
+  //         console.log(response, 'response for service details');
+  //         this.successMessage = "service details added succesfully";
+  //         setTimeout(() => {
+  //           this.successMessage = '';
+
+  //         }, 1000);
+  //       },
+  //       error => {
+  //         console.log(error, 'error for service details');
+  //         this.errorMessage = error?.message;
+  //         setTimeout(() => {
+  //           this.errorMessage = '';
+  //         }, 1000);
+  //       }
+  //     );
+  //     this.onClick2(this.selectedServicId);
+  //   }
+  // }
+
+
+
   onClick1() {
     if (this.selectedServicId) {
       const formData = new FormData();
       formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
       formData.append('serviceId', this.selectedServicId.toString());
-      formData.append('beforeImage', this.urllink);
-      formData.append('afterImage', this.urllink2);
+      // formData.append('beforeImage', this.urllink);
+      // formData.append('afterImage', this.urllink2);
+      if (this.urllink) {
+        formData.append('beforeImage', this.urllink);
+      }
+      
+      if (this.urllink2) {
+        formData.append('afterImage', this.urllink2);
+      }
       formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
       formData.append('afterImageTitle', this.interiorRemodForm2.value.afterImage);
       formData.append('description', this.interiorRemodForm2.value.description);
-
-      this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
-        response => {
-          console.log(response, 'response for service details');
-          this.successMessage = "service details added succesfully";
-          setTimeout(() => {
-            this.successMessage = '';
-
-          }, 1000);
-        },
-        error => {
-          console.log(error, 'error for service details');
-          this.errorMessage = error?.message;
-          setTimeout(() => {
-            this.errorMessage = '';
-          }, 1000);
-        }
-      );
+  
+      // Check if the service data exists
+      if (this.serviceData) {
+        this.interiorRemodelingService.updateServiceDetails(formData, this.serviceData.id).subscribe(
+          response => {
+            console.log(response, 'response for updated service details');
+            this.successMessage = "Service details updated successfully";
+            setTimeout(() => {
+              this.successMessage = '';
+            }, 2000);
+          },
+          error => {
+            console.log(error, 'error for updating service details');
+            this.errorMessage = error?.message;
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 2000);
+          }
+        );
+      } else {
+        this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
+          response => {
+            console.log(response, 'response for service details');
+            this.successMessage = "Service details added successfully";
+            setTimeout(() => {
+              this.successMessage = '';
+            }, 1000);
+          },
+          error => {
+            console.log(error, 'error for service details');
+            this.errorMessage = error?.message;
+            setTimeout(() => {
+              this.errorMessage = '';
+            }, 1000);
+          }
+        );
+      }
+      
       this.onClick2(this.selectedServicId);
     }
   }
+  
   selectImage(event: any, card: any) {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.images.push(file);
-      card.imgSrc = URL.createObjectURL(file)
+      if(card.imgSrc !== '' && card.imgSrc !== null){
+        card.imgSrc = URL.createObjectURL(file)
+        this.updateImageForCard(file, card.id);
+      }
+      else{
+        card.imgSrc = URL.createObjectURL(file)
+      }
     }
+  }
+  updateImageForCard(imageFile: any, cardId: number) {
+    const formData = new FormData();
+    formData.append('image', imageFile); 
+    this.interiorRemodelingService.updateImages(formData, cardId).subscribe(
+      response => {
+        console.log('Image updated successfully for card with ID:', cardId, response);
+      },
+      error => {
+        console.error('Error updating image for card with ID:', cardId, error);
+      }
+    );
   }
   onClick2(service: any) {
     const formData = new FormData();
@@ -169,6 +249,7 @@ export class AdminServicesComponent {
       }
     );
   }
+
   onOptionSelected(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'interior') {
@@ -228,7 +309,7 @@ export class AdminServicesComponent {
           this.interiorRemodForm2.controls['description'].setValue(response.description);
           this.interiorRemodForm2.controls['isCheck'].setValue(response.addPortfolio);
           this.isCardBodyVisible = response.addPortfolio;
-          console.log(this.serviceData);
+          console.log(this.serviceData,"hurry");
           this.getImages(event.target?.value);
         }
         else {
