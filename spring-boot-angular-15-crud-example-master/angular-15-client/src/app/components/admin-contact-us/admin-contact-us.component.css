@@ -175,7 +175,7 @@
         top: 10px;
         left: 10px;
         border-radius: var(--br-8xs);
-        background-color: var(--colors-buttun-gray-10);
+        background-color: white;
         width: 179.26px;
         height: 62px;
       }
@@ -215,7 +215,7 @@
         left: 10px;
         top:10px;
         border-radius: var(--br-8xs);
-        background-color: var(--colors-buttun-gray-10);
+        background-color: white;
         width: 145.26px;
         height: 62px;
       }
@@ -254,7 +254,7 @@
         top: 10px;
         left: 10px;
         border-radius: var(--br-8xs);
-        background-color: var(--colors-buttun-gray-10);
+        background-color: white;
         width: 716px;
         height: 36px;
       }
@@ -297,7 +297,7 @@
       }
       .group-child4 {
         border-radius: var(--br-8xs);
-        background-color: var(--colors-buttun-gray-10);
+        background-color: white;
         width: 180.29px;
         height: 62px;
       }
@@ -519,7 +519,7 @@
     }
     .group-child1 {
       left: 0;
-      background-color: var(--colors-buttun-gray-10);
+      background-color: white;
       width: auto;
       height: auto;
     }
@@ -527,7 +527,7 @@
       left: 0;
       line-height: auto;
       width: auto;
-      background-color: var(--colors-buttun-gray-10);
+      background-color: white;
     }
     .name-parent,
     .oliver-john {
@@ -816,7 +816,7 @@
       }
       .group-child1 {
         left: 0;
-        background-color: var(--colors-buttun-gray-10);
+        background-color: white;
         width: auto;
         height: auto;
       }

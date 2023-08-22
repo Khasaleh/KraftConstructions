@@ -12,55 +12,74 @@
       <div class="alert alert-success" role="alert" *ngIf="successMessage">
         {{ successMessage }}
       </div>
-      <div class="col">
-        <img class=" mt-2 form-img-1 ml-5" [src]="testImage" controls *ngIf="testImage; else defaultImage">
-        <ng-template #defaultImage>
-          <img class="mt-3 form-img-1" [src]="'assets/admin-testimg/Group 160.png'">
-      </ng-template>
-       
-        <label for="file-input" class="custom-button ml-4 ">Upload Image</label>
-        <input formControlName="imageUrl" type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
-        <button (click)="testimonialImage()" type="submit" class="btn btn-success btn3">Save</button>
-        <label (click)="deleteTestimonialImage(recentlyUploadedImage?.id)" class="custom-button1">Delete Image</label>
-      
-        
-          <button (click)="content()" type="submit" class=" btn btn-success slider-button" *ngIf="hideButton">Add Slider</button>
-     
-  </div>
-        <div class="group-child21" *ngIf="showSlider">
-          <div class="card">
-            <div class="card-header cardheader3">
-                   <div class="a d-flex gap-3">
-                    <div  *ngFor="let sliderImage of sliderImages let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
-                    <img class="user-icon1" [src]="sliderImage" *ngIf="sliderImage; else defaultImage" alt="Slide {{i}}">
-                    <ng-template #defaultImage>
-                      <img class="user-icon1" [src]="'assets/admin-testimg/Group 160.png'">
-                  </ng-template>
-                    <div class="slider-text"> Slider {{i+1}}</div>
-                  </div>
-                  </div> 
-                 
-                  
-              </div>
-       
-            <div class="card-body">
+ 
+      <div class="row">
+        <div class="col">
+            <img class="mt-2 form-img-1 col-3" [src]="testImage" controls *ngIf="testImage; else defaultImage">
+            <ng-template #defaultImage>
+                <img class="mt-3 form-img-1" [src]="'assets/admin-testimg/Group 160.png'">
+            </ng-template>
+            </div>
+            <div class="col d-flex justify-content-center align-items-center ml-3">
+            <div class="btn-group-vertical mt-3" role="group" aria-label="Vertical button group">
+                <label for="file-input" class="custom-button ml-4">Upload Image</label>
+                <input formControlName="imageUrl" type="file" id="file-input" class="input-file" (change)="onFileSelected1($event)" accept="image/*">
+                <button (click)="testimonialImage()" type="submit" class="btn btn-success btn3 mt-3">Save</button>
+                <label (click)="deleteTestimonialImage(recentlyUploadedImage?.id)" class="custom-button1 mt-3">Delete Image</label>
+            </div>
+        </div>
+        <div class="d-flex col-6 mx-auto justify-content-center align-items-center">
+            <div class="d-grid gap-2 d-grid gap-2 col-6">
+            <button (click)="content()" type="submit" class=" btn btn-success slider-button" *ngIf="hideButton">Add Slider</button>
             
-              <label (click)="deleteSlider()" class=" abcd ml-1">Delete Image</label>
-             
-              <label for="file-input1" class=" abc ml-2 mt-1">Upload Image</label>
-              <input multiple type="file" id="file-input1" class="input-file1" (change)="OnSliderSelected($event)" accept="image/*">
-              <button (click)="hideContent()" type="submit" class="btn btn-success btn2">Cancel</button>
-              <button (click)="saveSliderImage()"type="submit" class="btn btn-success btn-large1">Save</button>
+            <div class="mt-3 me-5 group-child21" *ngIf="showSlider">
+              <div class="card">
+                <div class="card-header cardheader3 mt-3 ml-3">
+                       <div class="a d-flex gap-3">
+                        
+                        <div  *ngFor="let sliderImage of sliderImages let i = index" class="slide" [ngClass]="{ 'active': i === activeIndex }">
+                        <img class="user-icon1 mt-1" [src]="sliderImage" *ngIf="sliderImage; else defaultImage" alt="Slide {{i}}">
+                        <ng-template #defaultImage>
+                          <img class="user-icon1" [src]="'assets/admin-testimg/Group 160.png'">
+                      </ng-template>
+                        <div class="slider-text"> Slider {{i+1}}</div>
+                      </div>
+                      </div> 
+                     
+                      
+                  </div>
+           
+                <div class="card-body">
+                  <div class="btn-group-horizontal" role="group" aria-label="horizontal button group">
+                    <label (click)="deleteSlider()" class=" abcd ml-1">Delete Image</label>
+                    <label for="file-input1" class=" abc ml-2 mt-1">Upload Image</label>
+                    <input multiple type="file" id="file-input1" class="input-file1" (change)="OnSliderSelected($event)" accept="image/*">
+                   
+                  </div>
+                  <div class="btn-group-horizontal" role="group" aria-label="horizontal button group">
+                    <button (click)="hideContent()" type="submit" class="btn btn-success btn2">Cancel</button>
+                    <button (click)="saveSliderImage()"type="submit" class="btn btn-success btn-large1">Save</button>    
+                
+                  </div>
+                  
+                 
+                 
+                </div>
+                <div class="alert alert-success" role="alert" *ngIf="successMessage3">
+                  {{ successMessage3 }}
+                </div>
+              </div>
             </div>
-            <div class="alert alert-success" role="alert" *ngIf="successMessage3">
-              {{ successMessage3 }}
-            </div>
-          </div>
+        </div>
+        </div>
+    
+      </div>
+   
         </div>
           
     
       </div>
-     </div>
+  
      
 
      <div class="home1">
@@ -118,7 +137,7 @@
     <div class="card-body">
       <div class="row">
 
-      <img class="user-icon" alt="" src="../../../assets/admin-testimg/Group 160.png" />
+      <img class="user-icon mt-2" alt="" src="../../../assets/admin-testimg/Group 160.png" />
      
       <div class="col">
       <h4 class="card-title">{{usr.yourReview}}</h4>
