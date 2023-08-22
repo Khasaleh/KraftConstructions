@@ -41,9 +41,14 @@ errorMessage: string | null = null;
   }
   getAllUsers() {
   this.adduserdata.getAllUsers().subscribe((result)=>{
-    console.log(result);
-    this.userdata=result;
-   
+    
+    this.userdata = result;
+  },
+  error => {
+    this.errorMessage=error?.message;
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 3000);
   });
 }
 deleteUser(username: string) {
@@ -142,19 +147,15 @@ editUser(user: User) {
       this.successMessage= res?.message;
       setTimeout(() => {
         this.successMessage = '';
-      }, 3000);
-      console.log(res);
-   
+      }, 3000);   
       this.getAllUsers();
     },err=>{
-      console.log(err);
       this.errorMessage= err?.message;
       setTimeout(() => {
         this.errorMessage = '';
       }, 3000);
     });
   
-
   }
 
 })

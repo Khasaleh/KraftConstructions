@@ -38,21 +38,12 @@ export class AdminAddCareersNewsComponent {
         this.isCardBodyVisible = previousValue.status;
         this.careerNewsForm.controls['startDate'].setValue(previousValue.startDate);
         this.careerNewsForm.controls['endDate'].setValue(previousValue.endDate);
-        console.log(previousValue, "pervious value");
-      },
-      error => {
-        console.error(error, "pervious value error");
-      },
+      }
     )
   }
   buttonToggle() {
     this.careerNewsService.toggleButton().subscribe(
       response => {
-
-        console.log("response for toggle", response)
-      },
-      error => {
-        console.error(error);
       }
     )
   }
@@ -67,7 +58,6 @@ export class AdminAddCareersNewsComponent {
       this.careerNewsService.careerNewsData(currentNews, backgroundColor, textColor, startDate, endDate, status).subscribe(
         response => {
           this.successMessage = "Career news added successfully";
-          console.log(response)
           setTimeout(() => {
 
             this.successMessage = '';
@@ -75,7 +65,6 @@ export class AdminAddCareersNewsComponent {
           }, 1000);
         },
         error => {
-          console.error(error);
           this.errorMessage = error?.message;
           setTimeout(() => {
 

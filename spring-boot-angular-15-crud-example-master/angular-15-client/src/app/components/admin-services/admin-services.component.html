@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="drop-1">
                                     <label class="label2" for="inputField">Select Service Page</label> <br>
-                                    <select class="inputField mt-3 mb-3" [(ngModel)]="selectedOption"
+                                    <select class="inputField mt-3 mb-3" 
                                         formControlName="selectServicePage">
                                         <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                                     </select>
@@ -30,8 +30,8 @@
                             <div>
                                 <div class="drop-top">
                                     <label class="label2 mb-3" for="inputField">Select Page</label> <br>
-                                    <select class="inputField" (change)="onOptionSelected($event)"
-                                        [(ngModel)]="selectedOption1">
+                                    <select class="inputField" (change)="onOptionSelected($event)">
+                                        <option hidden disabled selected value>Select an option</option> 
                                         <option value="interior">Interior Remodeling</option>
                                         <option value="addition">New Addition</option>
                                     </select>
@@ -73,8 +73,8 @@
                     <div class="drop-wrape">
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Page</label> <br>
-                            <select class="inputField" (change)="onOptionSelected($event)"
-                                [(ngModel)]="selectedOption1">
+                            <select class="inputField" (change)="onOptionSelected($event)">
+                                <option hidden disabled selected value>Select an option</option> 
                                 <option value="interior">Interior Remodeling</option>
                                 <option value="addition">New Addition</option>
                             </select>
