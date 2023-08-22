@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   DropData: any
   DropData2: any
   serviceData: any
-  imageData: any[] =[];
+  imageData: any[] = [];
   isDropdownOpen = false;
   isDropdownOpen2 = false;
   constructor(private headerService: HomeServiceService, private intService: InteriorRemodelingService, private router: Router) { }
@@ -57,7 +57,7 @@ export class HeaderComponent implements OnInit {
   }
 
   getImages(service: any) {
-    this.intService.getServicesImages(service).subscribe( 
+    this.intService.getServicesImages(service).subscribe(
       response => {
         this.imageData = response;
         console.log(this.imageData);

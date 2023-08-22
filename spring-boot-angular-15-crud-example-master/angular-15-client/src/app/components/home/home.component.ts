@@ -14,16 +14,12 @@ export class HomeComponent implements OnInit {
   slides: string[] = [];
   currentSlide = 0;
   showSlide() {
-    console.log(this.slides.length)
-    // this.currentSlide = (this.currentSlide + 1) % this.slides.length;
-    if(this.currentSlide == this.slides.length-1){
+    if (this.currentSlide == this.slides.length - 1) {
       this.currentSlide = 0;
     }
-    else{
+    else {
       this.currentSlide = this.currentSlide + 1;
     }
-    
-    console.log( this.currentSlide)
   }
   apiData: any;
   sliderData: any;
@@ -37,48 +33,32 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.homeService.getHomePageBanner().subscribe(
       response => {
-        if(response){
-          this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl); 
+        if (response) {
+          this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl);
         }
-        // Assuming the API response is an array of strings
-        console.log(this.slides, "sides data"); 
-        console.log(this.slides.length,"slide length")// Check the updated slides arra
-        console.log(response,"response getting");
       },
     )
-    setInterval(() => 
-    this.showSlide(),
-     3000);
-     console.log(this.showSlide())
-   
+    setInterval(() =>
+      this.showSlide(),
+      3000);
     this.homeService.getHomePageData().subscribe(
       data => {
         this.apiData = data;
-        console.log("ResponseData1", data);
       },
     )
     this.homeService.getsliderdata().subscribe(
       data => {
         this.sliderData = data;
-        console.log("ResponseData2", data);
       },
     );
     this.homeService.getTestimonialsData().subscribe(
       response => {
         this.objects = response;
-        console.log(this.objects, "response for test get data");
-      },
-      error => {
-        console.log(error, "error for test data");
       }
     )
     this.homeService.getHomeBannerDescription().subscribe(
       response => {
         this.bannerDescription = response
-        console.log(this.bannerDescription, "response for banner data");
-      },
-      error => {
-        console.log(error, "error for banner data");
       }
     )
     this.getSrviceData();
@@ -87,9 +67,6 @@ export class HomeComponent implements OnInit {
     this.homeService.getServicesData().subscribe(
       response => {
         this.serviceData = response;
-      },
-      error => {
-        console.log(error);
       }
     )
   }

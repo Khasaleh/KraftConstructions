@@ -51,15 +51,6 @@ export class AdminServicesComponent {
   imageData: any;
   selectedServicId: any;
 
-  selectFiles(event: any) {
-    this.urllink = event.target.files[0];
-    this.imageLink = URL.createObjectURL(this.urllink);
-  }
-  selectFiles2(event: any) {
-    this.urllink2 = event.target.files[0];
-    this.imageLink2 = URL.createObjectURL(this.urllink2);
-  }
-
   constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
   ngOnInit(): void {
     this.selectedService = '';
@@ -78,6 +69,14 @@ export class AdminServicesComponent {
       isCheck: [this.isCheck]
     });
   }
+  selectFiles(event: any) {
+    this.urllink = event.target.files[0];
+    this.imageLink = URL.createObjectURL(this.urllink);
+  }
+  selectFiles2(event: any) {
+    this.urllink2 = event.target.files[0];
+    this.imageLink2 = URL.createObjectURL(this.urllink2);
+  }
   toggleCardBody() {
     this.isCardBodyVisible = !this.isCardBodyVisible;
   }
@@ -85,10 +84,6 @@ export class AdminServicesComponent {
     this.interiorRemodelingService.getServiceData().subscribe(
       (response) => {
         this.services = response;
-        console.log("ResponseData", response);
-      },
-      (error) => {
-        console.error(error);
       }
     )
   }
@@ -105,7 +100,6 @@ export class AdminServicesComponent {
           setTimeout(() => {
             this.successMessage = '';
           }, 1000);
-          console.log("response", response)
           this.getServices()
         },
         error => {
@@ -113,75 +107,35 @@ export class AdminServicesComponent {
           setTimeout(() => {
             this.errorMessage = '';
           }, 1000);
-          console.error(error);
         }
       )
     }
   }
-  // onClick1() {
-  //   if (this.selectedServicId) {
-  //     const formData = new FormData();
-  //     formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
-  //     formData.append('serviceId', this.selectedServicId.toString());
-  //     formData.append('beforeImage', this.urllink);
-  //     formData.append('afterImage', this.urllink2);
-  //     formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
-  //     formData.append('afterImageTitle', this.interiorRemodForm2.value.afterImage);
-  //     formData.append('description', this.interiorRemodForm2.value.description);
-
-  //     this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
-  //       response => {
-  //         console.log(response, 'response for service details');
-  //         this.successMessage = "service details added succesfully";
-  //         setTimeout(() => {
-  //           this.successMessage = '';
-
-  //         }, 1000);
-  //       },
-  //       error => {
-  //         console.log(error, 'error for service details');
-  //         this.errorMessage = error?.message;
-  //         setTimeout(() => {
-  //           this.errorMessage = '';
-  //         }, 1000);
-  //       }
-  //     );
-  //     this.onClick2(this.selectedServicId);
-  //   }
-  // }
-
-
-
   onClick1() {
     if (this.selectedServicId) {
       const formData = new FormData();
       formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
       formData.append('serviceId', this.selectedServicId.toString());
-      // formData.append('beforeImage', this.urllink);
-      // formData.append('afterImage', this.urllink2);
       if (this.urllink) {
         formData.append('beforeImage', this.urllink);
       }
-      
+
       if (this.urllink2) {
         formData.append('afterImage', this.urllink2);
       }
       formData.append('beforeImageTitle', this.interiorRemodForm2.value.beforeImage);
       formData.append('afterImageTitle', this.interiorRemodForm2.value.afterImage);
       formData.append('description', this.interiorRemodForm2.value.description);
-  
-      // Check if the service data exists
+
       if (this.serviceData) {
         this.interiorRemodelingService.updateServiceDetails(formData, this.serviceData.id).subscribe(
           response => {
-            console.log(response, 'response for updated service details');
             this.successMessage = "Service details updated successfully";
             setTimeout(() => {
               this.successMessage = '';
             }, 2000);
           },
           error => {
-            console.log(error, 'error for updating service details');
             this.errorMessage = error?.message;
             setTimeout(() => {
               this.errorMessage = '';
@@ -191,14 +145,12 @@ export class AdminServicesComponent {
       } else {
         this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
           response => {
-            console.log(response, 'response for service details');
             this.successMessage = "Service details added successfully";
             setTimeout(() => {
               this.successMessage = '';
             }, 1000);
           },
           error => {
-            console.log(error, 'error for service details');
             this.errorMessage = error?.message;
             setTimeout(() => {
               this.errorMessage = '';
@@ -206,38 +158,35 @@ export class AdminServicesComponent {
           }
         );
       }
-      
       this.onClick2(this.selectedServicId);
     }
   }
-  
+
   selectImage(event: any, card: any) {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       this.images.push(file);
-      if(card.imgSrc !== '' && card.imgSrc !== null){
+      if (card.imgSrc !== '' && card.imgSrc !== null) {
         card.imgSrc = URL.createObjectURL(file)
         this.updateImageForCard(file, card.id);
       }
-      else{
+      else {
         card.imgSrc = URL.createObjectURL(file)
       }
     }
   }
   updateImageForCard(imageFile: any, cardId: number) {
     const formData = new FormData();
-    formData.append('image', imageFile); 
+    formData.append('image', imageFile);
     this.interiorRemodelingService.updateImages(formData, cardId).subscribe(
       response => {
-        console.log('Image updated successfully for card with ID:', cardId, response);
         this.successMessage = response?.message;
         setTimeout(() => {
           this.successMessage = '';
         }, 1000);
       },
       error => {
-        console.error('Error updating image for card with ID:', cardId, error);
         this.errorMessage = error?.message;
         setTimeout(() => {
           this.errorMessage = '';
@@ -252,10 +201,8 @@ export class AdminServicesComponent {
     }
     this.interiorRemodelingService.saveServicesImages(formData, service).subscribe(
       response => {
-        console.log(response);
       },
       error => {
-        console.error(error);
       }
     );
   }
@@ -275,7 +222,6 @@ export class AdminServicesComponent {
       this.interiorRemodelingService.getServiceByPage2()
         .subscribe(
           data => {
-            console.log(data);
             this.services = data;
             this.service = data;
             this.serviceNames = this.service.map(service => service.serviceName);
@@ -288,14 +234,12 @@ export class AdminServicesComponent {
     if (service.active) {
       this.interiorRemodelingService.enableService(service.id).subscribe(
         response => {
-          console.log("Service enabled:", service.serviceName, response);
           this.successMessages = 'Service enable successfully';
           setTimeout(() => {
             this.successMessages = '';
           }, 1000);
         },
         error => {
-          console.error("Error enabling service:", error);
           this.errorMessages = error?.message;
           setTimeout(() => {
             this.errorMessages = '';
@@ -305,24 +249,21 @@ export class AdminServicesComponent {
     } else {
       this.interiorRemodelingService.disableService(service.id).subscribe(
         response => {
-          console.log("Service disabled:", service.serviceName, response);
           this.successMessages = 'Service disable successfully';
           setTimeout(() => {
             this.successMessages = '';
           }, 1000);
         },
         error => {
-          console.error("Error disabling service:", error);
           this.errorMessages = error?.message;
           setTimeout(() => {
-            this.errorMessages= '';
+            this.errorMessages = '';
           }, 1000);
         }
       );
     }
   }
   getOneService(event: any) {
-    console.log(event.target?.value);
     this.selectedServicId = event.target?.value
     this.interiorRemodelingService.getServiceById(event.target?.value).subscribe(
       response => {
@@ -335,7 +276,6 @@ export class AdminServicesComponent {
           this.interiorRemodForm2.controls['description'].setValue(response.description);
           this.interiorRemodForm2.controls['isCheck'].setValue(response.addPortfolio);
           this.isCardBodyVisible = response.addPortfolio;
-          console.log(this.serviceData,"hurry");
           this.getImages(event.target?.value);
         }
         else {
@@ -377,30 +317,25 @@ export class AdminServicesComponent {
             { id: 4, imgSrc: '' },
           ];
         }
-      },
-      error => {
-        console.log(error);
       }
     )
   }
-  deleteOneService(id: number){
-  this.interiorRemodelingService.deleteService(id).subscribe(
-    response => {
-      // this.successMessage = ''
-      console.log(response,"delete service");
-      this.getServices();
-      this.successMessages = 'Service delete successfully';
-      setTimeout(() => {
-        this.successMessages = '';
-      }, 1000);  
-    },
-    error => {
-      console.error(error);
-      this.errorMessages = error?.message;
-      setTimeout(() => {
-        this.errorMessages= '';
-      }, 1000);
-    }
-  )
+  deleteOneService(id: number) {
+    this.interiorRemodelingService.deleteService(id).subscribe(
+      response => {
+        this.getServices();
+        this.successMessages = 'Service delete successfully';
+        setTimeout(() => {
+          this.successMessages = '';
+        }, 1000);
+      },
+      error => {
+        ;
+        this.errorMessages = error?.message;
+        setTimeout(() => {
+          this.errorMessages = '';
+        }, 1000);
+      }
+    )
   }
 }

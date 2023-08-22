@@ -2,10 +2,12 @@
     width: 100%;
     padding: 0px 10%;
 }
+
 iframe.logo-2 {
     background-color: #fff;
     border-radius: 5px;
 }
+
 .footer-bacground {
     background-color: var(--kraft-d-green);
     width: 100%;
@@ -72,6 +74,7 @@ iframe.logo-2 {
         gap: 20%;
     }
 }
+
 /* media queries */
 @media (max-width: 59em) {
     .footer-bacground {
@@ -128,9 +131,11 @@ iframe.logo-2 {
     .about-us {
         font-size: 15px;
     }
-    .footer-detail-wrape{
+
+    .footer-detail-wrape {
         flex-direction: column;
     }
+
     .footer-text {
         font-size: 10px;
         width: 100%;
@@ -140,9 +145,10 @@ iframe.logo-2 {
     .footer-links-wrape {
         justify-content: center;
     }
-    .footer-side{
+
+    .footer-side {
         font-size: 11px;
     }
- 
+
 
 }

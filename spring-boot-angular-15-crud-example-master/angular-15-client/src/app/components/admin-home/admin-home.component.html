@@ -25,11 +25,12 @@
                                 </button>
                                 <div class="slideshow-thumbnails d-flex gap-3">
                                     <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item"
-                                        [class.active]="activeIndex === i" >
+                                        [class.active]="activeIndex === i">
                                         <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image"
                                             (click)="setActiveIndex(i)">
-                                        <div *ngFor="let image of image" class="del-btn"><button type="button" class="delete-icon"
-                                                (click)="deleteImage(image.id)"><i class="fa fa-trash"></i></button>
+                                        <div *ngFor="let image of image" class="del-btn"><button type="button"
+                                                class="delete-icon" (click)="deleteImage(image.id)"><i
+                                                    class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
                                 </div>
@@ -92,7 +93,6 @@
 
                             <div class="img-content">
                                 <div class="img-box mb-3">
-                                    <!-- <video *ngIf="fileURL" class="img-dyn" src="{{this.videoLink}}"></video> -->
                                     <video *ngIf="fileURL  || videoLink" class="img-dyn" [src]="videoLink"
                                         controls></video>
 
@@ -107,13 +107,13 @@
                                 <div class="alert alert-danger" role="alert" *ngIf="errorMessagess">
 
                                     {{ errorMessagess }}
-        
+
                                 </div>
-        
+
                                 <div class="alert alert-success" role="alert" *ngIf="successMessagess">
-        
+
                                     {{ successMessagess }}
-        
+
                                 </div>
                             </div>
                         </div>
@@ -146,7 +146,6 @@
 
                         <select class="inputField mt-3 mb-3" (change)="onOptionSelected($event)"
                             [(ngModel)]="selectedOption">
-                            <!-- <option *ngFor="let option of options" [value]="option">{{ option }}</option> -->
                             <option value="interior">Interior Remodeling</option>
                             <option value="addition">New Addition</option>
                         </select>
@@ -172,7 +171,7 @@
                                     <div class="read-more">Read more</div>
                                 </a>
                             </div>
-                        
+
                         </div>
                     </div>
                     <div class="saveBtn  mb-3 mt-5">
@@ -217,8 +216,6 @@
                         </div>
                         <div class="clientSec-cont">
                             <ng-container *ngFor="let item of testimonialData; let i = index">
-
-                                <!-- <div *ngFor="let item of testData"> -->
                                 <div class="form-test mb-3">
                                     <label class="mb-2">Heading</label>
                                     <input type="text" class="form-control mb-3" [(ngModel)]="item.heading">
@@ -234,7 +231,6 @@
                                         <button class="add-btn" (click)="deleteForm(item,i)">Delete</button>
                                         <button class="add-btn" (click)="addForm()">Duplicate</button>
                                     </div>
-                                    <!-- </div> -->
                                 </div>
 
                             </ng-container>

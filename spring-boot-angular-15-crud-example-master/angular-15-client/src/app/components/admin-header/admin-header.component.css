@@ -1,20 +1,22 @@
-.admin-header{
+.admin-header {
     width: 100%;
     height: 72px;
     background-color: #FFFFFF;
-    border: 1px solid  #FFFFFF;
+    border: 1px solid #FFFFFF;
     box-shadow: 2px 9px 14px 0px lightgray;
     display: flex;
     justify-content: flex-end;
     padding: 22px;
     margin-bottom: 10px;
 }
-.header-wrape{
+
+.header-wrape {
     display: flex;
     justify-content: flex-start;
     align-items: center;
 }
-.admin-name{
+
+.admin-name {
     margin: 0px;
     padding: 0px;
 }
@@ -23,8 +25,8 @@
     margin-left: 15px;
     height: 60px;
     border-radius: 50%;
-  }
-  
-.card-shade{
+}
+
+.card-shade {
     box-shadow: 2px 8px 4px 0px lightgray;
 }

@@ -1,12 +1,12 @@
-import {  Component, ViewChild, ElementRef } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-admin-sidenav',
   templateUrl: './admin-sidenav.component.html',
-  styleUrls: ['./admin-sidenav.component.css','../../../styles.css']
+  styleUrls: ['./admin-sidenav.component.css', '../../../styles.css']
 })
 export class AdminSidenavComponent {
- 
+
   isDropdownOpen = false;
   isDropdown2Open = false;
   isDropdown3Open = false;

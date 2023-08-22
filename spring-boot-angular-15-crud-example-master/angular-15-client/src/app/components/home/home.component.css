@@ -1,5 +1,5 @@
-
 @import "~bootstrap/dist/css/bootstrap.css";
+
 body {
     margin: 0;
     line-height: normal;
@@ -38,15 +38,17 @@ a {
 
 .img-logo {
     width: 100%;
-    /* height: 200; */
 }
+
 .img-logofor {
     width: 100%;
     height: 200px;
 }
+
 .img-test {
     width: 100%;
 }
+
 .img-logo-project {
     width: 100%;
     height: 300px;
@@ -69,7 +71,6 @@ p {
 }
 
 .nav-bar {
-    /* padding: 10px 10%; */
     padding: 10px 0px;
 }
 
@@ -95,7 +96,6 @@ p {
 }
 
 .cta {
-    /* display: inline-block; */
     padding: 10px 0px 0px 0px;
     display: flex;
     justify-content: space-between;
@@ -194,29 +194,28 @@ a {
 /* Banner Section*/
 
 .banner-section {
-    /* background-image: url("../../../assets/banner.png"); */
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     height: 87vh;
-    
+
 }
 
 .headline {
     margin-top: -10px;
-    ;
-    background-color: var(--kraft-d-green);
-    padding: 2px 0px;
     z-index: 1;
 }
+
 .headline marquee {
     font-size: var(--font-size-sm);
-    /* color: whitesmoke; */
+    margin: 0px;
+    padding: 0px;
 }
 
 .slider {
     padding: 110px 0px 0px 80px;
 }
+
 .reliable {
     font-size: 50px;
     font-weight: 500;
@@ -254,7 +253,8 @@ a {
     text-decoration: none;
     color: #fff
 }
-.learn-more:hover{
+
+.learn-more:hover {
     color: #fff
 }
 
@@ -303,7 +303,7 @@ a {
 .About-heading {
     font-family: sans-serif;
     color: var(--colors-primary-black);
-    font-size:41px;
+    font-size: 41px;
     line-height: 64px;
     text-transform: capitalize;
     font-weight: 600;
@@ -470,7 +470,8 @@ a {
     display: flex;
     justify-content: center;
 }
-.green-box-wrape{
+
+.green-box-wrape {
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -512,7 +513,6 @@ a {
 
 .kitchen-1-icon {
     width: 100%;
-    /* height: 50%; */
 }
 
 .services-section {
@@ -568,7 +568,8 @@ a {
     text-decoration: none;
     color: #fff
 }
-.read-more:hover{
+
+.read-more:hover {
     color: #fff;
 
 }
@@ -592,7 +593,6 @@ a {
 .component {
     width: 30%;
     height: 600px;
-    /* padding-bottom: 4%; */
 }
 
 /* our client section */
@@ -773,7 +773,6 @@ a {
 .contact-res {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
 }
 
 .contact-wrape {
@@ -849,6 +848,7 @@ a {
     text-transform: capitalize;
     padding-top: 10px;
 }
+
 .contact-section {
     padding: 0px 0px 90px 0px;
 }
@@ -918,72 +918,80 @@ a {
 .slide-container {
     position: relative;
     width: 55%;
-    height: 300px; /* Set the desired height */
-    /* overflow: hidden; */
-  }
-  
-  .slide {
+    height: 300px;
+}
+
+.slide {
     /* display: flex; */
     transition: transform 0.3s ease-in-out;
-  }
-  
-  .slide-item {
+}
+
+.slide-item {
     width: 80%;
-  }
-  
-  .dot-indicators {
+}
+
+.dot-indicators {
     display: flex;
     margin-top: 50px;
-  }
-  
-  .dot-indicators span {
+}
+
+.dot-indicators span {
     width: 15px;
     height: 15px;
     background-color: #aaa;
     border-radius: 50%;
     margin: 0 5px;
     cursor: pointer;
-  }
-  
-  .dot-indicators span.active {
+}
+
+.dot-indicators span.active {
     background-color: #333;
-  }
-  
-  .heading {
+}
+
+.heading {
     font-size: 19;
     font-weight: 600;
 }
+
 /* media queries */
 @media (max-width: 72.5em) {
-    .button{
+    .button {
         width: 23%;
     }
-    #btn{
+
+    #btn {
         width: 35%;
     }
-    .rectangle-parent1{
+
+    .rectangle-parent1 {
         padding: 15px 0px;
     }
-    .green-box-wrape{
+
+    .green-box-wrape {
         justify-content: center;
         padding: 10px;
     }
-    .let-begin-designing{
+
+    .let-begin-designing {
         margin-right: 10px;
     }
-    .get-a-quote{
+
+    .get-a-quote {
         padding: 12px 10px;
         width: 115px;
     }
-    .read-more{
+
+    .read-more {
         padding: 0px;
     }
 }
+
 @media (max-width: 59em) {
-    .banner-section{
+    .banner-section {
         padding-top: 7.4em;
     }
-    .logo{
+
+    .logo {
         width: 160px;
     }
 
@@ -1010,6 +1018,7 @@ a {
     .img-icon {
         width: 80%;
     }
+
     .img-logo1 {
         width: 80%;
         height: 11em;
@@ -1022,21 +1031,18 @@ a {
     .project-row {
         display: flex;
         flex-direction: column;
-        justify-content:space-between ;
+        justify-content: space-between;
     }
 
     .project-img {
         width: 90%;
-        margin-bottom:5%;
-        /* height: 300px; */
-
+        margin-bottom: 5%;
     }
 
     .img-logo-project {
         width: 100%;
-        /* height: 265px; */
     }
-  
+
     .contact-wrape {
         display: flex;
         align-items: center;
@@ -1117,129 +1123,159 @@ a {
         line-height: 62px;
         width: 60%;
     }
-    .banner-section{
+
+    .banner-section {
         height: 70vh;
     }
 
 }
 
-    @media (max-width: 52em) {
-        .footer-bacground{
-            height: 264px;
-        }
-        .get-a-quote{
-            width: 182px;
-        }
-        .contact-wrape {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .green-box-wrape{
-            padding: 0px 20px
-        }
-   
-        .contact-box {
-            width: 310px;
-            padding: 26px 5px 25px 25px;
-            margin-top: -5em;
-        }
-    
-        .contact-res {
-            padding: 3% 0px 1% 0px;
-        }
-        .map-section {
-            background-size: cover;
-            height: 28vh;
-        }
+@media (max-width: 52em) {
+    .footer-bacground {
+        height: 264px;
+    }
+
+    .get-a-quote {
+        width: 182px;
+    }
+
+    .contact-wrape {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+
+    .green-box-wrape {
+        padding: 0px 20px
+    }
+
+    .contact-box {
+        width: 310px;
+        padding: 26px 5px 25px 25px;
+        margin-top: -5em;
+    }
+
+    .contact-res {
+        padding: 3% 0px 1% 0px;
+    }
+
+    .map-section {
+        background-size: cover;
+        height: 28vh;
+    }
 }
+
 @media (max-width: 47em) {
-    .headline marquee{
+    .headline marquee {
         font-size: 10px;
     }
-    .slider{
+
+    .slider {
         padding: 110px 0px 0px 0px;
     }
-    .construction-solution{
+
+    .construction-solution {
         font-size: 36px;
     }
-    .button{
+
+    .button {
         width: 42%;
         font-size: 16px;
     }
-    .div3{
+
+    .div3 {
         font-size: 50px;
     }
-    .content5{
+
+    .content5 {
         width: 55%;
         padding: 30px 15px 0px 15px;
         height: 155px;
     }
-    #btn{
+
+    #btn {
         width: 42%;
     }
-    .About-heading{
+
+    .About-heading {
         font-size: 32px;
         line-height: 50px;
     }
-    .let-begin-designing{
+
+    .let-begin-designing {
         font-size: 14px;
     }
-    .get-a-quote{
+
+    .get-a-quote {
         font-weight: 500;
         font-size: 15px;
         padding: 6px 4px;
     }
-    .our-services-include{
+
+    .our-services-include {
         font-size: 28px;
         font-weight: 600;
     }
-    .our-clients-say{
+
+    .our-clients-say {
         font-size: 28px;
         font-weight: 600;
     }
-    .our-special-projects{
+
+    .our-special-projects {
         font-size: 28px;
         font-weight: 600;
     }
-    .rating{
+
+    .rating {
         width: 15%;
     }
+
     .img-logo1 {
         width: 100%;
         height: 8em;
     }
-    .img-logo-project{
-        
-    height: 250px;
+
+    .img-logo-project {
+
+        height: 250px;
     }
-    .content p{
+
+    .content p {
         width: 100%;
         font-size: 14px;
     }
-    .client-Sec-Para{
+
+    .client-Sec-Para {
         width: 100%;
     }
-    .simply-dummy-text{
+
+    .simply-dummy-text {
         font-size: 13px;
     }
-    .client-Sec-Para{
+
+    .client-Sec-Para {
         font-size: 14;
     }
-    .katy-grey{
+
+    .katy-grey {
         width: 40%;
         font-size: 16px;
     }
-    .completed-projects{
+
+    .completed-projects {
         font-size: 13px;
     }
-    .address-heading{
+
+    .address-heading {
         font-size: 25px;
     }
-    .contact-para{
+
+    .contact-para {
         font-size: 16px;
     }
-    .contact-details{
+
+    .contact-details {
         font-size: 15px;
     }
 
