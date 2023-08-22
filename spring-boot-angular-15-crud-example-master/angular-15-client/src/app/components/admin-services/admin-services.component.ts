@@ -35,6 +35,8 @@ export class AdminServicesComponent {
   globalUrl = 'https://img.kraftconstructionco.com';
   errorMessage: string | null = null;
   successMessage: string | null = null;
+  errorMessages: string | null = null;
+  successMessages: string | null = null;
   isActive: boolean = false;
   interiorRemodForm!: FormGroup;
   interiorRemodForm2!: FormGroup;
@@ -229,9 +231,17 @@ export class AdminServicesComponent {
     this.interiorRemodelingService.updateImages(formData, cardId).subscribe(
       response => {
         console.log('Image updated successfully for card with ID:', cardId, response);
+        this.successMessage = response?.message;
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 1000);
       },
       error => {
         console.error('Error updating image for card with ID:', cardId, error);
+        this.errorMessage = error?.message;
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 1000);
       }
     );
   }
@@ -279,18 +289,34 @@ export class AdminServicesComponent {
       this.interiorRemodelingService.enableService(service.id).subscribe(
         response => {
           console.log("Service enabled:", service.serviceName, response);
+          this.successMessages = 'Service enable successfully';
+          setTimeout(() => {
+            this.successMessages = '';
+          }, 1000);
         },
         error => {
           console.error("Error enabling service:", error);
+          this.errorMessages = error?.message;
+          setTimeout(() => {
+            this.errorMessages = '';
+          }, 1000);
         }
       );
     } else {
       this.interiorRemodelingService.disableService(service.id).subscribe(
         response => {
           console.log("Service disabled:", service.serviceName, response);
+          this.successMessages = 'Service disable successfully';
+          setTimeout(() => {
+            this.successMessages = '';
+          }, 1000);
         },
         error => {
           console.error("Error disabling service:", error);
+          this.errorMessages = error?.message;
+          setTimeout(() => {
+            this.errorMessages= '';
+          }, 1000);
         }
       );
     }
@@ -363,6 +389,17 @@ export class AdminServicesComponent {
       // this.successMessage = ''
       console.log(response,"delete service");
       this.getServices();
+      this.successMessages = 'Service delete successfully';
+      setTimeout(() => {
+        this.successMessages = '';
+      }, 1000);  
+    },
+    error => {
+      console.error(error);
+      this.errorMessages = error?.message;
+      setTimeout(() => {
+        this.errorMessages= '';
+      }, 1000);
     }
   )
   }

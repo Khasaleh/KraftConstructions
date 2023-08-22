@@ -36,7 +36,10 @@ export class AdminHomeComponent {
   test = '';
   errorMessage: string | null = null;
   successMessage: string | null = null;
-  images1!: any[];
+  errorMessages: string | null = null;
+  successMessages: string | null = null;
+  errorMessagess: string | null = null;
+  successMessagess: string | null = null;
   apiData: any;
   selectedService!: string;
   service!: { id: number; serviceName: string; pageName: string; active: boolean; }[];
@@ -77,9 +80,17 @@ export class AdminHomeComponent {
     this.homeService.saveVideo(formData).subscribe(
       response => {
         console.log(response);
+        this.successMessagess = response?.message;
+        setTimeout(() => {
+          this.successMessagess = '';
+        }, 1000);
       },
       error => {
         console.error(error);
+        this.errorMessagess = error?.message;
+        setTimeout(() => {
+          this.errorMessagess = '';
+        }, 1000);
       }
     );
   }
@@ -128,45 +139,6 @@ export class AdminHomeComponent {
     )
     this.getBannerImages();
   }
-  onSubmit2() {
-    const testData = this.testimonialData;
-    this.deleteAllTestimonial();
-    this.homeService.saveTestimonialData(testData).subscribe(
-      response => {
-        console.log("Response for testimonial section", response);
-        this.successMessage = "Data Added successfully";
-        console.log(response)
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 1000);
-      },
-      error => {
-        this.errorMessage = error?.message;
-        setTimeout(() => {
-          this.errorMessage = '';
-        }, 1000);
-        console.error(error);
-      }
-    );
-  }
-  onServiceClick() {
-    this.homeService.addServicesData(this.serviceList).subscribe(
-      response => {
-        this.successMessage = response?.message;
-        console.log(response)
-        setTimeout(() => {
-          this.successMessage = '';
-        }, 1000);
-      },
-      error => {
-        console.log(error);
-        this.errorMessage = error?.message;
-        setTimeout(() => {
-          this.errorMessage = '';
-        }, 1000);
-      }
-    )
-  }
   onSubmit1() {
     if (this.bannerForm.valid) {
       const bannerLink = this.bannerForm.get('bannerLink')?.value;
@@ -214,6 +186,45 @@ export class AdminHomeComponent {
         }
       )
     }
+  }
+  onServiceClick() {
+    this.homeService.addServicesData(this.serviceList).subscribe(
+      response => {
+        this.successMessages = response?.message;
+        console.log(response)
+        setTimeout(() => {
+          this.successMessages = '';
+        }, 1000);
+      },
+      error => {
+        console.log(error);
+        this.errorMessages = error?.message;
+        setTimeout(() => {
+          this.errorMessages = '';
+        }, 1000);
+      }
+    )
+  }
+  onSubmit2() {
+    const testData = this.testimonialData;
+    this.deleteAllTestimonial();
+    this.homeService.saveTestimonialData(testData).subscribe(
+      response => {
+        console.log("Response for testimonial section", response);
+        this.successMessage = "Data Added successfully";
+        console.log(response)
+        setTimeout(() => {
+          this.successMessage = '';
+        }, 1000);
+      },
+      error => {
+        this.errorMessage = error?.message;
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 1000);
+        console.error(error);
+      }
+    );
   }
   buttonLinkStatus() {
     this.homeService.bannerLinkStatus().subscribe(
@@ -369,6 +380,7 @@ export class AdminHomeComponent {
 
     this.serviceList.push(serviceIds)
   }
+  
 
   // uploadImages() {
   //   this.uploadImages1();

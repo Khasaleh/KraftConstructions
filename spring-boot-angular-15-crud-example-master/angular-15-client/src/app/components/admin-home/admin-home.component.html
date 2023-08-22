@@ -98,12 +98,22 @@
 
                                 </div>
                                 <div class="file-upload cardbtn">
-                                    <button class="video-btn">
+                                    <button class="video-btn" type="button">
                                         <label for="file-input" class="custom-button">Upload Video</label>
                                         <input type="file" id="file-input" class="input-file" (change)="
                                     onFileSelected($event)" accept="image/*,video/*">
                                     </button>
+                                </div>
+                                <div class="alert alert-danger" role="alert" *ngIf="errorMessagess">
 
+                                    {{ errorMessagess }}
+        
+                                </div>
+        
+                                <div class="alert alert-success" role="alert" *ngIf="successMessagess">
+        
+                                    {{ successMessagess }}
+        
                                 </div>
                             </div>
                         </div>
@@ -170,14 +180,15 @@
                     </div>
 
 
-                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessages">
 
-                        {{ successMessage }}
+                        {{ errorMessages }}
 
                     </div>
-                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
 
-                        {{ errorMessage }}
+                    <div class="alert alert-success" role="alert" *ngIf="successMessages">
+
+                        {{ successMessages }}
 
                     </div>
                 </div>
