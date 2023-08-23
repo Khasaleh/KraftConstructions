@@ -7,7 +7,8 @@ import { HttpClient } from '@angular/common/http';
 import { error } from 'jquery';
 
 interface Image {
-  image: string;
+  id: number | null;
+  imageUrl: string;
 }
 @Component({
   selector: 'app-admin-home',
@@ -173,10 +174,14 @@ export class AdminHomeComponent {
   onServiceClick() {
     this.homeService.addServicesData(this.serviceList).subscribe(
       response => {
-        this.successMessages = response?.message;
-        setTimeout(() => {
-          this.successMessages = '';
-        }, 1000);
+        if(response){
+          this.getSrviceData();
+          this.successMessages = response?.message;
+          setTimeout(() => {
+            this.successMessages = '';
+          }, 1000);
+        }
+   
       },
       error => {
         this.errorMessages = error?.message;
@@ -224,8 +229,15 @@ export class AdminHomeComponent {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
+      // this.images.push(file);
+      // this.imageLink.push(URL.createObjectURL(file));
+      const newImage: Image = {
+        id: null,
+        imageUrl: URL.createObjectURL(file)
+      };
+      
       this.images.push(file);
-      this.imageLink.push(URL.createObjectURL(file));
+      this.imageLink.push(newImage);
     }
   }
   deleteAllTestimonial() {
@@ -250,21 +262,45 @@ export class AdminHomeComponent {
   getBannerImages() {
     this.homeService.getHomePageBanner().subscribe(
       response => {
-        this.image = response;
-        this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
+        console.log(response,"image object")
+        // this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
+        // this.imageLink = response.map((response: {res: any}) => this.globalUrl + response);
+        this.imageLink = response.map((image: { id: number; imageUrl: string }) => {
+          return {
+            ...image,
+            imageUrl: this.globalUrl + image.imageUrl
+          };
+        });
+        console.log(this.imageLink,"imagesss")
       }
     )
   }
 
-  deleteImage(bannerId: number) {
+  // deleteImage(bannerId: number) {
 
-    this.homeService.deleteBannerImage(bannerId).subscribe(
-      response => {
-        this.getBannerImages();
+  //   this.homeService.deleteBannerImage(bannerId).subscribe(
+  //     response => {
+  //       this.getBannerImages();
 
+  //     }
+  //   )
+  // }
+  deleteImage(bannerId: number | null) {
+    if (bannerId === null) {
+      const nullIdIndex = this.imageLink.findIndex(image => image.id === null);
+      if (nullIdIndex !== -1) {
+        this.imageLink.splice(nullIdIndex, 1);
       }
-    )
+    } 
+    else {
+      this.homeService.deleteBannerImage(bannerId).subscribe(
+        response => {
+          this.getBannerImages();
+        }
+      );
+    }
   }
+  
   onOptionSelected(event: Event) {
     const selectedValue = (event.target as HTMLSelectElement).value;
     if (selectedValue === 'interior') {

@@ -38,8 +38,16 @@ export class IntmodComponent {
     this.selectedServiceId = service;
     this.interiorRemodService.getServiceById(service).subscribe(
       response => {
-        this.serviceData = response;
+        if (response) {
+          this.serviceData = response;
+        }
+      },
+      error =>{
+        if(error){
+          this.serviceData = null;
+        }
       }
+
     )
     this.getImages(service);
   }

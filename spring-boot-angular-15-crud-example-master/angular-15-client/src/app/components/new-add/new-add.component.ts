@@ -39,7 +39,14 @@ export class NewAddComponent {
     this.selectedServiceId = service;
     this.newAdditionService.getServiceById(service).subscribe(
       response => {
-        this.serviceData = response;
+        if (response) {
+          this.serviceData = response;
+        }
+      },
+      error =>{
+        if(error){
+          this.serviceData = null;
+        }
       }
     )
     this.getImages(service)

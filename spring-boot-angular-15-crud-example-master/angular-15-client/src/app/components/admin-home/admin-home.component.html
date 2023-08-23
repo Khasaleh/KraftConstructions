@@ -9,7 +9,7 @@
                             <div class="slideshow-container">
                                 <div *ngFor="let imageLink of imageLink; let i = index" class="slide"
                                     [ngClass]="{ 'active': i === activeIndex }">
-                                    <img [src]="imageLink" alt="Slide {{i}}">
+                                    <img [src]="imageLink.imageUrl" alt="Slide {{i}}">
                                 </div>
                             </div>
 
@@ -26,10 +26,10 @@
                                 <div class="slideshow-thumbnails d-flex gap-3">
                                     <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item"
                                         [class.active]="activeIndex === i">
-                                        <img class="thumbnail-image" [src]="imageLink" alt="Thumbnail Image"
+                                        <img class="thumbnail-image" [src]="imageLink.imageUrl" alt="Thumbnail Image"
                                             (click)="setActiveIndex(i)">
-                                        <div *ngFor="let image of image" class="del-btn"><button type="button"
-                                                class="delete-icon" (click)="deleteImage(image.id)"><i
+                                        <div class="del-btn"><button type="button"
+                                                class="delete-icon" (click)="deleteImage(imageLink.id)"><i
                                                     class="fa fa-trash"></i></button>
                                         </div>
                                     </div>
@@ -175,7 +175,7 @@
                         </div>
                     </div>
                     <div class="saveBtn  mb-3 mt-5">
-                        <button class="save-btn" (click)="onServiceClick()">save</button>
+                        <button type="button" class="save-btn" (click)="onServiceClick()">save</button>
                     </div>
 
 
