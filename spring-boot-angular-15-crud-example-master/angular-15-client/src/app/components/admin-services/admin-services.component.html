@@ -144,11 +144,11 @@
                         <div class="card-wrape">
                             <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
                                 <img class="card-img" [src]="card.imgSrc" alt="">
-                                <div class="file-upload cardbtn">
+                                <button class="file-upload cardbtn" type="button">
                                     <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
                                     <input type="file" id="file-input2{{card.id}}" class="input-file"
                                         (change)="selectImage($event, card)">
-                                </div>
+                                </button>
                             </div>
                         </div>
                     </div>
