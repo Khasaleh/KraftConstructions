@@ -49,24 +49,24 @@ ngOnInit():void {
   });
 
 
-// this.testimonialService.getImage().subscribe((res) => {
-//   this.imageData = res;
-//   if (this.imageData.length > 0) {
-//     this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
-//     this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
-//   }
-// });
 this.testimonialService.getImage().subscribe((res) => {
   this.imageData = res;
   if (this.imageData.length > 0) {
-      this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
-      if (this.recentlyUploadedImage instanceof Blob || this.recentlyUploadedImage instanceof File) {
-          this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
-      } else {
-          console.error('Invalid blob or file object:', this.recentlyUploadedImage);
-      }
+    this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
+    this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
   }
 });
+// this.testimonialService.getImage().subscribe((res) => {
+//   this.imageData = res;
+//   if (this.imageData.length > 0) {
+//       this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
+//       if (this.recentlyUploadedImage instanceof Blob || this.recentlyUploadedImage instanceof File) {
+//           this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
+//       } else {
+//           console.error('Invalid blob or file object:', this.recentlyUploadedImage);
+//       }
+//   }
+// });
 
 this.testimonialService.getImage().subscribe(
   previousValue => {
