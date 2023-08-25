@@ -54,11 +54,7 @@ export class LoginComponent {
                     this.responsedata = result;
                     localStorage.setItem('token', this.responsedata.token);
                     localStorage.setItem('user',JSON.stringify(result))
-                   
-                    console.log(localStorage.getItem('user'));
-                   
                     this.router.navigate(['/admin']);
-
                 }
            
             }, err => {

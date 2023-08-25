@@ -99,14 +99,14 @@ export class AdminServicesComponent {
           this.successMessage = "Service added Successfully.";
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 2000);
           this.getServices()
         },
         error => {
           this.errorMessage = "Service is not added.";
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 2000);
         }
       )
     }
@@ -142,23 +142,23 @@ export class AdminServicesComponent {
             }, 2000);
           }
         );
-      } else {
+      } else if (!this.serviceData) {
         this.interiorRemodelingService.saveSeviceDetails(formData).subscribe(
           response => {
             this.successMessage = "Service details added successfully";
             setTimeout(() => {
               this.successMessage = '';
-            }, 1000);
+            }, 2000);
           },
           error => {
             this.errorMessage = error?.message;
             setTimeout(() => {
               this.errorMessage = '';
-            }, 1000);
+            }, 2000);
           }
         );
+        this.onClick2(this.selectedServicId);
       }
-      this.onClick2(this.selectedServicId);
     }
   }
 
@@ -184,13 +184,13 @@ export class AdminServicesComponent {
         this.successMessage = response?.message;
         setTimeout(() => {
           this.successMessage = '';
-        }, 1000);
+        }, 2000);
       },
       error => {
         this.errorMessage = error?.message;
         setTimeout(() => {
           this.errorMessage = '';
-        }, 1000);
+        }, 2000);
       }
     );
   }
@@ -237,13 +237,13 @@ export class AdminServicesComponent {
           this.successMessages = 'Service enable successfully';
           setTimeout(() => {
             this.successMessages = '';
-          }, 1000);
+          }, 2000);
         },
         error => {
           this.errorMessages = error?.message;
           setTimeout(() => {
             this.errorMessages = '';
-          }, 1000);
+          }, 2000);
         }
       );
     } else {
@@ -252,13 +252,13 @@ export class AdminServicesComponent {
           this.successMessages = 'Service disable successfully';
           setTimeout(() => {
             this.successMessages = '';
-          }, 1000);
+          }, 2000);
         },
         error => {
           this.errorMessages = error?.message;
           setTimeout(() => {
             this.errorMessages = '';
-          }, 1000);
+          }, 2000);
         }
       );
     }
@@ -327,14 +327,14 @@ export class AdminServicesComponent {
         this.successMessages = 'Service delete successfully';
         setTimeout(() => {
           this.successMessages = '';
-        }, 1000);
+        }, 2000);
       },
       error => {
         ;
         this.errorMessages = error?.message;
         setTimeout(() => {
           this.errorMessages = '';
-        }, 1000);
+        }, 2000);
       }
     )
   }

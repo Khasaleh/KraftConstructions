@@ -72,10 +72,8 @@ get getControl(): { [key: string]: AbstractControl; } {
       this.userObj.password = this.userDetail.value?.password;
       this.userObj.role = [this.userDetail.value?.role];
       this.userObj.imageUrl= this.userDetail.value?.imageUrl;
-      console.log(this.userObj.role)
       this.adService.AddUser(this.userObj).subscribe(res=>{
         this.onClick();
-        console.log(res);
           this.successMessage = res?.message;
 
           setTimeout(() => {
@@ -99,12 +97,8 @@ get getControl(): { [key: string]: AbstractControl; } {
   
     this.adService.saveImage(formData,this.userObj.username).subscribe(
       response => {
-       
-        console.log(response);
       },
       error => {
-        
-        console.error(error);
       }
     );
   }
@@ -120,8 +114,6 @@ get getControl(): { [key: string]: AbstractControl; } {
   
     });
     dialogRef.afterClosed().subscribe(result => {
-    
-      console.log(result);
     });
   
    

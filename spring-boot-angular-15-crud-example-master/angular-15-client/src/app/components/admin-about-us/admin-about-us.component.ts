@@ -53,7 +53,6 @@ ngOnInit(): void {
   }
 
 submit(data: aboutusdata) {
-  console.log(data);
   this.aboutus.addata(data).subscribe((result)=> {
     this.saveImageData();
       this.successMessage1 = result?.message;

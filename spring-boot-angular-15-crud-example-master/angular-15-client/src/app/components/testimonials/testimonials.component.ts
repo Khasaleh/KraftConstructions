@@ -68,7 +68,6 @@ export class TestimonialsComponent {
   }
   getApprovedTest() {
     this.testimonialService.getapproveTest().subscribe((res) => {
-      console.log(res);
       this.userdata = res;
     });
   }

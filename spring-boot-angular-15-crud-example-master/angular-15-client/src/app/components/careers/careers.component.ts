@@ -17,6 +17,8 @@ export class CareersComponent {
   errorMessage: string | null = null;
   resumeFile: any;
   fileURL!: File;
+  addRow: boolean = false
+  addRow2: boolean = false
 
   states: string[] = [
     'Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia',
@@ -116,7 +118,12 @@ export class CareersComponent {
       }
     );
   }
-
+  addForm() {
+   this.addRow = !this.addRow;
+  }
+  addForm2() {
+    this.addRow2 = !this.addRow2;
+   }
 
   openDialog(): void {
     this.dialog.open(DialogeComponent, {

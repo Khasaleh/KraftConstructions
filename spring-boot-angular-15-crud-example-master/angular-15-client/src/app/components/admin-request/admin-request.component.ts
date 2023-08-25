@@ -53,6 +53,13 @@ content() {
 getAllUsers() {
   this.requser.getAll().subscribe((res)=> {
     this.userdata=res;
+    
+  },
+  error => {
+    this.errorMessage = error.message;
+        setTimeout(() => {
+          this.errorMessage = '';
+        }, 2000);
   });
 
   
