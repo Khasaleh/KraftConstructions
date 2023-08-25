@@ -56,17 +56,6 @@ this.testimonialService.getImage().subscribe((res) => {
     this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
   }
 });
-// this.testimonialService.getImage().subscribe((res) => {
-//   this.imageData = res;
-//   if (this.imageData.length > 0) {
-//       this.recentlyUploadedImage = this.imageData[this.imageData.length - 1];
-//       if (this.recentlyUploadedImage instanceof Blob || this.recentlyUploadedImage instanceof File) {
-//           this.testImage = URL.createObjectURL(this.recentlyUploadedImage);
-//       } else {
-//           console.error('Invalid blob or file object:', this.recentlyUploadedImage);
-//       }
-//   }
-// });
 
 this.testimonialService.getImage().subscribe(
   previousValue => {
@@ -169,8 +158,6 @@ testimonialImage() {
   const formData = new FormData();
   formData.append('image', this.fileURL);
   formData.append('page','TESTIMONIAL')
- 
-  console.log(this.fileURL,'image');
   this.testimonialService.saveImage(formData).subscribe(
     response => {
       this.savedImageId = response.id;
@@ -277,7 +264,6 @@ approveTestimonial(user:Testimonial,id:number) {
     if (result === true) {
       this.testimonialService.approveTest(user,id)
         .subscribe(res => {
-          console.log(res?.message)
           this.successMessage2 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage2 = '';

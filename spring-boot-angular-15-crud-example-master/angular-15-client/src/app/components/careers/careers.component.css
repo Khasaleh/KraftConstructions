@@ -62,7 +62,11 @@
     gap: 10px;
     grid-template-columns: 1fr 1fr 1fr;
 }
-
+.grid-container-form{
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
 .text-form-area {
     padding: 15px 0px;
 }
@@ -220,7 +224,21 @@
     justify-content: center;
     align-items: center;
 }
-
+.reference-wrap {
+    display: flex;
+    align-items: center;
+}
+.career-btn {
+    font-size: 16px;
+    border: 1px solid grey;
+    border-radius: 50px;
+    width: 24px;
+    text-align: center;
+    margin: 10px;
+    margin-top: 38px;
+    color: grey;
+    height: 24px;
+}
 @media (max-width: 72.5em) {
     .wrape-robot {
         display: flex;

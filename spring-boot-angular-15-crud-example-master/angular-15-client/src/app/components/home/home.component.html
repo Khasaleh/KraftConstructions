@@ -75,7 +75,7 @@
         <h2 class="our-services-include">Our Services Include</h2>
         <div class="services-wrap">
           <div *ngFor="let service of serviceData" class="component">
-            <div class="kitchen-1-icon"><img class="img-logofor" alt="" src={{this.globalUrl+service?.afterImageUrl}} />
+            <div class="kitchen-1-icon"><img class="img-logofor" alt="" src={{this.globalUrl+service?.afterImageUrl}} onerror="this.src='../../../assets/error-image.jpg'">
             </div>
             <h3 class="custom-kitchens">{{ service.serviceName }}</h3>
             <p class="simply-dummy-text">{{ service.description }}</p>

@@ -9,7 +9,6 @@ export class UpdabtusService {
  apiUrl= 'https://api.kraftconstructionco.com/api';
   constructor( private http: HttpClient ) { }
   addata(data:aboutusdata) : Observable<any> {
-    console.log("service called");
     return this.http.post( this.apiUrl+'/about-us/update-description', data);
    
   }

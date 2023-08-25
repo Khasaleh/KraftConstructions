@@ -1,151 +1,152 @@
 <div class="flex-container">
-<div class="home">
-  <div class="heading">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <a class="navbar-brand">Request Estimate</a>
+  <div class="home">
+    <div class="heading">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand">Request Estimate</a>
 
-      </div>
-    
-  </nav>
-  </div>
-  <div class="desktop-3-item" >
-    <div class="alert alert-success" role="alert" *ngIf="successMessage">
-      {{ successMessage }}
-    </div>
-    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
-      {{ errorMessage }}
-    </div>
-    <form [formGroup]="userDetail" class="row g-3" *ngIf="showTable">
-      <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">First Name</label>
-        <input type="name" name="firstName" formControlName="firstName" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-4">
-        <label for="inputPassword4" class="form-label">Last Name</label>
-        <input type="name" name="lastName" formControlName="lastName" class="form-control" id="inputPassword4">
-      </div>
-      <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Email</label>
-        <input type="email" name="email" formControlName="email" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-md-4">
-        <label for="inputEmail4" class="form-label">Phone Number</label>
-        <input type="text" name="phoneNumber" formControlName="phoneNumber" class="form-control" id="inputEmail4">
-      </div>
-      <div class="col-10">
-        <label for="inputAddress" class="form-label">Address</label>
-        <input type="text" name="address" formControlName="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
-      </div>
+        </div>
 
-      <div class="col-md-3">
-        <label for="inputCity" class="form-label">City</label>
-        <input type="text"  name="city" formControlName="city" class="form-control" id="inputCity">
-      </div>
-      <div class="col-md-4">
-        <label for="inputState" class="form-label">State</label>
-        <select id="inputState" class="form-select">
-          <option>{{ userDetail.value.state}}</option>
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label for="inputZip" class="form-label">Zip</label>
-        <input type="text" name="zip" formControlName="zip" class="form-control" id="inputZip">
-      </div>
-      <div class="form-check">
-        <div class="chcktxt">What Services are you looking for?</div>
-        <div *ngFor="let service of userDetail.value.requestedServices">
-        <input class="form-check-input" formControlName="requestedServices" type="checkbox" id="requestedServices">
-        <label class="form-check-label" for="requestedServices" aria-selected="true">
-          {{ service }}
-        </label>
-      </div>
+      </nav>
     </div>
-      <div class="form-check">
-        <div class="radtxt">What is your budget for this project?</div>
-       
-        <input class="form-check-input" type="radio" name="budget" id="flexRadioDefault1" checked>
-        <label class="form-check-label" for="budget" aria-selected="true">
-          {{ userDetail.value.budget}}
-        </label>
+    <div class="desktop-3-item">
+      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+        {{ successMessage }}
       </div>
-  
-      
-      <div class="col-md-6">
-        <label for="exampleFormControlTextarea1" class="form-label">Breifly Describe your project?</label>
-        <textarea class="form-control" formControlName="projectDescription"id="exampleFormControlTextarea1" rows="3"></textarea>
-        
+      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+        {{ errorMessage }}
       </div>
-     
-     <div class="row">
-      <div class="col-md-6">
-        <label for="inputtxt" class="form-label">How did you hear about Kraft Construction?</label>
-        <select id="inputtxt" class="form-select">
-          <option>{{userDetail.value.aboutUs}}</option>
-         
-        </select>
-      </div>
-      </div>
-    </form>
-  
-    <table class="table" *ngIf="hideTable">
-     
-      <thead>   
-           <tr>
-              <th scope="col">Name</th>
-              <th scope="col">County/State</th>
-              <th scope="col">Phone Number</th>
-              <th scope="col">Budget</th>
-            </tr>
-            
-          </thead>
-          <tbody>
-          
-            <tr *ngFor="let usr of userdata">
-              <td>{{usr.firstName}}</td>
-              <td>{{usr.city}}</td>
-              <td>{{usr.phoneNumber}}</td>
-              <td>{{usr.budget}}</td>
-            <td> 
+      <form [formGroup]="userDetail" class="row g-3" *ngIf="showTable">
+        <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">First Name</label>
+          <input type="name" name="firstName" formControlName="firstName" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-4">
+          <label for="inputPassword4" class="form-label">Last Name</label>
+          <input type="name" name="lastName" formControlName="lastName" class="form-control" id="inputPassword4">
+        </div>
+        <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Email</label>
+          <input type="email" name="email" formControlName="email" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-md-4">
+          <label for="inputEmail4" class="form-label">Phone Number</label>
+          <input type="text" name="phoneNumber" formControlName="phoneNumber" class="form-control" id="inputEmail4">
+        </div>
+        <div class="col-10">
+          <label for="inputAddress" class="form-label">Address</label>
+          <input type="text" name="address" formControlName="address" class="form-control" id="inputAddress"
+            placeholder="1234 Main St">
+        </div>
+
+        <div class="col-md-3">
+          <label for="inputCity" class="form-label">City</label>
+          <input type="text" name="city" formControlName="city" class="form-control" id="inputCity">
+        </div>
+        <div class="col-md-4">
+          <label for="inputState" class="form-label">State</label>
+          <select id="inputState" class="form-select">
+            <option>{{ userDetail.value.state}}</option>
+          </select>
+        </div>
+        <div class="col-md-3">
+          <label for="inputZip" class="form-label">Zip</label>
+          <input type="text" name="zip" formControlName="zip" class="form-control" id="inputZip">
+        </div>
+        <div class="form-check">
+          <div class="chcktxt">What Services are you looking for?</div>
+          <div *ngFor="let service of userDetail.value.requestedServices">
+            <input class="form-check-input" formControlName="requestedServices" type="checkbox" id="requestedServices">
+            <label class="form-check-label" for="requestedServices" aria-selected="true">
+              {{ service }}
+            </label>
+          </div>
+        </div>
+        <div class="form-check">
+          <div class="radtxt">What is your budget for this project?</div>
+
+          <input class="form-check-input" type="radio" name="budget" id="flexRadioDefault1" checked>
+          <label class="form-check-label" for="budget" aria-selected="true">
+            {{ userDetail.value.budget}}
+          </label>
+        </div>
+
+
+        <div class="col-md-6">
+          <label for="exampleFormControlTextarea1" class="form-label">Breifly Describe your project?</label>
+          <textarea class="form-control" formControlName="projectDescription" id="exampleFormControlTextarea1"
+            rows="3"></textarea>
+
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <label for="inputtxt" class="form-label">How did you hear about Kraft Construction?</label>
+            <select id="inputtxt" class="form-select">
+              <option>{{userDetail.value.aboutUs}}</option>
+
+            </select>
+          </div>
+        </div>
+      </form>
+
+      <table class="table" *ngIf="hideTable">
+
+        <thead>
+          <tr>
+            <th scope="col">Name</th>
+            <th scope="col">County/State</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Budget</th>
+          </tr>
+
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let usr of userdata">
+            <td>{{usr.firstName}}</td>
+            <td>{{usr.city}}</td>
+            <td>{{usr.phoneNumber}}</td>
+            <td>{{usr.budget}}</td>
+            <td>
               <button mat-icon-button [matMenuTriggerFor]="menu">
-                  <mat-icon>more_vert</mat-icon>
-                </button>
-                <mat-menu #menu="matMenu">
-         
-                  <button (click)="viewUser(usr.id)" mat-menu-item (click)="content()">View</button>
-                  <button (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
-                  
-                </mat-menu>
-              
-                
-          </td>
-            </tr>
-        
-          </tbody>
-   
-        </table>
-       
-        <div class = "paginations">
+                <mat-icon>more_vert</mat-icon>
+              </button>
+              <mat-menu #menu="matMenu">
+
+                <button (click)="viewUser(usr.id)" mat-menu-item (click)="content()">View</button>
+                <button (click)="deleteUser(usr.id)" mat-menu-item>Delete</button>
+
+              </mat-menu>
+
+
+            </td>
+          </tr>
+
+        </tbody>
+
+      </table>
+
+      <!-- <div class="paginations">
         <nav aria-label="Page navigation example">
           <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-              <li class="page-item"><a class="page-link" href="#">1</a></li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">5</a></li>
-              <li class="page-item"><a class="page-link" href="#">6</a></li>
-              <li class="page-item"><a class="page-link" href="#">7</a></li>
-              <li class="page-item"><a class="page-link" href="#">8</a></li>
-              <li class="page-item"><a class="page-link" href="#">9</a></li>
-              <li class="page-item"><a class="page-link" href="#">10</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">5</a></li>
+            <li class="page-item"><a class="page-link" href="#">6</a></li>
+            <li class="page-item"><a class="page-link" href="#">7</a></li>
+            <li class="page-item"><a class="page-link" href="#">8</a></li>
+            <li class="page-item"><a class="page-link" href="#">9</a></li>
+            <li class="page-item"><a class="page-link" href="#">10</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
           </ul>
         </nav>
-        </div>
- </div>
+      </div> -->
+    </div>
 
   </div>
-  
-  </div>
- 
+
+</div>

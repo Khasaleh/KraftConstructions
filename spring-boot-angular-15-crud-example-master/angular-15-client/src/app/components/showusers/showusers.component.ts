@@ -99,12 +99,6 @@ onFileSelected(event: any) {
   
     this.adduserdata.saveImage(formData,this.userObj.username).subscribe(
       response => {
-        // Handle the API response here
-        console.log(response);
-      },
-      error => {
-        // Handle any error that occurs during the API request
-        console.error(error);
       }
     );
   }
@@ -134,7 +128,6 @@ editUser(user: User) {
     imageUrl:this.userDetail.value.imageUrl
 
   };
-    console.log(updatedUser);
     const dialogRef = this.dialog.open(DialogeComponent, {
       data: {
         message: `Do you want to Update ${this.userDetail.value.username}?`,
@@ -178,14 +171,12 @@ editUser(user: User) {
     this.userObj.password = this.userDetail.value?.password;
     this.userObj.role = [this.userDetail.value?.role];
     this.userObj.imageUrl= this.userDetail.value?.imageUrl;
-    console.log(this.userObj.role)
      this.adduserdata.AddUser(this.userObj).subscribe(res=>{
       this.onClick();
       this.successMessage= res?.message;
       setTimeout(() => {
         this.successMessage = '';
       }, 3000);
-      console.log(res);
       this.getAllUsers();
     
       
@@ -195,8 +186,6 @@ editUser(user: User) {
       setTimeout(() => {
         this.errorMessage = '';
       }, 1000);
-      console.log(err)
-      
      })
      
   }

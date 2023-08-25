@@ -102,13 +102,13 @@ export class AdminHomeComponent {
         this.successMessagess = response?.message;
         setTimeout(() => {
           this.successMessagess = '';
-        }, 1000);
+        }, 2000);
       },
       error => {
         this.errorMessagess = error?.message;
         setTimeout(() => {
           this.errorMessagess = '';
-        }, 1000);
+        }, 2000);
       }
     );
   }
@@ -139,13 +139,13 @@ export class AdminHomeComponent {
           this.successMessage = "Slider data added successfully";
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 2000);
         },
         error => {
           this.errorMessage = error?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 2000);
         }
       )
       this.uploadImages1();
@@ -160,13 +160,13 @@ export class AdminHomeComponent {
           this.successMessage = "About us data added successfully";
           setTimeout(() => {
             this.successMessage = '';
-          }, 1000);
+          }, 2000);
         },
         error => {
           this.errorMessage = error?.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 2000);
         }
       )
     }
@@ -179,7 +179,7 @@ export class AdminHomeComponent {
           this.successMessages = response?.message;
           setTimeout(() => {
             this.successMessages = '';
-          }, 1000);
+          }, 2000);
         }
    
       },
@@ -187,7 +187,7 @@ export class AdminHomeComponent {
         this.errorMessages = error?.message;
         setTimeout(() => {
           this.errorMessages = '';
-        }, 1000);
+        }, 2000);
       }
     )
   }
@@ -199,13 +199,13 @@ export class AdminHomeComponent {
         this.successMessage = "Data Added successfully";
         setTimeout(() => {
           this.successMessage = '';
-        }, 1000);
+        }, 2000);
       },
       error => {
         this.errorMessage = error?.message;
         setTimeout(() => {
           this.errorMessage = '';
-        }, 1000);
+        }, 2000);
       }
     );
   }
@@ -229,8 +229,6 @@ export class AdminHomeComponent {
     const files = event.target.files;
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      // this.images.push(file);
-      // this.imageLink.push(URL.createObjectURL(file));
       const newImage: Image = {
         id: null,
         imageUrl: URL.createObjectURL(file)
@@ -262,29 +260,15 @@ export class AdminHomeComponent {
   getBannerImages() {
     this.homeService.getHomePageBanner().subscribe(
       response => {
-        console.log(response,"image object")
-        // this.imageLink = response.map((image: { imageUrl: any; }) => this.globalUrl + image.imageUrl);
-        // this.imageLink = response.map((response: {res: any}) => this.globalUrl + response);
         this.imageLink = response.map((image: { id: number; imageUrl: string }) => {
           return {
             ...image,
             imageUrl: this.globalUrl + image.imageUrl
           };
         });
-        console.log(this.imageLink,"imagesss")
       }
     )
   }
-
-  // deleteImage(bannerId: number) {
-
-  //   this.homeService.deleteBannerImage(bannerId).subscribe(
-  //     response => {
-  //       this.getBannerImages();
-
-  //     }
-  //   )
-  // }
   deleteImage(bannerId: number | null) {
     if (bannerId === null) {
       const nullIdIndex = this.imageLink.findIndex(image => image.id === null);

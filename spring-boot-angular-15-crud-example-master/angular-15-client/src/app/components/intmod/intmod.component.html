@@ -57,7 +57,7 @@
   <div class="container mt-3 mb-4">
     <div class="row justify-content-center gap-3">
       <div class="card sm-8" *ngFor="let item of imageData">
-        <img [src]=this.globalUrl+item?.imageUrl class="card-img-top" alt="...">
+        <img [src]=this.globalUrl+item?.imageUrl class="card-img-top" alt="..." onerror="this.src='../../../assets/error-image.jpg'">
       </div>
     </div>
   </div>

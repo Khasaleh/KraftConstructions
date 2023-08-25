@@ -27,7 +27,7 @@
                                     <div *ngFor="let imageLink of imageLink; let i = index" class="thumbnail-item"
                                         [class.active]="activeIndex === i">
                                         <img class="thumbnail-image" [src]="imageLink.imageUrl" alt="Thumbnail Image"
-                                            (click)="setActiveIndex(i)">
+                                            (click)="setActiveIndex(i)" onerror="this.src='../../../assets/error-image.jpg'">
                                         <div class="del-btn"><button type="button"
                                                 class="delete-icon" (click)="deleteImage(imageLink.id)"><i
                                                     class="fa fa-trash"></i></button>
@@ -164,7 +164,7 @@
                             <div *ngFor="let service of serviceData" class="component">
 
                                 <div class="kitchen-1-icon"><img class="img-logo" alt=""
-                                        src={{this.globalUrl+service?.afterImageUrl}} /></div>
+                                        src={{this.globalUrl+service?.afterImageUrl}} onerror="this.src='../../../assets/error-image.jpg'"></div>
                                 <h3 class="custom-kitchens">{{ service.serviceName }}</h3>
                                 <p class="simply-dummy-text">{{ service.description }}</p>
                                 <a class="rectangle-group">
@@ -232,7 +232,6 @@
                                         <button class="add-btn" (click)="addForm()">Duplicate</button>
                                     </div>
                                 </div>
-
                             </ng-container>
                         </div>
 

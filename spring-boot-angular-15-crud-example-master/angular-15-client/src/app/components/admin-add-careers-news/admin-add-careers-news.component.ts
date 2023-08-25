@@ -62,7 +62,7 @@ export class AdminAddCareersNewsComponent {
 
             this.successMessage = '';
 
-          }, 1000);
+          }, 2000);
         },
         error => {
           this.errorMessage = error?.message;
@@ -70,7 +70,7 @@ export class AdminAddCareersNewsComponent {
 
             this.errorMessage = '';
 
-          }, 1000);
+          }, 2000);
         }
       )
     }

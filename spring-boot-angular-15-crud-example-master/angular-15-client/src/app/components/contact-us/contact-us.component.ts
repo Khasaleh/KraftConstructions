@@ -43,7 +43,6 @@ this.userDetail = this.formBuilder.group ({
   
 });
 this.conus.getContactAll().subscribe(result=> {
-console.log(result);
 this.data=result;
 })
 
@@ -51,7 +50,6 @@ this.data=result;
 
 submit() {
   this.userObj = this.userDetail.value;
-  console.log(this.userObj);
 
   this.conus.saveData(this.userObj).subscribe(res => {
     this.successMessage = "Contact Us Submitted Successfully";
