@@ -33,7 +33,7 @@
       </div>
       <div class="col-lg-4 col-md-6">
         <div *ngIf="serviceData?.beforeImageUrl" class="card sm-12">
-          <img src={{this.globalUrl+serviceData?.beforeImageUrl}} class="height " alt="...">
+          <img src={{this.globalUrl+serviceData?.beforeImageUrl}} class="height " alt="..." onerror="this.src='../../../assets/error-image.jpg'">
           <div class="card-body" style="background-color: #FFE7E7;">
             <h5 class="card-title"><b>{{serviceData?.beforeImageTitle}}</b></h5>
           </div>
@@ -42,7 +42,7 @@
 
       <div class="col-lg-4 col-md-6">
         <div *ngIf="serviceData?.afterImageUrl" class="card sm-13">
-          <img src={{this.globalUrl+serviceData?.afterImageUrl}} class="height" alt="...">
+          <img src={{this.globalUrl+serviceData?.afterImageUrl}} class="height" alt="..." onerror="this.src='../../../assets/error-image.jpg'">
           <div class="card-body" style="background-color: var(--kraft-light-green);">
             <h5 class="card-title"><b>{{serviceData?.afterImageTitle}}</b></h5>
           </div>
@@ -57,7 +57,7 @@
   <div class="container mt-3 mb-4">
     <div class="row justify-content-center gap-3">
       <div class="card sm-8" *ngFor="let item of imageData">
-        <img [src]=this.globalUrl+item?.imageUrl class="card-img-top" alt="...">
+        <img [src]=this.globalUrl+item?.imageUrl class="card-img-top" alt="..." onerror="this.src='../../../assets/error-image.jpg'">
       </div>
     </div>
   </div>

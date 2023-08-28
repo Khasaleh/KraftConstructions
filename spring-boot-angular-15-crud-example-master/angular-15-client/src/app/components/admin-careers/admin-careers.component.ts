@@ -76,7 +76,7 @@ export class AdminCareersComponent {
       this.errorMessage = error.message;
           setTimeout(() => {
             this.errorMessage = '';
-          }, 1000);
+          }, 2000);
     }
     );
   }

@@ -55,7 +55,10 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         User user = userRepository.findById(userDetails.getId()).orElseThrow(() -> new GenericException(HttpStatus.NO_CONTENT,"User Not Found","Author can't be determined"));
         Services service = servicesRepository.findById(serviceDetailsRequestDTO.getServiceId())
                 .orElseThrow(() -> new GenericException(HttpStatus.NOT_FOUND, "Service not found" + serviceDetailsRequestDTO.getServiceId(), "Incorrect id"));
-
+        ServiceDetails existingServiceDetails = servicesDetailsRepository.findByServices(service).orElse(null);
+        if (Objects.nonNull(existingServiceDetails)){
+            throw new GenericException(HttpStatus.BAD_REQUEST,"Service Details Already Exist","Service Details Already Exist");
+        }
         String beforeImageFileName = saveFile(serviceDetailsRequestDTO.getBeforeImage());
         String afterImageFileName = saveFile(serviceDetailsRequestDTO.getAfterImage());
 

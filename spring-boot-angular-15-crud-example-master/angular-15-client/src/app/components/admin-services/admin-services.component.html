@@ -131,7 +131,7 @@
                     </form>
                     <div *ngIf="isCardBodyVisible">
                         <div id="grey-sec" class="card">
-                            <div class="card-body">
+                            <!-- <div class="card-body">
                                 <div class="drop-2">
                                     <label for="inputField" class="col-head mb-3">Select column</label> <br>
                                     <select class="inputField" [(ngModel)]="selectedQuantity">
@@ -139,11 +139,11 @@
                                         </option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="card-wrape">
                             <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
-                                <img class="card-img" [src]="card.imgSrc" alt="">
+                                <img class="card-img" [src]="card.imgSrc" alt="" onerror="this.src='../../../assets/error-image.jpg'"> 
                                 <button class="file-upload cardbtn" type="button">
                                     <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
                                     <input type="file" id="file-input2{{card.id}}" class="input-file"

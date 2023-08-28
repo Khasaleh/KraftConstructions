@@ -22,16 +22,11 @@ export class HeaderComponent implements OnInit {
     this.headerService.getsliderdata().subscribe(
       data => {
         this.sliderData = data;
-        console.log("headerData", data);
-      },
-      error => {
-        console.log("Error:", error);
       }
     );
     this.headerService.getServiceByPage1().subscribe(
       response => {
         this.DropData = response.filter((service: { active: boolean; }) => service.active === true);
-        console.log(this.DropData);
       }
     )
     this.headerService.getServiceByPage2().subscribe(
@@ -60,10 +55,6 @@ export class HeaderComponent implements OnInit {
     this.intService.getServicesImages(service).subscribe(
       response => {
         this.imageData = response;
-        console.log(this.imageData);
-      },
-      error => {
-        console.log(error);
       }
     )
   }

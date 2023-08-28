@@ -162,8 +162,6 @@ testimonialImage() {
   const formData = new FormData();
   formData.append('image', this?.fileURL);
   formData.append('page','TESTIMONIAL')
- 
-  console.log(this.fileURL,'image');
   this.testimonialService.saveImage(formData).subscribe(
     response => {
       this.savedImageId = response.id;
@@ -270,7 +268,6 @@ approveTestimonial(user:Testimonial,id:number) {
     if (result === true) {
       this.testimonialService.approveTest(user,id)
         .subscribe(res => {
-          console.log(res?.message)
           this.successMessage2 = res?.approvalStatus;
           setTimeout(() => {
             this.successMessage2 = '';
