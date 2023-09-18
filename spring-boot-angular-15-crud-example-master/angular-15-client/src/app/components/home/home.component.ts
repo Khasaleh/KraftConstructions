@@ -28,19 +28,20 @@ export class HomeComponent implements OnInit {
   bannerDescription: any;
   objects: any[] = [];
   activeSlideIndex: number = 0;
-  serviceData: any
+  serviceData: any;
   constructor(private homeService: HomeServiceService) { }
   ngOnInit(): void {
     this.homeService.getHomePageBanner().subscribe(
       response => {
         if (response) {
-          this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl);
+          this.slides = response.map((p: { id: any, imageUrl: any; }) => this.globalUrl + p.imageUrl.replace(' ', '%20'));
+          setInterval(() =>
+            this.showSlide(),
+          3000);
         }
       },
     )
-    setInterval(() =>
-      this.showSlide(),
-      3000);
+
     this.homeService.getHomePageData().subscribe(
       data => {
         this.apiData = data;
