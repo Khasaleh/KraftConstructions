@@ -820,7 +820,7 @@ a {
     font-weight: 600;
     text-decoration: underline;
     line-height: 25px;
-    text-transform: uppercase;
+    /* text-transform: uppercase; */
     color: var(--color-darkslategray);
 }
 

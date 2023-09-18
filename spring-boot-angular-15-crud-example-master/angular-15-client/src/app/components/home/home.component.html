@@ -1,5 +1,5 @@
 <app-header></app-header>
-<main>
+<main *ngIf="slides.length > 0">
   <!-- Banner Section -->
   <section class="banner-section slide" [style.background-image]="'url(' + slides[currentSlide] + ')'" [style.transform]="currentSlide === currentSlide ? 'translateX(0)' : 'translateX(100%)'">
     <div *ngIf="sliderData?.status" class="headline" [style.background]="sliderData.backgroundColor"
@@ -160,7 +160,7 @@
           <div class="company-phones">
             <ul>
               <li>kraft construction Emails</li>
-              <li class="dustrogmailcom">www.kraftconstructionco.com</li>
+              <li class="dustrogmailcom">Kraftconstructionco@kraftconstructionco.com</li>
             </ul>
           </div>
         </div>

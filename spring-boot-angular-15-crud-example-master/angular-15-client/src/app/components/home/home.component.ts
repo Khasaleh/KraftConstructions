@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   slides: string[] = [];
   currentSlide = 0;
   showSlide() {
+    console.log(this.currentSlide);
+    console.log(this.slides[this.currentSlide])
     if (this.currentSlide == this.slides.length - 1) {
       this.currentSlide = 0;
     }
