@@ -1,7 +1,7 @@
 <app-header></app-header>
 <main>
   <!-- Banner Section -->
-  <section class="banner-section slide" [style.background-image]="'url(' + slides[currentSlide] + ')'">
+  <section class="banner-section slide" [style.background-image]="'url(' + slides[currentSlide] + ')'" [style.transform]="currentSlide === currentSlide ? 'translateX(0)' : 'translateX(100%)'">
     <div *ngIf="sliderData?.status" class="headline" [style.background]="sliderData.backgroundColor"
       [style.color]="sliderData.textColor">
       <marquee>{{ sliderData?.description }}</marquee>
