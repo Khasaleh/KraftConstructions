@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { InteriorRemodelingService } from '../../service/interior-remodeling.service'
 import { error, event } from 'jquery';
 
@@ -50,6 +50,7 @@ export class AdminServicesComponent {
   serviceData: any;
   imageData: any;
   selectedServicId: any;
+  isSubmitted = false;
 
   constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
   ngOnInit(): void {
@@ -87,6 +88,12 @@ export class AdminServicesComponent {
       }
     )
   }
+
+  get getControl(): { [key: string]: AbstractControl; } {
+    return this.interiorRemodForm2.controls;
+  }
+
+
   onSubmit() {
 
     if (this.interiorRemodForm.valid) {
@@ -201,14 +208,15 @@ export class AdminServicesComponent {
     }
     this.interiorRemodelingService.saveServicesImages(formData, service).subscribe(
       response => {
+        console.log(response)
       },
       error => {
       }
     );
   }
 
-  onOptionSelected(event: Event) {
-    const selectedValue = (event.target as HTMLSelectElement).value;
+  onOptionSelected(event: any) {
+    const selectedValue = event;
     if (selectedValue === 'interior') {
       this.interiorRemodelingService.getServiceByPage1()
         .subscribe(
@@ -225,7 +233,7 @@ export class AdminServicesComponent {
             this.services = data;
             this.service = data;
             this.serviceNames = this.service.map(service => service.serviceName);
-            this.selectedService = ''; // 
+            this.selectedService = ''; //
           });
     }
   }
@@ -264,8 +272,8 @@ export class AdminServicesComponent {
     }
   }
   getOneService(event: any) {
-    this.selectedServicId = event.target?.value
-    this.interiorRemodelingService.getServiceById(event.target?.value).subscribe(
+    this.selectedServicId = event;
+    this.interiorRemodelingService.getServiceById(event).subscribe(
       response => {
         if (response) {
           this.serviceData = response;
@@ -276,7 +284,7 @@ export class AdminServicesComponent {
           this.interiorRemodForm2.controls['description'].setValue(response.description);
           this.interiorRemodForm2.controls['isCheck'].setValue(response.addPortfolio);
           this.isCardBodyVisible = response.addPortfolio;
-          this.getImages(event.target?.value);
+          this.getImages(event);
         }
         else {
           this.imageLink = null;
@@ -298,7 +306,7 @@ export class AdminServicesComponent {
         this.isCardBodyVisible = false;
       }
     );
-    this.getImages(event.target?.value);
+    this.getImages(event);
   }
   getImages(service: any) {
     this.interiorRemodelingService.getServicesImages(service).subscribe(

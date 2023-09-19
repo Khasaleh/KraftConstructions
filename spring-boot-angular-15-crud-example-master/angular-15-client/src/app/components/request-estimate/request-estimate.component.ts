@@ -21,8 +21,8 @@ states: string[] = [
   'New Mexico', 'New York', 'North Carolina', 'North Dakota', 'Ohio', 'Oklahoma', 'Oregon', 'Pennsylvania', 'Rhode Island', 'South Carolina',
   'South Dakota', 'Tennessee', 'Texas', 'Utah', 'Vermont', 'Virginia', 'Washington', 'West Virginia', 'Wisconsin', 'Wyoming'
 ];
-budgets: string[] = ['$25,000 to $50,000','$50,000 to $100,000','$100,000 to $150,000','$150,000 to $200,000'];
-aboutUss: string[]= ['Social Platform', 'Friends and Family','other'];
+budgets: string[] = ['$25,000 to $50,000','$50,000 to $100,000','$100,000 to $150,000','$150,000 to $200,000', 'None of the Above'];
+aboutUss: string[]= ['Social Media Platform', 'Friends and Family', 'Advertisement', 'Saw a Kraft Vehicle', 'other'];
 selectedServices: string[] = [];
 formattedAddress: string ='';
 successMessage: string | null = null;
@@ -44,7 +44,7 @@ this.userDetail = this.formBuilder.group ({
   projectDescription: ['',Validators.required],
   aboutUs: ['',Validators.required]
 
-  
+
 });
 
 }
@@ -63,7 +63,7 @@ get getControl(): { [key: string]: AbstractControl; } {
 submit() {
   this.userDetail.markAllAsTouched();
   this.userObj = this.userDetail.value;
-  
+
   this.userDetail.reset();
   this.requser.ReqUser(this.userObj).subscribe(res => {
     this.successMessage =  res.message;
@@ -76,7 +76,7 @@ submit() {
       this.errorMessage = '';
     }, 3000);
   })
-  
+
 }
 toggleService(service: string) {
   const requestedServices = this.userDetail.controls['requestedServices'].value as string[];

@@ -107,11 +107,12 @@ export class CareersComponent {
         this.successMessage = 'Data Submitted Successfully!';
         setTimeout(() => {
           this.successMessage = '';
+          this.userDetail.reset();
         }, 3000);
       },
       error => {
 
-        this.errorMessage = 'Data cant be submitted!';
+        this.errorMessage = 'Please Fill All Required Date';
         setTimeout(() => {
           this.errorMessage = '';
         }, 3000);

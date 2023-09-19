@@ -23,8 +23,10 @@
                     <div class="careers-form">
                         <div class="grid-container1">
                             <div class="form-group">
-                                <label class="mb-2" class="form-label" for="firstName">First Name</label>
-                                <input type="name" formControlName="firstName" class="form-control" id="firstName">
+
+                                  <label class="mb-2" class="form-label" for="firstName">First Name</label>
+                                  <input type="name" formControlName="firstName" class="form-control" id="firstName">
+
                                 <div *ngIf="getControl['firstName'].touched && getControl['firstName'].invalid"
                                     class="text-danger">
 
@@ -129,7 +131,8 @@
                             <div class="form-group">
                                 <label class="mb-2" class="form-label" for="inputJob">Part/Full Time</label>
                                 <select id="inputJob" formControlName="jobType" class="form-select">
-                                    <option *ngFor="let state of jobType" [value]="state">{{ state }}</option>
+                                    <option value="Yes">Full-Time</option>
+                                    <option value="No">Part-Time</option>
                                 </select>
                                 <div *ngIf="getControl['jobType'].touched && getControl['jobType'].invalid"
                                     class="text-danger">
@@ -294,11 +297,11 @@
                                 <img src="../../../assets/recaptcha.png" alt="">
                             </div>
                         </div>
-                        <a id="btn" class="button">
-                            <button type="submit" (click)='subitData()' class="learn-more"
+                        <button id="btn" class="button"  (click)='subitData()' >
+                            <button type="submit"class="learn-more"
                                 [disabled]="!userDetail.valid">Submit</button>
 
-                        </a>
+                        </button>
                         <div class=" message">
                             <div class="alert alert-success" role="alert" *ngIf="successMessage">
                                 {{ successMessage }}
