@@ -14,7 +14,7 @@
                                 </div>
                                 <div class="drop-1">
                                     <label class="label2" for="inputField">Select Service Page</label> <br>
-                                    <select class="inputField mt-3 mb-3" 
+                                    <select class="inputField mt-3 mb-3"
                                         formControlName="selectServicePage">
                                         <option *ngFor="let option of options" [value]="option">{{ option }}</option>
                                     </select>
@@ -31,7 +31,7 @@
                                 <div class="drop-top">
                                     <label class="label2 mb-3" for="inputField">Select Page</label> <br>
                                     <select class="inputField" (change)="onOptionSelected($event)">
-                                        <option hidden disabled selected value>Select an option</option> 
+                                        <option hidden disabled selected value>Select an option</option>
                                         <option value="interior">Interior Remodeling</option>
                                         <option value="addition">New Addition</option>
                                     </select>
@@ -56,7 +56,7 @@
                                         {{ successMessages }}
                                     </div>
                                 </div>
-                              
+
                             </div>
 
 
@@ -73,18 +73,18 @@
                     <div class="drop-wrape">
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Page</label> <br>
-                            <select class="inputField" (change)="onOptionSelected($event)">
-                                <option hidden disabled selected value>Select an option</option> 
-                                <option value="interior">Interior Remodeling</option>
-                                <option value="addition">New Addition</option>
-                            </select>
+                            <mat-select class="inputField" (valueChange)="onOptionSelected($event)">
+                                <mat-option hidden disabled selected value>Select an option</mat-option>
+                                <mat-option value="interior">Interior Remodeling</mat-option>
+                                <mat-option value="addition">New Addition</mat-option>
+                            </mat-select>
                         </div>
                         <div class="drop-2">
                             <label class="label2 mb-3" for="inputField">Select Service</label> <br>
-                            <select class="inputField" (change)="getOneService($event)">
-                                <option *ngFor="let services of service" [value]="services?.id">{{ services?.serviceName
-                                    }}</option>
-                            </select>
+                            <mat-select class="inputField" (valueChange)="getOneService($event)">
+                                <mat-option *ngFor="let services of service" [value]="services?.id">{{ services?.serviceName
+                                    }}</mat-option>
+                            </mat-select>
                         </div>
                     </div>
                     <form [formGroup]="interiorRemodForm2">
@@ -101,6 +101,9 @@
                                     <input type="text" class="form-control mb-3" placeholder="Before image"
                                         formControlName="beforeImage">
                                 </div>
+                                <div *ngIf="getControl['beforeImage'].touched && getControl['beforeImage'].invalid || (getControl['beforeImage'].untouched && isSubmitted)" class="error-text-red m-0">
+                                  <mat-error *ngIf="getControl['beforeImage'].hasError('required')">Image Description Required</mat-error>
+                                </div>
                             </div>
                             <div class="content1">
                                 <div class="img-box">
@@ -108,12 +111,14 @@
                                     <input type="file" id="file-input1" class="input-file1"
                                         (change)="selectFiles2($event)">
                                     <label for="file-input1" id="file-input1" class="upload-label1"></label>
-
                                 </div>
                                 <div class="form-group">
                                     <label class="label mb-3" for="formGroupExampleInput">Add image tittle</label>
                                     <input type="text" class="form-control mb-3" placeholder="After image"
                                         formControlName="afterImage">
+                                </div>
+                                <div *ngIf="getControl['afterImage'].touched && getControl['afterImage'].invalid || (getControl['afterImage'].untouched && isSubmitted)" class="error-text-red m-0">
+                                  <mat-error *ngIf="getControl['afterImage'].hasError('required')">Image Description Required</mat-error>
                                 </div>
                             </div>
 
@@ -122,6 +127,9 @@
                             <label class="label2 mt-2 mb-3" for="exampleTextarea">Description</label>
                             <textarea class="form-control form-control-lg  mb-3" id="exampleTextarea" rows="5"
                                 placeholder="Enter a description" formControlName="description"></textarea>
+                            <div *ngIf="getControl['description'].touched && getControl['description'].invalid || (getControl['description'].untouched && isSubmitted)" class="error-text-red m-0">
+                                  <mat-error *ngIf="getControl['description'].hasError('required')">Description Required</mat-error>
+                             </div>
                         </div>
                         <div class="check-button1">
                             <input type="checkbox" class="input-check1" formControlName="isCheck"
@@ -143,7 +151,7 @@
                         </div>
                         <div class="card-wrape">
                             <div *ngFor="let card of cards.slice(0, selectedQuantity)" class="card-box">
-                                <img class="card-img" [src]="card.imgSrc" alt="" onerror="this.src='../../../assets/error-image.jpg'"> 
+                                <img class="card-img" [src]="card.imgSrc" alt="" onerror="this.src='../../../assets/error-image.jpg'">
                                 <button class="file-upload cardbtn" type="button">
                                     <label for="file-input2{{card.id}}" class="custom-button-card">Upload Image</label>
                                     <input type="file" id="file-input2{{card.id}}" class="input-file"
