@@ -54,6 +54,7 @@ export class AdminServicesComponent {
 
   constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
   ngOnInit(): void {
+    console.log('test changes .......');
     this.selectedService = '';
     this.service = [];
     this.serviceNames = [];
