@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit {
   imageData: any[] = [];
   isDropdownOpen = false;
   isDropdownOpen2 = false;
+  isMobMenuOpened = false;
   constructor(private headerService: HomeServiceService, private intService: InteriorRemodelingService, private router: Router) { }
   ngOnInit(): void {
     this.headerService.getsliderdata().subscribe(
