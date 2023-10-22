@@ -15,6 +15,7 @@ import com.bezkoder.spring.jpa.h2.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ObjectUtils;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -59,6 +60,18 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         if (Objects.nonNull(existingServiceDetails)){
             throw new GenericException(HttpStatus.BAD_REQUEST,"Service Details Already Exist","Service Details Already Exist");
         }
+        if(Objects.isNull(serviceDetailsRequestDTO.getBeforeImage())){
+            throw new GenericException(HttpStatus.BAD_REQUEST,"Before Image Is Required.","Before Image Is Required.");
+        }
+        if(Objects.isNull(serviceDetailsRequestDTO.getAfterImage())){
+            throw new GenericException(HttpStatus.BAD_REQUEST,"After Image Is Required.","After Image Is Required.");
+        }
+        if(Objects.isNull(serviceDetailsRequestDTO.getBeforeImageTitle())){
+            throw new GenericException(HttpStatus.BAD_REQUEST,"Before Image Title Is Required.","Before Image Title Is Required.");
+        }
+        if(Objects.isNull(serviceDetailsRequestDTO.getAfterImage())){
+            throw new GenericException(HttpStatus.BAD_REQUEST,"After Image Title Is Required.","After Image Title Is Required.");
+        }
         String beforeImageFileName = saveFile(serviceDetailsRequestDTO.getBeforeImage());
         String afterImageFileName = saveFile(serviceDetailsRequestDTO.getAfterImage());
 
@@ -69,7 +82,7 @@ public class ServicesDetailsServiceImpl implements ServicesDetailsService {
         serviceDetails.setBeforeImageTitle(serviceDetailsRequestDTO.getBeforeImageTitle());
         serviceDetails.setAfterImageTitle(serviceDetailsRequestDTO.getAfterImageTitle());
         serviceDetails.setDescription(serviceDetailsRequestDTO.getDescription());
-        serviceDetails.setAddPortfolio(serviceDetailsRequestDTO.isAddPortfolio());
+        serviceDetails.setAddPortfolio(Objects.isNull(serviceDetailsRequestDTO.isAddPortfolio()) ? false : serviceDetailsRequestDTO.isAddPortfolio());
         serviceDetails.setAuthor(user.getUsername());
         serviceDetails.setUpdateDate(LocalDateTime.now());
 

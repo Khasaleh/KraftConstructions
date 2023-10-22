@@ -54,7 +54,6 @@ export class AdminServicesComponent {
 
   constructor(private formBuilder: FormBuilder, private interiorRemodelingService: InteriorRemodelingService) { }
   ngOnInit(): void {
-    console.log('test changes .......');
     this.selectedService = '';
     this.service = [];
     this.serviceNames = [];
@@ -122,7 +121,7 @@ export class AdminServicesComponent {
   onClick1() {
     if (this.selectedServicId) {
       const formData = new FormData();
-      formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck);
+      formData.append('addPortfolio', this.interiorRemodForm2.value.isCheck == '' ? false : this.interiorRemodForm2.value.isCheck);
       formData.append('serviceId', this.selectedServicId.toString());
       if (this.urllink) {
         formData.append('beforeImage', this.urllink);
@@ -144,7 +143,7 @@ export class AdminServicesComponent {
             }, 2000);
           },
           error => {
-            this.errorMessage = error?.message;
+            this.errorMessage = error?.error.message
             setTimeout(() => {
               this.errorMessage = '';
             }, 2000);
@@ -159,7 +158,7 @@ export class AdminServicesComponent {
             }, 2000);
           },
           error => {
-            this.errorMessage = error?.message;
+            this.errorMessage = error?.error.message;
             setTimeout(() => {
               this.errorMessage = '';
             }, 2000);
@@ -209,7 +208,6 @@ export class AdminServicesComponent {
     }
     this.interiorRemodelingService.saveServicesImages(formData, service).subscribe(
       response => {
-        console.log(response)
       },
       error => {
       }
